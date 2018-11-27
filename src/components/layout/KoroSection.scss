@@ -1,8 +1,9 @@
 @import '../../../node_modules/open-city-design/src/scss/helsinki/mixins';
+@import '../../../node_modules/open-city-design/src/scss/helsinki/colors';
 
 .section-koro-bottom {
   &.green:before {
-    @include koro('basic', #7FEBD3, 400);
+    @include koro('basic', $hel-copper, 400);
   }
   &:before {
     @include koro('basic', #ffffff, 400);

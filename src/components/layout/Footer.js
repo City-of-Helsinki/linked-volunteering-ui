@@ -5,7 +5,7 @@ import { Col, Row, Container } from 'reactstrap';
 import Icon from '../common/Icon';
 
 const Wrapper = styled.div`
-  background-color: ${props => props.theme.colors.green};
+  background-color: ${props => props.theme.helCopper};
   color: #000;
   padding-top: 4em;
   padding-bottom: 4em;
