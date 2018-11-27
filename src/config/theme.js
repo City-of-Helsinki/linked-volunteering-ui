@@ -18,5 +18,10 @@ const maxWidth = Object.entries(breakpoint).reduce((acc, [size, pixels]) => ({
 export default {
   ...extractedTheme,
   breakpoint,
-  maxWidth
+  maxWidth,
+  colors: {
+    helFog: '#9fc8eb',
+    green: '#7FEBD3',
+    light: '#ebedf1'
+  }
 };
