@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
@@ -16,42 +17,36 @@ const Wrapper = styled.div`
   }
 `;
 
-const OptionsContainer = styled(Container)`
-  width: 100%;
-`;
-
 const FooterSection = styled(Col)`
   text-align: center;
 `;
 
 const Footer = () => (
   <Wrapper>
-    <OptionsContainer>
+    <Container fluid>
       <Row>
         <FooterSection md="6">
           <Icon name="helsinkiLogo" width="120px" color="#000" />
-          <div>
-            &copy; Copyright 2018 - Kaikki oikeudet pidätetään.
-          </div>
+          <div>&copy; Copyright 2018 - Kaikki oikeudet pidätetään.</div>
         </FooterSection>
         <FooterSection md="6">
-            <div>
-              <a href="#">
-                <FormattedMessage tagName="span" id="site.footer.front_page" />
-              </a>
-              <a href="#">
-                <FormattedMessage tagName="span" id="site.footer.upcoming_events" />
-              </a>
-              <a href="#">
-                <FormattedMessage tagName="span" id="site.footer.create_event" />
-              </a>
-              <a href="#">
-                <FormattedMessage tagName="span" id="site.footer.contacts" />
-              </a>
-            </div>
+          <div>
+            <a href="#">
+              <FormattedMessage tagName="span" id="site.footer.front_page" />
+            </a>
+            <a href="#">
+              <FormattedMessage tagName="span" id="site.footer.upcoming_events" />
+            </a>
+            <a href="#">
+              <FormattedMessage tagName="span" id="site.footer.create_event" />
+            </a>
+            <a href="#">
+              <FormattedMessage tagName="span" id="site.footer.contacts" />
+            </a>
+          </div>
         </FooterSection>
       </Row>
-    </OptionsContainer>
+    </Container>
   </Wrapper>
 );
 
