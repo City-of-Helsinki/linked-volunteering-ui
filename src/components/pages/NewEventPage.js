@@ -362,7 +362,7 @@ const NewEventPage = () => (
                 onBlur={handleBlur}
               />
               <h3>Näkyvyys</h3>
-              <span>Näytetäänkö tapahtuma julkisesti vai ei {values.visibility}</span>
+              <span>Näytetäänkö tapahtuma julkisesti vai ei</span>
               <Radio
                 id="visibility_public"
                 label="Julkinen"
