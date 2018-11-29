@@ -14,38 +14,44 @@ type Props = {
   children: any
 };
 
-const TopNavbar = styled(Navbar)`
-  background-color: #fff;
-  border-bottom: 1px solid #aaa;
+const Content = styled.div`
+  background-color: ${props => props.theme.colors.lightGray};
+`;
+
+const NavbarRow = styled(Navbar)`
+  background-color: ${props => props.theme.helWhite};
+  padding-left: 7em;
+  padding-right: 7em;
+  border-bottom: 1px solid ${props => props.theme.helGray};
   height: 3.5em;
   & a {
-    color: #000;
+    color: ${props => props.theme.helBlack};
   }
   & a:hover {
     text-decoration: none;
-    color: #000;
+    color: ${props => props.theme.helBlack};
   }
 `;
 
-const Content = styled(KoroSection).attrs({
-  bottom: true,
-  color: 'fog'
-})``;
-
 const Layout = ({ children }: Props) => (
   <Fragment>
-    <TopNavbar expand="md">
+    <NavbarRow expand="md">
       <NavbarBrand href="/">
         <Icon name="helsinkiLogo" width="90px" color="#000" />
       </NavbarBrand>
       <Nav className="ml-auto" navbar>
         <LanguageDropdown />
       </Nav>
-    </TopNavbar>
-    <Content>{children}</Content>
-    <KoroSection bottom color="green">
-      <Footer />
-    </KoroSection>
+    </NavbarRow>
+    <NavbarRow expand="md">
+      <Nav>Ilmoita tapahtuma</Nav>
+    </NavbarRow>
+    <Content>
+      <div>{children}</div>
+      <KoroSection bottom color="green">
+        <Footer />
+      </KoroSection>
+    </Content>
   </Fragment>
 );
 

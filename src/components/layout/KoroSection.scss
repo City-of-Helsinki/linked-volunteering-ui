@@ -3,10 +3,10 @@
 
 .section-koro-bottom {
   &.green:before {
-    @include koro('basic', $hel-copper, 400);
+    @include koro('basic', $hel-copper, 800);
   }
   &:before {
-    @include koro('basic', #ffffff, 400);
+    @include koro('basic', $hel-copper, 800);
     content: '';
     display: block;
     margin-top: -1.25em;

@@ -9,20 +9,34 @@ import Select from '../form/Select';
 import Checkbox from '../form/Checkbox';
 import Radio from '../form/Radio';
 
-const Wrapper = styled.div`
+const FormContainer = styled.div`
   padding: 2em;
-  margin-bottom: 5em;
+  padding-top: 1em;
+  margin-bottom: 4em;
+  margin-left: 7em;
+  margin-right: 7em;
+  background-color: ${props => props.theme.helWhite};
+`;
+
+const TitleContainer = styled.div`
+  margin-bottom: 1em;
+  padding: 1em;
+  padding-left: 7em;
+  background-color: ${props => props.theme.helWhite};
 `;
 
 const NewEventPage = () => (
   <Layout>
-    <Wrapper>
+    <TitleContainer>
+      <h2>Ilmoita uusi vapaaehtoistapahtuma</h2>
+    </TitleContainer>
+    <FormContainer>
       <Formik onSubmit={console.debug}>
         {props => {
           const { values, handleChange, handleBlur, handleSubmit } = props;
           return (
             <form onSubmit={handleSubmit} noValidate>
-              <h2>Tapahtuman nimi ja kuvaus</h2>
+              <h3>Tapahtuman nimi ja kuvaus</h3>
               <Input
                 type="text"
                 id="name"
@@ -41,7 +55,7 @@ const NewEventPage = () => (
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              <h2>Paikka ja aika</h2>
+              <h3>Paikka ja aika</h3>
               <Select
                 id="area"
                 label="Alue/Talkoopiiri"
@@ -164,7 +178,7 @@ const NewEventPage = () => (
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              <h2>Yhteyshenkilö</h2>
+              <h3>Yhteyshenkilö</h3>
               <span>Järjestäjän yhteystiedot tarvitaan urakoitsijoita varten</span>
               <Input
                 type="text"
@@ -210,7 +224,7 @@ const NewEventPage = () => (
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              <h2>Muut tiedot</h2>
+              <h3>Muut tiedot</h3>
               <Input
                 type="text"
                 id="amount_of_volunteers"
@@ -247,7 +261,7 @@ const NewEventPage = () => (
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              <h2>Työkalut ja tarvikkeet</h2>
+              <h3>Työkalut ja tarvikkeet</h3>
               <span>
                 Ilmoita tarvittavat työkalut. Urakoitsijat hoitavat määrän tarvikkeita paikan
                 päälle.
@@ -277,7 +291,7 @@ const NewEventPage = () => (
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              <h2>Näkyvyys</h2>
+              <h3>Näkyvyys</h3>
               <span>Näytetäänkö tapahtuma julkisesti vai ei</span>
               <Radio
                 id="visibility_yes"
@@ -295,7 +309,7 @@ const NewEventPage = () => (
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-              <h2>Hintatiedot</h2>
+              <h3>Hintatiedot</h3>
               <span>Tapahtuma on kaupunkilaisille maksuton</span>
               <Checkbox
                 id="free"
@@ -308,7 +322,7 @@ const NewEventPage = () => (
           );
         }}
       </Formik>
-    </Wrapper>
+    </FormContainer>
   </Layout>
 );
 
