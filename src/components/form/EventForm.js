@@ -1,10 +1,12 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
+import { FormattedMessage } from 'react-intl';
 
 import Input from './fields/Input';
 import Select from './fields/Select';
 import Checkbox from './fields/Checkbox';
 import Radio from './fields/Radio';
+import Areas from './partitions/Areas';
 
 export default ({
   values,
@@ -20,7 +22,7 @@ export default ({
   <form onSubmit={handleSubmit}>
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
-        <h3>Tapahtuman nimi ja kuvaus</h3>
+        <FormattedMessage tagName="h3" id="form.event.title.name_and_description" />
       </Col>
     </Row>
     <Row>
@@ -28,8 +30,8 @@ export default ({
         <Input
           type="text"
           id="name"
-          label="Nimi"
-          placeholder="Nimi"
+          label="form.event.field.name.label"
+          placeholder="form.event.field.name.placeholder"
           required
           error={errors.name}
           touched={touched.name}
@@ -44,8 +46,8 @@ export default ({
         <Input
           type="textarea"
           id="description"
-          label="Kuvausteksti"
-          placeholder="Kuvausteksti"
+          label="form.event.field.description.label"
+          placeholder="form.event.field.description.placeholder"
           required
           error={errors.description}
           touched={touched.description}
@@ -57,14 +59,14 @@ export default ({
     </Row>
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
-        <h3>Paikka ja aika</h3>
+        <FormattedMessage tagName="h3" id="form.event.title.time_and_place" />
       </Col>
     </Row>
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
         <Select
           id="area"
-          label="Alue/Talkoopiiri"
+          label="form.event.field.area.label"
           required
           error={errors.area}
           touched={touched.area}
@@ -72,84 +74,7 @@ export default ({
           onChange={handleChange}
           onBlur={handleBlur}
         >
-          <option value="10">Helsingin keskusta</option>
-          <option value="12">Punavuori</option>
-          <option value="13">Kaartinkaupunki</option>
-          <option value="14">Kaivopuisto</option>
-          <option value="15">Eira</option>
-          <option value="16">Katajanokka</option>
-          <option value="17">Kruununhaka</option>
-          <option value="18">Ruoholahti</option>
-          <option value="20">Lauttasaari</option>
-          <option value="21">Vattuniemi</option>
-          <option value="24">Länsi-Pasila</option>
-          <option value="25">Taka-Töölö</option>
-          <option value="26">Keski-Töölö</option>
-          <option value="27">Pohjois-Meilahti</option>
-          <option value="28">Ruskeasuo</option>
-          <option value="29">Meilahden sairaala-alue</option>
-          <option value="30">Pikku-Huopalahti</option>
-          <option value="31">Kivihaka</option>
-          <option value="32">Etelä-Haaga</option>
-          <option value="33">Munkkiniemi</option>
-          <option value="34">Kuusisaari-Lehtisaari</option>
-          <option value="35">Munkkivuori-Niemenmäki</option>
-          <option value="38">Pitäjänmäen teollisuusalue</option>
-          <option value="40">Pohjois-Haaga</option>
-          <option value="44">Lassila</option>
-          <option value="50">Sörnäinen</option>
-          <option value="51">Etu-Vallila</option>
-          <option value="52">Itä-Pasila</option>
-          <option value="53">Kallio</option>
-          <option value="55">Vallila</option>
-          <option value="57">Kulosaari</option>
-          <option value="61">Käpylä</option>
-          <option value="66">Länsi-Pakila</option>
-          <option value="67">Paloheinä</option>
-          <option value="68">Itä-Pakila</option>
-          <option value="83">Tammisalo</option>
-          <option value="85">Jollas</option>
-          <option value="36">Pajamäki</option>
-          <option value="37">Reimarla</option>
-          <option value="39">Konala</option>
-          <option value="41">Malminkartano</option>
-          <option value="42">Kannelmäki</option>
-          <option value="43">Maununneva</option>
-          <option value="56">Toukola Vanha Kaupunki</option>
-          <option value="60">Koskela</option>
-          <option value="62">Metsälä Etelä-Oulunkylä</option>
-          <option value="63">Maunula Suursuo</option>
-          <option value="64">Pakila Oulunkylä</option>
-          <option value="65">Veräjämäki</option>
-          <option value="70">Malmi</option>
-          <option value="72">Pukinmäki Savela</option>
-          <option value="78">Tapaninvainio</option>
-          <option value="79">Viikki</option>
-          <option value="80">Herttoniemi</option>
-          <option value="84">Laajasalo</option>
-          <option value="87">Etelä-Laajasalo</option>
-          <option value="19">Suomenlinna</option>
-          <option value="58">Sörnäinen</option>
-          <option value="69">Torpparinmäki</option>
-          <option value="71">Pihlajamäki</option>
-          <option value="73">Tapanila</option>
-          <option value="74">Siltamäki</option>
-          <option value="75">Puistola</option>
-          <option value="76">Suurmetsä</option>
-          <option value="77">Jakomäki</option>
-          <option value="82">Roihuvuori</option>
-          <option value="86">Santahamina</option>
-          <option value="88">Roihupellon teoll.alue</option>
-          <option value="90">Puotinharju</option>
-          <option value="91">Puotila</option>
-          <option value="92">Myllypuro</option>
-          <option value="93">Marjaniemi Itäkeskus</option>
-          <option value="94">Kontula</option>
-          <option value="95">Vartioharju</option>
-          <option value="96">Pohjois-Vuosaari</option>
-          <option value="97">Mellunkylä</option>
-          <option value="98">Etelä-Keskivuosaari</option>
-          <option value="99">Aurinkolahti</option>
+          <Areas />
         </Select>
       </Col>
     </Row>
@@ -158,8 +83,8 @@ export default ({
         <Input
           type="text"
           id="startdate"
-          label="Tapahtuma alkaa"
-          placeholder="pp.kk.vvvv"
+          label="form.event.field.startdate.label"
+          placeholder="form.event.field.startdate.placeholder"
           required
           error={errors.startdate}
           touched={touched.startdate}
@@ -172,8 +97,8 @@ export default ({
         <Input
           type="text"
           id="starttime"
-          label="Kellonaika"
-          placeholder="tt:mm"
+          label="form.event.field.starttime.label"
+          placeholder="form.event.field.starttime.placeholder"
           required
           error={errors.starttime}
           touched={touched.starttime}
@@ -188,8 +113,8 @@ export default ({
         <Input
           type="text"
           id="enddate"
-          label="Tapahtuma päättyy"
-          placeholder="pp.kk.vvvv"
+          label="form.event.field.enddate.label"
+          placeholder="form.event.field.enddate.placeholder"
           required
           error={errors.enddate}
           touched={touched.enddate}
@@ -202,8 +127,8 @@ export default ({
         <Input
           type="text"
           id="endtime"
-          label="Kellonaika"
-          placeholder="tt:mm"
+          label="form.event.field.endtime.label"
+          placeholder="form.event.field.endtime.placeholder"
           required
           error={errors.endtime}
           touched={touched.endtime}
@@ -215,8 +140,8 @@ export default ({
     </Row>
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
-        <h3>Yhteyshenkilö</h3>
-        <span>Järjestäjän yhteystiedot tarvitaan urakoitsijoita varten</span>
+        <FormattedMessage tagName="h3" id="form.event.title.contact_person" />
+        <FormattedMessage tagName="span" id="form.event.subtitle.contact_person" />
       </Col>
     </Row>
     <Row>
@@ -224,8 +149,8 @@ export default ({
         <Input
           type="text"
           id="first_name"
-          label="Etunimi"
-          placeholder="Etunimi"
+          label="form.event.field.first_name.label"
+          placeholder="form.event.field.first_name.placeholder"
           required
           error={errors.first_name}
           touched={touched.first_name}
@@ -238,8 +163,8 @@ export default ({
         <Input
           type="text"
           id="last_name"
-          label="Sukunimi"
-          placeholder="Sukunimi"
+          label="form.event.field.last_name.label"
+          placeholder="form.event.field.last_name.placeholder"
           required
           error={errors.last_name}
           touched={touched.last_name}
@@ -254,8 +179,8 @@ export default ({
         <Input
           type="text"
           id="email"
-          label="Sähköposti"
-          placeholder="Sähköposti"
+          label="form.event.field.email.label"
+          placeholder="form.event.field.name.placeholder"
           required
           error={errors.email}
           touched={touched.email}
@@ -268,8 +193,8 @@ export default ({
         <Input
           type="text"
           id="phone"
-          label="Puhelinnumero"
-          placeholder="Puhelinnumero"
+          label="form.event.field.phone.label"
+          placeholder="form.event.field.phone.placeholder"
           required
           error={errors.phone}
           touched={touched.phone}
@@ -281,10 +206,10 @@ export default ({
     </Row>
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
-        <span>Näytetäänkö yhteystiedot julkisesti kartalla ja tapahtuman omalla sivulla</span>
+        <FormattedMessage tagName="span" id="form.event.field.show_contact_details.header" />
         <Checkbox
           id="show_contact_details"
-          label="Näytä yhteystiedot"
+          label="form.event.field.show_contact_details.label"
           error={errors.show_contact_details}
           touched={touched.show_contact_details}
           value={values.show_contact_details}
@@ -295,7 +220,7 @@ export default ({
     </Row>
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
-        <h3>Muut tiedot</h3>
+        <FormattedMessage tagName="h3" id="form.event.title.others" />
       </Col>
     </Row>
     <Row>
@@ -303,8 +228,8 @@ export default ({
         <Input
           type="number"
           id="amount_of_volunteers"
-          label="Arvioitu osallistujamäärä"
-          placeholder="Osallistujamäärä"
+          label="form.event.field.amount_of_volunteers.label"
+          placeholder="form.event.field.amount_of_volunteers.placeholder"
           required
           error={errors.amount_of_volunteers}
           touched={touched.amount_of_volunteers}
@@ -319,8 +244,8 @@ export default ({
         <Input
           type="text"
           id="cleaning_targets"
-          label="Siivouskohteet"
-          placeholder="Siivouskohteet"
+          label="form.event.field.cleaning_targets.label"
+          placeholder="form.event.field.cleaning_targets.placeholder"
           required
           error={errors.cleaning_targets}
           touched={touched.cleaning_targets}
@@ -335,8 +260,8 @@ export default ({
         <Input
           type="text"
           id="trash_location"
-          label="Sijainti, johon tarvikkeet ja roskat kerätään"
-          placeholder="Sijainti"
+          label="form.event.field.trash_location.label"
+          placeholder="form.event.field.trash_location.placeholder"
           required
           error={errors.trash_location}
           touched={touched.trash_location}
@@ -351,8 +276,8 @@ export default ({
         <Input
           type="textarea"
           id="details"
-          label="Lisätiedot"
-          placeholder="Lisätiedot"
+          label="form.event.field.details.label"
+          placeholder="form.event.field.details.placeholder"
           error={errors.details}
           touched={touched.details}
           value={values.details}
@@ -363,17 +288,15 @@ export default ({
     </Row>
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
-        <h3>Työkalut ja tarvikkeet</h3>
-        <span>
-          Ilmoita tarvittavat työkalut. Urakoitsijat hoitavat määrän tarvikkeita paikan päälle.
-        </span>
+        <FormattedMessage tagName="h3" id="form.event.title.tools_and_suplies" />
+        <FormattedMessage tagName="span" id="form.event.subtitle.tools_and_suplies" />
       </Col>
     </Row>
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
         <Checkbox
           id="container"
-          label="Siirtolava"
+          label="form.event.field.container.label"
           error={errors.container}
           touched={touched.container}
           value={values.container}
@@ -387,8 +310,8 @@ export default ({
         <Input
           type="number"
           id="trash_bags"
-          label="75 litran jätesäkkejä"
-          placeholder="Kappaletta"
+          label="form.event.field.trash_bags.label"
+          placeholder="form.event.field.trash_bags.placeholder"
           required
           error={errors.trash_bags}
           touched={touched.trash_bags}
@@ -403,8 +326,8 @@ export default ({
         <Input
           type="text"
           id="trash_pickers"
-          label="Roskapihtejä"
-          placeholder="Kappaletta"
+          label="form.event.field.trash_pickers.label"
+          placeholder="form.event.field.trash_pickers.placeholder"
           required
           error={errors.trash_pickers}
           touched={touched.trash_pickers}
@@ -416,15 +339,15 @@ export default ({
     </Row>
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
-        <h3>Näkyvyys</h3>
+        <FormattedMessage tagName="h3" id="form.event.title.visibility" />
       </Col>
     </Row>
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
-        <span>Näytetäänkö tapahtuma julkisesti vai ei</span>
+        <FormattedMessage tagName="span" id="form.event.field.visibility.header" />
         <Radio
           id="visibility_public"
-          label="Julkinen"
+          label="form.event.field.visibility_public.label"
           name="visibility"
           error={errors.visibility}
           touched={touched.visibility}
@@ -435,7 +358,7 @@ export default ({
         />
         <Radio
           id="visibility_private"
-          label="Salattu"
+          label="form.event.field.visibility_private.label"
           name="visibility"
           error={errors.visibility}
           touched={touched.visibility}
@@ -448,15 +371,15 @@ export default ({
     </Row>
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
-        <h3>Hintatiedot</h3>
+        <FormattedMessage tagName="h3" id="form.event.title.price" />
       </Col>
     </Row>
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
-        <span>Tapahtuma on kaupunkilaisille maksuton</span>
+        <FormattedMessage tagName="span" id="form.event.field.free.header" />
         <Checkbox
           id="free"
-          label="Maksuton"
+          label="form.event.field.free.label"
           error={errors.free}
           touched={touched.free}
           value={values.free}
@@ -468,12 +391,7 @@ export default ({
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
         <hr />
-        <button
-          type="button"
-          className="outline"
-          onClick={handleReset}
-          disabled={!dirty || isSubmitting}
-        >
+        <button type="button" onClick={handleReset} disabled={!dirty || isSubmitting}>
           Reset
         </button>
         <button type="submit" disabled={isSubmitting}>

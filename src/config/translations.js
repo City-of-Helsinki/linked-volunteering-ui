@@ -8,9 +8,9 @@ import swedishLocaleData from 'react-intl/locale-data/sv';
 import fi from '../translations/fi.json';
 import en from '../translations/en.json';
 import sv from '../translations/sv.json';
-import fiValidationMessages from '../translations/validation/fi';
+import defaultValidationMessages from '../translations/validation/defaultMessages';
 
 addLocaleData([...finnishLocaleData, ...englishLocaleData, ...swedishLocaleData]);
-setLocale(fiValidationMessages);
+setLocale(defaultValidationMessages);
 
 export default { fi, en, sv };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormGroup, CustomInput, FormFeedback, FormText } from 'reactstrap';
+import { FormattedMessage } from 'react-intl';
 
 const CheckboxField = ({ id, label, required, error, touched, text, ...rest }) => (
   <FormGroup>
@@ -11,8 +12,8 @@ const CheckboxField = ({ id, label, required, error, touched, text, ...rest }) =
       invalid={error && touched}
       {...rest}
     >
-      <FormFeedback>{error}</FormFeedback>
-      <FormText>{text}</FormText>
+      <FormFeedback>{error && <FormattedMessage id={error} />}</FormFeedback>
+      <FormText>{text && <FormattedMessage id={text} />}</FormText>
     </CustomInput>
   </FormGroup>
 );

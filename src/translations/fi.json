@@ -5,5 +5,10 @@
   "site.footer.front_page": "etusivu",
   "site.footer.upcoming_events": "tulevat tapahtumat",
   "site.footer.create_event": "Luo uusi tapahtuma",
-  "site.footer.contacts": "Ota yhteyttä"
+  "site.footer.contacts": "Ota yhteyttä",
+
+  "form.validation.mixed.required": "Pakollinen kenttä!",
+  "form.validation.mixed.not.number": "Kentän tulee olla numero!",
+  "form.validation.string.matches": "Kentän tulee olla annetussa muodossa!",
+  "form.validation.string.email": "Kentän tulee olla kelvollinen sähköpostiosoite!"
 }

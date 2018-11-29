@@ -2,6 +2,7 @@
 import React from 'react';
 import { Label } from 'reactstrap';
 import styled, { css } from 'styled-components';
+import { FormattedMessage } from 'react-intl';
 
 const StyledLabel = styled(Label)`
   ${props =>
@@ -22,6 +23,6 @@ type Props = {
 
 export default ({ htmlFor, required, children }: Props) => (
   <StyledLabel htmlFor={htmlFor} required={required}>
-    {children}
+    <FormattedMessage id={children} />
   </StyledLabel>
 );
