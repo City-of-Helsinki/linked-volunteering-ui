@@ -393,7 +393,6 @@ export default ({
           id="fee"
           label="form.event.field.fee.label"
           placeholder="form.event.field.fee.placeholder"
-          required
           error={errors.fee}
           touched={touched.fee}
           value={values.fee}
