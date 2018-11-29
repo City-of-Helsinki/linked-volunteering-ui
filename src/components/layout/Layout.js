@@ -32,6 +32,10 @@ const NavbarRow = styled(Navbar)`
   }
 `;
 
+const FooterKoro = styled(KoroSection)`
+  margin-top: 4em;
+`;
+
 const Layout = ({ children }: Props) => (
   <Fragment>
     <NavbarRow expand="md">
@@ -47,9 +51,9 @@ const Layout = ({ children }: Props) => (
     </NavbarRow>
     <Content>
       <div>{children}</div>
-      <KoroSection bottom color="green">
+      <FooterKoro bottom color="green">
         <Footer />
-      </KoroSection>
+      </FooterKoro>
     </Content>
   </Fragment>
 );

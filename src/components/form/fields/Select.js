@@ -1,20 +1,32 @@
 import React from 'react';
 import { FormGroup, Input, FormFeedback, FormText } from 'reactstrap';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl } from 'react-intl';
 import Label from './Label';
 
-const SelectField = ({ id, label, children, required, error, touched, text, ...rest }) => (
+const SelectField = ({
+  id,
+  label,
+  children,
+  required,
+  error,
+  touched,
+  text,
+  intl: { formatMessage },
+  ...rest
+}) => (
   <FormGroup>
-    <Label htmlFor={id} required={required}>
-      {label}
-    </Label>
+    {label && (
+      <Label htmlFor={id} required={required}>
+        {formatMessage({ id: label })}
+      </Label>
+    )}
     <Input type="select" id={id} {...rest} invalid={error && touched}>
       <option />
       {children}
     </Input>
-    <FormFeedback>{error && <FormattedMessage id={error} />}</FormFeedback>
-    <FormText>{text && <FormattedMessage id={text} />}</FormText>
+    <FormFeedback>{error && formatMessage({ id: error })}</FormFeedback>
+    <FormText>{text && formatMessage({ id: text })}</FormText>
   </FormGroup>
 );
 
-export default SelectField;
+export default injectIntl(SelectField);
