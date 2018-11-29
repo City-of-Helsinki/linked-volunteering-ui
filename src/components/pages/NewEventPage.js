@@ -1,16 +1,12 @@
 // @flow
 import React from 'react';
 import styled from 'styled-components';
+import { Container } from 'reactstrap';
 
 import Layout from '../layout/Layout';
 import EventForm from '../form/containers/EventFormContainer';
 
-const FormContainer = styled.div`
-  padding: 2em;
-  padding-top: 1em;
-  margin-bottom: 4em;
-  margin-left: 7em;
-  margin-right: 7em;
+const FormContainer = styled(Container)`
   background-color: ${props => props.theme.helWhite};
 `;
 
