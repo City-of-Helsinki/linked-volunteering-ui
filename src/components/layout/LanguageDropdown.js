@@ -37,7 +37,7 @@ const StyledSelector = styled.div`
 `;
 
 class LanguageDropdown extends React.Component<Props, State> {
-  constructor(props: any) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {

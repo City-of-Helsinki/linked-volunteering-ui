@@ -1,7 +1,6 @@
 // @flow
 
-import React, { Fragment } from 'react';
-import { FormattedMessage } from 'react-intl';
+import React, { Fragment, type Node } from 'react';
 import { Navbar, NavbarBrand, Nav } from 'reactstrap';
 import styled from 'styled-components';
 
@@ -11,7 +10,7 @@ import KoroSection from './KoroSection';
 import Footer from './Footer';
 
 type Props = {
-  children: any
+  children: Node
 };
 
 const Content = styled.div`
