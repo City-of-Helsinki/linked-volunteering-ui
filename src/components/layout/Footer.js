@@ -18,10 +18,10 @@ const Wrapper = styled.div`
 const NavigationLinks = styled.div`
   display: flex;
   justify-content: flex-end;
-  a {
+  span {
     font-weight: 600;
   }
-  a + a {
+  span + span {
     margin-left: 3em;
   }
 `;
@@ -37,18 +37,10 @@ const BottonLinks = styled.div`
 const Footer = () => (
   <Wrapper>
     <NavigationLinks>
-      <a href="#">
-        <FormattedMessage tagName="span" id="site.footer.front_page" />
-      </a>
-      <a href="#">
-        <FormattedMessage tagName="span" id="site.footer.upcoming_events" />
-      </a>
-      <a href="#">
-        <FormattedMessage tagName="span" id="site.footer.create_event" />
-      </a>
-      <a href="#">
-        <FormattedMessage tagName="span" id="site.footer.contacts" />
-      </a>
+      <FormattedMessage tagName="span" id="site.footer.front_page" />
+      <FormattedMessage tagName="span" id="site.footer.upcoming_events" />
+      <FormattedMessage tagName="span" id="site.footer.create_event" />
+      <FormattedMessage tagName="span" id="site.footer.contacts" />
     </NavigationLinks>
     <LogoWrapper>
       <Icon name="helsinkiLogo" width="200px" height="200px" color="#000" />
@@ -56,9 +48,7 @@ const Footer = () => (
     <BottonLinks>
       <div>&copy; Copyright 2018 - Kaikki oikeudet pidätetään.</div>
       <div>
-        <a href="#">
-          <FormattedMessage tagName="span" id="site.footer.give_feedback" />
-        </a>
+        <FormattedMessage tagName="span" id="site.footer.give_feedback" />
       </div>
     </BottonLinks>
   </Wrapper>
