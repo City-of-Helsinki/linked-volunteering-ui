@@ -3,6 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Formik } from 'formik';
 
+import event, { validationSchema } from '../../entities/event';
+
 import Layout from '../layout/Layout';
 import Input from '../form/Input';
 import Select from '../form/Select';
@@ -31,17 +33,34 @@ const NewEventPage = () => (
       <h2>Ilmoita uusi vapaaehtoistapahtuma</h2>
     </TitleContainer>
     <FormContainer>
-      <Formik onSubmit={console.debug}>
+      <Formik
+        onSubmit={values => console.debug(values)}
+        initialValues={event}
+        validationSchema={validationSchema}
+      >
         {props => {
-          const { values, handleChange, handleBlur, handleSubmit } = props;
+          const {
+            values,
+            errors,
+            touched,
+            dirty,
+            handleChange,
+            handleBlur,
+            handleSubmit,
+            isSubmitting,
+            handleReset
+          } = props;
           return (
-            <form onSubmit={handleSubmit} noValidate>
+            <form onSubmit={handleSubmit}>
               <h3>Tapahtuman nimi ja kuvaus</h3>
               <Input
                 type="text"
                 id="name"
                 label="Nimi"
                 placeholder="Nimi"
+                required
+                error={errors.name}
+                touched={touched.name}
                 value={values.name}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -51,6 +70,9 @@ const NewEventPage = () => (
                 id="description"
                 label="Kuvausteksti"
                 placeholder="Kuvausteksti"
+                required
+                error={errors.description}
+                touched={touched.description}
                 value={values.description}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -59,7 +81,10 @@ const NewEventPage = () => (
               <Select
                 id="area"
                 label="Alue/Talkoopiiri"
-                value={values.description}
+                required
+                error={errors.area}
+                touched={touched.area}
+                value={values.area}
                 onChange={handleChange}
                 onBlur={handleBlur}
               >
@@ -147,6 +172,9 @@ const NewEventPage = () => (
                 id="startdate"
                 label="Tapahtuma alkaa"
                 placeholder="pp.kk.vvvv"
+                required
+                error={errors.startdate}
+                touched={touched.startdate}
                 value={values.startdate}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -156,6 +184,9 @@ const NewEventPage = () => (
                 id="starttime"
                 label="Kellonaika"
                 placeholder="tt:mm"
+                required
+                error={errors.starttime}
+                touched={touched.starttime}
                 value={values.starttime}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -165,6 +196,9 @@ const NewEventPage = () => (
                 id="enddate"
                 label="Tapahtuma päättyy"
                 placeholder="pp.kk.vvvv"
+                required
+                error={errors.enddate}
+                touched={touched.enddate}
                 value={values.enddate}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -174,7 +208,10 @@ const NewEventPage = () => (
                 id="endtime"
                 label="Kellonaika"
                 placeholder="tt:mm"
-                value={values.enddate}
+                required
+                error={errors.endtime}
+                touched={touched.endtime}
+                value={values.endtime}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
@@ -185,6 +222,9 @@ const NewEventPage = () => (
                 id="first_name"
                 label="Etunimi"
                 placeholder="Etunimi"
+                required
+                error={errors.first_name}
+                touched={touched.first_name}
                 value={values.first_name}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -194,6 +234,9 @@ const NewEventPage = () => (
                 id="last_name"
                 label="Sukunimi"
                 placeholder="Sukunimi"
+                required
+                error={errors.last_name}
+                touched={touched.last_name}
                 value={values.last_name}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -203,6 +246,9 @@ const NewEventPage = () => (
                 id="email"
                 label="Sähköposti"
                 placeholder="Sähköposti"
+                required
+                error={errors.email}
+                touched={touched.email}
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -212,6 +258,9 @@ const NewEventPage = () => (
                 id="phone"
                 label="Puhelinnumero"
                 placeholder="Puhelinnumero"
+                required
+                error={errors.phone}
+                touched={touched.phone}
                 value={values.phone}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -220,16 +269,21 @@ const NewEventPage = () => (
               <Checkbox
                 id="show_contact_details"
                 label="Näytä yhteystiedot"
+                error={errors.show_contact_details}
+                touched={touched.show_contact_details}
                 value={values.show_contact_details}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
               <h3>Muut tiedot</h3>
               <Input
-                type="text"
+                type="number"
                 id="amount_of_volunteers"
                 label="Arvioitu osallistujamäärä"
                 placeholder="Osallistujamäärä"
+                required
+                error={errors.amount_of_volunteers}
+                touched={touched.amount_of_volunteers}
                 value={values.amount_of_volunteers}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -239,6 +293,9 @@ const NewEventPage = () => (
                 id="cleaning_targets"
                 label="Siivouskohteet"
                 placeholder="Siivouskohteet"
+                required
+                error={errors.cleaning_targets}
+                touched={touched.cleaning_targets}
                 value={values.cleaning_targets}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -248,6 +305,9 @@ const NewEventPage = () => (
                 id="trash_location"
                 label="Sijainti, johon tarvikkeet ja roskat kerätään"
                 placeholder="Sijainti"
+                required
+                error={errors.trash_location}
+                touched={touched.trash_location}
                 value={values.trash_location}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -257,6 +317,8 @@ const NewEventPage = () => (
                 id="details"
                 label="Lisätiedot"
                 placeholder="Lisätiedot"
+                error={errors.details}
+                touched={touched.details}
                 value={values.details}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -269,15 +331,20 @@ const NewEventPage = () => (
               <Checkbox
                 id="container"
                 label="Siirtolava"
+                error={errors.container}
+                touched={touched.container}
                 value={values.container}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
               <Input
-                type="text"
+                type="number"
                 id="trash_bags"
                 label="75 litran jätesäkkejä"
                 placeholder="Kappaletta"
+                required
+                error={errors.trash_bags}
+                touched={touched.trash_bags}
                 value={values.trash_bags}
                 onChange={handleChange}
                 onBlur={handleBlur}
@@ -287,25 +354,34 @@ const NewEventPage = () => (
                 id="trash_pickers"
                 label="Roskapihtejä"
                 placeholder="Kappaletta"
+                required
+                error={errors.trash_pickers}
+                touched={touched.trash_pickers}
                 value={values.trash_pickers}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
               <h3>Näkyvyys</h3>
-              <span>Näytetäänkö tapahtuma julkisesti vai ei</span>
+              <span>Näytetäänkö tapahtuma julkisesti vai ei {values.visibility}</span>
               <Radio
-                id="visibility_yes"
+                id="visibility_public"
                 label="Julkinen"
                 name="visibility"
-                value={values.visibility_yes}
+                error={errors.visibility}
+                touched={touched.visibility}
+                checked={values.visibility === 'public'}
+                value="public"
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
               <Radio
-                id="visibility_no"
+                id="visibility_private"
                 label="Salattu"
                 name="visibility"
-                value={values.visibility_no}
+                error={errors.visibility}
+                touched={touched.visibility}
+                checked={values.visibility === 'private'}
+                value="private"
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
@@ -314,10 +390,26 @@ const NewEventPage = () => (
               <Checkbox
                 id="free"
                 label="Maksuton"
+                error={errors.free}
+                touched={touched.free}
                 value={values.free}
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
+              <hr />
+
+              <button
+                type="button"
+                className="outline"
+                onClick={handleReset}
+                disabled={!dirty || isSubmitting}
+              >
+                Reset
+              </button>
+              <button type="submit" disabled={isSubmitting}>
+                Submit
+              </button>
+              <hr />
             </form>
           );
         }}

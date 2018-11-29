@@ -1,10 +1,19 @@
 import React from 'react';
-import { FormGroup, Label, CustomInput } from 'reactstrap';
+import { FormGroup, CustomInput, FormFeedback, FormText } from 'reactstrap';
 
-const RadioField = ({ id, label, ...rest }) => (
-  <FormGroup>
-    <Label for={id}>{label}</Label>
-    <CustomInput id={id} type="radio" {...rest} />
+const RadioField = ({ id, label, required, error, touched, text, ...rest }) => (
+  <FormGroup check>
+    <CustomInput
+      label={label}
+      required={required}
+      id={id}
+      type="radio"
+      invalid={error && touched}
+      {...rest}
+    >
+      <FormFeedback>{error}</FormFeedback>
+      <FormText>{text}</FormText>
+    </CustomInput>
   </FormGroup>
 );
 
