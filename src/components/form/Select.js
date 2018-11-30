@@ -1,13 +1,18 @@
 import React from 'react';
-import { FormGroup, Label, Input } from 'reactstrap';
+import { FormGroup, Input, FormFeedback, FormText } from 'reactstrap';
+import Label from './Label';
 
-const SelectField = ({ id, label, children, ...rest }) => (
+const SelectField = ({ id, label, children, required, error, touched, text, ...rest }) => (
   <FormGroup>
-    <Label for={id}>{label}</Label>
-    <Input type="select" id={id} {...rest}>
+    <Label htmlFor={id} required={required}>
+      {label}
+    </Label>
+    <Input type="select" id={id} {...rest} invalid={error && touched}>
       <option />
       {children}
     </Input>
+    <FormFeedback>{error}</FormFeedback>
+    <FormText>{text}</FormText>
   </FormGroup>
 );
 

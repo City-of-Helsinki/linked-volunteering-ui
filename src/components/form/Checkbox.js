@@ -1,10 +1,19 @@
 import React from 'react';
-import { FormGroup, Label, CustomInput } from 'reactstrap';
+import { FormGroup, CustomInput, FormFeedback, FormText } from 'reactstrap';
 
-const CheckboxField = ({ id, label, ...rest }) => (
+const CheckboxField = ({ id, label, required, error, touched, text, ...rest }) => (
   <FormGroup>
-    <Label for={id}>{label}</Label>
-    <CustomInput id={id} type="checkbox" {...rest} />
+    <CustomInput
+      label={label}
+      id={id}
+      type="checkbox"
+      required={required}
+      invalid={error && touched}
+      {...rest}
+    >
+      <FormFeedback>{error}</FormFeedback>
+      <FormText>{text}</FormText>
+    </CustomInput>
   </FormGroup>
 );
 

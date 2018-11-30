@@ -1,10 +1,15 @@
 import React from 'react';
-import { FormGroup, Label, Input } from 'reactstrap';
+import { FormGroup, Input, FormFeedback, FormText } from 'reactstrap';
+import Label from './Label';
 
-const InputField = ({ id, label, ...rest }) => (
+const InputField = ({ id, label, required, error, touched, text, ...rest }) => (
   <FormGroup>
-    <Label for={id}>{label}</Label>
-    <Input id={id} {...rest} />
+    <Label htmlFor={id} required={required}>
+      {label}
+    </Label>
+    <Input id={id} {...rest} invalid={error && touched} />
+    <FormFeedback>{error}</FormFeedback>
+    <FormText>{text}</FormText>
   </FormGroup>
 );
 
