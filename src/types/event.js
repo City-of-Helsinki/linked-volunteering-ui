@@ -21,5 +21,6 @@ export type Event = {
   trash_bags: number,
   trash_pickers: string,
   visibility: string,
-  free: boolean
+  free: boolean,
+  fee: number
 };

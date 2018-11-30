@@ -1,20 +1,30 @@
 import React from 'react';
 import { FormGroup, CustomInput, FormFeedback, FormText } from 'reactstrap';
+import { injectIntl } from 'react-intl';
 
-const RadioField = ({ id, label, required, error, touched, text, ...rest }) => (
+const RadioField = ({
+  id,
+  label,
+  required,
+  error,
+  touched,
+  text,
+  intl: { formatMessage },
+  ...rest
+}) => (
   <FormGroup check>
     <CustomInput
-      label={label}
+      label={label ? formatMessage({ id: label }) : undefined}
       required={required}
       id={id}
       type="radio"
       invalid={error && touched}
       {...rest}
     >
-      <FormFeedback>{error}</FormFeedback>
-      <FormText>{text}</FormText>
+      <FormFeedback>{error && formatMessage({ id: error })}</FormFeedback>
+      <FormText>{text && formatMessage({ id: text })}</FormText>
     </CustomInput>
   </FormGroup>
 );
 
-export default RadioField;
+export default injectIntl(RadioField);

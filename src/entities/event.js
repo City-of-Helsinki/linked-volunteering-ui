@@ -22,7 +22,8 @@ export const defaultValues = {
   trash_bags: '',
   trash_pickers: '',
   visibility: '',
-  free: false
+  free: false,
+  fee: ''
 };
 
 const dateRegex = /[0-9]{1,2}.[0-9]{1,2}.[0-9]{4}/;
@@ -62,7 +63,8 @@ export const validationSchema = Yup.object().shape({
   trash_bags: Yup.number().required(),
   trash_pickers: Yup.number().required(),
   visibility: Yup.string().required(),
-  free: Yup.boolean()
+  free: Yup.boolean(),
+  fee: Yup.number()
 });
 
 export default defaultValues;
