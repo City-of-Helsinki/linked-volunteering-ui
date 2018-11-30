@@ -1,1 +1,9 @@
-{}
+{
+  "site.language.fi": "Suomi",
+  "site.language.sv": "Svenska",
+  "site.language.en": "Engeska",
+  "site.footer.front_page": "etusivu",
+  "site.footer.upcoming_events": "tulevat tapahtumat",
+  "site.footer.create_event": "Luo uusi tapahtuma",
+  "site.footer.contacts": "Ota yhteyttä"
+}
