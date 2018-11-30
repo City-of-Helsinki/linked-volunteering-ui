@@ -7,10 +7,8 @@ export default withFormik({
   validateOnChange: false,
   mapPropsToValues: () => event,
   handleSubmit: (values, { setSubmitting }) => {
-    setTimeout(() => {
-      console.debug(values);
-      setSubmitting(false);
-    }, 1000);
+    console.debug(values);
+    setSubmitting(false);
   },
   displayName: 'EventForm'
 })(EventForm);
