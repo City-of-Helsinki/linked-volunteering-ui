@@ -50,7 +50,7 @@ const Layout = ({ children }: Props) => (
       <Nav>Ilmoita tapahtuma</Nav>
     </NavbarRow>
     <Content>
-      <div>{children}</div>
+      {children}
       <FooterKoro bottom color="green">
         <Footer />
       </FooterKoro>

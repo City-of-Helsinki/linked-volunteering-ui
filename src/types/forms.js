@@ -6,7 +6,9 @@ export type WithForm = {
   errors: Object,
   touched: Object,
   dirty: Object,
-  handleChange: Function,
-  handleBlur: Function,
+  handleChange?: Function,
+  handleBlur?: Function,
+  handleSubmit?: Function,
+  handleReset?: Function,
   isSubmitting?: boolean
 };
