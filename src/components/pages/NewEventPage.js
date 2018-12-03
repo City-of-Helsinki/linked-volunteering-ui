@@ -6,8 +6,6 @@ import { Container, Row, Col, Button } from 'reactstrap';
 import Layout from '../layout/Layout';
 import EventForm from '../form/EventForm';
 
-import type { WithForm } from '../../types/forms';
-
 const FormContainer = styled(Container)`
   background-color: ${props => props.theme.helWhite};
 `;
@@ -18,7 +16,7 @@ const TitleContainer = styled(Container)`
   background-color: ${props => props.theme.helWhite};
 `;
 
-const NewEventPage = ({ handleReset, handleSubmit, ...rest }: any) => (
+const NewEventPage = ({ handleReset, handleSubmit, intl: { formatMessage }, ...rest }: any) => (
   <Layout>
     <TitleContainer fluid>
       <Row>
@@ -27,12 +25,12 @@ const NewEventPage = ({ handleReset, handleSubmit, ...rest }: any) => (
         </Col>
         <Col md="6" lg={{ size: 2 }}>
           <Button block type="button" onClick={handleReset} color="danger">
-            Kissa
+            {formatMessage({ id: 'form.event.button.reset' })}
           </Button>
         </Col>
         <Col md="6" lg={{ size: 2 }}>
           <Button block type="submit" onClick={handleSubmit} color="success">
-            Koira
+            {formatMessage({ id: 'form.event.button.submit' })}
           </Button>
         </Col>
       </Row>
