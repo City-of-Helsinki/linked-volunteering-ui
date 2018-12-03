@@ -3,17 +3,20 @@
 import React, { Component, Fragment } from 'react';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import styled from 'styled-components';
+import { injectIntl, type intlShape } from 'react-intl';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import { injectIntl, type intlShape } from 'react-intl';
+import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
+import iconUrl from 'leaflet/dist/images/marker-icon.png';
+import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
 
 /* eslint-disable */
 delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png')
+  iconRetinaUrl,
+  iconUrl,
+  shadowUrl
 });
 /* eslint-enable */
 
@@ -23,7 +26,7 @@ const style = {
 };
 
 const ErrorMessage = styled.div`
-  color: ${props => props.theme.colors.error};
+  color: ${props => props.theme.themeColors.danger};
   margin-top: 0.25rem;
   font-size: 80%;
 `;
@@ -54,10 +57,10 @@ type Event = {
 };
 
 type Props = {
+  id: string,
   error: Value,
   intl: intlShape,
   handleChange: ChangeEvent => void,
-  handleBlur: Event,
   value: Value
 };
 
@@ -69,10 +72,10 @@ class MapCanvas extends Component<Props, State> {
   };
 
   addMarker = (e: Event) => {
-    const { handleChange } = this.props;
+    const { id, handleChange } = this.props;
     handleChange({
       target: {
-        id: 'location',
+        id,
         value: { lat: e.latlng.lat, lng: e.latlng.lng }
       }
     });
@@ -95,7 +98,7 @@ class MapCanvas extends Component<Props, State> {
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           {marker}
         </Map>
-        <ErrorMessage>{error && formatMessage({ id: 'Valitse paikka kartasta' })}</ErrorMessage>
+        <ErrorMessage>{error && formatMessage({ id: 'form.validation.map' })}</ErrorMessage>
       </Fragment>
     );
   }

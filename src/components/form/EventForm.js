@@ -91,7 +91,6 @@ export default ({
             id="location"
             error={errors.location}
             handleChange={handleChange}
-            handleBlur={handleBlur}
             value={values.location}
           />
         </MapContainer>

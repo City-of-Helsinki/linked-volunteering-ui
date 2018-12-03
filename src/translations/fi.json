@@ -11,6 +11,7 @@
   "form.validation.mixed.not.number": "Kentän tulee olla numero!",
   "form.validation.string.matches": "Kentän tulee olla annetussa muodossa!",
   "form.validation.string.email": "Kentän tulee olla kelvollinen sähköpostiosoite!",
+  "form.validation.map": "Valitse paikka kartasta",
 
   "form.event.title.name_and_description": "Tapahtuman nimi ja kuvaus",
   "form.event.title.time_and_place": "Paikka ja aika",
