@@ -46,7 +46,7 @@ const Footer = () => (
     <LogoWrapper>
       <Icon name="helsinkiLogo" width="150px" height="100px" color="#000" />
     </LogoWrapper>
-    <BottonLinks>
+    <BottomLinks>
       <div>
         <span>&copy; </span>
         <FormattedMessage tagName="span" id="site.footer.copyright" />
