@@ -6,6 +6,8 @@
   "site.footer.upcoming_events": "tulevat tapahtumat",
   "site.footer.create_event": "Luo uusi tapahtuma",
   "site.footer.contacts": "Ota yhteyttä",
+  "site.footer.copyright": "Copyright 2018 - Kaikki oikeudet pidätetään.",
+  "site.footer.give_feedback": "Anna palautetta",
 
   "form.validation.mixed.required": "Pakollinen kenttä!",
   "form.validation.mixed.not.number": "Kentän tulee olla numero!",
