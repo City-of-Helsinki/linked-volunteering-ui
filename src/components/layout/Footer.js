@@ -7,8 +7,9 @@ import Icon from '../common/Icon';
 const Wrapper = styled.div`
   background-color: ${props => props.theme.helCopper};
   color: #000;
-  padding: 0 4em;
   padding-top: 4em;
+  padding-left: 4em;
+  padding-right: 4em;
   min-height: 15em;
 
   & a {
@@ -46,7 +47,10 @@ const Footer = () => (
       <Icon name="helsinkiLogo" width="200px" height="200px" color="#000" />
     </LogoWrapper>
     <BottonLinks>
-      <div>&copy; Copyright 2018 - Kaikki oikeudet pidätetään.</div>
+      <div>
+        <span>&copy; </span>
+        <FormattedMessage tagName="span" id="site.footer.copyright" />
+      </div>
       <div>
         <FormattedMessage tagName="span" id="site.footer.give_feedback" />
       </div>
