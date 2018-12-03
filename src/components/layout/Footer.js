@@ -29,6 +29,7 @@ const NavigationLinks = styled.div`
 const LogoWrapper = styled.div`
   border-bottom: 1px solid ${props => props.theme.helWhite};
 `;
+
 const BottonLinks = styled.div`
   display: flex;
   justify-content: space-between;
