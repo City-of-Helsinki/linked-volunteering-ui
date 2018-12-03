@@ -20,6 +20,7 @@ export default {
   breakpoint,
   maxWidth,
   colors: {
+    error: '#dc3545',
     lightGray: '#f7f7f7'
   }
 };
