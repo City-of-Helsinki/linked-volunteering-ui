@@ -87,7 +87,6 @@ class MapCanvas extends Component<Props, State> {
 
     const position = [this.state.lat, this.state.lng];
     const markerPosition = value ? [value.lat, value.lng] : position;
-
     const marker = value ? <Marker position={markerPosition} /> : null;
 
     return (
