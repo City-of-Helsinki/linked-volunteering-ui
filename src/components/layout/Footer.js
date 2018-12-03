@@ -30,7 +30,7 @@ const LogoWrapper = styled.div`
   border-bottom: 1px solid ${props => props.theme.helWhite};
 `;
 
-const BottonLinks = styled.div`
+const BottomLinks = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 1em 0;
