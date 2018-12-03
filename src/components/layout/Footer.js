@@ -54,7 +54,7 @@ const Footer = () => (
       <div>
         <FormattedMessage tagName="span" id="site.footer.give_feedback" />
       </div>
-    </BottonLinks>
+    </BottomLinks>
   </Wrapper>
 );
 
