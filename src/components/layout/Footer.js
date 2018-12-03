@@ -44,7 +44,7 @@ const Footer = () => (
       <FormattedMessage tagName="span" id="site.footer.contacts" />
     </NavigationLinks>
     <LogoWrapper>
-      <Icon name="helsinkiLogo" width="200px" height="200px" color="#000" />
+      <Icon name="helsinkiLogo" width="150px" height="100px" color="#000" />
     </LogoWrapper>
     <BottonLinks>
       <div>
