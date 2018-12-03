@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Row, Col } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
@@ -8,17 +9,9 @@ import Checkbox from './fields/Checkbox';
 import Radio from './fields/Radio';
 import Areas from './partitions/Areas';
 
-export default ({
-  values,
-  errors,
-  touched,
-  dirty,
-  handleChange,
-  handleBlur,
-  handleSubmit,
-  isSubmitting,
-  handleReset
-}) => (
+import type { WithForm } from '../../types/forms';
+
+export default ({ values, errors, touched, handleChange, handleBlur, handleSubmit }: WithForm) => (
   <form onSubmit={handleSubmit}>
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
@@ -400,18 +393,6 @@ export default ({
           onChange={handleChange}
           onBlur={handleBlur}
         />
-      </Col>
-    </Row>
-    <Row>
-      <Col sm="12" md={{ size: 8, offset: 1 }}>
-        <hr />
-        <button type="button" onClick={handleReset} disabled={!dirty || isSubmitting}>
-          Reset
-        </button>
-        <button type="submit" disabled={isSubmitting}>
-          Submit
-        </button>
-        <hr />
       </Col>
     </Row>
   </form>
