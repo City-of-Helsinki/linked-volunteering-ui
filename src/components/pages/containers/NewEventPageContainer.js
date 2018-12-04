@@ -16,7 +16,7 @@ export default compose(
       submit
     }
   ),
+  branch(props => props.submitted, renderComponent(ThankYouPage)),
   injectIntl,
-  withEventForm,
-  branch(props => props.submitted, renderComponent(ThankYouPage))
+  withEventForm
 )(NewEventPage);
