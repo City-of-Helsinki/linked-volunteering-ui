@@ -11,14 +11,22 @@ import Radio from './fields/Radio';
 import Areas from './partitions/Areas';
 import Map from '../Map';
 
+import type { WithForm } from '../../types/forms';
+import type { Event } from '../../types/event';
+
 const MapContainer = styled.div`
   height: 20em;
   margin-bottom: 2em;
 `;
 
-import type { WithForm } from '../../types/forms';
-
-export default ({ values, errors, touched, handleChange, handleBlur, handleSubmit }: WithForm) => (
+export default ({
+  values,
+  errors,
+  touched,
+  handleChange,
+  handleBlur,
+  handleSubmit
+}: WithForm<Event>) => (
   <form onSubmit={handleSubmit}>
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>

@@ -10,6 +10,7 @@ import Layout from '../layout/Layout';
 import EventForm from '../form/EventForm';
 
 import type { WithForm } from '../../types/forms';
+import type { Event } from '../../types/event';
 
 const FormContainer = styled(Container)`
   background-color: ${props => props.theme.helWhite};
@@ -34,7 +35,7 @@ const StickyInner = styled.div`
   z-index: 9;
 `;
 
-type Props = WithForm & intlShape;
+type Props = WithForm<Event> & intlShape;
 
 const NewEventPage = ({ handleReset, handleSubmit, intl: { formatMessage }, ...rest }: Props) => (
   <Layout>
