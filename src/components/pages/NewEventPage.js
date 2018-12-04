@@ -32,7 +32,7 @@ const StickyInner = styled.div`
   padding: 1em;
   background-color: ${props => props.theme.helWhite};
   border-bottom: 4px solid ${props => props.theme.colors.lightGray};
-  z-index: 9;
+  z-index: 5000;
 `;
 
 type Props = WithForm<Event> & intlShape;
