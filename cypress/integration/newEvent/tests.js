@@ -1,7 +1,7 @@
 import newEvent from '../../fixtures/newEvent';
 
 describe('Company', () => {
-  it('creates an appliation with unregistered boat', () => {
+  it('Submit new event form', () => {
     cy.visit('http://localhost:3000/fi/new-event');
 
     Object.entries(newEvent).forEach(([key, { method, value }]) => {
