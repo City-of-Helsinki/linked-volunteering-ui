@@ -3,6 +3,8 @@
 import React, { Fragment, type Node } from 'react';
 import { Navbar, NavbarBrand, Nav } from 'reactstrap';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
+import { intlShape, injectIntl } from 'react-intl';
 
 import LanguageDropdown from './LanguageDropdown';
 import Icon from '../common/Icon';
@@ -10,7 +12,8 @@ import KoroSection from './KoroSection';
 import Footer from './Footer';
 
 type Props = {
-  children: Node
+  children: Node,
+  intl: intlShape
 };
 
 const Content = styled.div`
@@ -36,8 +39,12 @@ const FooterKoro = styled(KoroSection)`
   margin-top: 4em;
 `;
 
-const Layout = ({ children }: Props) => (
+const Layout = ({ children, intl }: Props) => (
   <Fragment>
+    <Helmet>
+      <meta charSet="utf-8" />
+      <title>{intl.formatMessage({ id: 'site.meta.title' })}</title>
+    </Helmet>
     <NavbarRow expand="md">
       <NavbarBrand href="/">
         <Icon name="helsinkiLogo" width="90px" color="#000" />
@@ -47,7 +54,7 @@ const Layout = ({ children }: Props) => (
       </Nav>
     </NavbarRow>
     <NavbarRow expand="md">
-      <Nav>Ilmoita tapahtuma</Nav>
+      <Nav>{intl.formatMessage({ id: 'site.nav.create_event' })}</Nav>
     </NavbarRow>
     <Content>
       {children}
@@ -58,4 +65,4 @@ const Layout = ({ children }: Props) => (
   </Fragment>
 );
 
-export default Layout;
+export default injectIntl(Layout);
