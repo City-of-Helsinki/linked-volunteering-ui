@@ -7,8 +7,8 @@ import Input from './fields/Input';
 import Select from './fields/Select';
 import Checkbox from './fields/Checkbox';
 import Radio from './fields/Radio';
+import Map from './fields/Map';
 import Areas from './partitions/Areas';
-import Map from '../Map';
 
 const MapContainer = styled.div`
   height: 20em;
