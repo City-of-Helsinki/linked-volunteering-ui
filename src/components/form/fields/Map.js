@@ -10,8 +10,8 @@ import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
 import iconUrl from 'leaflet/dist/images/marker-icon.png';
 import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
 
-import type { Location } from '../types/event';
-import type { handleEvent } from '../types/forms';
+import type { Location } from '../../../types/event';
+import type { handleEvent } from '../../../types/forms';
 
 /* eslint-disable */
 delete L.Icon.Default.prototype._getIconUrl;
