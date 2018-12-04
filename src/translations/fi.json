@@ -15,6 +15,8 @@
   "form.validation.string.email": "Kentän tulee olla kelvollinen sähköpostiosoite!",
   "form.validation.map": "Valitse paikka kartasta",
 
+  "form.event.button.reset": "Peru luonnos",
+  "form.event.button.submit": "Julkaise tapahtuma",
   "form.event.title.name_and_description": "Tapahtuman nimi ja kuvaus",
   "form.event.title.time_and_place": "Paikka ja aika",
   "form.event.title.contact_person": "Yhteyshenkilö",

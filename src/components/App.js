@@ -4,7 +4,7 @@ import { Switch, Route, Redirect } from 'react-router';
 import { IntlProvider } from 'react-intl';
 import messages from '../config/translations';
 
-import NewEventPage from './pages/NewEventPage';
+import NewEventPage from './pages/containers/NewEventPageContainer';
 
 type Props = {
   locale: string

@@ -1,5 +1,10 @@
 // @flow
 
+export type Location = {
+  lat: number,
+  lng: number
+};
+
 export type Event = {
   name: string,
   description: string,
@@ -22,5 +27,6 @@ export type Event = {
   trash_pickers: string,
   visibility: string,
   free: boolean,
-  fee: number
+  fee: number,
+  location: Location
 };

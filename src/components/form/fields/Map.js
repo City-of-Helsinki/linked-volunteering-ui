@@ -10,6 +10,9 @@ import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
 import iconUrl from 'leaflet/dist/images/marker-icon.png';
 import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
 
+import type { Location } from '../../../types/event';
+import type { handleEvent } from '../../../types/forms';
+
 /* eslint-disable */
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -37,18 +40,6 @@ type State = {
   zoom: number
 };
 
-type Value = {
-  lat: number,
-  lng: number
-};
-
-type ChangeEvent = {
-  target: {
-    id: string,
-    value: Value
-  }
-};
-
 type Event = {
   latlng: {
     lat: number,
@@ -56,12 +47,17 @@ type Event = {
   }
 };
 
+type Error = {
+  lat: string,
+  lng: string
+};
+
 type Props = {
   id: string,
-  error: Value,
+  error?: Error,
   intl: intlShape,
-  handleChange: ChangeEvent => void,
-  value: Value
+  handleChange: handleEvent<Location>,
+  value: Location
 };
 
 class MapCanvas extends Component<Props, State> {
@@ -73,10 +69,11 @@ class MapCanvas extends Component<Props, State> {
 
   addMarker = (e: Event) => {
     const { id, handleChange } = this.props;
+    const { lat, lng } = e.latlng;
     handleChange({
       target: {
         id,
-        value: { lat: e.latlng.lat, lng: e.latlng.lng }
+        value: { lat, lng }
       }
     });
   };

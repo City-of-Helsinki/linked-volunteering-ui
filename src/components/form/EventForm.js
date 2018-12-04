@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import { Row, Col } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
@@ -7,8 +8,11 @@ import Input from './fields/Input';
 import Select from './fields/Select';
 import Checkbox from './fields/Checkbox';
 import Radio from './fields/Radio';
+import Map from './fields/Map';
 import Areas from './partitions/Areas';
-import Map from '../Map';
+
+import type { WithForm } from '../../types/forms';
+import type { Event } from '../../types/event';
 
 const MapContainer = styled.div`
   height: 20em;
@@ -19,13 +23,10 @@ export default ({
   values,
   errors,
   touched,
-  dirty,
   handleChange,
   handleBlur,
-  handleSubmit,
-  isSubmitting,
-  handleReset
-}) => (
+  handleSubmit
+}: WithForm<Event>) => (
   <form onSubmit={handleSubmit}>
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
@@ -419,18 +420,6 @@ export default ({
           onChange={handleChange}
           onBlur={handleBlur}
         />
-      </Col>
-    </Row>
-    <Row>
-      <Col sm="12" md={{ size: 8, offset: 1 }}>
-        <hr />
-        <button type="button" onClick={handleReset} disabled={!dirty || isSubmitting}>
-          Reset
-        </button>
-        <button type="submit" disabled={isSubmitting}>
-          Submit
-        </button>
-        <hr />
       </Col>
     </Row>
   </form>

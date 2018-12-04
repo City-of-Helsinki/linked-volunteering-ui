@@ -1,8 +1,8 @@
 import { withFormik } from 'formik';
-import event, { validationSchema } from '../../../entities/event';
-import EventForm from '../EventForm';
+import event, { validationSchema } from '../../entities/event';
 
-export default withFormik({
+// eslint-disable-next-line import/prefer-default-export
+export const withEventForm = withFormik({
   validationSchema,
   validateOnChange: false,
   mapPropsToValues: () => event,
@@ -11,4 +11,4 @@ export default withFormik({
     setSubmitting(false);
   },
   displayName: 'EventForm'
-})(EventForm);
+});
