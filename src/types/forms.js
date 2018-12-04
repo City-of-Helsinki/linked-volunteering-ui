@@ -1,11 +1,11 @@
 // @flow
 // flowlint unclear-type:off
 
-export type WithForm = {
-  values: Object,
-  errors: Object,
-  touched: Object,
-  dirty: Object,
+export type WithForm<T> = {
+  values: T,
+  errors: T,
+  touched: T,
+  dirty: T,
   handleChange?: Function,
   handleBlur?: Function,
   handleSubmit?: Function,
