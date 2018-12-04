@@ -6,11 +6,14 @@
   "site.footer.upcoming_events": "tulevat tapahtumat",
   "site.footer.create_event": "Luo uusi tapahtuma",
   "site.footer.contacts": "Ota yhteyttä",
+  "site.footer.copyright": "Copyright 2018 - Kaikki oikeudet pidätetään.",
+  "site.footer.give_feedback": "Anna palautetta",
 
   "form.validation.mixed.required": "Pakollinen kenttä!",
   "form.validation.mixed.not.number": "Kentän tulee olla numero!",
   "form.validation.string.matches": "Kentän tulee olla annetussa muodossa!",
   "form.validation.string.email": "Kentän tulee olla kelvollinen sähköpostiosoite!",
+  "form.validation.map": "Valitse paikka kartasta",
 
   "form.event.button.reset": "Peru luonnos",
   "form.event.button.submit": "Julkaise tapahtuma",

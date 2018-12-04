@@ -2,12 +2,19 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
+import styled from 'styled-components';
 
 import Input from './fields/Input';
 import Select from './fields/Select';
 import Checkbox from './fields/Checkbox';
 import Radio from './fields/Radio';
 import Areas from './partitions/Areas';
+import Map from '../Map';
+
+const MapContainer = styled.div`
+  height: 20em;
+  margin-bottom: 2em;
+`;
 
 import type { WithForm } from '../../types/forms';
 
@@ -68,6 +75,18 @@ export default ({ values, errors, touched, handleChange, handleBlur, handleSubmi
         >
           <Areas />
         </Select>
+      </Col>
+    </Row>
+    <Row>
+      <Col sm="10" md={{ size: 8, offset: 1 }} lg={{ size: 8, offset: 1 }}>
+        <MapContainer>
+          <Map
+            id="location"
+            error={errors.location}
+            handleChange={handleChange}
+            value={values.location}
+          />
+        </MapContainer>
       </Col>
     </Row>
     <Row>

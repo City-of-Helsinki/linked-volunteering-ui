@@ -50,6 +50,10 @@ export const validationSchema = yup.object().shape({
     .string()
     .required()
     .matches(timeRegex),
+  location: yup.object().shape({
+    lat: yup.number().required(),
+    lng: yup.number().required()
+  }),
   first_name: yup.string().required(),
   last_name: yup.string().required(),
   email: yup
