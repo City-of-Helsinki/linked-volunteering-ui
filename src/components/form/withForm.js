@@ -6,8 +6,8 @@ export const withEventForm = withFormik({
   validationSchema,
   validateOnChange: false,
   mapPropsToValues: () => event,
-  handleSubmit: (values, { setSubmitting }) => {
-    console.debug(values);
+  handleSubmit: async (values, { setSubmitting, props: { submit } }) => {
+    await submit(values);
     setSubmitting(false);
   },
   displayName: 'EventForm'

@@ -37,7 +37,13 @@ const StickyInner = styled.div`
 
 type Props = WithForm<Event> & intlShape;
 
-const NewEventPage = ({ handleReset, handleSubmit, intl: { formatMessage }, ...rest }: Props) => (
+const NewEventPage = ({
+  handleReset,
+  handleSubmit,
+  intl: { formatMessage },
+  submit,
+  ...rest
+}: Props) => (
   <Layout>
     <StickyContainer>
       <Sticky>
