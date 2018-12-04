@@ -31,7 +31,7 @@ const TitleContainer = styled(Container)`
 const StickyInner = styled.div`
   padding: 1em;
   background-color: ${props => props.theme.helWhite};
-  border-bottom: 4px solid ${props => props.theme.colors.lightGray};
+  border-bottom: 1em solid ${props => props.theme.colors.lightGray};
   z-index: 5000;
 `;
 
