@@ -1,6 +1,6 @@
 // @flow
 import type { Event } from '../types/event';
-import eventsData from '../../api/events.json';
+import eventsData from './mockEvents.json';
 
 export default {
   submit: async (event: Event): Promise<void> => {
