@@ -6,6 +6,7 @@
   "site.nav.create_event": "Ilmoita uusi tapahtuma",
   "site.nav.report": "Vuosiraportit",
   "site.nav.events": "Tapahtumat",
+
   "site.footer.front_page": "Etusivu",
   "site.footer.upcoming_events": "Tulevat tapahtumat",
   "site.footer.create_event": "Luo uusi tapahtuma",
@@ -23,6 +24,11 @@
   "site.page.thank_you.paragraph": "Ilmoituksesi on kirjattu palveluun. Saat meiltä vahvistusviestin ja lisätietoja järjestelyistä, kun olemme tarkistaneet ilmoituksen tiedot. Yhdessä luomme viihtyisämpää kaupunkiympäristöä.",
   "site.page.thank_you.action.home_page": "Palaa etusivulle",
   "site.page.thank_you.action.add_to_calendar": "Lisää tapahtuma kalenteriin",
+
+  "site.report.title": "Kevätsiivoustalkoot",
+  "site.report.yearly_report": "Vuosiraportti",
+  "site.report.total_events": "Talkoita yhteensä",
+  "site.report.total_participants": "Osallistujia yhteensä",
 
   "site.report.title": "Kevätsiivoustalkoot",
   "site.report.yearly_report": "Vuosiraportti",
