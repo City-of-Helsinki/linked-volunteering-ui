@@ -4,6 +4,7 @@
   "site.language.sv": "Svenska",
   "site.language.en": "Engelska",
   "site.nav.create_event": "Ilmoita uusi tapahtuma",
+  "site.nav.report": "Vuosiraportit",
   "site.footer.front_page": "Etusivu",
   "site.footer.upcoming_events": "Tulevat tapahtumat",
   "site.footer.create_event": "Luo uusi tapahtuma",
@@ -13,6 +14,11 @@
 
   "site.page.thank_you.header": "Tapahtuma lisätty onnistuneesti!",
   "site.page.thank_you.paragraph": "Tapahtuma odottaa vahvistusta, lisäyksesi tullaan käsittelemään",
+
+  "site.report.title": "Kevätsiivoustalkoot",
+  "site.report.yearly_report": "Vuosiraportti",
+  "site.report.total_events": "Talkoita yhteensä",
+  "site.report.total_participants": "Osallistujia yhteensä",
 
   "form.validation.mixed.required": "Pakollinen kenttä!",
   "form.validation.mixed.not.number": "Kentän tulee olla numero!",
@@ -72,5 +78,8 @@
   "form.event.field.free.header": "Tapahtuma on kaupunkilaisille maksuton",
   "form.event.field.free.label": "Maksuton",
   "form.event.field.fee.label": "Osallistumismaksu",
-  "form.event.field.fee.placeholder": "Hinta"
+  "form.event.field.fee.placeholder": "Hinta",
+
+  "form.report.field.year.label": "Valitse vuosi",
+  "form.report.button.submit": "Hae"
 }
