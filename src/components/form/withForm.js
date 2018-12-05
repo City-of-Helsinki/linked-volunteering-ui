@@ -12,3 +12,14 @@ export const withEventForm = withFormik({
   },
   displayName: 'EventForm'
 });
+
+export const withReportForm = withFormik({
+  validationSchema,
+  validateOnChange: false,
+  mapPropsToValues: () => event,
+  handleSubmit: (values, { setSubmitting }) => {
+    console.debug(values);
+    setSubmitting(false);
+  },
+  displayName: 'ReportForm'
+});

@@ -55,6 +55,7 @@ const Layout = ({ children, intl }: Props) => (
     </NavbarRow>
     <NavbarRow expand="md">
       <Nav>{intl.formatMessage({ id: 'site.nav.create_event' })}</Nav>
+      <Nav>{intl.formatMessage({ id: 'site.nav.report' })}</Nav>
     </NavbarRow>
     <Content>
       {children}
