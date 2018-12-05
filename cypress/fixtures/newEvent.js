@@ -44,8 +44,7 @@ export default {
     value: '1234567'
   },
   show_contact_details: {
-    method: 'click',
-    value: true
+    method: 'click'
   },
   amount_of_volunteers: {
     method: 'type',
@@ -64,8 +63,7 @@ export default {
     value: '1'
   },
   container: {
-    method: 'click',
-    value: true
+    method: 'click'
   },
   trash_bags: {
     method: 'type',
@@ -76,12 +74,10 @@ export default {
     value: '1'
   },
   visibility_public: {
-    method: 'click',
-    value: 'private'
+    method: 'click'
   },
   free: {
-    method: 'click',
-    value: true
+    method: 'click'
   },
   fee: {
     method: 'type',
