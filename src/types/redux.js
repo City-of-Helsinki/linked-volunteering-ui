@@ -1,5 +1,7 @@
 // @flow
 import type { RecordOf, RecordFactory } from 'immutable';
+import { type ApiResult } from './api';
+import { type Events } from './event';
 
 export type Action = {
   type: string,
@@ -8,7 +10,8 @@ export type Action = {
 };
 
 type EventProps = {
-  submitted: boolean
+  submitted: boolean,
+  events: ApiResult<Events>
 };
 
 export type EventFactory = RecordFactory<EventProps>;

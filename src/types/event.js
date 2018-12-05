@@ -30,3 +30,5 @@ export type Event = {
   fee: number,
   location: Location
 };
+
+export type Events = Array<Event>;
