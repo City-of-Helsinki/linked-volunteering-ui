@@ -7,6 +7,8 @@ import { Helmet } from 'react-helmet';
 import { intlShape, injectIntl } from 'react-intl';
 
 import LanguageDropdown from './LanguageDropdown';
+import LocalizedLink from '../common/LocalizedLink';
+import IntlComponent from '../common/IntlComponent';
 import Icon from '../common/Icon';
 import KoroSection from './KoroSection';
 import Footer from './Footer';
@@ -54,8 +56,12 @@ const Layout = ({ children, intl }: Props) => (
       </Nav>
     </NavbarRow>
     <NavbarRow expand="md">
-      <Nav>{intl.formatMessage({ id: 'site.nav.create_event' })}</Nav>
-      <Nav>{intl.formatMessage({ id: 'site.nav.report' })}</Nav>
+      <Nav>
+        <IntlComponent Component={LocalizedLink} to="new-event" id="site.nav.create_event" />
+      </Nav>
+      <Nav>
+        <IntlComponent Component={LocalizedLink} to="report" id="site.nav.report" />
+      </Nav>
     </NavbarRow>
     <Content>
       {children}
