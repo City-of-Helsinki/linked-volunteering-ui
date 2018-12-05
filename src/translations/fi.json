@@ -11,6 +11,9 @@
   "site.footer.copyright": "Copyright 2018 - Kaikki oikeudet pidätetään.",
   "site.footer.give_feedback": "Anna palautetta",
 
+  "site.page.thank_you.header": "Tapahtuma lisätty onnistuneesti!",
+  "site.page.thank_you.paragraph": "Tapahtuma odottaa vahvistusta, lisäyksesi tullaan käsittelemään",
+
   "form.validation.mixed.required": "Pakollinen kenttä!",
   "form.validation.mixed.not.number": "Kentän tulee olla numero!",
   "form.validation.string.matches": "Kentän tulee olla annetussa muodossa!",
