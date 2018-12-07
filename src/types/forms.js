@@ -17,13 +17,9 @@ export type WithForm<T> = {
   errors: T,
   touched: T,
   dirty: T,
-  // flowlint-next-line unclear-type:off
-  handleChange?: handleEvent<any>,
-  // flowlint-next-line unclear-type:off
-  handleBlur?: handleEvent<any>,
-  // flowlint-next-line unclear-type:off
-  handleSubmit?: handleEvent<any>,
-  // flowlint-next-line unclear-type:off
-  handleReset?: handleEvent<any>,
+  handleChange?: handleEvent<mixed>,
+  handleBlur?: handleEvent<mixed>,
+  handleSubmit?: handleEvent<mixed>,
+  handleReset?: handleEvent<mixed>,
   isSubmitting?: boolean
 };

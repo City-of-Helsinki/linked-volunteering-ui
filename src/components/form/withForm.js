@@ -18,6 +18,7 @@ export const withReportForm = withFormik({
   validateOnChange: false,
   mapPropsToValues: () => event,
   handleSubmit: (values, { setSubmitting }) => {
+    // eslint-disable-next-line no-console
     console.debug(values);
     setSubmitting(false);
   },
