@@ -14,9 +14,9 @@ export type handleEvent<T> = (
 
 export type WithForm<T> = {
   values: T,
-  errors: T,
-  touched: T,
-  dirty: T,
+  errors: $ObjMap<$Shape<T>, (mixed) => string>,
+  touched: $ObjMap<$Shape<T>, (mixed) => boolean>,
+  dirty: $ObjMap<$Shape<T>, (mixed) => boolean>,
   handleChange?: handleEvent<mixed>,
   handleBlur?: handleEvent<mixed>,
   handleSubmit?: handleEvent<mixed>,
