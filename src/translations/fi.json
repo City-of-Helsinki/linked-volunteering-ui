@@ -85,5 +85,8 @@
   "form.event.field.fee.placeholder": "Hinta",
 
   "form.report.field.year.label": "Valitse vuosi",
-  "form.report.button.submit": "Hae"
+  "form.report.button.submit": "Hae",
+
+  "notification.form.event.created": "Tapahtuma lisätty onnistuneesti!",
+  "notification.form.event.modified": "Tapahtumaa muokattu onnistuneesti!"
 }
