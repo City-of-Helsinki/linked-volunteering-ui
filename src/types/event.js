@@ -1,4 +1,5 @@
 // @flow
+import type { Map } from 'immutable';
 
 export type Location = {
   lat: number,
@@ -31,4 +32,4 @@ export type Event = {
   location: Location
 };
 
-export type Events = Array<Event>;
+export type Events = Map<string, Event>;

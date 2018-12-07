@@ -1,7 +1,7 @@
 // @flow
 import type { RecordOf, RecordFactory } from 'immutable';
-import { type ApiResult } from './api';
-import { type Events } from './event';
+import type { ApiResult } from './api';
+import type { Events } from './event';
 
 export type Action = {
   type: string,
