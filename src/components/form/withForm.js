@@ -4,10 +4,7 @@ import event, { validationSchema } from '../../entities/event';
 export const withEventForm = withFormik({
   validationSchema,
   validateOnChange: false,
-  mapPropsToValues: ({ initialValues }) => {
-    console.log(initialValues);
-    return initialValues || event;
-  },
+  mapPropsToValues: ({ initialValues }) => initialValues || event,
   handleSubmit: async (values, { setSubmitting, props: { onSubmit } }) => {
     await onSubmit(values);
     setSubmitting(false);
