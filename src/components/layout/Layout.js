@@ -1,13 +1,14 @@
 // @flow
 
 import React, { Fragment, type Node } from 'react';
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import { intlShape, injectIntl } from 'react-intl';
 
 import LanguageDropdown from './LanguageDropdown';
 import IntlComponent from '../common/IntlComponent';
+import LocalizedLink from '../common/LocalizedLink';
 import Icon from '../common/Icon';
 import KoroSection from './KoroSection';
 import Footer from './Footer';
@@ -57,10 +58,20 @@ const Layout = ({ children, intl }: Props) => (
     <NavbarRow expand="md">
       <Nav navbar>
         <NavItem>
-          <IntlComponent Component={NavLink} href="/fi/new-event" id="site.nav.create_event" />
+          <IntlComponent
+            Component={LocalizedLink}
+            className="nav-link"
+            to="/fi/new-event"
+            id="site.nav.create_event"
+          />
         </NavItem>
         <NavItem>
-          <IntlComponent Component={NavLink} navLink href="/fi/report" id="site.nav.report" />
+          <IntlComponent
+            Component={LocalizedLink}
+            className="nav-link"
+            to="/fi/report"
+            id="site.nav.report"
+          />
         </NavItem>
       </Nav>
     </NavbarRow>
