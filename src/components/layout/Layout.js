@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import { intlShape, injectIntl } from 'react-intl';
 
+import Notifications from '../notification/containers/NotificationsContainer';
 import LanguageDropdown from './LanguageDropdown';
 import Icon from '../common/Icon';
 import KoroSection from './KoroSection';
@@ -63,6 +64,7 @@ const Layout = ({ children, intl }: Props) => (
         <Footer />
       </FooterKoro>
     </Content>
+    <Notifications />
   </Fragment>
 );
 

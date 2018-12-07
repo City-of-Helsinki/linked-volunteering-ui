@@ -1,2 +1,2 @@
-// eslint-disable-next-line import/prefer-default-export
 export { default as event } from './event';
+export { default as notification } from './notification';

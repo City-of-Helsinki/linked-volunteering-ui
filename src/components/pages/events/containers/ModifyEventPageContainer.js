@@ -2,6 +2,7 @@ import { injectIntl } from 'react-intl';
 import { compose, withProps, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
 
+import { addNotification } from '../../../../ducks/notification';
 import eventService from '../../../../services/eventService';
 import { withEventForm } from '../../../form/withForm';
 import EventPage from '../EventPage';
@@ -12,18 +13,19 @@ export default compose(
     id: props.match.params.id,
     locale: props.match.params.locale
   })),
-  withHandlers({
-    onSubmit: ({ history, locale }) => async values => {
-      await eventService.modify(values);
-      history.push(`/${locale}/events`);
-    }
-  }),
   connect(
     (state, { id }) => ({
       initialValues: state.event.events.results.get(id)
     }),
-    {}
+    { addNotification }
   ),
+  withHandlers({
+    onSubmit: ({ history, locale, addNotification: notify }) => async values => {
+      await eventService.modify(values);
+      history.push(`/${locale}/events`);
+      notify({ color: 'info', message: 'notification.form.event.modify' });
+    }
+  }),
   injectIntl,
   withEventForm
 )(EventPage);

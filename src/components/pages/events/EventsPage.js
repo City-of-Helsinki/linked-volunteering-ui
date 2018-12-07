@@ -12,15 +12,15 @@ class EventsPage extends PureComponent {
 
   render() {
     const { events } = this.props;
-    if (!events) return null;
     return (
       <Layout>
         <ul>
-          {events.results.valueSeq().map(event => (
-            <li key={event.id}>
-              <LocalizedLink to={`event/modify/${event.id}`}>{event.name}</LocalizedLink>
-            </li>
-          ))}
+          {events &&
+            events.results.valueSeq().map(event => (
+              <li key={event.id}>
+                <LocalizedLink to={`event/modify/${event.id}`}>{event.name}</LocalizedLink>
+              </li>
+            ))}
         </ul>
       </Layout>
     );
