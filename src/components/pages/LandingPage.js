@@ -29,6 +29,11 @@ const AlertLink = styled(LocalizedLink).attrs({ className: 'alert-link' })`
   padding: 0.8em 1.2em;
 `;
 
+const ContentWrapper = styled.div`
+  margin-top: 2em;
+  margin-bottom: 2em;
+`;
+
 const ThankYouPage = () => (
   <Layout>
     <PageContainer>
@@ -36,8 +41,10 @@ const ThankYouPage = () => (
       <Container>
         <Row>
           <Col>
-            <FormattedMessage tagName="h1" id="site.page.landing.header" />
-            <FormattedMessage tagName="p" id="site.page.landing.paragraph" />
+            <ContentWrapper>
+              <FormattedMessage tagName="h1" id="site.page.landing.header" />
+              <FormattedMessage tagName="p" id="site.page.landing.paragraph" />
+            </ContentWrapper>
           </Col>
         </Row>
         <Row>
