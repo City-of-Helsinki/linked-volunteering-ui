@@ -8,8 +8,8 @@ export type CustomEvent<T> = {
   }
 };
 
-export type handleEvent<T> = (
-  CustomEvent<T> | SyntheticEvent<HTMLButtonElement | HTMLInputElement | HTMLSelectElement>
+export type handleEvent<T, V = HTMLInputElement | HTMLSelectElement> = (
+  CustomEvent<T> | SyntheticEvent<V>
 ) => void;
 
 export type WithForm<T> = {
@@ -19,7 +19,7 @@ export type WithForm<T> = {
   dirty: $ObjMap<$Shape<T>, (mixed) => boolean>,
   handleChange?: handleEvent<mixed>,
   handleBlur?: handleEvent<mixed>,
-  handleSubmit?: handleEvent<mixed>,
-  handleReset?: handleEvent<mixed>,
+  handleSubmit?: handleEvent<mixed, HTMLButtonElement>,
+  handleReset?: handleEvent<mixed, HTMLButtonElement>,
   isSubmitting?: boolean
 };
