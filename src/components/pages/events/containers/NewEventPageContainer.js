@@ -20,7 +20,7 @@ export default compose(
     onSubmit: ({ history, locale, addNotification: notify }) => async values => {
       await eventService.create(values);
       history.push(`/${locale}/event/submitted`);
-      notify({ color: 'info', message: 'notification.form.event.created' });
+      notify({ color: 'success', message: 'notification.form.event.created' });
     }
   }),
   injectIntl,
