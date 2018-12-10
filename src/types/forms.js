@@ -8,22 +8,18 @@ export type CustomEvent<T> = {
   }
 };
 
-export type handleEvent<T> = (
-  CustomEvent<T> | SyntheticEvent<HTMLButtonElement | HTMLInputElement | HTMLSelectElement>
+export type handleEvent<T, V = HTMLInputElement | HTMLSelectElement> = (
+  CustomEvent<T> | SyntheticEvent<V>
 ) => void;
 
 export type WithForm<T> = {
   values: T,
-  errors: T,
-  touched: T,
-  dirty: T,
-  // flowlint-next-line unclear-type:off
-  handleChange?: handleEvent<any>,
-  // flowlint-next-line unclear-type:off
-  handleBlur?: handleEvent<any>,
-  // flowlint-next-line unclear-type:off
-  handleSubmit?: handleEvent<any>,
-  // flowlint-next-line unclear-type:off
-  handleReset?: handleEvent<any>,
+  errors: $ObjMap<$Shape<T>, (mixed) => string>,
+  touched: $ObjMap<$Shape<T>, (mixed) => boolean>,
+  dirty: $ObjMap<$Shape<T>, (mixed) => boolean>,
+  handleChange?: handleEvent<mixed>,
+  handleBlur?: handleEvent<mixed>,
+  handleSubmit?: handleEvent<mixed, HTMLButtonElement>,
+  handleReset?: handleEvent<mixed, HTMLButtonElement>,
   isSubmitting?: boolean
 };

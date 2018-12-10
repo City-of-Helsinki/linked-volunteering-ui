@@ -14,6 +14,11 @@
 
   "site.page.thank_you.header": "Tapahtuma lisätty onnistuneesti!",
   "site.page.thank_you.paragraph": "Tapahtuma odottaa vahvistusta, lisäyksesi tullaan käsittelemään",
+  "site.page.landing.header": "Etusivu",
+  "site.page.landing.paragraph": "Tervetuloa puistotalkoisiin!",
+  "site.page.landing.alert.first_row": "Piha- tai puistotalkoot tiedossa?",
+  "site.page.landing.alert.second_row": "Ilmoita oma tapahtumasi palveluun",
+  "site.page.landing.alert.button": "Ilmoita tapahtumastasi",
 
   "site.report.title": "Kevätsiivoustalkoot",
   "site.report.yearly_report": "Vuosiraportti",
