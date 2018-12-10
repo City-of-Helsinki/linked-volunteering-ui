@@ -57,7 +57,7 @@ const ThankYouPage = () => (
               <IntlComponent
                 Component={AlertLink}
                 id="site.page.landing.alert.button"
-                to="new-event"
+                to="event/new"
               />
             </StyledAlert>
           </Col>

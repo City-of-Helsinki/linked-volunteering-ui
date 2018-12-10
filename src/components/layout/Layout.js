@@ -62,7 +62,15 @@ const Layout = ({ children, intl }: Props) => (
           <IntlComponent
             Component={LocalizedLink}
             className="nav-link"
-            to="new-event"
+            to="events"
+            id="site.nav.events"
+          />
+        </NavItem>
+        <NavItem>
+          <IntlComponent
+            Component={LocalizedLink}
+            className="nav-link"
+            to="event/new"
             id="site.nav.create_event"
           />
         </NavItem>
