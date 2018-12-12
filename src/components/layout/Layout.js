@@ -38,9 +38,7 @@ const NavbarRow = styled(Navbar)`
   }
 `;
 
-const FooterKoro = styled(KoroSection)`
-  margin-top: 4em;
-`;
+const FooterKoro = styled(KoroSection)``;
 
 const Layout = ({ children, intl }: Props) => (
   <Fragment>
