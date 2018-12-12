@@ -2,8 +2,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
-import { Button, Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import IntlComponent from '../common/IntlComponent';
+import LocalizedLink from '../common/LocalizedLink';
 
 import Layout from '../layout/Layout';
 import heroImage from '../../assets/images/hero_image_berth.jpg';
@@ -42,15 +43,19 @@ const ThankYouPage = () => (
         </Row>
         <Row>
           <Col md="3">
-            <IntlComponent Component={Button} block id="site.page.landing.hero.button" />
+            <IntlComponent
+              Component={LocalizedLink}
+              id="site.page.landing.hero.button"
+              className="btn btn-secondary btn-block"
+              to="event/new"
+            />
           </Col>
           <Col md="3">
             <IntlComponent
-              Component={Button}
-              link
-              block
+              Component={LocalizedLink}
               id="site.page.landing.hero.link"
-              to="event/new"
+              className="btn btn-link btn-block"
+              to="#???"
             />
           </Col>
         </Row>
