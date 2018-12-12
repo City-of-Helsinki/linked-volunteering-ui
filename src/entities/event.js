@@ -72,13 +72,7 @@ export const validationSchema = yup.object().shape({
   container: yup.boolean(),
   trash_bags: yup.number().required(),
   trash_pickers: yup.number().required(),
-  visibility: yup.string().required(),
-  free: yup.boolean(),
-  fee: yup.number().when('free', {
-    is: true,
-    then: yup.number(),
-    otherwise: yup.number().required()
-  })
+  visibility: yup.string().required()
 });
 
 export default defaultValues;

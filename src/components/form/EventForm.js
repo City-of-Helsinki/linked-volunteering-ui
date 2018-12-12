@@ -387,40 +387,5 @@ export default ({
         />
       </Col>
     </Row>
-    <Row>
-      <Col sm="12" md={{ size: 8, offset: 1 }}>
-        <FormattedMessage tagName="h3" id="form.event.title.price" />
-      </Col>
-    </Row>
-    <Row>
-      <Col sm="12" md={{ size: 8, offset: 1 }}>
-        <FormattedMessage tagName="p" id="form.event.field.free.header" />
-        <Checkbox
-          id="free"
-          label="form.event.field.free.label"
-          error={errors.free}
-          touched={touched.free}
-          value={values.free}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-      </Col>
-    </Row>
-    <Row>
-      <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 4, offset: 1 }}>
-        <Input
-          type="number"
-          id="fee"
-          label="form.event.field.fee.label"
-          placeholder="form.event.field.fee.placeholder"
-          required={!values.free}
-          error={errors.fee}
-          touched={touched.fee}
-          value={values.fee}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-      </Col>
-    </Row>
   </form>
 );
