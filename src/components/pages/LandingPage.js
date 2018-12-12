@@ -7,13 +7,23 @@ import IntlComponent from '../common/IntlComponent';
 import LocalizedLink from '../common/LocalizedLink';
 
 import Layout from '../layout/Layout';
-import heroImage from '../../assets/images/hero_image_berth.jpg';
+import heroImage from '../../assets/images/helsinki_paiva_002_6450.jpg';
 
 const PageContainer = styled.div`
   background-image: url(${heroImage});
-  background-size: fill;
+  background-size: cover;
   padding-top: 12vh;
   padding-bottom: 30vh;
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.65) 100%);
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -28,7 +38,7 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const ThankYouPage = () => (
+const LandingPage = () => (
   <Layout>
     <PageContainer>
       <Container>
@@ -64,4 +74,4 @@ const ThankYouPage = () => (
   </Layout>
 );
 
-export default ThankYouPage;
+export default LandingPage;
