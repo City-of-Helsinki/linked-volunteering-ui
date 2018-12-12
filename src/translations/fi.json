@@ -44,7 +44,6 @@
   "form.event.title.others": "Muut tiedot",
   "form.event.title.tools_and_suplies": "Työkalut ja tarvikkeet",
   "form.event.title.visibility": "Näkyvyys",
-  "form.event.title.price": "Hintatiedot",
   "form.event.subtitle.contact_person": "Järjestäjän yhteystiedot tarvitaan urakoitsijoita varten",
   "form.event.subtitle.tools_and_suplies": "Ilmoita tarvittavat työkalut. Urakoitsijat hoitavat oikean määrän tarvikkeita paikan päälle",
   "form.event.field.name.label": "Nimi",
@@ -85,10 +84,6 @@
   "form.event.field.visibility.header": "Näytetäänkö tapahtuma julkisesti vai ei?",
   "form.event.field.visibility_public.label": "Julkinen",
   "form.event.field.visibility_private.label": "Salattu",
-  "form.event.field.free.header": "Tapahtuma on kaupunkilaisille maksuton",
-  "form.event.field.free.label": "Maksuton",
-  "form.event.field.fee.label": "Osallistumismaksu",
-  "form.event.field.fee.placeholder": "Hinta",
 
   "form.report.field.year.label": "Valitse vuosi",
   "form.report.button.submit": "Hae",
