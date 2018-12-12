@@ -1,65 +1,57 @@
 // @flow
 import React from 'react';
 import styled from 'styled-components';
-import { FormattedMessage } from 'react-intl';
-import { Alert, Container, Row, Col } from 'reactstrap';
-import LocalizedLink from '../common/LocalizedLink';
+import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
+import { Button, Container, Row, Col } from 'reactstrap';
 import IntlComponent from '../common/IntlComponent';
 
 import Layout from '../layout/Layout';
 import heroImage from '../../assets/images/hero_image_berth.jpg';
 
-const PageContainer = styled.div``;
-const HeroImage = styled.img.attrs({
-  src: heroImage,
-  alt: 'hero'
-})`
-  width: 100%;
-  height: 20em;
-  object-fit: cover;
-  object-position: top;
-`;
-const StyledAlert = styled(Alert).attrs({ color: 'danger' })`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-const AlertLink = styled(LocalizedLink).attrs({ className: 'alert-link' })`
-  border: 3px solid currentColor;
-  padding: 0.8em 1.2em;
+const PageContainer = styled.div`
+  background-image: url(${heroImage});
+  background-size: fill;
+  padding-top: 12vh;
+  padding-bottom: 30vh;
 `;
 
 const ContentWrapper = styled.div`
-  margin-top: 2em;
+  color: white;
   margin-bottom: 2em;
+  h1 {
+    font-size: 3.5rem;
+  }
+  p,
+  strong {
+    font-size: 1.25rem;
+  }
 `;
 
 const ThankYouPage = () => (
   <Layout>
     <PageContainer>
-      <HeroImage />
       <Container>
         <Row>
-          <Col>
+          <Col md="6">
             <ContentWrapper>
-              <FormattedMessage tagName="h1" id="site.page.landing.header" />
-              <FormattedMessage tagName="p" id="site.page.landing.paragraph" />
+              <FormattedMessage tagName="h1" id="site.page.landing.hero.headline" />
+              <FormattedHTMLMessage tagName="p" id="site.page.landing.hero.introduction" />
+              <FormattedMessage tagName="strong" id="site.page.landing.hero.call_to_action" />
             </ContentWrapper>
           </Col>
         </Row>
         <Row>
-          <Col>
-            <StyledAlert>
-              <div>
-                <FormattedMessage tagName="h2" id="site.page.landing.alert.first_row" />
-                <FormattedMessage tagName="h2" id="site.page.landing.alert.second_row" />
-              </div>
-              <IntlComponent
-                Component={AlertLink}
-                id="site.page.landing.alert.button"
-                to="event/new"
-              />
-            </StyledAlert>
+          <Col md="3">
+            <IntlComponent Component={Button} block id="site.page.landing.hero.button" />
+          </Col>
+          <Col md="3">
+            <IntlComponent
+              Component={Button}
+              link
+              block
+              id="site.page.landing.hero.link"
+              to="event/new"
+            />
           </Col>
         </Row>
       </Container>
