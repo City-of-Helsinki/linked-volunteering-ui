@@ -9,7 +9,7 @@ import IntlComponent from '../../common/IntlComponent';
 import LocalizedLink from '../../common/LocalizedLink';
 
 import Layout from '../../layout/Layout';
-import backgroundImage from '../../../assets/images/hero_image_berth.jpg';
+import backgroundImage from '../../../assets/images/_MG_2851_c_Jussi_Hellsten.jpg';
 
 const PageContainer = styled.div`
   background-image: url(${backgroundImage});
