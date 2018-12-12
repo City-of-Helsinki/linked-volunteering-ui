@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import { intlShape, injectIntl } from 'react-intl';
 
+import Notifications from '../notification/containers/NotificationsContainer';
 import LanguageDropdown from './LanguageDropdown';
 import IntlComponent from '../common/IntlComponent';
 import LocalizedLink from '../common/LocalizedLink';
@@ -61,7 +62,15 @@ const Layout = ({ children, intl }: Props) => (
           <IntlComponent
             Component={LocalizedLink}
             className="nav-link"
-            to="new-event"
+            to="events"
+            id="site.nav.events"
+          />
+        </NavItem>
+        <NavItem>
+          <IntlComponent
+            Component={LocalizedLink}
+            className="nav-link"
+            to="event/new"
             id="site.nav.create_event"
           />
         </NavItem>
@@ -81,6 +90,7 @@ const Layout = ({ children, intl }: Props) => (
         <Footer />
       </FooterKoro>
     </Content>
+    <Notifications />
   </Fragment>
 );
 
