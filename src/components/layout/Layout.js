@@ -11,6 +11,7 @@ import LanguageDropdown from './LanguageDropdown';
 import IntlComponent from '../common/IntlComponent';
 import LocalizedLink from '../common/LocalizedLink';
 import Icon from '../common/Icon';
+import Modal from '../modal/containers/ModalContainer';
 import KoroSection from './KoroSection';
 import Footer from './Footer';
 
@@ -58,7 +59,7 @@ const Layout = ({ children, intl }: Props) => (
           <IntlComponent
             Component={LocalizedLink}
             className="nav-link"
-            to="events"
+            to="events/manage"
             id="site.nav.events"
           />
         </NavItem>
@@ -86,6 +87,7 @@ const Layout = ({ children, intl }: Props) => (
       <Footer />
     </Content>
     <Notifications />
+    <Modal />
   </Fragment>
 );
 

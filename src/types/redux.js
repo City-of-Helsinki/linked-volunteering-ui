@@ -20,8 +20,15 @@ type NotificationProps = {
   notifications: Notifications
 };
 
+type ModalProps = {
+  visible: boolean
+};
+
 export type EventFactory = RecordFactory<EventProps>;
 export type EventState = RecordOf<EventProps>;
 
 export type NotificationFactory = RecordFactory<NotificationProps>;
 export type NotificationState = RecordOf<NotificationProps>;
+
+export type ModalFactory = RecordFactory<ModalProps>;
+export type ModalState = RecordOf<ModalProps>;
