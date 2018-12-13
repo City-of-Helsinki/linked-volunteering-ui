@@ -15,7 +15,7 @@ export default compose(
   })),
   connect(
     (state, { id }) => ({
-      initialValues: state.event.events.results.get(id)
+      initialValues: state.event.events.get(id)
     }),
     { addNotification }
   ),
