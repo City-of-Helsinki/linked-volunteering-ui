@@ -2,13 +2,14 @@ import { compose } from 'recompose';
 import { connect } from 'react-redux';
 
 import { getEvents } from '../../../../ducks/event';
-import EventsPage from '../EventsPage';
+import { addNotification } from '../../../../ducks/notification';
+import ManageEventsPage from '../ManageEventsPage';
 
 export default compose(
   connect(
     state => ({
       events: state.event.events
     }),
-    { getEvents }
+    { getEvents, addNotification }
   )
-)(EventsPage);
+)(ManageEventsPage);

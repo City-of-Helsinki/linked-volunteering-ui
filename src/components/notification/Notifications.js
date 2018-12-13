@@ -10,8 +10,13 @@ const NotificationWrapper = styled.div`
 
 export default ({ notifications, dismissNotification }) => (
   <NotificationWrapper>
-    {notifications.entrySeq().map(([key, { message, color }]) => (
-      <Notification key={key} onDismiss={() => dismissNotification(key)} color={color}>
+    {notifications.entrySeq().map(([key, { message, color, values }]) => (
+      <Notification
+        key={key}
+        onDismiss={() => dismissNotification(key)}
+        color={color}
+        values={values}
+      >
         {message}
       </Notification>
     ))}
