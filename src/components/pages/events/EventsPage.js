@@ -17,10 +17,8 @@ const Wrapper = styled.div`
 
 class EventsPage extends PureComponent<Props> {
   componentDidMount() {
-    const { events, getEvents } = this.props;
-    if (!events) {
-      getEvents();
-    }
+    const { getEvents } = this.props;
+    getEvents();
   }
 
   render() {
@@ -31,7 +29,7 @@ class EventsPage extends PureComponent<Props> {
           {events && (
             <table>
               <tbody>
-                {events.results.valueSeq().map(event => (
+                {events.valueSeq().map(event => (
                   <tr key={event.id}>
                     <td>{event.name}</td>
                     <td>
