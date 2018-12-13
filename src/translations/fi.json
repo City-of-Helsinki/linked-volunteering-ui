@@ -13,13 +13,16 @@
   "site.footer.copyright": "Copyright 2018 - Kaikki oikeudet pidätetään.",
   "site.footer.give_feedback": "Anna palautetta",
 
-  "site.page.thank_you.header": "Tapahtuma lisätty onnistuneesti!",
-  "site.page.thank_you.paragraph": "Tapahtuma odottaa vahvistusta, lisäyksesi tullaan käsittelemään",
   "site.page.landing.hero.headline": "Tule mukaan vapaaehtoistalkoisiin",
   "site.page.landing.hero.introduction": "Helsingin kaupungin vapaahetosityön alusta on uusi maksuton palvelu kaupinkilaisille. Palvelu kokoaa saman sivuston alle ympäri kaupunkia järjestettävät puistotalkoot. Vapaaehtoistalkoisiin osallistuu vuosittain <strong>yli 20 000</strong> kävijää. Ilmoita myös oma vapaaehtoistalkoosi palveluun heti tänään.",
   "site.page.landing.hero.call_to_action": "Tule mukaan ja osallistu!",
   "site.page.landing.hero.button": "Ilmoita puistotalkoo",
   "site.page.landing.hero.link": "Tietoa palvelusta ->",
+
+  "site.page.thank_you.header": "Kiitos tapahtuman ilmoittamisesta!",
+  "site.page.thank_you.paragraph": "Ilmoituksesi on kirjattu palveluun. Saat meiltä vahvistusviestin ja lisätietoja järjestelyistä, kun olemme tarkistaneet ilmoituksen tiedot. Yhdessä luomme viihtyisämpää kaupunkiympäristöä.",
+  "site.page.thank_you.action.home_page": "Palaa etusivulle",
+  "site.page.thank_you.action.add_to_calendar": "Lisää tapahtuma kalenteriin",
 
   "site.report.title": "Kevätsiivoustalkoot",
   "site.report.yearly_report": "Vuosiraportti",
