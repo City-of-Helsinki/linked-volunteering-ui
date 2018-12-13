@@ -7,8 +7,7 @@ import './KoroSection.scss';
 type Props = {
   className?: string,
   children?: Node,
-  color: 'green' | 'white',
-  bottom?: boolean
+  color: 'green' | 'white'
 };
 
 export default class KoroSection extends React.Component<Props> {
@@ -17,10 +16,8 @@ export default class KoroSection extends React.Component<Props> {
   };
 
   render() {
-    const { bottom, children, className, color } = this.props;
-    const classes = classnames(className, color, {
-      'section-koro-bottom': bottom
-    });
+    const { children, className, color } = this.props;
+    const classes = classnames(className, color, 'section-koro');
 
     return <section className={classes}>{children}</section>;
   }

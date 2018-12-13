@@ -38,8 +38,6 @@ const NavbarRow = styled(Navbar)`
   }
 `;
 
-const FooterKoro = styled(KoroSection)``;
-
 const Layout = ({ children, intl }: Props) => (
   <Fragment>
     <Helmet>
@@ -84,9 +82,8 @@ const Layout = ({ children, intl }: Props) => (
     </NavbarRow>
     <Content>
       {children}
-      <FooterKoro bottom color="green">
-        <Footer />
-      </FooterKoro>
+      <KoroSection color="green" />
+      <Footer />
     </Content>
     <Notifications />
   </Fragment>

@@ -1,15 +1,9 @@
 @import '../../../node_modules/open-city-design/src/scss/helsinki/mixins';
 @import '../../../node_modules/open-city-design/src/scss/helsinki/colors';
 
-.section-koro-bottom {
-  &.green:before {
-    @include koro('basic', $hel-copper, 800);
-  }
-  &:before {
-    @include koro('basic', $hel-copper, 800);
-    content: '';
-    display: block;
-    margin-top: -1.25em;
-    height: 1.25em;
-  }
+.section-koro {
+  @include koro('basic', $hel-copper, 800);
+  margin-top: -1.25em;
+  height: 1.25em;
+  position: relative;
 }
