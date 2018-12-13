@@ -25,3 +25,7 @@ export type EventState = RecordOf<EventProps>;
 
 export type NotificationFactory = RecordFactory<NotificationProps>;
 export type NotificationState = RecordOf<NotificationProps>;
+
+export type Store = {
+  events: EventState
+};
