@@ -20,6 +20,7 @@ const Wrapper = styled.div`
 const DetailsTr = styled.tr`
   background-color: white;
 `;
+
 const Td = styled.td`
   padding: ${props => (props.large ? '1em 1em' : '0.5em 1em')};
 `;
