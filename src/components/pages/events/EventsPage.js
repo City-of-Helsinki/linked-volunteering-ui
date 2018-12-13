@@ -5,7 +5,7 @@ import Layout from '../../layout/Layout';
 class EventsPage extends PureComponent {
   componentDidMount() {
     const { events, getEvents } = this.props;
-    if (!events) {
+    if (events.size === 0) {
       getEvents();
     }
   }
@@ -16,7 +16,7 @@ class EventsPage extends PureComponent {
       <Layout>
         <ul>
           {events &&
-            events.results.valueSeq().map(event => (
+            events.valueSeq().map(event => (
               <li key={event.id}>
                 <LocalizedLink to={`event/modify/${event.id}`}>{event.name}</LocalizedLink>
               </li>

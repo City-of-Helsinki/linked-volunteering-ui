@@ -1,6 +1,5 @@
 // @flow
 import type { RecordOf, RecordFactory } from 'immutable';
-import type { ApiResult } from './api';
 import type { Events } from './event';
 import type { Notifications } from './notification';
 
@@ -11,8 +10,10 @@ export type Action = {
 };
 
 type EventProps = {
-  submitted: boolean,
-  events: ApiResult<Events>
+  count: 0,
+  next: string | null,
+  previous: string | null,
+  events: Events
 };
 
 type NotificationProps = {
