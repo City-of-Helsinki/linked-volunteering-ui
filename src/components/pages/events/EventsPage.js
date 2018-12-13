@@ -4,10 +4,8 @@ import Layout from '../../layout/Layout';
 
 class EventsPage extends PureComponent {
   componentDidMount() {
-    const { events, getEvents } = this.props;
-    if (events.size === 0) {
-      getEvents();
-    }
+    const { getEvents } = this.props;
+    getEvents();
   }
 
   render() {
