@@ -6,6 +6,7 @@ import { Button, Container, Row, Col } from 'reactstrap';
 import LocalizedLink from '../../common/LocalizedLink';
 import IntlComponent from '../../common/IntlComponent';
 import Layout from '../../layout/Layout';
+import { Table, Td, FirstTd, TrRow } from '../../common/Table';
 
 import type { Events } from '../../../types/event';
 
@@ -17,24 +18,9 @@ const Wrapper = styled.div`
   padding-top: 3em;
   padding-bottom: 3em;
 `;
+
 const DetailsTr = styled.tr`
   background-color: white;
-`;
-const Td = styled.td`
-  padding: ${props => (props.large ? '1em 1em' : '0.5em 1em')};
-`;
-
-const FirstTd = styled.td`
-  background: ${props => (props.selected ? 'orange' : 'none')};
-  width: 5px;
-`;
-
-const TrRow = styled.tr`
-  background-color: ${props => (props.odd ? '#eeeeee' : '#f9f9f9')};
-`;
-
-const Table = styled.table`
-  width: 100%;
 `;
 
 const Details = ({ children }) => (
@@ -113,7 +99,7 @@ class EventsPage extends PureComponent<Props> {
                         const selected = visible === event.id;
                         return (
                           <Fragment key={event.id}>
-                            <TrRow odd={i % 2}>
+                            <TrRow odd={i % 2} selected={selected}>
                               <FirstTd selected={selected} />
                               <Td>{event.name}</Td>
                               <Td>{event.email}</Td>
