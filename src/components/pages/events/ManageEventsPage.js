@@ -18,7 +18,6 @@ const Wrapper = styled.div`
   padding-top: 3em;
   padding-bottom: 3em;
 `;
-
 const DetailsTr = styled.tr`
   background-color: white;
 `;
@@ -95,11 +94,11 @@ class EventsPage extends PureComponent<Props> {
                       </tr>
                     </thead>
                     <tbody>
-                      {events.valueSeq().map((event, i) => {
+                      {events.valueSeq().map(event => {
                         const selected = visible === event.id;
                         return (
                           <Fragment key={event.id}>
-                            <TrRow odd={i % 2} selected={selected}>
+                            <TrRow selected={selected}>
                               <FirstTd selected={selected} />
                               <Td>{event.name}</Td>
                               <Td>{event.email}</Td>
