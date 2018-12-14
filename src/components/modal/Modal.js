@@ -1,47 +1,54 @@
 // @flow
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { FormattedHTMLMessage } from 'react-intl';
+import * as modals from './modals';
+import IntlComponent from '../common/IntlComponent';
 
-class ModalExample extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      backdrop: true
-    };
+type Props = {
+  isOpen: boolean,
+  modal: string,
+  meta: any,
+  closeModal: Function,
+  dispatch: Function
+};
+
+const M = ({ isOpen, closeModal, modal, meta, dispatch }: Props) => {
+  if (!isOpen) {
+    return null;
   }
+  const { header, Body, intlBody, footer } = modals[modal];
 
-  changeBackdrop = ({ target }) => {
-    let { value } = target;
-    if (value !== 'static') {
-      value = JSON.parse(value);
-    }
-    this.setState({ backdrop: value });
-  };
-
-  render() {
-    const { isOpen, toggleModal } = this.props;
-    return (
-      <Modal isOpen={isOpen} toggle={toggleModal} backdrop={true}>
-        <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
-        <ModalBody>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-          ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-          sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-          est laborum.
-        </ModalBody>
+  return (
+    <Modal isOpen={isOpen} toggle={closeModal} backdrop={true}>
+      {header && (
+        <IntlComponent Component={ModalHeader} toggle={closeModal} id={header} values={meta} />
+      )}
+      <ModalBody>
+        {intlBody && <FormattedHTMLMessage id={intlBody} values={meta} />}
+        {Body && <Body values={meta} />}
+      </ModalBody>
+      {footer && (
         <ModalFooter>
-          <Button color="primary" onClick={toggleModal}>
-            Do Something
-          </Button>
-          <Button color="secondary" onClick={toggleModal}>
-            Cancel
-          </Button>
+          {footer.map(({ intl, color, action }) => (
+            <IntlComponent
+              key={intl}
+              Component={Button}
+              onClick={() => {
+                closeModal();
+                if (typeof action === 'function') {
+                  action(dispatch, meta);
+                }
+              }}
+              id={intl}
+              values={meta}
+              color={color}
+            />
+          ))}
         </ModalFooter>
-      </Modal>
-    );
-  }
-}
+      )}
+    </Modal>
+  );
+};
 
-export default ModalExample;
+export default M;
