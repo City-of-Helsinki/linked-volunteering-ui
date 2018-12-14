@@ -13,6 +13,15 @@
   "site.footer.copyright": "Copyright 2018 - Kaikki oikeudet pidätetään.",
   "site.footer.give_feedback": "Anna palautetta",
 
+  "site.page.manage_events.table.action.edit": "Muokkaa",
+  "site.page.manage_events.table.action.approve": "Hyväksy tapahtuma",
+  "site.page.manage_events.table.action.remove": "Poista Tapahtuma",
+  "site.page.manage_events.table.header.name": "Nimi",
+  "site.page.manage_events.table.header.organizer": "Järjestäjä",
+  "site.page.manage_events.table.header.created": "Ilmoitus jätetty",
+  "site.page.manage_events.table.header.start_date": "Tapahtumapäivä",
+  "site.page.manage_events.table.header.state": "Tila",
+
   "site.page.landing.hero.headline": "Tule mukaan vapaaehtoistalkoisiin",
   "site.page.landing.hero.introduction": "Helsingin kaupungin vapaahetosityön alusta on uusi maksuton palvelu kaupinkilaisille. Palvelu kokoaa saman sivuston alle ympäri kaupunkia järjestettävät puistotalkoot. Vapaaehtoistalkoisiin osallistuu vuosittain <strong>yli 20 000</strong> kävijää. Ilmoita myös oma vapaaehtoistalkoosi palveluun heti tänään.",
   "site.page.landing.hero.call_to_action": "Tule mukaan ja osallistu!",
@@ -92,5 +101,7 @@
   "form.report.button.submit": "Hae",
 
   "notification.form.event.created": "Tapahtuma lisätty onnistuneesti!",
-  "notification.form.event.modified": "Tapahtumaa muokattu onnistuneesti!"
+  "notification.form.event.modified": "Tapahtumaa muokattu onnistuneesti!",
+  "notification.manage_events.approve": "{name} hyväksytty!",
+  "notification.manage_events.remove": "{name} peruttu!"
 }

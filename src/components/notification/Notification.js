@@ -21,7 +21,7 @@ const StyledAlert = styled(Alert)`
 class Notification extends PureComponent {
   componentDidMount() {
     const { onDismiss } = this.props;
-    const timer = setTimeout(onDismiss, 300000);
+    const timer = setTimeout(onDismiss, 3000);
     this.setState(() => ({ timer }));
   }
 
@@ -33,10 +33,10 @@ class Notification extends PureComponent {
   };
 
   render() {
-    const { children, color } = this.props;
+    const { children, color, values } = this.props;
     return (
       <StyledAlert color={color} toggle={this.onDismiss} fade>
-        <FormattedMessage id={children} />
+        <FormattedMessage id={children} values={values} />
       </StyledAlert>
     );
   }
