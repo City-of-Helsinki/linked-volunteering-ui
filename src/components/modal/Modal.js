@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { FormattedHTMLMessage } from 'react-intl';
 import * as modals from './modals';
 import IntlComponent from '../common/IntlComponent';
 
@@ -17,17 +16,14 @@ const M = ({ isOpen, closeModal, modal, meta, dispatch }: Props) => {
   if (!isOpen) {
     return null;
   }
-  const { header, Body, intlBody, footer } = modals[modal];
+  const { header, Body, footer } = modals[modal];
 
   return (
     <Modal isOpen={isOpen} toggle={closeModal} backdrop={true}>
       {header && (
         <IntlComponent Component={ModalHeader} toggle={closeModal} id={header} values={meta} />
       )}
-      <ModalBody>
-        {intlBody && <FormattedHTMLMessage id={intlBody} values={meta} />}
-        {Body && <Body values={meta} />}
-      </ModalBody>
+      <ModalBody>{Body && <Body values={meta} />}</ModalBody>
       {footer && (
         <ModalFooter>
           {footer.map(({ intl, color, action }) => (
