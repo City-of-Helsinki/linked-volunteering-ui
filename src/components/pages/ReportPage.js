@@ -50,7 +50,8 @@ class ReportPage extends Component<Props> {
 
   render() {
     const { handleReset, handleSubmit, reportRows, ...rest }: Props = this.props;
-
+    const event_amount = reportRows.reduce((acc, row) => acc + row.events, 0);
+    const participant_amount = reportRows.reduce((acc, row) => acc + row.participants, 0);
     return (
       <Layout>
         <ControlContainer fluid>
@@ -82,13 +83,13 @@ class ReportPage extends Component<Props> {
               Component={Col}
               sm={{ size: 2, offset: 1 }}
               id="site.report.total_events"
-              values={{ event_amount: reportRows.events }}
+              values={{ event_amount }}
             />
             <IntlComponent
               Component={Col}
               sm={{ size: 2, offset: 1 }}
               id="site.report.total_participants"
-              values={{ participant_amount: reportRows.participants }}
+              values={{ participant_amount }}
             />
           </StatisticsRow>
         </ControlContainer>
