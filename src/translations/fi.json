@@ -36,8 +36,8 @@
 
   "site.report.title": "Kevätsiivoustalkoot",
   "site.report.yearly_report": "Vuosiraportti",
-  "site.report.total_events": "Talkoita yhteensä",
-  "site.report.total_participants": "Osallistujia yhteensä",
+  "site.report.total_events": "Talkoita yhteensä {event_amount}",
+  "site.report.total_participants": "Osallistujia yhteensä {participant_amount}",
 
   "site.report.table.header.area": "Talkoopiiri",
   "site.report.table.header.contact_person": "Yhteyshenkilö",

@@ -2,8 +2,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Container, Row, Col, Button } from 'reactstrap';
-import { injectIntl, FormattedMessage, type intlShape } from 'react-intl';
-import responsive from '../../utils/responsive';
+import { FormattedMessage, type intlShape } from 'react-intl';
 
 import Layout from '../layout/Layout';
 import ReportForm from '../form/ReportForm';
@@ -50,13 +49,7 @@ class ReportPage extends Component<Props> {
   }
 
   render() {
-    const {
-      handleReset,
-      handleSubmit,
-      intl: { formatMessage },
-      reportRows,
-      ...rest
-    }: Props = this.props;
+    const { handleReset, handleSubmit, reportRows, ...rest }: Props = this.props;
 
     return (
       <Layout>
@@ -68,24 +61,35 @@ class ReportPage extends Component<Props> {
           </TitleRow>
           <Row>
             <Col sm={{ size: 2, offset: 1 }}>
-              <ReportTitle>{formatMessage({ id: 'site.report.yearly_report' })}</ReportTitle>
+              <IntlComponent Component={ReportTitle} id="site.report.yearly_report" />
             </Col>
             <Col sm={{ size: 4 }}>
               <ReportForm {...rest} />
             </Col>
             <Col sm={{ size: 2 }}>
-              <Button block type="submit" onClick={handleSubmit} color="success">
-                {formatMessage({ id: 'form.report.button.submit' })}
-              </Button>
+              <IntlComponent
+                Component={Button}
+                block
+                type="submit"
+                onClick={handleSubmit}
+                color="success"
+                id="site.report.yearly_report"
+              />
             </Col>
           </Row>
           <StatisticsRow>
-            <Col sm={{ size: 2, offset: 1 }}>
-              {formatMessage({ id: 'site.report.total_events' })} {reportRows.size}
-            </Col>
-            <Col sm={{ size: 6 }}>
-              {formatMessage({ id: 'site.report.total_participants' })} TBA
-            </Col>
+            <IntlComponent
+              Component={Col}
+              sm={{ size: 2, offset: 1 }}
+              id="site.report.total_events"
+              values={{ event_amount: reportRows.events }}
+            />
+            <IntlComponent
+              Component={Col}
+              sm={{ size: 2, offset: 1 }}
+              id="site.report.total_participants"
+              values={{ participant_amount: reportRows.participants }}
+            />
           </StatisticsRow>
         </ControlContainer>
         <FormContainer>
@@ -124,4 +128,4 @@ class ReportPage extends Component<Props> {
   }
 }
 
-export default injectIntl(ReportPage);
+export default ReportPage;
