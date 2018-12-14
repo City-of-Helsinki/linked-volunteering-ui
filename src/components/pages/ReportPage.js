@@ -12,7 +12,7 @@ import { Table, Td, TrRow } from '../common/Table';
 import IntlComponent from '../common/IntlComponent';
 
 import type { WithForm } from '../../types/forms';
-import type { Event } from '../../types/event';
+import type { ReportRow } from '../../types/report';
 
 const FormContainer = styled(Container)`
   margin-top: 1em;
@@ -51,12 +51,12 @@ const StatisticsRow = styled(Row)`
   padding-bottom: 1.5em;
 `;
 
-type Props = WithForm<Event> & intlShape;
+type Props = WithForm<ReportRow> & intlShape;
 
 class ReportPage extends Component<Props> {
   componentDidMount() {
-    const { getEvents } = this.props;
-    getEvents();
+    const { getReport } = this.props;
+    getReport();
   }
 
   render() {
@@ -64,7 +64,7 @@ class ReportPage extends Component<Props> {
       handleReset,
       handleSubmit,
       intl: { formatMessage },
-      events,
+      reportRows,
       ...rest
     }: Props = this.props;
 
@@ -93,7 +93,7 @@ class ReportPage extends Component<Props> {
           </Row>
           <StatisticsRow>
             <Col sm={{ size: 2, offset: 1 }}>
-              {formatMessage({ id: 'site.report.total_events' })} {events.size}
+              {formatMessage({ id: 'site.report.total_events' })} {reportRows.size}
             </Col>
             <Col sm={{ size: 6 }}>
               {formatMessage({ id: 'site.report.total_participants' })} TBA
@@ -115,17 +115,15 @@ class ReportPage extends Component<Props> {
                   </TrRow>
                 </thead>
                 <tbody>
-                  {events &&
-                    events.valueSeq().map(event => (
-                      <TrRow key={event.id}>
-                        <Td>{event.name}</Td>
-                        <Td>
-                          {event.first_name} {event.last_name}
-                        </Td>
-                        <Td>{event.email}</Td>
-                        <Td>{event.phone}</Td>
-                        <Td>TBA</Td>
-                        <Td>TBA</Td>
+                  {reportRows &&
+                    reportRows.valueSeq().map(reportRow => (
+                      <TrRow key={reportRow.id}>
+                        <Td>{reportRow.area}</Td>
+                        <Td>{reportRow.contact_person}</Td>
+                        <Td>{reportRow.email}</Td>
+                        <Td>{reportRow.phone}</Td>
+                        <Td>{reportRow.events}</Td>
+                        <Td>{reportRow.participants}</Td>
                       </TrRow>
                     ))}
                 </tbody>
