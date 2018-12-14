@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="25px" height="39px" viewBox="0 0 25 39" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>Icons/.trash</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Vapaaehtoisalusta-Layouts" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="HKI-Ikonit" transform="translate(-944.000000, -795.000000)" fill="#010202">
+            <g id="Icons/.trash" transform="translate(944.000000, 795.000000)">
+                <path d="M5.465525,16.6895625 L19.61765,16.6895625 L18.481775,33.8170625 L6.599775,33.8170625 L5.465525,16.6895625 Z M0.87165,12.4076875 L2.54865,38.0989375 L22.5329,38.0989375 L24.2099,12.4076875 L0.87165,12.4076875 Z" id="Fill-41"></path>
+                <path d="M0.309725,3.8403625 L5.226975,3.8403625 C7.43535,3.8403625 9.5511,3.0311125 11.180975,1.5637375 L12.558975,0.3238625 L13.936975,1.5637375 C15.5701,3.0311125 17.6826,3.8403625 19.88935,3.8403625 L24.772475,3.8403625 L24.489725,8.1271125 L19.88935,8.1271125 C17.2536,8.1271125 14.7056,7.3341125 12.558975,5.8732375 C10.410725,7.3341125 7.86435,8.1271125 5.226975,8.1271125 L0.589225,8.1271125 L0.309725,3.8403625 Z" id="Fill-42"></path>
+            </g>
+        </g>
+    </g>
+</svg>

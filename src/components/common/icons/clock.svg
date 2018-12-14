@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>Icons/.clock</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Vapaaehtoisalusta-Layouts" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="HKI-Ikonit" transform="translate(-366.000000, -796.000000)" fill="#010202">
+            <g id="Icons/.clock" transform="translate(366.000000, 795.000000)">
+                <path d="M19.89088,0.984415385 C9.02528,0.984415385 0.21728,9.87710769 0.21728,20.8471846 C0.21728,31.8172615 9.02528,40.7115692 19.89088,40.7115692 C30.75648,40.7115692 39.56608,31.8172615 39.56608,20.8471846 C39.56608,9.87710769 30.75648,0.984415385 19.89088,0.984415385 M19.89088,36.4550308 C11.36928,36.4550308 4.43488,29.4539538 4.43488,20.8471846 C4.43488,12.2420308 11.36928,5.24095385 19.89088,5.24095385 C28.41408,5.24095385 35.35008,12.2420308 35.35008,20.8471846 C35.35008,29.4539538 28.41408,36.4550308 19.89088,36.4550308" id="Fill-43"></path>
+                <polygon id="Fill-44" points="21.99856 10.8154846 17.78256 10.8154846 17.78256 21.7290231 25.01456 29.0273308 27.99376 26.0178692 21.99856 19.9666385"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>
