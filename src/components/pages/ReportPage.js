@@ -8,12 +8,15 @@ import responsive from '../../utils/responsive';
 import Layout from '../layout/Layout';
 import ReportForm from '../form/ReportForm';
 
+import { Table, Td, TrRow } from '../common/Table';
+import IntlComponent from '../common/IntlComponent';
+
 import type { WithForm } from '../../types/forms';
 import type { Event } from '../../types/event';
 
 const FormContainer = styled(Container)`
-  background-color: ${props => props.theme.helWhite};
   margin-top: 1em;
+  margin-bottom: 3em;
 `;
 
 const TitleContainer = styled(Container)`
@@ -25,10 +28,10 @@ const TitleContainer = styled(Container)`
   }
 
   ${responsive.md`
-  h2 {
-    font-size: ${props => props.theme.h2FontSize};
-  }
-`}
+    h2 {
+      font-size: ${props => props.theme.h2FontSize};
+    }
+  `}
 `;
 
 const ControlContainer = styled(Container)`
@@ -46,10 +49,6 @@ const ReportTitle = styled.span`
 const StatisticsRow = styled(Row)`
   padding-top: 1.5em;
   padding-bottom: 1.5em;
-`;
-
-const Table = styled.table`
-  width: 100%;
 `;
 
 type Props = WithForm<Event> & intlShape;
@@ -94,39 +93,45 @@ class ReportPage extends Component<Props> {
           </Row>
           <StatisticsRow>
             <Col sm={{ size: 2, offset: 1 }}>
-              {formatMessage({ id: 'site.report.total_events' })} 168
+              {formatMessage({ id: 'site.report.total_events' })} {events.size}
             </Col>
             <Col sm={{ size: 6 }}>
-              {formatMessage({ id: 'site.report.total_participants' })} 21,471
+              {formatMessage({ id: 'site.report.total_participants' })} TBA
             </Col>
           </StatisticsRow>
         </ControlContainer>
         <FormContainer>
-          <Table>
-            <tbody>
-              <tr>
-                <th>Talkoopiiri</th>
-                <th>Yhteyshenkilö</th>
-                <th>Sähköposti</th>
-                <th>Puhelinnumero</th>
-                <th>Talkoita</th>
-                <th>Osallistujia</th>
-              </tr>
-              {events &&
-                events.valueSeq().map(event => (
-                  <tr key={event.id}>
-                    <td>{event.name}</td>
-                    <td>
-                      {event.first_name} {event.last_name}
-                    </td>
-                    <td>{event.email}</td>
-                    <td>{event.phone}</td>
-                    <td>TBA</td>
-                    <td>TBA</td>
-                  </tr>
-                ))}
-            </tbody>
-          </Table>
+          <Row>
+            <Col>
+              <Table>
+                <thead>
+                  <TrRow>
+                    <IntlComponent Component="th" id="site.report.table.header.area" />
+                    <IntlComponent Component="th" id="site.report.table.header.contact_person" />
+                    <IntlComponent Component="th" id="site.report.table.header.email" />
+                    <IntlComponent Component="th" id="site.report.table.header.phone" />
+                    <IntlComponent Component="th" id="site.report.table.header.events" />
+                    <IntlComponent Component="th" id="site.report.table.header.participants" />
+                  </TrRow>
+                </thead>
+                <tbody>
+                  {events &&
+                    events.valueSeq().map(event => (
+                      <TrRow key={event.id}>
+                        <Td>{event.name}</Td>
+                        <Td>
+                          {event.first_name} {event.last_name}
+                        </Td>
+                        <Td>{event.email}</Td>
+                        <Td>{event.phone}</Td>
+                        <Td>TBA</Td>
+                        <Td>TBA</Td>
+                      </TrRow>
+                    ))}
+                </tbody>
+              </Table>
+            </Col>
+          </Row>
         </FormContainer>
       </Layout>
     );
