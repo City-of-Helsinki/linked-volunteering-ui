@@ -6,7 +6,7 @@ export type Location = {
   lng: number
 };
 
-export type Event = {
+export type NewEvent = {
   name: string,
   description: string,
   area: string,
@@ -31,5 +31,11 @@ export type Event = {
   fee: number,
   location: Location
 };
+
+export type Event = {
+  id: string,
+  created: string,
+  state: string
+} & NewEvent;
 
 export type Events = Map<string, Event>;

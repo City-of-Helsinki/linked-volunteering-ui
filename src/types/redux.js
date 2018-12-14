@@ -6,7 +6,9 @@ import type { Notifications } from './notification';
 export type Action = {
   type: string,
   // flowlint-next-line unclear-type:off
-  payload: any
+  payload: any,
+  // flowlint-next-line unclear-type:off
+  meta: any
 };
 
 type EventProps = {
@@ -20,6 +22,13 @@ type NotificationProps = {
   notifications: Notifications
 };
 
+type ModalProps = {
+  isOpen: boolean,
+  modal: null | string,
+  // flowlint-next-line unclear-type:off
+  meta: any
+};
+
 export type EventFactory = RecordFactory<EventProps>;
 export type EventState = RecordOf<EventProps>;
 
@@ -29,3 +38,6 @@ export type NotificationState = RecordOf<NotificationProps>;
 export type Store = {
   events: EventState
 };
+
+export type ModalFactory = RecordFactory<ModalProps>;
+export type ModalState = RecordOf<ModalProps>;
