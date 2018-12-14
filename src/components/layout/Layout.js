@@ -16,7 +16,9 @@ import Footer from './Footer';
 
 type Props = {
   children: Node,
-  intl: intlShape
+  intl: intlShape,
+  paddingTop: boolean,
+  paddingBottom: boolean
 };
 
 const Content = styled.div`
@@ -38,7 +40,12 @@ const NavbarRow = styled(Navbar)`
   }
 `;
 
-const Layout = ({ children, intl }: Props) => (
+const PageWrapper = styled.div`
+  padding-top: ${props => (props.paddingTop ? '3em' : 0)};
+  padding-bottom: ${props => (props.paddingBottom ? '3em' : 0)};
+`;
+
+const Layout = ({ children, intl, paddingTop, paddingBottom }: Props) => (
   <Fragment>
     <Helmet>
       <meta charSet="utf-8" />
@@ -81,7 +88,9 @@ const Layout = ({ children, intl }: Props) => (
       </Nav>
     </NavbarRow>
     <Content>
-      {children}
+      <PageWrapper paddingTop={paddingTop} paddingBottom={paddingBottom}>
+        {children}
+      </PageWrapper>
       <KoroSection color="green" />
       <Footer />
     </Content>
