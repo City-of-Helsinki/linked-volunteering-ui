@@ -53,7 +53,7 @@ class EventsPage extends PureComponent<Props> {
   toggleDetails = id => this.setState(({ visible }) => ({ visible: visible === id ? null : id }));
 
   render() {
-    const { events, addNotification } = this.props;
+    const { events, remove, approve } = this.props;
     const { visible } = this.state;
     return (
       <Layout paddingTop paddingBottom>
@@ -132,24 +132,9 @@ class EventsPage extends PureComponent<Props> {
                                   Component={Button}
                                   id="site.page.manage_events.table.action.approve"
                                   color="primary"
-                                  onClick={() =>
-                                    addNotification({
-                                      color: 'success',
-                                      message: 'notification.manage_events.approve',
-                                      values: { name: event.name }
-                                    })
-                                  }
+                                  onClick={() => approve(event)}
                                 />
-                                <Button
-                                  color="link"
-                                  onClick={() =>
-                                    addNotification({
-                                      color: 'info',
-                                      message: 'notification.manage_events.remove',
-                                      values: { name: event.name }
-                                    })
-                                  }
-                                >
+                                <Button color="link" onClick={() => remove(event)}>
                                   <IntlComponent
                                     Component={ErrorMessage}
                                     id="site.page.manage_events.table.action.remove"
