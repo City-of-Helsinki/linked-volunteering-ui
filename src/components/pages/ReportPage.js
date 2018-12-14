@@ -19,19 +19,9 @@ const FormContainer = styled(Container)`
   margin-bottom: 3em;
 `;
 
-const TitleContainer = styled(Container)`
-  background-color: ${props => props.theme.helWhite};
-  padding: 1em;
-
-  h2 {
-    font-size: ${props => props.theme.h4FontSize};
-  }
-
-  ${responsive.md`
-    h2 {
-      font-size: ${props => props.theme.h2FontSize};
-    }
-  `}
+const TitleRow = styled(Row)`
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
 `;
 
 const ControlContainer = styled(Container)`
@@ -70,14 +60,12 @@ class ReportPage extends Component<Props> {
 
     return (
       <Layout>
-        <TitleContainer fluid>
-          <Row>
-            <Col md={{ size: 3, offset: 1 }}>
+        <ControlContainer fluid>
+          <TitleRow>
+            <Col sm={{ size: 11, offset: 1 }}>
               <FormattedMessage tagName="h2" id="site.report.title" />
             </Col>
-          </Row>
-        </TitleContainer>
-        <ControlContainer fluid>
+          </TitleRow>
           <Row>
             <Col sm={{ size: 2, offset: 1 }}>
               <ReportTitle>{formatMessage({ id: 'site.report.yearly_report' })}</ReportTitle>
