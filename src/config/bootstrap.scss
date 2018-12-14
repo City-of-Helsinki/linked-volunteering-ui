@@ -43,7 +43,7 @@ $theme-colors: (
 }
 
 .btn-link.btn-link {
-  color: $hel-black;
+  color: currentColor;
   &:active,
   &:hover {
     text-decoration: none;

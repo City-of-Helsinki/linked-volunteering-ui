@@ -3,16 +3,15 @@
 import React, { PureComponent, Fragment } from 'react';
 import styled from 'styled-components';
 import { Button, Container, Row, Col } from 'reactstrap';
+import { FormattedMessage } from 'react-intl';
 import LocalizedLink from '../../common/LocalizedLink';
 import IntlComponent from '../../common/IntlComponent';
-import Layout from '../../layout/Layout';
 import { Table, Td, FirstTd, TrRow } from '../../common/Table';
+import Icon from '../../common/Icon';
+
+import Layout from '../../layout/Layout';
 
 import type { Events } from '../../../types/event';
-
-type Props = {
-  events: Events
-};
 
 const DetailsTr = styled.tr`
   background-color: white;
@@ -27,10 +26,6 @@ const Details = ({ children }) => (
   </DetailsTr>
 );
 
-const ErrorMessage = styled.span`
-  color: ${props => props.theme.themeColors.danger};
-`;
-
 const DetailsCluster = styled.div`
   display: flex;
   margin-top: 0.25em;
@@ -40,7 +35,35 @@ const DetailsCluster = styled.div`
   }
 `;
 
-class EventsPage extends PureComponent<Props> {
+const SpacedSpan = styled.span`
+  margin-left: 0.5em;
+`;
+
+const HeaderText = styled.span`
+  margin-right: 0.5em;
+`;
+
+const ErrorButton = styled(Button)`
+  && > * {
+    color: ${props => props.theme.themeColors.danger};
+  }
+  * + * {
+    margin-left: 0.5em;
+  }
+`;
+
+type Props = {
+  events: Events,
+  getEvents: Function,
+  remove: Function,
+  approve: Function
+};
+
+type State = {
+  visible: ?string
+};
+
+class EventsPage extends PureComponent<Props, State> {
   state = {
     visible: null
   };
@@ -50,7 +73,8 @@ class EventsPage extends PureComponent<Props> {
     getEvents();
   }
 
-  toggleDetails = id => this.setState(({ visible }) => ({ visible: visible === id ? null : id }));
+  toggleDetails = (id: string) =>
+    this.setState(({ visible }) => ({ visible: visible === id ? null : id }));
 
   render() {
     const { events, remove, approve } = this.props;
@@ -65,26 +89,41 @@ class EventsPage extends PureComponent<Props> {
                   <thead>
                     <tr>
                       <th />
-                      <IntlComponent
-                        Component="th"
-                        id="site.page.manage_events.table.header.name"
-                      />
-                      <IntlComponent
-                        Component="th"
-                        id="site.page.manage_events.table.header.organizer"
-                      />
-                      <IntlComponent
-                        Component="th"
-                        id="site.page.manage_events.table.header.start_date"
-                      />
-                      <IntlComponent
-                        Component="th"
-                        id="site.page.manage_events.table.header.created"
-                      />
-                      <IntlComponent
-                        Component="th"
-                        id="site.page.manage_events.table.header.state"
-                      />
+                      <th>
+                        <IntlComponent
+                          Component={HeaderText}
+                          id="site.page.manage_events.table.header.name"
+                        />
+                        <Icon inline name="order" height="1em" width="1em" />
+                      </th>
+                      <th>
+                        <IntlComponent
+                          Component={HeaderText}
+                          id="site.page.manage_events.table.header.organizer"
+                        />
+                        <Icon inline name="order" height="1em" width="1em" />
+                      </th>
+                      <th>
+                        <IntlComponent
+                          Component={HeaderText}
+                          id="site.page.manage_events.table.header.start_date"
+                        />
+                        <Icon inline name="order" height="1em" width="1em" />
+                      </th>
+                      <th>
+                        <IntlComponent
+                          Component={HeaderText}
+                          id="site.page.manage_events.table.header.created"
+                        />
+                        <Icon inline name="order" height="1em" width="1em" />
+                      </th>
+                      <th>
+                        <IntlComponent
+                          Component={HeaderText}
+                          id="site.page.manage_events.table.header.state"
+                        />
+                        <Icon inline name="order" height="1em" width="1em" />
+                      </th>
                       <th colSpan="2" />
                     </tr>
                   </thead>
@@ -94,36 +133,47 @@ class EventsPage extends PureComponent<Props> {
                       return (
                         <Fragment key={event.id}>
                           <TrRow selected={selected}>
-                            <FirstTd selected={selected} />
+                            <FirstTd selected={event.state === 'pending'} />
                             <Td>{event.name}</Td>
                             <Td>{event.email}</Td>
                             <Td>{event.startdate}</Td>
                             <Td>{event.created}</Td>
-                            <Td>{event.state}</Td>
                             <Td>
-                              <IntlComponent
-                                Component={LocalizedLink}
-                                to={`event/modify/${event.id}`}
-                                id="site.page.manage_events.table.action.edit"
+                              <Icon
+                                inline
+                                name="oval"
+                                height="0.5em"
+                                width="0.5em"
+                                color={event.state === 'pending' ? 'orange' : 'green'}
                               />
+                              <SpacedSpan>{event.state}</SpacedSpan>
+                            </Td>
+                            <Td>
+                              <LocalizedLink to={`event/modify/${event.id}`}>
+                                <Icon inline name="fillIn" height="1em" width="1em" />
+                                <IntlComponent
+                                  Component={SpacedSpan}
+                                  id="site.page.manage_events.table.action.edit"
+                                />
+                              </LocalizedLink>
                             </Td>
                             <Td>
                               <Button color="link" onClick={() => this.toggleDetails(event.id)}>
-                                {selected ? 'Sulje' : 'Avaa'}
+                                <Icon name="point" rotate={selected ? 90 : 0} />
                               </Button>
                             </Td>
                           </TrRow>
                           {selected && (
                             <Details>
                               <DetailsCluster>
-                                <span>i</span>
+                                <Icon name="person" height="1em" width="1em" />
                                 <strong>
                                   {event.first_name} {event.last_name}
                                 </strong>
                                 <span>{event.email}</span>
                               </DetailsCluster>
                               <DetailsCluster>
-                                <span>i</span>
+                                <Icon name="pin" height="0.8em" width="0.8em" />
                                 <strong>Osoitejuttu?</strong>
                               </DetailsCluster>
                               <p>{event.description}</p>
@@ -134,12 +184,10 @@ class EventsPage extends PureComponent<Props> {
                                   color="primary"
                                   onClick={() => approve(event)}
                                 />
-                                <Button color="link" onClick={() => remove(event)}>
-                                  <IntlComponent
-                                    Component={ErrorMessage}
-                                    id="site.page.manage_events.table.action.remove"
-                                  />
-                                </Button>
+                                <ErrorButton color="link" onClick={() => remove(event)}>
+                                  <FormattedMessage id="site.page.manage_events.table.action.remove" />
+                                  <Icon inline name="close" height="1em" width="1em" />
+                                </ErrorButton>
                               </div>
                             </Details>
                           )}

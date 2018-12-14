@@ -1,5 +1,6 @@
 import React from 'react';
 import { addNotification } from '../../../ducks/notification';
+import Icon from '../../common/Icon';
 
 const Body = ({ values }) => (
   <div>
@@ -7,14 +8,14 @@ const Body = ({ values }) => (
       <strong>{values.name}</strong>
     </div>
     <div>
-      <span>Icon</span>
+      <Icon name="calendar" inline width="1em" height="1em" />
       <span>{values.startDate}</span>
       <span>
         klo {values.starttime} - {values.endtime}
       </span>
     </div>
     <div>
-      <span>Icon</span>
+      <Icon name="pin" inline width="1em" height="1em" />
       <span>Töölönranta</span>
     </div>
   </div>
