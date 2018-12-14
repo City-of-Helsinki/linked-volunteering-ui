@@ -27,7 +27,7 @@ const NavigationLinks = styled.div`
   }
 `;
 const LogoWrapper = styled.div`
-  border-bottom: 1px solid ${props => props.theme.helWhite};
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 `;
 
 const BottomLinks = styled.div`
