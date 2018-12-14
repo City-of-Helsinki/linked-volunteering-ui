@@ -10,12 +10,11 @@ import LocalizedLink from '../../common/LocalizedLink';
 
 import Layout from '../../layout/Layout';
 import backgroundImage from '../../../assets/images/_MG_2851_c_Jussi_Hellsten.jpg';
+import responsive from '../../../utils/responsive';
 
 const PageContainer = styled.div`
-  background-image: url(${backgroundImage});
-  background-size: 45% 100%;
-  background-repeat: no-repeat;
-  background-position: right;
+  display: flex;
+  overflow: hidden;
 `;
 
 const ButtonWrapper = styled.div`
@@ -25,11 +24,14 @@ const ButtonWrapper = styled.div`
 `;
 
 const Content = styled.div`
-  width: 55%;
-  padding-top: 12vh;
-  padding-bottom: 30vh;
-  padding-left: 4vw;
-  padding-right: 6vw;
+  flex: 0 0 55%;
+  padding-left: 7em;
+  padding-right: 7em;
+  padding-top: 3.5em;
+  padding-bottom: 3.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   h1 {
     font-size: 3.5rem;
@@ -48,6 +50,17 @@ const Content = styled.div`
     margin-top: 1.5rem;
     margin-bottom: 2.5rem;
   }
+`;
+
+const BackgroundImage = styled.img.attrs({
+  src: backgroundImage
+})`
+  flex: 0 0 45%;
+  max-height: 80vh;
+  display: none;
+  ${responsive.md`
+    display: block;
+  `}
 `;
 
 const SubmittedPage = () => (
@@ -71,6 +84,7 @@ const SubmittedPage = () => (
           to=""
         />
       </Content>
+      <BackgroundImage />
     </PageContainer>
   </Layout>
 );

@@ -12,7 +12,7 @@ type Props = {
   dispatch: Function
 };
 
-const M = ({ isOpen, closeModal, modal, meta, dispatch }: Props) => {
+export default ({ isOpen, closeModal, modal, meta, dispatch }: Props) => {
   if (!isOpen) {
     return null;
   }
@@ -46,5 +46,3 @@ const M = ({ isOpen, closeModal, modal, meta, dispatch }: Props) => {
     </Modal>
   );
 };
-
-export default M;

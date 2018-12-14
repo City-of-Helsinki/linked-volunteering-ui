@@ -14,7 +14,8 @@ import type { Event } from '../../../types/event';
 
 const FormContainer = styled(Container)`
   background-color: ${props => props.theme.helWhite};
-  margin-top: 1em;
+  padding-top: 2em;
+  padding-bottom: 2em;
 `;
 
 const TitleContainer = styled(Container)`
@@ -47,7 +48,7 @@ const NewEventPage = ({
   pageType,
   ...rest
 }: Props) => (
-  <Layout>
+  <Layout paddingBottom>
     <StickyContainer>
       <Sticky>
         {({ style }) => (

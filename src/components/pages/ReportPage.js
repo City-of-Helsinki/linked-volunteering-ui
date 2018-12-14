@@ -51,7 +51,7 @@ const StatisticsRow = styled(Row)`
 type Props = WithForm<Event> & intlShape;
 
 const ReportPage = ({ handleReset, handleSubmit, intl: { formatMessage }, ...rest }: Props) => (
-  <Layout>
+  <Layout paddingBottom>
     <TitleContainer fluid>
       <Row>
         <Col md={{ size: 3, offset: 1 }}>
