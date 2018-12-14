@@ -106,7 +106,6 @@
   "notification.manage_events.remove": "{name} peruttu!",
 
   "modal.confirm_removal.header": "Poistetaanko tapahtuma?",
-  "modal.confirm_removal.body": "<p>",
   "modal.confirm_removal.footer.button1.text": "Kyllä, poista tapahtuma",
   "modal.confirm_removal.footer.button2.text": "Ei, palaa takaisin"
 }
