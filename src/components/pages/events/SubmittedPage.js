@@ -7,6 +7,7 @@ import { Button } from 'reactstrap';
 
 import IntlComponent from '../../common/IntlComponent';
 import LocalizedLink from '../../common/LocalizedLink';
+import Icon from '../../common/Icon';
 
 import Layout from '../../layout/Layout';
 import backgroundImage from '../../../assets/images/_MG_2851_c_Jussi_Hellsten.jpg';
@@ -17,10 +18,12 @@ const PageContainer = styled.div`
   overflow: hidden;
 `;
 
-const ButtonWrapper = styled.div`
+const IconedButton = styled(Button)`
   display: flex;
   align-items: center;
-  color: black;
+  * + * {
+    margin-left: 0.5em;
+  }
 `;
 
 const Content = styled.div`
@@ -70,13 +73,11 @@ const SubmittedPage = () => (
         <FormattedMessage tagName="h1" id="site.page.thank_you.header" />
         <FormattedMessage tagName="strong" id="site.page.thank_you.paragraph" />
 
-        <ButtonWrapper>
-          <IntlComponent
-            Component={Button}
-            color="link"
-            id="site.page.thank_you.action.add_to_calendar"
-          />
-        </ButtonWrapper>
+        <IconedButton color="link">
+          <Icon name="calendar" width="1em" height="1em" />
+          <FormattedMessage id="site.page.thank_you.action.add_to_calendar" />
+          <Icon name="arrow" width="1em" height="1em" />
+        </IconedButton>
         <IntlComponent
           Component={LocalizedLink}
           className="btn btn-primary"
