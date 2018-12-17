@@ -6,6 +6,7 @@
   "site.nav.create_event": "Ilmoita uusi tapahtuma",
   "site.nav.report": "Vuosiraportit",
   "site.nav.events": "Tapahtumat",
+
   "site.footer.front_page": "Etusivu",
   "site.footer.upcoming_events": "Tulevat tapahtumat",
   "site.footer.create_event": "Luo uusi tapahtuma",
@@ -35,8 +36,15 @@
 
   "site.report.title": "Kevätsiivoustalkoot",
   "site.report.yearly_report": "Vuosiraportti",
-  "site.report.total_events": "Talkoita yhteensä",
-  "site.report.total_participants": "Osallistujia yhteensä",
+  "site.report.total_events": "Talkoita yhteensä {event_amount}",
+  "site.report.total_participants": "Osallistujia yhteensä {participant_amount}",
+
+  "site.report.table.header.area": "Talkoopiiri",
+  "site.report.table.header.contact_person": "Yhteyshenkilö",
+  "site.report.table.header.email": "Sähköposti",
+  "site.report.table.header.phone": "Puhelin",
+  "site.report.table.header.events": "Talkoita",
+  "site.report.table.header.participants": "Osallistujia",
 
   "form.validation.mixed.required": "Pakollinen kenttä!",
   "form.validation.mixed.not.number": "Kentän tulee olla numero!",

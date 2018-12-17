@@ -1,34 +1,26 @@
 // @flow
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Container, Row, Col, Button } from 'reactstrap';
 import { FormattedMessage, type intlShape } from 'react-intl';
-import responsive from '../../utils/responsive';
 
 import Layout from '../layout/Layout';
 import ReportForm from '../form/ReportForm';
 
+import { Table, Td, TrRow } from '../common/Table';
+import IntlComponent from '../common/IntlComponent';
+
 import type { WithForm } from '../../types/forms';
-import type { Event } from '../../types/event';
+import type { ReportRow } from '../../types/report';
 
 const FormContainer = styled(Container)`
-  background-color: ${props => props.theme.helWhite};
   margin-top: 1em;
+  margin-bottom: 3em;
 `;
 
-const TitleContainer = styled(Container)`
-  background-color: ${props => props.theme.helWhite};
-  padding: 1em;
-
-  h2 {
-    font-size: ${props => props.theme.h4FontSize};
-  }
-
-  ${responsive.md`
-    h2 {
-      font-size: ${props => props.theme.h2FontSize};
-    }
-  `}
+const TitleRow = styled(Row)`
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
 `;
 
 const ControlContainer = styled(Container)`
@@ -48,40 +40,93 @@ const StatisticsRow = styled(Row)`
   padding-bottom: 1.5em;
 `;
 
-type Props = WithForm<Event> & intlShape;
+type Props = WithForm<ReportRow> & intlShape;
 
-const ReportPage = ({ handleReset, handleSubmit, intl: { formatMessage }, ...rest }: Props) => (
-  <Layout paddingBottom>
-    <TitleContainer fluid>
-      <Row>
-        <Col md={{ size: 3, offset: 1 }}>
-          <FormattedMessage tagName="h2" id="site.report.title" />
-        </Col>
-      </Row>
-    </TitleContainer>
-    <ControlContainer fluid>
-      <Row>
-        <Col sm={{ size: 2, offset: 1 }}>
-          <ReportTitle>{formatMessage({ id: 'site.report.yearly_report' })}</ReportTitle>
-        </Col>
-        <Col sm={{ size: 4 }}>
-          <ReportForm {...rest} />
-        </Col>
-        <Col sm={{ size: 2 }}>
-          <Button block type="submit" onClick={handleSubmit} color="success">
-            {formatMessage({ id: 'form.report.button.submit' })}
-          </Button>
-        </Col>
-      </Row>
-      <StatisticsRow>
-        <Col sm={{ size: 2, offset: 1 }}>
-          {formatMessage({ id: 'site.report.total_events' })} 168
-        </Col>
-        <Col sm={{ size: 6 }}>{formatMessage({ id: 'site.report.total_participants' })} 21,471</Col>
-      </StatisticsRow>
-    </ControlContainer>
-    <FormContainer>Foo!</FormContainer>
-  </Layout>
-);
+class ReportPage extends Component<Props> {
+  componentDidMount() {
+    const { getReport } = this.props;
+    getReport();
+  }
+
+  render() {
+    const { handleReset, handleSubmit, reportRows, ...rest }: Props = this.props;
+    const event_amount = reportRows.reduce((acc, row) => acc + row.events, 0);
+    const participant_amount = reportRows.reduce((acc, row) => acc + row.participants, 0);
+    return (
+      <Layout>
+        <ControlContainer fluid>
+          <TitleRow>
+            <Col sm={{ size: 11, offset: 1 }}>
+              <FormattedMessage tagName="h2" id="site.report.title" />
+            </Col>
+          </TitleRow>
+          <Row>
+            <Col sm={{ size: 2, offset: 1 }}>
+              <IntlComponent Component={ReportTitle} id="site.report.yearly_report" />
+            </Col>
+            <Col sm={{ size: 4 }}>
+              <ReportForm {...rest} />
+            </Col>
+            <Col sm={{ size: 2 }}>
+              <IntlComponent
+                Component={Button}
+                block
+                type="submit"
+                onClick={handleSubmit}
+                color="success"
+                id="site.report.yearly_report"
+              />
+            </Col>
+          </Row>
+          <StatisticsRow>
+            <IntlComponent
+              Component={Col}
+              sm={{ size: 2, offset: 1 }}
+              id="site.report.total_events"
+              values={{ event_amount }}
+            />
+            <IntlComponent
+              Component={Col}
+              sm={{ size: 2, offset: 1 }}
+              id="site.report.total_participants"
+              values={{ participant_amount }}
+            />
+          </StatisticsRow>
+        </ControlContainer>
+        <FormContainer>
+          <Row>
+            <Col>
+              <Table>
+                <thead>
+                  <TrRow>
+                    <IntlComponent Component="th" id="site.report.table.header.area" />
+                    <IntlComponent Component="th" id="site.report.table.header.contact_person" />
+                    <IntlComponent Component="th" id="site.report.table.header.email" />
+                    <IntlComponent Component="th" id="site.report.table.header.phone" />
+                    <IntlComponent Component="th" id="site.report.table.header.events" />
+                    <IntlComponent Component="th" id="site.report.table.header.participants" />
+                  </TrRow>
+                </thead>
+                <tbody>
+                  {reportRows &&
+                    reportRows.valueSeq().map(reportRow => (
+                      <TrRow key={reportRow.id}>
+                        <Td>{reportRow.area}</Td>
+                        <Td>{reportRow.contact_person}</Td>
+                        <Td>{reportRow.email}</Td>
+                        <Td>{reportRow.phone}</Td>
+                        <Td>{reportRow.events}</Td>
+                        <Td>{reportRow.participants}</Td>
+                      </TrRow>
+                    ))}
+                </tbody>
+              </Table>
+            </Col>
+          </Row>
+        </FormContainer>
+      </Layout>
+    );
+  }
+}
 
 export default ReportPage;
