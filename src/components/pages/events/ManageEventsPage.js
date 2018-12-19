@@ -54,8 +54,11 @@ const ErrorButton = styled(Button)`
 
 type Props = {
   events: Events,
+  // flowlint-next-line unclear-type:off
   getEvents: Function,
+  // flowlint-next-line unclear-type:off
   remove: Function,
+  // flowlint-next-line unclear-type:off
   approve: Function
 };
 

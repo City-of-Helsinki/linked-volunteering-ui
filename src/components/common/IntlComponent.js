@@ -9,8 +9,8 @@ type Props = {
   intl: IntlShape
 };
 
-const IntlComponent = ({ Component, id, values, intl: { formatMessage }, ...rest }: Props) => {
-  return <Component {...rest}>{formatMessage({ id }, values)}</Component>;
-};
+const IntlComponent = ({ Component, id, values, intl: { formatMessage }, ...rest }: Props) => (
+  <Component {...rest}>{formatMessage({ id }, values)}</Component>
+);
 
 export default injectIntl(IntlComponent);

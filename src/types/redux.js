@@ -1,7 +1,7 @@
 // @flow
 import type { RecordOf, RecordFactory } from 'immutable';
 import type { Events } from './event';
-import type { ReportRows } from './report';
+import type { Reports } from './report';
 import type { Notifications } from './notification';
 
 export type Action = {
@@ -23,7 +23,7 @@ type ReportProps = {
   count: 0,
   next: string | null,
   previous: string | null,
-  reportRows: ReportRows
+  rows: Reports
 };
 
 type NotificationProps = {
@@ -46,10 +46,12 @@ export type ReportState = RecordOf<ReportProps>;
 export type NotificationFactory = RecordFactory<NotificationProps>;
 export type NotificationState = RecordOf<NotificationProps>;
 
-export type Store = {
-  events: EventState,
-  report: ReportState
-};
-
 export type ModalFactory = RecordFactory<ModalProps>;
 export type ModalState = RecordOf<ModalProps>;
+
+export type Store = {
+  event: EventProps,
+  report: ReportProps,
+  notification: NotificationProps,
+  modal: ModalProps
+};
