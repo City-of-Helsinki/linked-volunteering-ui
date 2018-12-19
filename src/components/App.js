@@ -1,7 +1,9 @@
 // @flow
+import '@babel/polyfill';
 import React from 'react';
 import { Switch, Route } from 'react-router';
 import { IntlProvider } from 'react-intl';
+
 import messages from '../config/translations';
 
 import ManageEventsPage from './pages/events/containers/ManageEventsPageContainer';
