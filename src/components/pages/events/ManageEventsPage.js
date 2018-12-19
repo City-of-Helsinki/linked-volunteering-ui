@@ -150,7 +150,7 @@ class EventsPage extends PureComponent<Props, State> {
                             </Td>
                             <Td>
                               <LocalizedLink to={`event/modify/${event.id}`}>
-                                <Icon inline name="fillIn" height="1em" width="1em" />
+                                <Icon inline name="pencil" height="1em" width="1em" />
                                 <IntlComponent
                                   Component={SpacedSpan}
                                   id="site.page.manage_events.table.action.edit"
@@ -159,21 +159,26 @@ class EventsPage extends PureComponent<Props, State> {
                             </Td>
                             <Td>
                               <Button color="link" onClick={() => this.toggleDetails(event.id)}>
-                                <Icon name="point" rotate={selected ? 90 : 0} />
+                                <Icon
+                                  name="angleRight"
+                                  height="2em"
+                                  width="2em"
+                                  rotate={selected ? 90 : 0}
+                                />
                               </Button>
                             </Td>
                           </TrRow>
                           {selected && (
                             <Details>
                               <DetailsCluster>
-                                <Icon name="person" height="1em" width="1em" />
+                                <Icon name="user" height="1em" width="1em" />
                                 <strong>
                                   {event.first_name} {event.last_name}
                                 </strong>
                                 <span>{event.email}</span>
                               </DetailsCluster>
                               <DetailsCluster>
-                                <Icon name="pin" height="0.8em" width="0.8em" />
+                                <Icon name="mapMarker" height="0.8em" width="0.8em" />
                                 <strong>Osoitejuttu?</strong>
                               </DetailsCluster>
                               <p>{event.description}</p>
@@ -186,7 +191,7 @@ class EventsPage extends PureComponent<Props, State> {
                                 />
                                 <ErrorButton color="link" onClick={() => remove(event)}>
                                   <FormattedMessage id="site.page.manage_events.table.action.remove" />
-                                  <Icon inline name="close" height="1em" width="1em" />
+                                  <Icon inline name="times" height="1em" width="1em" />
                                 </ErrorButton>
                               </div>
                             </Details>

@@ -15,7 +15,7 @@ const Body = ({ values }) => (
       </span>
     </div>
     <div>
-      <Icon name="pin" inline width="1em" height="1em" />
+      <Icon name="mapMarker" inline width="1em" height="1em" />
       <span>Töölönranta</span>
     </div>
   </div>
