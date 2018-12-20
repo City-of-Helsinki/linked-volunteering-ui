@@ -49,10 +49,12 @@ const PageWrapper = styled.div`
   padding-bottom: ${props => (props.paddingBottom ? '3em' : 0)};
 `;
 
-const UserAction = styled.div`
+const UserAction = styled.a`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  border: none;
+  background-color: none;
 
   & span {
     margin-left: 0.5em;
