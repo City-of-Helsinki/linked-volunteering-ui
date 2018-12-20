@@ -46,6 +46,15 @@ const IconedLocalizedLink = styled(LocalizedLink)`
   }
 `;
 
+const StyledButton = styled(IntlComponent)`
+  background-color: ${props => props.theme.helSummer};
+  color: ${props => props.theme.helBlack};
+
+  &:hover {
+    color: ${props => props.theme.helBlack};
+  }
+`;
+
 const LandingPage = () => (
   <Layout>
     <PageContainer>
@@ -61,17 +70,17 @@ const LandingPage = () => (
         </Row>
         <Row>
           <Col md="3">
-            <IntlComponent
+            <StyledButton
               Component={LocalizedLink}
               id="site.page.landing.hero.button"
-              className="btn btn-secondary btn-block"
+              className="btn btn-block"
               to="event/new"
             />
           </Col>
           <Col md="3">
             <IconedLocalizedLink className="btn btn-link btn-block" to="#???">
               <FormattedMessage tagName="span" id="site.page.landing.hero.link" />
-              <Icon name="arrowLeft" height="1em" width="1em" />
+              <Icon name="arrowRight" height="1em" width="1em" />
             </IconedLocalizedLink>
           </Col>
         </Row>
