@@ -49,7 +49,7 @@ const PageWrapper = styled.div`
   padding-bottom: ${props => (props.paddingBottom ? '3em' : 0)};
 `;
 
-const LoginWrapper = styled.div`
+const UserAction = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -76,18 +76,18 @@ const Layout = ({ children, intl, paddingTop, paddingBottom, user }: Props) => (
       <Nav className="ml-auto" navbar>
         <LanguageDropdown />
         {!user && (
-          <LoginWrapper
+          <UserAction
             onClick={() => {
               userManager.signinRedirect();
             }}
           >
             <Icon name="user" width="30px" color="black" />
             <span>Kirjaudu sisään</span>
-          </LoginWrapper>
+          </UserAction>
         )}
 
         {user && (
-          <LoginWrapper
+          <UserAction
             onClick={() => {
               console.log(userManager);
               userManager.signoutRedirect();
@@ -95,7 +95,7 @@ const Layout = ({ children, intl, paddingTop, paddingBottom, user }: Props) => (
           >
             <Icon name="user" width="30px" color="black" />
             <span>Kirjaudu ulos</span>
-          </LoginWrapper>
+          </UserAction>
         )}
       </Nav>
     </NavbarRow>
