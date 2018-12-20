@@ -101,9 +101,6 @@
   "form.event.field.trash_bags.placeholder": "Rullaa",
   "form.event.field.trash_pickers.label": "Roskapihtejä",
   "form.event.field.trash_pickers.placeholder": "Kappaletta",
-  "form.event.field.visibility.header": "Näytetäänkö tapahtuma julkisesti vai ei?",
-  "form.event.field.visibility_public.label": "Julkinen",
-  "form.event.field.visibility_private.label": "Salattu",
 
   "form.report.field.year.label": "Valitse vuosi",
   "form.report.button.submit": "Hae",

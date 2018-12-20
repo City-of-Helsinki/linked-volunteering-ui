@@ -7,7 +7,6 @@ import styled from 'styled-components';
 import Input from './fields/Input';
 import Select from './fields/Select';
 import Checkbox from './fields/Checkbox';
-import Radio from './fields/Radio';
 import Map from './fields/Map';
 import Areas from './partitions/Areas';
 
@@ -97,6 +96,7 @@ export default ({
         </MapContainer>
       </Col>
     </Row>
+    {/*
     <Row>
       <Col sm="12" md={{ size: 4, offset: 1 }}>
         <Input
@@ -127,17 +127,18 @@ export default ({
         />
       </Col>
     </Row>
+      */}
     <Row>
       <Col sm="12" md={{ size: 4, offset: 1 }}>
         <Input
           type="text"
-          id="starttime"
+          id="start_time"
           label="form.event.field.starttime.label"
           placeholder="form.event.field.starttime.placeholder"
           required
-          error={errors.starttime}
-          touched={touched.starttime}
-          value={values.starttime}
+          error={errors.start_time}
+          touched={touched.start_time}
+          value={values.start_time}
           onChange={handleChange}
           onBlur={handleBlur}
         />
@@ -145,13 +146,13 @@ export default ({
       <Col sm="12" md={{ size: 4 }}>
         <Input
           type="text"
-          id="endtime"
+          id="end_time"
           label="form.event.field.endtime.label"
           placeholder="form.event.field.endtime.placeholder"
           required
-          error={errors.endtime}
-          touched={touched.endtime}
-          value={values.endtime}
+          error={errors.end_time}
+          touched={touched.end_time}
+          value={values.end_time}
           onChange={handleChange}
           onBlur={handleBlur}
         />
@@ -167,13 +168,13 @@ export default ({
       <Col sm="12" md={{ size: 4, offset: 1 }}>
         <Input
           type="text"
-          id="first_name"
+          id="organizer_first_name"
           label="form.event.field.first_name.label"
           placeholder="form.event.field.first_name.placeholder"
           required
-          error={errors.first_name}
-          touched={touched.first_name}
-          value={values.first_name}
+          error={errors.organizer_first_name}
+          touched={touched.organizer_first_name}
+          value={values.organizer_first_name}
           onChange={handleChange}
           onBlur={handleBlur}
         />
@@ -181,13 +182,13 @@ export default ({
       <Col sm="12" md={{ size: 4 }}>
         <Input
           type="text"
-          id="last_name"
+          id="organizer_last_name"
           label="form.event.field.last_name.label"
           placeholder="form.event.field.last_name.placeholder"
           required
-          error={errors.last_name}
-          touched={touched.last_name}
-          value={values.last_name}
+          error={errors.organizer_last_name}
+          touched={touched.organizer_last_name}
+          value={values.organizer_last_name}
           onChange={handleChange}
           onBlur={handleBlur}
         />
@@ -197,13 +198,13 @@ export default ({
       <Col sm="12" md={{ size: 4, offset: 1 }}>
         <Input
           type="text"
-          id="email"
+          id="organizer_email"
           label="form.event.field.email.label"
           placeholder="form.event.field.name.placeholder"
           required
-          error={errors.email}
-          touched={touched.email}
-          value={values.email}
+          error={errors.organizer_email}
+          touched={touched.organizer_email}
+          value={values.organizer_email}
           onChange={handleChange}
           onBlur={handleBlur}
         />
@@ -211,27 +212,13 @@ export default ({
       <Col sm="12" md={{ size: 4 }}>
         <Input
           type="text"
-          id="phone"
+          id="organizer_phone"
           label="form.event.field.phone.label"
           placeholder="form.event.field.phone.placeholder"
           required
-          error={errors.phone}
-          touched={touched.phone}
-          value={values.phone}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-      </Col>
-    </Row>
-    <Row>
-      <Col sm="12" md={{ size: 8, offset: 1 }}>
-        <FormattedMessage tagName="p" id="form.event.field.show_contact_details.header" />
-        <Checkbox
-          id="show_contact_details"
-          label="form.event.field.show_contact_details.label"
-          error={errors.show_contact_details}
-          touched={touched.show_contact_details}
-          value={values.show_contact_details}
+          error={errors.organizer_phone}
+          touched={touched.organizer_phone}
+          value={values.organizer_phone}
           onChange={handleChange}
           onBlur={handleBlur}
         />
@@ -246,13 +233,13 @@ export default ({
       <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
         <Input
           type="number"
-          id="amount_of_volunteers"
+          id="estimated_attendee_count"
           label="form.event.field.amount_of_volunteers.label"
           placeholder="form.event.field.amount_of_volunteers.placeholder"
           required
-          error={errors.amount_of_volunteers}
-          touched={touched.amount_of_volunteers}
-          value={values.amount_of_volunteers}
+          error={errors.estimated_attendee_count}
+          touched={touched.estimated_attendee_count}
+          value={values.estimated_attendee_count}
           onChange={handleChange}
           onBlur={handleBlur}
         />
@@ -262,13 +249,13 @@ export default ({
       <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
         <Input
           type="text"
-          id="cleaning_targets"
+          id="targets"
           label="form.event.field.cleaning_targets.label"
           placeholder="form.event.field.cleaning_targets.placeholder"
           required
-          error={errors.cleaning_targets}
-          touched={touched.cleaning_targets}
-          value={values.cleaning_targets}
+          error={errors.targets}
+          touched={touched.targets}
+          value={values.targets}
           onChange={handleChange}
           onBlur={handleBlur}
         />
@@ -278,13 +265,13 @@ export default ({
       <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
         <Input
           type="text"
-          id="trash_location"
+          id="maintenance_location"
           label="form.event.field.trash_location.label"
           placeholder="form.event.field.trash_location.placeholder"
           required
-          error={errors.trash_location}
-          touched={touched.trash_location}
-          value={values.trash_location}
+          error={errors.maintenance_location}
+          touched={touched.maintenance_location}
+          value={values.maintenance_location}
           onChange={handleChange}
           onBlur={handleBlur}
         />
@@ -294,11 +281,11 @@ export default ({
       <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 7, offset: 1 }}>
         <Input
           type="textarea"
-          id="details"
+          id="additional_information"
           label="form.event.field.details.label"
-          error={errors.details}
-          touched={touched.details}
-          value={values.details}
+          error={errors.additional_information}
+          touched={touched.additional_information}
+          value={values.additional_information}
           onChange={handleChange}
           onBlur={handleBlur}
         />
@@ -313,11 +300,11 @@ export default ({
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
         <Checkbox
-          id="container"
+          id="has_roll_off_dumpster"
           label="form.event.field.container.label"
-          error={errors.container}
-          touched={touched.container}
-          value={values.container}
+          error={errors.has_roll_off_dumpster}
+          touched={touched.has_roll_off_dumpster}
+          value={values.has_roll_off_dumpster}
           onChange={handleChange}
           onBlur={handleBlur}
         />
@@ -327,13 +314,13 @@ export default ({
       <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
         <Input
           type="number"
-          id="trash_bags"
+          id="trash_bag_count"
           label="form.event.field.trash_bags.label"
           placeholder="form.event.field.trash_bags.placeholder"
           required
-          error={errors.trash_bags}
-          touched={touched.trash_bags}
-          value={values.trash_bags}
+          error={errors.trash_bag_count}
+          touched={touched.trash_bag_count}
+          value={values.trash_bag_count}
           onChange={handleChange}
           onBlur={handleBlur}
         />
@@ -343,13 +330,13 @@ export default ({
       <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
         <Input
           type="text"
-          id="trash_pickers"
+          id="trash_picker_count"
           label="form.event.field.trash_pickers.label"
           placeholder="form.event.field.trash_pickers.placeholder"
           required
-          error={errors.trash_pickers}
-          touched={touched.trash_pickers}
-          value={values.trash_pickers}
+          error={errors.trash_picker_count}
+          touched={touched.trash_picker_count}
+          value={values.trash_picker_count}
           onChange={handleChange}
           onBlur={handleBlur}
         />
@@ -358,33 +345,6 @@ export default ({
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
         <FormattedMessage tagName="h3" id="form.event.title.visibility" />
-      </Col>
-    </Row>
-    <Row>
-      <Col sm="12" md={{ size: 8, offset: 1 }}>
-        <FormattedMessage tagName="p" id="form.event.field.visibility.header" />
-        <Radio
-          id="visibility_public"
-          label="form.event.field.visibility_public.label"
-          name="visibility"
-          error={errors.visibility}
-          touched={touched.visibility}
-          checked={values.visibility === 'public'}
-          value="public"
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-        <Radio
-          id="visibility_private"
-          label="form.event.field.visibility_private.label"
-          name="visibility"
-          error={errors.visibility}
-          touched={touched.visibility}
-          checked={values.visibility === 'private'}
-          value="private"
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
       </Col>
     </Row>
   </form>

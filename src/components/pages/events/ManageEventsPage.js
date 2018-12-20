@@ -138,9 +138,9 @@ class EventsPage extends PureComponent<Props, State> {
                           <TrRow selected={selected}>
                             <FirstTd selected={event.state === 'pending'} />
                             <Td>{event.name}</Td>
-                            <Td>{event.email}</Td>
-                            <Td>{event.startdate}</Td>
-                            <Td>{event.created}</Td>
+                            <Td>{event.organizer_email}</Td>
+                            <Td>{event.start_time}</Td>
+                            <Td>{event.created_at}</Td>
                             <Td>
                               <Icon
                                 inline
@@ -176,9 +176,9 @@ class EventsPage extends PureComponent<Props, State> {
                               <DetailsCluster>
                                 <Icon name="user" height="1em" width="1em" />
                                 <strong>
-                                  {event.first_name} {event.last_name}
+                                  {event.organizer_first_name} {event.organizer_last_name}
                                 </strong>
-                                <span>{event.email}</span>
+                                <span>{event.organizer_email}</span>
                               </DetailsCluster>
                               <DetailsCluster>
                                 <Icon name="mapMarker" height="0.8em" width="0.8em" />
