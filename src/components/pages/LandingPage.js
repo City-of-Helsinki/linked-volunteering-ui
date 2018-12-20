@@ -7,7 +7,7 @@ import IntlComponent from '../common/IntlComponent';
 import LocalizedLink from '../common/LocalizedLink';
 import Icon from '../common/Icon';
 
-import Layout from '../layout/Layout';
+import Layout from '../layout/containers/LayoutContainer';
 import heroImage from '../../assets/images/helsinki_paiva_002_6450.jpg';
 
 const PageContainer = styled.div`
