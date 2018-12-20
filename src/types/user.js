@@ -24,7 +24,9 @@ type UserProps = {
 
 export type User = Map<string, UserProps>;
 
-export type OIDC = {
+type OidcProps = {
   user: User,
   isLoadingUser: boolean
 };
+
+export type OIDC = Map<string, OidcProps>;
