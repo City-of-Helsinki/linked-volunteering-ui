@@ -14,6 +14,7 @@ import Icon from '../common/Icon';
 import Modal from '../modal/containers/ModalContainer';
 import KoroSection from './KoroSection';
 import Footer from './Footer';
+import userManager from '../../utils/userManager';
 
 type Props = {
   children: Node,
@@ -58,6 +59,14 @@ const Layout = ({ children, intl, paddingTop, paddingBottom }: Props) => (
       </NavbarBrand>
       <Nav className="ml-auto" navbar>
         <LanguageDropdown />
+        <button
+          type="button"
+          onClick={() => {
+            userManager.signinRedirect();
+          }}
+        >
+          Login
+        </button>
       </Nav>
     </NavbarRow>
     <NavbarRow expand="md">
