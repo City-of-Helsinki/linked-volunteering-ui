@@ -2,7 +2,7 @@ import React from 'react';
 import { CallbackComponent } from 'redux-oidc';
 import userManager from '../../utils/userManager';
 
-const CallBackPage = ({ intl, history }) => (
+const CallBackPage = ({ history }) => (
   <CallbackComponent
     userManager={userManager}
     successCallback={() => {
