@@ -49,9 +49,9 @@ class ReportPage extends Component<Props> {
   }
 
   render() {
-    const { handleReset, handleSubmit, reportRows, ...rest }: Props = this.props;
-    const eventAmount = reportRows.reduce((acc, row) => acc + row.events, 0);
-    const participantAmount = reportRows.reduce((acc, row) => acc + row.participants, 0);
+    const { handleReset, handleSubmit, reports, ...rest }: Props = this.props;
+    const eventAmount = reports.reduce((acc, row) => acc + row.events, 0);
+    const participantAmount = reports.reduce((acc, row) => acc + row.participants, 0);
     return (
       <Layout>
         <ControlContainer fluid>
@@ -108,15 +108,15 @@ class ReportPage extends Component<Props> {
                   </TrRow>
                 </thead>
                 <tbody>
-                  {reportRows &&
-                    reportRows.valueSeq().map(reportRow => (
-                      <TrRow key={reportRow.id}>
-                        <Td>{reportRow.area}</Td>
-                        <Td>{reportRow.contact_person}</Td>
-                        <Td>{reportRow.email}</Td>
-                        <Td>{reportRow.phone}</Td>
-                        <Td>{reportRow.events}</Td>
-                        <Td>{reportRow.participants}</Td>
+                  {reports &&
+                    reports.valueSeq().map(report => (
+                      <TrRow key={report.id}>
+                        <Td>{report.area}</Td>
+                        <Td>{report.contact_person}</Td>
+                        <Td>{report.email}</Td>
+                        <Td>{report.phone}</Td>
+                        <Td>{report.events}</Td>
+                        <Td>{report.participants}</Td>
                       </TrRow>
                     ))}
                 </tbody>

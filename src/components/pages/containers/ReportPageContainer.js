@@ -11,7 +11,7 @@ export default compose(
   withReportForm,
   connect(
     (state: Store) => ({
-      reportRows: state.report.reports
+      reports: state.report.reports
     }),
     { getReport }
   )
