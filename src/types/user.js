@@ -1,6 +1,7 @@
 // @flow
+import type { Map } from 'immutable';
 
-type UserProfile = {
+type UserProfile = Map<{
   sub: string,
   auth_time: number,
   given_name: string,
@@ -9,12 +10,17 @@ type UserProfile = {
   family_name: string,
   nickname: string,
   email_verified: boolean
-};
+}>;
 
-export type User = {
+type User = Map<{
   id_token: string | null,
   access_token: string | null,
   token_type: string | null,
   expires_at: number,
   profile: UserProfile
+}>;
+
+export type OIDC = {
+  user: User,
+  isLoadingUser: boolean
 };
