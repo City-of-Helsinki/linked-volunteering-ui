@@ -11,7 +11,9 @@ const settings = {
   client_id: REACT_APP_OPENID_CLIENT_ID,
   authority: REACT_APP_OPENID_AUTHORITY,
   redirect_uri: getRedirectUri(),
-  loadUserInfo: true
+  loadUserInfo: true,
+  response_type: 'id_token token',
+  scope: 'openid profile https://api.hel.fi/auth/projects'
 };
 
 export default createUserManager(settings);
