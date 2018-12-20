@@ -91,7 +91,6 @@ const Layout = ({ children, intl, paddingTop, paddingBottom, user }: Props) => (
         {user && (
           <UserAction
             onClick={() => {
-              console.log(userManager);
               userManager.signoutRedirect();
             }}
           >
