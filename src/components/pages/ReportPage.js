@@ -11,7 +11,7 @@ import { Table, Td, TrRow } from '../common/Table';
 import IntlComponent from '../common/IntlComponent';
 
 import type { WithForm } from '../../types/forms';
-import type { ReportRow } from '../../types/report';
+import type { Report } from '../../types/report';
 
 const FormContainer = styled(Container)`
   margin-top: 1em;
@@ -40,7 +40,7 @@ const StatisticsRow = styled(Row)`
   padding-bottom: 1.5em;
 `;
 
-type Props = WithForm<ReportRow> & intlShape;
+type Props = WithForm<Report> & intlShape;
 
 class ReportPage extends Component<Props> {
   componentDidMount() {
@@ -49,9 +49,9 @@ class ReportPage extends Component<Props> {
   }
 
   render() {
-    const { handleReset, handleSubmit, reportRows, ...rest }: Props = this.props;
-    const event_amount = reportRows.reduce((acc, row) => acc + row.events, 0);
-    const participant_amount = reportRows.reduce((acc, row) => acc + row.participants, 0);
+    const { handleReset, handleSubmit, reports, ...rest }: Props = this.props;
+    const eventAmount = reports.reduce((acc, row) => acc + row.events, 0);
+    const participantAmount = reports.reduce((acc, row) => acc + row.participants, 0);
     return (
       <Layout>
         <ControlContainer fluid>
@@ -83,13 +83,13 @@ class ReportPage extends Component<Props> {
               Component={Col}
               sm={{ size: 2, offset: 1 }}
               id="site.report.total_events"
-              values={{ event_amount }}
+              values={{ event_amount: eventAmount }}
             />
             <IntlComponent
               Component={Col}
               sm={{ size: 2, offset: 1 }}
               id="site.report.total_participants"
-              values={{ participant_amount }}
+              values={{ participant_amount: participantAmount }}
             />
           </StatisticsRow>
         </ControlContainer>
@@ -108,15 +108,15 @@ class ReportPage extends Component<Props> {
                   </TrRow>
                 </thead>
                 <tbody>
-                  {reportRows &&
-                    reportRows.valueSeq().map(reportRow => (
-                      <TrRow key={reportRow.id}>
-                        <Td>{reportRow.area}</Td>
-                        <Td>{reportRow.contact_person}</Td>
-                        <Td>{reportRow.email}</Td>
-                        <Td>{reportRow.phone}</Td>
-                        <Td>{reportRow.events}</Td>
-                        <Td>{reportRow.participants}</Td>
+                  {reports &&
+                    reports.valueSeq().map(report => (
+                      <TrRow key={report.id}>
+                        <Td>{report.area}</Td>
+                        <Td>{report.contact_person}</Td>
+                        <Td>{report.email}</Td>
+                        <Td>{report.phone}</Td>
+                        <Td>{report.events}</Td>
+                        <Td>{report.participants}</Td>
                       </TrRow>
                     ))}
                 </tbody>

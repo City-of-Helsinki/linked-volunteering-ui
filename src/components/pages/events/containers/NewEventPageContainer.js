@@ -1,3 +1,4 @@
+// @flow
 import { injectIntl } from 'react-intl';
 import { compose, withProps, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
@@ -7,8 +8,14 @@ import eventService from '../../../../services/eventService';
 import { withEventForm } from '../../../form/withForm';
 import EventPage from '../EventPage';
 
+type Props = {
+  pageType: string,
+  locale: string
+};
+
 export default compose(
-  withProps(props => ({
+  // flowlint-next-line unclear-type:off
+  withProps<any, Props>((props: any) => ({
     pageType: 'new',
     locale: props.match.params.locale
   })),

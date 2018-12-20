@@ -4,3 +4,4 @@ suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe
 [lints]
 all=warn
 unclear-type=error
+untyped-import=off

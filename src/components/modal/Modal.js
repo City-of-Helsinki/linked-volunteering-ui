@@ -7,8 +7,11 @@ import IntlComponent from '../common/IntlComponent';
 type Props = {
   isOpen: boolean,
   modal: string,
+  // flowlint-next-line unclear-type:off
   meta: any,
+  // flowlint-next-line unclear-type:off
   closeModal: Function,
+  // flowlint-next-line unclear-type:off
   dispatch: Function
 };
 
