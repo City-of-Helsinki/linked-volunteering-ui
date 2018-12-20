@@ -1,7 +1,7 @@
 // @flow
 import type { Map } from 'immutable';
 
-export type ReportRow = {
+export type Report = {
   id: string,
   area: string,
   contact_person: string,
@@ -11,4 +11,4 @@ export type ReportRow = {
   participants: number
 };
 
-export type Report = Map<string, ReportRow>;
+export type Reports = Map<string, Report>;
