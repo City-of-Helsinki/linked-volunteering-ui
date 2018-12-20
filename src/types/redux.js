@@ -23,7 +23,7 @@ type ReportProps = {
   count: 0,
   next: string | null,
   previous: string | null,
-  rows: Reports
+  reports: Reports
 };
 
 type NotificationProps = {

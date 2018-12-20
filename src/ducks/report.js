@@ -8,7 +8,7 @@ const defaultState: ReportFactory = Record({
   count: 0,
   next: null,
   previous: null,
-  rows: Map()
+  reports: Map()
 });
 
 export const getReport = createAction('GET_REPORT', reportService.getReport);
@@ -21,7 +21,9 @@ export default (state: ReportState = defaultState(), action: Action): ReportStat
         .set('count', payload.count)
         .set('next', payload.next)
         .set('previous', payload.previous)
-        .update('rows', rows => rows.merge(Map(payload.results.map(row => [row.id, row]))));
+        .update('reports', reports =>
+          reports.merge(Map(payload.results.map(report => [report.id, report])))
+        );
     default:
       return state;
   }
