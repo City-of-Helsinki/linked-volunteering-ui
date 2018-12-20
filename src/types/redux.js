@@ -3,6 +3,7 @@ import type { RecordOf, RecordFactory } from 'immutable';
 import type { Events } from './event';
 import type { Reports } from './report';
 import type { Notifications } from './notification';
+import type { OIDC } from './user';
 
 export type Action = {
   type: string,
@@ -50,6 +51,7 @@ export type ModalFactory = RecordFactory<ModalProps>;
 export type ModalState = RecordOf<ModalProps>;
 
 export type Store = {
+  oidc: OIDC,
   event: EventProps,
   report: ReportProps,
   notification: NotificationProps,

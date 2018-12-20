@@ -9,7 +9,7 @@ import IntlComponent from '../../common/IntlComponent';
 import LocalizedLink from '../../common/LocalizedLink';
 import Icon from '../../common/Icon';
 
-import Layout from '../../layout/Layout';
+import Layout from '../../layout/containers/LayoutContainer';
 import backgroundImage from '../../../assets/images/_MG_2851_c_Jussi_Hellsten.jpg';
 import responsive from '../../../utils/responsive';
 

@@ -9,7 +9,7 @@ import IntlComponent from '../../common/IntlComponent';
 import { Table, Td, FirstTd, TrRow } from '../../common/Table';
 import Icon from '../../common/Icon';
 
-import Layout from '../../layout/Layout';
+import Layout from '../../layout/containers/LayoutContainer';
 
 import type { Events } from '../../../types/event';
 

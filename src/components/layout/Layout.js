@@ -15,12 +15,14 @@ import Modal from '../modal/containers/ModalContainer';
 import KoroSection from './KoroSection';
 import Footer from './Footer';
 import userManager from '../../utils/userManager';
+import type { User } from '../../types/user';
 
 type Props = {
   children: Node,
   intl: intlShape,
   paddingTop: boolean,
-  paddingBottom: boolean
+  paddingBottom: boolean,
+  user: User
 };
 
 const Content = styled.div`
@@ -47,7 +49,23 @@ const PageWrapper = styled.div`
   padding-bottom: ${props => (props.paddingBottom ? '3em' : 0)};
 `;
 
-const Layout = ({ children, intl, paddingTop, paddingBottom }: Props) => (
+const UserAction = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border: none;
+  background-color: none;
+
+  & span {
+    margin-left: 0.5em;
+  }
+
+  & :hover {
+    cursor: pointer;
+  }
+`;
+
+const Layout = ({ children, intl, paddingTop, paddingBottom, user }: Props) => (
   <Fragment>
     <Helmet>
       <meta charSet="utf-8" />
@@ -59,14 +77,27 @@ const Layout = ({ children, intl, paddingTop, paddingBottom }: Props) => (
       </NavbarBrand>
       <Nav className="ml-auto" navbar>
         <LanguageDropdown />
-        <button
-          type="button"
-          onClick={() => {
-            userManager.signinRedirect();
-          }}
-        >
-          Login
-        </button>
+        {!user && (
+          <UserAction
+            onClick={() => {
+              userManager.signinRedirect();
+            }}
+          >
+            <Icon name="user" width="30px" color="black" />
+            <span>Kirjaudu sisään</span>
+          </UserAction>
+        )}
+
+        {user && (
+          <UserAction
+            onClick={() => {
+              userManager.signoutRedirect();
+            }}
+          >
+            <Icon name="user" width="30px" color="black" />
+            <span>Kirjaudu ulos</span>
+          </UserAction>
+        )}
       </Nav>
     </NavbarRow>
     <NavbarRow expand="md">

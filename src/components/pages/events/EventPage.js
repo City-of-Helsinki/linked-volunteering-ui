@@ -6,7 +6,7 @@ import { StickyContainer, Sticky } from 'react-sticky';
 import { type intlShape } from 'react-intl';
 import responsive from '../../../utils/responsive';
 
-import Layout from '../../layout/Layout';
+import Layout from '../../layout/containers/LayoutContainer';
 import EventForm from '../../form/EventForm';
 
 import type { WithForm } from '../../../types/forms';

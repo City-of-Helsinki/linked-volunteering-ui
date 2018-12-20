@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Container, Row, Col, Button } from 'reactstrap';
 import { FormattedMessage, type intlShape } from 'react-intl';
 
-import Layout from '../layout/Layout';
+import Layout from '../layout/containers/LayoutContainer';
 import ReportForm from '../form/ReportForm';
 
 import { Table, Td, TrRow } from '../common/Table';
