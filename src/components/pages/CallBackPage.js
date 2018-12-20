@@ -6,14 +6,16 @@ const CallBackPage = ({ history }) => (
   <CallbackComponent
     userManager={userManager}
     successCallback={() => {
-      console.log('successCallback');
       history.push('/');
     }}
     errorCallback={error => {
       console.error(error);
     }}
   >
-    <div>Redirecting...</div>
+    <div>
+      <p>Uudelleen ohjataan takaisin sivustolle...</p>
+      <a href="/">Jatka sivustolle</a>
+    </div>
   </CallbackComponent>
 );
 
