@@ -73,7 +73,7 @@ class MapCanvas extends Component<Props, State> {
     handleChange({
       target: {
         id,
-        value: { lat, lng }
+        value: { type: 'point', coordinates: [lat, lng] }
       }
     });
   };
@@ -86,7 +86,9 @@ class MapCanvas extends Component<Props, State> {
     } = this.props;
 
     const position = [this.state.lat, this.state.lng];
-    const markerPosition = value ? [value.lat, value.lng] : position;
+
+    const markerPosition =
+      value.coordinates.length > 0 ? [value.coordinates[0], value.coordinates[1]] : position;
     const marker = value ? <Marker position={markerPosition} /> : null;
 
     return (
