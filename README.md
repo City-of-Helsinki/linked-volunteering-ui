@@ -1,6 +1,6 @@
 # Linked Volunteering UI
 
-[![Build Status](https://travis-ci.org/City-of-Helsinki/haravajarjestelma.svg?branch=master)](https://travis-ci.org/City-of-Helsinki/haravajarjestelma)
+[![Build Status](https://travis-ci.org/City-of-Helsinki/linked-volunteering-ui.svg?branch=master)](https://travis-ci.org/City-of-Helsinki/linked-volunteering-ui)
 
 ## Prerequisites
 
@@ -26,16 +26,10 @@ $ cp .env.example .env.development.local
 To start development environment, run:
 
 ```
-$ yarn dev
-```
-
-This will start [the application](http://localhost:3000) and [the storybook](http://localhost:9001) for ports `3000` & `9001`
-
-To only start the client:
-
-```
 $ yarn start
 ```
+
+This will start [the application](http://localhost:3000) to run in port `3000`
 
 ## Testing
 
