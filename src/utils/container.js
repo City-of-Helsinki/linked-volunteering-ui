@@ -1,5 +1,7 @@
-import { withHandlers, withProps, compose } from 'recompose';
+import { withHandlers, withProps, compose, branch, renderComponent } from 'recompose';
 import { withRouter } from 'react-router';
+import { connect } from 'react-redux';
+import ErrorPage from '../components/pages/containers/ErrorPageContainer';
 
 export const withMatchParams = compose(
   withRouter,
@@ -16,4 +18,12 @@ export const withMatchParamsHandlers = compose(
       history.push(`/${locale}${uri}`);
     }
   })
+);
+
+export const renderIfAuthenticated = compose(
+  connect(state => ({
+    isAutenticated: state.oidc.get('user')
+  })),
+  withRouter,
+  branch(({ isAutenticated }) => !isAutenticated, renderComponent(ErrorPage))
 );

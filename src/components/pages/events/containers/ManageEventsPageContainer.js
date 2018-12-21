@@ -5,8 +5,10 @@ import { getEvents } from '../../../../ducks/event';
 import { addNotification } from '../../../../ducks/notification';
 import { openModal } from '../../../../ducks/modal';
 import ManageEventsPage from '../ManageEventsPage';
+import { renderIfAuthenticated } from '../../../../utils/container';
 
 export default compose(
+  renderIfAuthenticated,
   connect(
     state => ({
       events: state.event.events
