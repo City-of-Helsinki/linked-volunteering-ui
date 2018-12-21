@@ -1,19 +1,29 @@
-// @flow
 import { compose, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
 
-import { getEvents } from '../../../../ducks/event';
+import { getEvents, setFilterByDistrict } from '../../../../ducks/event';
+import { getDistricts } from '../../../../ducks/district';
 import { addNotification } from '../../../../ducks/notification';
 import { openModal } from '../../../../ducks/modal';
 import ManageEventsPage from '../ManageEventsPage';
-import type { Store } from '../../../../types/redux';
+import { renderIfAuthenticated } from '../../../../utils/container';
+
+const filterEvents = eventState => {
+  if (eventState.filterByDistrict) {
+    return eventState.events.filter(event => event.name === eventState.filterByDistrict);
+  }
+
+  return eventState.events;
+};
 
 export default compose(
+  renderIfAuthenticated,
   connect(
-    (state: Store) => ({
-      events: state.event.events
+    state => ({
+      events: filterEvents(state.event),
+      districts: state.district.districts
     }),
-    { getEvents, addNotification, openModal }
+    { getDistricts, getEvents, setFilterByDistrict, addNotification, openModal }
   ),
   withHandlers({
     remove: ({ openModal: showModal }) => event => {

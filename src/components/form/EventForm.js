@@ -1,4 +1,3 @@
-// @flow
 import React from 'react';
 import { Row, Col } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
@@ -10,22 +9,12 @@ import Checkbox from './fields/Checkbox';
 import Map from './fields/Map';
 import Areas from './partitions/Areas';
 
-import type { WithForm } from '../../types/forms';
-import type { Event } from '../../types/event';
-
 const MapContainer = styled.div`
   height: 20em;
   margin-bottom: 2em;
 `;
 
-export default ({
-  values,
-  errors,
-  touched,
-  handleChange,
-  handleBlur,
-  handleSubmit
-}: WithForm<Event>) => (
+export default ({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
   <form onSubmit={handleSubmit}>
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>

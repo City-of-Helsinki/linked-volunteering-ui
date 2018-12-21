@@ -15,4 +15,3 @@ install:
   - cypress install
 script:
   - yarn eslint './src/**/*.js'
-  - yarn flow

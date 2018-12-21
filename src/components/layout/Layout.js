@@ -1,10 +1,8 @@
-// @flow
-
-import React, { Fragment, type Node } from 'react';
+import React, { Fragment } from 'react';
 import { Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
-import { intlShape, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 
 import Notifications from '../notification/containers/NotificationsContainer';
 import LanguageDropdown from './LanguageDropdown';
@@ -15,15 +13,6 @@ import Modal from '../modal/containers/ModalContainer';
 import KoroSection from './KoroSection';
 import Footer from './Footer';
 import userManager from '../../utils/userManager';
-import type { User } from '../../types/user';
-
-type Props = {
-  children: Node,
-  intl: intlShape,
-  paddingTop: boolean,
-  paddingBottom: boolean,
-  user: User
-};
 
 const Content = styled.div`
   background-color: ${props => props.theme.colors.lightGray};
@@ -65,79 +54,86 @@ const UserAction = styled.a`
   }
 `;
 
-const Layout = ({ children, intl, paddingTop, paddingBottom, user }: Props) => (
-  <Fragment>
-    <Helmet>
-      <meta charSet="utf-8" />
-      <title>{intl.formatMessage({ id: 'site.meta.title' })}</title>
-    </Helmet>
-    <NavbarRow expand="md">
-      <NavbarBrand href="/">
-        <Icon name="helsinkiLogo" width="90px" color="#000" />
-      </NavbarBrand>
-      <Nav className="ml-auto" navbar>
-        <LanguageDropdown />
-        {!user && (
-          <UserAction
-            onClick={() => {
-              userManager.signinRedirect();
-            }}
-          >
-            <Icon name="user" width="30px" color="black" />
-            <span>Kirjaudu sisään</span>
-          </UserAction>
-        )}
+const Layout = ({ children, intl, paddingTop, paddingBottom, user }) => {
+  const hasUser = !!user;
+  return (
+    <Fragment>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{intl.formatMessage({ id: 'site.meta.title' })}</title>
+      </Helmet>
+      <NavbarRow expand="md">
+        <NavbarBrand href="/">
+          <Icon name="helsinkiLogo" width="90px" color="#000" />
+        </NavbarBrand>
+        <Nav className="ml-auto" navbar>
+          <LanguageDropdown />
+          {!user && (
+            <UserAction
+              onClick={() => {
+                userManager.signinRedirect();
+              }}
+            >
+              <Icon name="user" width="30px" color="black" />
+              <span>Kirjaudu sisään</span>
+            </UserAction>
+          )}
 
-        {user && (
-          <UserAction
-            onClick={() => {
-              userManager.signoutRedirect();
-            }}
-          >
-            <Icon name="user" width="30px" color="black" />
-            <span>Kirjaudu ulos</span>
-          </UserAction>
-        )}
-      </Nav>
-    </NavbarRow>
-    <NavbarRow expand="md">
-      <Nav navbar>
-        <NavItem>
-          <IntlComponent
-            Component={LocalizedLink}
-            className="nav-link"
-            to="events/manage"
-            id="site.nav.events"
-          />
-        </NavItem>
-        <NavItem>
-          <IntlComponent
-            Component={LocalizedLink}
-            className="nav-link"
-            to="event/new"
-            id="site.nav.create_event"
-          />
-        </NavItem>
-        <NavItem>
-          <IntlComponent
-            Component={LocalizedLink}
-            className="nav-link"
-            to="report"
-            id="site.nav.report"
-          />
-        </NavItem>
-      </Nav>
-    </NavbarRow>
-    <Content>
-      <PageWrapper paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        {children}
-      </PageWrapper>
-      <KoroSection color="green" />
-      <Footer />
-    </Content>
-    <Notifications />
-    <Modal />
-  </Fragment>
-);
+          {hasUser && (
+            <UserAction
+              onClick={() => {
+                userManager.signoutRedirect();
+              }}
+            >
+              <Icon name="user" width="30px" color="black" />
+              <span>Kirjaudu ulos</span>
+            </UserAction>
+          )}
+        </Nav>
+      </NavbarRow>
+      <NavbarRow expand="md">
+        <Nav navbar>
+          <NavItem>
+            <IntlComponent
+              Component={LocalizedLink}
+              className="nav-link"
+              to="event/new"
+              id="site.nav.create_event"
+            />
+          </NavItem>
+          {hasUser && (
+            <Fragment>
+              <NavItem>
+                <IntlComponent
+                  Component={LocalizedLink}
+                  className="nav-link"
+                  to="events/manage"
+                  id="site.nav.manage_events"
+                />
+              </NavItem>
+              <NavItem>
+                <IntlComponent
+                  Component={LocalizedLink}
+                  className="nav-link"
+                  to="report"
+                  id="site.nav.report"
+                />
+              </NavItem>
+            </Fragment>
+          )}
+        </Nav>
+      </NavbarRow>
+      <Content>
+        <PageWrapper paddingTop={paddingTop} paddingBottom={paddingBottom}>
+          {children}
+        </PageWrapper>
+        <KoroSection color="green" />
+        <Footer />
+      </Content>
+      <Notifications />
+      <Modal />
+    </Fragment>
+  );
+};
 
 export default injectIntl(Layout);
