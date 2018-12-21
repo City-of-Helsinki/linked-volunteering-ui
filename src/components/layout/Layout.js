@@ -65,79 +65,86 @@ const UserAction = styled.a`
   }
 `;
 
-const Layout = ({ children, intl, paddingTop, paddingBottom, user }: Props) => (
-  <Fragment>
-    <Helmet>
-      <meta charSet="utf-8" />
-      <title>{intl.formatMessage({ id: 'site.meta.title' })}</title>
-    </Helmet>
-    <NavbarRow expand="md">
-      <NavbarBrand href="/">
-        <Icon name="helsinkiLogo" width="90px" color="#000" />
-      </NavbarBrand>
-      <Nav className="ml-auto" navbar>
-        <LanguageDropdown />
-        {!user && (
-          <UserAction
-            onClick={() => {
-              userManager.signinRedirect();
-            }}
-          >
-            <Icon name="user" width="30px" color="black" />
-            <span>Kirjaudu sisään</span>
-          </UserAction>
-        )}
+const Layout = ({ children, intl, paddingTop, paddingBottom, user }: Props) => {
+  const hasUser = !!user;
+  return (
+    <Fragment>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{intl.formatMessage({ id: 'site.meta.title' })}</title>
+      </Helmet>
+      <NavbarRow expand="md">
+        <NavbarBrand href="/">
+          <Icon name="helsinkiLogo" width="90px" color="#000" />
+        </NavbarBrand>
+        <Nav className="ml-auto" navbar>
+          <LanguageDropdown />
+          {!user && (
+            <UserAction
+              onClick={() => {
+                userManager.signinRedirect();
+              }}
+            >
+              <Icon name="user" width="30px" color="black" />
+              <span>Kirjaudu sisään</span>
+            </UserAction>
+          )}
 
-        {user && (
-          <UserAction
-            onClick={() => {
-              userManager.signoutRedirect();
-            }}
-          >
-            <Icon name="user" width="30px" color="black" />
-            <span>Kirjaudu ulos</span>
-          </UserAction>
-        )}
-      </Nav>
-    </NavbarRow>
-    <NavbarRow expand="md">
-      <Nav navbar>
-        <NavItem>
-          <IntlComponent
-            Component={LocalizedLink}
-            className="nav-link"
-            to="events/manage"
-            id="site.nav.events"
-          />
-        </NavItem>
-        <NavItem>
-          <IntlComponent
-            Component={LocalizedLink}
-            className="nav-link"
-            to="event/new"
-            id="site.nav.create_event"
-          />
-        </NavItem>
-        <NavItem>
-          <IntlComponent
-            Component={LocalizedLink}
-            className="nav-link"
-            to="report"
-            id="site.nav.report"
-          />
-        </NavItem>
-      </Nav>
-    </NavbarRow>
-    <Content>
-      <PageWrapper paddingTop={paddingTop} paddingBottom={paddingBottom}>
-        {children}
-      </PageWrapper>
-      <KoroSection color="green" />
-      <Footer />
-    </Content>
-    <Notifications />
-    <Modal />
-  </Fragment>
-);
+          {hasUser && (
+            <UserAction
+              onClick={() => {
+                userManager.signoutRedirect();
+              }}
+            >
+              <Icon name="user" width="30px" color="black" />
+              <span>Kirjaudu ulos</span>
+            </UserAction>
+          )}
+        </Nav>
+      </NavbarRow>
+      <NavbarRow expand="md">
+        <Nav navbar>
+          <NavItem>
+            <IntlComponent
+              Component={LocalizedLink}
+              className="nav-link"
+              to="event/new"
+              id="site.nav.create_event"
+            />
+          </NavItem>
+          {hasUser && (
+            <Fragment>
+              <NavItem>
+                <IntlComponent
+                  Component={LocalizedLink}
+                  className="nav-link"
+                  to="events/manage"
+                  id="site.nav.manage_events"
+                />
+              </NavItem>
+              <NavItem>
+                <IntlComponent
+                  Component={LocalizedLink}
+                  className="nav-link"
+                  to="report"
+                  id="site.nav.report"
+                />
+              </NavItem>
+            </Fragment>
+          )}
+        </Nav>
+      </NavbarRow>
+      <Content>
+        <PageWrapper paddingTop={paddingTop} paddingBottom={paddingBottom}>
+          {children}
+        </PageWrapper>
+        <KoroSection color="green" />
+        <Footer />
+      </Content>
+      <Notifications />
+      <Modal />
+    </Fragment>
+  );
+};
 
 export default injectIntl(Layout);

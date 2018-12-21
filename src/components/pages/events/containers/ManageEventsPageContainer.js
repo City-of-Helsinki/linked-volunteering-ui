@@ -7,8 +7,10 @@ import { addNotification } from '../../../../ducks/notification';
 import { openModal } from '../../../../ducks/modal';
 import ManageEventsPage from '../ManageEventsPage';
 import type { Store } from '../../../../types/redux';
+import { renderIfAuthenticated } from '../../../../utils/container';
 
 export default compose(
+  renderIfAuthenticated,
   connect(
     (state: Store) => ({
       events: state.event.events

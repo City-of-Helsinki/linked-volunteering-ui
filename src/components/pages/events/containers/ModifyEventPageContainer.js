@@ -3,6 +3,7 @@ import { injectIntl } from 'react-intl';
 import { compose, withProps, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
 
+import { renderIfAuthenticated } from '../../../../utils/container';
 import { addNotification } from '../../../../ducks/notification';
 import eventService from '../../../../services/eventService';
 import { withEventForm } from '../../../form/withForm';
@@ -16,6 +17,7 @@ type ModifyProps = {
 };
 
 export default compose(
+  renderIfAuthenticated,
   // flowlint-next-line unclear-type:off
   withProps<any, ModifyProps>((props: any) => ({
     pageType: 'modify',
