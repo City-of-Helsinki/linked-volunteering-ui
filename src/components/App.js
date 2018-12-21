@@ -1,4 +1,3 @@
-// @flow
 import '@babel/polyfill';
 import React from 'react';
 import { Switch, Route } from 'react-router';
@@ -13,11 +12,7 @@ import SubmittedPage from './pages/events/SubmittedPage';
 import ReportPage from './pages/containers/ReportPageContainer';
 import LandingPage from './pages/LandingPage';
 
-type Props = {
-  locale: string
-};
-
-const App = ({ locale }: Props) => (
+const App = ({ locale }) => (
   <IntlProvider locale={locale} key={locale} messages={messages[locale]}>
     <Switch>
       <Route exact path="/:locale/" component={LandingPage} />

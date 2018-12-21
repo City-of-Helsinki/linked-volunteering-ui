@@ -1,4 +1,3 @@
-// @flow
 import { compose, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
 
@@ -6,13 +5,12 @@ import { getEvents } from '../../../../ducks/event';
 import { addNotification } from '../../../../ducks/notification';
 import { openModal } from '../../../../ducks/modal';
 import ManageEventsPage from '../ManageEventsPage';
-import type { Store } from '../../../../types/redux';
 import { renderIfAuthenticated } from '../../../../utils/container';
 
 export default compose(
   renderIfAuthenticated,
   connect(
-    (state: Store) => ({
+    state => ({
       events: state.event.events
     }),
     { getEvents, addNotification, openModal }

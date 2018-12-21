@@ -1,15 +1,7 @@
-// @flow
-import React, { type Node } from 'react';
-import { injectIntl, type IntlShape } from 'react-intl';
+import React from 'react';
+import { injectIntl } from 'react-intl';
 
-type Props = {
-  Component: () => Node,
-  id: string,
-  values?: {},
-  intl: IntlShape
-};
-
-const IntlComponent = ({ Component, id, values, intl: { formatMessage }, ...rest }: Props) => (
+const IntlComponent = ({ Component, id, values, intl: { formatMessage }, ...rest }) => (
   <Component {...rest}>{formatMessage({ id }, values)}</Component>
 );
 

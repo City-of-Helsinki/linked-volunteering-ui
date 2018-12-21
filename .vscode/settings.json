@@ -1,6 +1,4 @@
 {
   "editor.formatOnSave": true,
-  "javascript.validate.enable": false,
-  "flow.useNPMPackagedFlow": true,
   "editor.rulers": [100]
 }

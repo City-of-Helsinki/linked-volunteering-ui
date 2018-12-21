@@ -1,5 +1,3 @@
-// @flow
-
 import React, { PureComponent, Fragment } from 'react';
 import styled from 'styled-components';
 import { Button, Container, Row, Col } from 'reactstrap';
@@ -10,8 +8,6 @@ import { Table, Td, FirstTd, TrRow } from '../../common/Table';
 import Icon from '../../common/Icon';
 
 import Layout from '../../layout/containers/LayoutContainer';
-
-import type { Events } from '../../../types/event';
 
 const DetailsTr = styled.tr`
   background-color: white;
@@ -52,21 +48,7 @@ const ErrorButton = styled(Button)`
   }
 `;
 
-type Props = {
-  events: Events,
-  // flowlint-next-line unclear-type:off
-  getEvents: Function,
-  // flowlint-next-line unclear-type:off
-  remove: Function,
-  // flowlint-next-line unclear-type:off
-  approve: Function
-};
-
-type State = {
-  visible: ?string
-};
-
-class EventsPage extends PureComponent<Props, State> {
+class EventsPage extends PureComponent {
   state = {
     visible: null
   };
@@ -76,8 +58,7 @@ class EventsPage extends PureComponent<Props, State> {
     getEvents();
   }
 
-  toggleDetails = (id: string) =>
-    this.setState(({ visible }) => ({ visible: visible === id ? null : id }));
+  toggleDetails = id => this.setState(({ visible }) => ({ visible: visible === id ? null : id }));
 
   render() {
     const { events, remove, approve } = this.props;

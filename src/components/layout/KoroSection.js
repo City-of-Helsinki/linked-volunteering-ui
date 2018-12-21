@@ -1,16 +1,8 @@
-// @flow
-import React, { type Node } from 'react';
+import React from 'react';
 import classnames from 'classnames';
-// $FlowFixMe
 import './KoroSection.scss';
 
-type Props = {
-  className?: string,
-  children?: Node,
-  color: 'green' | 'white'
-};
-
-export default class KoroSection extends React.Component<Props> {
+export default class KoroSection extends React.Component {
   static defaultProps = {
     bottom: false
   };
