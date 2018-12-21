@@ -12,6 +12,17 @@ export const withEventForm = withFormik({
   displayName: 'EventForm'
 });
 
+export const withEventFilterForm = withFormik({
+  validationSchema,
+  validateOnChange: false,
+  mapPropsToValues: ({ initialValues }) => initialValues || event,
+  handleSubmit: async (values, { setSubmitting, props: { onSubmit } }) => {
+    await onSubmit(values);
+    setSubmitting(false);
+  },
+  displayName: 'EventFilterForm'
+});
+
 export const withReportForm = withFormik({
   validationSchema,
   validateOnChange: false,

@@ -1,6 +1,7 @@
 // @flow
 import type { RecordOf, RecordFactory } from 'immutable';
 import type { Events } from './event';
+import type { Districts } from './district';
 import type { Reports } from './report';
 import type { Notifications } from './notification';
 import type { OIDC } from './user';
@@ -17,7 +18,15 @@ type EventProps = {
   count: 0,
   next: string | null,
   previous: string | null,
-  events: Events
+  events: Events,
+  filterByDistrict: String
+};
+
+type DistrictProps = {
+  count: 0,
+  next: string | null,
+  previous: string | null,
+  districts: Districts
 };
 
 type ReportProps = {
@@ -41,6 +50,9 @@ type ModalProps = {
 export type EventFactory = RecordFactory<EventProps>;
 export type EventState = RecordOf<EventProps>;
 
+export type DistrictFactory = RecordFactory<DistrictProps>;
+export type DistrictState = RecordOf<DistrictProps>;
+
 export type ReportFactory = RecordFactory<ReportProps>;
 export type ReportState = RecordOf<ReportProps>;
 
@@ -53,6 +65,7 @@ export type ModalState = RecordOf<ModalProps>;
 export type Store = {
   oidc: OIDC,
   event: EventProps,
+  district: DistrictProps,
   report: ReportProps,
   notification: NotificationProps,
   modal: ModalProps
