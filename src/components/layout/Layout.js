@@ -1,10 +1,8 @@
-// @flow
-
-import React, { Fragment, type Node } from 'react';
+import React, { Fragment } from 'react';
 import { Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
-import { intlShape, injectIntl } from 'react-intl';
+import { injectIntl } from 'react-intl';
 
 import Notifications from '../notification/containers/NotificationsContainer';
 import LanguageDropdown from './LanguageDropdown';
@@ -15,15 +13,6 @@ import Modal from '../modal/containers/ModalContainer';
 import KoroSection from './KoroSection';
 import Footer from './Footer';
 import userManager from '../../utils/userManager';
-import type { User } from '../../types/user';
-
-type Props = {
-  children: Node,
-  intl: intlShape,
-  paddingTop: boolean,
-  paddingBottom: boolean,
-  user: User
-};
 
 const Content = styled.div`
   background-color: ${props => props.theme.colors.lightGray};
@@ -65,7 +54,7 @@ const UserAction = styled.a`
   }
 `;
 
-const Layout = ({ children, intl, paddingTop, paddingBottom, user }: Props) => (
+const Layout = ({ children, intl, paddingTop, paddingBottom, user }) => (
   <Fragment>
     <Helmet>
       <meta charSet="utf-8" />

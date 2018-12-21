@@ -1,5 +1,3 @@
-// @flow
-
 import React, { PureComponent, Fragment } from 'react';
 import styled from 'styled-components';
 import { Button, Container, Row, Col } from 'reactstrap';
@@ -10,9 +8,6 @@ import { Table, Td, FirstTd, TrRow } from '../../common/Table';
 import Icon from '../../common/Icon';
 
 import Layout from '../../layout/containers/LayoutContainer';
-
-import type { Events } from '../../../types/event';
-import type { Districts } from '../../../types/district';
 
 const DetailsTr = styled.tr`
   background-color: white;
@@ -77,29 +72,7 @@ const FilterTitle = styled.span`
   margin-right: 1em;
 `;
 
-type Props = {
-  events: Events,
-  // flowlint-next-line unclear-type:off
-  districts: Districts,
-  // flowlint-next-line unclear-type:off
-  filteredEvents: Events,
-  // flowlint-next-line unclear-type:off
-  getEvents: Function,
-  // flowlint-next-line unclear-type:off
-  getDistricts: Function,
-  // flowlint-next-line unclear-type:off
-  remove: Function,
-  // flowlint-next-line unclear-type:off
-  approve: Function,
-  // flowlint-next-line unclear-type:off
-  setFilterByDistrict: Function
-};
-
-type State = {
-  visible: ?string
-};
-
-class EventsPage extends PureComponent<Props, State> {
+class EventsPage extends PureComponent {
   state = {
     visible: null
   };
@@ -110,10 +83,9 @@ class EventsPage extends PureComponent<Props, State> {
     getEvents();
   }
 
-  toggleDetails = (id: string) =>
-    this.setState(({ visible }) => ({ visible: visible === id ? null : id }));
+  toggleDetails = id => this.setState(({ visible }) => ({ visible: visible === id ? null : id }));
 
-  handleChange = (e: SyntheticInputEvent<HTMLInputElement>) => {
+  handleChange = e => {
     const { setFilterByDistrict } = this.props;
     setFilterByDistrict(e.target.value);
   };

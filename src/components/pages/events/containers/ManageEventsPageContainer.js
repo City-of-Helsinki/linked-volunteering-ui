@@ -1,4 +1,3 @@
-// @flow
 import { compose, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
 
@@ -7,7 +6,6 @@ import { getDistricts } from '../../../../ducks/district';
 import { addNotification } from '../../../../ducks/notification';
 import { openModal } from '../../../../ducks/modal';
 import ManageEventsPage from '../ManageEventsPage';
-import type { Store } from '../../../../types/redux';
 
 const filterEvents = eventState => {
   if (eventState.filterByDistrict) {
@@ -19,7 +17,7 @@ const filterEvents = eventState => {
 
 export default compose(
   connect(
-    (state: Store) => ({
+    state => ({
       events: filterEvents(state.event),
       districts: state.district.districts
     }),

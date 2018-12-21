@@ -1,21 +1,9 @@
-// @flow
-
 import React from 'react';
-import { FormattedMessage, injectIntl, type intlShape } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 import { Dropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap';
 import styled from 'styled-components';
 import Icon from '../common/Icon';
-
-type Props = {
-  children: Node,
-  intl: intlShape
-};
-
-type State = {
-  collapsed: boolean,
-  dropdownOpen: boolean
-};
 
 const LanguageSelector = styled(DropdownToggle)`
   color: #000;
@@ -36,8 +24,8 @@ const StyledSelector = styled.div`
   }
 `;
 
-class LanguageDropdown extends React.Component<Props, State> {
-  constructor(props: Props) {
+class LanguageDropdown extends React.Component {
+  constructor(props) {
     super(props);
 
     this.state = {

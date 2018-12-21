@@ -1,17 +1,7 @@
-// @flow
 import React from 'react';
 import Select from './fields/Select';
-import type { WithForm } from '../../types/forms';
-import type { Event } from '../../types/event';
 
-export default ({
-  values,
-  errors,
-  touched,
-  handleChange,
-  handleBlur,
-  handleSubmit
-}: WithForm<Event>) => (
+export default ({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
   <form onSubmit={handleSubmit}>
     <Select
       id="area"

@@ -1,4 +1,3 @@
-// @flow
 import { injectIntl } from 'react-intl';
 import { compose, withProps, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
@@ -7,23 +6,16 @@ import { addNotification } from '../../../../ducks/notification';
 import eventService from '../../../../services/eventService';
 import { withEventForm } from '../../../form/withForm';
 import EventPage from '../EventPage';
-import type { Store } from '../../../../types/redux';
-
-type ModifyProps = {
-  pageType: string,
-  id: string,
-  locale: string
-};
 
 export default compose(
   // flowlint-next-line unclear-type:off
-  withProps<any, ModifyProps>((props: any) => ({
+  withProps(props => ({
     pageType: 'modify',
     id: props.match.params.id,
     locale: props.match.params.locale
   })),
   connect(
-    (state: Store, { id }) => ({
+    (state, { id }) => ({
       initialValues: state.event.events.get(id)
     }),
     { addNotification }

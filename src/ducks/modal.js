@@ -1,9 +1,7 @@
-// @flow
 import { Record } from 'immutable';
 import { createAction } from 'redux-actions';
-import type { Action, ModalFactory, ModalState } from '../types/redux';
 
-const defaultState: ModalFactory = Record({
+const defaultState = Record({
   isOpen: false,
   modal: null,
   meta: null
@@ -12,7 +10,7 @@ const defaultState: ModalFactory = Record({
 export const openModal = createAction('OPEN_MODAL', modal => modal, (modal, meta) => meta);
 export const closeModal = createAction('CLOSE_MODAL');
 
-export default (state: ModalState = defaultState(), action: Action): ModalState => {
+export default (state = defaultState(), action) => {
   const { type, payload, meta } = action;
   switch (type) {
     case 'OPEN_MODAL':

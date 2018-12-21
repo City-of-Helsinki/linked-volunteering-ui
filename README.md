@@ -1,6 +1,6 @@
 # Linked Volunteering UI
 
-[![Build Status](https://travis-ci.com/City-of-Helsinki/linked-volunteering-ui.svg?branch=master)](https://travis-ci.com/City-of-Helsinki/linked-volunteering-ui)
+[![Build Status](https://travis-ci.org/City-of-Helsinki/linked-volunteering-ui.svg?branch=master)](https://travis-ci.org/City-of-Helsinki/linked-volunteering-ui)
 
 ## Prerequisites
 
@@ -10,7 +10,6 @@
 ### Recommended VSCode plugins:
 
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-- [Flow Language Support](https://marketplace.visualstudio.com/items?itemName=flowtype.flow-for-vscode)
 - [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
 ### Setup
@@ -26,16 +25,10 @@ $ cp .env.example .env.development.local
 To start development environment, run:
 
 ```
-$ yarn dev
-```
-
-This will start [the application](http://localhost:3000) and [the storybook](http://localhost:9001) for ports `3000` & `9001`
-
-To only start the client:
-
-```
 $ yarn start
 ```
+
+This will start [the application](http://localhost:3000) to run in port `3000`
 
 ## Testing
 

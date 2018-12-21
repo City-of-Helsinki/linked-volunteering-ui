@@ -1,21 +1,9 @@
-// @flow
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import * as modals from './modals';
 import IntlComponent from '../common/IntlComponent';
 
-type Props = {
-  isOpen: boolean,
-  modal: string,
-  // flowlint-next-line unclear-type:off
-  meta: any,
-  // flowlint-next-line unclear-type:off
-  closeModal: Function,
-  // flowlint-next-line unclear-type:off
-  dispatch: Function
-};
-
-export default ({ isOpen, closeModal, modal, meta, dispatch }: Props) => {
+export default ({ isOpen, closeModal, modal, meta, dispatch }) => {
   if (!isOpen) {
     return null;
   }
