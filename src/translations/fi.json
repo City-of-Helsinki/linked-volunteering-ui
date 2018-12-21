@@ -5,7 +5,7 @@
   "site.language.en": "Engelska",
   "site.nav.create_event": "Ilmoita uusi tapahtuma",
   "site.nav.report": "Vuosiraportit",
-  "site.nav.events": "Tapahtumat",
+  "site.nav.manage_events": "Hallitse tapahtumia",
 
   "site.footer.front_page": "Etusivu",
   "site.footer.upcoming_events": "Tulevat tapahtumat",
@@ -35,6 +35,10 @@
   "site.page.thank_you.paragraph": "Ilmoituksesi on kirjattu palveluun. Saat meiltä vahvistusviestin ja lisätietoja järjestelyistä, kun olemme tarkistaneet ilmoituksen tiedot. Yhdessä luomme viihtyisämpää kaupunkiympäristöä.",
   "site.page.thank_you.action.home_page": "Palaa etusivulle",
   "site.page.thank_you.action.add_to_calendar": "Lisää tapahtuma kalenteriin",
+
+  "site.page.error.heading": "Hups! Tapahtui virhe!",
+  "site.page.error.default_message": "Järjestelmässä tapahtui virhe, ole hyvä ja yritä uudelleen tai palaa etusivulle",
+  "site.page.error.to_home_page": "Palaa etusivulle",
 
   "site.report.title": "Kevätsiivoustalkoot",
   "site.report.yearly_report": "Vuosiraportti",
@@ -114,6 +118,7 @@
   "notification.form.event.modified": "Tapahtumaa muokattu onnistuneesti!",
   "notification.manage_events.approve": "{name} hyväksytty!",
   "notification.manage_events.remove": "{name} peruttu!",
+  "notification.error.restricted_area": "Tapahtuma vaatii kirjautumisen!",
 
   "modal.confirm_removal.header": "Poistetaanko tapahtuma?",
   "modal.confirm_removal.footer.button1.text": "Kyllä, poista tapahtuma",

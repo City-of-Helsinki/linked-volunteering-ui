@@ -6,6 +6,7 @@ import { getDistricts } from '../../../../ducks/district';
 import { addNotification } from '../../../../ducks/notification';
 import { openModal } from '../../../../ducks/modal';
 import ManageEventsPage from '../ManageEventsPage';
+import { renderIfAuthenticated } from '../../../../utils/container';
 
 const filterEvents = eventState => {
   if (eventState.filterByDistrict) {
@@ -16,6 +17,7 @@ const filterEvents = eventState => {
 };
 
 export default compose(
+  renderIfAuthenticated,
   connect(
     state => ({
       events: filterEvents(state.event),
