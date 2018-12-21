@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react';
 import styled from 'styled-components';
 import Svg from 'react-svg';
@@ -88,18 +86,6 @@ const StyledSvg = styled(Svg)`
   transform: rotate(${props => props.rotate || 0}deg);
 `;
 
-type Names = $Keys<typeof icons>;
-
-type Props = {
-  name: Names,
-  color?: string,
-  width?: string,
-  height?: string,
-  className?: string,
-  rotate?: number,
-  inline?: boolean
-};
-
 const Icon = ({
   name,
   color: fill = 'currentColor',
@@ -108,7 +94,7 @@ const Icon = ({
   className,
   rotate,
   inline
-}: Props) => {
+}) => {
   const src = icons[name];
   if (!src) {
     console.log('missing icon', name);

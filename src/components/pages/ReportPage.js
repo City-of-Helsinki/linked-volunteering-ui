@@ -1,17 +1,13 @@
-// @flow
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Container, Row, Col, Button } from 'reactstrap';
-import { FormattedMessage, type intlShape } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import Layout from '../layout/containers/LayoutContainer';
 import ReportForm from '../form/ReportForm';
 
 import { Table, Td, TrRow } from '../common/Table';
 import IntlComponent from '../common/IntlComponent';
-
-import type { WithForm } from '../../types/forms';
-import type { Report } from '../../types/report';
 
 const FormContainer = styled(Container)`
   margin-top: 1em;
@@ -40,16 +36,14 @@ const StatisticsRow = styled(Row)`
   padding-bottom: 1.5em;
 `;
 
-type Props = WithForm<Report> & intlShape;
-
-class ReportPage extends Component<Props> {
+class ReportPage extends Component {
   componentDidMount() {
     const { getReport } = this.props;
     getReport();
   }
 
   render() {
-    const { handleReset, handleSubmit, reports, ...rest }: Props = this.props;
+    const { handleReset, handleSubmit, reports, ...rest } = this.props;
     const eventAmount = reports.reduce((acc, row) => acc + row.events, 0);
     const participantAmount = reports.reduce((acc, row) => acc + row.participants, 0);
     return (

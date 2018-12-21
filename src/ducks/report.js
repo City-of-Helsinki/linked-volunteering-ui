@@ -1,10 +1,8 @@
-// @flow
 import { Record, Map } from 'immutable';
 import { createAction } from 'redux-actions';
-import type { Action, ReportState, ReportFactory } from '../types/redux';
 import reportService from '../services/reportService';
 
-const defaultState: ReportFactory = Record({
+const defaultState = Record({
   count: 0,
   next: null,
   previous: null,
@@ -13,7 +11,7 @@ const defaultState: ReportFactory = Record({
 
 export const getReport = createAction('GET_REPORT', reportService.getReport);
 
-export default (state: ReportState = defaultState(), action: Action): ReportState => {
+export default (state = defaultState(), action) => {
   const { type, payload } = action;
   switch (type) {
     case 'GET_REPORT_FULFILLED':
