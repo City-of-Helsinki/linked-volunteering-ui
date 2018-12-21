@@ -14,6 +14,8 @@
   "site.footer.copyright": "Copyright 2018 - Kaikki oikeudet pidätetään.",
   "site.footer.give_feedback": "Anna palautetta",
 
+  "site.page.manage_events.title": "Puistotalkoot",
+  "site.page.manage_events.filter_events": "Suodata tapahtumia",
   "site.page.manage_events.table.action.edit": "Muokkaa",
   "site.page.manage_events.table.action.approve": "Hyväksy tapahtuma",
   "site.page.manage_events.table.action.remove": "Poista Tapahtuma",

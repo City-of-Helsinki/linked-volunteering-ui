@@ -1,0 +1,259 @@
+{
+  "count": 34,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": "u1a43fsdf1",
+      "type": "district",
+      "ocd_id": "ocd-division/country:fi/kunta:helsinki/peruspiiri:östersundom",
+      "municipality": "helsinki",
+      "bbox": [25.13898673, 60.22693399, 25.25449667, 60.29783944],
+      "children": [
+        {
+          "type": "sub_district",
+          "ocd_id": "ocd-division/country:fi/kunta:helsinki/osa-alue:östersundom",
+          "municipality": "helsinki",
+          "bbox": [25.14402045, 60.24381188, 25.25211337, 60.27546719],
+          "name": {
+            "sv": "Östersundom",
+            "fi": "Östersundom"
+          }
+        },
+        {
+          "type": "sub_district",
+          "ocd_id": "ocd-division/country:fi/kunta:helsinki/osa-alue:karhusaari",
+          "municipality": "helsinki",
+          "bbox": [25.19972245, 60.24283668, 25.24091485, 60.25695448],
+          "name": {
+            "sv": "Björnsö",
+            "fi": "Karhusaari"
+          }
+        },
+        {
+          "type": "sub_district",
+          "ocd_id": "ocd-division/country:fi/kunta:helsinki/osa-alue:talosaari",
+          "municipality": "helsinki",
+          "bbox": [25.18019414, 60.22919497, 25.22663055, 60.24710814],
+          "name": {
+            "sv": "Husö",
+            "fi": "Talosaari"
+          }
+        },
+        {
+          "type": "sub_district",
+          "ocd_id": "ocd-division/country:fi/kunta:helsinki/osa-alue:salmenkallio",
+          "municipality": "helsinki",
+          "bbox": [25.13898673, 60.22693399, 25.1986836, 60.25019127],
+          "name": {
+            "sv": "Sundberg",
+            "fi": "Salmenkallio"
+          }
+        },
+        {
+          "type": "sub_district",
+          "ocd_id": "ocd-division/country:fi/kunta:helsinki/osa-alue:landbo",
+          "municipality": "helsinki",
+          "bbox": [25.14174345, 60.26131468, 25.22635649, 60.28638958],
+          "name": {
+            "sv": "Landbo",
+            "fi": "Landbo"
+          }
+        },
+        {
+          "type": "sub_district",
+          "ocd_id": "ocd-division/country:fi/kunta:helsinki/osa-alue:puroniitty",
+          "municipality": "helsinki",
+          "bbox": [25.20154351, 60.27168392, 25.25449667, 60.29783944],
+          "name": {
+            "sv": "Bäckängen",
+            "fi": "Puroniitty"
+          }
+        }
+      ],
+      "name": {
+        "sv": "Östersundom",
+        "fi": "Östersundom"
+      }
+    },
+    {
+      "id": "u1a43fsdf2",
+      "type": "district",
+      "ocd_id": "ocd-division/country:fi/kunta:helsinki/peruspiiri:kulosaari",
+      "municipality": "helsinki",
+      "bbox": [24.97682044, 60.16855816, 25.02282254, 60.2048998],
+      "children": [
+        {
+          "type": "sub_district",
+          "ocd_id": "ocd-division/country:fi/kunta:helsinki/osa-alue:mustikkamaa-korkeasaari",
+          "municipality": "helsinki",
+          "bbox": [24.97682044, 60.16855816, 25.00371247, 60.18605587],
+          "name": {
+            "sv": "Blåbärslandet-Högholmen",
+            "fi": "Mustikkamaa-Korkeasaari"
+          }
+        },
+        {
+          "type": "sub_district",
+          "ocd_id": "ocd-division/country:fi/kunta:helsinki/osa-alue:kulosaari",
+          "municipality": "helsinki",
+          "bbox": [24.98721145, 60.1742716, 25.02282254, 60.2048998],
+          "name": {
+            "sv": "Brändö",
+            "fi": "Kulosaari"
+          }
+        }
+      ],
+      "name": {
+        "sv": "Brändö",
+        "fi": "Kulosaari"
+      }
+    },
+    {
+      "id": "u1a43fsdf3",
+      "type": "district",
+      "ocd_id": "ocd-division/country:fi/kunta:helsinki/peruspiiri:latokartano",
+      "municipality": "helsinki",
+      "bbox": [24.97919024, 60.19826685, 25.05056983, 60.24149854],
+      "children": [
+        {
+          "type": "sub_district",
+          "ocd_id": "ocd-division/country:fi/kunta:helsinki/osa-alue:viikin_tiedepuisto",
+          "municipality": "helsinki",
+          "bbox": [25.00130835, 60.22058405, 25.02722585, 60.23240497],
+          "name": {
+            "sv": "Viks forskarpark",
+            "fi": "Viikin tiedepuisto"
+          }
+        },
+        {
+          "type": "sub_district",
+          "ocd_id": "ocd-division/country:fi/kunta:helsinki/osa-alue:latokartano",
+          "municipality": "helsinki",
+          "bbox": [25.02102226, 60.21892623, 25.05056983, 60.23627537],
+          "name": {
+            "sv": "Ladugården",
+            "fi": "Latokartano"
+          }
+        },
+        {
+          "type": "sub_district",
+          "ocd_id": "ocd-division/country:fi/kunta:helsinki/osa-alue:viikinranta",
+          "municipality": "helsinki",
+          "bbox": [24.97919024, 60.19826685, 25.04226774, 60.22788103],
+          "name": {
+            "sv": "Viksstranden",
+            "fi": "Viikinranta"
+          }
+        },
+        {
+          "type": "sub_district",
+          "ocd_id": "ocd-division/country:fi/kunta:helsinki/osa-alue:viikinmäki",
+          "municipality": "helsinki",
+          "bbox": [24.97929053, 60.22013579, 25.00255358, 60.23137748],
+          "name": {
+            "sv": "Viksbacka",
+            "fi": "Viikinmäki"
+          }
+        },
+        {
+          "type": "sub_district",
+          "ocd_id": "ocd-division/country:fi/kunta:helsinki/osa-alue:pihlajamäki",
+          "municipality": "helsinki",
+          "bbox": [24.99736945, 60.22910823, 25.02220774, 60.24149854],
+          "name": {
+            "sv": "Rönnbacka",
+            "fi": "Pihlajamäki"
+          }
+        },
+        {
+          "type": "sub_district",
+          "ocd_id": "ocd-division/country:fi/kunta:helsinki/osa-alue:pihlajisto",
+          "municipality": "helsinki",
+          "bbox": [24.98945407, 60.22847476, 25.00628153, 60.24016053],
+          "name": {
+            "sv": "Rönninge",
+            "fi": "Pihlajisto"
+          }
+        }
+      ],
+      "name": {
+        "sv": "Ladugården",
+        "fi": "Latokartano"
+      }
+    },
+    {
+      "id": "u1a43fsdf4",
+      "type": "district",
+      "ocd_id": "ocd-division/country:fi/kunta:helsinki/peruspiiri:malmi",
+      "municipality": "helsinki",
+      "bbox": [24.97286928, 60.23064611, 25.06194088, 60.26972419],
+      "children": [
+        {
+          "type": "sub_district",
+          "ocd_id": "ocd-division/country:fi/kunta:helsinki/osa-alue:ylä-malmi",
+          "municipality": "helsinki",
+          "bbox": [24.99260912, 60.24696838, 25.01588067, 60.25890237],
+          "name": {
+            "sv": "Övre Malm",
+            "fi": "Ylä-Malmi"
+          }
+        },
+        {
+          "type": "sub_district",
+          "ocd_id": "ocd-division/country:fi/kunta:helsinki/osa-alue:ala-malmi",
+          "municipality": "helsinki",
+          "bbox": [24.99319723, 60.23064611, 25.04065107, 60.25902568],
+          "name": {
+            "sv": "Nedre Malm",
+            "fi": "Ala-Malmi"
+          }
+        },
+        {
+          "type": "sub_district",
+          "ocd_id": "ocd-division/country:fi/kunta:helsinki/osa-alue:tattariharju",
+          "municipality": "helsinki",
+          "bbox": [25.03843247, 60.24010395, 25.06194088, 60.25096715],
+          "name": {
+            "sv": "Tattaråsen",
+            "fi": "Tattariharju"
+          }
+        },
+        {
+          "type": "sub_district",
+          "ocd_id": "ocd-division/country:fi/kunta:helsinki/osa-alue:tapanila",
+          "municipality": "helsinki",
+          "bbox": [25.01123511, 60.25446262, 25.03651245, 60.26972419],
+          "name": {
+            "sv": "Mosabacka",
+            "fi": "Tapanila"
+          }
+        },
+        {
+          "type": "sub_district",
+          "ocd_id": "ocd-division/country:fi/kunta:helsinki/osa-alue:malmin_lentokenttä",
+          "municipality": "helsinki",
+          "bbox": [25.02742726, 60.24413588, 25.05960016, 60.2658395],
+          "name": {
+            "sv": "Malms flygfält",
+            "fi": "Malmin lentokenttä"
+          }
+        },
+        {
+          "type": "sub_district",
+          "ocd_id": "ocd-division/country:fi/kunta:helsinki/osa-alue:tapaninvainio",
+          "municipality": "helsinki",
+          "bbox": [24.97286928, 60.25157982, 25.01554162, 60.26782154],
+          "name": {
+            "sv": "Staffansslätten",
+            "fi": "Tapaninvainio"
+          }
+        }
+      ],
+      "name": {
+        "sv": "Malm",
+        "fi": "Malmi"
+      }
+    }
+  ]
+}
