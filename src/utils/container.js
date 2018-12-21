@@ -20,7 +20,7 @@ export const withMatchParamsHandlers = compose(
   })
 );
 
-export const renderIfAutenticated = compose(
+export const renderIfAuthenticated = compose(
   connect(state => ({
     isAutenticated: state.oidc.get('user')
   })),
