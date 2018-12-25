@@ -25,7 +25,7 @@ export const defaultValues = {
   has_roll_off_dumpster: false
 };
 
-const timeRegex = /[0-9]{1,2}-[0-9]{1,2}-[0-9]{4}T[0-9]{2}:[0-9]{2}Z/;
+const timeRegex = /[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}Z/;
 const phoneRege = /[0-9 +()]{6,19}/;
 
 export const validationSchema = yup.object().shape({

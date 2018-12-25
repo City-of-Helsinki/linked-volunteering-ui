@@ -18,7 +18,8 @@ export default compose(
   ),
   withHandlers({
     onSubmit: ({ history, locale, addNotification: notify }) => async values => {
-      await eventService.create(values);
+      const a = await eventService.create(values);
+      console.log(a);
       history.push(`/${locale}/event/submitted`);
       notify({ color: 'success', message: 'notification.form.event.created' });
     }

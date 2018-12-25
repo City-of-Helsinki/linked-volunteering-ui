@@ -331,10 +331,5 @@ export default ({ values, errors, touched, handleChange, handleBlur, handleSubmi
         />
       </Col>
     </Row>
-    <Row>
-      <Col sm="12" md={{ size: 8, offset: 1 }}>
-        <FormattedMessage tagName="h3" id="form.event.title.visibility" />
-      </Col>
-    </Row>
   </form>
 );
