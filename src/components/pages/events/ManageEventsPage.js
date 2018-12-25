@@ -207,9 +207,9 @@ class EventsPage extends PureComponent {
                             <DetailsCluster>
                               <Icon name="user" height="1em" width="1em" />
                               <strong>
-                                {event.first_name} {event.last_name}
+                                {event.organizer_first_name} {event.organizer_last_name}
                               </strong>
-                              <span>{event.email}</span>
+                              <span>{event.organizer_email}</span>
                             </DetailsCluster>
                             <DetailsCluster>
                               <Icon name="mapMarker" height="0.8em" width="0.8em" />

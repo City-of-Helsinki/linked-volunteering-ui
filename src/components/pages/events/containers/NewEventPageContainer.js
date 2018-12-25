@@ -3,7 +3,7 @@ import { compose, withProps, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
 
 import { addNotification } from '../../../../ducks/notification';
-import eventService from '../../../../services/eventService';
+import { submitEvent } from '../../../../ducks/event';
 import { withEventForm } from '../../../form/withForm';
 import EventPage from '../EventPage';
 
@@ -14,14 +14,18 @@ export default compose(
   })),
   connect(
     null,
-    { addNotification }
+    { addNotification, submitEvent }
   ),
   withHandlers({
-    onSubmit: ({ history, locale, addNotification: notify }) => async values => {
-      const a = await eventService.create(values);
-      console.log(a);
+    onSubmit: ({
+      history,
+      locale,
+      addNotification: notify,
+      submitEvent: submit
+    }) => async values => {
+      await submit(values);
+      await notify({ color: 'success', message: 'notification.form.event.created' });
       history.push(`/${locale}/event/submitted`);
-      notify({ color: 'success', message: 'notification.form.event.created' });
     }
   }),
   injectIntl,

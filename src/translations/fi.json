@@ -117,6 +117,7 @@
   "notification.manage_events.approve": "{name} hyväksytty!",
   "notification.manage_events.remove": "{name} peruttu!",
   "notification.error.restricted_area": "Tapahtuma vaatii kirjautumisen!",
+  "notification.generic.error": "Hups! Jotain meni pieleen...",
 
   "modal.confirm_removal.header": "Poistetaanko tapahtuma?",
   "modal.confirm_removal.footer.button1.text": "Kyllä, poista tapahtuma",
