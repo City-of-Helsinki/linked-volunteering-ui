@@ -64,6 +64,7 @@ class DateTime extends PureComponent {
               touched={touched.start_time}
               onChange={this.onChange('start_time')}
               onBlur={this.onBlur('start_time')}
+              highlightDates={[now]}
               selected={selectedStartTime}
               dateFormat={dateFormat}
               minDate={minDate}
