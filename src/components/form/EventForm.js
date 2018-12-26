@@ -1,18 +1,11 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
-import styled from 'styled-components';
 
 import Input from './fields/Input';
-import Select from './fields/Select';
 import Checkbox from './fields/Checkbox';
-import Map from './fields/Map';
-import Areas from './partitions/Areas';
-
-const MapContainer = styled.div`
-  height: 20em;
-  margin-bottom: 2em;
-`;
+import DateRange from './partitions/DateRange';
+import Location from './partitions/Location';
 
 export default ({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
   <form onSubmit={handleSubmit}>
@@ -57,96 +50,20 @@ export default ({ values, errors, touched, handleChange, handleBlur, handleSubmi
         <FormattedMessage tagName="h3" id="form.event.title.time_and_place" />
       </Col>
     </Row>
-    <Row>
-      <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 4, offset: 1 }}>
-        <Select
-          id="area"
-          label="form.event.field.area.label"
-          required
-          error={errors.area}
-          touched={touched.area}
-          value={values.area}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        >
-          <Areas />
-        </Select>
-      </Col>
-    </Row>
-    <Row>
-      <Col sm="10" md={{ size: 8, offset: 1 }} lg={{ size: 8, offset: 1 }}>
-        <MapContainer>
-          <Map
-            id="location"
-            error={errors.location}
-            handleChange={handleChange}
-            value={values.location}
-          />
-        </MapContainer>
-      </Col>
-    </Row>
-    {/*
-    <Row>
-      <Col sm="12" md={{ size: 4, offset: 1 }}>
-        <Input
-          type="text"
-          id="startdate"
-          label="form.event.field.startdate.label"
-          placeholder="form.event.field.startdate.placeholder"
-          required
-          error={errors.startdate}
-          touched={touched.startdate}
-          value={values.startdate}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-      </Col>
-      <Col sm="12" md={{ size: 4 }}>
-        <Input
-          type="text"
-          id="enddate"
-          label="form.event.field.enddate.label"
-          placeholder="form.event.field.enddate.placeholder"
-          required
-          error={errors.enddate}
-          touched={touched.enddate}
-          value={values.enddate}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-      </Col>
-    </Row>
-      */}
-    <Row>
-      <Col sm="12" md={{ size: 4, offset: 1 }}>
-        <Input
-          type="text"
-          id="start_time"
-          label="form.event.field.starttime.label"
-          placeholder="form.event.field.starttime.placeholder"
-          required
-          error={errors.start_time}
-          touched={touched.start_time}
-          value={values.start_time}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-      </Col>
-      <Col sm="12" md={{ size: 4 }}>
-        <Input
-          type="text"
-          id="end_time"
-          label="form.event.field.endtime.label"
-          placeholder="form.event.field.endtime.placeholder"
-          required
-          error={errors.end_time}
-          touched={touched.end_time}
-          value={values.end_time}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-      </Col>
-    </Row>
+    <Location
+      errors={errors}
+      touched={touched}
+      values={values}
+      handleChange={handleChange}
+      handleBlur={handleBlur}
+    />
+    <DateRange
+      errors={errors}
+      touched={touched}
+      values={values}
+      handleChange={handleChange}
+      handleBlur={handleBlur}
+    />
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
         <FormattedMessage tagName="h3" id="form.event.title.contact_person" />

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import styled from 'styled-components';
 import { injectIntl } from 'react-intl';
@@ -27,6 +27,11 @@ const ErrorMessage = styled.div`
   color: ${props => props.theme.themeColors.danger};
   margin-top: 0.25rem;
   font-size: 80%;
+`;
+
+const MapContainer = styled.div`
+  height: 20em;
+  margin-bottom: 2em;
 `;
 
 class MapCanvas extends Component {
@@ -61,13 +66,13 @@ class MapCanvas extends Component {
     const marker = value ? <Marker position={markerPosition} /> : null;
 
     return (
-      <Fragment>
+      <MapContainer>
         <Map center={position} zoom={this.state.zoom} style={style} onClick={this.addMarker}>
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           {marker}
         </Map>
         <ErrorMessage>{error && formatMessage({ id: 'form.validation.map' })}</ErrorMessage>
-      </Fragment>
+      </MapContainer>
     );
   }
 }

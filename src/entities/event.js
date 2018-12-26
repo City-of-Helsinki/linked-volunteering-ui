@@ -6,8 +6,8 @@ export const defaultValues = {
   name: '',
   description: '',
   area: '',
-  start_time: '',
-  end_time: '',
+  start_time: null,
+  end_time: null,
   location: {
     type: 'Point',
     coordinates: []
@@ -25,7 +25,6 @@ export const defaultValues = {
   has_roll_off_dumpster: false
 };
 
-const timeRegex = /[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}Z/;
 const phoneRege = /[0-9 +()]{6,19}/;
 
 export const validationSchema = yup.object().shape({
@@ -33,13 +32,13 @@ export const validationSchema = yup.object().shape({
   description: yup.string().required(),
   area: yup.string().required(),
   start_time: yup
-    .string()
-    .required()
-    .matches(timeRegex),
+    .date()
+    .nullable()
+    .required(),
   end_time: yup
-    .string()
-    .required()
-    .matches(timeRegex),
+    .date()
+    .nullable()
+    .required(),
   location: yup.object().shape({
     type: yup.string().required(),
     coordinates: yup.array().of(yup.number())
