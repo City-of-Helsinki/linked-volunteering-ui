@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import { Row, Col } from 'reactstrap';
-import { addWeeks } from 'date-fns';
+import { addWeeks, min, max } from 'date-fns';
 import { injectIntl } from 'react-intl';
 
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
@@ -47,6 +47,10 @@ class DateTime extends PureComponent {
       values,
       intl: { formatMessage }
     } = this.props;
+
+    const selectedStartTime = values.start_time;
+
+    const selectedEndTime = values.end_time;
     return (
       <Fragment>
         <Row>
@@ -60,9 +64,10 @@ class DateTime extends PureComponent {
               touched={touched.start_time}
               onChange={this.onChange('start_time')}
               onBlur={this.onBlur('start_time')}
-              selected={values.start_time}
+              selected={selectedStartTime}
               dateFormat={dateFormat}
               minDate={minDate}
+              maxDate={values.end_time}
               startDate={values.start_time}
               endDate={values.end_time}
               selectsStart
@@ -80,9 +85,9 @@ class DateTime extends PureComponent {
               touched={touched.end_time}
               onChange={this.onChange('end_time')}
               onBlur={this.onBlur('end_time')}
-              selected={values.end_time}
+              selected={selectedEndTime}
               dateFormat={dateFormat}
-              minDate={values.start_time}
+              minDate={values.start_time || minDate}
               startDate={values.start_time}
               endDate={values.end_time}
               selectsEnd
