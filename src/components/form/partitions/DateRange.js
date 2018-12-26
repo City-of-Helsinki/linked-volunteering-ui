@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import { Row, Col } from 'reactstrap';
-import { addWeeks, min, max } from 'date-fns';
+import { addWeeks } from 'date-fns';
 import { injectIntl } from 'react-intl';
 
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
