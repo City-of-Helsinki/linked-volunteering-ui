@@ -1,10 +1,8 @@
-// @flow
 import { Record, Map } from 'immutable';
 import { createAction } from 'redux-actions';
-import type { Action, DistrictState, DistrictFactory } from '../types/redux';
 import districtService from '../services/districtService';
 
-const defaultState: DistrictFactory = Record({
+const defaultState = Record({
   count: 0,
   next: null,
   previous: null,
@@ -13,7 +11,7 @@ const defaultState: DistrictFactory = Record({
 
 export const getDistricts = createAction('GET_DISTRICTS', districtService.getDistricts);
 
-export default (state: DistrictState = defaultState(), action: Action): DistrictState => {
+export default (state = defaultState(), action) => {
   const { type, payload } = action;
   switch (type) {
     case 'GET_DISTRICTS_FULFILLED':
