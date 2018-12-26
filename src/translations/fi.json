@@ -109,6 +109,7 @@
   "form.event.partitions.date_range.end_date.placeholder": "pp.kk.vvvv",
   "form.event.partitions.date_range.end_time.label": "Kellonaika",
   "form.event.partitions.date_range.end_time.placeholder": "tt:mm",
+  "form.event.partitions.date_range.timeCaption": "Aika",
 
   "form.report.field.year.label": "Valitse vuosi",
   "form.report.button.submit": "Hae",

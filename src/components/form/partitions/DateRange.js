@@ -1,9 +1,17 @@
 import React, { PureComponent, Fragment } from 'react';
 import { Row, Col } from 'reactstrap';
 import { addWeeks } from 'date-fns';
+import { injectIntl } from 'react-intl';
+
+import { registerLocale, setDefaultLocale } from 'react-datepicker';
+import fi from 'date-fns/locale/fi';
 import DatePicker from '../fields/DatePicker';
+
 import 'react-datepicker/dist/react-datepicker.css';
 import './dateRange.scss';
+
+registerLocale('fi', fi);
+setDefaultLocale('fi');
 
 const now = new Date();
 const minDate = addWeeks(now, 1);
@@ -33,7 +41,12 @@ class DateTime extends PureComponent {
   };
 
   render() {
-    const { errors, touched, values } = this.props;
+    const {
+      errors,
+      touched,
+      values,
+      intl: { formatMessage }
+    } = this.props;
     return (
       <Fragment>
         <Row>
@@ -42,6 +55,7 @@ class DateTime extends PureComponent {
               required
               label="form.event.partitions.date_range.start_date.label"
               placeholder="form.event.partitions.date_range.start_date.placeholder"
+              locale="fi"
               error={errors.start_time}
               touched={touched.start_time}
               onChange={this.onChange('start_time')}
@@ -61,6 +75,7 @@ class DateTime extends PureComponent {
               required
               label="form.event.partitions.date_range.end_date.label"
               placeholder="form.event.partitions.date_range.end_date.placeholder"
+              locale="fi"
               error={errors.end_time}
               touched={touched.end_time}
               onChange={this.onChange('end_time')}
@@ -82,6 +97,7 @@ class DateTime extends PureComponent {
               required
               label="form.event.partitions.date_range.start_time.label"
               placeholder="form.event.partitions.date_range.start_time.placeholder"
+              locale="fi"
               error={errors.start_time}
               touched={touched.start_time}
               onChange={this.onChange('start_time')}
@@ -90,7 +106,7 @@ class DateTime extends PureComponent {
               timeIntervals={timeIntervals}
               dateFormat={timeFormat}
               timeFormat={timeFormat}
-              timeCaption="Time"
+              timeCaption={formatMessage({ id: 'form.event.partitions.date_range.timeCaption' })}
               showTimeSelect
               showTimeSelectOnly
             />
@@ -100,6 +116,7 @@ class DateTime extends PureComponent {
               required
               label="form.event.partitions.date_range.end_time.label"
               placeholder="form.event.partitions.date_range.end_time.placeholder"
+              locale="fi"
               error={errors.end_time}
               touched={touched.end_time}
               onChange={this.onChange('end_time')}
@@ -108,7 +125,7 @@ class DateTime extends PureComponent {
               timeIntervals={timeIntervals}
               dateFormat={timeFormat}
               timeFormat={timeFormat}
-              timeCaption="time"
+              timeCaption={formatMessage({ id: 'form.event.partitions.date_range.timeCaption' })}
               showTimeSelect
               showTimeSelectOnly
             />
@@ -119,4 +136,4 @@ class DateTime extends PureComponent {
   }
 }
 
-export default DateTime;
+export default injectIntl(DateTime);
