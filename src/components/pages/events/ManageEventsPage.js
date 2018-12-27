@@ -81,8 +81,10 @@ class EventsPage extends PureComponent {
   };
 
   componentDidMount() {
-    const { getNeighborhoods, getEvents } = this.props;
-    getNeighborhoods();
+    const { neighborhoods, getNeighborhoods, getEvents } = this.props;
+    if (neighborhoods.size === 0) {
+      getNeighborhoods();
+    }
     getEvents();
   }
 
