@@ -63,7 +63,7 @@ class MapCanvas extends Component {
 
     const markerPosition =
       value.coordinates.length > 0 ? [value.coordinates[0], value.coordinates[1]] : position;
-    const marker = value ? <Marker position={markerPosition} /> : null;
+    const marker = value.coordinates.length > 0 ? <Marker position={markerPosition} /> : null;
 
     return (
       <MapContainer>
