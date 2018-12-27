@@ -183,8 +183,8 @@ class EventsPage extends PureComponent {
                             <Icon
                               inline
                               name="oval"
-                              height="0.5em"
-                              width="0.5em"
+                              height=".5em"
+                              width=".5em"
                               color={isEventPending ? 'orange' : 'green'}
                             />
                             <IntlComponent

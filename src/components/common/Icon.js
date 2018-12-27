@@ -98,6 +98,7 @@ const Icon = ({
     // eslint-disable-next-line no-console
     console.error('missing icon', name);
   }
+  console.debug(name, src);
   return (
     <StyledSvg
       className={className}
