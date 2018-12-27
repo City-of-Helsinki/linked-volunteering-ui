@@ -38,7 +38,6 @@ import twitter from 'hel-icons/dist/shapes/twitter.svg';
 import user from 'hel-icons/dist/shapes/user-o.svg';
 
 import order from './icons/order.svg';
-import point from './icons/point.svg';
 import oval from './icons/oval.svg';
 
 const icons = {
@@ -77,7 +76,6 @@ const icons = {
   twitter,
   user,
   order,
-  point,
   oval
 };
 

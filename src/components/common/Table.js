@@ -1,5 +1,9 @@
 import styled, { css } from 'styled-components';
 
+export const Th = styled.th`
+  padding: ${props => (props.large ? '1em 1em' : '0.5em 1em')};
+`;
+
 export const Td = styled.td`
   padding: ${props => (props.large ? '1em 1em' : '0.5em 1em')};
 `;
