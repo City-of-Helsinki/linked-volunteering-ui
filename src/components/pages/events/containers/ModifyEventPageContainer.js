@@ -17,9 +17,12 @@ export default compose(
     locale: props.match.params.locale
   })),
   connect(
-    (state, { id }) => ({
-      initialValues: state.event.events.get(id)
-    }),
+    (state, { id }) => {
+      const parsedId = parseInt(id, 10);
+      return {
+        initialValues: state.event.events.get(parsedId)
+      };
+    },
     { addNotification }
   ),
   withHandlers({
