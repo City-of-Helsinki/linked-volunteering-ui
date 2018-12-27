@@ -56,6 +56,7 @@ class DateTime extends PureComponent {
         <Row>
           <Col sm="12" md={{ size: 4, offset: 1 }}>
             <DatePicker
+              id="date_range.start_date"
               required
               label="form.event.partitions.date_range.start_date.label"
               placeholder="form.event.partitions.date_range.start_date.placeholder"
@@ -78,6 +79,7 @@ class DateTime extends PureComponent {
           </Col>
           <Col sm="12" md={{ size: 4 }}>
             <DatePicker
+              id="date_range.end_date"
               required
               label="form.event.partitions.date_range.end_date.label"
               placeholder="form.event.partitions.date_range.end_date.placeholder"
@@ -101,6 +103,7 @@ class DateTime extends PureComponent {
           <Col sm="12" md={{ size: 4, offset: 1 }}>
             <DatePicker
               required
+              id="date_range.start_time"
               label="form.event.partitions.date_range.start_time.label"
               placeholder="form.event.partitions.date_range.start_time.placeholder"
               locale="fi"
@@ -120,6 +123,7 @@ class DateTime extends PureComponent {
           <Col sm="12" md={{ size: 4 }}>
             <DatePicker
               required
+              id="date_range.end_time"
               label="form.event.partitions.date_range.end_time.label"
               placeholder="form.event.partitions.date_range.end_time.placeholder"
               locale="fi"

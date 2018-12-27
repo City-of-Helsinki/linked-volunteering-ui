@@ -4,9 +4,12 @@ import { injectIntl } from 'react-intl';
 import Label from './Label';
 
 const InputField = ({
-  id,
-  label,
-  required,
+  alternativeId,
+  alternativeLabel,
+  alternativeRequired,
+  id = alternativeId,
+  label = alternativeLabel,
+  required = alternativeRequired,
   error,
   touched,
   text,

@@ -6,9 +6,9 @@ const DatePickerField = ({ id, label, required, error, touched, text, placeholde
   <DatePicker
     customInput={
       <Input
-        id={id}
-        label={label}
-        required={required}
+        alternativeId={id}
+        alternativeLabel={label}
+        alternativeRequired={required}
         error={error}
         touched={touched}
         text={text}
@@ -18,4 +18,5 @@ const DatePickerField = ({ id, label, required, error, touched, text, placeholde
     {...rest}
   />
 );
+
 export default DatePickerField;
