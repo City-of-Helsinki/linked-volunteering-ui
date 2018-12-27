@@ -3,6 +3,7 @@ import { compose, withProps, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
 
 import { addNotification } from '../../../../ducks/notification';
+import { getNeighborhoods } from '../../../../ducks/neighborhood';
 import { submitEvent } from '../../../../ducks/event';
 import { withEventForm } from '../../../form/withForm';
 import EventPage from '../EventPage';
@@ -13,8 +14,10 @@ export default compose(
     locale: props.match.params.locale
   })),
   connect(
-    null,
-    { addNotification, submitEvent }
+    state => ({
+      neighborhoods: state.neighborhood.neighborhoods
+    }),
+    { getNeighborhoods, addNotification, submitEvent }
   ),
   withHandlers({
     onSubmit: ({

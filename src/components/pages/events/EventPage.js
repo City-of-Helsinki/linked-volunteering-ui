@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { Container, Row, Col, Button } from 'reactstrap';
 import { StickyContainer, Sticky } from 'react-sticky';
@@ -31,43 +31,54 @@ const StickyInner = styled.div`
   z-index: 5000;
 `;
 
-const NewEventPage = ({
-  handleReset,
-  handleSubmit,
-  intl: { formatMessage },
-  pageType,
-  ...rest
-}) => (
-  <Layout paddingBottom>
-    <StickyContainer>
-      <Sticky>
-        {({ style }) => (
-          <StickyInner style={style}>
-            <TitleContainer fluid>
-              <Row>
-                <Col lg="12" xl={{ size: 6, offset: 1 }}>
-                  <h2>{formatMessage({ id: `form.event.${pageType}.heading` })}</h2>
-                </Col>
-                <Col lg="6" xl={{ size: 2 }}>
-                  <Button block type="button" onClick={handleReset} color="danger">
-                    {formatMessage({ id: `form.event.${pageType}.button.reset` })}
-                  </Button>
-                </Col>
-                <Col lg="6" xl={{ size: 2 }}>
-                  <Button block type="submit" onClick={handleSubmit} color="success">
-                    {formatMessage({ id: `form.event.${pageType}.button.submit` })}
-                  </Button>
-                </Col>
-              </Row>
-            </TitleContainer>
-          </StickyInner>
-        )}
-      </Sticky>
-      <FormContainer>
-        <EventForm {...rest} />
-      </FormContainer>
-    </StickyContainer>
-  </Layout>
-);
+class NewEventPage extends PureComponent {
+  componentDidMount() {
+    const { getNeighborhoods } = this.props;
+    getNeighborhoods();
+  }
+
+  render() {
+    const {
+      handleReset,
+      handleSubmit,
+      intl: { formatMessage },
+      pageType,
+      ...rest
+    } = this.props;
+
+    return (
+      <Layout paddingBottom>
+        <StickyContainer>
+          <Sticky>
+            {({ style }) => (
+              <StickyInner style={style}>
+                <TitleContainer fluid>
+                  <Row>
+                    <Col lg="12" xl={{ size: 6, offset: 1 }}>
+                      <h2>{formatMessage({ id: `form.event.${pageType}.heading` })}</h2>
+                    </Col>
+                    <Col lg="6" xl={{ size: 2 }}>
+                      <Button block type="button" onClick={handleReset} color="danger">
+                        {formatMessage({ id: `form.event.${pageType}.button.reset` })}
+                      </Button>
+                    </Col>
+                    <Col lg="6" xl={{ size: 2 }}>
+                      <Button block type="submit" onClick={handleSubmit} color="success">
+                        {formatMessage({ id: `form.event.${pageType}.button.submit` })}
+                      </Button>
+                    </Col>
+                  </Row>
+                </TitleContainer>
+              </StickyInner>
+            )}
+          </Sticky>
+          <FormContainer>
+            <EventForm {...rest} />
+          </FormContainer>
+        </StickyContainer>
+      </Layout>
+    );
+  }
+}
 
 export default NewEventPage;

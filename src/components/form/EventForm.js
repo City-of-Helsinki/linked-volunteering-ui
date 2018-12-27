@@ -7,7 +7,15 @@ import Checkbox from './fields/Checkbox';
 import DateRange from './partitions/DateRange';
 import Location from './partitions/Location';
 
-export default ({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
+export default ({
+  neighborhoods,
+  values,
+  errors,
+  touched,
+  handleChange,
+  handleBlur,
+  handleSubmit
+}) => (
   <form onSubmit={handleSubmit}>
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
@@ -51,6 +59,7 @@ export default ({ values, errors, touched, handleChange, handleBlur, handleSubmi
       </Col>
     </Row>
     <Location
+      neighborhoods={neighborhoods}
       errors={errors}
       touched={touched}
       values={values}
