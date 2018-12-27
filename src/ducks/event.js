@@ -7,12 +7,12 @@ const defaultState = Record({
   next: null,
   previous: null,
   events: Map(),
-  filterByDistrict: null
+  filterByNeighborhood: null
 });
 
 export const getEvents = createAction('GET_EVENTS', eventService.getEvents);
 export const submitEvent = createAction('SUBMIT_EVENT', eventService.create);
-export const setFilterByDistrict = createAction('SET_EVENT_FILTER', name => name);
+export const setFilterByNeighborhood = createAction('SET_EVENT_FILTER', id => id);
 
 export default (state = defaultState(), action) => {
   const { type, payload } = action;
@@ -26,7 +26,7 @@ export default (state = defaultState(), action) => {
     case 'SUBMIT_EVENT_FULFILLED':
       return state.update('count', count => count + 1).setIn(['events', payload.id], payload);
     case 'SET_EVENT_FILTER':
-      return state.set('filterByDistrict', payload);
+      return state.set('filterByNeighborhood', payload);
     default:
       return state;
   }

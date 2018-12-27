@@ -6,6 +6,7 @@ import LocalizedLink from '../../common/LocalizedLink';
 import IntlComponent from '../../common/IntlComponent';
 import { Table, Td, Th, FirstTd, TrRow } from '../../common/Table';
 import Icon from '../../common/Icon';
+import Neighborhoods from '../../common/Neighborhoods';
 
 import Layout from '../../layout/containers/LayoutContainer';
 
@@ -80,20 +81,20 @@ class EventsPage extends PureComponent {
   };
 
   componentDidMount() {
-    const { getDistricts, getEvents } = this.props;
-    getDistricts();
+    const { getNeighborhoods, getEvents } = this.props;
+    getNeighborhoods();
     getEvents();
   }
 
   toggleDetails = id => this.setState(({ visible }) => ({ visible: visible === id ? null : id }));
 
   handleChange = e => {
-    const { setFilterByDistrict } = this.props;
-    setFilterByDistrict(e.target.value);
+    const { setFilterByNeighborhood } = this.props;
+    setFilterByNeighborhood(e.target.value);
   };
 
   render() {
-    const { events, districts, remove, approve } = this.props;
+    const { events, neighborhoods, remove, approve } = this.props;
     const { visible } = this.state;
 
     return (
@@ -107,14 +108,7 @@ class EventsPage extends PureComponent {
           <Row>
             <Col sm={{ size: 4, offset: 1 }}>
               <IntlComponent Component={FilterTitle} id="site.page.manage_events.filter_events" />
-              <select onChange={this.handleChange}>
-                <option value="" />
-                {districts.valueSeq().map(district => (
-                  <option key={district.name.fi} value={district.name.fi}>
-                    {district.name.fi}
-                  </option>
-                ))}
-              </select>
+              <Neighborhoods onChange={this.handleChange} neighborhoods={neighborhoods} />
             </Col>
           </Row>
         </ControlContainer>
