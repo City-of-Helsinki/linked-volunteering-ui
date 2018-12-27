@@ -25,7 +25,7 @@ export const defaultValues = {
   has_roll_off_dumpster: false
 };
 
-const phoneRege = /[0-9 +()]{6,19}/;
+const phoneRegex = /[0-9 +()]{6,19}/;
 
 export const validationSchema = yup.object().shape({
   name: yup.string().required(),
@@ -52,7 +52,7 @@ export const validationSchema = yup.object().shape({
   organizer_phone: yup
     .string()
     .required()
-    .matches(phoneRege),
+    .matches(phoneRegex),
   estimated_attendee_count: yup.number().required(),
   targets: yup.string().required(),
   maintenance_location: yup.string().required(),
