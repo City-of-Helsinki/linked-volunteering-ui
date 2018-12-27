@@ -1,13 +1,15 @@
 import React, { PureComponent, Fragment } from 'react';
 import styled from 'styled-components';
 import { Button, Container, Row, Col } from 'reactstrap';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, FormattedDate } from 'react-intl';
 import LocalizedLink from '../../common/LocalizedLink';
 import IntlComponent from '../../common/IntlComponent';
 import { Table, Td, FirstTd, TrRow } from '../../common/Table';
 import Icon from '../../common/Icon';
 
 import Layout from '../../layout/containers/LayoutContainer';
+
+import { isPending } from '../../../utils/event';
 
 const DetailsTr = styled.tr`
   background-color: white;
@@ -107,7 +109,7 @@ class EventsPage extends PureComponent {
               <IntlComponent Component={FilterTitle} id="site.page.manage_events.filter_events" />
               <select onChange={this.handleChange}>
                 <option value="" />
-                {districts.map(district => (
+                {districts.valueSeq().map(district => (
                   <option key={district.name.fi} value={district.name.fi}>
                     {district.name.fi}
                   </option>
@@ -164,23 +166,31 @@ class EventsPage extends PureComponent {
                 <tbody>
                   {events.valueSeq().map(event => {
                     const selected = visible === event.id;
+                    const isEventPending = isPending(event);
                     return (
                       <Fragment key={event.id}>
                         <TrRow selected={selected}>
-                          <FirstTd selected={event.state === 'pending'} />
+                          <FirstTd selected={isEventPending} />
                           <Td>{event.name}</Td>
-                          <Td>{event.email}</Td>
-                          <Td>{event.startdate}</Td>
-                          <Td>{event.created}</Td>
+                          <Td>{event.organizer_email}</Td>
+                          <Td>
+                            <FormattedDate value={event.start_time} />
+                          </Td>
+                          <Td>
+                            <FormattedDate value={event.created_at} />
+                          </Td>
                           <Td>
                             <Icon
                               inline
                               name="oval"
                               height="0.5em"
                               width="0.5em"
-                              color={event.state === 'pending' ? 'orange' : 'green'}
+                              color={isEventPending ? 'orange' : 'green'}
                             />
-                            <SpacedSpan>{event.state}</SpacedSpan>
+                            <IntlComponent
+                              Component={SpacedSpan}
+                              id={`entities.event.state.${event.state}`}
+                            />
                           </Td>
                           <Td>
                             <LocalizedLink to={`event/modify/${event.id}`}>
