@@ -22,9 +22,9 @@
   "site.page.manage_events.table.action.approve": "Hyväksy tapahtuma",
   "site.page.manage_events.table.action.remove": "Poista Tapahtuma",
   "site.page.manage_events.table.header.name": "Nimi",
-  "site.page.manage_events.table.header.organizer": "Järjestäjä",
-  "site.page.manage_events.table.header.created": "Ilmoitus jätetty",
-  "site.page.manage_events.table.header.start_date": "Tapahtumapäivä",
+  "site.page.manage_events.table.header.organizer_email": "Järjestäjä",
+  "site.page.manage_events.table.header.created_at": "Ilmoitus jätetty",
+  "site.page.manage_events.table.header.start_time": "Tapahtumapäivä",
   "site.page.manage_events.table.header.state": "Tila",
 
   "site.page.landing.hero.headline": "Tule mukaan vapaaehtoistalkoisiin",

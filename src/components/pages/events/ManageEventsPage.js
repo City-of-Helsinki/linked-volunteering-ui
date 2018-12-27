@@ -1,5 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Button, Container, Row, Col } from 'reactstrap';
 import { FormattedMessage, FormattedDate } from 'react-intl';
 import LocalizedLink from '../../common/LocalizedLink';
@@ -14,6 +14,16 @@ import { isPending } from '../../../utils/event';
 
 const DetailsTr = styled.tr`
   background-color: white;
+`;
+
+const StyledIcon = styled(Icon)`
+  ${({ order }) =>
+    order &&
+    css`
+      .icon_order_${order === 'ASC' ? 'left' : 'right'}_arrow {
+        stroke: red;
+      }
+    `}
 `;
 
 const Details = ({ children }) => (
@@ -75,6 +85,24 @@ const FilterTitle = styled.span`
   margin-right: 1em;
 `;
 
+const TableHeader = ({ column, order, setOrderBy }) => (
+  <Th>
+    <Button
+      block
+      color="link"
+      onClick={() =>
+        setOrderBy({
+          key: column,
+          order: order === 'ASC' ? 'DESC' : 'ASC'
+        })
+      }
+    >
+      <IntlComponent Component={HeaderText} id={`site.page.manage_events.table.header.${column}`} />
+      <StyledIcon order={order} inline name="order" height="1em" width="1em" />
+    </Button>
+  </Th>
+);
+
 class EventsPage extends PureComponent {
   state = {
     visible: null
@@ -119,107 +147,32 @@ class EventsPage extends PureComponent {
                 <thead>
                   <tr>
                     <th />
-                    <Th>
-                      <Button
-                        block
-                        color="link"
-                        onClick={() =>
-                          setOrderBy({
-                            key: 'name',
-                            order:
-                              ordering.key === 'name' && ordering.order !== 'ASC' ? 'ASC' : 'DESC'
-                          })
-                        }
-                      >
-                        <IntlComponent
-                          Component={HeaderText}
-                          id="site.page.manage_events.table.header.name"
-                        />
-                        <Icon inline name="order" height="1em" width="1em" />
-                      </Button>
-                    </Th>
-                    <Th>
-                      <Button
-                        block
-                        color="link"
-                        onClick={() =>
-                          setOrderBy({
-                            key: 'organizer_email',
-                            order:
-                              ordering.key === 'organizer_email' && ordering.order !== 'ASC'
-                                ? 'ASC'
-                                : 'DESC'
-                          })
-                        }
-                      >
-                        <IntlComponent
-                          Component={HeaderText}
-                          id="site.page.manage_events.table.header.organizer"
-                        />
-                        <Icon inline name="order" height="1em" width="1em" />
-                      </Button>
-                    </Th>
-                    <Th>
-                      <Button
-                        block
-                        color="link"
-                        onClick={() =>
-                          setOrderBy({
-                            key: 'start_time',
-                            order:
-                              ordering.key === 'start_time' && ordering.order !== 'ASC'
-                                ? 'ASC'
-                                : 'DESC'
-                          })
-                        }
-                      >
-                        <IntlComponent
-                          Component={HeaderText}
-                          id="site.page.manage_events.table.header.start_date"
-                        />
-                        <Icon inline name="order" height="1em" width="1em" />
-                      </Button>
-                    </Th>
-                    <Th>
-                      <Button
-                        block
-                        color="link"
-                        onClick={() =>
-                          setOrderBy({
-                            key: 'created_at',
-                            order:
-                              ordering.key === 'created_at' && ordering.order !== 'ASC'
-                                ? 'ASC'
-                                : 'DESC'
-                          })
-                        }
-                      >
-                        <IntlComponent
-                          Component={HeaderText}
-                          id="site.page.manage_events.table.header.created"
-                        />
-                        <Icon inline name="order" height="1em" width="1em" />
-                      </Button>
-                    </Th>
-                    <Th>
-                      <Button
-                        block
-                        color="link"
-                        onClick={() =>
-                          setOrderBy({
-                            key: 'state',
-                            order:
-                              ordering.key === 'state' && ordering.order !== 'ASC' ? 'ASC' : 'DESC'
-                          })
-                        }
-                      >
-                        <IntlComponent
-                          Component={HeaderText}
-                          id="site.page.manage_events.table.header.state"
-                        />
-                        <Icon inline name="order" height="1em" width="1em" />
-                      </Button>
-                    </Th>
+                    <TableHeader
+                      column="name"
+                      order={ordering.key === 'name' ? ordering.order : null}
+                      setOrderBy={setOrderBy}
+                    />
+                    <TableHeader
+                      column="organizer_email"
+                      order={ordering.key === 'organizer_email' ? ordering.order : null}
+                      setOrderBy={setOrderBy}
+                    />
+                    <TableHeader
+                      column="start_time"
+                      order={ordering.key === 'start_time' ? ordering.order : null}
+                      setOrderBy={setOrderBy}
+                    />
+
+                    <TableHeader
+                      column="created_at"
+                      order={ordering.key === 'created_at' ? ordering.order : null}
+                      setOrderBy={setOrderBy}
+                    />
+                    <TableHeader
+                      column="state"
+                      order={ordering.key === 'state' ? ordering.order : null}
+                      setOrderBy={setOrderBy}
+                    />
                     <Th colSpan="2" />
                   </tr>
                 </thead>

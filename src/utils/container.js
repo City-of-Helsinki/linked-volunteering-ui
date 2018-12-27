@@ -34,8 +34,15 @@ const sortBy = orderBy => (a, b) => {
   const aBy = get(a, orderBy.key);
   const bBy = get(b, orderBy.key);
   if (aBy === bBy) return 0;
-  const order = orderBy.order === 'ASC' ? 1 : -1;
-  return aBy < bBy ? order : order * -1;
+
+  const order = orderBy.order === 'ASC' ? -1 : 1;
+
+  switch (typeof aBy) {
+    case 'string':
+      return aBy.toLowerCase() < bBy.toLowerCase() ? order : order * -1;
+    default:
+      return aBy < bBy ? order : order * -1;
+  }
 };
 
 export const orderBy = property =>
