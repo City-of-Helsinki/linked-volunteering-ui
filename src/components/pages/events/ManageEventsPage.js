@@ -94,7 +94,7 @@ class EventsPage extends PureComponent {
   };
 
   render() {
-    const { events, neighborhoods, remove, approve } = this.props;
+    const { events, neighborhoods, remove, approve, setOrderBy, ordering } = this.props;
     const { visible } = this.state;
 
     return (
@@ -120,39 +120,105 @@ class EventsPage extends PureComponent {
                   <tr>
                     <th />
                     <Th>
-                      <IntlComponent
-                        Component={HeaderText}
-                        id="site.page.manage_events.table.header.name"
-                      />
-                      <Icon inline name="order" height="1em" width="1em" />
+                      <Button
+                        block
+                        color="link"
+                        onClick={() =>
+                          setOrderBy({
+                            key: 'name',
+                            order:
+                              ordering.key === 'name' && ordering.order !== 'ASC' ? 'ASC' : 'DESC'
+                          })
+                        }
+                      >
+                        <IntlComponent
+                          Component={HeaderText}
+                          id="site.page.manage_events.table.header.name"
+                        />
+                        <Icon inline name="order" height="1em" width="1em" />
+                      </Button>
                     </Th>
                     <Th>
-                      <IntlComponent
-                        Component={HeaderText}
-                        id="site.page.manage_events.table.header.organizer"
-                      />
-                      <Icon inline name="order" height="1em" width="1em" />
+                      <Button
+                        block
+                        color="link"
+                        onClick={() =>
+                          setOrderBy({
+                            key: 'organizer_email',
+                            order:
+                              ordering.key === 'organizer_email' && ordering.order !== 'ASC'
+                                ? 'ASC'
+                                : 'DESC'
+                          })
+                        }
+                      >
+                        <IntlComponent
+                          Component={HeaderText}
+                          id="site.page.manage_events.table.header.organizer"
+                        />
+                        <Icon inline name="order" height="1em" width="1em" />
+                      </Button>
                     </Th>
                     <Th>
-                      <IntlComponent
-                        Component={HeaderText}
-                        id="site.page.manage_events.table.header.start_date"
-                      />
-                      <Icon inline name="order" height="1em" width="1em" />
+                      <Button
+                        block
+                        color="link"
+                        onClick={() =>
+                          setOrderBy({
+                            key: 'start_time',
+                            order:
+                              ordering.key === 'start_time' && ordering.order !== 'ASC'
+                                ? 'ASC'
+                                : 'DESC'
+                          })
+                        }
+                      >
+                        <IntlComponent
+                          Component={HeaderText}
+                          id="site.page.manage_events.table.header.start_date"
+                        />
+                        <Icon inline name="order" height="1em" width="1em" />
+                      </Button>
                     </Th>
                     <Th>
-                      <IntlComponent
-                        Component={HeaderText}
-                        id="site.page.manage_events.table.header.created"
-                      />
-                      <Icon inline name="order" height="1em" width="1em" />
+                      <Button
+                        block
+                        color="link"
+                        onClick={() =>
+                          setOrderBy({
+                            key: 'created_at',
+                            order:
+                              ordering.key === 'created_at' && ordering.order !== 'ASC'
+                                ? 'ASC'
+                                : 'DESC'
+                          })
+                        }
+                      >
+                        <IntlComponent
+                          Component={HeaderText}
+                          id="site.page.manage_events.table.header.created"
+                        />
+                        <Icon inline name="order" height="1em" width="1em" />
+                      </Button>
                     </Th>
                     <Th>
-                      <IntlComponent
-                        Component={HeaderText}
-                        id="site.page.manage_events.table.header.state"
-                      />
-                      <Icon inline name="order" height="1em" width="1em" />
+                      <Button
+                        block
+                        color="link"
+                        onClick={() =>
+                          setOrderBy({
+                            key: 'state',
+                            order:
+                              ordering.key === 'state' && ordering.order !== 'ASC' ? 'ASC' : 'DESC'
+                          })
+                        }
+                      >
+                        <IntlComponent
+                          Component={HeaderText}
+                          id="site.page.manage_events.table.header.state"
+                        />
+                        <Icon inline name="order" height="1em" width="1em" />
+                      </Button>
                     </Th>
                     <Th colSpan="2" />
                   </tr>

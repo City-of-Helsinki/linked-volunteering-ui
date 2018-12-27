@@ -1,6 +1,8 @@
-import { withHandlers, withProps, compose, branch, renderComponent } from 'recompose';
+import { withHandlers, withProps, mapProps, compose, branch, renderComponent } from 'recompose';
 import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
+import { get } from 'lodash';
+
 import ErrorPage from '../components/pages/containers/ErrorPageContainer';
 
 export const withMatchParams = compose(
@@ -27,3 +29,17 @@ export const renderIfAuthenticated = compose(
   withRouter,
   branch(({ isAutenticated }) => !isAutenticated, renderComponent(ErrorPage))
 );
+
+const sortBy = orderBy => (a, b) => {
+  const aBy = get(a, orderBy.key);
+  const bBy = get(b, orderBy.key);
+  if (aBy === bBy) return 0;
+  const order = orderBy.order === 'ASC' ? 1 : -1;
+  return aBy < bBy ? order : order * -1;
+};
+
+export const orderBy = property =>
+  mapProps(props => ({
+    ...props,
+    [property]: props[property].sort(sortBy(props.ordering))
+  }));

@@ -2,17 +2,24 @@ import { Record, Map } from 'immutable';
 import { createAction } from 'redux-actions';
 import eventService from '../services/eventService';
 
+const ordering = Record({
+  key: null,
+  order: null
+});
+
 const defaultState = Record({
   count: 0,
   next: null,
   previous: null,
   events: Map(),
-  filterByNeighborhood: null
+  filterByNeighborhood: null,
+  ordering: ordering()
 });
 
 export const getEvents = createAction('GET_EVENTS', eventService.getEvents);
 export const submitEvent = createAction('SUBMIT_EVENT', eventService.create);
-export const setFilterByNeighborhood = createAction('SET_EVENT_FILTER', id => id);
+export const setFilterByNeighborhood = createAction('SET_EVENT_FILTER');
+export const setOrderBy = createAction('SET_ORDER_BY');
 
 export default (state = defaultState(), action) => {
   const { type, payload } = action;
@@ -27,6 +34,10 @@ export default (state = defaultState(), action) => {
       return state.update('count', count => count + 1).setIn(['events', payload.id], payload);
     case 'SET_EVENT_FILTER':
       return state.set('filterByNeighborhood', payload);
+    case 'SET_ORDER_BY':
+      return state
+        .setIn(['ordering', 'key'], payload.key)
+        .setIn(['ordering', 'order'], payload.order);
     default:
       return state;
   }
