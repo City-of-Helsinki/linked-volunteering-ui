@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
-import { injectIntl } from 'react-intl';
+import { injectIntl, FormattedMessage } from 'react-intl';
 
 import Notifications from '../notification/containers/NotificationsContainer';
 import LanguageDropdown from './LanguageDropdown';
@@ -68,27 +68,18 @@ const Layout = ({ children, intl, paddingTop, paddingBottom, user }) => {
         </NavbarBrand>
         <Nav className="ml-auto" navbar>
           <LanguageDropdown />
-          {!user && (
-            <UserAction
-              onClick={() => {
-                userManager.signinRedirect();
-              }}
-            >
-              <Icon name="user" width="30px" color="black" />
-              <span>Kirjaudu sisään</span>
-            </UserAction>
-          )}
-
-          {hasUser && (
-            <UserAction
-              onClick={() => {
+          <UserAction
+            onClick={() => {
+              if (hasUser) {
                 userManager.signoutRedirect();
-              }}
-            >
-              <Icon name="user" width="30px" color="black" />
-              <span>Kirjaudu ulos</span>
-            </UserAction>
-          )}
+              } else {
+                userManager.signinRedirect();
+              }
+            }}
+          >
+            <Icon name="user" width="30px" color="black" />
+            <FormattedMessage id={`site.nav.user.${hasUser ? 'logout' : 'login'}`} />
+          </UserAction>
         </Nav>
       </NavbarRow>
       <NavbarRow expand="md">

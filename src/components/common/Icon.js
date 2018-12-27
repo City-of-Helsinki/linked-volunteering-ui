@@ -82,7 +82,7 @@ const icons = {
 };
 
 const StyledSvg = styled(Svg)`
-  display: ${props => (props.inline === 'true' ? 'inline-block' : 'block')}
+  display: ${props => (props.inline === 'true' ? 'inline-block' : 'block')};
   transform: rotate(${props => props.rotate || 0}deg);
 `;
 
@@ -97,7 +97,8 @@ const Icon = ({
 }) => {
   const src = icons[name];
   if (!src) {
-    console.log('missing icon', name);
+    // eslint-disable-next-line no-console
+    console.error('missing icon', name);
   }
   return (
     <StyledSvg
