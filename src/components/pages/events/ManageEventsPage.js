@@ -6,6 +6,7 @@ import LocalizedLink from '../../common/LocalizedLink';
 import IntlComponent from '../../common/IntlComponent';
 import { Table, Td, FirstTd, TrRow } from '../../common/Table';
 import Icon from '../../common/Icon';
+import Neighborhoods from '../../common/Neighborhoods';
 
 import Layout from '../../layout/containers/LayoutContainer';
 
@@ -107,14 +108,7 @@ class EventsPage extends PureComponent {
           <Row>
             <Col sm={{ size: 4, offset: 1 }}>
               <IntlComponent Component={FilterTitle} id="site.page.manage_events.filter_events" />
-              <select onChange={this.handleChange}>
-                <option value="" />
-                {neighborhoods.valueSeq().map(neighborhood => (
-                  <option key={neighborhood.ocd_id} value={neighborhood.ocd_id}>
-                    {neighborhood.name.fi}
-                  </option>
-                ))}
-              </select>
+              <Neighborhoods onChange={this.handleChange} data={neighborhoods} />
             </Col>
           </Row>
         </ControlContainer>

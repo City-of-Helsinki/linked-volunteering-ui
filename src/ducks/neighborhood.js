@@ -9,13 +9,16 @@ const defaultState = Record({
   neighborhoods: Map()
 });
 
-export const getNeighborhoods = createAction('GET_DISTRICTS', neighborhoodService.getNeighborhoods);
+export const getNeighborhoods = createAction(
+  'GET_NEIGHBORHOODS',
+  neighborhoodService.getNeighborhoods
+);
 
 export default (state = defaultState(), action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case 'GET_DISTRICTS_FULFILLED':
+    case 'GET_NEIGHBORHOODS_FULFILLED':
       return state
         .set('count', payload.count)
         .set('next', payload.next)

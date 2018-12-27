@@ -9,8 +9,8 @@ import ManageEventsPage from '../ManageEventsPage';
 import { renderIfAuthenticated } from '../../../../utils/container';
 
 const filterEvents = eventState => {
-  if (eventState.filterByDistrict) {
-    return eventState.events.filter(event => event.ocd_id === eventState.filterByDistrict);
+  if (eventState.filterByNeighborhood) {
+    return eventState.events.filter(event => event.ocd_id === eventState.filterByNeighborhood);
   }
 
   return eventState.events;
