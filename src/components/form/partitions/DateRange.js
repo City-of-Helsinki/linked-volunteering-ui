@@ -60,6 +60,7 @@ class DateTime extends PureComponent {
               required
               label="form.event.partitions.date_range.start_date.label"
               placeholder="form.event.partitions.date_range.start_date.placeholder"
+              text="form.event.partitions.date_range.start_date.text"
               locale="fi"
               error={errors.start_time}
               touched={touched.start_time}

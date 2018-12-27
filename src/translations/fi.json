@@ -110,6 +110,7 @@
   "form.event.partitions.date_range.end_time.label": "Kellonaika",
   "form.event.partitions.date_range.end_time.placeholder": "tt:mm",
   "form.event.partitions.date_range.timeCaption": "Aika",
+  "form.event.partitions.date_range.start_date.text": "Tapahtuman alkamispäivä voi olla tästä päivästä viikko eteenpäin",
 
   "form.report.field.year.label": "Valitse vuosi",
   "form.report.button.submit": "Hae",
