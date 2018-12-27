@@ -80,20 +80,20 @@ class EventsPage extends PureComponent {
   };
 
   componentDidMount() {
-    const { getDistricts, getEvents } = this.props;
-    getDistricts();
+    const { getNeighborhoods, getEvents } = this.props;
+    getNeighborhoods();
     getEvents();
   }
 
   toggleDetails = id => this.setState(({ visible }) => ({ visible: visible === id ? null : id }));
 
   handleChange = e => {
-    const { setFilterByDistrict } = this.props;
-    setFilterByDistrict(e.target.value);
+    const { setFilterByNeighborhood } = this.props;
+    setFilterByNeighborhood(e.target.value);
   };
 
   render() {
-    const { events, districts, remove, approve } = this.props;
+    const { events, neighborhoods, remove, approve } = this.props;
     const { visible } = this.state;
 
     return (
@@ -109,9 +109,9 @@ class EventsPage extends PureComponent {
               <IntlComponent Component={FilterTitle} id="site.page.manage_events.filter_events" />
               <select onChange={this.handleChange}>
                 <option value="" />
-                {districts.valueSeq().map(district => (
-                  <option key={district.name.fi} value={district.name.fi}>
-                    {district.name.fi}
+                {neighborhoods.valueSeq().map(neighborhood => (
+                  <option key={neighborhood.ocd_id} value={neighborhood.ocd_id}>
+                    {neighborhood.name.fi}
                   </option>
                 ))}
               </select>

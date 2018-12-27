@@ -12,7 +12,7 @@ const defaultState = Record({
 
 export const getEvents = createAction('GET_EVENTS', eventService.getEvents);
 export const submitEvent = createAction('SUBMIT_EVENT', eventService.create);
-export const setFilterByDistrict = createAction('SET_EVENT_FILTER', name => name);
+export const setFilterByNeighborhood = createAction('SET_EVENT_FILTER', id => id);
 
 export default (state = defaultState(), action) => {
   const { type, payload } = action;

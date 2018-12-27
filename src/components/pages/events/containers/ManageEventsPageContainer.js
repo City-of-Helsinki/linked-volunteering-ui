@@ -1,8 +1,8 @@
 import { compose, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
 
-import { getEvents, setFilterByDistrict } from '../../../../ducks/event';
-import { getDistricts } from '../../../../ducks/district';
+import { getEvents, setFilterByNeighborhood } from '../../../../ducks/event';
+import { getNeighborhoods } from '../../../../ducks/neighborhood';
 import { addNotification } from '../../../../ducks/notification';
 import { openModal } from '../../../../ducks/modal';
 import ManageEventsPage from '../ManageEventsPage';
@@ -10,7 +10,7 @@ import { renderIfAuthenticated } from '../../../../utils/container';
 
 const filterEvents = eventState => {
   if (eventState.filterByDistrict) {
-    return eventState.events.filter(event => event.name === eventState.filterByDistrict);
+    return eventState.events.filter(event => event.ocd_id === eventState.filterByDistrict);
   }
 
   return eventState.events;
@@ -21,9 +21,9 @@ export default compose(
   connect(
     state => ({
       events: filterEvents(state.event),
-      districts: state.district.districts
+      neighborhoods: state.neighborhood.neighborhoods
     }),
-    { getDistricts, getEvents, setFilterByDistrict, addNotification, openModal }
+    { getNeighborhoods, getEvents, setFilterByNeighborhood, addNotification, openModal }
   ),
   withHandlers({
     remove: ({ openModal: showModal }) => event => {
