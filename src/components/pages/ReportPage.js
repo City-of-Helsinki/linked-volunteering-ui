@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Container, Row, Col, Button } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
+import Icon from '../common/Icon';
 
 import Layout from '../layout/containers/LayoutContainer';
 import ReportForm from '../form/ReportForm';
 
-import { Table, Td, TrRow } from '../common/Table';
+import { Table, Td, Th, TrRow } from '../common/Table';
 import IntlComponent from '../common/IntlComponent';
 
 const FormContainer = styled(Container)`
@@ -34,6 +35,10 @@ const ReportTitle = styled.span`
 const StatisticsRow = styled(Row)`
   padding-top: 1.5em;
   padding-bottom: 1.5em;
+`;
+
+const HeaderText = styled.span`
+  margin-right: 0.5em;
 `;
 
 class ReportPage extends Component {
@@ -92,14 +97,23 @@ class ReportPage extends Component {
             <Col>
               <Table>
                 <thead>
-                  <TrRow>
-                    <IntlComponent Component="th" id="site.report.table.header.area" />
-                    <IntlComponent Component="th" id="site.report.table.header.contact_person" />
-                    <IntlComponent Component="th" id="site.report.table.header.email" />
-                    <IntlComponent Component="th" id="site.report.table.header.phone" />
-                    <IntlComponent Component="th" id="site.report.table.header.events" />
-                    <IntlComponent Component="th" id="site.report.table.header.participants" />
-                  </TrRow>
+                  <tr>
+                    <IntlComponent Component={Th} id="site.report.table.header.area" />
+                    <IntlComponent Component={Th} id="site.report.table.header.contact_person" />
+                    <IntlComponent Component={Th} id="site.report.table.header.email" />
+                    <IntlComponent Component={Th} id="site.report.table.header.phone" />
+                    <Th>
+                      <IntlComponent Component={HeaderText} id="site.report.table.header.events" />
+                      <Icon inline name="order" height="1em" width="1em" />
+                    </Th>
+                    <Th>
+                      <IntlComponent
+                        Component={HeaderText}
+                        id="site.report.table.header.participants"
+                      />
+                      <Icon inline name="order" height="1em" width="1em" />
+                    </Th>
+                  </tr>
                 </thead>
                 <tbody>
                   {reports &&

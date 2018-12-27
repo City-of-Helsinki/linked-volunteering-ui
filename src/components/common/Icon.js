@@ -38,7 +38,6 @@ import twitter from 'hel-icons/dist/shapes/twitter.svg';
 import user from 'hel-icons/dist/shapes/user-o.svg';
 
 import order from './icons/order.svg';
-import point from './icons/point.svg';
 import oval from './icons/oval.svg';
 
 const icons = {
@@ -77,12 +76,11 @@ const icons = {
   twitter,
   user,
   order,
-  point,
   oval
 };
 
 const StyledSvg = styled(Svg)`
-  display: ${props => (props.inline === 'true' ? 'inline-block' : 'block')}
+  display: ${props => (props.inline === 'true' ? 'inline-block' : 'block')};
   transform: rotate(${props => props.rotate || 0}deg);
 `;
 
@@ -97,8 +95,10 @@ const Icon = ({
 }) => {
   const src = icons[name];
   if (!src) {
-    console.log('missing icon', name);
+    // eslint-disable-next-line no-console
+    console.error('missing icon', name);
   }
+  console.debug(name, src);
   return (
     <StyledSvg
       className={className}

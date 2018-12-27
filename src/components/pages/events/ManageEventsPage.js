@@ -4,7 +4,7 @@ import { Button, Container, Row, Col } from 'reactstrap';
 import { FormattedMessage, FormattedDate } from 'react-intl';
 import LocalizedLink from '../../common/LocalizedLink';
 import IntlComponent from '../../common/IntlComponent';
-import { Table, Td, FirstTd, TrRow } from '../../common/Table';
+import { Table, Td, Th, FirstTd, TrRow } from '../../common/Table';
 import Icon from '../../common/Icon';
 
 import Layout from '../../layout/containers/LayoutContainer';
@@ -125,42 +125,42 @@ class EventsPage extends PureComponent {
                 <thead>
                   <tr>
                     <th />
-                    <th>
+                    <Th>
                       <IntlComponent
                         Component={HeaderText}
                         id="site.page.manage_events.table.header.name"
                       />
                       <Icon inline name="order" height="1em" width="1em" />
-                    </th>
-                    <th>
+                    </Th>
+                    <Th>
                       <IntlComponent
                         Component={HeaderText}
                         id="site.page.manage_events.table.header.organizer"
                       />
                       <Icon inline name="order" height="1em" width="1em" />
-                    </th>
-                    <th>
+                    </Th>
+                    <Th>
                       <IntlComponent
                         Component={HeaderText}
                         id="site.page.manage_events.table.header.start_date"
                       />
                       <Icon inline name="order" height="1em" width="1em" />
-                    </th>
-                    <th>
+                    </Th>
+                    <Th>
                       <IntlComponent
                         Component={HeaderText}
                         id="site.page.manage_events.table.header.created"
                       />
                       <Icon inline name="order" height="1em" width="1em" />
-                    </th>
-                    <th>
+                    </Th>
+                    <Th>
                       <IntlComponent
                         Component={HeaderText}
                         id="site.page.manage_events.table.header.state"
                       />
                       <Icon inline name="order" height="1em" width="1em" />
-                    </th>
-                    <th colSpan="2" />
+                    </Th>
+                    <Th colSpan="2" />
                   </tr>
                 </thead>
                 <tbody>
@@ -183,8 +183,8 @@ class EventsPage extends PureComponent {
                             <Icon
                               inline
                               name="oval"
-                              height="0.5em"
-                              width="0.5em"
+                              height=".5em"
+                              width=".5em"
                               color={isEventPending ? 'orange' : 'green'}
                             />
                             <IntlComponent

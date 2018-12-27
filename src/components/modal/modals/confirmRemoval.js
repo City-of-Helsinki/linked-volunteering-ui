@@ -1,4 +1,6 @@
 import React from 'react';
+import { FormattedDate, FormattedTime } from 'react-intl';
+
 import { addNotification } from '../../../ducks/notification';
 import Icon from '../../common/Icon';
 
@@ -9,14 +11,14 @@ const Body = ({ values }) => (
     </div>
     <div>
       <Icon name="calendar" inline width="1em" height="1em" />
-      <span>{values.startDate}</span>
+      <FormattedDate value={values.start_time} />
       <span>
-        klo {values.starttime} - {values.endtime}
+        klo <FormattedTime value={values.start_time} /> - <FormattedTime value={values.end_time} />
       </span>
     </div>
     <div>
       <Icon name="mapMarker" inline width="1em" height="1em" />
-      <span>Töölönranta</span>
+      <span>Placeholder text for an address</span>
     </div>
   </div>
 );
