@@ -54,20 +54,27 @@ class MapCanvas extends Component {
 
   render() {
     const {
+      bounds,
       value,
       error,
       intl: { formatMessage }
     } = this.props;
 
+    const mapBounds = bounds ? [[bounds[1], bounds[0]], [bounds[3], bounds[2]]] : null;
     const position = [this.state.lat, this.state.lng];
-
     const markerPosition =
       value.coordinates.length > 0 ? [value.coordinates[0], value.coordinates[1]] : position;
-    const marker = value ? <Marker position={markerPosition} /> : null;
+    const marker = value.coordinates.length > 0 ? <Marker position={markerPosition} /> : null;
 
     return (
       <MapContainer>
-        <Map center={position} zoom={this.state.zoom} style={style} onClick={this.addMarker}>
+        <Map
+          center={position}
+          zoom={this.state.zoom}
+          bounds={mapBounds}
+          style={style}
+          onClick={this.addMarker}
+        >
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           {marker}
         </Map>
