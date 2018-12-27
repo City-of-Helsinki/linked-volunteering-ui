@@ -108,7 +108,7 @@ class EventsPage extends PureComponent {
           <Row>
             <Col sm={{ size: 4, offset: 1 }}>
               <IntlComponent Component={FilterTitle} id="site.page.manage_events.filter_events" />
-              <Neighborhoods onChange={this.handleChange} data={neighborhoods} />
+              <Neighborhoods onChange={this.handleChange} neighborhoods={neighborhoods} />
             </Col>
           </Row>
         </ControlContainer>
