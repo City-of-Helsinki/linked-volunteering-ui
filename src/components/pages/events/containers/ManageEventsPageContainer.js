@@ -1,12 +1,12 @@
 import { compose, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
 
-import { getEvents, setFilterByNeighborhood } from '../../../../ducks/event';
+import { getEvents, setFilterByNeighborhood, setOrderBy } from '../../../../ducks/event';
 import { getNeighborhoods } from '../../../../ducks/neighborhood';
 import { addNotification } from '../../../../ducks/notification';
 import { openModal } from '../../../../ducks/modal';
 import ManageEventsPage from '../ManageEventsPage';
-import { renderIfAuthenticated } from '../../../../utils/container';
+import { renderIfAuthenticated, orderBy } from '../../../../utils/container';
 
 const filterEvents = eventState => {
   if (eventState.filterByNeighborhood) {
@@ -21,10 +21,12 @@ export default compose(
   connect(
     state => ({
       events: filterEvents(state.event),
+      ordering: state.event.ordering,
       neighborhoods: state.neighborhood.neighborhoods
     }),
-    { getNeighborhoods, getEvents, setFilterByNeighborhood, addNotification, openModal }
+    { getNeighborhoods, getEvents, setFilterByNeighborhood, addNotification, openModal, setOrderBy }
   ),
+  orderBy('events'),
   withHandlers({
     remove: ({ openModal: showModal }) => event => {
       showModal('confirmRemoval', event);
