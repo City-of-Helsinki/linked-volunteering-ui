@@ -36,7 +36,6 @@ class Location extends React.Component {
             <Select
               id="area"
               label="form.event.field.neighborhood.label"
-              required
               error={errors.area}
               touched={touched.area}
               value={values.area}
