@@ -78,7 +78,7 @@
   "form.event.field.name.label": "Nimi",
   "form.event.field.name.placeholder": "Tapahtuman nimi",
   "form.event.field.description.label": "Kuvausteksti",
-  "form.event.field.area.label": "Alue / Talkoopiiri",
+  "form.event.field.neighborhood.label": "Kaupunginosa",
   "form.event.field.first_name.label": "Etunimi",
   "form.event.field.first_name.placeholder": "Etunimi",
   "form.event.field.last_name.label": "Sukunimi",
