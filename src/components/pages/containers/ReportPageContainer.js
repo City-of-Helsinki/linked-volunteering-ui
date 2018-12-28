@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
-import { renderIfAuthenticated } from '../../../utils/container';
+import { renderIfAuthenticated, orderBy } from '../../../utils/container';
 import { withReportForm } from '../../form/withForm';
-import { getReport } from '../../../ducks/report';
+import { getReport, setOrderBy } from '../../../ducks/report';
 import ReportPage from '../ReportPage';
 
 export default compose(
@@ -10,8 +10,10 @@ export default compose(
   withReportForm,
   connect(
     state => ({
-      reports: state.report.reports
+      reports: state.report.reports,
+      ordering: state.report.ordering
     }),
-    { getReport }
-  )
+    { getReport, setOrderBy }
+  ),
+  orderBy('reports')
 )(ReportPage);

@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Container, Row, Col, Button } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
-import Icon from '../common/Icon';
 
 import Layout from '../layout/containers/LayoutContainer';
 import ReportForm from '../form/ReportForm';
 
-import Table, { Td, Th, TrRow } from '../common/Table';
+import Table, { Td, Tr } from '../common/Table';
 import IntlComponent from '../common/IntlComponent';
 
 const FormContainer = styled(Container)`
@@ -37,9 +36,18 @@ const StatisticsRow = styled(Row)`
   padding-bottom: 1.5em;
 `;
 
-const HeaderText = styled.span`
-  margin-right: 0.5em;
-`;
+const tableHeaders = [
+  { key: 'area', translation: 'report.area', hasOrderBy: false },
+  {
+    key: 'contact_person',
+    translation: 'report.contact_person',
+    hasOrderBy: false
+  },
+  { key: 'email', translation: 'report.email', hasOrderBy: false },
+  { key: 'phone', translation: 'report.phone', hasOrderBy: false },
+  { key: 'events', translation: 'report.events', hasOrderBy: true },
+  { key: 'participants', translation: 'report.participants', hasOrderBy: true }
+];
 
 class ReportPage extends Component {
   componentDidMount() {
@@ -48,7 +56,7 @@ class ReportPage extends Component {
   }
 
   render() {
-    const { handleReset, handleSubmit, reports, ...rest } = this.props;
+    const { handleReset, handleSubmit, reports, setOrderBy, ordering, ...rest } = this.props;
     const eventAmount = reports.reduce((acc, row) => acc + row.events, 0);
     const participantAmount = reports.reduce((acc, row) => acc + row.participants, 0);
     return (
@@ -95,39 +103,18 @@ class ReportPage extends Component {
         <FormContainer>
           <Row>
             <Col>
-              <Table>
-                <thead>
-                  <tr>
-                    <IntlComponent Component={Th} id="site.report.table.header.area" />
-                    <IntlComponent Component={Th} id="site.report.table.header.contact_person" />
-                    <IntlComponent Component={Th} id="site.report.table.header.email" />
-                    <IntlComponent Component={Th} id="site.report.table.header.phone" />
-                    <Th>
-                      <IntlComponent Component={HeaderText} id="site.report.table.header.events" />
-                      <Icon inline name="order" height="1em" width="1em" />
-                    </Th>
-                    <Th>
-                      <IntlComponent
-                        Component={HeaderText}
-                        id="site.report.table.header.participants"
-                      />
-                      <Icon inline name="order" height="1em" width="1em" />
-                    </Th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {reports &&
-                    reports.valueSeq().map(report => (
-                      <TrRow key={report.id}>
-                        <Td>{report.area}</Td>
-                        <Td>{report.contact_person}</Td>
-                        <Td>{report.email}</Td>
-                        <Td>{report.phone}</Td>
-                        <Td>{report.events}</Td>
-                        <Td>{report.participants}</Td>
-                      </TrRow>
-                    ))}
-                </tbody>
+              <Table headers={tableHeaders} setOrderBy={setOrderBy} ordering={ordering}>
+                {reports &&
+                  reports.valueSeq().map(report => (
+                    <Tr key={report.id}>
+                      <Td>{report.area}</Td>
+                      <Td>{report.contact_person}</Td>
+                      <Td>{report.email}</Td>
+                      <Td>{report.phone}</Td>
+                      <Td>{report.events}</Td>
+                      <Td>{report.participants}</Td>
+                    </Tr>
+                  ))}
               </Table>
             </Col>
           </Row>

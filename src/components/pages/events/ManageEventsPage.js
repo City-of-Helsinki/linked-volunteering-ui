@@ -4,26 +4,13 @@ import { Button, Container, Row, Col } from 'reactstrap';
 import { FormattedMessage, FormattedDate } from 'react-intl';
 import LocalizedLink from '../../common/LocalizedLink';
 import IntlComponent from '../../common/IntlComponent';
-import Table, { Td, FirstTd, TrRow } from '../../common/Table';
+import Table, { Td, Tr, DetailsRow } from '../../common/Table';
 import Icon from '../../common/Icon';
 import Neighborhoods from '../../common/Neighborhoods';
 
 import Layout from '../../layout/containers/LayoutContainer';
 
 import { isPending } from '../../../utils/event';
-
-const DetailsTr = styled.tr`
-  background-color: white;
-`;
-
-const Details = ({ children }) => (
-  <DetailsTr>
-    <FirstTd />
-    <Td colSpan={7} large>
-      {children}
-    </Td>
-  </DetailsTr>
-);
 
 const DetailsCluster = styled.div`
   display: flex;
@@ -72,15 +59,15 @@ const FilterTitle = styled.span`
 `;
 
 const tableHeaders = [
-  { key: 'name', order: null, translation: 'manage_events.name', hasOrderBy: true },
+  { key: 'name', translation: 'manage_events.name', hasOrderBy: true },
   {
     key: 'organizer_email',
-    order: null,
     translation: 'manage_events.organizer_email',
     hasOrderBy: true
   },
-  { key: 'start_time', order: null, translation: 'manage_events.start_time', hasOrderBy: true },
-  { key: 'created_at', order: null, translation: 'manage_events.created_at', hasOrderBy: true }
+  { key: 'start_time', translation: 'manage_events.start_time', hasOrderBy: true },
+  { key: 'created_at', translation: 'manage_events.created_at', hasOrderBy: true },
+  { key: 'state', translation: 'manage_events.state', hasOrderBy: true }
 ];
 
 class EventsPage extends PureComponent {
@@ -135,8 +122,7 @@ class EventsPage extends PureComponent {
                   const isEventPending = isPending(event);
                   return (
                     <Fragment key={event.id}>
-                      <TrRow selected={selected}>
-                        <FirstTd selected={isEventPending} />
+                      <Tr firstColumn highlighted={isEventPending} selected={selected}>
                         <Td>{event.name}</Td>
                         <Td>{event.organizer_email}</Td>
                         <Td>
@@ -177,9 +163,9 @@ class EventsPage extends PureComponent {
                             />
                           </Button>
                         </Td>
-                      </TrRow>
+                      </Tr>
                       {selected && (
-                        <Details>
+                        <DetailsRow>
                           <DetailsCluster>
                             <Icon name="user" height="1em" width="1em" />
                             <strong>
@@ -204,7 +190,7 @@ class EventsPage extends PureComponent {
                               <Icon inline name="times" height="1em" width="1em" />
                             </ErrorButton>
                           </div>
-                        </Details>
+                        </DetailsRow>
                       )}
                     </Fragment>
                   );

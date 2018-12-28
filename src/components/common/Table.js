@@ -4,21 +4,13 @@ import { Button } from 'reactstrap';
 import IntlComponent from './IntlComponent';
 import Icon from './Icon';
 
-export const Th = styled.th`
-  padding: ${props => (props.large ? '1em 1em' : '0.5em 1em')};
-`;
-
-export const Td = styled.td`
-  padding: ${props => (props.large ? '1em 1em' : '0.5em 1em')};
-`;
-
-export const FirstTd = styled.td`
-  background: ${props => (props.selected ? 'orange' : 'none')};
-  width: 5px;
-`;
-
-export const TrRow = styled.tr`
+const StyledTr = styled.tr`
   ${props => {
+    if (props.white) {
+      return css`
+        background-color: white;
+      `;
+    }
     if (props.selected) {
       return css`
         background-color: #ebebeb;
@@ -35,6 +27,11 @@ export const TrRow = styled.tr`
   }}
 `;
 
+const FirstTd = styled.td`
+  background: ${props => (props.highlighted ? 'orange' : 'none')};
+  width: 5px;
+`;
+
 const Table = styled.table`
   width: 100%;
 `;
@@ -42,6 +39,29 @@ const Table = styled.table`
 const HeaderText = styled.span`
   margin-right: 0.5em;
 `;
+
+export const Th = styled.th`
+  padding: ${props => (props.large ? '1em 1em' : '0.5em 1em')};
+`;
+
+export const Td = styled.td`
+  padding: ${props => (props.large ? '1em 1em' : '0.5em 1em')};
+`;
+
+export const Tr = ({ firstColumn, highlighted, children }) => (
+  <StyledTr>
+    {firstColumn && <FirstTd highlighted={highlighted} />}
+    {children}
+  </StyledTr>
+);
+
+export const DetailsRow = ({ children, colSpan }) => (
+  <Tr firstColumn white>
+    <Td colSpan={colSpan} large>
+      {children}
+    </Td>
+  </Tr>
+);
 
 const StyledIcon = styled(Icon)`
   ${({ order }) =>
@@ -53,30 +73,39 @@ const StyledIcon = styled(Icon)`
     `}
 `;
 
+const getOrder = (key, ordering) => {
+  if (key === ordering.key) {
+    return ordering.order === 'ASC' ? 'DESC' : 'ASC';
+  }
+  return null;
+};
+
 export default ({ firstColumn, headers, actionColSpan, children, setOrderBy, ordering }) => (
   <Table>
     <thead>
       <tr>
         {firstColumn && <th />}
-        {headers.map(({ key, order, translation, hasOrderBy }) => (
-          <Th>
-            <IntlComponent Component={HeaderText} id={`site.table.header.${translation}`} />
-            {hasOrderBy && (
-              <Button
-                block
-                color="link"
-                onClick={() =>
-                  setOrderBy({
-                    key,
-                    order: order === 'ASC' ? 'DESC' : 'ASC'
-                  })
-                }
-              >
-                <StyledIcon order={order} inline name="order" height="1em" width="1em" />
-              </Button>
-            )}
-          </Th>
-        ))}
+        {headers.map(({ key, translation, hasOrderBy }) => {
+          const order = getOrder(key, ordering);
+          return (
+            <Th key={key}>
+              <IntlComponent Component={HeaderText} id={`site.table.header.${translation}`} />
+              {hasOrderBy && (
+                <Button
+                  color="link"
+                  onClick={() =>
+                    setOrderBy({
+                      key,
+                      order: order || 'ASC'
+                    })
+                  }
+                >
+                  <StyledIcon order={order} inline name="order" height="1em" width="1em" />
+                </Button>
+              )}
+            </Th>
+          );
+        })}
         {actionColSpan && <Th colSpan={actionColSpan} />}
       </tr>
     </thead>
