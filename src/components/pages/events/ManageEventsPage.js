@@ -165,7 +165,7 @@ class EventsPage extends PureComponent {
                         </Td>
                       </Tr>
                       {selected && (
-                        <DetailsRow>
+                        <DetailsRow colSpan={7}>
                           <DetailsCluster>
                             <Icon name="user" height="1em" width="1em" />
                             <strong>
