@@ -14,6 +14,7 @@ const maxWidth = Object.entries(breakpoint).reduce((acc, [size, pixels]) => ({
   ...acc,
   [size]: `${pixels / 16}em`
 }));
+console.debug(extractedTheme);
 
 export default {
   ...extractedTheme,

@@ -63,21 +63,22 @@ export const DetailsRow = ({ children, colSpan }) => (
   </Tr>
 );
 
-const StyledIcon = styled(Icon)`
-  ${({ order }) =>
-    order &&
-    css`
-      .icon_order_${order === 'ASC' ? 'left' : 'right'}_arrow {
-        stroke: red;
-      }
-    `}
-`;
-
 const getOrder = (key, ordering) => {
   if (key === ordering.key) {
     return ordering.order === 'ASC' ? 'DESC' : 'ASC';
   }
   return null;
+};
+
+const getOrderIcon = order => {
+  switch (order) {
+    case 'ASC':
+      return 'orderAsc';
+    case 'DESC':
+      return 'orderDesc';
+    default:
+      return 'order';
+  }
 };
 
 export default ({ firstColumn, headers, actionColSpan, children, setOrderBy, ordering }) => (
@@ -100,7 +101,7 @@ export default ({ firstColumn, headers, actionColSpan, children, setOrderBy, ord
                     })
                   }
                 >
-                  <StyledIcon order={order} inline name="order" height="1em" width="1em" />
+                  <Icon inline name={getOrderIcon(order)} height="1em" width="1em" />
                 </Button>
               )}
             </Th>
