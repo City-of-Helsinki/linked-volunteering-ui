@@ -2,6 +2,7 @@ import { injectIntl } from 'react-intl';
 import { compose, withProps, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
 
+import { getNeighborhoods } from '../../../../ducks/neighborhood';
 import { renderIfAuthenticated } from '../../../../utils/container';
 import { addNotification } from '../../../../ducks/notification';
 import eventService from '../../../../services/eventService';
@@ -20,10 +21,11 @@ export default compose(
     (state, { id }) => {
       const parsedId = parseInt(id, 10);
       return {
-        initialValues: state.event.events.get(parsedId)
+        initialValues: state.event.events.get(parsedId),
+        neighborhoods: state.neighborhood.neighborhoods
       };
     },
-    { addNotification }
+    { addNotification, getNeighborhoods }
   ),
   withHandlers({
     onSubmit: ({ history, locale, addNotification: notify }) => async values => {
