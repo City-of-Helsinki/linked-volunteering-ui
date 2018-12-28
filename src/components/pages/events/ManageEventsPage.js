@@ -1,10 +1,10 @@
 import React, { PureComponent, Fragment } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Button, Container, Row, Col } from 'reactstrap';
 import { FormattedMessage, FormattedDate } from 'react-intl';
 import LocalizedLink from '../../common/LocalizedLink';
 import IntlComponent from '../../common/IntlComponent';
-import { Table, Td, Th, FirstTd, TrRow } from '../../common/Table';
+import Table, { Td, FirstTd, TrRow } from '../../common/Table';
 import Icon from '../../common/Icon';
 import Neighborhoods from '../../common/Neighborhoods';
 
@@ -14,16 +14,6 @@ import { isPending } from '../../../utils/event';
 
 const DetailsTr = styled.tr`
   background-color: white;
-`;
-
-const StyledIcon = styled(Icon)`
-  ${({ order }) =>
-    order &&
-    css`
-      .icon_order_${order === 'ASC' ? 'left' : 'right'}_arrow {
-        stroke: red;
-      }
-    `}
 `;
 
 const Details = ({ children }) => (
@@ -46,10 +36,6 @@ const DetailsCluster = styled.div`
 
 const SpacedSpan = styled.span`
   margin-left: 0.5em;
-`;
-
-const HeaderText = styled.span`
-  margin-right: 0.5em;
 `;
 
 const ErrorButton = styled(Button)`
@@ -85,23 +71,17 @@ const FilterTitle = styled.span`
   margin-right: 1em;
 `;
 
-const TableHeader = ({ column, order, setOrderBy }) => (
-  <Th>
-    <Button
-      block
-      color="link"
-      onClick={() =>
-        setOrderBy({
-          key: column,
-          order: order === 'ASC' ? 'DESC' : 'ASC'
-        })
-      }
-    >
-      <IntlComponent Component={HeaderText} id={`site.page.manage_events.table.header.${column}`} />
-      <StyledIcon order={order} inline name="order" height="1em" width="1em" />
-    </Button>
-  </Th>
-);
+const tableHeaders = [
+  { key: 'name', order: null, translation: 'manage_events.name', hasOrderBy: true },
+  {
+    key: 'organizer_email',
+    order: null,
+    translation: 'manage_events.organizer_email',
+    hasOrderBy: true
+  },
+  { key: 'start_time', order: null, translation: 'manage_events.start_time', hasOrderBy: true },
+  { key: 'created_at', order: null, translation: 'manage_events.created_at', hasOrderBy: true }
+];
 
 class EventsPage extends PureComponent {
   state = {
@@ -143,120 +123,92 @@ class EventsPage extends PureComponent {
         <FormContainer>
           <Row>
             <Col>
-              <Table>
-                <thead>
-                  <tr>
-                    <th />
-                    <TableHeader
-                      column="name"
-                      order={ordering.key === 'name' ? ordering.order : null}
-                      setOrderBy={setOrderBy}
-                    />
-                    <TableHeader
-                      column="organizer_email"
-                      order={ordering.key === 'organizer_email' ? ordering.order : null}
-                      setOrderBy={setOrderBy}
-                    />
-                    <TableHeader
-                      column="start_time"
-                      order={ordering.key === 'start_time' ? ordering.order : null}
-                      setOrderBy={setOrderBy}
-                    />
-
-                    <TableHeader
-                      column="created_at"
-                      order={ordering.key === 'created_at' ? ordering.order : null}
-                      setOrderBy={setOrderBy}
-                    />
-                    <TableHeader
-                      column="state"
-                      order={ordering.key === 'state' ? ordering.order : null}
-                      setOrderBy={setOrderBy}
-                    />
-                    <Th colSpan="2" />
-                  </tr>
-                </thead>
-                <tbody>
-                  {events.valueSeq().map(event => {
-                    const selected = visible === event.id;
-                    const isEventPending = isPending(event);
-                    return (
-                      <Fragment key={event.id}>
-                        <TrRow selected={selected}>
-                          <FirstTd selected={isEventPending} />
-                          <Td>{event.name}</Td>
-                          <Td>{event.organizer_email}</Td>
-                          <Td>
-                            <FormattedDate value={event.start_time} />
-                          </Td>
-                          <Td>
-                            <FormattedDate value={event.created_at} />
-                          </Td>
-                          <Td>
-                            <Icon
-                              inline
-                              name="oval"
-                              height=".5em"
-                              width=".5em"
-                              color={isEventPending ? 'orange' : 'green'}
-                            />
+              <Table
+                firstColumn
+                headers={tableHeaders}
+                actionColSpan={2}
+                setOrderBy={setOrderBy}
+                ordering={ordering}
+              >
+                {events.valueSeq().map(event => {
+                  const selected = visible === event.id;
+                  const isEventPending = isPending(event);
+                  return (
+                    <Fragment key={event.id}>
+                      <TrRow selected={selected}>
+                        <FirstTd selected={isEventPending} />
+                        <Td>{event.name}</Td>
+                        <Td>{event.organizer_email}</Td>
+                        <Td>
+                          <FormattedDate value={event.start_time} />
+                        </Td>
+                        <Td>
+                          <FormattedDate value={event.created_at} />
+                        </Td>
+                        <Td>
+                          <Icon
+                            inline
+                            name="oval"
+                            height=".5em"
+                            width=".5em"
+                            color={isEventPending ? 'orange' : 'green'}
+                          />
+                          <IntlComponent
+                            Component={SpacedSpan}
+                            id={`entities.event.state.${event.state}`}
+                          />
+                        </Td>
+                        <Td>
+                          <LocalizedLink to={`event/modify/${event.id}`}>
+                            <Icon inline name="pencil" height="1em" width="1em" />
                             <IntlComponent
                               Component={SpacedSpan}
-                              id={`entities.event.state.${event.state}`}
+                              id="site.page.manage_events.table.action.edit"
                             />
-                          </Td>
-                          <Td>
-                            <LocalizedLink to={`event/modify/${event.id}`}>
-                              <Icon inline name="pencil" height="1em" width="1em" />
-                              <IntlComponent
-                                Component={SpacedSpan}
-                                id="site.page.manage_events.table.action.edit"
-                              />
-                            </LocalizedLink>
-                          </Td>
-                          <Td>
-                            <Button color="link" onClick={() => this.toggleDetails(event.id)}>
-                              <Icon
-                                name="angleRight"
-                                height="2em"
-                                width="2em"
-                                rotate={selected ? 90 : 0}
-                              />
-                            </Button>
-                          </Td>
-                        </TrRow>
-                        {selected && (
-                          <Details>
-                            <DetailsCluster>
-                              <Icon name="user" height="1em" width="1em" />
-                              <strong>
-                                {event.organizer_first_name} {event.organizer_last_name}
-                              </strong>
-                              <span>{event.organizer_email}</span>
-                            </DetailsCluster>
-                            <DetailsCluster>
-                              <Icon name="mapMarker" height="0.8em" width="0.8em" />
-                              <strong>Osoitejuttu?</strong>
-                            </DetailsCluster>
-                            <p>{event.description}</p>
-                            <div>
-                              <IntlComponent
-                                Component={Button}
-                                id="site.page.manage_events.table.action.approve"
-                                color="primary"
-                                onClick={() => approve(event)}
-                              />
-                              <ErrorButton color="link" onClick={() => remove(event)}>
-                                <FormattedMessage id="site.page.manage_events.table.action.remove" />
-                                <Icon inline name="times" height="1em" width="1em" />
-                              </ErrorButton>
-                            </div>
-                          </Details>
-                        )}
-                      </Fragment>
-                    );
-                  })}
-                </tbody>
+                          </LocalizedLink>
+                        </Td>
+                        <Td>
+                          <Button color="link" onClick={() => this.toggleDetails(event.id)}>
+                            <Icon
+                              name="angleRight"
+                              height="2em"
+                              width="2em"
+                              rotate={selected ? 90 : 0}
+                            />
+                          </Button>
+                        </Td>
+                      </TrRow>
+                      {selected && (
+                        <Details>
+                          <DetailsCluster>
+                            <Icon name="user" height="1em" width="1em" />
+                            <strong>
+                              {event.organizer_first_name} {event.organizer_last_name}
+                            </strong>
+                            <span>{event.organizer_email}</span>
+                          </DetailsCluster>
+                          <DetailsCluster>
+                            <Icon name="mapMarker" height="0.8em" width="0.8em" />
+                            <strong>Osoitejuttu?</strong>
+                          </DetailsCluster>
+                          <p>{event.description}</p>
+                          <div>
+                            <IntlComponent
+                              Component={Button}
+                              id="site.page.manage_events.table.action.approve"
+                              color="primary"
+                              onClick={() => approve(event)}
+                            />
+                            <ErrorButton color="link" onClick={() => remove(event)}>
+                              <FormattedMessage id="site.page.manage_events.table.action.remove" />
+                              <Icon inline name="times" height="1em" width="1em" />
+                            </ErrorButton>
+                          </div>
+                        </Details>
+                      )}
+                    </Fragment>
+                  );
+                })}
               </Table>
             </Col>
           </Row>

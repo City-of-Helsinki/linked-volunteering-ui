@@ -7,7 +7,7 @@ import Icon from '../common/Icon';
 import Layout from '../layout/containers/LayoutContainer';
 import ReportForm from '../form/ReportForm';
 
-import { Table, Td, Th, TrRow } from '../common/Table';
+import Table, { Td, Th, TrRow } from '../common/Table';
 import IntlComponent from '../common/IntlComponent';
 
 const FormContainer = styled(Container)`
