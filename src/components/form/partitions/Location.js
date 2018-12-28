@@ -34,7 +34,7 @@ class Location extends React.Component {
         <Row>
           <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 4, offset: 1 }}>
             <Select
-              id="area"
+              id="neighborhood"
               label="form.event.field.neighborhood.label"
               error={errors.area}
               touched={touched.area}
