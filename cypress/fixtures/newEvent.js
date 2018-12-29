@@ -15,33 +15,38 @@ export default {
     method: 'type',
     value: '11.11.1111'
   },
-  // eslint-disable no-dupe-keys
-  'date_range\\.end_time': {
+
+  /* eslint-disable */
+  'date_range\\.start_date': {
     method: 'click'
   },
-  // eslint-disable-next-line no-dupe-keys
-  'date_range\\.start_time': {
+  'date_range\\.start_date': {
     method: 'type',
-    value: '11:11'
+    value: '11.11.1111'
   },
-  // eslint-disable-next-line no-dupe-keys
-  'date_range\\.end_time': {
+  'date_range\\.end_date': {
     method: 'click'
   },
-  // eslint-disable-next-line no-dupe-keys
   'date_range\\.end_date': {
     method: 'type',
     value: '11.11.1111'
   },
-  // eslint-disable-next-line no-dupe-keys
   'date_range\\.start_time': {
     method: 'click'
   },
-  // eslint-disable-next-line no-dupe-keys
+  'date_range\\.start_time': {
+    method: 'type',
+    value: '11:11'
+  },
+  'date_range\\.end_time': {
+    method: 'click'
+  },
   'date_range\\.end_time': {
     method: 'type',
     value: '11:11'
   },
+  /* eslint-enable */
+
   organizer_first_name: {
     method: 'type',
     value: 'Etunimi'

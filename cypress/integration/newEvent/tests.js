@@ -1,7 +1,7 @@
 import newEvent from '../../fixtures/newEvent';
 
 describe('New event', () => {
-  it('don\t submit invalid form', () => {
+  it("Don't submit invalid form", () => {
     cy.visit('http://localhost:3000/fi/event/new');
     cy.get('button[type="submit"]').click();
     cy.get('input.is-invalid');
