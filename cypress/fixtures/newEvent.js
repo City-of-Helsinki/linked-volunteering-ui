@@ -25,21 +25,12 @@ export default {
     value: '11.11.1111'
   },
   'date_range\\.end_date': {
-    method: 'click'
-  },
-  'date_range\\.end_date': {
     method: 'type',
     value: '11.11.1111'
   },
   'date_range\\.start_time': {
-    method: 'click'
-  },
-  'date_range\\.start_time': {
     method: 'type',
     value: '11:11'
-  },
-  'date_range\\.end_time': {
-    method: 'click'
   },
   'date_range\\.end_time': {
     method: 'type',
