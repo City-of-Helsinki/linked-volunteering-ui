@@ -2,7 +2,7 @@ describe('Manage events', () => {
   it('Accept will activate success info text', () => {
     cy.visit('/fi/events/manage');
     cy.get('#manage_event_table tbody tr:first-child [id^="extend_event_"]').click();
-    cy.get('#manage_event_table .btn-primary').click();
+    cy.get('#manage_event_table [id^="approve_event_"]').click();
     cy.contains('hyväksytty!');
   });
 
