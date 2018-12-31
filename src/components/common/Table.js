@@ -81,8 +81,8 @@ const getOrderIcon = order => {
   }
 };
 
-export default ({ firstColumn, headers, actionColSpan, children, setOrderBy, ordering }) => (
-  <Table>
+export default ({ id, firstColumn, headers, actionColSpan, children, setOrderBy, ordering }) => (
+  <Table id={id}>
     <thead>
       <tr>
         {firstColumn && <th />}

@@ -113,6 +113,7 @@ class EventsPage extends PureComponent {
           <Row>
             <Col>
               <Table
+                id="manage_event_table"
                 firstColumn
                 headers={tableHeaders}
                 actionColSpan={2}
@@ -150,13 +151,19 @@ class EventsPage extends PureComponent {
                           <LocalizedLink to={`event/modify/${event.id}`}>
                             <Icon inline name="pencil" height="1em" width="1em" />
                             <IntlComponent
-                              Component={SpacedSpan}
+                              Component={props => (
+                                <SpacedSpan {...props} id={`edit_event_${event.id}`} />
+                              )}
                               id="site.page.manage_events.table.action.edit"
                             />
                           </LocalizedLink>
                         </Td>
                         <Td>
-                          <Button color="link" onClick={() => this.toggleDetails(event.id)}>
+                          <Button
+                            id={`extend_event_${event.id}`}
+                            color="link"
+                            onClick={() => this.toggleDetails(event.id)}
+                          >
                             <Icon
                               name="angleRight"
                               height="2em"
@@ -182,12 +189,15 @@ class EventsPage extends PureComponent {
                           <p>{event.description}</p>
                           <div>
                             <IntlComponent
-                              Component={Button}
+                              Component={props => (
+                                <Button {...props} id={`approve_event_${event.id}`} />
+                              )}
                               id="site.page.manage_events.table.action.approve"
                               color="primary"
                               onClick={() => approve(event)}
                             />
                             <ErrorButton
+                              id={`reject_event_${event.id}`}
                               className="remove-button"
                               color="link"
                               onClick={() => remove(event)}
