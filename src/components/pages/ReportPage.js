@@ -103,7 +103,12 @@ class ReportPage extends Component {
         <FormContainer>
           <Row>
             <Col>
-              <Table headers={tableHeaders} setOrderBy={setOrderBy} ordering={ordering}>
+              <Table
+                id="report_table"
+                headers={tableHeaders}
+                setOrderBy={setOrderBy}
+                ordering={ordering}
+              >
                 {reports &&
                   reports.valueSeq().map(report => (
                     <Tr key={report.id}>
