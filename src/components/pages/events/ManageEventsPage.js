@@ -187,7 +187,11 @@ class EventsPage extends PureComponent {
                               color="primary"
                               onClick={() => approve(event)}
                             />
-                            <ErrorButton color="link" onClick={() => remove(event)}>
+                            <ErrorButton
+                              className="remove-button"
+                              color="link"
+                              onClick={() => remove(event)}
+                            >
                               <FormattedMessage id="site.page.manage_events.table.action.remove" />
                               <Icon inline name="times" height="1em" width="1em" />
                             </ErrorButton>
