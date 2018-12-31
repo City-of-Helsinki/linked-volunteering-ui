@@ -7,80 +7,67 @@ export default {
     method: 'type',
     value: 'Puistotalkoot'
   },
-  area: {
+  neighborhood: {
     method: 'select',
-    value: 'Helsingin keskusta'
+    value: 'Ullanlinna'
   },
-  startdate: {
+  'date_range\\.start_date': {
     method: 'type',
     value: '11.11.1111'
   },
-  starttime: {
-    method: 'type',
-    value: '11:11'
-  },
-  enddate: {
+  'date_range\\.end_date': {
     method: 'type',
     value: '11.11.1111'
   },
-  endtime: {
+  'date_range\\.start_time': {
     method: 'type',
     value: '11:11'
   },
-  first_name: {
+  'date_range\\.end_time': {
+    method: 'type',
+    value: '11:11'
+  },
+  organizer_first_name: {
     method: 'type',
     value: 'Etunimi'
   },
-  last_name: {
+  organizer_last_name: {
     method: 'type',
     value: 'Sukunimi'
   },
-  email: {
+  organizer_email: {
     method: 'type',
     value: 'sahko@posti.fi'
   },
-  phone: {
+  organizer_phone: {
     method: 'type',
     value: '1234567'
   },
-  show_contact_details: {
+  estimated_attendee_count: {
+    method: 'type',
+    value: '1'
+  },
+  targets: {
+    method: 'type',
+    value: '1'
+  },
+  maintenance_location: {
+    method: 'type',
+    value: '1'
+  },
+  additional_information: {
+    method: 'type',
+    value: '1'
+  },
+  has_roll_off_dumpster: {
     method: 'click'
   },
-  amount_of_volunteers: {
+  trash_bag_count: {
     method: 'type',
     value: '1'
   },
-  cleaning_targets: {
+  trash_picker_count: {
     method: 'type',
     value: '1'
-  },
-  trash_location: {
-    method: 'type',
-    value: '1'
-  },
-  details: {
-    method: 'type',
-    value: '1'
-  },
-  container: {
-    method: 'click'
-  },
-  trash_bags: {
-    method: 'type',
-    value: '1'
-  },
-  trash_pickers: {
-    method: 'type',
-    value: '1'
-  },
-  visibility_public: {
-    method: 'click'
-  },
-  free: {
-    method: 'click'
-  },
-  fee: {
-    method: 'type',
-    value: '12'
   }
 };
