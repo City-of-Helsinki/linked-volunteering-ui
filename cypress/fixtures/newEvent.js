@@ -15,15 +15,6 @@ export default {
     method: 'type',
     value: '11.11.1111'
   },
-
-  /* eslint-disable */
-  'date_range\\.start_date': {
-    method: 'click'
-  },
-  'date_range\\.start_date': {
-    method: 'type',
-    value: '11.11.1111'
-  },
   'date_range\\.end_date': {
     method: 'type',
     value: '11.11.1111'
@@ -36,8 +27,6 @@ export default {
     method: 'type',
     value: '11:11'
   },
-  /* eslint-enable */
-
   organizer_first_name: {
     method: 'type',
     value: 'Etunimi'
