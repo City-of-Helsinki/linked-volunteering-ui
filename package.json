@@ -78,7 +78,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "cypress": "cypress open",
-    "test:ci": "cypress run --browser chrome"
+    "test:ci": "yarn serve -s build & cypress run --browser chrome"
   },
   "browserslist": [
     "last 2 major versions",
