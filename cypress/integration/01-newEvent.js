@@ -1,4 +1,4 @@
-import newEvent from '../../fixtures/newEvent';
+import newEvent from '../fixtures/newEvent';
 
 describe('New event', () => {
   it("Don't submit invalid form", () => {
