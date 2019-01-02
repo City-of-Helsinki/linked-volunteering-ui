@@ -1,14 +1,14 @@
-import newEvent from '../../fixtures/newEvent';
+import newEvent from '../fixtures/newEvent';
 
 describe('New event', () => {
   it("Don't submit invalid form", () => {
-    cy.visit('http://localhost:3000/fi/event/new');
+    cy.visit('/fi/event/new');
     cy.get('button[type="submit"]').click();
     cy.get('input.is-invalid');
     cy.contains('Ilmoita uusi vapaaehtoistapahtuma');
   });
   it('Fill & submit', () => {
-    cy.visit('http://localhost:3000/fi/event/new');
+    cy.visit('/fi/event/new');
 
     Object.entries(newEvent).forEach(([key, { method, value }]) => {
       if (method === 'click') {

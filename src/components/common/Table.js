@@ -48,15 +48,15 @@ export const Td = styled.td`
   padding: ${props => (props.large ? '1em 1em' : '0.5em 1em')};
 `;
 
-export const Tr = ({ firstColumn, highlighted, children }) => (
-  <StyledTr>
+export const Tr = ({ firstColumn, highlighted, children, ...rest }) => (
+  <StyledTr {...rest}>
     {firstColumn && <FirstTd highlighted={highlighted} />}
     {children}
   </StyledTr>
 );
 
-export const DetailsRow = ({ children, colSpan }) => (
-  <Tr firstColumn white>
+export const DetailsRow = ({ children, colSpan, ...rest }) => (
+  <Tr firstColumn white {...rest}>
     <Td colSpan={colSpan} large>
       {children}
     </Td>
@@ -81,8 +81,8 @@ const getOrderIcon = order => {
   }
 };
 
-export default ({ firstColumn, headers, actionColSpan, children, setOrderBy, ordering }) => (
-  <Table>
+export default ({ id, firstColumn, headers, actionColSpan, children, setOrderBy, ordering }) => (
+  <Table id={id}>
     <thead>
       <tr>
         {firstColumn && <th />}
