@@ -69,6 +69,7 @@
     "prettier": "^1.15.3",
     "redux-devtools-extension": "^2.13.7",
     "sass-loader": "^7.1.0",
+    "serve": "^10.1.1",
     "style-loader": "^0.23.1"
   },
   "scripts": {
@@ -76,7 +77,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cypress": "cypress open"
+    "cypress": "cypress open",
+    "test:ci": "cypress run --browser chrome"
   },
   "browserslist": [
     "last 2 major versions",
