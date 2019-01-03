@@ -45,6 +45,7 @@
     "yup": "^0.26.6"
   },
   "devDependencies": {
+    "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "css-loader": "^1.0.1",
     "cypress": "^3.1.4",
@@ -78,7 +79,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "cypress": "cypress open",
-    "test:ci": "yarn serve -s build & cypress run --browser chrome"
+    "distribute": "yarn serve -s build",
+    "api": "node ./api/index.js",
+    "test:ci": "yarn api & yarn distribute & cypress run --browser chrome"
   },
   "browserslist": [
     "last 2 major versions",

@@ -9,7 +9,7 @@ export default {
   },
   neighborhood: {
     method: 'select',
-    value: 'Ullanlinna'
+    value: 'Kruununhaka'
   },
   'date_range\\.start_date': {
     method: 'type',
