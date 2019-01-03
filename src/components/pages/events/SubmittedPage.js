@@ -73,9 +73,9 @@ const SubmittedPage = () => (
         <FormattedMessage tagName="strong" id="site.page.thank_you.paragraph" />
 
         <IconedButton color="link">
-          <Icon name="calendar" width="1em" height="1em" />
+          <Icon name="calendar" />
           <FormattedMessage id="site.page.thank_you.action.add_to_calendar" />
-          <Icon name="arrowLeft" width="1em" height="1em" />
+          <Icon name="arrowLeft" />
         </IconedButton>
         <IntlComponent
           Component={LocalizedLink}

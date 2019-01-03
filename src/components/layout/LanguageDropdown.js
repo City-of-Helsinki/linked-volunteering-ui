@@ -47,7 +47,7 @@ class LanguageDropdown extends React.Component {
       <Dropdown size="lg" isOpen={this.state.dropdownOpen} toggle={this.toggle}>
         <LanguageSelector className="btn-link">
           <StyledSelector>
-            <Icon name="globe" width="30px" color="black" />
+            <Icon name="globe" size="2x" color="black" />
             <span>{intl.locale.toUpperCase()}</span>
           </StyledSelector>
         </LanguageSelector>

@@ -64,7 +64,7 @@ const Layout = ({ children, intl, paddingTop, paddingBottom, user }) => {
       </Helmet>
       <NavbarRow expand="md">
         <NavbarBrand href="/">
-          <Icon name="helsinkiLogo" width="90px" color="#000" />
+          <Icon name="helsinkiLogo" size="7x" color="#000" />
         </NavbarBrand>
         <Nav className="ml-auto" navbar>
           <LanguageDropdown />
@@ -77,7 +77,7 @@ const Layout = ({ children, intl, paddingTop, paddingBottom, user }) => {
               }
             }}
           >
-            <Icon name="user" width="30px" color="black" />
+            <Icon name="user" size="2x" color="black" />
             <FormattedMessage id={`site.nav.user.${hasUser ? 'logout' : 'login'}`} />
           </UserAction>
         </Nav>

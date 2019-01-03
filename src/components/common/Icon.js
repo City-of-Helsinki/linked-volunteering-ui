@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Svg from 'react-svg';
 
 import angleDown from 'hel-icons/dist/shapes/angle-down.svg';
@@ -86,17 +86,26 @@ const icons = {
 const StyledSvg = styled(Svg)`
   display: ${props => (props.inline === 'true' ? 'inline-block' : 'block')};
   transform: rotate(${props => props.rotate || 0}deg);
+
+  svg {
+    fill: ${props => props.fill || 'currentColor'};
+
+    ${props => {
+      if (typeof props.size === 'string' && props.size.endsWith('x')) {
+        return css`
+          width: ${parseFloat(props.size)}em;
+          height: ${parseFloat(props.size)}em;
+        `;
+      }
+      return css`
+        width: 1em;
+        height: 1em;
+      `;
+    }}
+  }
 `;
 
-const Icon = ({
-  name,
-  color: fill = 'currentColor',
-  width = 'auto',
-  height = 'auto',
-  className,
-  rotate,
-  inline
-}) => {
+const Icon = ({ name, color: fill, size, className, rotate, inline }) => {
   const src = icons[name];
   if (!src) {
     // eslint-disable-next-line no-console
@@ -105,9 +114,10 @@ const Icon = ({
   return (
     <StyledSvg
       className={className}
+      fill={fill}
+      size={size}
       inline={inline ? 'true' : 'false'}
       rotate={rotate}
-      svgStyle={{ width, height, fill }}
       src={src}
     />
   );

@@ -79,7 +79,7 @@ const LandingPage = () => (
           <Col md="3">
             <IconedLocalizedLink className="btn btn-link btn-block" to="#???">
               <FormattedMessage tagName="span" id="site.page.landing.hero.link" />
-              <Icon name="arrowRight" height="1em" width="1em" />
+              <Icon name="arrowRight" />
             </IconedLocalizedLink>
           </Col>
         </Row>

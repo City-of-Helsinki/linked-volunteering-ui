@@ -101,7 +101,7 @@ export default ({ id, firstColumn, headers, actionColSpan, children, setOrderBy,
                     })
                   }
                 >
-                  <Icon inline name={getOrderIcon(order)} height="1em" width="1em" />
+                  <Icon inline name={getOrderIcon(order)} />
                 </Button>
               )}
             </Th>
