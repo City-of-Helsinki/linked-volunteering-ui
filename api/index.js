@@ -61,10 +61,10 @@ router
   .get((req, res) => res.json(eventJson))
   .post((req, res) => {
     const newEvent = getTimeProperties({
+      ...req.body,
       // eslint-disable-next-line no-plusplus
       id: ++eventJson.count,
-      state: 'waiting_for_approval',
-      ...req.body
+      state: 'waiting_for_approval'
     });
     eventJson.results.push(newEvent);
 
