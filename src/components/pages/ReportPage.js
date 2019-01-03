@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Container, Row, Col, Button } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
 
 import Layout from '../layout/containers/LayoutContainer';
-import ReportForm from '../form/ReportForm';
+import Select from '../form/fields/Select';
 
 import Table, { Td, Tr } from '../common/Table';
 import IntlComponent from '../common/IntlComponent';
@@ -72,17 +72,11 @@ class ReportPage extends Component {
               <IntlComponent Component={ReportTitle} id="site.report.yearly_report" />
             </Col>
             <Col sm={{ size: 4 }}>
-              <ReportForm onChange={this.handleChange} {...rest} />
-            </Col>
-            <Col sm={{ size: 2 }}>
-              <IntlComponent
-                Component={Button}
-                block
-                type="submit"
-                onClick={handleSubmit}
-                color="success"
-                id="site.report.yearly_report"
-              />
+              <Select id="area" label="form.report.field.year.label" onChange={this.handleChange}>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2017">2017</option>
+              </Select>
             </Col>
           </Row>
           <StatisticsRow>
