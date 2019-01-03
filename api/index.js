@@ -6,6 +6,7 @@ require('dotenv').config({ path: '.env.development.local' });
 
 const neighborhoodJson = require('./res/neighborhood.json');
 const eventJson = require('./res/event.json');
+const { toInt, findById, getStatus } = require('./utils.js');
 
 const { API_PORT } = process.env;
 const app = express();
@@ -22,10 +23,6 @@ const getTimeProperties = data => {
     ...data
   };
 };
-
-const toInt = s => (typeof s === 'number' ? s : parseInt(s, 10));
-const findById = id => e => e.id === toInt(id);
-const getStatus = b => (b ? 200 : 404);
 
 const findEventById = id => eventJson.results.find(findById(id));
 const modifyEventById = (id, event) => {
