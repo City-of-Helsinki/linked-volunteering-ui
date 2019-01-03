@@ -11,3 +11,4 @@ export const get = (endPoint, params = {}) => instance.get(endPoint, { params })
 export const post = (endPoint, data = {}) => instance.post(endPoint, data).then(r => r.data);
 export const put = (endPoint, data = {}) => instance.put(endPoint, data).then(r => r.data);
 export const patch = (endPoint, data = {}) => instance.patch(endPoint, data).then(r => r.data);
+export const remove = (endPoint, data = {}) => instance.delete(endPoint, data).then(r => r.data);

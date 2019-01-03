@@ -2,6 +2,7 @@ import React from 'react';
 import { FormattedDate, FormattedTime } from 'react-intl';
 
 import { addNotification } from '../../../ducks/notification';
+import { removeEvent } from '../../../ducks/event';
 import Icon from '../../common/Icon';
 
 const Body = ({ values }) => (
@@ -30,8 +31,9 @@ export default {
     {
       intl: 'modal.confirm_removal.footer.button1.text',
       color: 'primary',
-      action: (dispatch, values) => {
-        dispatch(
+      action: async (dispatch, values) => {
+        await dispatch(removeEvent(values));
+        await dispatch(
           addNotification({
             color: 'info',
             message: 'notification.manage_events.remove',

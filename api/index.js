@@ -6,7 +6,7 @@ require('dotenv').config({ path: '.env.development.local' });
 
 const neighborhoodJson = require('./res/neighborhood.json');
 const eventJson = require('./res/event.json');
-const { toInt, findById, getStatus } = require('./utils.js');
+const { toInt, findById, findByNotId, getStatus } = require('./utils.js');
 
 const yearlyReports = {
   /* eslint-disable */
@@ -42,6 +42,19 @@ const modifyEventById = (id, event) => {
   return null;
 };
 
+const deleteEventById = id => {
+  const results = eventJson.results.filter(findByNotId(id));
+
+  if (results.length === eventJson.count) {
+    return null;
+  }
+
+  eventJson.count = results.length;
+  eventJson.results = results;
+
+  return true;
+};
+
 router
   .route('/event/:id')
   .get((req, res) => {
@@ -59,6 +72,10 @@ router
       ...req.body
     });
     return res.status(getStatus(modifiedEvent)).json(modifiedEvent);
+  })
+  .delete((req, res) => {
+    const success = deleteEventById(req.params.id);
+    return res.status(getStatus(success)).json(success);
   });
 
 router
