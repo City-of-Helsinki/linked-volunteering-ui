@@ -1,0 +1,37 @@
+{
+  "count": 3,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "ocd_id": "ocd-division/country:fi/kunta:helsinki/kaupunginosa:kruununhaka",
+      "origin_id": "01",
+      "bbox": [24.95037523, 60.16797234, 24.9785984, 60.17731566],
+      "sub_districts": [],
+      "name": {
+        "sv": "Kronohagen",
+        "fi": "Kruununhaka"
+      }
+    },
+    {
+      "ocd_id": "ocd-division/country:fi/kunta:helsinki/kaupunginosa:kluuvi",
+      "origin_id": "02",
+      "bbox": [24.9320821, 60.16771991, 24.95124412, 60.18004569],
+      "sub_districts": [],
+      "name": {
+        "sv": "Gloet",
+        "fi": "Kluuvi"
+      }
+    },
+    {
+      "ocd_id": "ocd-division/country:fi/kunta:helsinki/kaupunginosa:kaartinkaupunki",
+      "origin_id": "03",
+      "bbox": [24.94120703, 60.16287166, 24.95804791, 60.16814278],
+      "sub_districts": [],
+      "name": {
+        "sv": "Gardesstaden",
+        "fi": "Kaartinkaupunki"
+      }
+    }
+  ]
+}
