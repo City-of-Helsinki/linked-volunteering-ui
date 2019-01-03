@@ -14,6 +14,8 @@ const defaultState = Record({
 
 export const getEvents = createAction('GET_EVENTS', eventService.getEvents);
 export const submitEvent = createAction('SUBMIT_EVENT', eventService.create);
+export const modifyEvent = createAction('MODIFY_EVENT', eventService.modify);
+export const publishEvent = createAction('PUBLISH_EVENT', eventService.publish);
 export const setFilterByNeighborhood = createAction('SET_EVENT_FILTER');
 export const setOrderBy = createAction('SET_EVENT_ORDER_BY');
 
@@ -28,6 +30,9 @@ export default (state = defaultState(), action) => {
         .update('events', events => events.merge(payload.results));
     case 'SUBMIT_EVENT_FULFILLED':
       return state.update('count', count => count + 1).setIn(['events', payload.id], payload);
+    case 'MODIFY_EVENT_FULFILLED':
+    case 'PUBLISH_EVENT_FULFILLED':
+      return state.setIn(['events', payload.id], payload);
     case 'SET_EVENT_FILTER':
       return state.set('filterByNeighborhood', payload);
     case 'SET_EVENT_ORDER_BY':
