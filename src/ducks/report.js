@@ -22,9 +22,7 @@ export default (state = defaultState(), action) => {
         .set('count', payload.count)
         .set('next', payload.next)
         .set('previous', payload.previous)
-        .update('reports', reports =>
-          reports.merge(Map(payload.results.map(report => [report.id, report])))
-        );
+        .set('reports', payload.results);
     case 'SET_REPORT_ORDER_BY':
       return state
         .setIn(['ordering', 'key'], payload.key)

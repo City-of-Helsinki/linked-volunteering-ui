@@ -1,0 +1,16 @@
+{
+  "count": 1,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": "u1a43fsda",
+      "area": "Kamppi",
+      "contact_person": "Gaylord Lohiposki",
+      "email": "gaylord@lohiposki.lol",
+      "phone": "045812341234",
+      "events": 10,
+      "participants": 26
+    }
+  ]
+}

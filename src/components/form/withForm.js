@@ -31,15 +31,3 @@ export const withEventFilterForm = withFormik({
   },
   displayName: 'EventFilterForm'
 });
-
-export const withReportForm = withFormik({
-  validationSchema,
-  validateOnChange: false,
-  mapPropsToValues: () => event,
-  handleSubmit: (values, { setSubmitting }) => {
-    // eslint-disable-next-line no-console
-    console.debug(values);
-    setSubmitting(false);
-  },
-  displayName: 'ReportForm'
-});
