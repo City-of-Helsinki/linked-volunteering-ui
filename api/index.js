@@ -78,7 +78,7 @@ router
 
 router.route('/report').get((req, res) => {
   const responseData = yearlyReports[req.query.year];
-  res.json(responseData);
+  res.status(getStatus(responseData)).json(responseData);
 });
 
 router.get('/neighborhood', (req, res) => res.json(neighborhoodJson));
