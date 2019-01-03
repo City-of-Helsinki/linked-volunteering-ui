@@ -1,5 +1,5 @@
 import { Map } from 'immutable';
-import { get, post, put, patch } from '../utils/api';
+import { get, post, put, patch, remove } from '../utils/api';
 
 const publishedState = 'approved';
 
@@ -33,6 +33,10 @@ export default {
       state: publishedState
     });
     return constructEvent(e);
+  },
+  remove: async event => {
+    await remove(`event/${event.id}/`);
+    return event.id;
   },
   getEvents: async () => {
     const payload = await get('event/');
