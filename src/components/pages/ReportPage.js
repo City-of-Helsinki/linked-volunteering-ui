@@ -56,7 +56,7 @@ class ReportPage extends Component {
   };
 
   render() {
-    const { handleReset, handleSubmit, reports, setOrderBy, ordering, ...rest } = this.props;
+    const { reports, setOrderBy, ordering } = this.props;
     const eventAmount = reports.reduce((acc, row) => acc + row.events, 0);
     const participantAmount = reports.reduce((acc, row) => acc + row.participants, 0);
     return (
