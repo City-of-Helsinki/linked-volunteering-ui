@@ -23,6 +23,39 @@ const getTimeProperties = data => {
   };
 };
 
+const toInt = s => (typeof s === 'number' ? s : parseInt(s, 10));
+const findById = id => e => e.id === toInt(id);
+const getStatus = b => (b ? 200 : 404);
+
+const findEventById = id => eventJson.results.find(findById(id));
+const modifyEventById = (id, event) => {
+  const key = eventJson.results.findIndex(findById(id));
+  if (key > -1) {
+    eventJson.results[key] = { id: toInt(id), ...event };
+    return eventJson.results[key];
+  }
+  return null;
+};
+
+router
+  .route('/event/:id')
+  .get((req, res) => {
+    const event = findEventById(req.params.id);
+    return res.status(getStatus(event)).json(event);
+  })
+  .put((req, res) => {
+    const modifiedEvent = modifyEventById(req.params.id, req.body);
+    return res.status(getStatus(modifiedEvent)).json(modifiedEvent);
+  })
+  .patch((req, res) => {
+    const originalEvent = findEventById(req.params.id);
+    const modifiedEvent = modifyEventById(req.params.id, {
+      ...originalEvent,
+      ...req.body
+    });
+    return res.status(getStatus(modifiedEvent)).json(modifiedEvent);
+  });
+
 router
   .route('/event')
   .get((req, res) => res.json(eventJson))
