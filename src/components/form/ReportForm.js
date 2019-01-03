@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from './fields/Select';
 
-export default ({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
+export default ({ values, errors, touched, onChange, handleBlur, handleSubmit }) => (
   <form onSubmit={handleSubmit}>
     <Select
       id="area"
@@ -10,13 +10,12 @@ export default ({ values, errors, touched, handleChange, handleBlur, handleSubmi
       error={errors.area}
       touched={touched.area}
       value={values.area}
-      onChange={handleChange}
+      onChange={onChange}
       onBlur={handleBlur}
     >
+      <option value="2019">2019</option>
       <option value="2018">2018</option>
       <option value="2017">2017</option>
-      <option value="2016">2016</option>
-      <option value="2015">2015</option>
     </Select>
   </form>
 );

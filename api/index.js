@@ -8,6 +8,14 @@ const neighborhoodJson = require('./res/neighborhood.json');
 const eventJson = require('./res/event.json');
 const { toInt, findById, getStatus } = require('./utils.js');
 
+const yearlyReports = {
+  /* eslint-disable */
+  2019: require('./res/reports/2019.json'),
+  2018: require('./res/reports/2018.json'),
+  2017: require('./res/reports/2017.json')
+  /* eslint-enable */
+};
+
 const { API_PORT } = process.env;
 const app = express();
 app.use(bodyParser.json());
@@ -67,6 +75,11 @@ router
 
     res.json(newEvent);
   });
+
+router.route('/report').get((req, res) => {
+  const responseData = yearlyReports[req.query.year];
+  res.json(responseData);
+});
 
 router.get('/neighborhood', (req, res) => res.json(neighborhoodJson));
 

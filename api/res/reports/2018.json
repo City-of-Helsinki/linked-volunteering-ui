@@ -1,0 +1,25 @@
+{
+  "count": 2,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "id": "u1a43fsdb",
+      "area": "Itä-Helsinki",
+      "contact_person": "Gaylord Lohiposki",
+      "email": "gaylord@lohiposki.lol",
+      "phone": "045812341234",
+      "events": 42,
+      "participants": 122
+    },
+    {
+      "id": "u1a43fsdc",
+      "area": "Puistola",
+      "contact_person": "Gaylord Lohiposki",
+      "email": "gaylord@lohiposki.lol",
+      "phone": "045812341234",
+      "events": 1,
+      "participants": 1
+    }
+  ]
+}

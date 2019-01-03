@@ -50,10 +50,10 @@ const tableHeaders = [
 ];
 
 class ReportPage extends Component {
-  componentDidMount() {
+  handleChange = e => {
     const { getReport } = this.props;
-    getReport();
-  }
+    getReport(e.target.value);
+  };
 
   render() {
     const { handleReset, handleSubmit, reports, setOrderBy, ordering, ...rest } = this.props;
@@ -72,7 +72,7 @@ class ReportPage extends Component {
               <IntlComponent Component={ReportTitle} id="site.report.yearly_report" />
             </Col>
             <Col sm={{ size: 4 }}>
-              <ReportForm {...rest} />
+              <ReportForm onChange={this.handleChange} {...rest} />
             </Col>
             <Col sm={{ size: 2 }}>
               <IntlComponent
