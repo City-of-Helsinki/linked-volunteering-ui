@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import * as modals from './modals';
 import IntlComponent from '../common/IntlComponent';
+import Button from '../common/Button';
 
 export default ({ isOpen, closeModal, modal, meta, dispatch }) => {
   if (!isOpen) {
@@ -18,16 +19,15 @@ export default ({ isOpen, closeModal, modal, meta, dispatch }) => {
       {footer && (
         <ModalFooter>
           {footer.map(({ intl, color, action }) => (
-            <IntlComponent
+            <Button
               key={intl}
-              Component={Button}
               onClick={() => {
                 closeModal();
                 if (typeof action === 'function') {
                   action(dispatch, meta);
                 }
               }}
-              id={intl}
+              translate={intl}
               values={meta}
               color={color}
             />

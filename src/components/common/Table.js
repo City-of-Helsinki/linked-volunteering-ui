@@ -1,8 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { Button } from 'reactstrap';
+import Button from './Button';
 import IntlComponent from './IntlComponent';
-import Icon from './Icon';
 
 const StyledTr = styled.tr`
   ${props => {
@@ -93,6 +92,7 @@ export default ({ id, firstColumn, headers, actionColSpan, children, setOrderBy,
               <IntlComponent Component={HeaderText} id={`site.table.header.${translation}`} />
               {hasOrderBy && (
                 <Button
+                  prepend={getOrderIcon(order)}
                   color="link"
                   onClick={() =>
                     setOrderBy({
@@ -100,9 +100,7 @@ export default ({ id, firstColumn, headers, actionColSpan, children, setOrderBy,
                       order: order || 'ASC'
                     })
                   }
-                >
-                  <Icon inline name={getOrderIcon(order)} height="1em" width="1em" />
-                </Button>
+                />
               )}
             </Th>
           );

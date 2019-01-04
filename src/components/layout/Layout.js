@@ -6,7 +6,6 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 
 import Notifications from '../notification/containers/NotificationsContainer';
 import LanguageDropdown from './LanguageDropdown';
-import IntlComponent from '../common/IntlComponent';
 import LocalizedLink from '../common/LocalizedLink';
 import Icon from '../common/Icon';
 import Modal from '../modal/containers/ModalContainer';
@@ -64,7 +63,7 @@ const Layout = ({ children, intl, paddingTop, paddingBottom, user }) => {
       </Helmet>
       <NavbarRow expand="md">
         <NavbarBrand href="/">
-          <Icon name="helsinkiLogo" width="90px" color="#000" />
+          <Icon name="helsinkiLogo" size="7x" color="#000" />
         </NavbarBrand>
         <Nav className="ml-auto" navbar>
           <LanguageDropdown />
@@ -77,7 +76,7 @@ const Layout = ({ children, intl, paddingTop, paddingBottom, user }) => {
               }
             }}
           >
-            <Icon name="user" width="30px" color="black" />
+            <Icon name="user" size="2x" color="black" />
             <FormattedMessage id={`site.nav.user.${hasUser ? 'logout' : 'login'}`} />
           </UserAction>
         </Nav>
@@ -85,30 +84,19 @@ const Layout = ({ children, intl, paddingTop, paddingBottom, user }) => {
       <NavbarRow expand="md">
         <Nav navbar>
           <NavItem>
-            <IntlComponent
-              Component={LocalizedLink}
-              className="nav-link"
-              to="event/new"
-              id="site.nav.create_event"
-            />
+            <LocalizedLink className="nav-link" to="event/new" translate="site.nav.create_event" />
           </NavItem>
           {hasUser && (
             <Fragment>
               <NavItem>
-                <IntlComponent
-                  Component={LocalizedLink}
+                <LocalizedLink
                   className="nav-link"
                   to="events/manage"
-                  id="site.nav.manage_events"
+                  translate="site.nav.manage_events"
                 />
               </NavItem>
               <NavItem>
-                <IntlComponent
-                  Component={LocalizedLink}
-                  className="nav-link"
-                  to="report"
-                  id="site.nav.report"
-                />
+                <LocalizedLink className="nav-link" to="report" translate="site.nav.report" />
               </NavItem>
             </Fragment>
           )}

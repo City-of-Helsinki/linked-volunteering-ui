@@ -1,11 +1,12 @@
 import React, { PureComponent, Fragment } from 'react';
 import styled from 'styled-components';
-import { Button, Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import { FormattedMessage, FormattedDate } from 'react-intl';
 import LocalizedLink from '../../common/LocalizedLink';
 import IntlComponent from '../../common/IntlComponent';
 import Table, { Td, Tr, DetailsRow } from '../../common/Table';
-import Icon from '../../common/Icon';
+import Button from '../../common/Button';
+import { WithIcons } from '../../common/Icon';
 import Neighborhoods from '../../common/Neighborhoods';
 
 import Layout from '../../layout/containers/LayoutContainer';
@@ -18,19 +19,6 @@ const DetailsCluster = styled.div`
   margin-bottom: 0.25em;
   * + * {
     margin-left: 1em;
-  }
-`;
-
-const SpacedSpan = styled.span`
-  margin-left: 0.5em;
-`;
-
-const ErrorButton = styled(Button)`
-  && > * {
-    color: ${props => props.theme.themeColors.danger};
-  }
-  * + * {
-    margin-left: 0.5em;
   }
 `;
 
@@ -134,77 +122,63 @@ class EventsPage extends PureComponent {
                         <Td>
                           <FormattedDate value={event.created_at} />
                         </Td>
+                        <WithIcons
+                          component={Td}
+                          prepend={{
+                            name: 'oval',
+                            size: '0.5x',
+                            color: isEventPending ? 'orange' : 'green'
+                          }}
+                        >
+                          <FormattedMessage id={`entities.event.state.${event.state}`} />
+                        </WithIcons>
                         <Td>
-                          <Icon
-                            inline
-                            name="oval"
-                            height=".5em"
-                            width=".5em"
-                            color={isEventPending ? 'orange' : 'green'}
+                          <LocalizedLink
+                            id={`edit_event_${event.id}`}
+                            to={`event/modify/${event.id}`}
+                            prepend="pencil"
+                            translate="site.page.manage_events.table.action.edit"
                           />
-                          <IntlComponent
-                            Component={SpacedSpan}
-                            id={`entities.event.state.${event.state}`}
-                          />
-                        </Td>
-                        <Td>
-                          <LocalizedLink to={`event/modify/${event.id}`}>
-                            <Icon inline name="pencil" height="1em" width="1em" />
-                            <IntlComponent
-                              Component={props => (
-                                <SpacedSpan {...props} id={`edit_event_${event.id}`} />
-                              )}
-                              id="site.page.manage_events.table.action.edit"
-                            />
-                          </LocalizedLink>
                         </Td>
                         <Td>
                           <Button
                             id={`extend_event_${event.id}`}
                             color="link"
                             onClick={() => this.toggleDetails(event.id)}
-                          >
-                            <Icon
-                              name="angleRight"
-                              height="2em"
-                              width="2em"
-                              rotate={selected ? 90 : 0}
-                            />
-                          </Button>
+                            prepend={{
+                              name: 'angleRight',
+                              size: '2x',
+                              rotate: selected ? 90 : 0
+                            }}
+                          />
                         </Td>
                       </Tr>
                       {selected && (
                         <DetailsRow id={`event_details_${event.id}`} colSpan={7}>
-                          <DetailsCluster>
-                            <Icon name="user" height="1em" width="1em" />
+                          <WithIcons component={DetailsCluster} prepend="user">
                             <strong>
                               {event.organizer_first_name} {event.organizer_last_name}
                             </strong>
                             <span>{event.organizer_email}</span>
-                          </DetailsCluster>
-                          <DetailsCluster>
-                            <Icon name="mapMarker" height="0.8em" width="0.8em" />
+                          </WithIcons>
+                          <WithIcons component={DetailsCluster} prepend="mapMarker">
                             <strong>Osoitejuttu?</strong>
-                          </DetailsCluster>
+                          </WithIcons>
                           <p>{event.description}</p>
                           <div>
-                            <IntlComponent
-                              Component={props => (
-                                <Button {...props} id={`approve_event_${event.id}`} />
-                              )}
-                              id="site.page.manage_events.table.action.approve"
+                            <Button
+                              id={`approve_event_${event.id}`}
+                              translate="site.page.manage_events.table.action.approve"
                               color="primary"
                               onClick={() => approve(event)}
                             />
-                            <ErrorButton
+                            <Button
                               id={`reject_event_${event.id}`}
-                              className="remove-button"
-                              color="link"
+                              translate="site.page.manage_events.table.action.remove"
+                              color="danger"
                               onClick={() => remove(event)}
-                            >
-                              <FormattedMessage id="site.page.manage_events.table.action.remove" />
-                              <Icon inline name="times" height="1em" width="1em" />
-                            </ErrorButton>
+                              append="times"
+                            />
                           </div>
                         </DetailsRow>
                       )}

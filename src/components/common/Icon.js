@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Svg from 'react-svg';
 
 import angleDown from 'hel-icons/dist/shapes/angle-down.svg';
@@ -83,20 +83,29 @@ const icons = {
   oval
 };
 
-const StyledSvg = styled(Svg)`
-  display: ${props => (props.inline === 'true' ? 'inline-block' : 'block')};
-  transform: rotate(${props => props.rotate || 0}deg);
+export const StyledSvg = styled(Svg)`
+  line-height: 1;
+
+  svg {
+    fill: ${props => props.fill || 'currentColor'};
+    transform: rotate(${props => props.rotate || 0}deg);
+
+    ${props => {
+      if (typeof props.size === 'string' && props.size.endsWith('x')) {
+        return css`
+          width: ${parseFloat(props.size)}em;
+          height: ${parseFloat(props.size)}em;
+        `;
+      }
+      return css`
+        width: 1em;
+        height: 1em;
+      `;
+    }}
+  }
 `;
 
-const Icon = ({
-  name,
-  color: fill = 'currentColor',
-  width = 'auto',
-  height = 'auto',
-  className,
-  rotate,
-  inline
-}) => {
+const Icon = ({ name, color: fill, size, className, rotate }) => {
   const src = icons[name];
   if (!src) {
     // eslint-disable-next-line no-console
@@ -105,11 +114,36 @@ const Icon = ({
   return (
     <StyledSvg
       className={className}
-      inline={inline ? 'true' : 'false'}
+      wrapper="span"
+      fill={fill}
+      size={size}
       rotate={rotate}
-      svgStyle={{ width, height, fill }}
       src={src}
     />
+  );
+};
+
+const StyledWithIcons = styled.span`
+  white-space: nowrap;
+  ${StyledSvg} {
+    &:first-child {
+      margin-right: 0.4em;
+    }
+    &:last-child {
+      margin-left: 0.4em;
+    }
+  }
+`;
+
+export const WithIcons = ({ append, prepend, children, component, ...rest }) => {
+  const prependProps = typeof prepend === 'string' ? { name: prepend } : prepend;
+  const appendProps = typeof append === 'string' ? { name: append } : append;
+  return (
+    <StyledWithIcons as={component} {...rest}>
+      {prepend && <Icon {...prependProps} />}
+      {children}
+      {append && <Icon {...appendProps} />}
+    </StyledWithIcons>
   );
 };
 

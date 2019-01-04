@@ -1,8 +1,8 @@
 import React from 'react';
-import { FormattedMessage, injectIntl } from 'react-intl';
-import { Link } from 'react-router-dom';
+import { injectIntl } from 'react-intl';
 import { Dropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap';
 import styled from 'styled-components';
+import LocalizedLink from '../common/LocalizedLink';
 import Icon from '../common/Icon';
 
 const LanguageSelector = styled(DropdownToggle)`
@@ -47,25 +47,19 @@ class LanguageDropdown extends React.Component {
       <Dropdown size="lg" isOpen={this.state.dropdownOpen} toggle={this.toggle}>
         <LanguageSelector className="btn-link">
           <StyledSelector>
-            <Icon name="globe" width="30px" color="black" />
+            <Icon name="globe" size="2x" color="black" />
             <span>{intl.locale.toUpperCase()}</span>
           </StyledSelector>
         </LanguageSelector>
         <DropdownMenu>
           <DropdownItem>
-            <Link to="/fi">
-              <FormattedMessage id="site.language.fi" />
-            </Link>
+            <LocalizedLink to="/fi" translate="site.language.fi" />
           </DropdownItem>
           <DropdownItem>
-            <Link to="/sv">
-              <FormattedMessage id="site.language.sv" />
-            </Link>
+            <LocalizedLink to="/sv" translate="site.language.sv" />
           </DropdownItem>
           <DropdownItem>
-            <Link to="/en">
-              <FormattedMessage id="site.language.en" />
-            </Link>
+            <LocalizedLink to="/en" translate="site.language.en" />
           </DropdownItem>
         </DropdownMenu>
       </Dropdown>
