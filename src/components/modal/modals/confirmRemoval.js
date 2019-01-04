@@ -11,14 +11,14 @@ const Body = ({ values }) => (
       <strong>{values.name}</strong>
     </div>
     <div>
-      <Icon name="calendar" inline />
+      <Icon name="calendar" />
       <FormattedDate value={values.start_time} />
       <span>
         klo <FormattedTime value={values.start_time} /> - <FormattedTime value={values.end_time} />
       </span>
     </div>
     <div>
-      <Icon name="mapMarker" inline />
+      <Icon name="mapMarker" />
       <span>Placeholder text for an address</span>
     </div>
   </div>
