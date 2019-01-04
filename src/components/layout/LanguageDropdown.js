@@ -1,8 +1,8 @@
 import React from 'react';
-import { FormattedMessage, injectIntl } from 'react-intl';
-import { Link } from 'react-router-dom';
+import { injectIntl } from 'react-intl';
 import { Dropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap';
 import styled from 'styled-components';
+import LocalizedLink from '../common/LocalizedLink';
 import Icon from '../common/Icon';
 
 const LanguageSelector = styled(DropdownToggle)`
@@ -53,19 +53,13 @@ class LanguageDropdown extends React.Component {
         </LanguageSelector>
         <DropdownMenu>
           <DropdownItem>
-            <Link to="/fi">
-              <FormattedMessage id="site.language.fi" />
-            </Link>
+            <LocalizedLink to="/fi" id="site.language.fi" />
           </DropdownItem>
           <DropdownItem>
-            <Link to="/sv">
-              <FormattedMessage id="site.language.sv" />
-            </Link>
+            <LocalizedLink to="/sv" id="site.language.sv" />
           </DropdownItem>
           <DropdownItem>
-            <Link to="/en">
-              <FormattedMessage id="site.language.en" />
-            </Link>
+            <LocalizedLink to="/en" id="site.language.en" />
           </DropdownItem>
         </DropdownMenu>
       </Dropdown>

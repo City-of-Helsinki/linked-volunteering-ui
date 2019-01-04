@@ -1,0 +1,26 @@
+import React from 'react';
+import { Button } from 'reactstrap';
+import { FormattedMessage } from 'react-intl';
+import styled from 'styled-components';
+
+import Icon, { StyledSvg } from './Icon';
+
+const StyledButton = styled(Button)`
+  white-space: nowrap;
+  ${StyledSvg} {
+    &:first-child {
+      margin-right: 0.4em;
+    }
+    &:last-child {
+      margin-left: 0.4em;
+    }
+  }
+`;
+
+export default ({ append, prepend, children, id, intl, values, className, ...rest }) => (
+  <StyledButton className={className} {...rest}>
+    {prepend && <Icon inline name={prepend} />}
+    {id ? <FormattedMessage id={id} values={values} /> : children}
+    {append && <Icon inline name={append} />}
+  </StyledButton>
+);

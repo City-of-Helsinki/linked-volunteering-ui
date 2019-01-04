@@ -2,11 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { FormattedMessage } from 'react-intl';
-import { Button } from 'reactstrap';
+import Button from '../../common/Button';
 
 import IntlComponent from '../../common/IntlComponent';
 import LocalizedLink from '../../common/LocalizedLink';
-import Icon from '../../common/Icon';
 
 import Layout from '../../layout/containers/LayoutContainer';
 import backgroundImage from '../../../assets/images/_MG_2851_c_Jussi_Hellsten.jpg';
@@ -15,14 +14,6 @@ import responsive from '../../../utils/responsive';
 const PageContainer = styled.div`
   display: flex;
   overflow: hidden;
-`;
-
-const IconedButton = styled(Button)`
-  display: flex;
-  align-items: center;
-  * + * {
-    margin-left: 0.5em;
-  }
 `;
 
 const Content = styled.div`
@@ -71,12 +62,12 @@ const SubmittedPage = () => (
       <Content>
         <FormattedMessage tagName="h1" id="site.page.thank_you.header" />
         <FormattedMessage tagName="strong" id="site.page.thank_you.paragraph" />
-
-        <IconedButton color="link">
-          <Icon name="calendar" />
-          <FormattedMessage id="site.page.thank_you.action.add_to_calendar" />
-          <Icon name="arrowLeft" />
-        </IconedButton>
+        <Button
+          prepend="calendar"
+          append="arrowRight"
+          color="link"
+          id="site.page.thank_you.action.add_to_calendar"
+        />
         <IntlComponent
           Component={LocalizedLink}
           className="btn btn-primary"

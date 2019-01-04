@@ -83,12 +83,12 @@ const icons = {
   oval
 };
 
-const StyledSvg = styled(Svg)`
-  display: ${props => (props.inline === 'true' ? 'inline-block' : 'block')};
-  transform: rotate(${props => props.rotate || 0}deg);
+export const StyledSvg = styled(Svg)`
+  line-height: 1;
 
   svg {
     fill: ${props => props.fill || 'currentColor'};
+    transform: rotate(${props => props.rotate || 0}deg);
 
     ${props => {
       if (typeof props.size === 'string' && props.size.endsWith('x')) {
@@ -105,7 +105,7 @@ const StyledSvg = styled(Svg)`
   }
 `;
 
-const Icon = ({ name, color: fill, size, className, rotate, inline }) => {
+const Icon = ({ name, color: fill, size, className, rotate }) => {
   const src = icons[name];
   if (!src) {
     // eslint-disable-next-line no-console
@@ -114,9 +114,9 @@ const Icon = ({ name, color: fill, size, className, rotate, inline }) => {
   return (
     <StyledSvg
       className={className}
+      wrapper="span"
       fill={fill}
       size={size}
-      inline={inline ? 'true' : 'false'}
       rotate={rotate}
       src={src}
     />

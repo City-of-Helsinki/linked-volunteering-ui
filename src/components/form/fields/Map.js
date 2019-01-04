@@ -1,12 +1,13 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import styled from 'styled-components';
-import { injectIntl } from 'react-intl';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
 import iconUrl from 'leaflet/dist/images/marker-icon.png';
 import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
+
+import IntlComponent from '../../common/IntlComponent';
 
 /* eslint-disable */
 delete L.Icon.Default.prototype._getIconUrl;
@@ -34,7 +35,7 @@ const MapContainer = styled.div`
   margin-bottom: 2em;
 `;
 
-class MapCanvas extends Component {
+class MapCanvas extends PureComponent {
   state = {
     lng: 24.93,
     lat: 60.18808,
@@ -53,12 +54,7 @@ class MapCanvas extends Component {
   };
 
   render() {
-    const {
-      bounds,
-      value,
-      error,
-      intl: { formatMessage }
-    } = this.props;
+    const { bounds, value, error } = this.props;
 
     const mapBounds = bounds ? [[bounds[1], bounds[0]], [bounds[3], bounds[2]]] : null;
     const position = [this.state.lat, this.state.lng];
@@ -78,10 +74,10 @@ class MapCanvas extends Component {
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           {marker}
         </Map>
-        <ErrorMessage>{error && formatMessage({ id: 'form.validation.map' })}</ErrorMessage>
+        {error && <IntlComponent Component={ErrorMessage} id="form.validation.map" />}
       </MapContainer>
     );
   }
 }
 
-export default injectIntl(MapCanvas);
+export default MapCanvas;

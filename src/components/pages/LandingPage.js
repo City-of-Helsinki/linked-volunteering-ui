@@ -4,7 +4,6 @@ import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 import { Container, Row, Col } from 'reactstrap';
 import IntlComponent from '../common/IntlComponent';
 import LocalizedLink from '../common/LocalizedLink';
-import Icon from '../common/Icon';
 
 import Layout from '../layout/containers/LayoutContainer';
 import heroImage from '../../assets/images/helsinki_paiva_002_6450.jpg';
@@ -38,14 +37,7 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const IconedLocalizedLink = styled(LocalizedLink)`
-  display: flex;
-  * + * {
-    margin-left: 0.5em;
-  }
-`;
-
-const StyledButton = styled(IntlComponent)`
+const StyledLink = styled(IntlComponent)`
   background-color: ${props => props.theme.helSummer};
   color: ${props => props.theme.helBlack};
 
@@ -69,7 +61,7 @@ const LandingPage = () => (
         </Row>
         <Row>
           <Col md="3">
-            <StyledButton
+            <StyledLink
               Component={LocalizedLink}
               id="site.page.landing.hero.button"
               className="btn btn-block"
@@ -77,10 +69,12 @@ const LandingPage = () => (
             />
           </Col>
           <Col md="3">
-            <IconedLocalizedLink className="btn btn-link btn-block" to="#???">
-              <FormattedMessage tagName="span" id="site.page.landing.hero.link" />
-              <Icon name="arrowRight" />
-            </IconedLocalizedLink>
+            <LocalizedLink
+              className="btn btn-link btn-block"
+              id="site.page.landing.hero.link"
+              append="arrowRight"
+              to="#???"
+            />
           </Col>
         </Row>
       </Container>

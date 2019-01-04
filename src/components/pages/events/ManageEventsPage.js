@@ -1,10 +1,11 @@
 import React, { PureComponent, Fragment } from 'react';
 import styled from 'styled-components';
-import { Button, Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 import { FormattedMessage, FormattedDate } from 'react-intl';
 import LocalizedLink from '../../common/LocalizedLink';
 import IntlComponent from '../../common/IntlComponent';
 import Table, { Td, Tr, DetailsRow } from '../../common/Table';
+import Button from '../../common/Button';
 import Icon from '../../common/Icon';
 import Neighborhoods from '../../common/Neighborhoods';
 
@@ -23,15 +24,6 @@ const DetailsCluster = styled.div`
 
 const SpacedSpan = styled.span`
   margin-left: 0.5em;
-`;
-
-const ErrorButton = styled(Button)`
-  && > * {
-    color: ${props => props.theme.themeColors.danger};
-  }
-  * + * {
-    margin-left: 0.5em;
-  }
 `;
 
 const FormContainer = styled(Container)`
@@ -136,7 +128,6 @@ class EventsPage extends PureComponent {
                         </Td>
                         <Td>
                           <Icon
-                            inline
                             name="oval"
                             size="0.5x"
                             color={isEventPending ? 'orange' : 'green'}
@@ -147,22 +138,14 @@ class EventsPage extends PureComponent {
                           />
                         </Td>
                         <Td>
-                          <LocalizedLink to={`event/modify/${event.id}`}>
-                            <Icon inline name="pencil" />
-                            <IntlComponent
-                              Component={props => (
-                                <SpacedSpan {...props} id={`edit_event_${event.id}`} />
-                              )}
-                              id="site.page.manage_events.table.action.edit"
-                            />
-                          </LocalizedLink>
+                          <LocalizedLink
+                            to={`event/modify/${event.id}`}
+                            prepend="pencil"
+                            id="site.page.manage_events.table.action.edit"
+                          />
                         </Td>
                         <Td>
-                          <Button
-                            id={`extend_event_${event.id}`}
-                            color="link"
-                            onClick={() => this.toggleDetails(event.id)}
-                          >
+                          <Button color="link" onClick={() => this.toggleDetails(event.id)}>
                             <Icon name="angleRight" size="2x" rotate={selected ? 90 : 0} />
                           </Button>
                         </Td>
@@ -182,23 +165,17 @@ class EventsPage extends PureComponent {
                           </DetailsCluster>
                           <p>{event.description}</p>
                           <div>
-                            <IntlComponent
-                              Component={props => (
-                                <Button {...props} id={`approve_event_${event.id}`} />
-                              )}
+                            <Button
                               id="site.page.manage_events.table.action.approve"
                               color="primary"
                               onClick={() => approve(event)}
                             />
-                            <ErrorButton
-                              id={`reject_event_${event.id}`}
-                              className="remove-button"
-                              color="link"
+                            <Button
+                              id="site.page.manage_events.table.action.remove"
+                              color="danger"
                               onClick={() => remove(event)}
-                            >
-                              <FormattedMessage id="site.page.manage_events.table.action.remove" />
-                              <Icon inline name="times" />
-                            </ErrorButton>
+                              append="times"
+                            />
                           </div>
                         </DetailsRow>
                       )}

@@ -4,6 +4,7 @@ import { Container, Row, Col, Button } from 'reactstrap';
 import { StickyContainer, Sticky } from 'react-sticky';
 import responsive from '../../../utils/responsive';
 
+import IntlComponent from '../../common/IntlComponent';
 import Layout from '../../layout/containers/LayoutContainer';
 import EventForm from '../../form/EventForm';
 
@@ -24,6 +25,7 @@ const TitleContainer = styled(Container)`
     }
   `}
 `;
+
 const StickyInner = styled.div`
   padding: 1em;
   background-color: ${props => props.theme.helWhite};
@@ -40,13 +42,7 @@ class NewEventPage extends PureComponent {
   }
 
   render() {
-    const {
-      handleReset,
-      handleSubmit,
-      intl: { formatMessage },
-      pageType,
-      ...rest
-    } = this.props;
+    const { handleReset, handleSubmit, pageType, ...rest } = this.props;
 
     return (
       <Layout paddingBottom>
@@ -57,17 +53,27 @@ class NewEventPage extends PureComponent {
                 <TitleContainer fluid>
                   <Row>
                     <Col lg="12" xl={{ size: 6, offset: 1 }}>
-                      <h2>{formatMessage({ id: `form.event.${pageType}.heading` })}</h2>
+                      <IntlComponent Component="h2" id={`form.event.${pageType}.heading`} />
                     </Col>
                     <Col lg="6" xl={{ size: 2 }}>
-                      <Button block type="button" onClick={handleReset} color="danger">
-                        {formatMessage({ id: `form.event.${pageType}.button.reset` })}
-                      </Button>
+                      <IntlComponent
+                        Component={Button}
+                        id={`form.event.${pageType}.button.reset`}
+                        block
+                        type="button"
+                        onClick={handleReset}
+                        color="danger"
+                      />
                     </Col>
                     <Col lg="6" xl={{ size: 2 }}>
-                      <Button block type="submit" onClick={handleSubmit} color="success">
-                        {formatMessage({ id: `form.event.${pageType}.button.submit` })}
-                      </Button>
+                      <IntlComponent
+                        Component={Button}
+                        block
+                        type="submit"
+                        onClick={handleSubmit}
+                        color="success"
+                        id={`form.event.${pageType}.button.submit`}
+                      />
                     </Col>
                   </Row>
                 </TitleContainer>
