@@ -165,7 +165,7 @@ class EventsPage extends PureComponent {
                             <span>{event.organizer_email}</span>
                           </DetailsCluster>
                           <DetailsCluster>
-                            <Icon name="mapMarker" size="0.5x" />
+                            <Icon name="mapMarker" />
                             <strong>Osoitejuttu?</strong>
                           </DetailsCluster>
                           <p>{event.description}</p>
