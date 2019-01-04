@@ -58,9 +58,8 @@ class MapCanvas extends PureComponent {
 
     const mapBounds = bounds ? [[bounds[1], bounds[0]], [bounds[3], bounds[2]]] : null;
     const position = [this.state.lat, this.state.lng];
-    const markerPosition =
-      value.coordinates.length > 0 ? [value.coordinates[0], value.coordinates[1]] : position;
-    const marker = value.coordinates.length > 0 ? <Marker position={markerPosition} /> : null;
+    const markerPosition = value ? [value.coordinates[0], value.coordinates[1]] : position;
+    const marker = value ? <Marker position={markerPosition} /> : null;
 
     return (
       <MapContainer>

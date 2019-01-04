@@ -8,10 +8,7 @@ export const defaultValues = {
   neighborhood: '',
   start_time: null,
   end_time: null,
-  location: {
-    type: 'Point',
-    coordinates: []
-  },
+  location: null,
   organizer_first_name: '',
   organizer_last_name: '',
   organizer_email: '',
@@ -39,10 +36,13 @@ export const validationSchema = yup.object().shape({
     .date()
     .nullable()
     .required(),
-  location: yup.object().shape({
-    type: yup.string().required(),
-    coordinates: yup.array().of(yup.number())
-  }),
+  location: yup
+    .object()
+    .shape({
+      type: yup.string().required(),
+      coordinates: yup.array().of(yup.number())
+    })
+    .required(),
   organizer_first_name: yup.string().required(),
   organizer_last_name: yup.string().required(),
   organizer_email: yup
