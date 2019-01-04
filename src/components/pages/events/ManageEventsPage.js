@@ -171,6 +171,7 @@ class EventsPage extends PureComponent {
                               translate="site.page.manage_events.table.action.approve"
                               color="primary"
                               onClick={() => approve(event)}
+                              disabled={!isEventPending}
                             />
                             <Button
                               id={`reject_event_${event.id}`}
