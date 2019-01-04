@@ -6,7 +6,7 @@ import LocalizedLink from '../../common/LocalizedLink';
 import IntlComponent from '../../common/IntlComponent';
 import Table, { Td, Tr, DetailsRow } from '../../common/Table';
 import Button from '../../common/Button';
-import Icon from '../../common/Icon';
+import { WithIcons } from '../../common/Icon';
 import Neighborhoods from '../../common/Neighborhoods';
 
 import Layout from '../../layout/containers/LayoutContainer';
@@ -20,10 +20,6 @@ const DetailsCluster = styled.div`
   * + * {
     margin-left: 1em;
   }
-`;
-
-const SpacedSpan = styled.span`
-  margin-left: 0.5em;
 `;
 
 const FormContainer = styled(Container)`
@@ -126,17 +122,16 @@ class EventsPage extends PureComponent {
                         <Td>
                           <FormattedDate value={event.created_at} />
                         </Td>
-                        <Td>
-                          <Icon
-                            name="oval"
-                            size="0.5x"
-                            color={isEventPending ? 'orange' : 'green'}
-                          />
-                          <IntlComponent
-                            Component={SpacedSpan}
-                            id={`entities.event.state.${event.state}`}
-                          />
-                        </Td>
+                        <WithIcons
+                          component={Td}
+                          prepend={{
+                            name: 'oval',
+                            size: '0.5x',
+                            color: isEventPending ? 'orange' : 'green'
+                          }}
+                        >
+                          <FormattedMessage id={`entities.event.state.${event.state}`} />
+                        </WithIcons>
                         <Td>
                           <LocalizedLink
                             id={`edit_event_${event.id}`}
@@ -150,24 +145,25 @@ class EventsPage extends PureComponent {
                             id={`extend_event_${event.id}`}
                             color="link"
                             onClick={() => this.toggleDetails(event.id)}
-                          >
-                            <Icon name="angleRight" size="2x" rotate={selected ? 90 : 0} />
-                          </Button>
+                            prepend={{
+                              name: 'angleRight',
+                              size: '2x',
+                              rotate: selected ? 90 : 0
+                            }}
+                          />
                         </Td>
                       </Tr>
                       {selected && (
                         <DetailsRow id={`event_details_${event.id}`} colSpan={7}>
-                          <DetailsCluster>
-                            <Icon name="user" />
+                          <WithIcons component={DetailsCluster} prepend="user">
                             <strong>
                               {event.organizer_first_name} {event.organizer_last_name}
                             </strong>
                             <span>{event.organizer_email}</span>
-                          </DetailsCluster>
-                          <DetailsCluster>
-                            <Icon name="mapMarker" />
+                          </WithIcons>
+                          <WithIcons component={DetailsCluster} prepend="mapMarker">
                             <strong>Osoitejuttu?</strong>
-                          </DetailsCluster>
+                          </WithIcons>
                           <p>{event.description}</p>
                           <div>
                             <Button

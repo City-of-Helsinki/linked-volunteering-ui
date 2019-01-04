@@ -123,4 +123,28 @@ const Icon = ({ name, color: fill, size, className, rotate }) => {
   );
 };
 
+const StyledWithIcons = styled.span`
+  white-space: nowrap;
+  ${StyledSvg} {
+    &:first-child {
+      margin-right: 0.4em;
+    }
+    &:last-child {
+      margin-left: 0.4em;
+    }
+  }
+`;
+
+export const WithIcons = ({ append, prepend, children, component, ...rest }) => {
+  const prependProps = typeof prepend === 'string' ? { name: prepend } : prepend;
+  const appendProps = typeof append === 'string' ? { name: append } : append;
+  return (
+    <StyledWithIcons as={component} {...rest}>
+      {prepend && <Icon {...prependProps} />}
+      {children}
+      {append && <Icon {...appendProps} />}
+    </StyledWithIcons>
+  );
+};
+
 export default Icon;
