@@ -139,13 +139,18 @@ class EventsPage extends PureComponent {
                         </Td>
                         <Td>
                           <LocalizedLink
+                            id={`edit_event_${event.id}`}
                             to={`event/modify/${event.id}`}
                             prepend="pencil"
-                            id="site.page.manage_events.table.action.edit"
+                            translate="site.page.manage_events.table.action.edit"
                           />
                         </Td>
                         <Td>
-                          <Button color="link" onClick={() => this.toggleDetails(event.id)}>
+                          <Button
+                            id={`extend_event_${event.id}`}
+                            color="link"
+                            onClick={() => this.toggleDetails(event.id)}
+                          >
                             <Icon name="angleRight" size="2x" rotate={selected ? 90 : 0} />
                           </Button>
                         </Td>
@@ -166,12 +171,14 @@ class EventsPage extends PureComponent {
                           <p>{event.description}</p>
                           <div>
                             <Button
-                              id="site.page.manage_events.table.action.approve"
+                              id={`approve_event_${event.id}`}
+                              translate="site.page.manage_events.table.action.approve"
                               color="primary"
                               onClick={() => approve(event)}
                             />
                             <Button
-                              id="site.page.manage_events.table.action.remove"
+                              id={`reject_event_${event.id}`}
+                              translate="site.page.manage_events.table.action.remove"
                               color="danger"
                               onClick={() => remove(event)}
                               append="times"

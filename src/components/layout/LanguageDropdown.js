@@ -53,13 +53,13 @@ class LanguageDropdown extends React.Component {
         </LanguageSelector>
         <DropdownMenu>
           <DropdownItem>
-            <LocalizedLink to="/fi" id="site.language.fi" />
+            <LocalizedLink to="/fi" translate="site.language.fi" />
           </DropdownItem>
           <DropdownItem>
-            <LocalizedLink to="/sv" id="site.language.sv" />
+            <LocalizedLink to="/sv" translate="site.language.sv" />
           </DropdownItem>
           <DropdownItem>
-            <LocalizedLink to="/en" id="site.language.en" />
+            <LocalizedLink to="/en" translate="site.language.en" />
           </DropdownItem>
         </DropdownMenu>
       </Dropdown>

@@ -17,10 +17,10 @@ const StyledButton = styled(Button)`
   }
 `;
 
-export default ({ append, prepend, children, id, intl, values, className, ...rest }) => (
+export default ({ append, prepend, children, translate, intl, values, className, ...rest }) => (
   <StyledButton className={className} {...rest}>
     {prepend && <Icon inline name={prepend} />}
-    {id ? <FormattedMessage id={id} values={values} /> : children}
+    {translate ? <FormattedMessage id={translate} values={values} /> : children}
     {append && <Icon inline name={append} />}
   </StyledButton>
 );

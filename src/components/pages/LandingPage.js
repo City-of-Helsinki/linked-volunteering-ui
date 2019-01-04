@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 import { Container, Row, Col } from 'reactstrap';
-import IntlComponent from '../common/IntlComponent';
 import LocalizedLink from '../common/LocalizedLink';
 
 import Layout from '../layout/containers/LayoutContainer';
@@ -37,7 +36,7 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const StyledLink = styled(IntlComponent)`
+const StyledLink = styled(LocalizedLink)`
   background-color: ${props => props.theme.helSummer};
   color: ${props => props.theme.helBlack};
 
@@ -62,8 +61,7 @@ const LandingPage = () => (
         <Row>
           <Col md="3">
             <StyledLink
-              Component={LocalizedLink}
-              id="site.page.landing.hero.button"
+              translate="site.page.landing.hero.button"
               className="btn btn-block"
               to="event/new"
             />
@@ -71,7 +69,7 @@ const LandingPage = () => (
           <Col md="3">
             <LocalizedLink
               className="btn btn-link btn-block"
-              id="site.page.landing.hero.link"
+              translate="site.page.landing.hero.link"
               append="arrowRight"
               to="#???"
             />

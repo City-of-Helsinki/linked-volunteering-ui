@@ -27,7 +27,7 @@ export default ({ isOpen, closeModal, modal, meta, dispatch }) => {
                   action(dispatch, meta);
                 }
               }}
-              id={intl}
+              translate={intl}
               values={meta}
               color={color}
             />

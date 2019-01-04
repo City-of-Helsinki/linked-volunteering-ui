@@ -16,10 +16,20 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const LocalizedLink = ({ append, prepend, to, children, intl, id, values, className, ...rest }) => (
+const LocalizedLink = ({
+  append,
+  prepend,
+  to,
+  children,
+  intl,
+  translate,
+  values,
+  className,
+  ...rest
+}) => (
   <StyledLink className={className} to={`/${intl.locale}/${to}`} {...rest}>
     {prepend && <Icon name={prepend} />}
-    {id ? <FormattedMessage id={id} values={values} /> : children}
+    {translate ? <FormattedMessage id={translate} values={values} /> : children}
     {append && <Icon name={append} />}
   </StyledLink>
 );

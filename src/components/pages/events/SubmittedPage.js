@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
 import Button from '../../common/Button';
 
-import IntlComponent from '../../common/IntlComponent';
 import LocalizedLink from '../../common/LocalizedLink';
 
 import Layout from '../../layout/containers/LayoutContainer';
@@ -66,12 +65,11 @@ const SubmittedPage = () => (
           prepend="calendar"
           append="arrowRight"
           color="link"
-          id="site.page.thank_you.action.add_to_calendar"
+          translate="site.page.thank_you.action.add_to_calendar"
         />
-        <IntlComponent
-          Component={LocalizedLink}
+        <LocalizedLink
           className="btn btn-primary"
-          id="site.page.thank_you.action.home_page"
+          translate="site.page.thank_you.action.home_page"
           to=""
         />
       </Content>

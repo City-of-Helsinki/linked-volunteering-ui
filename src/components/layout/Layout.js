@@ -6,7 +6,6 @@ import { injectIntl, FormattedMessage } from 'react-intl';
 
 import Notifications from '../notification/containers/NotificationsContainer';
 import LanguageDropdown from './LanguageDropdown';
-import IntlComponent from '../common/IntlComponent';
 import LocalizedLink from '../common/LocalizedLink';
 import Icon from '../common/Icon';
 import Modal from '../modal/containers/ModalContainer';
@@ -85,30 +84,19 @@ const Layout = ({ children, intl, paddingTop, paddingBottom, user }) => {
       <NavbarRow expand="md">
         <Nav navbar>
           <NavItem>
-            <IntlComponent
-              Component={LocalizedLink}
-              className="nav-link"
-              to="event/new"
-              id="site.nav.create_event"
-            />
+            <LocalizedLink className="nav-link" to="event/new" translate="site.nav.create_event" />
           </NavItem>
           {hasUser && (
             <Fragment>
               <NavItem>
-                <IntlComponent
-                  Component={LocalizedLink}
+                <LocalizedLink
                   className="nav-link"
                   to="events/manage"
-                  id="site.nav.manage_events"
+                  translate="site.nav.manage_events"
                 />
               </NavItem>
               <NavItem>
-                <IntlComponent
-                  Component={LocalizedLink}
-                  className="nav-link"
-                  to="report"
-                  id="site.nav.report"
-                />
+                <LocalizedLink className="nav-link" to="report" translate="site.nav.report" />
               </NavItem>
             </Fragment>
           )}
