@@ -30,7 +30,7 @@
     },
     {
       "id": 2,
-      "state": "approve",
+      "state": "approved",
       "created_at": "2019-01-03T06:46:28.185752Z",
       "modified_at": "2019-01-03T06:46:28.185880Z",
       "name": "Testitapahtuma",
