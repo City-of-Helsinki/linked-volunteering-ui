@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { Row, Col } from 'reactstrap';
-import Select from '../fields/Select';
 import Map from '../fields/Map';
+import AutoSuggest from '../fields/AutoSuggest';
 
 class Location extends React.Component {
   constructor(props) {
@@ -13,14 +13,10 @@ class Location extends React.Component {
   }
 
   handleZoom = e => {
-    const { neighborhoods, handleChange } = this.props;
-
-    const selectectedNeighborhood = neighborhoods.find(
-      neighborhood => neighborhood.ocd_id === e.target.value
-    );
+    const { handleChange } = this.props;
 
     this.setState({
-      bounds: selectectedNeighborhood.bbox
+      bounds: e.target.value.bbox
     });
 
     handleChange(e);
@@ -33,21 +29,20 @@ class Location extends React.Component {
       <Fragment>
         <Row>
           <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 4, offset: 1 }}>
-            <Select
-              id="neighborhood"
-              label="form.event.field.neighborhood.label"
-              error={errors.area}
-              touched={touched.area}
-              value={values.area}
-              onChange={this.handleZoom}
-              onBlur={handleBlur}
-            >
-              {neighborhoods.valueSeq().map(neighborhood => (
-                <option key={neighborhood.ocd_id} value={neighborhood.ocd_id}>
-                  {neighborhood.name.fi}
-                </option>
-              ))}
-            </Select>
+            {neighborhoods.size > 0 && (
+              <AutoSuggest
+                id="neighborhood"
+                label="form.event.field.neighborhood.label"
+                placeholder="form.event.field.neighborhood.placeholder"
+                error={errors.area}
+                touched={touched.area}
+                value={values.area}
+                onChange={this.handleZoom}
+                onBlur={handleBlur}
+                suggestions={[...neighborhoods.values()]}
+                getSuggestionValue={neighborhood => neighborhood.name.fi}
+              />
+            )}
           </Col>
         </Row>
         <Row>
