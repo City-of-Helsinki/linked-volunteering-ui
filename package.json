@@ -18,6 +18,7 @@
     "open-city-design": "^1.0.0-alpha.3",
     "react": "^16.7.0",
     "react-app-polyfill": "^0.2.0",
+    "react-autosuggest": "^9.4.3",
     "react-datepicker": "^2.0.0",
     "react-dom": "^16.7.0",
     "react-final-form": "^4.0.2",

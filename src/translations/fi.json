@@ -79,6 +79,7 @@
   "form.event.field.name.placeholder": "Tapahtuman nimi",
   "form.event.field.description.label": "Kuvausteksti",
   "form.event.field.neighborhood.label": "Kaupunginosa",
+  "form.event.field.neighborhood.placeholder": "Kirjoita kaupungin osa ja valitse listalta",
   "form.event.field.first_name.label": "Etunimi",
   "form.event.field.first_name.placeholder": "Etunimi",
   "form.event.field.last_name.label": "Sukunimi",
