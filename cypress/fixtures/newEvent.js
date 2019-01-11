@@ -8,7 +8,7 @@ export default {
     value: 'Puistotalkoot'
   },
   neighborhood: {
-    method: 'select',
+    method: 'autosuggest',
     value: 'Kruununhaka'
   },
   'date_range\\.start_date': {

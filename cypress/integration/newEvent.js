@@ -13,6 +13,9 @@ describe('New event', () => {
     Object.entries(newEvent).forEach(([key, { method, value }]) => {
       if (method === 'click') {
         cy.get(`[for=${key}]`).click();
+      } else if (method === 'autosuggest') {
+        cy.get(`#${key}`).type(value);
+        cy.get('.react-autosuggest__suggestion--first').click();
       } else {
         cy.get(`#${key}`)[method](value);
       }
