@@ -1,24 +1,13 @@
 import React, { PureComponent } from 'react';
 import Autosuggest from 'react-autosuggest';
 import { FormGroup, Input, FormFeedback, FormText } from 'reactstrap';
-import { injectIntl } from 'react-intl';
 import styled from 'styled-components';
+import { injectIntl } from 'react-intl';
 import Label from './Label';
+import './AutoSuggest.scss';
 
-const Suggestion = styled.div`
-  background: red;
-  .react-autosuggest__suggestion {
-  }
-  .react-autosuggest__suggestion--first {
-  }
-  .react-autosuggest__suggestion--highlighted {
-  }
-  .react-autosuggest__suggestions-container {
-  }
-  .react-autosuggest__suggestions-container--open {
-  }
-  .react-autosuggest__suggestions-list {
-  }
+const StyledFormGroup = styled(FormGroup)`
+  margin-bottom: 0;
 `;
 
 const simplify = value => value.toLowerCase();
@@ -60,7 +49,7 @@ class Example extends PureComponent {
     });
   };
 
-  renderSuggestion = suggestion => <div>{suggestion.name.fi}</div>;
+  renderSuggestion = suggestion => <span>{suggestion.name.fi}</span>;
 
   render() {
     const {
@@ -84,36 +73,32 @@ class Example extends PureComponent {
     };
 
     return (
-      <FormGroup>
-        {label && (
-          <Label htmlFor={id} required={required}>
-            {formatMessage({ id: label })}
-          </Label>
-        )}
-        <Autosuggest
-          alwaysRenderSuggestions
-          suggestions={suggestions}
-          onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-          onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-          onSuggestionSelected={this.onSuggestionSelected}
-          renderSuggestion={this.renderSuggestion}
-          getSuggestionValue={getSuggestionValue}
-          inputProps={inputProps}
-          renderInputComponent={props => (
+      <Autosuggest
+        suggestions={suggestions}
+        onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+        onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+        onSuggestionSelected={this.onSuggestionSelected}
+        renderSuggestion={this.renderSuggestion}
+        getSuggestionValue={getSuggestionValue}
+        inputProps={inputProps}
+        renderInputComponent={props => (
+          <StyledFormGroup>
+            {label && (
+              <Label htmlFor={id} required={required}>
+                {formatMessage({ id: label })}
+              </Label>
+            )}
             <Input
               id={id}
               invalid={error && touched}
               placeholder={placeholder ? formatMessage({ id: placeholder }) : undefined}
               {...props}
             />
-          )}
-          renderSuggestionsContainer={({ containerProps, children }) => (
-            <Suggestion {...containerProps}>{children}</Suggestion>
-          )}
-        />
-        <FormFeedback>{error && formatMessage({ id: error })}</FormFeedback>
-        <FormText>{text && formatMessage({ id: text })}</FormText>
-      </FormGroup>
+            <FormFeedback>{error && formatMessage({ id: error })}</FormFeedback>
+            <FormText>{text && formatMessage({ id: text })}</FormText>
+          </StyledFormGroup>
+        )}
+      />
     );
   }
 }
