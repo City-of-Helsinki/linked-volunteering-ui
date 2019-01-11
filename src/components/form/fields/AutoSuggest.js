@@ -49,7 +49,10 @@ class Example extends PureComponent {
     });
   };
 
-  renderSuggestion = suggestion => <span>{suggestion.name.fi}</span>;
+  renderSuggestion = suggestion => {
+    const { getSuggestionValue } = this.props;
+    return <span>{getSuggestionValue(suggestion)}</span>;
+  };
 
   render() {
     const {
