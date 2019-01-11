@@ -20,20 +20,27 @@
 }
 .react-autosuggest__suggestions-list {
   list-style: none;
-  padding-left: 0;
   margin: 0;
+  padding: 0;
 }
 .react-autosuggest__suggestion {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
+  padding-left: 0.5em;
   border-bottom: 1px solid #eee;
-  &:not(:last-child) {
-    margin-bottom: 0.5em;
+  &:hover {
+    cursor: pointer;
+    background: #f2f2f2;
   }
 }
 .react-autosuggest__suggestion--first {
 }
 .react-autosuggest__suggestion--highlighted {
+  background: #f2f2f2;
+  &:hover {
+    cursor: pointer;
+    background: #e6e6e6;
+  }
 }
 .react-autosuggest__section-container {
 }
