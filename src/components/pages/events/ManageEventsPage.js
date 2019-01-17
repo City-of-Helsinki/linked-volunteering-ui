@@ -134,7 +134,7 @@ class EventsPage extends PureComponent {
                         </WithIcons>
                         <Td>
                           <LocalizedLink
-                            id={`admin/edit_event_${event.id}`}
+                            id={`edit_event_${event.id}`}
                             to={`admin/event/modify/${event.id}`}
                             prepend="pencil"
                             translate="site.page.manage_events.table.action.edit"
