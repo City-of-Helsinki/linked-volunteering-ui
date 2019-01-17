@@ -91,12 +91,12 @@ const Layout = ({ children, intl, paddingTop, paddingBottom, user }) => {
               <NavItem>
                 <LocalizedLink
                   className="nav-link"
-                  to="events/manage"
+                  to="admin/events/manage"
                   translate="site.nav.manage_events"
                 />
               </NavItem>
               <NavItem>
-                <LocalizedLink className="nav-link" to="report" translate="site.nav.report" />
+                <LocalizedLink className="nav-link" to="admin/report" translate="site.nav.report" />
               </NavItem>
             </Fragment>
           )}

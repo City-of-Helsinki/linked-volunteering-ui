@@ -16,11 +16,11 @@ const App = ({ locale }) => (
   <IntlProvider locale={locale} key={locale} messages={messages[locale]}>
     <Switch>
       <Route exact path="/:locale/" component={LandingPage} />
-      <Route exact path={`/:locale/events/manage`} component={ManageEventsPage} />
       <Route exact path={`/:locale/event/new`} component={NewEventPage} />
       <Route exact path={`/:locale/event/submitted`} component={SubmittedPage} />
-      <Route exact path={`/:locale/event/modify/:id`} component={ModifyEventPage} />
-      <Route exact path="/:locale/report" component={ReportPage} />
+      <Route exact path={`/:locale/admin/events/manage`} component={ManageEventsPage} />
+      <Route exact path={`/:locale/admin/event/modify/:id`} component={ModifyEventPage} />
+      <Route exact path="/:locale/admin/report" component={ReportPage} />
     </Switch>
   </IntlProvider>
 );
