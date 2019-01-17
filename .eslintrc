@@ -1,23 +1,13 @@
 {
-  "extends": [
-    "react-app",
-    "airbnb-base",
-    "plugin:jest/recommended",
-    "plugin:flowtype/recommended",
-    "plugin:prettier/recommended"
-  ],
+  "extends": ["react-app", "airbnb-base", "plugin:jest/recommended", "plugin:prettier/recommended"],
   "parser": "babel-eslint",
-  "plugins": ["react", "jest", "cypress", "flowtype", "prettier"],
+  "plugins": ["react", "jest", "cypress", "prettier"],
   "env": {
     "browser": true,
     "node": true,
     "cypress/globals": true
   },
-  "settings": {
-    "flowtype": {
-      "onlyFilesWithFlowAnnotation": true
-    }
-  },
+  "settings": {},
   "rules": {
     "prettier/prettier": ["error"],
     "import/no-extraneous-dependencies": ["error", { "devDependencies": ["!/src/**/*.js"] }]

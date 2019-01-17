@@ -11,7 +11,6 @@ import EventPage from '../EventPage';
 
 export default compose(
   renderIfAuthenticated,
-  // flowlint-next-line unclear-type:off
   withProps(props => ({
     pageType: 'modify',
     id: props.match.params.id,
