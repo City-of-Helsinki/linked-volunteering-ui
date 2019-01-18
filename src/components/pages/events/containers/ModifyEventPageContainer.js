@@ -29,7 +29,7 @@ export default compose(
   withHandlers({
     onSubmit: ({ history, locale, addNotification: notify }) => async values => {
       await eventService.modify(values);
-      history.push(`/${locale}/events/manage`);
+      history.push(`/${locale}/admin/events/manage`);
       notify({ color: 'success', message: 'notification.form.event.modified' });
     }
   }),
