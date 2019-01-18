@@ -5,12 +5,10 @@ import { IntlProvider } from 'react-intl';
 
 import messages from '../config/translations';
 
-import ManageEventsPage from './pages/events/containers/ManageEventsPageContainer';
 import NewEventPage from './pages/events/containers/NewEventPageContainer';
-import ModifyEventPage from './pages/events/containers/ModifyEventPageContainer';
 import SubmittedPage from './pages/events/SubmittedPage';
-import ReportPage from './pages/containers/ReportPageContainer';
 import LandingPage from './pages/LandingPage';
+import AdminRoutes from './Admin';
 
 const App = ({ locale }) => (
   <IntlProvider locale={locale} key={locale} messages={messages[locale]}>
@@ -18,9 +16,7 @@ const App = ({ locale }) => (
       <Route exact path="/:locale/" component={LandingPage} />
       <Route exact path={`/:locale/event/new`} component={NewEventPage} />
       <Route exact path={`/:locale/event/submitted`} component={SubmittedPage} />
-      <Route exact path={`/:locale/admin/events/manage`} component={ManageEventsPage} />
-      <Route exact path={`/:locale/admin/event/modify/:id`} component={ModifyEventPage} />
-      <Route exact path="/:locale/admin/report" component={ReportPage} />
+      <Route path={`/:locale/admin`} component={AdminRoutes} />
     </Switch>
   </IntlProvider>
 );
