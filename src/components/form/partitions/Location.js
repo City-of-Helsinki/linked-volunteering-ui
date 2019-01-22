@@ -23,7 +23,16 @@ class Location extends React.Component {
   };
 
   render() {
-    const { errors, touched, neighborhoods, values, handleChange, handleBlur } = this.props;
+    const {
+      errors,
+      touched,
+      neighborhoods,
+      values,
+      getAddress,
+      selectedAddress,
+      handleChange,
+      handleBlur
+    } = this.props;
 
     return (
       <Fragment>
@@ -51,6 +60,8 @@ class Location extends React.Component {
               id="location"
               bounds={this.state.bounds}
               error={errors.location}
+              getAddress={getAddress}
+              selectedAddress={selectedAddress}
               handleChange={handleChange}
               value={values.location}
             />
