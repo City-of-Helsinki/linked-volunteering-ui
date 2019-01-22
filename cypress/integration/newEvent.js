@@ -10,6 +10,8 @@ describe('New event', () => {
   it('Fill & submit', () => {
     cy.visit('/fi/event/new');
 
+    cy.get('div.leaflet-touch').click();
+
     Object.entries(newEvent).forEach(([key, { method, value }]) => {
       if (method === 'click') {
         cy.get(`[for=${key}]`).click();
@@ -20,7 +22,6 @@ describe('New event', () => {
         cy.get(`#${key}`)[method](value);
       }
     });
-    cy.get('div.leaflet-touch').click();
     cy.get('button[type="submit"]').click();
 
     cy.contains('Tapahtuma lisätty onnistuneesti');

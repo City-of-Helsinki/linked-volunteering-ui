@@ -9,12 +9,17 @@ import Location from './partitions/Location';
 
 export default ({
   neighborhoods,
+  getAddress,
+  selectedAddress,
   values,
   errors,
   touched,
   handleChange,
   handleBlur,
-  handleSubmit
+  handleSubmit,
+  setFieldValue,
+  setFieldTouched,
+  setFieldError
 }) => (
   <form onSubmit={handleSubmit}>
     <Row>
@@ -58,14 +63,21 @@ export default ({
         <FormattedMessage tagName="h3" id="form.event.title.time_and_place" />
       </Col>
     </Row>
+
     <Location
+      setFieldValue={setFieldValue}
+      setFieldTouched={setFieldTouched}
+      setFieldError={setFieldError}
       neighborhoods={neighborhoods}
       errors={errors}
       touched={touched}
       values={values}
+      getAddress={getAddress}
       handleChange={handleChange}
       handleBlur={handleBlur}
+      selectedAddress={selectedAddress}
     />
+
     <DateRange
       errors={errors}
       touched={touched}
@@ -171,22 +183,6 @@ export default ({
           error={errors.targets}
           touched={touched.targets}
           value={values.targets}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-      </Col>
-    </Row>
-    <Row>
-      <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
-        <Input
-          type="text"
-          id="maintenance_location"
-          label="form.event.field.trash_location.label"
-          placeholder="form.event.field.trash_location.placeholder"
-          required
-          error={errors.maintenance_location}
-          touched={touched.maintenance_location}
-          value={values.maintenance_location}
           onChange={handleChange}
           onBlur={handleBlur}
         />

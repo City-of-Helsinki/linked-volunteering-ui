@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { addNotification } from '../../../../ducks/notification';
 import { getNeighborhoods } from '../../../../ducks/neighborhood';
+import { getAddress } from '../../../../ducks/geo';
 import { submitEvent } from '../../../../ducks/event';
 import { withEventForm } from '../../../form/withForm';
 import EventPage from '../EventPage';
@@ -15,9 +16,10 @@ export default compose(
   })),
   connect(
     state => ({
-      neighborhoods: state.neighborhood.neighborhoods
+      neighborhoods: state.neighborhood.neighborhoods,
+      selectedAddress: state.geo.selectedAddress
     }),
-    { getNeighborhoods, addNotification, submitEvent }
+    { getAddress, getNeighborhoods, addNotification, submitEvent }
   ),
   withHandlers({
     onSubmit: ({
