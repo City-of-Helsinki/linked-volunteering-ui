@@ -51,10 +51,6 @@ export default {
     method: 'type',
     value: '1'
   },
-  maintenance_location: {
-    method: 'type',
-    value: '1'
-  },
   additional_information: {
     method: 'type',
     value: '1'
