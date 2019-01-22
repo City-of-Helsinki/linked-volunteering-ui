@@ -16,7 +16,10 @@ export default ({
   touched,
   handleChange,
   handleBlur,
-  handleSubmit
+  handleSubmit,
+  setFieldValue,
+  setFieldTouched,
+  setFieldError
 }) => (
   <form onSubmit={handleSubmit}>
     <Row>
@@ -62,6 +65,9 @@ export default ({
     </Row>
 
     <Location
+      setFieldValue={setFieldValue}
+      setFieldTouched={setFieldTouched}
+      setFieldError={setFieldError}
       neighborhoods={neighborhoods}
       errors={errors}
       touched={touched}
@@ -69,24 +75,8 @@ export default ({
       getAddress={getAddress}
       handleChange={handleChange}
       handleBlur={handleBlur}
+      selectedAddress={selectedAddress}
     />
-
-    <Row>
-      <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
-        <Input
-          type="text"
-          id="maintenance_location"
-          label="form.event.field.trash_location.label"
-          placeholder="form.event.field.trash_location.placeholder"
-          required
-          error={errors.maintenance_location}
-          touched={touched.maintenance_location}
-          value={selectedAddress && `${selectedAddress.street.name.fi} ${selectedAddress.number}`}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-      </Col>
-    </Row>
 
     <DateRange
       errors={errors}
