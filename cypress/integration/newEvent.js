@@ -21,6 +21,7 @@ describe('New event', () => {
       }
     });
     cy.get('div.leaflet-touch').click();
+    cy.wait(1000);
     cy.get('button[type="submit"]').click();
 
     cy.contains('Tapahtuma lisätty onnistuneesti');
