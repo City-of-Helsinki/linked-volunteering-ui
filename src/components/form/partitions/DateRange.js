@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import { Row, Col } from 'reactstrap';
-import { addWeeks } from 'date-fns';
+import { addDays } from 'date-fns';
 import { injectIntl } from 'react-intl';
 
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
@@ -14,7 +14,7 @@ registerLocale('fi', fi);
 setDefaultLocale('fi');
 
 const now = new Date();
-const minDate = addWeeks(now, 1);
+const minDate = addDays(now, 8);
 const dateFormat = 'd.M.yyyy';
 const timeFormat = 'HH:mm';
 const timeIntervals = 30;
