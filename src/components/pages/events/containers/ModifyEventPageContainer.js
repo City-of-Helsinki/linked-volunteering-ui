@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { getNeighborhoods } from '../../../../ducks/neighborhood';
 import { renderIfAuthenticated } from '../../../../utils/container';
 import { addNotification } from '../../../../ducks/notification';
+import { getAddress } from '../../../../ducks/geo';
 import eventService from '../../../../services/eventService';
 import { withEventForm } from '../../../form/withForm';
 import EventPage from '../EventPage';
@@ -21,10 +22,11 @@ export default compose(
       const parsedId = parseInt(id, 10);
       return {
         initialValues: state.event.events.get(parsedId),
-        neighborhoods: state.neighborhood.neighborhoods
+        neighborhoods: state.neighborhood.neighborhoods,
+        selectedAddress: state.geo.selectedAddress
       };
     },
-    { addNotification, getNeighborhoods }
+    { getAddress, addNotification, getNeighborhoods }
   ),
   withHandlers({
     onSubmit: ({ history, locale, addNotification: notify }) => async values => {
