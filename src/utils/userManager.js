@@ -14,7 +14,7 @@ const settings = {
   post_logout_redirect_uri: getRedirectUri('logged_out'),
   loadUserInfo: true,
   response_type: 'id_token token',
-  scope: 'openid profile'
+  scope: 'openid profile https://api.hel.fi/auth/haravadev'
 };
 
 export default createUserManager(settings);

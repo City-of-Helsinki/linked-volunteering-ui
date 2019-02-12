@@ -20,26 +20,30 @@ const constructEvent = event => {
 };
 
 export default {
-  create: async event => {
-    const e = await post('event/', event);
+  create: async (event, apiAccessToken) => {
+    const e = await post('event/', event, apiAccessToken);
     return constructEvent(e);
   },
-  modify: async event => {
-    const e = await put(`event/${event.id}/`, event);
+  modify: async (event, apiAccessToken) => {
+    const e = await put(`event/${event.id}/`, event, apiAccessToken);
     return constructEvent(e);
   },
-  publish: async event => {
-    const e = await patch(`event/${event.id}/`, {
-      state: publishedState
-    });
+  publish: async (event, apiAccessToken) => {
+    const e = await patch(
+      `event/${event.id}/`,
+      {
+        state: publishedState
+      },
+      apiAccessToken
+    );
     return constructEvent(e);
   },
-  remove: async event => {
-    await remove(`event/${event.id}/`);
+  remove: async (event, apiAccessToken) => {
+    await remove(`event/${event.id}/`, apiAccessToken);
     return event.id;
   },
-  getEvents: async () => {
-    const payload = await get('event/');
+  getEvents: async apiAccessToken => {
+    const payload = await get('event/', null, apiAccessToken);
     return {
       payload,
       results: Map(payload.results.map(event => [event.id, constructEvent(event)]))

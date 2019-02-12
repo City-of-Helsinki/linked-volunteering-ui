@@ -2,8 +2,8 @@ import { Map } from 'immutable';
 import { get } from '../utils/api';
 
 export default {
-  getNeighborhoods: async () => {
-    const results = await get('neighborhood');
+  getNeighborhoods: async apiAccessToken => {
+    const results = await get('neighborhood', null, apiAccessToken);
 
     return {
       count: results.count,

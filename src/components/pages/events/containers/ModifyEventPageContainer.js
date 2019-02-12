@@ -23,14 +23,15 @@ export default compose(
       return {
         initialValues: state.event.events.get(parsedId),
         neighborhoods: state.neighborhood.neighborhoods,
-        selectedAddress: state.geo.selectedAddress
+        selectedAddress: state.geo.selectedAddress,
+        accessToken: state.auth.apiAccessToken
       };
     },
     { getAddress, addNotification, getNeighborhoods }
   ),
   withHandlers({
-    onSubmit: ({ history, locale, addNotification: notify }) => async values => {
-      await eventService.modify(values);
+    onSubmit: ({ history, locale, addNotification: notify, accessToken }) => async values => {
+      await eventService.modify(values, accessToken);
       history.push(`/${locale}/admin/events/manage`);
       notify({ color: 'success', message: 'notification.form.event.modified' });
     }

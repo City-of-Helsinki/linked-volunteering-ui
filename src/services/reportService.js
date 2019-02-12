@@ -2,8 +2,8 @@ import { Map } from 'immutable';
 import { get } from '../utils/api';
 
 export default {
-  getReport: async year => {
-    const payload = await get('report/', { year });
+  getReport: async (year, apiAccessToken) => {
+    const payload = await get('report/', { year }, apiAccessToken);
 
     if (!payload) {
       return {};
