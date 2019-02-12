@@ -17,7 +17,8 @@ export default compose(
   connect(
     state => ({
       neighborhoods: state.neighborhood.neighborhoods,
-      selectedAddress: state.geo.selectedAddress
+      selectedAddress: state.geo.selectedAddress,
+      accessToken: state.auth.apiAccessToken
     }),
     { getAddress, getNeighborhoods, addNotification, submitEvent }
   ),
@@ -25,10 +26,11 @@ export default compose(
     onSubmit: ({
       history,
       locale,
+      accessToken,
       addNotification: notify,
       submitEvent: submit
     }) => async values => {
-      await submit(values);
+      await submit(values, accessToken);
       await notify({ color: 'success', message: 'notification.form.event.created' });
       history.push(`/${locale}/event/submitted`);
     }

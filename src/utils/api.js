@@ -7,8 +7,27 @@ const instance = axios.create({
   timeout: 3000
 });
 
-export const get = (endPoint, params = {}) => instance.get(endPoint, { params }).then(r => r.data);
-export const post = (endPoint, data = {}) => instance.post(endPoint, data).then(r => r.data);
-export const put = (endPoint, data = {}) => instance.put(endPoint, data).then(r => r.data);
-export const patch = (endPoint, data = {}) => instance.patch(endPoint, data).then(r => r.data);
-export const remove = (endPoint, data = {}) => instance.delete(endPoint, data).then(r => r.data);
+export const get = (endPoint, params = {}, apiAccessToken) =>
+  instance
+    .get(endPoint, { params, headers: { Authorization: `Bearer ${apiAccessToken}` } })
+    .then(r => r.data);
+
+export const post = (endPoint, data = {}, apiAccessToken) =>
+  instance
+    .post(endPoint, data, { headers: { Authorization: `Bearer ${apiAccessToken}` } })
+    .then(r => r.data);
+
+export const put = (endPoint, data = {}, apiAccessToken) =>
+  instance
+    .put(endPoint, data, { headers: { Authorization: `Bearer ${apiAccessToken}` } })
+    .then(r => r.data);
+
+export const patch = (endPoint, data = {}, apiAccessToken) =>
+  instance
+    .patch(endPoint, data, { headers: { Authorization: `Bearer ${apiAccessToken}` } })
+    .then(r => r.data);
+
+export const remove = (endPoint, apiAccessToken) =>
+  instance
+    .delete(endPoint, { headers: { Authorization: `Bearer ${apiAccessToken}` } })
+    .then(r => r.data);

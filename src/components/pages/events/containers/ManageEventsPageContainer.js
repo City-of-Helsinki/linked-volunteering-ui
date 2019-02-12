@@ -27,7 +27,8 @@ export default compose(
     state => ({
       events: filterEvents(state.event),
       ordering: state.event.ordering,
-      neighborhoods: state.neighborhood.neighborhoods
+      neighborhoods: state.neighborhood.neighborhoods,
+      accessToken: state.auth.apiAccessToken
     }),
     {
       getNeighborhoods,
@@ -44,8 +45,8 @@ export default compose(
     remove: ({ openModal: showModal }) => event => {
       showModal('confirmRemoval', event);
     },
-    approve: ({ addNotification: notify, publishEvent: publish }) => event => {
-      publish(event);
+    approve: ({ addNotification: notify, publishEvent: publish, accessToken }) => event => {
+      publish(event, accessToken);
       notify({
         color: 'success',
         message: 'notification.manage_events.approve',
