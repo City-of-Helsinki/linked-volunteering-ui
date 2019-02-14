@@ -14,7 +14,7 @@ import * as serviceWorker from './serviceWorker';
 import configureStore from './config/configureStore';
 import userManager from './utils/userManager';
 import { mockUser } from './ducks/mock';
-import { getApiAccessToken, getCurrentUserType } from './ducks/auth';
+import { getApiAccessToken, getCurrentUserData } from './ducks/auth';
 
 import App from './components/containers/AppContainer';
 import CallbackPage from './components/pages/containers/CallBackPageContainer';
@@ -27,7 +27,7 @@ if (REACT_APP_AUTHENTICATED === 'yes') {
 } else {
   loadUser(store, userManager);
   store.dispatch(getApiAccessToken());
-  store.dispatch(getCurrentUserType());
+  store.dispatch(getCurrentUserData());
 }
 
 const Root = () => (

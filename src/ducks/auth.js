@@ -4,10 +4,7 @@ import authService from '../services/authService';
 
 const defaultState = Record({
   apiAccessToken: null,
-  currentUserType: {
-    is_official: false,
-    is_contactor: false
-  }
+  currentUserData: null
 });
 
 export const getApiAccessToken = createAction(
@@ -15,9 +12,9 @@ export const getApiAccessToken = createAction(
   authService.getApiAccessToken
 );
 
-export const getCurrentUserType = createAction(
-  'GET_CURRENT_USER_TYPE',
-  authService.getCurrentUserType
+export const getCurrentUserData = createAction(
+  'GET_CURRENT_USER_DATA',
+  authService.getCurrentUserData
 );
 
 export default (state = defaultState(), action) => {
@@ -25,8 +22,8 @@ export default (state = defaultState(), action) => {
   switch (type) {
     case 'GET_API_ACCESS_TOKEN_FULFILLED':
       return state.set('apiAccessToken', payload);
-    case 'GET_CURRENT_USER_TYPE_FULFILLED':
-      return state.set('currentUserType', payload);
+    case 'GET_CURRENT_USER_DATA_FULFILLED':
+      return state.set('currentUserData', payload);
     default:
       return state;
   }

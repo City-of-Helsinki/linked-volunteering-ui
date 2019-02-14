@@ -22,28 +22,23 @@ const getApiAccessToken = async () => {
   return apiAccessToken;
 };
 
-const getCurrentUserType = async () => {
+const getCurrentUserData = async () => {
   const user = await userManager.getUser();
   if (!user) return null;
 
   const userAuth = await getUserAuth(user);
   const apiAccessToken = userAuth.data[REACT_APP_OPEN_ID_API_TOKENS_SCOPE];
 
-  const userType = await axios.get(`${REACT_APP_API_URL}/v1/user/me`, {
+  const userData = await axios.get(`${REACT_APP_API_URL}/v1/user/me`, {
     headers: { Authorization: `Bearer ${apiAccessToken}` },
     scope: REACT_APP_OPEN_ID_API_TOKENS_SCOPE
   });
 
-  const userTypes = {
-    is_official: userType.data.is_official,
-    is_contractor: userType.data.is_contractor
-  };
-
-  return userTypes;
+  return userData.data;
 };
 
 export default {
   getUserAuth,
   getApiAccessToken,
-  getCurrentUserType
+  getCurrentUserData
 };
