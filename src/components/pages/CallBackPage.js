@@ -2,11 +2,12 @@ import React from 'react';
 import { CallbackComponent } from 'redux-oidc';
 import userManager from '../../utils/userManager';
 
-const CallBackPage = ({ history, getApiAccessToken }) => (
+const CallBackPage = ({ history, getApiAccessToken, getCurrentUserType }) => (
   <CallbackComponent
     userManager={userManager}
     successCallback={async () => {
       getApiAccessToken();
+      getCurrentUserType();
       history.push('/');
     }}
     errorCallback={error => {
