@@ -2,7 +2,7 @@ import React from 'react';
 import { injectIntl } from 'react-intl';
 import { Dropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap';
 import styled from 'styled-components';
-import LocalizedLink from '../common/LocalizedLink';
+import IntlComponent from '../common/IntlComponent';
 import Icon from '../common/Icon';
 
 const LanguageSelector = styled(DropdownToggle)`
@@ -52,15 +52,9 @@ class LanguageDropdown extends React.Component {
           </StyledSelector>
         </LanguageSelector>
         <DropdownMenu>
-          <DropdownItem>
-            <LocalizedLink to="/fi" translate="site.language.fi" />
-          </DropdownItem>
-          <DropdownItem>
-            <LocalizedLink to="/sv" translate="site.language.sv" />
-          </DropdownItem>
-          <DropdownItem>
-            <LocalizedLink to="/en" translate="site.language.en" />
-          </DropdownItem>
+          <IntlComponent Component={DropdownItem} href="/fi" id="site.language.fi" />
+          <IntlComponent Component={DropdownItem} href="/sv" id="site.language.sv" />
+          <IntlComponent Component={DropdownItem} href="/en" id="site.language.en" />
         </DropdownMenu>
       </Dropdown>
     );
