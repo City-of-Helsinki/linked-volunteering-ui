@@ -1,6 +1,7 @@
 import React from 'react';
 import Select from '../form/fields/Select';
 
+// todo: auto-complete
 const Neighborhoods = ({ neighborhoods, onChange }) => (
   <Select onChange={onChange}>
     {neighborhoods.valueSeq().map(neighborhood => (
