@@ -61,6 +61,13 @@ class Location extends React.Component {
     handleChange(e);
   };
 
+  suggestionItem = neighborhood => {
+    if (neighborhood.parent) {
+      return `${neighborhood.parent.name.fi} (${neighborhood.name.fi})`;
+    }
+    return neighborhood.name.fi;
+  };
+
   render() {
     const {
       errors,
@@ -87,8 +94,8 @@ class Location extends React.Component {
                 value={values.area}
                 onChange={this.handleZoom}
                 onBlur={handleBlur}
-                suggestions={[...neighborhoods.values()]}
-                getSuggestionValue={neighborhood => neighborhood.name.fi}
+                suggestions={[...neighborhoods.sortBy(this.suggestionItem).values()]}
+                getSuggestionValue={this.suggestionItem}
               />
             )}
           </Col>
