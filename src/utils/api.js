@@ -7,9 +7,8 @@ const instance = axios.create({
   timeout: 3000
 });
 
-const securityHeader = apiAccessToken => {
-  return apiAccessToken ? { Authorization: `Bearer ${apiAccessToken}` } : null;
-};
+const securityHeader = apiAccessToken =>
+  apiAccessToken ? { Authorization: `Bearer ${apiAccessToken}` } : null;
 
 export const get = (endPoint, params = {}, apiAccessToken) =>
   instance.get(endPoint, { params, headers: securityHeader(apiAccessToken) }).then(r => r.data);
