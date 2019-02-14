@@ -6,7 +6,7 @@ import { getNeighborhoods } from '../../../../ducks/neighborhood';
 import { renderIfAuthenticated } from '../../../../utils/container';
 import { addNotification } from '../../../../ducks/notification';
 import { getAddress } from '../../../../ducks/geo';
-import eventService from '../../../../services/eventService';
+import { modifyEvent } from '../../../../ducks/event';
 import { withEventForm } from '../../../form/withForm';
 import EventPage from '../EventPage';
 
@@ -31,7 +31,7 @@ export default compose(
   ),
   withHandlers({
     onSubmit: ({ history, locale, addNotification: notify, accessToken }) => async values => {
-      await eventService.modify(values, accessToken);
+      await modifyEvent(values, accessToken);
       history.push(`/${locale}/admin/events/manage`);
       notify({ color: 'success', message: 'notification.form.event.modified' });
     }
