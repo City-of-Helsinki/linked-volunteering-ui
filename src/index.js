@@ -22,7 +22,7 @@ import CallbackPage from './components/pages/containers/CallBackPageContainer';
 const store = configureStore();
 const { REACT_APP_AUTHENTICATED } = process.env;
 
-if (REACT_APP_AUTHENTICATED === 'no') {
+if (REACT_APP_AUTHENTICATED === 'yes') {
   store.dispatch(mockUser());
   store.dispatch(mockUserData());
 } else {
