@@ -13,7 +13,7 @@ import theme from './config/theme';
 import * as serviceWorker from './serviceWorker';
 import configureStore from './config/configureStore';
 import userManager from './utils/userManager';
-import { mockUser } from './ducks/mock';
+import { mockUser, mockUserData } from './ducks/mock';
 import { getApiAccessToken, getCurrentUserData } from './ducks/auth';
 
 import App from './components/containers/AppContainer';
@@ -24,6 +24,7 @@ const { REACT_APP_AUTHENTICATED } = process.env;
 
 if (REACT_APP_AUTHENTICATED === 'yes') {
   store.dispatch(mockUser());
+  store.dispatch(mockUserData());
 } else {
   loadUser(store, userManager);
   store.dispatch(getApiAccessToken());
