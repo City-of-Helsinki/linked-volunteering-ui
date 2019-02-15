@@ -53,8 +53,11 @@ const UserAction = styled.a`
   }
 `;
 
-const Layout = ({ children, intl, paddingTop, paddingBottom, user }) => {
+const Layout = ({ children, intl, paddingTop, paddingBottom, user, auth }) => {
   const hasUser = !!user;
+  const isOfficial = auth ? auth.is_official : false;
+  const isContractor = auth ? auth.is_contractor : false;
+
   return (
     <Fragment>
       <Helmet>
@@ -88,16 +91,24 @@ const Layout = ({ children, intl, paddingTop, paddingBottom, user }) => {
           </NavItem>
           {hasUser && (
             <Fragment>
-              <NavItem>
-                <LocalizedLink
-                  className="nav-link"
-                  to="admin/events/manage"
-                  translate="site.nav.manage_events"
-                />
-              </NavItem>
-              <NavItem>
-                <LocalizedLink className="nav-link" to="admin/report" translate="site.nav.report" />
-              </NavItem>
+              {(isOfficial || isContractor) && (
+                <NavItem>
+                  <LocalizedLink
+                    className="nav-link"
+                    to="admin/events/manage"
+                    translate="site.nav.manage_events"
+                  />
+                </NavItem>
+              )}
+              {isOfficial && (
+                <NavItem>
+                  <LocalizedLink
+                    className="nav-link"
+                    to="admin/report"
+                    translate="site.nav.report"
+                  />
+                </NavItem>
+              )}
             </Fragment>
           )}
         </Nav>

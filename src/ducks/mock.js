@@ -22,3 +22,12 @@ export const mockUser = createAction('redux-oidc/USER_FOUND', () => ({
   },
   expires_at: convertToUnixTime(expiresAt)
 }));
+
+// eslint-disable-next-line import/prefer-default-export
+export const mockUserData = createAction('GET_CURRENT_USER_DATA_FULFILLED', () => ({
+  uuid: uuid(),
+  first_name: 'Gaylord',
+  last_name: 'Lohiposki',
+  is_official: true,
+  is_contractor: false
+}));
