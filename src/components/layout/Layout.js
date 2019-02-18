@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
-import { Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap';
+import { Container, Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap';
 import styled from 'styled-components';
-import { Helmet } from 'react-helmet';
 import { injectIntl, FormattedMessage } from 'react-intl';
 
 import Notifications from '../notification/containers/NotificationsContainer';
@@ -19,8 +18,8 @@ const Content = styled.div`
 
 const NavbarRow = styled(Navbar)`
   background-color: ${props => props.theme.helWhite};
-  padding-left: 7em;
-  padding-right: 7em;
+  padding-left: 2em;
+  padding-right: 2em;
   border-bottom: 1px solid ${props => props.theme.helGray};
   height: 3.5em;
   & a {
@@ -32,9 +31,27 @@ const NavbarRow = styled(Navbar)`
   }
 `;
 
+const TopNavbar = styled(Navbar)`
+  background-color: ${props => props.theme.colors.helWhite};
+  border-bottom: 1px solid ${props => props.theme.helGray};
+  height: 4em;
+  & a {
+    color: #000;
+  }
+  & a:hover {
+    text-decoration: none;
+    color: #000;
+  }
+`;
+
 const PageWrapper = styled.div`
   padding-top: ${props => (props.paddingTop ? '3em' : 0)};
   padding-bottom: ${props => (props.paddingBottom ? '3em' : 0)};
+`;
+
+const Options = styled.div`
+  display: flex;
+  margin-right: 1em;
 `;
 
 const UserAction = styled.a`
@@ -53,66 +70,60 @@ const UserAction = styled.a`
   }
 `;
 
-const Layout = ({ children, intl, paddingTop, paddingBottom, user, auth }) => {
+const Links = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-left: 4.5em;
+  margin-right: 4.5em;
+`;
+
+const Layout = ({ children, paddingTop, paddingBottom, user, auth }) => {
   const hasUser = !!user;
   const isOfficial = auth ? auth.is_official : false;
   const isContractor = auth ? auth.is_contractor : false;
 
   return (
     <Fragment>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>{intl.formatMessage({ id: 'site.meta.title' })}</title>
-      </Helmet>
+      <TopNavbar expand="md">
+        <Container>
+          <NavbarBrand href="/">
+            <Icon name="helsinkiLogo" size="7x" color="#000" />
+          </NavbarBrand>
+          <Nav navbar>
+            <Options>
+              <LanguageDropdown />
+              <UserAction
+                onClick={() => {
+                  if (hasUser) {
+                    userManager.signoutRedirect();
+                  } else {
+                    userManager.signinRedirect();
+                  }
+                }}
+              >
+                <Icon name="user" size="2x" color="black" />
+                <FormattedMessage id={`site.nav.user.${hasUser ? 'logout' : 'login'}`} />
+              </UserAction>
+            </Options>
+          </Nav>
+        </Container>
+      </TopNavbar>
+
       <NavbarRow expand="md">
-        <NavbarBrand href="/">
-          <Icon name="helsinkiLogo" size="7x" color="#000" />
-        </NavbarBrand>
-        <Nav className="ml-auto" navbar>
-          <LanguageDropdown />
-          <UserAction
-            onClick={() => {
-              if (hasUser) {
-                userManager.signoutRedirect();
-              } else {
-                userManager.signinRedirect();
-              }
-            }}
-          >
-            <Icon name="user" size="2x" color="black" />
-            <FormattedMessage id={`site.nav.user.${hasUser ? 'logout' : 'login'}`} />
-          </UserAction>
-        </Nav>
-      </NavbarRow>
-      <NavbarRow expand="md">
-        <Nav navbar>
-          <NavItem>
-            <LocalizedLink className="nav-link" to="event/new" translate="site.nav.create_event" />
-          </NavItem>
+        <Links>
+          <LocalizedLink to="event/new" translate="site.nav.create_event" />
           {hasUser && (
             <Fragment>
               {(isOfficial || isContractor) && (
-                <NavItem>
-                  <LocalizedLink
-                    className="nav-link"
-                    to="admin/events/manage"
-                    translate="site.nav.manage_events"
-                  />
-                </NavItem>
+                <LocalizedLink to="admin/events/manage" translate="site.nav.manage_events" />
               )}
-              {isOfficial && (
-                <NavItem>
-                  <LocalizedLink
-                    className="nav-link"
-                    to="admin/report"
-                    translate="site.nav.report"
-                  />
-                </NavItem>
-              )}
+              {isOfficial && <LocalizedLink to="admin/report" translate="site.nav.report" />}
             </Fragment>
           )}
-        </Nav>
+        </Links>
       </NavbarRow>
+
       <Content>
         <PageWrapper paddingTop={paddingTop} paddingBottom={paddingBottom}>
           {children}
