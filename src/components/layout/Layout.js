@@ -18,9 +18,6 @@ const Content = styled.div`
 
 const NavbarRow = styled(Navbar)`
   background-color: ${props => props.theme.helWhite};
-  padding-left: 2em;
-  padding-right: 2em;
-  border-bottom: 1px solid ${props => props.theme.helGray};
   height: 3.5em;
   & a {
     color: ${props => props.theme.helBlack};
@@ -60,11 +57,9 @@ const UserAction = styled.a`
   justify-content: flex-end;
   border: none;
   background-color: none;
-
   & span {
     margin-left: 0.5em;
   }
-
   & :hover {
     cursor: pointer;
   }
@@ -72,10 +67,11 @@ const UserAction = styled.a`
 
 const Links = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   width: 100%;
-  margin-left: 4.5em;
-  margin-right: 4.5em;
+  & a {
+    margin-right: 1em;
+  }
 `;
 
 const Layout = ({ children, paddingTop, paddingBottom, user, auth }) => {
@@ -110,19 +106,23 @@ const Layout = ({ children, paddingTop, paddingBottom, user, auth }) => {
         </Container>
       </TopNavbar>
 
-      <NavbarRow expand="md">
-        <Links>
-          <LocalizedLink to="event/new" translate="site.nav.create_event" />
-          {hasUser && (
-            <Fragment>
-              {(isOfficial || isContractor) && (
-                <LocalizedLink to="admin/events/manage" translate="site.nav.manage_events" />
+      <TopNavbar expand="md">
+        <Container>
+          <NavbarRow>
+            <Links>
+              <LocalizedLink to="event/new" translate="site.nav.create_event" />
+              {hasUser && (
+                <Fragment>
+                  {(isOfficial || isContractor) && (
+                    <LocalizedLink to="admin/events/manage" translate="site.nav.manage_events" />
+                  )}
+                  {isOfficial && <LocalizedLink to="admin/report" translate="site.nav.report" />}
+                </Fragment>
               )}
-              {isOfficial && <LocalizedLink to="admin/report" translate="site.nav.report" />}
-            </Fragment>
-          )}
-        </Links>
-      </NavbarRow>
+            </Links>
+          </NavbarRow>
+        </Container>
+      </TopNavbar>
 
       <Content>
         <PageWrapper paddingTop={paddingTop} paddingBottom={paddingBottom}>
@@ -131,6 +131,7 @@ const Layout = ({ children, paddingTop, paddingBottom, user, auth }) => {
         <KoroSection color="green" />
         <Footer />
       </Content>
+
       <Notifications />
       <Modal />
     </Fragment>
