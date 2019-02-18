@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Container, Navbar, NavbarBrand, Nav, NavItem } from 'reactstrap';
+import { Container, Navbar, NavbarBrand, Nav } from 'reactstrap';
 import styled from 'styled-components';
 import { injectIntl, FormattedMessage } from 'react-intl';
 
