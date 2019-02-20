@@ -1,6 +1,7 @@
 import { injectIntl } from 'react-intl';
 import { compose, withProps, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
+import { get } from 'lodash';
 
 import { addNotification } from '../../../../ducks/notification';
 import { getNeighborhoods } from '../../../../ducks/neighborhood';
@@ -17,11 +18,8 @@ export default compose(
   connect(
     state => ({
       neighborhoods: state.neighborhood.neighborhoods,
-      selectedAddress: state.geo.geoData && state.geo.geoData.closest_address,
-      unavailableDates:
-        state.geo.geoData &&
-        state.geo.geoData.contract_zone &&
-        state.geo.geoData.contract_zone.unavailable_dates,
+      selectedAddress: get(state, 'geo.geoData.closest_address'),
+      unavailableDates: get(state, 'geo.geoData.contract_zone.unavailable_dates'),
       apiAccessToken: state.auth.apiAccessToken
     }),
     { getGeoData, getNeighborhoods, addNotification, submitEvent }
