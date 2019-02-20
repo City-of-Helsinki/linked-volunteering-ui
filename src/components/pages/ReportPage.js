@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+
 import styled from 'styled-components';
 import { Container, Row, Col } from 'reactstrap';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import { CSVLink } from 'react-csv';
 
 import Layout from '../layout/containers/LayoutContainer';
 import Select from '../form/fields/Select';
@@ -56,9 +58,36 @@ class ReportPage extends Component {
   };
 
   render() {
-    const { reports, setOrderBy, ordering } = this.props;
+    const {
+      reports,
+      setOrderBy,
+      ordering,
+      intl: { formatMessage }
+    } = this.props;
+
     const eventAmount = reports.reduce((acc, row) => acc + row.event_count, 0);
     const participantAmount = reports.reduce((acc, row) => acc + row.estimated_attendee_count, 0);
+
+    const csvData = [
+      [
+        formatMessage({ id: 'site.table.header.report.area' }),
+        formatMessage({ id: 'site.table.header.report.contact_person' }),
+        formatMessage({ id: 'site.table.header.report.email' }),
+        formatMessage({ id: 'site.table.header.report.phone' }),
+        formatMessage({ id: 'site.table.header.report.events' }),
+        formatMessage({ id: 'site.table.header.report.participants' })
+      ],
+      ...reports
+        .map(report => [
+          report.name,
+          report.contact_person,
+          report.email,
+          report.phone,
+          report.event_count,
+          report.estimated_attendee_count
+        ])
+        .values()
+    ];
 
     return (
       <Layout>
@@ -79,6 +108,17 @@ class ReportPage extends Component {
                 <option value="2017">2017</option>
               </Select>
             </Col>
+            {eventAmount > 0 && (
+              <Col sm={{ size: 4 }}>
+                <CSVLink
+                  filename={'Linked Volunteering - Report.csv'}
+                  className="btn btn-info"
+                  data={csvData}
+                >
+                  <FormattedMessage tagName="span" id="site.report.download" />
+                </CSVLink>
+              </Col>
+            )}
           </Row>
           <StatisticsRow>
             <IntlComponent
@@ -124,4 +164,4 @@ class ReportPage extends Component {
   }
 }
 
-export default ReportPage;
+export default injectIntl(ReportPage);
