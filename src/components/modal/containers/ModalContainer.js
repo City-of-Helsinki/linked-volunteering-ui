@@ -10,7 +10,8 @@ export default compose(
     state => ({
       isOpen: state.modal.isOpen,
       modal: state.modal.modal,
-      meta: state.modal.meta
+      meta: state.modal.meta,
+      accessToken: state.auth.apiAccessToken
     }),
     dispatch => ({
       dispatch,

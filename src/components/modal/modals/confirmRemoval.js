@@ -31,8 +31,8 @@ export default {
     {
       intl: 'modal.confirm_removal.footer.button1.text',
       color: 'primary',
-      action: async (dispatch, values) => {
-        await dispatch(removeEvent(values));
+      action: async (dispatch, values, apiAccessToken) => {
+        await dispatch(removeEvent(values, apiAccessToken));
         await dispatch(
           addNotification({
             color: 'info',

@@ -42,8 +42,8 @@ export default compose(
   ),
   orderBy('events'),
   withHandlers({
-    remove: ({ openModal: showModal }) => event => {
-      showModal('confirmRemoval', event);
+    remove: ({ openModal: showModal, accessToken }) => event => {
+      showModal('confirmRemoval', event, accessToken);
     },
     approve: ({ addNotification: notify, publishEvent: publish, accessToken }) => event => {
       publish(event, accessToken);
