@@ -4,7 +4,7 @@ import * as modals from './modals';
 import IntlComponent from '../common/IntlComponent';
 import Button from '../common/Button';
 
-export default ({ isOpen, closeModal, modal, meta, dispatch }) => {
+export default ({ isOpen, closeModal, modal, meta, dispatch, apiAccessToken }) => {
   if (!isOpen) {
     return null;
   }
@@ -24,7 +24,7 @@ export default ({ isOpen, closeModal, modal, meta, dispatch }) => {
               onClick={() => {
                 closeModal();
                 if (typeof action === 'function') {
-                  action(dispatch, meta);
+                  action(dispatch, meta, apiAccessToken);
                 }
               }}
               translate={intl}

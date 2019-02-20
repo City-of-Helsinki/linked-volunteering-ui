@@ -64,11 +64,11 @@ class EventsPage extends PureComponent {
   };
 
   componentDidMount() {
-    const { neighborhoods, getNeighborhoods, getEvents, accessToken } = this.props;
+    const { neighborhoods, getNeighborhoods, getEvents, apiAccessToken } = this.props;
     if (neighborhoods.size === 0) {
-      getNeighborhoods(accessToken);
+      getNeighborhoods(apiAccessToken);
     }
-    getEvents(accessToken);
+    getEvents(apiAccessToken);
   }
 
   toggleDetails = id => this.setState(({ visible }) => ({ visible: visible === id ? null : id }));

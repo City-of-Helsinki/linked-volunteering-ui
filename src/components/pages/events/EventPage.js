@@ -35,9 +35,9 @@ const StickyInner = styled.div`
 
 class NewEventPage extends PureComponent {
   componentDidMount() {
-    const { neighborhoods, getNeighborhoods, accessToken } = this.props;
+    const { neighborhoods, getNeighborhoods, apiAccessToken } = this.props;
     if (neighborhoods.size === 0) {
-      getNeighborhoods(accessToken);
+      getNeighborhoods(apiAccessToken);
     }
   }
 
