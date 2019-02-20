@@ -43,10 +43,10 @@ class MapCanvas extends PureComponent {
   };
 
   addMarker = e => {
-    const { id, handleChange, getAddress, accessToken } = this.props;
+    const { id, handleChange, getAddress, apiAccessToken } = this.props;
     const { lat, lng } = e.latlng;
 
-    getAddress(lat, lng, accessToken);
+    getAddress(lat, lng, apiAccessToken);
 
     handleChange({
       target: {
