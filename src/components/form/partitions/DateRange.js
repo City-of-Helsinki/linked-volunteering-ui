@@ -45,12 +45,13 @@ class DateTime extends PureComponent {
       errors,
       touched,
       values,
+      unavailableDates,
       intl: { formatMessage }
     } = this.props;
 
     const selectedStartTime = values.start_time;
-
     const selectedEndTime = values.end_time;
+
     return (
       <Fragment>
         <Row>
@@ -73,6 +74,7 @@ class DateTime extends PureComponent {
               maxDate={values.end_time}
               startDate={values.start_time}
               endDate={values.end_time}
+              excludeDates={unavailableDates}
               selectsStart
               showMonthDropdown
               useShortMonthInDropdown
@@ -94,6 +96,7 @@ class DateTime extends PureComponent {
               minDate={values.start_time || minDate}
               startDate={values.start_time}
               endDate={values.end_time}
+              excludeDates={unavailableDates}
               selectsEnd
               showMonthDropdown
               useShortMonthInDropdown
