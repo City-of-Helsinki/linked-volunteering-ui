@@ -74,7 +74,7 @@ class Location extends React.Component {
       touched,
       neighborhoods,
       values,
-      getAddress,
+      getGeoData,
       selectedAddress,
       handleChange,
       handleBlur
@@ -106,7 +106,7 @@ class Location extends React.Component {
               id="location"
               bounds={this.state.bounds}
               error={errors.location}
-              getAddress={getAddress}
+              getGeoData={getGeoData}
               selectedAddress={selectedAddress}
               handleChange={e => {
                 this.setUpdateAddress(true);

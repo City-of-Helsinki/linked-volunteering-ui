@@ -3,16 +3,16 @@ import { createAction } from 'redux-actions';
 import geoService from '../services/geoService';
 
 const defaultState = Record({
-  selectedAddress: null
+  geoData: null
 });
 
-export const getAddress = createAction('GET_ADRESS_FROM_COORDINATES', geoService.getAddress);
+export const getGeoData = createAction('GET_GEODATA_FROM_COORDINATES', geoService.getGeoData);
 
 export default (state = defaultState(), action) => {
   const { type, payload } = action;
   switch (type) {
-    case 'GET_ADRESS_FROM_COORDINATES_FULFILLED':
-      return state.set('selectedAddress', payload);
+    case 'GET_GEODATA_FROM_COORDINATES_FULFILLED':
+      return state.set('geoData', payload);
     default:
       return state;
   }

@@ -1,10 +1,11 @@
 import { injectIntl } from 'react-intl';
 import { compose, withProps, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
+import { get } from 'lodash';
 
 import { addNotification } from '../../../../ducks/notification';
 import { getNeighborhoods } from '../../../../ducks/neighborhood';
-import { getAddress } from '../../../../ducks/geo';
+import { getGeoData } from '../../../../ducks/geo';
 import { submitEvent } from '../../../../ducks/event';
 import { withEventForm } from '../../../form/withForm';
 import EventPage from '../EventPage';
@@ -17,10 +18,11 @@ export default compose(
   connect(
     state => ({
       neighborhoods: state.neighborhood.neighborhoods,
-      selectedAddress: state.geo.selectedAddress,
+      selectedAddress: get(state, 'geo.geoData.closest_address'),
+      unavailableDates: get(state, 'geo.geoData.contract_zone.unavailable_dates'),
       apiAccessToken: state.auth.apiAccessToken
     }),
-    { getAddress, getNeighborhoods, addNotification, submitEvent }
+    { getGeoData, getNeighborhoods, addNotification, submitEvent }
   ),
   withHandlers({
     onSubmit: ({

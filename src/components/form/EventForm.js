@@ -9,9 +9,10 @@ import Location from './partitions/Location';
 
 export default ({
   neighborhoods,
-  getAddress,
+  getGeoData,
   selectedAddress,
   values,
+  unavailableDates,
   errors,
   touched,
   handleChange,
@@ -72,7 +73,7 @@ export default ({
       errors={errors}
       touched={touched}
       values={values}
-      getAddress={getAddress}
+      getGeoData={getGeoData}
       handleChange={handleChange}
       handleBlur={handleBlur}
       selectedAddress={selectedAddress}
@@ -82,6 +83,7 @@ export default ({
       errors={errors}
       touched={touched}
       values={values}
+      unavailableDates={unavailableDates}
       handleChange={handleChange}
       handleBlur={handleBlur}
     />
