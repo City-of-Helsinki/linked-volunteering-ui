@@ -9,7 +9,8 @@ export default compose(
   connect(
     state => ({
       reports: state.report.reports,
-      ordering: state.report.ordering
+      ordering: state.report.ordering,
+      apiAccessToken: state.auth.apiAccessToken
     }),
     { getReport, setOrderBy }
   ),

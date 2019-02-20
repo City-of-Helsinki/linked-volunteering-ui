@@ -5,30 +5,30 @@
   "results": [
     {
       "id": "x1sa3f35c",
-      "area": "Puistola",
+      "name": "Puistola",
       "contact_person": "Gaylord Lohiposki",
       "email": "gaylord@lohiposki.lol",
       "phone": "045812341234",
-      "events": 1,
-      "participants": 1
+      "event_count": 1,
+      "estimated_attendee_count": 1
     },
     {
       "id": "u1a43fsdd",
-      "area": "Konala",
+      "name": "Konala",
       "contact_person": "Gaylord Lohiposki",
       "email": "gaylord@lohiposki.lol",
       "phone": "045812341234",
-      "events": 3,
-      "participants": 13
+      "event_count": 3,
+      "estimated_attendee_count": 13
     },
     {
       "id": "u1a43fsde",
-      "area": "Pitäjänmäki",
+      "name": "Pitäjänmäki",
       "contact_person": "Gaylord Lohiposki",
       "email": "gaylord@lohiposki.lol",
       "phone": "045812341234",
-      "events": 16,
-      "participants": 31
+      "event_count": 16,
+      "estimated_attendee_count": 31
     }
   ]
 }

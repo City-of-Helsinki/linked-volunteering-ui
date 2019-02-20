@@ -51,14 +51,15 @@ const tableHeaders = [
 
 class ReportPage extends Component {
   handleChange = e => {
-    const { getReport } = this.props;
-    getReport(e.target.value);
+    const { getReport, apiAccessToken } = this.props;
+    getReport(e.target.value, apiAccessToken);
   };
 
   render() {
     const { reports, setOrderBy, ordering } = this.props;
-    const eventAmount = reports.reduce((acc, row) => acc + row.events, 0);
-    const participantAmount = reports.reduce((acc, row) => acc + row.participants, 0);
+    const eventAmount = reports.reduce((acc, row) => acc + row.event_count, 0);
+    const participantAmount = reports.reduce((acc, row) => acc + row.estimated_attendee_count, 0);
+
     return (
       <Layout>
         <ControlContainer fluid>
@@ -106,12 +107,12 @@ class ReportPage extends Component {
                 {reports &&
                   reports.valueSeq().map(report => (
                     <Tr key={report.id}>
-                      <Td>{report.area}</Td>
+                      <Td>{report.name}</Td>
                       <Td>{report.contact_person}</Td>
                       <Td>{report.email}</Td>
                       <Td>{report.phone}</Td>
-                      <Td>{report.events}</Td>
-                      <Td>{report.participants}</Td>
+                      <Td>{report.event_count}</Td>
+                      <Td>{report.estimated_attendee_count}</Td>
                     </Tr>
                   ))}
               </Table>

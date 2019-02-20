@@ -5,12 +5,12 @@
   "results": [
     {
       "id": "u1a43fsda",
-      "area": "Kamppi",
+      "name": "Kamppi",
       "contact_person": "Gaylord Lohiposki",
       "email": "gaylord@lohiposki.lol",
       "phone": "045812341234",
-      "events": 10,
-      "participants": 26
+      "event_count": 10,
+      "estimated_attendee_count": 26
     }
   ]
 }

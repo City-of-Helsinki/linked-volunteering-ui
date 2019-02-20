@@ -94,8 +94,8 @@ router
     res.json(newEvent);
   });
 
-router.route('/report').get((req, res) => {
-  const responseData = yearlyReports[req.query.year];
+router.route('/contract_zone').get((req, res) => {
+  const responseData = yearlyReports[req.query.stats_year];
   res.status(getStatus(responseData)).json(responseData);
 });
 

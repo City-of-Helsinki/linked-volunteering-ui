@@ -3,7 +3,7 @@ import { get } from '../utils/api';
 
 export default {
   getReport: async (year, apiAccessToken) => {
-    const payload = await get('report/', { year }, apiAccessToken);
+    const payload = await get('contract_zone/', { stats_year: year }, apiAccessToken);
 
     if (!payload) {
       return {};
