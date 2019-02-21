@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
 import { Container, Row, Col } from 'reactstrap';
 import LocalizedLink from '../common/LocalizedLink';
+import Icon from '../common/Icon';
 
 import Layout from '../layout/containers/LayoutContainer';
 import heroImage from '../../assets/images/helsinki_paiva_002_6450.jpg';
@@ -67,12 +68,13 @@ const LandingPage = () => (
             />
           </Col>
           <Col md="3">
-            <LocalizedLink
+            <a
               className="btn btn-link btn-block"
-              translate="site.page.landing.hero.link"
-              append="arrowRight"
-              to="#???"
-            />
+              href="https://www.hel.fi/helsinki/fi/asuminen-ja-ymparisto/luonto-ja-viheralueet/puistot/vapaaehtoistyo/"
+            >
+              <FormattedHTMLMessage tagName="span" id="site.page.landing.hero.link" />
+              <Icon name="arrowRight" />
+            </a>
           </Col>
         </Row>
       </Container>
