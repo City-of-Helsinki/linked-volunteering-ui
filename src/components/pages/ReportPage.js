@@ -108,7 +108,7 @@ class ReportPage extends Component {
                 <option value="2017">2017</option>
               </Select>
             </Col>
-            {eventAmount > 0 && (
+            {reports.size > 0 && (
               <Col sm={{ size: 4 }}>
                 <CSVLink
                   filename={'Linked Volunteering - Report.csv'}
