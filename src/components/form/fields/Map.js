@@ -71,7 +71,7 @@ class MapCanvas extends PureComponent {
         <Map
           center={position}
           zoom={this.state.zoom}
-          minZoom={11.47}
+          minZoom={11}
           bounds={mapBounds}
           maxBounds={maxBounds}
           style={style}
