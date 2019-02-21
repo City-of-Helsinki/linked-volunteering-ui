@@ -8,7 +8,7 @@ import { isOfficialSelector, isContractorSelector } from '../ducks/auth';
 import ManageEventsPage from './pages/events/containers/ManageEventsPageContainer';
 import ModifyEventPage from './pages/events/containers/ModifyEventPageContainer';
 import ReportPage from './pages/containers/ReportPageContainer';
-import ErrorPage from './pages/containers/ErrorPageContainer';
+import AccessDeniedPage from './pages/AccessDeniedPage';
 
 const restrictUser = condition =>
   compose(
@@ -16,7 +16,7 @@ const restrictUser = condition =>
       isOfficial: isOfficialSelector(state),
       isContractor: isContractorSelector(state)
     })),
-    branch(condition, renderComponent(ErrorPage))
+    branch(condition, renderComponent(AccessDeniedPage))
   );
 
 const requireOfficial = restrictUser(({ isOfficial }) => !isOfficial);
