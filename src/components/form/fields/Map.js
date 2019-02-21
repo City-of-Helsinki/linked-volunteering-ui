@@ -60,6 +60,8 @@ class MapCanvas extends PureComponent {
     const { bounds, value, error } = this.props;
 
     const mapBounds = bounds ? [[bounds[1], bounds[0]], [bounds[3], bounds[2]]] : null;
+    const maxBounds = [[60.33, 25.33], [60.1, 24.73]]; // Allow map scroll only inside Helsinki
+
     const position = [this.state.lat, this.state.lng];
     const markerPosition = value ? [value.coordinates[0], value.coordinates[1]] : position;
     const marker = value ? <Marker position={markerPosition} /> : null;
@@ -69,7 +71,9 @@ class MapCanvas extends PureComponent {
         <Map
           center={position}
           zoom={this.state.zoom}
+          minZoom={11.47}
           bounds={mapBounds}
+          maxBounds={maxBounds}
           style={style}
           onClick={this.addMarker}
         >
