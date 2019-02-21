@@ -49,6 +49,10 @@
   "site.page.error.default_message": "Järjestelmässä tapahtui virhe, ole hyvä ja yritä uudelleen tai palaa etusivulle",
   "site.page.error.to_home_page": "Palaa etusivulle",
 
+  "site.page.access_denied.heading": "Hups! Pääsy kielletty!",
+  "site.page.access_denied.message": "Sinulla ei ole oikeuksia avata tätä sivua.",
+  "site.page.access_denied.contact_admin": "Mikäli uskot tämän olevan virheen, ole hyvä ja ota yhteyttä sivuston ylläpitoon.",
+
   "site.report.title": "Kevätsiivoustalkoot",
   "site.report.yearly_report": "Vuosiraportti",
   "site.report.total_events": "Talkoita yhteensä {event_amount}",

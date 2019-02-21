@@ -1,5 +1,7 @@
 import { Record } from 'immutable';
 import { createAction } from 'redux-actions';
+import { get } from 'lodash';
+
 import authService from '../services/authService';
 
 const defaultState = Record({
@@ -16,6 +18,9 @@ export const getCurrentUserData = createAction(
   'GET_CURRENT_USER_DATA',
   authService.getCurrentUserData
 );
+
+export const isOfficialSelector = state => get(state, 'auth.currentUserData.is_official');
+export const isContractorSelector = state => get(state, 'auth.currentUserData.is_contractor');
 
 export default (state = defaultState(), action) => {
   const { type, payload } = action;
