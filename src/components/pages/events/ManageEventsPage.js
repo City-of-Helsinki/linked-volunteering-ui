@@ -76,7 +76,7 @@ class EventsPage extends PureComponent {
     if (neighborhoods.size === 0) {
       getNeighborhoods(apiAccessToken);
     }
-    getEvents(apiAccessToken);
+    getEvents({ limit: 10 }, apiAccessToken);
   }
 
   toggleDetails = id => this.setState(({ visible }) => ({ visible: visible === id ? null : id }));
@@ -87,20 +87,12 @@ class EventsPage extends PureComponent {
   };
 
   handleNextEvents = () => {
-    const { getNextEvents, nextEventsUrl, apiAccessToken } = this.props;
-    getNextEvents(nextEventsUrl, apiAccessToken);
+    const { getEvents, nextParams, apiAccessToken } = this.props;
+    getEvents(nextParams, apiAccessToken);
   };
 
   render() {
-    const {
-      events,
-      nextEventsUrl,
-      neighborhoods,
-      remove,
-      approve,
-      setOrderBy,
-      ordering
-    } = this.props;
+    const { events, nextParams, neighborhoods, remove, approve, setOrderBy, ordering } = this.props;
     const { visible } = this.state;
 
     return (
@@ -212,7 +204,7 @@ class EventsPage extends PureComponent {
           </Row>
           <Row>
             <ButtonControls>
-              {nextEventsUrl && (
+              {Object.keys(nextParams).length > 0 && (
                 <NextPageButton
                   translate="site.page.manage_events.next_events"
                   color="info"

@@ -1,12 +1,13 @@
 import { Record, Map } from 'immutable';
 import { createAction } from 'redux-actions';
+import urlParse from 'url-parse';
 import eventService from '../services/eventService';
 import ordering from '../entities/ordering';
 
 const defaultState = Record({
   count: 0,
-  next: null,
-  previous: null,
+  next: {},
+  previous: {},
   events: Map(),
   filterByNeighborhood: null,
   ordering: ordering()
@@ -25,13 +26,15 @@ export default (state = defaultState(), action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case 'GET_EVENTS_FULFILLED':
+    case 'GET_EVENTS_FULFILLED': {
+      const next = urlParse(payload.data.next, true);
       return state
         .set('count', payload.data.count)
-        .set('next', payload.data.next)
+        .set('next', next.query)
         .set('previous', payload.data.previous)
         .set('ordering', ordering())
         .update('events', events => events.merge(payload.events));
+    }
     case 'SUBMIT_EVENT_FULFILLED':
       return state.update('count', count => count + 1).setIn(['events', payload.id], payload);
     case 'MODIFY_EVENT_FULFILLED':

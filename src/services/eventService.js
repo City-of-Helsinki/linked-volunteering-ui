@@ -1,5 +1,5 @@
 import { Map } from 'immutable';
-import { get, getWithDirectUrl, post, put, patch, remove } from '../utils/api';
+import { get, post, put, patch, remove } from '../utils/api';
 
 const publishedState = 'approved';
 
@@ -42,15 +42,8 @@ export default {
     await remove(`event/${event.id}/`, apiAccessToken);
     return event.id;
   },
-  getEvents: async apiAccessToken => {
-    const data = await get('event/', { limit: 10 }, apiAccessToken);
-    return {
-      data,
-      events: Map(data.results.map(event => [event.id, constructEvent(event)]))
-    };
-  },
-  getNextEvents: async (url, apiAccessToken) => {
-    const data = await getWithDirectUrl(url, null, apiAccessToken);
+  getEvents: async (params, apiAccessToken) => {
+    const data = await get('event/', params, apiAccessToken);
     return {
       data,
       events: Map(data.results.map(event => [event.id, constructEvent(event)]))

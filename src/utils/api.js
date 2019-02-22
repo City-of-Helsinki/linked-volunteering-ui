@@ -13,9 +13,6 @@ const securityHeader = apiAccessToken =>
 export const get = (endPoint, params = {}, apiAccessToken) =>
   instance.get(endPoint, { params, headers: securityHeader(apiAccessToken) }).then(r => r.data);
 
-export const getWithDirectUrl = (url, params = {}, apiAccessToken) =>
-  axios.get(url, { params, headers: securityHeader(apiAccessToken) }).then(r => r.data);
-
 export const post = (endPoint, data = {}, apiAccessToken) =>
   instance.post(endPoint, data, { headers: securityHeader(apiAccessToken) }).then(r => r.data);
 
