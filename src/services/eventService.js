@@ -43,7 +43,7 @@ export default {
     return event.id;
   },
   getEvents: async apiAccessToken => {
-    const data = await get('event/?limit=10', null, apiAccessToken);
+    const data = await get('event/', { limit: 10 }, apiAccessToken);
     return {
       data,
       events: Map(data.results.map(event => [event.id, constructEvent(event)]))
