@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import {
   getEvents,
+  getNextEvents,
   publishEvent,
   setFilterByNeighborhood,
   setOrderBy
@@ -26,6 +27,7 @@ export default compose(
   connect(
     state => ({
       events: filterEvents(state.event),
+      nextEventsUrl: state.event.next,
       ordering: state.event.ordering,
       neighborhoods: state.neighborhood.neighborhoods,
       apiAccessToken: state.auth.apiAccessToken
@@ -33,6 +35,7 @@ export default compose(
     {
       getNeighborhoods,
       getEvents,
+      getNextEvents,
       publishEvent,
       setFilterByNeighborhood,
       addNotification,
