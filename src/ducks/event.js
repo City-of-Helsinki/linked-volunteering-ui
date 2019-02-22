@@ -6,7 +6,7 @@ import ordering from '../entities/ordering';
 
 const defaultState = Record({
   count: 0,
-  next: {},
+  next: { limit: 10 },
   previous: {},
   events: Map(),
   filterByNeighborhood: null,
