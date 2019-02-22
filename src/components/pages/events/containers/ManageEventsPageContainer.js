@@ -26,6 +26,7 @@ export default compose(
   connect(
     state => ({
       events: filterEvents(state.event),
+      nextParams: state.event.next,
       ordering: state.event.ordering,
       neighborhoods: state.neighborhood.neighborhoods,
       apiAccessToken: state.auth.apiAccessToken

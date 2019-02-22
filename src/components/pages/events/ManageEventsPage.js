@@ -46,6 +46,14 @@ const FilterTitle = styled.span`
   margin-right: 1em;
 `;
 
+const ButtonControls = styled(Col)`
+  text-align: center;
+`;
+
+const NextPageButton = styled(Button)`
+  margin-top: 1em;
+`;
+
 const tableHeaders = [
   { key: 'name', translation: 'manage_events.name', hasOrderBy: true },
   {
@@ -64,11 +72,11 @@ class EventsPage extends PureComponent {
   };
 
   componentDidMount() {
-    const { neighborhoods, getNeighborhoods, getEvents, apiAccessToken } = this.props;
+    const { neighborhoods, nextParams, getNeighborhoods, getEvents, apiAccessToken } = this.props;
     if (neighborhoods.size === 0) {
       getNeighborhoods(apiAccessToken);
     }
-    getEvents(apiAccessToken);
+    getEvents(nextParams, apiAccessToken);
   }
 
   toggleDetails = id => this.setState(({ visible }) => ({ visible: visible === id ? null : id }));
@@ -78,8 +86,13 @@ class EventsPage extends PureComponent {
     setFilterByNeighborhood(e.target.value);
   };
 
+  handleNextEvents = () => {
+    const { getEvents, nextParams, apiAccessToken } = this.props;
+    getEvents(nextParams, apiAccessToken);
+  };
+
   render() {
-    const { events, neighborhoods, remove, approve, setOrderBy, ordering } = this.props;
+    const { events, nextParams, neighborhoods, remove, approve, setOrderBy, ordering } = this.props;
     const { visible } = this.state;
 
     return (
@@ -188,6 +201,17 @@ class EventsPage extends PureComponent {
                 })}
               </Table>
             </Col>
+          </Row>
+          <Row>
+            <ButtonControls>
+              {Object.keys(nextParams).length > 0 && (
+                <NextPageButton
+                  translate="site.page.manage_events.next_events"
+                  color="info"
+                  onClick={() => this.handleNextEvents()}
+                />
+              )}
+            </ButtonControls>
           </Row>
         </FormContainer>
       </Layout>

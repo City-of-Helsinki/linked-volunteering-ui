@@ -42,11 +42,11 @@ export default {
     await remove(`event/${event.id}/`, apiAccessToken);
     return event.id;
   },
-  getEvents: async apiAccessToken => {
-    const payload = await get('event/', null, apiAccessToken);
+  getEvents: async (params, apiAccessToken) => {
+    const data = await get('event/', params, apiAccessToken);
     return {
-      payload,
-      results: Map(payload.results.map(event => [event.id, constructEvent(event)]))
+      data,
+      events: Map(data.results.map(event => [event.id, constructEvent(event)]))
     };
   }
 };
