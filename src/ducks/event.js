@@ -7,14 +7,12 @@ import ordering from '../entities/ordering';
 const defaultState = Record({
   count: 0,
   next: { limit: 10 },
-  previous: {},
   events: Map(),
   filterByNeighborhood: null,
   ordering: ordering()
 });
 
 export const getEvents = createAction('GET_EVENTS', eventService.getEvents);
-export const getNextEvents = createAction('GET_EVENTS', eventService.getNextEvents);
 export const submitEvent = createAction('SUBMIT_EVENT', eventService.create);
 export const modifyEvent = createAction('MODIFY_EVENT', eventService.modify);
 export const publishEvent = createAction('PUBLISH_EVENT', eventService.publish);
@@ -31,7 +29,6 @@ export default (state = defaultState(), action) => {
       return state
         .set('count', payload.data.count)
         .set('next', next.query)
-        .set('previous', payload.data.previous)
         .set('ordering', ordering())
         .update('events', events => events.merge(payload.events));
     }

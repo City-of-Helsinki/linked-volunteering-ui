@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 import {
   getEvents,
-  getNextEvents,
   publishEvent,
   setFilterByNeighborhood,
   setOrderBy
@@ -35,7 +34,6 @@ export default compose(
     {
       getNeighborhoods,
       getEvents,
-      getNextEvents,
       publishEvent,
       setFilterByNeighborhood,
       addNotification,
