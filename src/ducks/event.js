@@ -8,7 +8,7 @@ const defaultState = Record({
   count: 0,
   next: { limit: 10 },
   events: Map(),
-  filterByNeighborhood: null,
+  filterByContractZone: null,
   ordering: ordering()
 });
 
@@ -17,7 +17,7 @@ export const submitEvent = createAction('SUBMIT_EVENT', eventService.create);
 export const modifyEvent = createAction('MODIFY_EVENT', eventService.modify);
 export const publishEvent = createAction('PUBLISH_EVENT', eventService.publish);
 export const removeEvent = createAction('REMOVE_EVENT', eventService.remove);
-export const setFilterByNeighborhood = createAction('SET_EVENT_FILTER');
+export const setFilterByContractZone = createAction('SET_EVENT_FILTER');
 export const setOrderBy = createAction('SET_EVENT_ORDER_BY');
 
 export default (state = defaultState(), action) => {
@@ -40,7 +40,7 @@ export default (state = defaultState(), action) => {
     case 'REMOVE_EVENT_FULFILLED':
       return state.deleteIn(['events', payload]);
     case 'SET_EVENT_FILTER':
-      return state.set('filterByNeighborhood', payload);
+      return state.set('filterByContractZone', parseInt(payload));
     case 'SET_EVENT_ORDER_BY':
       return state
         .setIn(['ordering', 'key'], payload.key)

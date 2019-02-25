@@ -51,7 +51,7 @@ class MapCanvas extends PureComponent {
     handleChange({
       target: {
         id,
-        value: { type: 'point', coordinates: [lat, lng] }
+        value: { type: 'Point', coordinates: [lat, lng] }
       }
     });
   };

@@ -4,18 +4,21 @@ import { connect } from 'react-redux';
 import {
   getEvents,
   publishEvent,
-  setFilterByNeighborhood,
+  setFilterByContractZone,
   setOrderBy
 } from '../../../../ducks/event';
 import { getNeighborhoods } from '../../../../ducks/neighborhood';
+import { getContractZones } from '../../../../ducks/contractZones';
 import { addNotification } from '../../../../ducks/notification';
 import { openModal } from '../../../../ducks/modal';
 import ManageEventsPage from '../ManageEventsPage';
 import { renderIfAuthenticated, orderBy } from '../../../../utils/container';
 
 const filterEvents = eventState => {
-  if (eventState.filterByNeighborhood) {
-    return eventState.events.filter(event => event.ocd_id === eventState.filterByNeighborhood);
+  if (eventState.filterByContractZone) {
+    return eventState.events.filter(event => {
+      return event.contract_zone === eventState.filterByContractZone;
+    });
   }
 
   return eventState.events;
@@ -29,13 +32,15 @@ export default compose(
       nextParams: state.event.next,
       ordering: state.event.ordering,
       neighborhoods: state.neighborhood.neighborhoods,
+      contractZones: state.contractZones.contractZones,
       apiAccessToken: state.auth.apiAccessToken
     }),
     {
       getNeighborhoods,
+      getContractZones,
       getEvents,
       publishEvent,
-      setFilterByNeighborhood,
+      setFilterByContractZone,
       addNotification,
       openModal,
       setOrderBy

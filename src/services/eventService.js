@@ -21,7 +21,17 @@ const constructEvent = event => {
 
 export default {
   create: async (event, apiAccessToken) => {
-    const e = await post('event/', event, apiAccessToken);
+    const e = await post(
+      'event/',
+      {
+        ...event,
+        location: {
+          type: 'Point',
+          coordinates: [event.location.coordinates[1], event.location.coordinates[0]] // Reverse due to backend logic
+        }
+      },
+      apiAccessToken
+    );
     return constructEvent(e);
   },
   modify: async (event, apiAccessToken) => {
