@@ -11,9 +11,8 @@ export const getGeoData = createAction('GET_GEODATA_FROM_COORDINATES', geoServic
 export default (state = defaultState(), action) => {
   const { type, payload } = action;
   switch (type) {
-    case 'GET_GEODATA_FROM_COORDINATES_FULFILLED': {
+    case 'GET_GEODATA_FROM_COORDINATES_FULFILLED':
       return state.set('geoData', payload);
-    }
     default:
       return state;
   }
