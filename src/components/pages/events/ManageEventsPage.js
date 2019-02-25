@@ -7,7 +7,7 @@ import IntlComponent from '../../common/IntlComponent';
 import Table, { Td, Tr, DetailsRow } from '../../common/Table';
 import Button from '../../common/Button';
 import { WithIcons } from '../../common/Icon';
-import Neighborhoods from '../../common/Neighborhoods';
+import ContractZones from '../../common/ContractZones';
 
 import Layout from '../../layout/containers/LayoutContainer';
 
@@ -72,9 +72,9 @@ class EventsPage extends PureComponent {
   };
 
   componentDidMount() {
-    const { neighborhoods, nextParams, getNeighborhoods, getEvents, apiAccessToken } = this.props;
-    if (neighborhoods.size === 0) {
-      getNeighborhoods(apiAccessToken);
+    const { contractZones, nextParams, getContractZones, getEvents, apiAccessToken } = this.props;
+    if (contractZones.size === 0) {
+      getContractZones(apiAccessToken);
     }
     getEvents(nextParams, apiAccessToken);
   }
@@ -82,8 +82,8 @@ class EventsPage extends PureComponent {
   toggleDetails = id => this.setState(({ visible }) => ({ visible: visible === id ? null : id }));
 
   handleChange = e => {
-    const { setFilterByNeighborhood } = this.props;
-    setFilterByNeighborhood(e.target.value);
+    const { setFilterByContractZone } = this.props;
+    setFilterByContractZone(e.target.value);
   };
 
   handleNextEvents = () => {
@@ -92,7 +92,7 @@ class EventsPage extends PureComponent {
   };
 
   render() {
-    const { events, nextParams, neighborhoods, remove, approve, setOrderBy, ordering } = this.props;
+    const { events, nextParams, contractZones, remove, approve, setOrderBy, ordering } = this.props;
     const { visible } = this.state;
 
     return (
@@ -106,7 +106,7 @@ class EventsPage extends PureComponent {
           <Row>
             <Col sm={{ size: 4, offset: 1 }}>
               <IntlComponent Component={FilterTitle} id="site.page.manage_events.filter_events" />
-              <Neighborhoods onChange={this.handleChange} neighborhoods={neighborhoods} />
+              <ContractZones onChange={this.handleChange} contractZones={contractZones} />
             </Col>
           </Row>
         </ControlContainer>
