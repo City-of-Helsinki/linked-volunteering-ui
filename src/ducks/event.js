@@ -40,7 +40,7 @@ export default (state = defaultState(), action) => {
     case 'REMOVE_EVENT_FULFILLED':
       return state.deleteIn(['events', payload]);
     case 'SET_EVENT_FILTER':
-      return state.set('filterByContractZone', parseInt(payload));
+      return state.set('filterByContractZone', parseInt(payload, 0));
     case 'SET_EVENT_ORDER_BY':
       return state
         .setIn(['ordering', 'key'], payload.key)

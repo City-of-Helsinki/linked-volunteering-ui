@@ -16,9 +16,9 @@ import { renderIfAuthenticated, orderBy } from '../../../../utils/container';
 
 const filterEvents = eventState => {
   if (eventState.filterByContractZone) {
-    return eventState.events.filter(event => {
-      return event.contract_zone === eventState.filterByContractZone;
-    });
+    return eventState.events.filter(
+      event => event.contract_zone === eventState.filterByContractZone
+    );
   }
 
   return eventState.events;
