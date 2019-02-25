@@ -1,6 +1,7 @@
 import { injectIntl } from 'react-intl';
 import { compose, withProps, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
+import { get } from 'lodash';
 
 import { getNeighborhoods } from '../../../../ducks/neighborhood';
 import { renderIfAuthenticated } from '../../../../utils/container';
@@ -23,7 +24,8 @@ export default compose(
       return {
         initialValues: state.event.events.get(parsedId),
         neighborhoods: state.neighborhood.neighborhoods,
-        selectedAddress: state.geo.selectedAddress,
+        selectedAddress: get(state, 'geo.geoData.closest_address'),
+        unavailableDates: get(state, 'geo.geoData.contract_zone.unavailable_dates'),
         apiAccessToken: state.auth.apiAccessToken
       };
     },
