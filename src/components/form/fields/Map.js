@@ -51,7 +51,7 @@ class MapCanvas extends PureComponent {
     handleChange({
       target: {
         id,
-        value: { type: 'Point', coordinates: [lat, lng] }
+        value: { type: 'Point', coordinates: [lng, lat] }
       }
     });
   };
@@ -68,6 +68,14 @@ class MapCanvas extends PureComponent {
     return null;
   }
 
+  componentDidMount() {
+    const { value, getGeoData, apiAccessToken } = this.props;
+
+    if (value) {
+      getGeoData(value.coordinates[1], value.coordinates[0], apiAccessToken);
+    }
+  }
+
   render() {
     const { bounds, value } = this.props;
 
@@ -75,7 +83,7 @@ class MapCanvas extends PureComponent {
     const maxBounds = [[60.33, 25.33], [60.1, 24.73]]; // Allow map scroll only inside Helsinki
 
     const position = [this.state.lat, this.state.lng];
-    const markerPosition = value ? [value.coordinates[0], value.coordinates[1]] : position;
+    const markerPosition = value ? [value.coordinates[1], value.coordinates[0]] : position;
     const marker = value ? <Marker position={markerPosition} /> : null;
 
     return (
