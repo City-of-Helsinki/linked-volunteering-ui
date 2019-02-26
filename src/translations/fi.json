@@ -66,6 +66,7 @@
   "form.validation.string.email": "Kentän tulee olla kelvollinen sähköpostiosoite!",
   "form.validation.map": "Valitse paikka kartasta",
   "form.validation.generic": "Virheellinen kenttä!",
+  "form.validation.contract_zone": "Alueen täytyy sijaita Helsingissä!",
 
   "form.event.modify.heading": "Muokkaa tapahtumaa",
   "form.event.modify.button.reset": "Kumoa muutokset",

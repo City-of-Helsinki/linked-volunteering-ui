@@ -11,6 +11,7 @@ export default ({
   neighborhoods,
   getGeoData,
   selectedAddress,
+  selectedContractZone,
   values,
   unavailableDates,
   errors,
@@ -77,6 +78,7 @@ export default ({
       handleChange={handleChange}
       handleBlur={handleBlur}
       selectedAddress={selectedAddress}
+      selectedContractZone={selectedContractZone}
     />
 
     <DateRange

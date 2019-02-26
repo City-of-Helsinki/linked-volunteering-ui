@@ -56,8 +56,25 @@ class MapCanvas extends PureComponent {
     });
   };
 
+  renderMapErrors() {
+    const { touched, errorLocation, errorContractZone } = this.props;
+    let errorMessage = null;
+
+    console.log('renderMapErrors - touched ', touched);
+    console.log('renderMapErrors - errorLocation', errorLocation);
+    console.log('renderMapErrors - errorContractZone', errorContractZone);
+
+    if (touched && errorLocation) {
+      errorMessage = <IntlComponent Component={ErrorMessage} id="form.validation.map" />;
+    } else if (touched && errorContractZone) {
+      errorMessage = <IntlComponent Component={ErrorMessage} id="form.validation.contract_zone" />;
+    }
+
+    return errorMessage;
+  }
+
   render() {
-    const { bounds, value, error } = this.props;
+    const { bounds, value } = this.props;
 
     const mapBounds = bounds ? [[bounds[1], bounds[0]], [bounds[3], bounds[2]]] : null;
     const maxBounds = [[60.33, 25.33], [60.1, 24.73]]; // Allow map scroll only inside Helsinki
@@ -80,7 +97,7 @@ class MapCanvas extends PureComponent {
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           {marker}
         </Map>
-        {error && <IntlComponent Component={ErrorMessage} id="form.validation.map" />}
+        {this.renderMapErrors()}
       </MapContainer>
     );
   }

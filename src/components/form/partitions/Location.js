@@ -76,9 +76,22 @@ class Location extends React.Component {
       values,
       getGeoData,
       selectedAddress,
+      selectedContractZone,
       handleChange,
-      handleBlur
+      handleBlur,
+      setFieldError
     } = this.props;
+
+    console.log('Touched', touched);
+    console.log(this.props);
+
+    if (
+      touched.maintenance_location &&
+      (selectedContractZone === undefined || selectedContractZone === null)
+    ) {
+      setFieldError('contractZone', 'form.validation.contact_zone.invalid');
+      console.log(errors);
+    }
 
     return (
       <Fragment>
@@ -105,9 +118,12 @@ class Location extends React.Component {
             <Map
               id="location"
               bounds={this.state.bounds}
-              error={errors.location}
+              errorLocation={errors.location}
+              errorContractZone={errors.contractZone}
               getGeoData={getGeoData}
+              touched={touched.maintenance_location}
               selectedAddress={selectedAddress}
+              selectedContractZone={selectedContractZone}
               handleChange={e => {
                 this.setUpdateAddress(true);
                 handleChange(e);

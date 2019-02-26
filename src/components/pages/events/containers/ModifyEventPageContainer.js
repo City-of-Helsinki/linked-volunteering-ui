@@ -24,6 +24,7 @@ export default compose(
         initialValues: state.event.events.get(parsedId),
         neighborhoods: state.neighborhood.neighborhoods,
         selectedAddress: state.geo.selectedAddress,
+        selectedContractZone: state.geo.geoData.contract_zone,
         apiAccessToken: state.auth.apiAccessToken
       };
     },
