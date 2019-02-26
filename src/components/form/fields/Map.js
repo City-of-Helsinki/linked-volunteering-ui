@@ -58,19 +58,14 @@ class MapCanvas extends PureComponent {
 
   renderMapErrors() {
     const { touched, errorLocation, errorContractZone } = this.props;
-    let errorMessage = null;
-
-    console.log('renderMapErrors - touched ', touched);
-    console.log('renderMapErrors - errorLocation', errorLocation);
-    console.log('renderMapErrors - errorContractZone', errorContractZone);
 
     if (touched && errorLocation) {
-      errorMessage = <IntlComponent Component={ErrorMessage} id="form.validation.map" />;
-    } else if (touched && errorContractZone) {
-      errorMessage = <IntlComponent Component={ErrorMessage} id="form.validation.contract_zone" />;
+      return <IntlComponent Component={ErrorMessage} id="form.validation.map" />;
     }
-
-    return errorMessage;
+    if (touched && errorContractZone) {
+      return <IntlComponent Component={ErrorMessage} id="form.validation.contract_zone" />;
+    }
+    return null;
   }
 
   render() {

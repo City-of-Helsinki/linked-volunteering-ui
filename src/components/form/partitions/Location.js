@@ -78,21 +78,8 @@ class Location extends React.Component {
       selectedAddress,
       selectedContractZone,
       handleChange,
-      handleBlur,
-      setFieldError
+      handleBlur
     } = this.props;
-
-    console.log('Touched', touched);
-    console.log(this.props);
-
-    if (
-      touched.maintenance_location &&
-      (selectedContractZone === undefined || selectedContractZone === null)
-    ) {
-      setFieldError('contractZone', 'form.validation.contact_zone.invalid');
-      console.log(errors);
-    }
-
     return (
       <Fragment>
         <Row>
