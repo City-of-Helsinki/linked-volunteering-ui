@@ -25,6 +25,7 @@ export default compose(
         initialValues: state.event.events.get(parsedId),
         neighborhoods: state.neighborhood.neighborhoods,
         selectedAddress: get(state, 'geo.geoData.closest_address'),
+        selectedContractZone: get(state, 'geo.geoData.contract_zone'),
         unavailableDates: get(state, 'geo.geoData.contract_zone.unavailable_dates'),
         apiAccessToken: state.auth.apiAccessToken
       };

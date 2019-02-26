@@ -76,10 +76,10 @@ class Location extends React.Component {
       values,
       getGeoData,
       selectedAddress,
+      selectedContractZone,
       handleChange,
       handleBlur
     } = this.props;
-
     return (
       <Fragment>
         <Row>
@@ -105,9 +105,12 @@ class Location extends React.Component {
             <Map
               id="location"
               bounds={this.state.bounds}
-              error={errors.location}
+              errorLocation={errors.location}
+              errorContractZone={errors.contractZone}
               getGeoData={getGeoData}
+              touched={touched.maintenance_location}
               selectedAddress={selectedAddress}
+              selectedContractZone={selectedContractZone}
               handleChange={e => {
                 this.setUpdateAddress(true);
                 handleChange(e);
