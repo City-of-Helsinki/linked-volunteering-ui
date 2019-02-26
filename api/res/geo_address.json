@@ -38,11 +38,16 @@
     "name": { "sv": "Degerö", "fi": "Laajasalo" }
   },
   "closest_address": {
-    "street": { "name": { "sv": "Mangelstigen", "fi": "Mankelipolku" } },
-    "distance": 288.62982213,
-    "number": "8",
+    "street": { "name": { "sv": "Arholmagränden", "fi": "Aarholmankuja" } },
+    "distance": 15.25934634,
+    "number": "4",
     "number_end": "",
     "letter": "",
-    "location": { "type": "Point", "coordinates": [25.062046195065744, 60.17381661281754] }
+    "location": { "type": "Point", "coordinates": [25.04718979766332, 60.17840917926125] }
+  },
+  "contract_zone": {
+    "id": 1,
+    "name": "Helsingin talkoopiiri",
+    "unavailable_dates": null
   }
 }

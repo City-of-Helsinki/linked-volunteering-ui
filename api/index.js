@@ -7,6 +7,8 @@ require('dotenv').config({ path: '.env.development.local' });
 const neighborhoodJson = require('./res/neighborhood.json');
 const eventJson = require('./res/event.json');
 const geoAddressJson = require('./res/geo_address.json');
+const contractZoneJson = require('./res/contract_zone.json');
+
 const { toInt, findById, findByNotId, getStatus } = require('./utils.js');
 
 const yearlyReports = {
@@ -95,7 +97,13 @@ router
   });
 
 router.route('/contract_zone').get((req, res) => {
-  const responseData = yearlyReports[req.query.stats_year];
+  let responseData = null;
+  if (req.query.stats_year) {
+    responseData = yearlyReports[req.query.stats_year];
+  } else {
+    res.json(contractZoneJson);
+  }
+
   res.status(getStatus(responseData)).json(responseData);
 });
 
