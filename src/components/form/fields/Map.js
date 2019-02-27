@@ -97,7 +97,7 @@ class MapCanvas extends PureComponent {
           style={style}
           onClick={this.addMarker}
         >
-          <TileLayer url="http://tiles.hel.ninja/wmts/osm-sm/webmercator/{z}/{x}/{y}.png" />
+          <TileLayer url="https://tiles.hel.ninja/wmts/osm-sm/webmercator/{z}/{x}/{y}.png" />
           {marker}
         </Map>
         {this.renderMapErrors()}
