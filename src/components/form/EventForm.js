@@ -1,11 +1,18 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
+import styled from 'styled-components';
 
 import Input from './fields/Input';
 import Checkbox from './fields/Checkbox';
 import DateRange from './partitions/DateRange';
 import Location from './partitions/Location';
+
+const DumpsterCheckBox = styled(Checkbox)`
+  padding-left: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+`;
 
 export default ({
   neighborhoods,
@@ -214,7 +221,7 @@ export default ({
     </Row>
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
-        <Checkbox
+        <DumpsterCheckBox
           id="has_roll_off_dumpster"
           label="form.event.field.container.label"
           error={errors.has_roll_off_dumpster}
