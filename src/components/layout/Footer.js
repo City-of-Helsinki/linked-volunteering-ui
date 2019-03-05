@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { injectIntl, FormattedMessage } from 'react-intl';
+import LocalizedLink from '../common/LocalizedLink';
 import responsive from '../../utils/responsive';
 import Icon from '../common/Icon';
 
@@ -55,10 +56,17 @@ const BottomLinks = styled.div`
 const Footer = ({ intl: { formatMessage } }) => (
   <Wrapper>
     <NavigationLinks>
-      <FormattedMessage tagName="span" id="site.footer.front_page" />
-      <FormattedMessage tagName="span" id="site.footer.upcoming_events" />
-      <FormattedMessage tagName="span" id="site.footer.create_event" />
-      <FormattedMessage tagName="span" id="site.footer.contacts" />
+      <span>
+        <LocalizedLink to="" translate="site.footer.front_page" />
+      </span>
+      <span>
+        <LocalizedLink to="event/new" translate="site.footer.create_event" />
+      </span>
+      <span>
+        <a href={formatMessage({ id: 'site.footer.url.contacts' })}>
+          <FormattedMessage tagName="span" id="site.footer.contacts" />
+        </a>
+      </span>
     </NavigationLinks>
     <LogoWrapper>
       <Icon name="helsinkiLogo" size="7x" color="#000" />
