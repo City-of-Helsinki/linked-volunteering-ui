@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl, FormattedMessage } from 'react-intl';
 import responsive from '../../utils/responsive';
 import Icon from '../common/Icon';
 
@@ -58,7 +58,7 @@ const BottomLinks = styled.div`
   `}
 `;
 
-const Footer = () => (
+const Footer = ({ intl: { formatMessage } }) => (
   <Wrapper>
     <NavigationLinks>
       <FormattedMessage tagName="span" id="site.footer.front_page" />
@@ -75,10 +75,12 @@ const Footer = () => (
         <FormattedMessage tagName="span" id="site.footer.copyright" />
       </div>
       <div>
-        <FormattedMessage tagName="span" id="site.footer.give_feedback" />
+        <a href={formatMessage({ id: 'site.footer.url.feedback' })}>
+          <FormattedMessage tagName="span" id="site.footer.give_feedback" />
+        </a>
       </div>
     </BottomLinks>
   </Wrapper>
 );
 
-export default Footer;
+export default injectIntl(Footer);

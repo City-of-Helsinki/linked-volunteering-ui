@@ -15,6 +15,7 @@
   "site.footer.contacts": "Ota yhteyttä",
   "site.footer.copyright": "Copyright 2018 - Kaikki oikeudet pidätetään.",
   "site.footer.give_feedback": "Anna palautetta",
+  "site.footer.url.feedback": "https://www.hel.fi/helsinki/fi/kaupunki-ja-hallinto/osallistu-ja-vaikuta/palaute/",
 
   "site.table.header.manage_events.name": "Nimi",
   "site.table.header.manage_events.organizer_email": "Järjestäjä",
