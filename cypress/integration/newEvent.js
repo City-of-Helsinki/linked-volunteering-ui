@@ -5,7 +5,7 @@ describe('New event', () => {
     cy.visit('/fi/event/new');
     cy.get('button[type="submit"]').click();
     cy.get('input.is-invalid');
-    cy.contains('Ilmoita uusi vapaaehtoistapahtuma');
+    cy.contains('Ilmoita uusi puistotalkoo');
   });
   it('Fill & submit', () => {
     cy.visit('/fi/event/new');
