@@ -29,7 +29,7 @@ const PageContainer = styled.div`
 const ContentWrapper = styled.div`
   margin-bottom: 2em;
   h1 {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
   p,
   strong {
@@ -51,7 +51,7 @@ const LandingPage = () => (
     <PageContainer>
       <Container>
         <Row>
-          <Col md="6">
+          <Col md="7">
             <ContentWrapper>
               <FormattedMessage tagName="h1" id="site.page.landing.hero.headline" />
               <FormattedHTMLMessage tagName="p" id="site.page.landing.hero.introduction" />
