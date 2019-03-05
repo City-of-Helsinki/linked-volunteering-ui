@@ -71,7 +71,7 @@
   "form.event.modify.button.reset": "Kumoa muutokset",
   "form.event.modify.button.submit": "Päivitä tapahtumaa",
   "form.event.new.heading": "Ilmoita uusi puistotalkoo",
-  "form.event.new.button.reset": "Peru luonnos",
+  "form.event.new.button.reset": "Tyhjennä lomake",
   "form.event.new.button.submit": "Julkaise tapahtuma",
   "form.event.title.name_and_description": "Tapahtuman nimi ja kuvaus",
   "form.event.title.time_and_place": "Paikka ja aika",
