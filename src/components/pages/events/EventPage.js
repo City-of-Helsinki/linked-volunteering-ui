@@ -33,6 +33,12 @@ const StickyInner = styled.div`
   z-index: 5000;
 `;
 
+const FormButton = styled(Button)`
+  ${responsive.md`
+    min-width: 230px;
+  `}
+`;
+
 class NewEventPage extends PureComponent {
   componentDidMount() {
     const { neighborhoods, getNeighborhoods, apiAccessToken } = this.props;
@@ -67,7 +73,7 @@ class NewEventPage extends PureComponent {
                     </Col>
                     <Col lg="6" xl={{ size: 2 }}>
                       <IntlComponent
-                        Component={Button}
+                        Component={FormButton}
                         block
                         type="submit"
                         onClick={handleSubmit}
