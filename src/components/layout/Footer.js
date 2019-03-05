@@ -48,14 +48,8 @@ const LogoWrapper = styled.div`
 `;
 
 const BottomLinks = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column-reverse;
+  text-align: right;
   padding: 1em 0;
-
-  ${responsive.sm`
-    flex-direction: row;
-  `}
 `;
 
 const Footer = () => (
@@ -70,13 +64,7 @@ const Footer = () => (
       <Icon name="helsinkiLogo" size="7x" color="#000" />
     </LogoWrapper>
     <BottomLinks>
-      <div>
-        <span>&copy; </span>
-        <FormattedMessage tagName="span" id="site.footer.copyright" />
-      </div>
-      <div>
-        <FormattedMessage tagName="span" id="site.footer.give_feedback" />
-      </div>
+      <FormattedMessage tagName="span" id="site.footer.give_feedback" />
     </BottomLinks>
   </Wrapper>
 );
