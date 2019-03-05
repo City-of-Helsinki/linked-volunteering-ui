@@ -14,6 +14,7 @@
   "site.footer.create_event": "Luo uusi tapahtuma",
   "site.footer.contacts": "Ota yhteyttä",
   "site.footer.give_feedback": "Anna palautetta",
+  "site.footer.url.feedback": "https://www.hel.fi/helsinki/fi/kaupunki-ja-hallinto/osallistu-ja-vaikuta/palaute/",
 
   "site.table.header.manage_events.name": "Nimi",
   "site.table.header.manage_events.organizer_email": "Järjestäjä",

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FormattedMessage } from 'react-intl';
+import { injectIntl, FormattedMessage } from 'react-intl';
 import responsive from '../../utils/responsive';
 import Icon from '../common/Icon';
 
@@ -52,7 +52,7 @@ const BottomLinks = styled.div`
   padding: 1em 0;
 `;
 
-const Footer = () => (
+const Footer = ({ intl: { formatMessage } }) => (
   <Wrapper>
     <NavigationLinks>
       <FormattedMessage tagName="span" id="site.footer.front_page" />
@@ -64,9 +64,13 @@ const Footer = () => (
       <Icon name="helsinkiLogo" size="7x" color="#000" />
     </LogoWrapper>
     <BottomLinks>
-      <FormattedMessage tagName="span" id="site.footer.give_feedback" />
+      <div>
+        <a href={formatMessage({ id: 'site.footer.url.feedback' })}>
+          <FormattedMessage tagName="span" id="site.footer.give_feedback" />
+        </a>
+      </div>
     </BottomLinks>
   </Wrapper>
 );
 
-export default Footer;
+export default injectIntl(Footer);
