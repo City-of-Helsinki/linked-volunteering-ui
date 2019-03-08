@@ -89,18 +89,12 @@ const Layout = ({ children, paddingTop, paddingBottom, user, auth }) => {
           <Nav navbar>
             <Options>
               <LanguageDropdown />
-              <UserAction
-                onClick={() => {
-                  if (hasUser) {
-                    userManager.signoutRedirect();
-                  } else {
-                    userManager.signinRedirect();
-                  }
-                }}
-              >
-                <Icon name="user" size="2x" color="black" />
-                <FormattedMessage id={`site.nav.user.${hasUser ? 'logout' : 'login'}`} />
-              </UserAction>
+              {hasUser && (
+                <UserAction onClick={() => userManager.signoutRedirect()}>
+                  <Icon name="user" size="2x" color="black" />
+                  <FormattedMessage id="site.nav.user.logout" />
+                </UserAction>
+              )}
             </Options>
           </Nav>
         </Container>
