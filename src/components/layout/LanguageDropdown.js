@@ -4,6 +4,7 @@ import { Dropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap
 import styled from 'styled-components';
 import IntlComponent from '../common/IntlComponent';
 import Icon from '../common/Icon';
+import responsive from '../../utils/responsive';
 
 const LanguageSelector = styled(DropdownToggle)`
   color: #000;
@@ -21,6 +22,17 @@ const StyledSelector = styled.div`
 
   & span {
     margin-left: 0.5em;
+  }
+`;
+
+const NavigationIcon = styled(Icon)`
+  svg {
+    height: 1.5em;
+    width: 2em;
+
+    ${responsive.md`
+      height: 2em;
+    `}
   }
 `;
 
@@ -47,7 +59,7 @@ class LanguageDropdown extends React.Component {
       <Dropdown size="lg" isOpen={this.state.dropdownOpen} toggle={this.toggle}>
         <LanguageSelector className="btn-link">
           <StyledSelector>
-            <Icon name="globe" size="2x" color="black" />
+            <NavigationIcon name="globe" color="black" />
             <span>{intl.locale.toUpperCase()}</span>
           </StyledSelector>
         </LanguageSelector>
