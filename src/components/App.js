@@ -9,10 +9,12 @@ import NewEventPage from './pages/events/containers/NewEventPageContainer';
 import SubmittedPage from './pages/events/SubmittedPage';
 import LandingPage from './pages/LandingPage';
 import AdminRoutes from './Admin';
+import Login from './Login';
 
 const App = ({ locale }) => (
   <IntlProvider locale={locale} key={locale} messages={messages[locale]}>
     <Switch>
+      <Route exact path="/login/" component={Login} />
       <Route exact path="/:locale/" component={LandingPage} />
       <Route exact path={`/:locale/event/new`} component={NewEventPage} />
       <Route exact path={`/:locale/event/submitted`} component={SubmittedPage} />
