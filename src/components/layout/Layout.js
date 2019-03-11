@@ -11,6 +11,7 @@ import Modal from '../modal/containers/ModalContainer';
 import KoroSection from './KoroSection';
 import Footer from './Footer';
 import userManager from '../../utils/userManager';
+import responsive from '../../utils/responsive';
 
 const Content = styled.div`
   background-color: ${props => props.theme.colors.lightGray};
@@ -74,6 +75,18 @@ const Links = styled.div`
   }
 `;
 
+const NavigationIcon = styled(Icon)`
+  svg {
+    height: 3em;
+    width: 5em;
+
+    ${responsive.md`
+      height: 7em;
+      width: 7em;
+    `}
+  }
+`;
+
 const Layout = ({ children, paddingTop, paddingBottom, user, auth }) => {
   const hasUser = !!user;
   const isOfficial = auth ? auth.is_official : false;
@@ -84,14 +97,14 @@ const Layout = ({ children, paddingTop, paddingBottom, user, auth }) => {
       <TopNavbar expand="md">
         <Container>
           <NavbarBrand href="/">
-            <Icon name="helsinkiLogo" size="7x" color="#000" />
+            <NavigationIcon name="helsinkiLogo" color="#000" />
           </NavbarBrand>
           <Nav navbar>
             <Options>
               <LanguageDropdown />
               {hasUser && (
                 <UserAction onClick={() => userManager.signoutRedirect()}>
-                  <Icon name="user" size="2x" color="black" />
+                  <NavigationIcon name="user" color="black" />
                   <FormattedMessage id="site.nav.user.logout" />
                 </UserAction>
               )}
