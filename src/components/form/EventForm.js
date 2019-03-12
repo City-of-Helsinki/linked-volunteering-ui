@@ -14,6 +14,10 @@ const DumpsterCheckBox = styled(Checkbox)`
   margin-bottom: 1.5rem;
 `;
 
+const LocationInstructions = styled(Row)`
+  margin-bottom: 1em;
+`;
+
 export default ({
   neighborhoods,
   getGeoData,
@@ -67,11 +71,18 @@ export default ({
         />
       </Col>
     </Row>
+
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
         <FormattedMessage tagName="h3" id="form.event.title.time_and_place" />
       </Col>
     </Row>
+
+    <LocationInstructions>
+      <Col sm="12" md={{ size: 8, offset: 1 }}>
+        <FormattedMessage tagName="p" id="form.event.new.location_instructions" />
+      </Col>
+    </LocationInstructions>
 
     <Location
       setFieldValue={setFieldValue}
