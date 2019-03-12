@@ -68,33 +68,38 @@ const UserAction = styled.a`
 
 const Links = styled.div`
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
   & a {
     margin-right: 1em;
   }
+
+  ${responsive.md`
+    flex-direction: row;
+  `}
 `;
 
 const HelsinkiIcon = styled(Icon)`
   svg {
-    height: 3em;
-    width: 5em;
+    height: 3rem;
+    width: 5rem;
 
     ${responsive.md`
-      height: 7em;
-      width: 7em;
+      height: 3rem;
+      width: 7rem;
     `}
   }
 `;
 
 const UserIcon = styled(Icon)`
   svg {
-    height: 1.6em;
-    width: 1.6em;
+    height: 1.6rem;
+    width: 1.6rem;
 
     ${responsive.sm`
-      height: 2em;
-      width: 2em;
+      height: 2rem;
+      width: 2rem;
     `}
   }
 `;
