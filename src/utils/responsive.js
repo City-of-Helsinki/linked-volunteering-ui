@@ -1,9 +1,9 @@
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 import theme from '../config/theme';
 
 const { breakpoint } = theme;
 
-export default Object.entries(breakpoint).reduce(
+const breakpoints = Object.entries(breakpoint).reduce(
   (acc, [size, pixels]) => ({
     ...acc,
     [size]: (...args) => css`
@@ -14,3 +14,12 @@ export default Object.entries(breakpoint).reduce(
   }),
   {}
 );
+
+export const ShowOnTablet = styled.div`
+  display: none;
+  ${breakpoints.md`
+    display:initial;
+  `}
+`;
+
+export default breakpoints;

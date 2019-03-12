@@ -11,7 +11,7 @@ import Modal from '../modal/containers/ModalContainer';
 import KoroSection from './KoroSection';
 import Footer from './Footer';
 import userManager from '../../utils/userManager';
-import responsive from '../../utils/responsive';
+import responsive, { ShowOnTablet } from '../../utils/responsive';
 
 const Content = styled.div`
   background-color: ${props => props.theme.colors.lightGray};
@@ -19,7 +19,7 @@ const Content = styled.div`
 
 const NavbarRow = styled(Navbar)`
   background-color: ${props => props.theme.helWhite};
-  height: 3.5em;
+
   & a {
     color: ${props => props.theme.helBlack};
   }
@@ -32,7 +32,7 @@ const NavbarRow = styled(Navbar)`
 const TopNavbar = styled(Navbar)`
   background-color: ${props => props.theme.colors.helWhite};
   border-bottom: 1px solid ${props => props.theme.helGray};
-  height: 4em;
+
   & a {
     color: #000;
   }
@@ -68,21 +68,38 @@ const UserAction = styled.a`
 
 const Links = styled.div`
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
   & a {
     margin-right: 1em;
   }
+
+  ${responsive.md`
+    flex-direction: row;
+  `}
 `;
 
-const NavigationIcon = styled(Icon)`
+const HelsinkiIcon = styled(Icon)`
   svg {
-    height: 3em;
-    width: 5em;
+    height: 3rem;
+    width: 5rem;
 
     ${responsive.md`
-      height: 7em;
-      width: 7em;
+      height: 3rem;
+      width: 7rem;
+    `}
+  }
+`;
+
+const UserIcon = styled(Icon)`
+  svg {
+    height: 1.6rem;
+    width: 1.6rem;
+
+    ${responsive.sm`
+      height: 2rem;
+      width: 2rem;
     `}
   }
 `;
@@ -97,15 +114,17 @@ const Layout = ({ children, paddingTop, paddingBottom, user, auth }) => {
       <TopNavbar expand="md">
         <Container>
           <NavbarBrand href="/">
-            <NavigationIcon name="helsinkiLogo" color="#000" />
+            <HelsinkiIcon name="helsinkiLogo" color="#000" />
           </NavbarBrand>
           <Nav navbar>
             <Options>
               <LanguageDropdown />
               {hasUser && (
                 <UserAction onClick={() => userManager.signoutRedirect()}>
-                  <NavigationIcon name="user" color="black" />
-                  <FormattedMessage id="site.nav.user.logout" />
+                  <UserIcon name="user" color="black" />
+                  <FormattedMessage id="site.nav.user.logout">
+                    {txt => <ShowOnTablet>{txt}</ShowOnTablet>}
+                  </FormattedMessage>
                 </UserAction>
               )}
             </Options>
