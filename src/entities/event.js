@@ -52,7 +52,7 @@ export const validationSchema = yup.object().shape({
   organizer_phone: yup
     .string()
     .required()
-    .matches(phoneRegex),
+    .matches(phoneRegex, { message: 'form.validation.string.phone' }),
   estimated_attendee_count: yup.number().required(),
   targets: yup.string().required(),
   maintenance_location: yup.string().required(),
