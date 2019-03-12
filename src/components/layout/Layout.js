@@ -75,7 +75,7 @@ const Links = styled.div`
   }
 `;
 
-const NavigationIcon = styled(Icon)`
+const HelsinkiIcon = styled(Icon)`
   svg {
     height: 3em;
     width: 5em;
@@ -83,6 +83,18 @@ const NavigationIcon = styled(Icon)`
     ${responsive.md`
       height: 7em;
       width: 7em;
+    `}
+  }
+`;
+
+const UserIcon = styled(Icon)`
+  svg {
+    height: 3em;
+    width: 5em;
+
+    ${responsive.md`
+      height: 2em;
+      width: 2em;
     `}
   }
 `;
@@ -97,14 +109,14 @@ const Layout = ({ children, paddingTop, paddingBottom, user, auth }) => {
       <TopNavbar expand="md">
         <Container>
           <NavbarBrand href="/">
-            <NavigationIcon name="helsinkiLogo" color="#000" />
+            <HelsinkiIcon name="helsinkiLogo" color="#000" />
           </NavbarBrand>
           <Nav navbar>
             <Options>
               <LanguageDropdown />
               {hasUser && (
                 <UserAction onClick={() => userManager.signoutRedirect()}>
-                  <NavigationIcon name="user" color="black" />
+                  <UserIcon name="user" color="black" />
                   <FormattedMessage id="site.nav.user.logout" />
                 </UserAction>
               )}
