@@ -11,7 +11,7 @@ import Modal from '../modal/containers/ModalContainer';
 import KoroSection from './KoroSection';
 import Footer from './Footer';
 import userManager from '../../utils/userManager';
-import responsive from '../../utils/responsive';
+import responsive, { ShowOnTablet } from '../../utils/responsive';
 
 const Content = styled.div`
   background-color: ${props => props.theme.colors.lightGray};
@@ -19,7 +19,7 @@ const Content = styled.div`
 
 const NavbarRow = styled(Navbar)`
   background-color: ${props => props.theme.helWhite};
-  height: 3.5em;
+
   & a {
     color: ${props => props.theme.helBlack};
   }
@@ -32,7 +32,7 @@ const NavbarRow = styled(Navbar)`
 const TopNavbar = styled(Navbar)`
   background-color: ${props => props.theme.colors.helWhite};
   border-bottom: 1px solid ${props => props.theme.helGray};
-  height: 4em;
+
   & a {
     color: #000;
   }
@@ -89,10 +89,10 @@ const HelsinkiIcon = styled(Icon)`
 
 const UserIcon = styled(Icon)`
   svg {
-    height: 3em;
-    width: 5em;
+    height: 1.6em;
+    width: 1.6em;
 
-    ${responsive.md`
+    ${responsive.sm`
       height: 2em;
       width: 2em;
     `}
@@ -117,7 +117,9 @@ const Layout = ({ children, paddingTop, paddingBottom, user, auth }) => {
               {hasUser && (
                 <UserAction onClick={() => userManager.signoutRedirect()}>
                   <UserIcon name="user" color="black" />
-                  <FormattedMessage id="site.nav.user.logout" />
+                  <FormattedMessage id="site.nav.user.logout">
+                    {txt => <ShowOnTablet>{txt}</ShowOnTablet>}
+                  </FormattedMessage>
                 </UserAction>
               )}
             </Options>
