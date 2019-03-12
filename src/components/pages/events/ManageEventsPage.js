@@ -67,6 +67,11 @@ const tableHeaders = [
 ];
 
 class EventsPage extends PureComponent {
+  constructor(props) {
+    super(props);
+    window.scrollTo(0, 0);
+  }
+
   state = {
     visible: null
   };

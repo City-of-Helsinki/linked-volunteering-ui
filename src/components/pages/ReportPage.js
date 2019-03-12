@@ -52,6 +52,11 @@ const tableHeaders = [
 ];
 
 class ReportPage extends Component {
+  constructor(props) {
+    super(props);
+    window.scrollTo(0, 0);
+  }
+
   handleChange = e => {
     const { getReport, apiAccessToken } = this.props;
     getReport(e.target.value, apiAccessToken);

@@ -40,6 +40,11 @@ const FormButton = styled(Button)`
 `;
 
 class NewEventPage extends PureComponent {
+  constructor(props) {
+    super(props);
+    window.scrollTo(0, 0);
+  }
+
   componentDidMount() {
     const { neighborhoods, getNeighborhoods, apiAccessToken } = this.props;
     if (neighborhoods.size === 0) {
