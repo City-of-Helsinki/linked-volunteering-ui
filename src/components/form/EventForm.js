@@ -4,15 +4,8 @@ import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 
 import Input from './fields/Input';
-import Checkbox from './fields/Checkbox';
 import DateRange from './partitions/DateRange';
 import Location from './partitions/Location';
-
-const DumpsterCheckBox = styled(Checkbox)`
-  padding-left: 0.5rem;
-  margin-top: 0.5rem;
-  margin-bottom: 1.5rem;
-`;
 
 const LocationInstructions = styled(Row)`
   margin-bottom: 1em;
@@ -228,19 +221,6 @@ export default ({
       <Col sm="12" md={{ size: 8, offset: 1 }}>
         <FormattedMessage tagName="h3" id="form.event.title.tools_and_suplies" />
         <FormattedMessage tagName="p" id="form.event.subtitle.tools_and_suplies" />
-      </Col>
-    </Row>
-    <Row>
-      <Col sm="12" md={{ size: 8, offset: 1 }}>
-        <DumpsterCheckBox
-          id="has_roll_off_dumpster"
-          label="form.event.field.container.label"
-          error={errors.has_roll_off_dumpster}
-          touched={touched.has_roll_off_dumpster}
-          value={values.has_roll_off_dumpster}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
       </Col>
     </Row>
     <Row>

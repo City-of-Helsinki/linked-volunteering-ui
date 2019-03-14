@@ -55,9 +55,6 @@ export default {
     method: 'type',
     value: '1'
   },
-  has_roll_off_dumpster: {
-    method: 'click'
-  },
   trash_bag_count: {
     method: 'type',
     value: '1'
