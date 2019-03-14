@@ -111,6 +111,8 @@
   "form.event.field.container.label": "Siirtolava",
   "form.event.field.trash_bags.label": "75 litran jätesäkkejä",
   "form.event.field.trash_bags.placeholder": "Rullaa",
+  "form.event.field.small_trash_bags.label": "30 litran jätesäkkejä",
+  "form.event.field.small_trash_bags.placeholder": "Rullaa",
   "form.event.field.trash_pickers.label": "Roskapihtejä",
   "form.event.field.trash_pickers.placeholder": "Kappaletta",
 

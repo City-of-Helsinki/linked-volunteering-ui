@@ -262,6 +262,22 @@ export default ({
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
         <Input
+          type="number"
+          id="small_trash_bag_count"
+          label="form.event.field.small_trash_bags.label"
+          placeholder="form.event.field.small_trash_bags.placeholder"
+          required
+          error={errors.small_trash_bag_count}
+          touched={touched.small_trash_bag_count}
+          value={values.small_trash_bag_count}
+          onChange={handleChange}
+          onBlur={handleBlur}
+        />
+      </Col>
+    </Row>
+    <Row>
+      <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
+        <Input
           type="text"
           id="trash_picker_count"
           label="form.event.field.trash_pickers.label"
