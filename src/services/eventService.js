@@ -27,7 +27,7 @@ export default {
         ...event,
         location: {
           type: 'Point',
-          coordinates: [event.location.coordinates[1], event.location.coordinates[0]] // Reverse due to backend logic
+          coordinates: [event.location.coordinates[0], event.location.coordinates[1]]
         }
       },
       apiAccessToken
