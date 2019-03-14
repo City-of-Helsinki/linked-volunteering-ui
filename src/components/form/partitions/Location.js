@@ -63,7 +63,7 @@ class Location extends React.Component {
 
   suggestionItem = neighborhood => {
     if (neighborhood.parent) {
-      return `${neighborhood.parent.name.fi} (${neighborhood.name.fi})`;
+      return `${neighborhood.name.fi} (${neighborhood.parent.name.fi})`;
     }
     return neighborhood.name.fi;
   };
