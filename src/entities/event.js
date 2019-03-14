@@ -18,8 +18,7 @@ export const defaultValues = {
   maintenance_location: '',
   additional_information: '',
   trash_bag_count: '',
-  trash_picker_count: '',
-  has_roll_off_dumpster: false
+  trash_picker_count: ''
 };
 
 const phoneRegex = /[0-9 +()]{6,19}/;
@@ -58,8 +57,7 @@ export const validationSchema = yup.object().shape({
   maintenance_location: yup.string().required(),
   additional_information: yup.string(),
   trash_bag_count: yup.number().required(),
-  trash_picker_count: yup.number().required(),
-  has_roll_off_dumpster: yup.boolean()
+  trash_picker_count: yup.number().required()
 });
 
 export default defaultValues;
