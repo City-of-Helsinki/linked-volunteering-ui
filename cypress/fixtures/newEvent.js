@@ -59,6 +59,10 @@ export default {
     method: 'type',
     value: '1'
   },
+  small_trash_bag_count: {
+    method: 'type',
+    value: '1'
+  },
   trash_picker_count: {
     method: 'type',
     value: '1'

@@ -25,6 +25,7 @@
       "maintenance_location": "Testisijainti",
       "additional_information": "Lisätietoja testitapahtumasta",
       "trash_bag_count": 72,
+      "small_trash_bag_count": 72,
       "trash_picker_count": 3
     },
     {
@@ -49,6 +50,7 @@
       "maintenance_location": "Testisijainti",
       "additional_information": "Lisätietoja testitapahtumasta",
       "trash_bag_count": 72,
+      "small_trash_bag_count": 72,
       "trash_picker_count": 3
     }
   ]
