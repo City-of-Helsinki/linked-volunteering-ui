@@ -17,7 +17,7 @@ export const defaultValues = {
   targets: '',
   maintenance_location: '',
   additional_information: '',
-  trash_bag_count: '',
+  large_trash_bag_count: '',
   small_trash_bag_count: '',
   trash_picker_count: ''
 };
@@ -60,8 +60,11 @@ export const validationSchema = yup.object().shape({
   targets: yup.string().required(),
   maintenance_location: yup.string().required(),
   additional_information: yup.string(),
-  small_trash_bag_count: yup.number().required(),
-  trash_bag_count: yup
+  small_trash_bag_count: yup
+    .number()
+    .positive('form.validation.number.positive')
+    .required(),
+  large_trash_bag_count: yup
     .number()
     .positive('form.validation.number.positive')
     .required(),
