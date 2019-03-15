@@ -227,13 +227,13 @@ export default ({
       <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
         <Input
           type="number"
-          id="trash_bag_count"
+          id="large_trash_bag_count"
           label="form.event.field.trash_bags.label"
           placeholder="form.event.field.trash_bags.placeholder"
           required
-          error={errors.trash_bag_count}
-          touched={touched.trash_bag_count}
-          value={values.trash_bag_count}
+          error={errors.large_trash_bag_count}
+          touched={touched.large_trash_bag_count}
+          value={values.large_trash_bag_count}
           onChange={handleChange}
           onBlur={handleBlur}
         />

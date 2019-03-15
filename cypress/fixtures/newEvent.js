@@ -55,7 +55,7 @@ export default {
     method: 'type',
     value: '1'
   },
-  trash_bag_count: {
+  large_trash_bag_count: {
     method: 'type',
     value: '1'
   },
