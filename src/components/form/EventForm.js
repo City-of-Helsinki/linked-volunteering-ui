@@ -193,6 +193,7 @@ export default ({
           id="targets"
           label="form.event.field.cleaning_targets.label"
           placeholder="form.event.field.cleaning_targets.placeholder"
+          text="form.event.field.cleaning_targets.info"
           required
           error={errors.targets}
           touched={touched.targets}
@@ -204,26 +205,17 @@ export default ({
     </Row>
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 7, offset: 1 }}>
-        <FormattedMessage tagName="p" id="form.event.field.cleaning_targets.info" />
-      </Col>
-    </Row>
-    <Row>
-      <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 7, offset: 1 }}>
         <Input
           type="textarea"
           id="additional_information"
           label="form.event.field.details.label"
+          text="form.event.field.details.info"
           error={errors.additional_information}
           touched={touched.additional_information}
           value={values.additional_information}
           onChange={handleChange}
           onBlur={handleBlur}
         />
-      </Col>
-    </Row>
-    <Row>
-      <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 7, offset: 1 }}>
-        <FormattedMessage tagName="p" id="form.event.field.details.info" />
       </Col>
     </Row>
     <Row>
@@ -271,6 +263,7 @@ export default ({
           id="trash_picker_count"
           label="form.event.field.trash_pickers.label"
           placeholder="form.event.field.trash_pickers.placeholder"
+          text="form.event.field.trash_pickers.info"
           required
           error={errors.trash_picker_count}
           touched={touched.trash_picker_count}
@@ -278,11 +271,6 @@ export default ({
           onChange={handleChange}
           onBlur={handleBlur}
         />
-      </Col>
-    </Row>
-    <Row>
-      <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 7, offset: 1 }}>
-        <FormattedMessage tagName="p" id="form.event.field.trash_pickers.info" />
       </Col>
     </Row>
   </form>
