@@ -24,6 +24,6 @@ describe('New event', () => {
     });
     cy.get('button[type="submit"]').click();
 
-    cy.contains('Tapahtuma lisätty onnistuneesti');
+    cy.contains('Kiitos ilmoituksesta');
   });
 });

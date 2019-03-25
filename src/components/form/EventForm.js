@@ -29,6 +29,11 @@ export default ({
 }) => (
   <form onSubmit={handleSubmit}>
     <Row>
+      <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 7, offset: 1 }}>
+        <FormattedMessage tagName="p" id="form.event.new.info" />
+      </Col>
+    </Row>
+    <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
         <FormattedMessage tagName="h3" id="form.event.title.name_and_description" />
       </Col>
@@ -40,8 +45,6 @@ export default ({
           id="name"
           label="form.event.field.name.label"
           placeholder="form.event.field.name.placeholder"
-          required
-          error={errors.name}
           touched={touched.name}
           value={values.name}
           onChange={handleChange}
@@ -64,19 +67,16 @@ export default ({
         />
       </Col>
     </Row>
-
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
         <FormattedMessage tagName="h3" id="form.event.title.time_and_place" />
       </Col>
     </Row>
-
     <LocationInstructions>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
         <FormattedMessage tagName="p" id="form.event.new.location_instructions" />
       </Col>
     </LocationInstructions>
-
     <Location
       setFieldValue={setFieldValue}
       setFieldTouched={setFieldTouched}
@@ -91,7 +91,6 @@ export default ({
       selectedAddress={selectedAddress}
       selectedContractZone={selectedContractZone}
     />
-
     <DateRange
       errors={errors}
       touched={touched}
@@ -142,7 +141,7 @@ export default ({
           type="text"
           id="organizer_email"
           label="form.event.field.email.label"
-          placeholder="form.event.field.name.placeholder"
+          placeholder="form.event.field.email.placeholder"
           required
           error={errors.organizer_email}
           touched={touched.organizer_email}
@@ -205,6 +204,11 @@ export default ({
     </Row>
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 7, offset: 1 }}>
+        <FormattedMessage tagName="p" id="form.event.field.cleaning_targets.info" />
+      </Col>
+    </Row>
+    <Row>
+      <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 7, offset: 1 }}>
         <Input
           type="textarea"
           id="additional_information"
@@ -215,6 +219,11 @@ export default ({
           onChange={handleChange}
           onBlur={handleBlur}
         />
+      </Col>
+    </Row>
+    <Row>
+      <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 7, offset: 1 }}>
+        <FormattedMessage tagName="p" id="form.event.field.details.info" />
       </Col>
     </Row>
     <Row>
@@ -269,6 +278,11 @@ export default ({
           onChange={handleChange}
           onBlur={handleBlur}
         />
+      </Col>
+    </Row>
+    <Row>
+      <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 7, offset: 1 }}>
+        <FormattedMessage tagName="p" id="form.event.field.trash_pickers.info" />
       </Col>
     </Row>
   </form>
