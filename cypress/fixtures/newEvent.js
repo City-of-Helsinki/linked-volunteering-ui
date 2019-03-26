@@ -11,14 +11,6 @@ export default {
     method: 'autosuggest',
     value: 'Kruununhaka'
   },
-  'date_range\\.start_date': {
-    method: 'type',
-    value: '11.11.1111'
-  },
-  'date_range\\.end_date': {
-    method: 'type',
-    value: '11.11.1111'
-  },
   'date_range\\.start_time': {
     method: 'type',
     value: '11:11'
