@@ -25,15 +25,12 @@ describe('New event', () => {
     });
 
     const dayOfMonth = moment().format('DD');
-    const nextDay = moment()
-      .add(1, 'days')
-      .format('DD');
 
-    cy.get('#date_range\\.start_date').click();
-    cy.get(`:nth-child(5) > \\.react-datepicker__day--0${dayOfMonth}`).click();
+    cy.get('#date_range_start_date').click();
+    cy.get(`#date_range_start_date_wrapper .react-datepicker__day--0${dayOfMonth}`).click();
 
-    cy.get('#date_range\\.end_date').click();
-    cy.get(`:nth-child(5) > \\.react-datepicker__day--0${nextDay}`).click();
+    cy.get('#date_range_end_date').click();
+    cy.get(`#date_range_end_date_wrapper .react-datepicker__day--0${dayOfMonth}`).click();
 
     cy.get('button[type="submit"]').click();
 
