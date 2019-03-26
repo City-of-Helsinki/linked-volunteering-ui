@@ -29,11 +29,6 @@ export default ({
 }) => (
   <form onSubmit={handleSubmit}>
     <Row>
-      <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 7, offset: 1 }}>
-        <FormattedMessage tagName="p" id="form.event.new.info" />
-      </Col>
-    </Row>
-    <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
         <FormattedMessage tagName="h3" id="form.event.title.name_and_description" />
       </Col>
