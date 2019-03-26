@@ -1,3 +1,4 @@
+import moment from 'moment';
 import newEvent from '../fixtures/newEvent';
 
 describe('New event', () => {
@@ -22,6 +23,15 @@ describe('New event', () => {
         cy.get(`#${key}`)[method](value);
       }
     });
+
+    const dayOfMonth = moment().format('DD');
+
+    cy.get('#date_range_start_date').click();
+    cy.get(`#date_range_start_date_wrapper .react-datepicker__day--0${dayOfMonth}`).click();
+
+    cy.get('#date_range_end_date').click();
+    cy.get(`#date_range_end_date_wrapper .react-datepicker__day--0${dayOfMonth}`).click();
+
     cy.get('button[type="submit"]').click();
 
     cy.contains('Kiitos ilmoituksesta');

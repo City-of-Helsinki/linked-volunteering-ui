@@ -55,9 +55,9 @@ class DateTime extends PureComponent {
     return (
       <Fragment>
         <Row>
-          <Col sm="12" md={{ size: 4, offset: 1 }}>
+          <Col sm="12" md={{ size: 4, offset: 1 }} id="date_range_start_date_wrapper">
             <DatePicker
-              id="date_range.start_date"
+              id="date_range_start_date"
               required
               label="form.event.partitions.date_range.start_date.label"
               placeholder="form.event.partitions.date_range.start_date.placeholder"
@@ -80,9 +80,9 @@ class DateTime extends PureComponent {
               useShortMonthInDropdown
             />
           </Col>
-          <Col sm="12" md={{ size: 4 }}>
+          <Col sm="12" md={{ size: 4 }} id="date_range_end_date_wrapper">
             <DatePicker
-              id="date_range.end_date"
+              id="date_range_end_date"
               required
               label="form.event.partitions.date_range.end_date.label"
               placeholder="form.event.partitions.date_range.end_date.placeholder"

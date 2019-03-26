@@ -2,21 +2,29 @@ import React from 'react';
 import DatePicker from 'react-datepicker';
 import Input from './Input';
 
-const DatePickerField = ({ id, label, required, error, touched, text, placeholder, ...rest }) => (
-  <DatePicker
-    customInput={
-      <Input
-        alternativeId={id}
-        alternativeLabel={label}
-        alternativeRequired={required}
-        error={error}
-        touched={touched}
-        text={text}
-        placeholder={placeholder}
-      />
-    }
-    {...rest}
-  />
-);
+export default class DatePickerField extends React.Component {
+  handleDateChangeRaw = e => {
+    e.preventDefault();
+  };
 
-export default DatePickerField;
+  render = () => {
+    const { id, label, required, error, touched, text, placeholder, ...rest } = this.props;
+    return (
+      <DatePicker
+        onChangeRaw={this.handleDateChangeRaw}
+        customInput={
+          <Input
+            alternativeId={id}
+            alternativeLabel={label}
+            alternativeRequired={required}
+            error={error}
+            touched={touched}
+            text={text}
+            placeholder={placeholder}
+          />
+        }
+        {...rest}
+      />
+    );
+  };
+}
