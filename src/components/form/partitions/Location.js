@@ -126,6 +126,7 @@ class Location extends React.Component {
               id="maintenance_location"
               label="form.event.field.trash_location.label"
               placeholder="form.event.field.trash_location.placeholder"
+              text="form.event.new.info"
               required
               error={errors.maintenance_location}
               touched={touched.maintenance_location}
