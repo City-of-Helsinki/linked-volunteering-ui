@@ -180,7 +180,7 @@ class EventsPage extends PureComponent {
                             <span>{event.organizer_email}</span>
                           </WithIcons>
                           <WithIcons component={DetailsCluster} prepend="mapMarker">
-                            <strong>Osoitejuttu?</strong>
+                            <strong>{event.maintenance_location}</strong>
                           </WithIcons>
                           <p>{event.description}</p>
                           <div>
