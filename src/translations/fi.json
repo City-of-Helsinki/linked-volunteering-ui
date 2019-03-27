@@ -64,6 +64,7 @@
   "form.validation.mixed.required": "Pakollinen kenttä!",
   "form.validation.mixed.not.number": "Kentän tulee olla numero!",
   "form.validation.number.positive": "Numeron pitää olla positiivinen!",
+  "form.validation.number.max": "Numero on liian suuri!",
   "form.validation.string.matches": "Kentän tulee olla annetussa muodossa!",
   "form.validation.string.email": "Kentän tulee olla kelvollinen sähköpostiosoite!",
   "form.validation.string.phone": "Tarkista puhelinnumero!",
