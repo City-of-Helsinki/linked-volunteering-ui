@@ -254,7 +254,7 @@ export default ({
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
         <Input
-          type="text"
+          type="number"
           id="trash_picker_count"
           label="form.event.field.trash_pickers.label"
           placeholder="form.event.field.trash_pickers.placeholder"

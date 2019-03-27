@@ -19,7 +19,7 @@ export const defaultValues = {
   additional_information: '',
   large_trash_bag_count: '',
   small_trash_bag_count: '',
-  trash_picker_count: ''
+  trash_picker_count: null
 };
 
 const phoneRegex = /[0-9 +()]{6,19}/;
@@ -71,6 +71,7 @@ export const validationSchema = yup.object().shape({
   trash_picker_count: yup
     .number()
     .positive('form.validation.number.positive')
+    .max(50, 'form.validation.number.max')
     .required()
 });
 
