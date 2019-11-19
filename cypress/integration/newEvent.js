@@ -24,13 +24,13 @@ describe('New event', () => {
       }
     });
 
-    const dayOfMonth = moment().format('DD');
-
     cy.get('#date_range_start_date').click();
-    cy.get(`#date_range_start_date_wrapper .react-datepicker__day--0${dayOfMonth}`).click();
+    cy.get(`#date_range_start_date_wrapper .react-datepicker__navigation--next`).click();
+    cy.get(`#date_range_start_date_wrapper .react-datepicker__day--015`).click();
 
     cy.get('#date_range_end_date').click();
-    cy.get(`#date_range_end_date_wrapper .react-datepicker__day--0${dayOfMonth}`).click();
+    cy.get(`#date_range_end_date_wrapper .react-datepicker__navigation--next`).click();
+    cy.get(`#date_range_end_date_wrapper .react-datepicker__day--016`).click();
 
     cy.get('button[type="submit"]').click();
 
