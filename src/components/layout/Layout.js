@@ -55,7 +55,6 @@ const PageWrapper = styled.div`
 
 const Options = styled.div`
   display: flex;
-  margin-right: 1em;
 `;
 
 const UserAction = styled.a`
@@ -128,9 +127,7 @@ const Layout = ({ children, paddingTop, paddingBottom, user, auth }) => {
               {hasUser && (
                 <UserAction onClick={() => userManager.signoutRedirect()}>
                   <UserIcon name="user" color="black" />
-                  <FormattedMessage id="site.nav.user.logout">
-                    {txt => <ShowOnTablet>{txt}</ShowOnTablet>}
-                  </FormattedMessage>
+                  <FormattedMessage id="site.nav.user.logout" />
                 </UserAction>
               )}
             </Options>
