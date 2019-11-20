@@ -13,6 +13,12 @@ import Footer from './Footer';
 import userManager from '../../utils/userManager';
 import responsive, { ShowOnTablet } from '../../utils/responsive';
 
+const LayoutWrapper = styled.div`
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 100vh;
+`;
+
 const Content = styled.div`
   background-color: ${props => props.theme.colors.lightGray};
 `;
@@ -110,7 +116,7 @@ const Layout = ({ children, paddingTop, paddingBottom, user, auth }) => {
   const isContractor = auth ? auth.is_contractor : false;
 
   return (
-    <Fragment>
+    <LayoutWrapper>
       <TopNavbar expand="md">
         <Container>
           <NavbarBrand href="/">
@@ -154,13 +160,15 @@ const Layout = ({ children, paddingTop, paddingBottom, user, auth }) => {
         <PageWrapper paddingTop={paddingTop} paddingBottom={paddingBottom}>
           {children}
         </PageWrapper>
-        <KoroSection color="green" />
-        <Footer />
       </Content>
 
+      <div>
+        <KoroSection color="green" />
+        <Footer />
+      </div>
       <Notifications />
       <Modal />
-    </Fragment>
+    </LayoutWrapper>
   );
 };
 

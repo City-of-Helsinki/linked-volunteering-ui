@@ -28,7 +28,7 @@ const FormContainer = styled(Container)`
 `;
 
 const TitleRow = styled(Row)`
-  margin-top: 1.5em;
+  padding-top: 1.5em;
   margin-bottom: 1.5em;
 `;
 
