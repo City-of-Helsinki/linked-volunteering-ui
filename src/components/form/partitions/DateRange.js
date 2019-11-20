@@ -1,22 +1,22 @@
 import React, { PureComponent, Fragment } from 'react';
 import { Row, Col } from 'reactstrap';
-import { addDays } from 'date-fns';
+import { addDays, addHours } from 'date-fns';
 import { injectIntl } from 'react-intl';
 
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import fi from 'date-fns/locale/fi';
+import sv from 'date-fns/locale/sv';
 import DatePicker from '../fields/DatePicker';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './dateRange.scss';
 
 registerLocale('fi', fi);
+registerLocale('sv', sv);
 setDefaultLocale('fi');
 
 const now = new Date();
 const minDate = addDays(now, 8);
-const dateFormat = 'd.M.yyyy';
-const timeFormat = 'HH:mm';
 const timeIntervals = 30;
 
 class DateTime extends PureComponent {
@@ -30,6 +30,10 @@ class DateTime extends PureComponent {
     });
   };
 
+  handleDateChange = (id, oldDate) => value => {
+    this.onChange(id)(oldDate ? value : addHours(value, 9));
+  };
+
   onBlur = id => value => {
     const { handleBlur } = this.props;
     handleBlur({
@@ -40,17 +44,41 @@ class DateTime extends PureComponent {
     });
   };
 
+  getDateFormat = locale => {
+    switch (locale) {
+      case 'en':
+        return 'dd/MM/yyyy';
+      case 'sv':
+      case 'fi':
+      default:
+        return 'dd.MM.yyyy';
+    }
+  };
+
+  getTimeFormat = locale => {
+    switch (locale) {
+      case 'en':
+        return 'h:mm a';
+      case 'sv':
+        return 'HH:mm';
+      case 'fi':
+      default:
+        return 'HH.mm';
+    }
+  };
+
   render() {
     const {
       errors,
       touched,
       values,
       unavailableDates,
-      intl: { formatMessage }
+      intl: { formatMessage, locale }
     } = this.props;
-
     const selectedStartTime = values.start_time;
     const selectedEndTime = values.end_time;
+    const dateFormat = this.getDateFormat(locale);
+    const timeFormat = this.getTimeFormat(locale);
 
     return (
       <Fragment>
@@ -62,10 +90,10 @@ class DateTime extends PureComponent {
               label="form.event.partitions.date_range.start_date.label"
               placeholder="form.event.partitions.date_range.start_date.placeholder"
               text="form.event.partitions.date_range.start_date.text"
-              locale="fi"
+              locale={locale}
               error={errors.start_time}
               touched={touched.start_time}
-              onChange={this.onChange('start_time')}
+              onChange={this.handleDateChange('start_time', values.start_time)}
               onBlur={this.onBlur('start_time')}
               highlightDates={[now]}
               selected={selectedStartTime}
@@ -86,10 +114,10 @@ class DateTime extends PureComponent {
               required
               label="form.event.partitions.date_range.end_date.label"
               placeholder="form.event.partitions.date_range.end_date.placeholder"
-              locale="fi"
+              locale={locale}
               error={errors.end_time}
               touched={touched.end_time}
-              onChange={this.onChange('end_time')}
+              onChange={this.handleDateChange('end_time', values.end_time)}
               onBlur={this.onBlur('end_time')}
               selected={selectedEndTime}
               dateFormat={dateFormat}
@@ -110,7 +138,7 @@ class DateTime extends PureComponent {
               id="date_range.start_time"
               label="form.event.partitions.date_range.start_time.label"
               placeholder="form.event.partitions.date_range.start_time.placeholder"
-              locale="fi"
+              locale={locale}
               error={errors.start_time}
               touched={touched.start_time}
               onChange={this.onChange('start_time')}
@@ -130,7 +158,7 @@ class DateTime extends PureComponent {
               id="date_range.end_time"
               label="form.event.partitions.date_range.end_time.label"
               placeholder="form.event.partitions.date_range.end_time.placeholder"
-              locale="fi"
+              locale={locale}
               error={errors.end_time}
               touched={touched.end_time}
               onChange={this.onChange('end_time')}
