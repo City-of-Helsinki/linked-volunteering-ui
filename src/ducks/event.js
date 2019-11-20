@@ -9,7 +9,8 @@ const defaultState = Record({
   next: { limit: 10 },
   events: Map(),
   filterByContractZone: null,
-  ordering: ordering()
+  ordering: ordering(),
+  submittedEvent: null
 });
 
 export const getEvents = createAction('GET_EVENTS', eventService.getEvents);
@@ -33,7 +34,10 @@ export default (state = defaultState(), action) => {
         .update('events', events => events.merge(payload.events));
     }
     case 'SUBMIT_EVENT_FULFILLED':
-      return state.update('count', count => count + 1).setIn(['events', payload.id], payload);
+      return state
+        .set('submittedEvent', payload)
+        .update('count', count => count + 1)
+        .setIn(['events', payload.id], payload);
     case 'MODIFY_EVENT_FULFILLED':
     case 'PUBLISH_EVENT_FULFILLED':
       return state.setIn(['events', payload.id], payload);
