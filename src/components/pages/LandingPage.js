@@ -44,6 +44,12 @@ const StyledLink = styled(LocalizedLink)`
   &:hover {
     color: ${props => props.theme.helBlack};
   }
+
+  span {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `;
 
 const LandingPage = () => (
@@ -51,7 +57,7 @@ const LandingPage = () => (
     <PageContainer>
       <Container>
         <Row>
-          <Col md="7">
+          <Col md={12} lg={7}>
             <ContentWrapper>
               <FormattedMessage tagName="h1" id="site.page.landing.hero.headline" />
               <FormattedHTMLMessage tagName="p" id="site.page.landing.hero.introduction" />
@@ -60,14 +66,14 @@ const LandingPage = () => (
           </Col>
         </Row>
         <Row>
-          <Col md="3">
+          <Col md={6} lg={4}>
             <StyledLink
               translate="site.page.landing.hero.button"
               className="btn btn-block"
               to="event/new"
             />
           </Col>
-          <Col md="3">
+          <Col md={6} lg={4}>
             <a
               className="btn btn-link btn-block"
               href="https://www.hel.fi/helsinki/fi/asuminen-ja-ymparisto/luonto-ja-viheralueet/puistot/vapaaehtoistyo/"
