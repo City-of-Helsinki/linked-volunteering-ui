@@ -94,10 +94,12 @@ const SubmittedPage = ({ submittedEvent }) => {
       description: submittedEvent.description
     };
     createEvent(event, (error, value) => {
-      if (error) console.error(error);
-
-      const blob = new Blob([value], { type: 'text/calendar' });
-      saveAs(blob, 'event.ics');
+      if (error) {
+        console.error(error);
+      } else {
+        const blob = new Blob([value], { type: 'text/calendar' });
+        saveAs(blob, 'event.ics');
+      }
     });
   };
 
