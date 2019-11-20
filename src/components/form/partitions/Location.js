@@ -84,7 +84,7 @@ class Location extends React.Component {
     return (
       <Fragment>
         <Row>
-          <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 4, offset: 1 }}>
+          <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
             {neighborhoods.size > 0 && (
               <AutoSuggest
                 id="neighborhood"
@@ -102,7 +102,7 @@ class Location extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col sm="10" md={{ size: 8, offset: 1 }} lg={{ size: 8, offset: 1 }}>
+          <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 8, offset: 1 }}>
             <Map
               id="location"
               bounds={this.state.bounds}
