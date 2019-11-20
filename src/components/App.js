@@ -6,7 +6,7 @@ import { IntlProvider } from 'react-intl';
 import messages from '../config/translations';
 
 import NewEventPage from './pages/events/containers/NewEventPageContainer';
-import SubmittedPage from './pages/events/SubmittedPage';
+import SubmittedPage from './pages/events/containers/SubmittedPageContainer';
 import LandingPage from './pages/LandingPage';
 import AdminRoutes from './Admin';
 import Login from './Login';

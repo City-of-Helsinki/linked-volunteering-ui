@@ -29,7 +29,8 @@ class Location extends React.Component {
     const { updateAddress } = this.state;
 
     const paths = [
-      ['selectedAddress', 'street', 'name', locale || 'fi'],
+      // API doesn't return English street name so use Finnish street name in that
+      ['selectedAddress', 'street', 'name', locale !== 'en' ? locale || 'fi' : 'fi'],
       ['selectedAddress', 'number']
     ];
 
