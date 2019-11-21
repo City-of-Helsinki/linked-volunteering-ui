@@ -11,7 +11,7 @@ import Modal from '../modal/containers/ModalContainer';
 import KoroSection from './KoroSection';
 import Footer from './Footer';
 import userManager from '../../utils/userManager';
-import responsive, { ShowOnTablet } from '../../utils/responsive';
+import responsive from '../../utils/responsive';
 
 const LayoutWrapper = styled.div`
   display: grid;
