@@ -1,3 +1,5 @@
+import { compose } from 'recompose';
+import { withRouter } from 'react-router';
 import React from 'react';
 import { injectIntl } from 'react-intl';
 import { Dropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap';
@@ -52,6 +54,20 @@ class LanguageDropdown extends React.Component {
     });
   };
 
+  changeLanguage = language => event => {
+    const {
+      intl: { locale },
+      history: { push },
+      location: { pathname }
+    } = this.props;
+    const url = pathname.startsWith(`/${locale}`)
+      ? pathname.replace(`/${locale}`, `/${language}`)
+      : `/${language}${pathname}`;
+
+    event.preventDefault();
+    push(url);
+  };
+
   render() {
     const { intl } = this.props;
 
@@ -64,13 +80,31 @@ class LanguageDropdown extends React.Component {
           </StyledSelector>
         </LanguageSelector>
         <DropdownMenu>
-          <IntlComponent Component={DropdownItem} href="/fi" id="site.language.fi" />
-          <IntlComponent Component={DropdownItem} href="/sv" id="site.language.sv" />
-          <IntlComponent Component={DropdownItem} href="/en" id="site.language.en" />
+          <IntlComponent
+            Component={DropdownItem}
+            href="/fi"
+            onClick={this.changeLanguage('fi')}
+            id="site.language.fi"
+          />
+          <IntlComponent
+            Component={DropdownItem}
+            href="/sv"
+            onClick={this.changeLanguage('sv')}
+            id="site.language.sv"
+          />
+          <IntlComponent
+            Component={DropdownItem}
+            href="/en"
+            onClick={this.changeLanguage('en')}
+            id="site.language.en"
+          />
         </DropdownMenu>
       </Dropdown>
     );
   }
 }
 
-export default injectIntl(LanguageDropdown);
+export default compose(
+  injectIntl,
+  withRouter
+)(LanguageDropdown);
