@@ -40,6 +40,7 @@ const FirstTd = styled.td`
 
 const TableWrapper = styled.div`
   overflow: scroll;
+  max-width: calc(100vw - 2rem);
 `;
 
 const Table = styled.table`
