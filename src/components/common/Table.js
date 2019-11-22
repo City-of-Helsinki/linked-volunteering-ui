@@ -18,21 +18,77 @@ const StyledTr = styled.tr`
     return css`
       &:nth-of-type(2n + 1) {
         background-color: #fafafa;
+        td {
+          background-color: #fafafa;
+        }
       }
       &:nth-of-type(2n) {
         background-color: #ffffff;
+        td {
+          background-color: #ffffff;
+        }
       }
     `;
   }}
 `;
 
 const FirstTd = styled.td`
-  background: ${props => (props.highlighted ? 'orange' : 'none')};
+  background: ${props => (props.highlighted ? 'orange !important' : 'none')};
   width: 5px;
+  min-width: 5px;
+`;
+
+const TableWrapper = styled.div`
+  overflow: scroll;
 `;
 
 const Table = styled.table`
   width: 100%;
+
+  thead tr th {
+    background: #f7f7f7;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+
+    // The first cell that lives in the top left of our spreadsheet
+    &:first-of-type {
+      left: 0;
+      z-index: 3;
+    }
+    ${props => {
+      if (props.firstColumn) {
+        return css`
+          &:nth-of-type(2) {
+            left: 5px;
+            z-index: 3;
+          }
+        `;
+      }
+      return null;
+    }}
+  }
+
+  tbody tr td {
+    &:first-of-type {
+      position: sticky;
+      left: 0;
+      z-index: 1;
+    }
+
+    ${props => {
+      if (props.firstColumn) {
+        return css`
+          &:nth-of-type(2) {
+            position: sticky;
+            left: 5px;
+            z-index: 1;
+          }
+        `;
+      }
+      return null;
+    }}
+  }
 `;
 
 const HeaderText = styled.span`
@@ -81,33 +137,35 @@ const getOrderIcon = order => {
 };
 
 export default ({ id, firstColumn, headers, actionColSpan, children, setOrderBy, ordering }) => (
-  <Table id={id}>
-    <thead>
-      <tr>
-        {firstColumn && <th />}
-        {headers.map(({ key, translation, hasOrderBy }) => {
-          const order = getOrder(key, ordering);
-          return (
-            <Th key={key}>
-              <IntlComponent Component={HeaderText} id={`site.table.header.${translation}`} />
-              {hasOrderBy && (
-                <Button
-                  prepend={getOrderIcon(order)}
-                  color="link"
-                  onClick={() =>
-                    setOrderBy({
-                      key,
-                      order: order || 'ASC'
-                    })
-                  }
-                />
-              )}
-            </Th>
-          );
-        })}
-        {actionColSpan && <Th colSpan={actionColSpan} />}
-      </tr>
-    </thead>
-    <tbody>{children}</tbody>
-  </Table>
+  <TableWrapper>
+    <Table firstColumn={firstColumn} id={id}>
+      <thead>
+        <tr>
+          {firstColumn && <th />}
+          {headers.map(({ key, translation, hasOrderBy }) => {
+            const order = getOrder(key, ordering);
+            return (
+              <Th key={key}>
+                <IntlComponent Component={HeaderText} id={`site.table.header.${translation}`} />
+                {hasOrderBy && (
+                  <Button
+                    prepend={getOrderIcon(order)}
+                    color="link"
+                    onClick={() =>
+                      setOrderBy({
+                        key,
+                        order: order || 'ASC'
+                      })
+                    }
+                  />
+                )}
+              </Th>
+            );
+          })}
+          {actionColSpan && <Th colSpan={actionColSpan} />}
+        </tr>
+      </thead>
+      <tbody>{children}</tbody>
+    </Table>
+  </TableWrapper>
 );
