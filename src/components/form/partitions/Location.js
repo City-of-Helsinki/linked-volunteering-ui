@@ -29,7 +29,8 @@ class Location extends React.Component {
     const { updateAddress } = this.state;
 
     const paths = [
-      ['selectedAddress', 'street', 'name', locale || 'fi'],
+      // API doesn't return English street name so use Finnish street name in that
+      ['selectedAddress', 'street', 'name', locale !== 'en' ? locale || 'fi' : 'fi'],
       ['selectedAddress', 'number']
     ];
 
@@ -83,7 +84,7 @@ class Location extends React.Component {
     return (
       <Fragment>
         <Row>
-          <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 4, offset: 1 }}>
+          <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
             {neighborhoods.size > 0 && (
               <AutoSuggest
                 id="neighborhood"
@@ -101,7 +102,7 @@ class Location extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col sm="10" md={{ size: 8, offset: 1 }} lg={{ size: 8, offset: 1 }}>
+          <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 8, offset: 1 }}>
             <Map
               id="location"
               bounds={this.state.bounds}

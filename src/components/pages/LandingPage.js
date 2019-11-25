@@ -44,6 +44,12 @@ const StyledLink = styled(LocalizedLink)`
   &:hover {
     color: ${props => props.theme.helBlack};
   }
+
+  span {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `;
 
 const LandingPage = props => {

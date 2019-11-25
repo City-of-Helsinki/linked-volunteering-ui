@@ -11,7 +11,13 @@ import Modal from '../modal/containers/ModalContainer';
 import KoroSection from './KoroSection';
 import Footer from './Footer';
 import userManager from '../../utils/userManager';
-import responsive, { ShowOnTablet } from '../../utils/responsive';
+import responsive from '../../utils/responsive';
+
+const LayoutWrapper = styled.div`
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 100vh;
+`;
 
 const Content = styled.div`
   background-color: ${props => props.theme.colors.lightGray};
@@ -49,7 +55,6 @@ const PageWrapper = styled.div`
 
 const Options = styled.div`
   display: flex;
-  margin-right: 1em;
 `;
 
 const UserAction = styled.a`
@@ -110,7 +115,7 @@ const Layout = ({ children, paddingTop, paddingBottom, user, auth }) => {
   const isContractor = auth ? auth.is_contractor : false;
 
   return (
-    <Fragment>
+    <LayoutWrapper>
       <TopNavbar expand="md">
         <Container>
           <NavbarBrand href="/">
@@ -122,9 +127,7 @@ const Layout = ({ children, paddingTop, paddingBottom, user, auth }) => {
               {hasUser && (
                 <UserAction onClick={() => userManager.signoutRedirect()}>
                   <UserIcon name="user" color="black" />
-                  <FormattedMessage id="site.nav.user.logout">
-                    {txt => <ShowOnTablet>{txt}</ShowOnTablet>}
-                  </FormattedMessage>
+                  <FormattedMessage id="site.nav.user.logout" />
                 </UserAction>
               )}
             </Options>
@@ -154,13 +157,15 @@ const Layout = ({ children, paddingTop, paddingBottom, user, auth }) => {
         <PageWrapper paddingTop={paddingTop} paddingBottom={paddingBottom}>
           {children}
         </PageWrapper>
-        <KoroSection color="green" />
-        <Footer />
       </Content>
 
+      <div>
+        <KoroSection color="green" />
+        <Footer />
+      </div>
       <Notifications />
       <Modal />
-    </Fragment>
+    </LayoutWrapper>
   );
 };
 
