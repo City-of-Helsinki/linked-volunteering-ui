@@ -3,6 +3,7 @@
   "site.language.fi": "Suomeksi",
   "site.language.sv": "På svenska",
   "site.language.en": "In English",
+
   "site.nav.create_event": "Anmäl ett nytt parktalko",
   "site.nav.report": "Årsrapporter",
   "site.nav.manage_events": "Hantera evenemang",
@@ -13,9 +14,9 @@
   "site.footer.upcoming_events": "Kommande evenemang",
   "site.footer.create_event": "Anmäl ett nytt talko",
   "site.footer.contacts": "Ta kontakt",
-  "site.footer.url.contacts": "https://www.hel.fi/helsinki/fi/asuminen-ja-ymparisto/luonto-ja-viheralueet/puistot/vapaaehtoistyo/",
+  "site.footer.url.contacts": "https://www.hel.fi/helsinki/sv/boende-och-miljo/natur/parker/volontararbete/",
   "site.footer.give_feedback": "Ge feedback",
-  "site.footer.url.feedback": "https://www.hel.fi/helsinki/fi/kaupunki-ja-hallinto/osallistu-ja-vaikuta/palaute/",
+  "site.footer.url.feedback": "https://www.hel.fi/helsinki/sv/stad-och-forvaltning/delta/feedback/",
 
   "site.table.header.manage_events.name": "Namn",
   "site.table.header.manage_events.organizer_email": "Arrangör",
@@ -41,6 +42,7 @@
   "site.page.landing.hero.call_to_action": "Kom med och delta!",
   "site.page.landing.hero.button": "Anmäl ett parktalko",
   "site.page.landing.hero.link": "Information om tjänsten",
+  "site.page.landing.hero.url": "https://www.hel.fi/helsinki/sv/boende-och-miljo/natur/parker/volontararbete/",
 
   "site.page.thank_you.header": "Tack för din anmälan om evenemanget!",
   "site.page.thank_you.paragraph": "Din anmälan har registrerats i tjänsten. Vi skickar ett bekräftelsemeddelande och närmare information om arrangemangen när vi har kontrollerat uppgifterna i anmälan. Tillsammans skapar vi en trivsammare stadsmiljö.",
