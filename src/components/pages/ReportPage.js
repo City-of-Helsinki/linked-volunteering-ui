@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-
 import styled from 'styled-components';
 import { Container, Row, Col } from 'reactstrap';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { CSVLink } from 'react-csv';
 
+import { TABLE_PAGE_SIZE } from '../../constants';
 import Layout from '../layout/containers/LayoutContainer';
 import Select from '../form/fields/Select';
-
 import Table, { Td, Tr } from '../common/Table';
+import Pagination from '../common/Pagination';
 import IntlComponent from '../common/IntlComponent';
 
 const FormContainer = styled(Container)`
@@ -57,9 +57,39 @@ class ReportPage extends Component {
     window.scrollTo(0, 0);
   }
 
+  state = {
+    activePage: 1,
+    pageCount: 1
+  };
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.reports !== this.props.reports) {
+      this.setState({
+        activePage: 1,
+        pageCount: (this.props.reports.size || 1) / TABLE_PAGE_SIZE
+      });
+    }
+  }
+
   handleChange = e => {
     const { getReport, apiAccessToken } = this.props;
     getReport(e.target.value, apiAccessToken);
+  };
+
+  handlePageClick = page => {
+    this.setState({
+      activePage: page
+    });
+  };
+
+  getPaginatedReports = () => {
+    const { reports } = this.props;
+    const { activePage } = this.state;
+
+    return [...reports.valueSeq()].slice(
+      (activePage - 1) * TABLE_PAGE_SIZE,
+      Math.min(activePage * TABLE_PAGE_SIZE, reports.size)
+    );
   };
 
   render() {
@@ -69,6 +99,8 @@ class ReportPage extends Component {
       ordering,
       intl: { formatMessage }
     } = this.props;
+    const { activePage, pageCount } = this.state;
+    const paginatedReports = this.getPaginatedReports();
 
     const eventAmount = reports.reduce((acc, row) => acc + row.event_count, 0);
     const participantAmount = reports.reduce((acc, row) => acc + row.estimated_attendee_count, 0);
@@ -149,8 +181,8 @@ class ReportPage extends Component {
                 setOrderBy={setOrderBy}
                 ordering={ordering}
               >
-                {reports &&
-                  reports.valueSeq().map(report => (
+                {paginatedReports &&
+                  paginatedReports.map(report => (
                     <Tr key={report.id}>
                       <Td>{report.name}</Td>
                       <Td>{report.contact_person}</Td>
@@ -161,6 +193,11 @@ class ReportPage extends Component {
                     </Tr>
                   ))}
               </Table>
+              <Pagination
+                activePage={activePage}
+                onPageClick={this.handlePageClick}
+                pageCount={pageCount}
+              />
             </Col>
           </Row>
         </FormContainer>
