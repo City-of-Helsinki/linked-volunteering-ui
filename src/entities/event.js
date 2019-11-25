@@ -56,23 +56,23 @@ export const validationSchema = yup.object().shape({
   estimated_attendee_count: yup
     .number()
     .positive('form.validation.number.positive')
-    .required(),
+    .required('form.validation.mixed.not.number'),
   targets: yup.string().required(),
   maintenance_location: yup.string().required(),
   additional_information: yup.string(),
   small_trash_bag_count: yup
     .number()
     .positive('form.validation.number.positive')
-    .required(),
+    .required('form.validation.mixed.not.number'),
   large_trash_bag_count: yup
     .number()
     .positive('form.validation.number.positive')
-    .required(),
+    .required('form.validation.mixed.not.number'),
   trash_picker_count: yup
     .number()
     .positive('form.validation.number.positive')
     .max(50, 'form.validation.number.max')
-    .required()
+    .required('form.validation.mixed.not.number')
 });
 
 export default defaultValues;
