@@ -13,9 +13,9 @@
   "site.footer.upcoming_events": "Upcoming events",
   "site.footer.create_event": "Notify about a new volunteer activity",
   "site.footer.contacts": "Contact",
-  "site.footer.url.contacts": "https://www.hel.fi/helsinki/fi/asuminen-ja-ymparisto/luonto-ja-viheralueet/puistot/vapaaehtoistyo/",
+  "site.footer.url.contacts": "https://www.hel.fi/helsinki/en/housing/nature/parks/voluntary/",
   "site.footer.give_feedback": "Feedback",
-  "site.footer.url.feedback": "https://www.hel.fi/helsinki/fi/kaupunki-ja-hallinto/osallistu-ja-vaikuta/palaute/",
+  "site.footer.url.feedback": "https://www.hel.fi/helsinki/en/administration/participate/feedback/",
 
   "site.table.header.manage_events.name": "Name",
   "site.table.header.manage_events.organizer_email": "Organiser",
@@ -41,6 +41,7 @@
   "site.page.landing.hero.call_to_action": "Take part in a volunteer activity!",
   "site.page.landing.hero.button": "Notify about a new park volunteer activity",
   "site.page.landing.hero.link": "Information about this service",
+  "site.page.landing.hero.url": "https://www.hel.fi/helsinki/en/housing/nature/parks/voluntary/",
 
   "site.page.thank_you.header": "Thank you for notifying about a new activity",
   "site.page.thank_you.paragraph": "Your notification has been added to the service. You will receive a confirmation message and further information about practical arrangements as soon as we have reviewed the details in your notification. Together we can create an even better urban environment!",

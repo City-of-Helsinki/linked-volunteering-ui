@@ -184,13 +184,15 @@ class EventsPage extends PureComponent {
                           </WithIcons>
                           <p>{event.description}</p>
                           <div>
-                            <Button
-                              id={`approve_event_${event.id}`}
-                              translate="site.page.manage_events.table.action.approve"
-                              color="primary"
-                              onClick={() => approve(event)}
-                              disabled={!isEventPending}
-                            />
+                            {!!isEventPending && (
+                              <Button
+                                id={`approve_event_${event.id}`}
+                                translate="site.page.manage_events.table.action.approve"
+                                color="primary"
+                                onClick={() => approve(event)}
+                                disabled={!isEventPending}
+                              />
+                            )}
                             <Button
                               id={`reject_event_${event.id}`}
                               translate="site.page.manage_events.table.action.remove"

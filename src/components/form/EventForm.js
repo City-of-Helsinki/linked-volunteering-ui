@@ -173,6 +173,7 @@ export default ({
           label="form.event.field.amount_of_volunteers.label"
           placeholder="form.event.field.amount_of_volunteers.placeholder"
           required
+          min={0}
           error={errors.estimated_attendee_count}
           touched={touched.estimated_attendee_count}
           value={values.estimated_attendee_count}
@@ -227,6 +228,7 @@ export default ({
           label="form.event.field.trash_bags.label"
           placeholder="form.event.field.trash_bags.placeholder"
           required
+          min={0}
           error={errors.large_trash_bag_count}
           touched={touched.large_trash_bag_count}
           value={values.large_trash_bag_count}
@@ -243,6 +245,7 @@ export default ({
           label="form.event.field.small_trash_bags.label"
           placeholder="form.event.field.small_trash_bags.placeholder"
           required
+          min={0}
           error={errors.small_trash_bag_count}
           touched={touched.small_trash_bag_count}
           value={values.small_trash_bag_count}
@@ -260,6 +263,7 @@ export default ({
           placeholder="form.event.field.trash_pickers.placeholder"
           text="form.event.field.trash_pickers.info"
           required
+          min={0}
           error={errors.trash_picker_count}
           touched={touched.trash_picker_count}
           value={values.trash_picker_count}

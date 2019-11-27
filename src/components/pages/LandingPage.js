@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
+import { FormattedMessage, FormattedHTMLMessage, injectIntl } from 'react-intl';
 import { Container, Row, Col } from 'reactstrap';
 import LocalizedLink from '../common/LocalizedLink';
 import Icon from '../common/Icon';
@@ -52,40 +52,46 @@ const StyledLink = styled(LocalizedLink)`
   }
 `;
 
-const LandingPage = () => (
-  <Layout>
-    <PageContainer>
-      <Container>
-        <Row>
-          <Col md={12} lg={7}>
-            <ContentWrapper>
-              <FormattedMessage tagName="h1" id="site.page.landing.hero.headline" />
-              <FormattedHTMLMessage tagName="p" id="site.page.landing.hero.introduction" />
-              <FormattedMessage tagName="strong" id="site.page.landing.hero.call_to_action" />
-            </ContentWrapper>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={6} lg={4}>
-            <StyledLink
-              translate="site.page.landing.hero.button"
-              className="btn btn-block"
-              to="event/new"
-            />
-          </Col>
-          <Col md={6} lg={4}>
-            <a
-              className="btn btn-link btn-block"
-              href="https://www.hel.fi/helsinki/fi/asuminen-ja-ymparisto/luonto-ja-viheralueet/puistot/vapaaehtoistyo/"
-            >
-              <FormattedHTMLMessage tagName="span" id="site.page.landing.hero.link" />
-              <Icon name="arrowRight" />
-            </a>
-          </Col>
-        </Row>
-      </Container>
-    </PageContainer>
-  </Layout>
-);
+const LandingPage = props => {
+  const {
+    intl: { formatMessage }
+  } = props;
 
-export default LandingPage;
+  return (
+    <Layout>
+      <PageContainer>
+        <Container>
+          <Row>
+            <Col md="7">
+              <ContentWrapper>
+                <FormattedMessage tagName="h1" id="site.page.landing.hero.headline" />
+                <FormattedHTMLMessage tagName="p" id="site.page.landing.hero.introduction" />
+                <FormattedMessage tagName="strong" id="site.page.landing.hero.call_to_action" />
+              </ContentWrapper>
+            </Col>
+          </Row>
+          <Row>
+            <Col md="3">
+              <StyledLink
+                translate="site.page.landing.hero.button"
+                className="btn btn-block"
+                to="event/new"
+              />
+            </Col>
+            <Col md="3">
+              <a
+                className="btn btn-link btn-block"
+                href={formatMessage({ id: 'site.page.landing.hero.url' })}
+              >
+                <FormattedHTMLMessage tagName="span" id="site.page.landing.hero.link" />
+                <Icon name="arrowRight" />
+              </a>
+            </Col>
+          </Row>
+        </Container>
+      </PageContainer>
+    </Layout>
+  );
+};
+
+export default injectIntl(LandingPage);
