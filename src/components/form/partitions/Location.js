@@ -25,12 +25,12 @@ class Location extends React.Component {
       setFieldTouched,
       setFieldError
     } = this.props;
-
+    const language = locale === 'sv' ? locale : 'fi';
     const { updateAddress } = this.state;
 
     const paths = [
       // API doesn't return English street name so use Finnish street name in that
-      ['selectedAddress', 'street', 'name', locale !== 'en' ? locale || 'fi' : 'fi'],
+      ['selectedAddress', 'street', 'name', language],
       ['selectedAddress', 'number']
     ];
 
@@ -63,10 +63,15 @@ class Location extends React.Component {
   };
 
   suggestionItem = neighborhood => {
+    const {
+      intl: { locale }
+    } = this.props;
+    const language = locale === 'sv' ? locale : 'fi';
+
     if (neighborhood.parent) {
-      return `${neighborhood.name.fi} (${neighborhood.parent.name.fi})`;
+      return `${neighborhood.name[language]} (${neighborhood.parent.name[language]})`;
     }
-    return neighborhood.name.fi;
+    return neighborhood.name[language];
   };
 
   render() {
