@@ -1,6 +1,6 @@
 import '@babel/polyfill';
 import React from 'react';
-import { Switch, Route } from 'react-router';
+import { Switch, Redirect, Route } from 'react-router';
 import { IntlProvider } from 'react-intl';
 
 import messages from '../config/translations';
@@ -17,6 +17,9 @@ const App = ({ locale }) => {
   return (
     <IntlProvider locale={language} key={language} messages={messages[language]}>
       <Switch>
+        <Route exact path="/logged_out">
+          <Redirect to="fi" />
+        </Route>
         <Route exact path="/login/" component={Login} />
         <Route exact path="/:locale/" component={LandingPage} />
         <Route exact path={`/:locale/event/new`} component={NewEventPage} />
