@@ -29,7 +29,7 @@ const getCurrentUserData = async () => {
   const userAuth = await getUserAuth(user);
   const apiAccessToken = userAuth.data[REACT_APP_OPEN_ID_API_TOKENS_SCOPE];
 
-  const userData = await axios.get(`${REACT_APP_API_URL}/v1/user/me`, {
+  const userData = await axios.get(`${REACT_APP_API_URL}/v1/user/me/`, {
     headers: { Authorization: `Bearer ${apiAccessToken}` },
     scope: REACT_APP_OPEN_ID_API_TOKENS_SCOPE
   });
