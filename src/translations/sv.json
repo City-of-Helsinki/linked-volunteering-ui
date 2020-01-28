@@ -145,6 +145,8 @@
   "notification.error.restricted_area": "Evenemanget kräver inloggning!",
   "notification.generic.error": "Hoppsan! Något gick fel...",
 
+  "modal.confirm_removal.body.location.text": "Adress saknas",
+  "modal.confirm_removal.body.time.at": " ",
   "modal.confirm_removal.header": "Ska evenemanget raderas?",
   "modal.confirm_removal.footer.button1.text": "Ja, radera evenemanget",
   "modal.confirm_removal.footer.button2.text": "Nej, återvänd",

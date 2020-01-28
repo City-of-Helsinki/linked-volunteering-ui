@@ -144,6 +144,8 @@
   "notification.error.restricted_area": "You must log in for this activity!",
   "notification.generic.error": "Oops! Something went wrong...",
 
+  "modal.confirm_removal.body.time.at": " ",
+  "modal.confirm_removal.body.location.text": "Address missing",
   "modal.confirm_removal.header": "Delete activity?",
   "modal.confirm_removal.footer.button1.text": "Yes, delete activity",
   "modal.confirm_removal.footer.button2.text": "No, go back",

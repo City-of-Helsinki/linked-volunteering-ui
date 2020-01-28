@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormattedDate, FormattedTime } from 'react-intl';
+import { FormattedDate, FormattedMessage, FormattedTime } from 'react-intl';
 
 import { addNotification } from '../../../ducks/notification';
 import { removeEvent } from '../../../ducks/event';
@@ -14,12 +14,14 @@ const Body = ({ values }) => (
       <Icon name="calendar" />
       <FormattedDate value={values.start_time} />
       <span>
-        klo <FormattedTime value={values.start_time} /> - <FormattedTime value={values.end_time} />
+        {' '}
+        <FormattedMessage tagName="span" id="modal.confirm_removal.body.time.at" />{' '}
+        <FormattedTime value={values.start_time} /> - <FormattedTime value={values.end_time} />
       </span>
     </div>
     <div>
       <Icon name="mapMarker" />
-      <span>Placeholder text for an address</span>
+      <FormattedMessage tagName="span" id="modal.confirm_removal.body.location.text" />
     </div>
   </div>
 );
