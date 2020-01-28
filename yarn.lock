@@ -4371,6 +4371,11 @@ date-fns@^2.0.1:
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.8.0.tgz#628d865367e30e45747ed1e8b0c1572090b04f55"
   integrity sha512-nbZMIMsoD7QiIKipZ5+XRTCtHZad1ch8OEkLaJxjGL6ThAK2IWAdjmAUAS7Fdz5fCaVWtqc+c8pAsN/MX8eaew==
 
+date-fns@^2.9.0:
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.9.0.tgz#d0b175a5c37ed5f17b97e2272bbc1fa5aec677d2"
+  integrity sha512-khbFLu/MlzLjEzy9Gh8oY1hNt/Dvxw3J6Rbc28cVoYWQaC1S3YI4xwkF9ZWcjDLscbZlY9hISMr66RFzZagLsA==
+
 date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
@@ -11431,10 +11436,10 @@ react-csv@^1.1.1:
   resolved "https://registry.yarnpkg.com/react-csv/-/react-csv-1.1.1.tgz#718dadd2607a1795bfc8dbd32ca282a043739634"
   integrity sha512-eQSrkEfzPN+1IeXT58kJaDNmpFr3RhdjfE09jTrw+jdTEp0g0Ig9NOI+TpvMBbCukE1HQhOf4dyrLDRFKgZzbA==
 
-react-datepicker@^2.10.0:
-  version "2.10.0"
-  resolved "https://registry.yarnpkg.com/react-datepicker/-/react-datepicker-2.10.0.tgz#c300dd00cf7d80861cd0d0cb0864994b342b937c"
-  integrity sha512-3dzmk+QJ2DML5sAHry8TWp8yRgHHkHwXKhirbOwCAdQIWXyLMdODgjhyqYZyk0KbAPnVSLqozIQ2xxN/eJb+vA==
+react-datepicker@^2.11.0:
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/react-datepicker/-/react-datepicker-2.11.0.tgz#61aa79750856f91ee452f296d91b9ae4ebbacb4d"
+  integrity sha512-eyaLRTX4CaMnW4HW34gYmG4cT/3R9vyAIEAQ1SSWKBO77pTs6RfxUzbLRKOheyIlQM7BmXhLGOxq80vvlCb09w==
   dependencies:
     classnames "^2.2.6"
     date-fns "^2.0.1"
