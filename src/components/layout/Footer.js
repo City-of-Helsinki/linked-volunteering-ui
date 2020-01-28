@@ -14,6 +14,7 @@ const Wrapper = styled.div`
   min-height: 15em;
   & a {
     color: #000;
+    text-decoration: underline;
   }
 
   ${responsive.sm`
@@ -49,8 +50,27 @@ const LogoWrapper = styled.div`
 `;
 
 const BottomLinks = styled.div`
-  text-align: right;
+  display: flex;
   padding: 1em 0;
+  flex-direction: column;
+
+  ${responsive.sm`
+    flex-direction: row;
+  `}
+`;
+
+const BottomLinksLeft = styled.div`
+  text-align: left;
+  flex: 1 1 0%;
+`;
+
+const BottomLinksRight = styled.div`
+  text-align: left;
+  flex: 1 1 0%;
+
+  ${responsive.sm`
+    text-align: right;
+  `}
 `;
 
 const Footer = ({ intl: { formatMessage } }) => (
@@ -72,11 +92,16 @@ const Footer = ({ intl: { formatMessage } }) => (
       <Icon name="helsinkiLogo" size="7x" color="#000" />
     </LogoWrapper>
     <BottomLinks>
-      <div>
+      <BottomLinksLeft>
+        <a href={formatMessage({ id: 'site.footer.privacyPolicy.url' })}>
+          <FormattedMessage tagName="span" id="site.footer.privacyPolicy.text" />
+        </a>
+      </BottomLinksLeft>
+      <BottomLinksRight>
         <a href={formatMessage({ id: 'site.footer.url.feedback' })}>
           <FormattedMessage tagName="span" id="site.footer.give_feedback" />
         </a>
-      </div>
+      </BottomLinksRight>
     </BottomLinks>
   </Wrapper>
 );

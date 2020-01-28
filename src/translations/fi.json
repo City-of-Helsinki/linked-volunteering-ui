@@ -16,6 +16,8 @@
   "site.footer.url.contacts": "https://www.hel.fi/helsinki/fi/asuminen-ja-ymparisto/luonto-ja-viheralueet/puistot/vapaaehtoistyo/",
   "site.footer.give_feedback": "Anna palautetta",
   "site.footer.url.feedback": "https://www.hel.fi/helsinki/fi/kaupunki-ja-hallinto/osallistu-ja-vaikuta/palaute/",
+  "site.footer.privacyPolicy.text": "Rekisteriseloste",
+  "site.footer.privacyPolicy.url": "https://www.hel.fi/static/liitteet/kanslia/rekisteriselosteet/Kymp/Kymp-EU-Kevatsiivoustalkoorekisteri.pdf",
 
   "site.table.header.manage_events.name": "Nimi",
   "site.table.header.manage_events.organizer_email": "Järjestäjä",
