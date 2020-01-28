@@ -132,7 +132,7 @@
   "form.event.partitions.date_range.end_date.placeholder": "dd.mm.åååå",
   "form.event.partitions.date_range.end_time.label": "Klockslag",
   "form.event.partitions.date_range.end_time.placeholder": "tt:mm",
-  "form.event.partitions.date_range.timeCaption": "Time",
+  "form.event.partitions.date_range.timeCaption": "Klockslag",
   "form.event.partitions.date_range.start_date.text": "Evenemangets startdag kan vara tidigast om en vecka räknat från idag",
 
   "form.report.field.year.label": "Välj år",
