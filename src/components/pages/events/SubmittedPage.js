@@ -12,29 +12,34 @@ import backgroundImage from '../../../assets/images/_MG_2851_c_Jussi_Hellsten.jp
 import responsive from '../../../utils/responsive';
 
 const PageContainer = styled.div`
+  max-width: 100vw;
   display: flex;
   overflow: hidden;
 `;
 
 const Content = styled.div`
-  flex: 0 0 55%;
-  padding-left: 1em;
-  padding-right: 1em;
-  padding-top: 2em;
-  padding-bottom: 3.5em;
+  flex: 0 0 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 3.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
 
   ${responsive.sm`
-    padding-left: 7em;
-    padding-right: 7em;
-    padding-top: 3.5em;
+    padding-left: 7rem;
+    padding-right: 7rem;
+    padding-top: 3.5rem;
 
     h1 {
       font-size: 4rem;
       line-height: 0.9;
     }
+  `}
+
+  ${responsive.md`
+    flex: 0 0 55%;
   `}
 
   h1 {
@@ -50,7 +55,7 @@ const Content = styled.div`
   p,
   a,
   strong {
-    font-size: 1.25em;
+    font-size: 1.25rem;
     margin-top: 1.5rem;
     margin-bottom: 2.5rem;
   }
@@ -62,6 +67,7 @@ const BackgroundImage = styled.img.attrs({
   flex: 0 0 45%;
   max-height: 80vh;
   display: none;
+
   ${responsive.md`
     display: block;
   `}
@@ -95,6 +101,7 @@ const SubmittedPage = ({ submittedEvent }) => {
     };
     createEvent(event, (error, value) => {
       if (error) {
+        // eslint-disable-next-line no-console
         console.error(error);
       } else {
         const blob = new Blob([value], { type: 'text/calendar' });
