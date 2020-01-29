@@ -155,5 +155,5 @@
   "modal.confirm_removal.footer.button2.text": "No, go back",
 
   "entities.event.state.waiting_for_approval": "Waiting for approval",
-  "entities.event.state.approved": "Published"
+  "entities.event.state.approved": "Approved"
 }

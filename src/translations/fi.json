@@ -156,5 +156,5 @@
   "modal.confirm_removal.footer.button2.text": "Ei, palaa takaisin",
 
   "entities.event.state.waiting_for_approval": "Odottaa",
-  "entities.event.state.approved": "Julkaistu"
+  "entities.event.state.approved": "Hyväksytty"
 }

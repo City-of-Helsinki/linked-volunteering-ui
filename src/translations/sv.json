@@ -156,5 +156,5 @@
   "modal.confirm_removal.footer.button2.text": "Nej, återvänd",
 
   "entities.event.state.waiting_for_approval": "Väntar",
-  "entities.event.state.approved": "Publicerat"
+  "entities.event.state.approved": "Godkänt"
 }
