@@ -1,8 +1,13 @@
 import React from 'react';
+import { injectIntl } from 'react-intl';
+
 import Select from '../form/fields/Select';
 
-const ContractZones = ({ contractZones, onChange }) => (
-  <Select onChange={onChange}>
+const ContractZones = ({ contractZones, intl: { formatMessage }, onChange }) => (
+  <Select
+    noneSelectedText={formatMessage({ id: 'form.manage_events.field.activities.noneSelectedText' })}
+    onChange={onChange}
+  >
     {contractZones
       .valueSeq()
       .sortBy(contractZone => contractZone.name)
@@ -14,4 +19,4 @@ const ContractZones = ({ contractZones, onChange }) => (
   </Select>
 );
 
-export default ContractZones;
+export default injectIntl(ContractZones);

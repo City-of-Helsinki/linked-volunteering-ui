@@ -7,6 +7,7 @@ const SelectField = ({
   id,
   label,
   children,
+  noneSelectedText,
   required,
   error,
   touched,
@@ -21,7 +22,7 @@ const SelectField = ({
       </Label>
     )}
     <Input type="select" id={id} {...rest} invalid={error && touched}>
-      <option />
+      <option>{noneSelectedText}</option>
       {children}
     </Input>
     <FormFeedback>{error && formatMessage({ id: error })}</FormFeedback>

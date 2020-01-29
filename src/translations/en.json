@@ -136,6 +136,8 @@
   "form.event.partitions.date_range.timeCaption": "Time",
   "form.event.partitions.date_range.start_date.text": "The starting date must be at least one week from now",
 
+  "form.manage_events.field.activities.noneSelectedText": "All",
+
   "form.report.field.year.label": "Select year",
   "form.report.button.submit": "Search",
 

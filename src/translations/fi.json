@@ -137,6 +137,8 @@
   "form.event.partitions.date_range.timeCaption": "Aika",
   "form.event.partitions.date_range.start_date.text": "Tapahtuman alkamispäivä voi olla tästä päivästä viikko eteenpäin",
 
+  "form.manage_events.field.activities.noneSelectedText": "Kaikki",
+
   "form.report.field.year.label": "Valitse vuosi",
   "form.report.button.submit": "Hae",
 

@@ -137,6 +137,8 @@
   "form.event.partitions.date_range.timeCaption": "Klockslag",
   "form.event.partitions.date_range.start_date.text": "Evenemangets startdag kan vara tidigast om en vecka räknat från idag",
 
+  "form.manage_events.field.activities.noneSelectedText": "Allt",
+
   "form.report.field.year.label": "Välj år",
   "form.report.button.submit": "Sök",
 
