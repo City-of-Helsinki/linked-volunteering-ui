@@ -13,7 +13,6 @@ const LanguageSelector = styled(DropdownToggle)`
   background-color: #fff;
   box-shadow: none;
   border: 0em;
-  width: 7.2em;
   text-align: right;
 `;
 
@@ -22,7 +21,7 @@ const StyledSelector = styled.div`
   align-items: center;
   justify-content: flex-end;
 
-  & span {
+  & > span:last-of-type {
     margin-left: 0.5em;
   }
 `;
