@@ -116,7 +116,8 @@ const Layout = ({ children, paddingTop, paddingBottom, user, auth }) => {
 
   return (
     <LayoutWrapper>
-      <TopNavbar expand="md">
+      {/* Set min-height to navbar to prevent page jumping */}
+      <TopNavbar expand="md" style={{ minHeight: '75px' }}>
         <Container>
           <NavbarBrand href="/">
             <HelsinkiIcon name="helsinkiLogo" color="#000" />
