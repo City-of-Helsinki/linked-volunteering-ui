@@ -5,6 +5,7 @@ import { IntlProvider } from 'react-intl';
 
 import messages from '../config/translations';
 import { DEFAULT_LANGUAGE, SUPPORT_LANGUAGES } from '../constants';
+import AccessibilityPage from './pages/AccessibilityPage';
 import NewEventPage from './pages/events/containers/NewEventPageContainer';
 import SubmittedPage from './pages/events/containers/SubmittedPageContainer';
 import LandingPage from './pages/LandingPage';
@@ -22,6 +23,7 @@ const App = ({ locale }) => {
         </Route>
         <Route exact path="/login/" component={Login} />
         <Route exact path="/:locale/" component={LandingPage} />
+        <Route path={`/:locale/accessibility`} component={AccessibilityPage} />
         <Route exact path={`/:locale/event/new`} component={NewEventPage} />
         <Route exact path={`/:locale/event/submitted`} component={SubmittedPage} />
         <Route path={`/:locale/admin`} component={AdminRoutes} />

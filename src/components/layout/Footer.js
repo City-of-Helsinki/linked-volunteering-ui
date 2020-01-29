@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import LocalizedLink from '../common/LocalizedLink';
@@ -15,6 +16,11 @@ const Wrapper = styled.div`
   & a {
     color: #000;
     text-decoration: underline;
+    margin-right: 1.25rem;
+
+    & :last-child {
+      margin-right: 0;
+    }
   }
 
   ${responsive.sm`
@@ -73,7 +79,7 @@ const BottomLinksRight = styled.div`
   `}
 `;
 
-const Footer = ({ intl: { formatMessage } }) => (
+const Footer = ({ intl: { formatMessage, locale } }) => (
   <Wrapper>
     <NavigationLinks>
       <span>
@@ -96,6 +102,9 @@ const Footer = ({ intl: { formatMessage } }) => (
         <a href={formatMessage({ id: 'site.footer.privacyPolicy.url' })}>
           <FormattedMessage tagName="span" id="site.footer.privacyPolicy.text" />
         </a>
+        <Link to={`/${locale}/accessibility`}>
+          <FormattedMessage tagName="span" id="site.footer.accessibility.text" />
+        </Link>
       </BottomLinksLeft>
       <BottomLinksRight>
         <a href={formatMessage({ id: 'site.footer.url.feedback' })}>
