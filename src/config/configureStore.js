@@ -5,7 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 import * as ducks from '../ducks';
 
 const enhancers = [];
-const middlewares = [thunk, promiseMiddleware()];
+const middlewares = [thunk, promiseMiddleware];
 const rootReducer = combineReducers(ducks);
 
 const composedEnhancers = composeWithDevTools(applyMiddleware(...middlewares), ...enhancers);
