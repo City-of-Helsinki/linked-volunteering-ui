@@ -38,6 +38,7 @@
     "recompose": "^0.30.0",
     "redux": "^4.0.5",
     "redux-actions": "^2.6.5",
+    "redux-devtools-extension": "^2.13.8",
     "redux-oidc": "^3.1.0",
     "redux-promise-middleware": "^6.1.2",
     "redux-thunk": "^2.3.0",
@@ -66,7 +67,6 @@
     "lint-staged": "^10.0.7",
     "moment": "^2.24.0",
     "prettier": "^1.19.1",
-    "redux-devtools-extension": "^2.13.8",
     "sass-loader": "^8.0.2",
     "serve": "^11.3.0",
     "style-loader": "^1.1.3"
