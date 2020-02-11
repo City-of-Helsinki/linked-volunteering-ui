@@ -4,7 +4,7 @@ import { IntlProvider } from 'react-intl';
 
 import messages from '../config/translations';
 import { DEFAULT_LANGUAGE, SUPPORT_LANGUAGES } from '../constants';
-import AccessibilityPage from './pages/AccessibilityPage';
+import AccessibilityPage from './pages/accessibility/AccessibilityPage.tsx';
 import NewEventPage from './pages/events/containers/NewEventPageContainer';
 import SubmittedPage from './pages/events/containers/SubmittedPageContainer';
 import LandingPage from './pages/LandingPage';
