@@ -37,3 +37,9 @@ End-to-end testing is created with Cypress.io framework. To run tests:
 ```
 $ yarn cypress
 ```
+
+## Docker
+
+`docker-compose build` to build docker image
+`docker-compose up` to start the dockerized dev-environment. Not for production!!!  
+`docker-compose down` stops the container.
