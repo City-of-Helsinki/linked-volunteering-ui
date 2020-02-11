@@ -6,8 +6,5 @@ import CallBackPage from '../CallBackPage';
 
 export default compose(
   withRouter,
-  connect(
-    null,
-    { getApiAccessToken, getCurrentUserData }
-  )
+  connect(null, { getApiAccessToken, getCurrentUserData })
 )(CallBackPage);

@@ -103,7 +103,4 @@ class LanguageDropdown extends React.Component {
   }
 }
 
-export default compose(
-  injectIntl,
-  withRouter
-)(LanguageDropdown);
+export default compose(injectIntl, withRouter)(LanguageDropdown);
