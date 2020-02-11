@@ -3,7 +3,9 @@
   "site.language.fi": "Suomeksi",
   "site.language.sv": "På svenska",
   "site.language.en": "In English",
+
   "site.nav.create_event": "Ilmoita uusi puistotalkoo",
+  "site.nav.logo.text": "Kotisivu",
   "site.nav.report": "Vuosiraportit",
   "site.nav.manage_events": "Hallitse tapahtumia",
   "site.nav.user.login": "Kirjaudu sisään",

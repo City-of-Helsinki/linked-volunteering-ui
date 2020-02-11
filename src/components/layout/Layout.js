@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Container, Navbar, NavbarBrand, Nav } from 'reactstrap';
+import { Container, Navbar, NavbarBrand } from 'reactstrap';
 import styled from 'styled-components';
 import { injectIntl, FormattedMessage } from 'react-intl';
 
@@ -109,7 +109,7 @@ const UserIcon = styled(Icon)`
   }
 `;
 
-const Layout = ({ children, paddingTop, paddingBottom, user, auth }) => {
+const Layout = ({ children, intl: { formatMessage }, paddingTop, paddingBottom, user, auth }) => {
   const hasUser = !!user;
   const isOfficial = auth ? auth.is_official : false;
   const isContractor = auth ? auth.is_contractor : false;
@@ -119,10 +119,10 @@ const Layout = ({ children, paddingTop, paddingBottom, user, auth }) => {
       {/* Set min-height to navbar to prevent page jumping */}
       <TopNavbar expand="md" style={{ minHeight: '75px' }}>
         <Container>
-          <NavbarBrand href="/">
+          <NavbarBrand href="/" aria-label={formatMessage({ id: 'site.nav.logo.text' })}>
             <HelsinkiIcon name="helsinkiLogo" color="#000" />
           </NavbarBrand>
-          <Nav navbar>
+          <NavbarRow>
             <Options>
               <LanguageDropdown />
               {hasUser && (
@@ -132,7 +132,7 @@ const Layout = ({ children, paddingTop, paddingBottom, user, auth }) => {
                 </UserAction>
               )}
             </Options>
-          </Nav>
+          </NavbarRow>
         </Container>
       </TopNavbar>
 
