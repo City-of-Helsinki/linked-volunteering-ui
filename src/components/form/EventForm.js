@@ -200,7 +200,7 @@ export default ({
       </Col>
     </Row>
     <Row>
-      <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 7, offset: 1 }}>
+      <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 8, offset: 1 }}>
         <Input
           type="textarea"
           id="additional_information"

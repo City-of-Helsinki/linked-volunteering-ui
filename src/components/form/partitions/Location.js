@@ -21,9 +21,7 @@ class Location extends React.Component {
     const {
       intl: { locale },
       values: { maintenance_location: address },
-      setFieldValue,
-      setFieldTouched,
-      setFieldError
+      setFieldValue
     } = this.props;
     const language = locale === 'sv' ? locale : 'fi';
     const { updateAddress } = this.state;
@@ -41,9 +39,7 @@ class Location extends React.Component {
 
     if (updateAddress && newAddrs !== address) {
       this.setUpdateAddress(false);
-      setFieldValue('maintenance_location', newAddrs);
-      setFieldTouched('maintenance_location', true);
-      setFieldError('maintenance_location');
+      setFieldValue('maintenance_location', newAddrs, true);
     }
   }
 
@@ -86,6 +82,7 @@ class Location extends React.Component {
       handleChange,
       handleBlur
     } = this.props;
+
     return (
       <Fragment>
         <Row>

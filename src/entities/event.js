@@ -19,7 +19,7 @@ export const defaultValues = {
   additional_information: '',
   large_trash_bag_count: '',
   small_trash_bag_count: '',
-  trash_picker_count: null
+  trash_picker_count: ''
 };
 
 const phoneRegex = /[0-9 +()]{6,19}/;
