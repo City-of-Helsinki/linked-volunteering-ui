@@ -70,6 +70,18 @@ class NewEventPage extends PureComponent {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.submitCount !== prevProps.submitCount) {
+      // Has short timeout to be sure errors are re-rendered
+      setTimeout(() => {
+        const errComponents = document.getElementsByClassName('is-invalid');
+        if (errComponents.length) {
+          errComponents[0].scrollIntoView({ block: 'center', behavior: 'smooth' });
+        }
+      }, 10);
+    }
+  }
+
   render() {
     const { handleReset, handleSubmit, pageType, ...rest } = this.props;
 
