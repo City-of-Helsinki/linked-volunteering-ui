@@ -1,7 +1,7 @@
+import { Button } from 'hds-react';
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import { Container, Row, Col, Button } from 'reactstrap';
-import { StickyContainer, Sticky } from 'react-sticky';
+import { Container, Row, Col } from 'reactstrap';
 import responsive from '../../../utils/responsive';
 
 import IntlComponent from '../../common/IntlComponent';
@@ -15,28 +15,46 @@ const FormContainer = styled(Container)`
 `;
 
 const TitleContainer = styled(Container)`
-  h2 {
+  h1 {
+    margin: 2rem 0;
     font-size: ${props => props.theme.h4FontSize};
   }
 
   ${responsive.md`
-    h2 {
+    padding-left: 0;
+    h1 {
       font-size: ${props => props.theme.h2FontSize};
     }
   `}
 `;
 
-const StickyInner = styled.div`
-  padding: 1em;
-  background-color: ${props => props.theme.helWhite};
-  border-bottom: 1em solid ${props => props.theme.colors.lightGray};
-  z-index: 5000;
+const ButtonCol = styled(Col)`
+  text-align: right;
 `;
 
-const FormButton = styled(Button)`
-  ${responsive.md`
-    min-width: 230px;
-  `}
+const SubmitButton = styled(Button)`
+  background-color: #00d7a7;
+  border-color: #00d7a7;
+  margin-left: 0.5rem;
+
+  &:hover {
+    background-color: #01b78e;
+    border-color: #01b78e;
+    color: black;
+  }
+`;
+
+const ResetButton = styled(Button)`
+  background-color: #ca3f00;
+  border-color: #ca3f00;
+  color: white;
+  margin-right: 0.5rem;
+
+  &:hover {
+    background-color: #bd2719;
+    border-color: #bd2719;
+    color: white;
+  }
 `;
 
 class NewEventPage extends PureComponent {
@@ -57,44 +75,30 @@ class NewEventPage extends PureComponent {
 
     return (
       <Layout paddingBottom>
-        <StickyContainer>
-          <Sticky>
-            {({ style }) => (
-              <StickyInner style={style}>
-                <TitleContainer fluid>
-                  <Row>
-                    <Col lg="12" xl={{ size: 6, offset: 1 }}>
-                      <IntlComponent Component="h2" id={`form.event.${pageType}.heading`} />
-                    </Col>
-                    <Col lg="6" xl={{ size: 2 }}>
-                      <IntlComponent
-                        Component={Button}
-                        id={`form.event.${pageType}.button.reset`}
-                        block
-                        type="button"
-                        onClick={handleReset}
-                        color="danger"
-                      />
-                    </Col>
-                    <Col lg="6" xl={{ size: 2 }}>
-                      <IntlComponent
-                        Component={FormButton}
-                        block
-                        type="submit"
-                        onClick={handleSubmit}
-                        color="success"
-                        id={`form.event.${pageType}.button.submit`}
-                      />
-                    </Col>
-                  </Row>
-                </TitleContainer>
-              </StickyInner>
-            )}
-          </Sticky>
-          <FormContainer>
-            <EventForm {...rest} />
-          </FormContainer>
-        </StickyContainer>
+        <TitleContainer>
+          <IntlComponent Component="h1" id={`form.event.${pageType}.heading`} />
+        </TitleContainer>
+        <FormContainer>
+          <EventForm {...rest} />
+          <Row>
+            <ButtonCol sm="12" md={{ size: 8, offset: 1 }}>
+              <IntlComponent
+                Component={ResetButton}
+                id={`form.event.${pageType}.button.reset`}
+                type="button"
+                onClick={handleReset}
+                color="danger"
+              />
+              <IntlComponent
+                Component={SubmitButton}
+                type="submit"
+                onClick={handleSubmit}
+                color="success"
+                id={`form.event.${pageType}.button.submit`}
+              />
+            </ButtonCol>
+          </Row>
+        </FormContainer>
       </Layout>
     );
   }
