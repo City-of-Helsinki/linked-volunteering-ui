@@ -103,6 +103,7 @@ class NewEventPage extends PureComponent {
               />
               <IntlComponent
                 Component={SubmitButton}
+                className={'btn-success'}
                 type="submit"
                 onClick={handleSubmit}
                 color="success"
