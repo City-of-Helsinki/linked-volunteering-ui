@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { injectIntl, FormattedMessage } from 'react-intl';
 
 import Notifications from '../notification/containers/NotificationsContainer';
-import LanguageDropdown from './LanguageDropdown';
+import LanguageDropdown from './LanguageDropdown.tsx';
 import LocalizedLink from '../common/LocalizedLink';
 import Icon from '../common/Icon';
 import Modal from '../modal/containers/ModalContainer';

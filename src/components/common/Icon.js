@@ -105,8 +105,10 @@ export const StyledSvg = styled(Svg)`
   }
 `;
 
-const Icon = ({ name, color: fill, size, className, rotate }) => {
+const Icon = props => {
+  const { name, color: fill, size, className, rotate } = props;
   const src = icons[name];
+
   if (!src) {
     // eslint-disable-next-line no-console
     console.error('missing icon', name);

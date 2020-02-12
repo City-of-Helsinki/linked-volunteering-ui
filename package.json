@@ -5,6 +5,7 @@
   "dependencies": {
     "@types/react": "^16.9.19",
     "@types/react-intl": "^3.0.0",
+    "@types/react-router": "^5.1.4",
     "@types/reactstrap": "^8.4.1",
     "@types/styled-components": "^4.4.2",
     "axios": "^0.19.2",
@@ -13,6 +14,7 @@
     "date-fns": "^2.9.0",
     "file-saver": "^2.0.2",
     "formik": "^2.1.4",
+    "hds-react": "^0.5.4",
     "hel-icons": "^1.0.0-beta.3",
     "ics": "^2.18.0",
     "immutable": "^4.0.0-rc.12",
