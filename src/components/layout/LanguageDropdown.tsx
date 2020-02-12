@@ -26,6 +26,8 @@ const StyledSelector = styled.div`
 `;
 
 const NavigationIcon = styled(Icon)`
+  margin-right: 0.25rem;
+
   svg {
     height: 1.5em;
     width: 2em;

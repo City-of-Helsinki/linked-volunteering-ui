@@ -91,13 +91,26 @@ const HelsinkiIcon = styled(Icon)`
     width: 5rem;
 
     ${responsive.md`
-      height: 3rem;
+      height: 3.5rem;
       width: 7rem;
     `}
   }
 `;
 
+const AppName = styled.div`
+  display: none;
+  font-weight: bold;
+  font-size: 1.17em;
+  margin: 0 0 0 30px;
+
+  ${responsive.md`
+    display: inline-flex;
+  `}
+`;
+
 const UserIcon = styled(Icon)`
+  margin-right: 0.25rem;
+
   svg {
     height: 1.6rem;
     width: 1.6rem;
@@ -121,6 +134,7 @@ const Layout = ({ children, intl: { formatMessage }, paddingTop, paddingBottom, 
         <Container>
           <NavbarBrand href="/" aria-label={formatMessage({ id: 'site.nav.logo.text' })}>
             <HelsinkiIcon name="helsinkiLogo" color="#000" />
+            <AppName>{formatMessage({ id: 'site.nav.appName' })}</AppName>
           </NavbarBrand>
           <NavbarRow>
             <Options>
