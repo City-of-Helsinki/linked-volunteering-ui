@@ -21,9 +21,7 @@ class Location extends React.Component {
     const {
       intl: { locale },
       values: { maintenance_location: address },
-      setFieldValue,
-      setFieldTouched,
-      setFieldError
+      setFieldValue
     } = this.props;
     const language = locale === 'sv' ? locale : 'fi';
     const { updateAddress } = this.state;
