@@ -3,6 +3,8 @@ import { Label } from 'reactstrap';
 import styled, { css } from 'styled-components';
 
 const StyledLabel = styled(Label)`
+  font-weight: 600;
+
   ${props =>
     props.required &&
     css`

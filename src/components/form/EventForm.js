@@ -64,7 +64,7 @@ export default ({
     </Row>
     <Row>
       <Col sm="12" md={{ size: 8, offset: 1 }}>
-        <FormattedMessage tagName="h3" id="form.event.title.time_and_place" />
+        <FormattedMessage tagName="h3" id="form.event.title.place" />
       </Col>
     </Row>
     <LocationInstructions>
@@ -86,6 +86,12 @@ export default ({
       selectedAddress={selectedAddress}
       selectedContractZone={selectedContractZone}
     />
+    <Row>
+      <Col sm="12" md={{ size: 8, offset: 1 }}>
+        <FormattedMessage tagName="h3" id="form.event.title.time" />
+        <FormattedMessage tagName="p" id="form.event.subtitle.time" />
+      </Col>
+    </Row>
     <DateRange
       errors={errors}
       touched={touched}

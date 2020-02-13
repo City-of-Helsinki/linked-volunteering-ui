@@ -123,9 +123,9 @@ class Location extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
+          <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 8, offset: 1 }}>
             <Input
-              type="text"
+              type="textarea"
               id="maintenance_location"
               label="form.event.field.trash_location.label"
               placeholder="form.event.field.trash_location.placeholder"
