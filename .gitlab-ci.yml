@@ -26,7 +26,8 @@ build-staging:
   variables:
     DOCKER_IMAGE_NAME: '$CI_PROJECT_NAME-staging'
     DOCKER_BUILD_ARG_REACT_APP_AUTHENTICATED: 'no'
-    DOCKER_BUILD_ARG_REACT_APP_API_URL: 'https://puistotalkoot-api.test.kuva.hel.ninja'
+    # TODO: Use old API to test purposes. Remember to change this
+    DOCKER_BUILD_ARG_REACT_APP_API_URL: 'https://harava-api.test.hel.ninja'
     DOCKER_BUILD_ARG_REACT_APP_OPENID_CLIENT_ID: 'http://id.hel.fi/apps/dev/harava-ui'
     DOCKER_BUILD_ARG_REACT_APP_SSO_URL: 'https://api.hel.fi/sso'
     DOCKER_BUILD_ARG_REACT_APP_OPEN_ID_API_TOKENS_SCOPE: 'https://api.hel.fi/auth/haravadev'
