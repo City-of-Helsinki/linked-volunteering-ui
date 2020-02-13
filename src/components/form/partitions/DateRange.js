@@ -89,7 +89,6 @@ class DateTime extends PureComponent {
               required
               label="form.event.partitions.date_range.start_date.label"
               placeholder="form.event.partitions.date_range.start_date.placeholder"
-              text="form.event.partitions.date_range.start_date.text"
               locale={locale}
               error={errors.start_time}
               touched={touched.start_time}
@@ -110,6 +109,28 @@ class DateTime extends PureComponent {
           </Col>
           <Col sm="12" md={{ size: 4 }} id="date_range_end_date_wrapper">
             <DatePicker
+              required
+              id="date_range.start_time"
+              label="form.event.partitions.date_range.start_time.label"
+              placeholder="form.event.partitions.date_range.start_time.placeholder"
+              locale={locale}
+              error={errors.start_time}
+              touched={touched.start_time}
+              onChange={this.onChange('start_time')}
+              onBlur={this.onBlur('start_time')}
+              selected={values.start_time}
+              timeIntervals={timeIntervals}
+              dateFormat={timeFormat}
+              timeFormat={timeFormat}
+              timeCaption={formatMessage({ id: 'form.event.partitions.date_range.timeCaption' })}
+              showTimeSelect
+              showTimeSelectOnly
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col sm="12" md={{ size: 4, offset: 1 }}>
+            <DatePicker
               id="date_range_end_date"
               required
               label="form.event.partitions.date_range.end_date.label"
@@ -128,28 +149,6 @@ class DateTime extends PureComponent {
               selectsEnd
               showMonthDropdown
               useShortMonthInDropdown
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col sm="12" md={{ size: 4, offset: 1 }}>
-            <DatePicker
-              required
-              id="date_range.start_time"
-              label="form.event.partitions.date_range.start_time.label"
-              placeholder="form.event.partitions.date_range.start_time.placeholder"
-              locale={locale}
-              error={errors.start_time}
-              touched={touched.start_time}
-              onChange={this.onChange('start_time')}
-              onBlur={this.onBlur('start_time')}
-              selected={values.start_time}
-              timeIntervals={timeIntervals}
-              dateFormat={timeFormat}
-              timeFormat={timeFormat}
-              timeCaption={formatMessage({ id: 'form.event.partitions.date_range.timeCaption' })}
-              showTimeSelect
-              showTimeSelectOnly
             />
           </Col>
           <Col sm="12" md={{ size: 4 }}>

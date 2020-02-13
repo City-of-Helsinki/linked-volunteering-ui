@@ -1,14 +1,18 @@
 import React from 'react';
-import { FormGroup, Input, FormFeedback, FormText } from 'reactstrap';
+import { FormGroup, Input, FormFeedback } from 'reactstrap';
 import { injectIntl } from 'react-intl';
 import styled from 'styled-components';
-import Label from './Label';
 
-const StyledFormText = styled.span`
-  small {
-    font-size: 14px;
-    color: #666666 !important;
-  }
+import Label from './Label';
+import responsive from '../../../utils/responsive';
+
+const StyledFormText = styled.p`
+  font-size: 1rem;
+  color: ${props => props.theme.helBlack};
+
+  ${responsive.lg`
+    min-width: 550px;
+  `}
 `;
 
 const InputField = ({
@@ -24,24 +28,37 @@ const InputField = ({
   placeholder,
   intl: { formatMessage },
   ...rest
-}) => (
-  <FormGroup>
-    {label && (
-      <Label htmlFor={id} required={required}>
-        {formatMessage({ id: label })}
-      </Label>
-    )}
-    <Input
-      id={id}
-      invalid={error && touched}
-      placeholder={placeholder ? formatMessage({ id: placeholder }) : undefined}
-      {...rest}
-    />
-    <FormFeedback>{error && formatMessage({ id: error })}</FormFeedback>
-    <StyledFormText>
-      <FormText>{text && formatMessage({ id: text })}</FormText>
-    </StyledFormText>
-  </FormGroup>
-);
+}) => {
+  return (
+    <FormGroup>
+      {label && (
+        <Label htmlFor={id} required={required}>
+          {formatMessage({ id: label })}
+        </Label>
+      )}
+      {text && (
+        <StyledFormText>
+          {formatMessage({ id: text })
+            .split('\n')
+            .map((item, key) => {
+              return (
+                <React.Fragment key={key}>
+                  {item}
+                  <br />
+                </React.Fragment>
+              );
+            })}
+        </StyledFormText>
+      )}
+      <Input
+        id={id}
+        invalid={error && touched}
+        placeholder={placeholder ? formatMessage({ id: placeholder }) : undefined}
+        {...rest}
+      />
+      <FormFeedback>{error && formatMessage({ id: error })}</FormFeedback>
+    </FormGroup>
+  );
+};
 
 export default injectIntl(InputField);
