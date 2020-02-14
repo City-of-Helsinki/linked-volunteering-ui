@@ -6,7 +6,11 @@ import { get } from 'lodash';
 import { getNeighborhoods } from '../../../../ducks/neighborhood';
 import { renderIfAuthenticated } from '../../../../utils/container';
 import { addNotification } from '../../../../ducks/notification';
-import { getCoordinatesByAddress, getGeoData } from '../../../../ducks/geo';
+import {
+  clearCoordinatesByAddress,
+  getCoordinatesByAddress,
+  getGeoData
+} from '../../../../ducks/geo';
 import { modifyEvent } from '../../../../ducks/event';
 import { withEventForm } from '../../../form/withForm';
 import EventPage from '../EventPage';
@@ -22,6 +26,7 @@ export default compose(
     (state, { id }) => {
       const parsedId = parseInt(id, 10);
       return {
+        addressCoordinates: get(state, 'geo.addressCoordinates'),
         initialValues: state.event.events.get(parsedId),
         neighborhoods: state.neighborhood.neighborhoods,
         selectedAddress: get(state, 'geo.geoData.closest_address'),
@@ -30,7 +35,13 @@ export default compose(
         apiAccessToken: state.auth.apiAccessToken
       };
     },
-    { getCoordinatesByAddress, getGeoData, addNotification, getNeighborhoods }
+    {
+      clearCoordinatesByAddress,
+      getCoordinatesByAddress,
+      getGeoData,
+      addNotification,
+      getNeighborhoods
+    }
   ),
   withHandlers({
     onSubmit: ({ history, locale, addNotification: notify, apiAccessToken }) => async values => {
