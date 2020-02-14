@@ -6,7 +6,7 @@ import { get } from 'lodash';
 import { getNeighborhoods } from '../../../../ducks/neighborhood';
 import { renderIfAuthenticated } from '../../../../utils/container';
 import { addNotification } from '../../../../ducks/notification';
-import { getGeoData } from '../../../../ducks/geo';
+import { getCoordinatesByAddress, getGeoData } from '../../../../ducks/geo';
 import { modifyEvent } from '../../../../ducks/event';
 import { withEventForm } from '../../../form/withForm';
 import EventPage from '../EventPage';
@@ -30,7 +30,7 @@ export default compose(
         apiAccessToken: state.auth.apiAccessToken
       };
     },
-    { getGeoData, addNotification, getNeighborhoods }
+    { getCoordinatesByAddress, getGeoData, addNotification, getNeighborhoods }
   ),
   withHandlers({
     onSubmit: ({ history, locale, addNotification: notify, apiAccessToken }) => async values => {

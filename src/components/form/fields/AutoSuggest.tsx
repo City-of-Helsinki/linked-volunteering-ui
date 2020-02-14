@@ -26,6 +26,7 @@ interface Target {
 
 interface Props {
   error?: string;
+  getCoordinatesByAddress: Function;
   getSuggestionValue: (item: any) => string;
   id: string;
   label?: string;
@@ -40,6 +41,7 @@ interface Props {
 
 const AutoSuggestField: React.FC<Props> = ({
   error,
+  getCoordinatesByAddress,
   getSuggestionValue,
   id,
   label,
