@@ -4,7 +4,7 @@ import { get } from 'lodash';
 import { injectIntl } from 'react-intl';
 
 import Map from '../fields/Map';
-import Input from '../fields/Input';
+import Input from '../fields/Input.tsx';
 import AutoSuggest from '../fields/AutoSuggest';
 
 class Location extends React.Component {

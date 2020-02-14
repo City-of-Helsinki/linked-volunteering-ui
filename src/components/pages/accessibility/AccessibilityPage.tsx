@@ -12,9 +12,7 @@ type StatementProps = {
   lang: string;
 };
 
-const Statement: React.FunctionComponent<StatementProps> = props => {
-  const lang = props.lang;
-
+const Statement: React.FunctionComponent<StatementProps> = ({ lang }) => {
   switch (lang) {
     case 'en':
       return <AccessibilityStatementEn />;
