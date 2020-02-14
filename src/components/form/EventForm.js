@@ -13,6 +13,7 @@ const LocationInstructions = styled(Row)`
 
 export default ({
   neighborhoods,
+  getCoordinatesByAddress,
   getGeoData,
   selectedAddress,
   selectedContractZone,
@@ -80,6 +81,7 @@ export default ({
       errors={errors}
       touched={touched}
       values={values}
+      getCoordinatesByAddress={getCoordinatesByAddress}
       getGeoData={getGeoData}
       handleChange={handleChange}
       handleBlur={handleBlur}

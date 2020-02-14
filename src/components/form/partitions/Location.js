@@ -5,7 +5,7 @@ import { injectIntl } from 'react-intl';
 
 import Map from '../fields/Map';
 import Input from '../fields/Input.tsx';
-import AutoSuggest from '../fields/AutoSuggest';
+import AutoSuggest from '../fields/AutoSuggest.tsx';
 
 class Location extends React.Component {
   constructor(props) {
@@ -76,6 +76,7 @@ class Location extends React.Component {
       touched,
       neighborhoods,
       values,
+      getCoordinatesByAddress,
       getGeoData,
       selectedAddress,
       selectedContractZone,
@@ -92,6 +93,7 @@ class Location extends React.Component {
                 id="neighborhood"
                 label="form.event.field.neighborhood.label"
                 placeholder="form.event.field.neighborhood.placeholder"
+                getCoordinatesByAddress={getCoordinatesByAddress}
                 error={errors.area}
                 touched={touched.area}
                 value={values.area}
