@@ -3,7 +3,7 @@ import DatePicker, { ReactDatePickerProps } from 'react-datepicker';
 import { useIntl } from 'react-intl';
 import { FormFeedback, FormGroup, Input, Label } from 'reactstrap';
 
-import { StyledFormText } from './Input';
+import InstructionText from './InstructionText';
 
 interface Props extends ReactDatePickerProps {
   error?: string;
@@ -30,20 +30,7 @@ const DatePickerField: React.FC<Props> = props => {
           {formatMessage({ id: label })}
         </Label>
       )}
-      {text && (
-        <StyledFormText>
-          {formatMessage({ id: text })
-            .split('\n')
-            .map((item, key) => {
-              return (
-                <React.Fragment key={key}>
-                  {item}
-                  <br />
-                </React.Fragment>
-              );
-            })}
-        </StyledFormText>
-      )}
+      {text && <InstructionText text={text} />}
       <DatePicker
         id={id}
         onChangeRaw={handleDateChangeRaw}

@@ -1,19 +1,9 @@
 import React from 'react';
 import { FormFeedback, FormGroup, Input, InputProps } from 'reactstrap';
 import { useIntl } from 'react-intl';
-import styled from 'styled-components';
 
+import InstructionText from './InstructionText';
 import Label from './Label';
-import responsive from '../../../utils/responsive';
-
-export const StyledFormText = styled.p`
-  font-size: 1rem;
-  color: ${props => props.theme.helBlack};
-
-  ${responsive.lg`
-    min-width: 550px;
-  `}
-`;
 
 interface Props extends InputProps {
   error?: string;
@@ -37,20 +27,7 @@ const InputField: React.FC<Props> = props => {
           {formatMessage({ id: label })}
         </Label>
       )}
-      {text && (
-        <StyledFormText>
-          {formatMessage({ id: text })
-            .split('\n')
-            .map((item, key) => {
-              return (
-                <React.Fragment key={key}>
-                  {item}
-                  <br />
-                </React.Fragment>
-              );
-            })}
-        </StyledFormText>
-      )}
+      {text && <InstructionText text={text} />}
       <Input
         id={id}
         invalid={!!error && touched}
