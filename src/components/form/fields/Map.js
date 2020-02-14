@@ -96,7 +96,7 @@ class MapCanvas extends PureComponent {
     const marker = value ? <Marker position={markerPosition} /> : null;
 
     return (
-      <MapContainer>
+      <MapContainer className={this.renderMapErrors() ? 'is-invalid' : false}>
         <Map
           center={mapCenter || position}
           zoom={mapCenter ? 14 : this.state.zoom}
