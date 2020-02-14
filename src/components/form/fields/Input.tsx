@@ -1,12 +1,12 @@
 import React from 'react';
-import { FormGroup, Input, FormFeedback } from 'reactstrap';
-import { injectIntl } from 'react-intl';
+import { FormFeedback, FormGroup, Input, InputProps } from 'reactstrap';
+import { useIntl } from 'react-intl';
 import styled from 'styled-components';
 
 import Label from './Label';
 import responsive from '../../../utils/responsive';
 
-const StyledFormText = styled.p`
+export const StyledFormText = styled.p`
   font-size: 1rem;
   color: ${props => props.theme.helBlack};
 
@@ -15,20 +15,21 @@ const StyledFormText = styled.p`
   `}
 `;
 
-const InputField = ({
-  alternativeId,
-  alternativeLabel,
-  alternativeRequired,
-  id = alternativeId,
-  label = alternativeLabel,
-  required = alternativeRequired,
-  error,
-  touched,
-  text,
-  placeholder,
-  intl: { formatMessage },
-  ...rest
-}) => {
+interface Props extends InputProps {
+  error?: string;
+  id: string;
+  label?: string;
+  placeholder?: string;
+  required: boolean;
+  text?: string;
+  touched: boolean;
+}
+
+const InputField: React.FC<Props> = props => {
+  const intl = useIntl();
+  const { formatMessage } = intl;
+  const { id, label, required, error, touched, text, placeholder, ...rest } = props;
+
   return (
     <FormGroup>
       {label && (
@@ -52,7 +53,7 @@ const InputField = ({
       )}
       <Input
         id={id}
-        invalid={error && touched}
+        invalid={!!error && touched}
         placeholder={placeholder ? formatMessage({ id: placeholder }) : undefined}
         {...rest}
       />
@@ -61,4 +62,4 @@ const InputField = ({
   );
 };
 
-export default injectIntl(InputField);
+export default InputField;

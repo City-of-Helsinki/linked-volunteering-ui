@@ -11,6 +11,7 @@ const CallBackPage = ({ history, getApiAccessToken, getCurrentUserData }) => (
       history.push('/');
     }}
     errorCallback={error => {
+      // eslint-disable-next-line no-console
       console.error(error);
     }}
   >

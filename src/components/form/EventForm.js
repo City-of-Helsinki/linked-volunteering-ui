@@ -3,8 +3,8 @@ import { Row, Col } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 
-import Input from './fields/Input';
-import DateRange from './partitions/DateRange';
+import Input from './fields/Input.tsx';
+import DateRange from './partitions/DateRange.tsx';
 import Location from './partitions/Location';
 
 const LocationInstructions = styled(Row)`
