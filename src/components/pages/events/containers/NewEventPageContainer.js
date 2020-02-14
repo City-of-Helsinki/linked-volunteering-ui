@@ -5,7 +5,11 @@ import { get } from 'lodash';
 
 import { addNotification } from '../../../../ducks/notification';
 import { getNeighborhoods } from '../../../../ducks/neighborhood';
-import { getCoordinatesByAddress, getGeoData } from '../../../../ducks/geo';
+import {
+  clearCoordinatesByAddress,
+  getCoordinatesByAddress,
+  getGeoData
+} from '../../../../ducks/geo';
 import { submitEvent } from '../../../../ducks/event';
 import { withEventForm } from '../../../form/withForm';
 import EventPage from '../EventPage';
@@ -17,13 +21,21 @@ export default compose(
   })),
   connect(
     state => ({
+      addressCoordinates: get(state, 'geo.addressCoordinates'),
       neighborhoods: state.neighborhood.neighborhoods,
       selectedAddress: get(state, 'geo.geoData.closest_address'),
       selectedContractZone: get(state, 'geo.geoData.contract_zone'),
       unavailableDates: get(state, 'geo.geoData.contract_zone.unavailable_dates'),
       apiAccessToken: state.auth.apiAccessToken
     }),
-    { getCoordinatesByAddress, getGeoData, getNeighborhoods, addNotification, submitEvent }
+    {
+      clearCoordinatesByAddress,
+      getCoordinatesByAddress,
+      getGeoData,
+      getNeighborhoods,
+      addNotification,
+      submitEvent
+    }
   ),
   withHandlers({
     onSubmit: ({

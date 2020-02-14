@@ -25,6 +25,8 @@ interface Target {
 }
 
 interface Props {
+  addressFeatures: any[];
+  clearCoordinatesByAddress: Function;
   error?: string;
   getCoordinatesByAddress: Function;
   getSuggestionValue: (item: any) => string;
@@ -33,13 +35,15 @@ interface Props {
   onBlur?: (event: React.FocusEvent<any>, params?: BlurEvent<any>) => void;
   onChange: (e: Target) => void;
   placeholder?: string;
-  required: boolean;
+  required?: boolean;
   suggestions: Array<any>;
   text?: string;
   touched: boolean;
 }
 
 const AutoSuggestField: React.FC<Props> = ({
+  addressFeatures,
+  clearCoordinatesByAddress,
   error,
   getCoordinatesByAddress,
   getSuggestionValue,
@@ -73,6 +77,7 @@ const AutoSuggestField: React.FC<Props> = ({
   };
 
   const onSuggestionsClearRequested = () => {
+    clearCoordinatesByAddress();
     setFilteredSuggestions([]);
   };
 
@@ -100,7 +105,7 @@ const AutoSuggestField: React.FC<Props> = ({
 
   return (
     <Autosuggest
-      suggestions={filteredSuggestions}
+      suggestions={[...addressFeatures, ...filteredSuggestions]}
       onSuggestionsFetchRequested={onSuggestionsFetchRequested}
       onSuggestionsClearRequested={onSuggestionsClearRequested}
       onSuggestionSelected={onSuggestionSelected}
