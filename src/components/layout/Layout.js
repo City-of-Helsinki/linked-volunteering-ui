@@ -140,7 +140,7 @@ const Layout = ({ children, intl: { formatMessage }, paddingTop, paddingBottom, 
             <Options>
               <LanguageDropdown />
               {hasUser && (
-                <UserAction onClick={() => userManager.signoutRedirect()}>
+                <UserAction onClick={() => userManager.signoutRedirect()} tabIndex={0}>
                   <UserIcon name="user" color="black" />
                   <FormattedMessage id="site.nav.user.logout" />
                 </UserAction>
