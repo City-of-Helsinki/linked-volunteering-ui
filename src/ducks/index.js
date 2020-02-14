@@ -1,6 +1,7 @@
-import { immutableReducer } from 'redux-oidc';
+import immutable from 'immutable';
+import { createImmutableReducer } from 'redux-oidc';
 
-export const oidc = immutableReducer;
+export const oidc = createImmutableReducer(immutable);
 export { default as auth } from './auth';
 export { default as event } from './event';
 export { default as geo } from './geo';
