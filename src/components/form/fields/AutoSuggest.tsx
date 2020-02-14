@@ -17,7 +17,7 @@ const StyledFormGroup = styled(FormGroup)`
 
 const simplify = (value: string) => value.toLowerCase();
 
-interface Target {
+export interface AutoSuggestEvent {
   target: {
     id: string;
     value: any;
@@ -33,7 +33,7 @@ interface Props {
   id: string;
   label?: string;
   onBlur?: (event: React.FocusEvent<any>, params?: BlurEvent<any>) => void;
-  onChange: (e: Target) => void;
+  onChange: (e: AutoSuggestEvent) => void;
   placeholder?: string;
   required?: boolean;
   suggestions: Array<any>;

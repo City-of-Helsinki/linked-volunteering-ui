@@ -6,7 +6,7 @@ import { useIntl } from 'react-intl';
 
 import Map from '../fields/Map';
 import Input from '../fields/Input';
-import AutoSuggest from '../fields/AutoSuggest';
+import AutoSuggest, { AutoSuggestEvent } from '../fields/AutoSuggest';
 
 interface Props {
   addressFeatures: Array<any>;
@@ -15,7 +15,7 @@ interface Props {
   getCoordinatesByAddress: Function;
   getGeoData: Function;
   handleBlur: (event: React.FormEvent<any>) => void;
-  handleChange: (event: React.FormEvent<any>) => void;
+  handleChange: (event: AutoSuggestEvent) => void;
   neighborhoods: any;
   selectedAddress: any;
   selectedContractZone: any;
@@ -44,6 +44,7 @@ const Location: React.FC<Props> = ({
 
   const [updateAddress, setUpdateAddress] = React.useState(false);
   const [bounds, setBounds] = React.useState<any>(null);
+  const [center, setCenter] = React.useState<any>(null);
 
   React.useEffect(() => {
     if (updateAddress) {
@@ -67,10 +68,20 @@ const Location: React.FC<Props> = ({
     }
   }, [locale, selectedAddress, setFieldValue, setUpdateAddress, updateAddress, values]);
 
-  const handleZoom = (e: any) => {
-    setBounds(e.target.value.bbox);
-
-    handleChange(e);
+  const handleZoom = (e: AutoSuggestEvent) => {
+    if (e.target.value.type === 'Feature') {
+      setFieldValue('maintenance_location', e.target.value.properties.name, true);
+      handleChange({
+        target: {
+          id: 'location',
+          value: e.target.value.geometry
+        }
+      });
+      setCenter(e.target.value.geometry.coordinates);
+    } else {
+      setBounds(e.target.value.bbox);
+      handleChange(e);
+    }
   };
 
   const suggestionItem = (item: any) => {
@@ -112,13 +123,14 @@ const Location: React.FC<Props> = ({
           <Map
             id="location"
             bounds={bounds}
+            center={center}
             errorLocation={errors.location}
             errorContractZone={errors.contractZone}
             getGeoData={getGeoData}
             touched={touched.maintenance_location}
             selectedAddress={selectedAddress}
             selectedContractZone={selectedContractZone}
-            handleChange={(e: React.FormEvent<any>) => {
+            handleChange={(e: AutoSuggestEvent) => {
               setUpdateAddress(true);
               handleChange(e);
             }}
