@@ -3,6 +3,7 @@ import { Row, Col } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 
+import InstructionText from './fields/InstructionText.tsx';
 import Input from './fields/Input.tsx';
 import DateRange from './partitions/DateRange.tsx';
 import Location from './partitions/Location.tsx';
@@ -73,7 +74,7 @@ export default ({
       </Row>
       <LocationInstructions>
         <Col sm="12" md={{ size: 8, offset: 1 }}>
-          <FormattedMessage tagName="p" id="form.event.new.location_instructions" />
+          <InstructionText text="form.event.new.location_instructions" />
         </Col>
       </LocationInstructions>
       <Location

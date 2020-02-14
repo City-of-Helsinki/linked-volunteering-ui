@@ -4,7 +4,7 @@ import { useIntl } from 'react-intl';
 import { FormFeedback, FormGroup, Input, Label } from 'reactstrap';
 import styled from 'styled-components';
 
-import { StyledFormText } from '../Input';
+import InstructionText from '../InstructionText';
 import ListItem from './ListItem';
 
 import formatTime from '../../../../utils/formatTime';
@@ -246,20 +246,7 @@ const TimePicker: React.FC<Props> = ({
           {formatMessage({ id: label })}
         </Label>
       )}
-      {text && (
-        <StyledFormText>
-          {formatMessage({ id: text })
-            .split('\n')
-            .map((item, key) => {
-              return (
-                <React.Fragment key={key}>
-                  {item}
-                  <br />
-                </React.Fragment>
-              );
-            })}
-        </StyledFormText>
-      )}
+      {text && <InstructionText text={text} />}
       <div ref={container}>
         <Input
           id={id}
