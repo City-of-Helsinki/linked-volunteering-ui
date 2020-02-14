@@ -14,15 +14,16 @@ const Triangle = styled.div`
   border: 8px solid transparent;
   height: 0;
   width: 1px;
-  margin-top: -23px;
+  margin-top: -16px;
   left: 42px;
+  border-bottom-color: #f0f0f0;
 
   &:before {
     content: '';
     z-index: -1;
     border-width: 8px;
     left: -8px;
-    top: -1px;
+    top: -9px;
     position: absolute;
     border: 8px solid transparent;
     height: 0;
