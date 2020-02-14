@@ -129,6 +129,7 @@ const DateRange: React.FC<Props> = ({
             defaultDate={minDate}
             error={errors.start_time}
             label="form.event.partitions.date_range.start_time.label"
+            onBlur={onBlur('start_time')}
             onChange={onChange('start_time')}
             placeholder="form.event.partitions.date_range.start_time.placeholder"
             required
@@ -169,6 +170,7 @@ const DateRange: React.FC<Props> = ({
             defaultDate={values.start_time || minDate}
             error={errors.end_time}
             label="form.event.partitions.date_range.end_time.label"
+            onBlur={onBlur('end_time')}
             onChange={onChange('end_time')}
             placeholder="form.event.partitions.date_range.end_time.placeholder"
             required
