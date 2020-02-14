@@ -44,7 +44,9 @@ export default ({
             type="text"
             id="name"
             label="form.event.field.name.label"
+            required
             placeholder="form.event.field.name.placeholder"
+            error={errors.name}
             touched={touched.name}
             value={values.name}
             onChange={handleChange}
