@@ -70,7 +70,11 @@ const Location: React.FC<Props> = ({
 
   const handleZoom = (e: AutoSuggestEvent) => {
     if (e.target.value.type === 'Feature') {
+      // Set address value
       setFieldValue('maintenance_location', e.target.value.properties.name, true);
+      // Refetch the address from own API to check validity
+      getGeoData(e.target.value.geometry.coordinates[1], e.target.value.geometry.coordinates[0]);
+      // Save location to show marker on map
       handleChange({
         target: {
           id: 'location',
