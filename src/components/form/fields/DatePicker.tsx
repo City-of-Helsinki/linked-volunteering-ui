@@ -45,8 +45,9 @@ const DatePickerField: React.FC<Props> = props => {
         </StyledFormText>
       )}
       <DatePicker
+        id={id}
         onChangeRaw={handleDateChangeRaw}
-        customInput={<Input id={id} invalid={!!error && touched} />}
+        customInput={<Input invalid={!!error && touched} />}
         placeholderText={placeholder ? formatMessage({ id: placeholder }) : undefined}
         {...rest}
       />
