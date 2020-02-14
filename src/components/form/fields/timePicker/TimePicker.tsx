@@ -68,6 +68,7 @@ interface Props {
   error?: any;
   id: string;
   label?: string;
+  onBlur: (date: any) => void;
   onChange: (date: Date) => void;
   placeholder?: string;
   required: boolean;
@@ -84,6 +85,7 @@ const TimePicker: React.FC<Props> = ({
   error,
   id,
   label,
+  onBlur,
   onChange,
   placeholder,
   required,
@@ -166,6 +168,10 @@ const TimePicker: React.FC<Props> = ({
     setFocusedOption(
       focusedOption < timeOptions.length - 1 ? focusedOption + 1 : timeOptions.length - 1
     );
+  };
+
+  const handleBlur = () => {
+    onBlur(selected);
   };
 
   const handleChange = (date: Date) => {
@@ -258,6 +264,7 @@ const TimePicker: React.FC<Props> = ({
         <Input
           id={id}
           invalid={!!error && touched}
+          onBlur={handleBlur}
           onChange={() => {}}
           placeholder={placeholder ? formatMessage({ id: placeholder }) : undefined}
           value={selected ? formatTime(selected, timeFormat, locale) : ''}
