@@ -1,9 +1,0 @@
-@import '../../../node_modules/open-city-design/src/scss/helsinki/mixins';
-@import '../../../node_modules/open-city-design/src/scss/helsinki/colors';
-
-.section-koro {
-  @include koro('basic', $hel-copper, 800);
-  margin-top: -1.25em;
-  height: 1.25em;
-  position: relative;
-}

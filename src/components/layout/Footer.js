@@ -9,10 +9,11 @@ import Icon from '../common/Icon';
 const Wrapper = styled.div`
   background-color: ${props => props.theme.helCopper};
   color: #000;
-  padding-top: 2em;
-  padding-left: 2em;
-  padding-right: 2em;
-  min-height: 15em;
+  padding-top: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  min-height: 15rem;
+
   & a {
     color: #000;
     text-decoration: underline;
@@ -24,9 +25,9 @@ const Wrapper = styled.div`
   }
 
   ${responsive.sm`
-    padding-top: 4em;
-    padding-left: 4em;
-    padding-right: 4em;
+    padding-top: 4rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
   `}
 `;
 

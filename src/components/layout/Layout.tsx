@@ -1,14 +1,14 @@
+import { Koros } from 'hds-react';
 import React, { Fragment } from 'react';
 import { Container, Navbar, NavbarBrand } from 'reactstrap';
 import styled from 'styled-components';
-import { injectIntl, FormattedMessage } from 'react-intl';
+import { useIntl, FormattedMessage } from 'react-intl';
 
 import Notifications from '../notification/containers/NotificationsContainer';
-import LanguageDropdown from './LanguageDropdown.tsx';
+import LanguageDropdown from './LanguageDropdown';
 import LocalizedLink from '../common/LocalizedLink';
 import Icon from '../common/Icon';
 import Modal from '../modal/containers/ModalContainer';
-import KoroSection from './KoroSection';
 import Footer from './Footer';
 import userManager from '../../utils/userManager';
 import responsive from '../../utils/responsive';
@@ -48,9 +48,14 @@ const TopNavbar = styled(Navbar)`
   }
 `;
 
+interface PageWrapperProps {
+  paddingBottom: boolean;
+  paddingTop: boolean;
+}
+
 const PageWrapper = styled.div`
-  padding-top: ${props => (props.paddingTop ? '3em' : 0)};
-  padding-bottom: ${props => (props.paddingBottom ? '3em' : 0)};
+  padding-top: ${(props: PageWrapperProps) => (props.paddingTop ? '3em' : 0)};
+  padding-bottom: ${(props: PageWrapperProps) => (props.paddingBottom ? '3em' : 0)};
 `;
 
 const Options = styled.div`
@@ -122,7 +127,25 @@ const UserIcon = styled(Icon)`
   }
 `;
 
-const Layout = ({ children, intl: { formatMessage }, paddingTop, paddingBottom, user, auth }) => {
+const KoroSection = styled(Koros)`
+  svg {
+    fill: ${props => props.theme.helCopper};
+    position: absolute;
+    height: 1.25rem;
+    margin-top: -1.25rem;
+  }
+`;
+
+interface Props {
+  auth?: any;
+  paddingBottom: boolean;
+  paddingTop: boolean;
+  user?: any;
+}
+
+const Layout: React.FC<Props> = ({ children, paddingTop, paddingBottom, user, auth }) => {
+  const intl = useIntl();
+  const { formatMessage } = intl;
   const hasUser = !!user;
   const isOfficial = auth ? auth.is_official : false;
   const isContractor = auth ? auth.is_contractor : false;
@@ -175,7 +198,7 @@ const Layout = ({ children, intl: { formatMessage }, paddingTop, paddingBottom, 
       </Content>
 
       <div>
-        <KoroSection color="green" />
+        <KoroSection type="basic" />
         <Footer />
       </div>
       <Notifications />
@@ -184,4 +207,4 @@ const Layout = ({ children, intl: { formatMessage }, paddingTop, paddingBottom, 
   );
 };
 
-export default injectIntl(Layout);
+export default Layout;
