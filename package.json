@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@types/classnames": "^2.2.9",
+    "@types/file-saver": "^2.0.1",
     "@types/lodash": "^4.14.149",
     "@types/react": "^16.9.19",
     "@types/react-autosuggest": "^9.3.13",
@@ -23,7 +24,6 @@
     "immutable": "^4.0.0-rc.12",
     "leaflet": "^1.6.0",
     "lodash": "^4.17.15",
-    "moment": "^2.24.0",
     "node-sass": "^4.13.1",
     "oidc-client": "^1.10.1",
     "open-city-design": "^1.0.0-alpha.3",

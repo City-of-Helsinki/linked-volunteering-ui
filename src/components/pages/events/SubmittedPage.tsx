@@ -1,6 +1,5 @@
 import { saveAs } from 'file-saver';
-import { createEvent } from 'ics';
-import moment from 'moment';
+import { createEvent, EventAttributes } from 'ics';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -10,6 +9,7 @@ import LocalizedLink from '../../common/LocalizedLink';
 import Layout from '../../layout/containers/LayoutContainer';
 import backgroundImage from '../../../assets/images/_MG_2851_c_Jussi_Hellsten.jpg';
 import responsive from '../../../utils/responsive';
+import getDateArray from '../../../utils/getDateArray';
 
 const PageContainer = styled.div`
   max-width: 100vw;
@@ -73,25 +73,42 @@ const BackgroundImage = styled.img.attrs({
   `}
 `;
 
-const SubmittedPage = ({ submittedEvent }) => {
+interface Location {
+  coordinates: [number, number];
+}
+
+interface Event {
+  description: string;
+  end_time: string;
+  location: Location;
+  maintenance_location: string;
+  name: string;
+  organizer_email: string;
+  organizer_first_name: string;
+  organizer_last_name: string;
+  start_time: string;
+}
+
+interface Props {
+  submittedEvent: Event;
+}
+
+const SubmittedPage: React.FC<Props> = ({ submittedEvent }) => {
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const downloadIcsFile = () => {
-    const event = {
+    const event: EventAttributes = {
       productId: 'puistotalkoot/ics',
       startOutputType: 'local',
-      start: moment(submittedEvent.start_time)
-        .format('YYYY-M-D-H-m')
-        .split('-'),
-      end: moment(submittedEvent.end_time)
-        .format('YYYY-M-D-H-m')
-        .split('-'),
+      start: getDateArray(submittedEvent.start_time),
+      end: getDateArray(submittedEvent.end_time),
       location: submittedEvent.maintenance_location,
-      geo:
-        submittedEvent.location && submittedEvent.location.coordinates
-          ? {
-              lat: submittedEvent.location.coordinates[1],
-              lon: submittedEvent.location.coordinates[0]
-            }
-          : null,
+      geo: {
+        lat: submittedEvent.location.coordinates[1],
+        lon: submittedEvent.location.coordinates[0]
+      },
       organizer: {
         name: `${submittedEvent.organizer_first_name} ${submittedEvent.organizer_last_name}`,
         email: submittedEvent.organizer_email
@@ -99,7 +116,7 @@ const SubmittedPage = ({ submittedEvent }) => {
       title: submittedEvent.name,
       description: submittedEvent.description
     };
-    createEvent(event, (error, value) => {
+    createEvent(event, (error: Error | undefined, value: string) => {
       if (error) {
         // eslint-disable-next-line no-console
         console.error(error);
