@@ -7,7 +7,6 @@ import { useIntl } from 'react-intl';
 import Map from '../fields/Map';
 import Input from '../fields/Input';
 import AutoSuggest, { AutoSuggestEvent } from '../fields/AutoSuggest';
-import { contractZones } from '../../../ducks';
 
 interface Props {
   addressFeatures: Array<any>;
@@ -73,7 +72,16 @@ const Location: React.FC<Props> = ({
         setClickedAddress(null);
       }
     }
-  }, [locale, selectedAddress, setFieldValue, setUpdateAddress, updateAddress, values]);
+  }, [
+    clickedAddress,
+    locale,
+    selectedAddress,
+    setFieldTouched,
+    setFieldValue,
+    setUpdateAddress,
+    updateAddress,
+    values
+  ]);
 
   const handleZoom = (e: AutoSuggestEvent) => {
     if (e.target.value.type === 'Feature') {
