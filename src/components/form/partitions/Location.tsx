@@ -7,6 +7,7 @@ import { useIntl } from 'react-intl';
 import Map from '../fields/Map';
 import Input from '../fields/Input';
 import AutoSuggest, { AutoSuggestEvent } from '../fields/AutoSuggest';
+import { contractZones } from '../../../ducks';
 
 interface Props {
   addressFeatures: Array<any>;
@@ -19,8 +20,10 @@ interface Props {
   neighborhoods: any;
   selectedAddress: any;
   selectedContractZone: any;
+  setFieldTouched: Function;
   setFieldValue: Function;
   touched: any;
+  validateForm: Function;
   values: FormikValues;
 }
 
@@ -35,14 +38,15 @@ const Location: React.FC<Props> = ({
   neighborhoods,
   selectedAddress,
   selectedContractZone,
+  setFieldTouched,
   setFieldValue,
   touched,
   values
 }) => {
   const intl = useIntl();
   const { locale } = intl;
-
   const [updateAddress, setUpdateAddress] = React.useState(false);
+  const [clickedAddress, setClickedAddress] = React.useState<string | null>(null);
   const [bounds, setBounds] = React.useState<any>(null);
   const [center, setCenter] = React.useState<any>(null);
 
@@ -62,16 +66,20 @@ const Location: React.FC<Props> = ({
         .join(' ');
 
       if (address !== newAddrs) {
+        setFieldTouched('maintenance_location');
+        setFieldValue('maintenance_location', clickedAddress || newAddrs, true);
+
         setUpdateAddress(false);
-        setFieldValue('maintenance_location', newAddrs, true);
+        setClickedAddress(null);
       }
     }
   }, [locale, selectedAddress, setFieldValue, setUpdateAddress, updateAddress, values]);
 
   const handleZoom = (e: AutoSuggestEvent) => {
     if (e.target.value.type === 'Feature') {
-      // Set address value
-      setFieldValue('maintenance_location', e.target.value.properties.name, true);
+      // Set states to update address
+      setUpdateAddress(true);
+      setClickedAddress(e.target.value.properties.name);
       // Refetch the address from own API to check validity
       getGeoData(e.target.value.geometry.coordinates[1], e.target.value.geometry.coordinates[0]);
       // Save location to show marker on map
@@ -129,12 +137,15 @@ const Location: React.FC<Props> = ({
             bounds={bounds}
             center={center}
             errorLocation={errors.location}
-            errorContractZone={errors.contractZone}
+            errorContractZone={
+              !selectedContractZone ? 'form.validation.contact_zone.invalid' : null
+            }
             getGeoData={getGeoData}
             touched={touched.maintenance_location}
             selectedAddress={selectedAddress}
             selectedContractZone={selectedContractZone}
             handleChange={(e: AutoSuggestEvent) => {
+              setClickedAddress(null);
               setUpdateAddress(true);
               handleChange(e);
             }}
