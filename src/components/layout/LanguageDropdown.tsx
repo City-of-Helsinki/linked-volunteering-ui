@@ -15,6 +15,12 @@ const LanguageSelector = styled(DropdownToggle)`
   text-align: right;
 `;
 
+const StyledDropdown = styled(Dropdown)`
+  button {
+    padding: 0;
+  }
+`;
+
 const StyledSelector = styled.div`
   display: flex;
   align-items: center;
@@ -66,7 +72,7 @@ const LanguageDropdown: React.FC = () => {
   };
 
   return (
-    <Dropdown size="lg" isOpen={dropdownOpen} toggle={toggle}>
+    <StyledDropdown size="lg" isOpen={dropdownOpen} toggle={toggle}>
       <LanguageSelector color="link">
         <StyledSelector>
           <NavigationIcon name="globe" color="black" />
@@ -94,7 +100,7 @@ const LanguageDropdown: React.FC = () => {
           id="site.language.en"
         />
       </DropdownMenu>
-    </Dropdown>
+    </StyledDropdown>
   );
 };
 

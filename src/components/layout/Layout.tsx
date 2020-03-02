@@ -8,6 +8,7 @@ import Notifications from '../notification/containers/NotificationsContainer';
 import LanguageDropdown from './LanguageDropdown';
 import LocalizedLink from '../common/LocalizedLink';
 import Icon from '../common/Icon';
+import HelsinkiLogo from '../icons/HelsinkiLogo';
 import Modal from '../modal/containers/ModalContainer';
 import Footer from './Footer';
 import userManager from '../../utils/userManager';
@@ -25,6 +26,8 @@ const Content = styled.div`
 
 const NavbarRow = styled(Navbar)`
   background-color: ${props => props.theme.helWhite};
+  padding-left: 0;
+  padding-right: 0;
 
   & a {
     color: ${props => props.theme.helBlack};
@@ -38,6 +41,7 @@ const NavbarRow = styled(Navbar)`
 const TopNavbar = styled(Navbar)`
   background-color: ${props => props.theme.colors.helWhite};
   border-bottom: 1px solid ${props => props.theme.helGray};
+  padding: 0.5rem 0.9375rem;
 
   & a {
     color: #000;
@@ -81,6 +85,7 @@ const Links = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
+
   & a {
     margin-right: 1em;
   }
@@ -90,16 +95,9 @@ const Links = styled.div`
   `}
 `;
 
-const HelsinkiIcon = styled(Icon)`
-  svg {
-    height: 3rem;
-    width: 5rem;
-
-    ${responsive.md`
-      height: 3.5rem;
-      width: 7rem;
-    `}
-  }
+const StyledHelsinkiLogo = styled(HelsinkiLogo)`
+  height: 2.5rem;
+  width: 5.5rem;
 `;
 
 const AppName = styled.div`
@@ -152,10 +150,10 @@ const Layout: React.FC<Props> = ({ children, paddingTop, paddingBottom, user, au
   return (
     <LayoutWrapper>
       {/* Set min-height to navbar to prevent page jumping */}
-      <TopNavbar expand="md" style={{ minHeight: '75px' }}>
+      <TopNavbar expand="md" style={{ minHeight: '77px' }}>
         <Container>
           <NavbarBrand href="/" aria-label={formatMessage({ id: 'site.nav.logo.text' })}>
-            <HelsinkiIcon name="helsinkiLogo" color="#000" />
+            <StyledHelsinkiLogo />
             <AppName>{formatMessage({ id: 'site.nav.appName' })}</AppName>
           </NavbarBrand>
           <NavbarRow>

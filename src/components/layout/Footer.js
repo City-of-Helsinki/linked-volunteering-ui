@@ -4,14 +4,15 @@ import styled from 'styled-components';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import LocalizedLink from '../common/LocalizedLink';
 import responsive from '../../utils/responsive';
-import Icon from '../common/Icon';
+
+import HelsinkiLogo from '../icons/HelsinkiLogo.tsx';
 
 const Wrapper = styled.div`
   background-color: ${props => props.theme.helCopper};
   color: #000;
   padding-top: 2rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem;
   min-height: 15rem;
 
   & a {
@@ -82,6 +83,11 @@ const BottomLinksRight = styled.div`
   `}
 `;
 
+const StyledHelsinkiLogo = styled(HelsinkiLogo)`
+  height: 7rem;
+  width: 6rem;
+`;
+
 const Footer = ({ intl: { formatMessage, locale } }) => (
   <Wrapper>
     <NavigationLinks>
@@ -98,7 +104,7 @@ const Footer = ({ intl: { formatMessage, locale } }) => (
       </span>
     </NavigationLinks>
     <LogoWrapper>
-      <Icon name="helsinkiLogo" size="7x" color="#000" />
+      <StyledHelsinkiLogo />
     </LogoWrapper>
     <BottomLinks>
       <BottomLinksLeft>
