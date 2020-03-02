@@ -32,29 +32,44 @@ const ButtonCol = styled(Col)`
   text-align: right;
 `;
 
-const SubmitButton = styled(Button)`
-  background-color: #00d7a7;
-  border-color: #00d7a7;
-  margin-left: 0.5rem;
-
-  &:hover {
-    background-color: #01b78e;
-    border-color: #01b78e;
-    color: black;
-  }
-`;
-
 const ResetButton = styled(Button)`
   background-color: #ca3f00;
   border-color: #ca3f00;
   color: white;
-  margin-right: 0.5rem;
+  margin-bottom: 1rem;
+  display: block;
+  margin-left: auto;
 
   &:hover {
     background-color: #bd2719;
     border-color: #bd2719;
     color: white;
   }
+
+  ${responsive.sm`
+    display: inline-block;
+    margin-left: 0;
+    margin-right: 0.5rem;
+    margin-bottom: 0;
+  `}
+`;
+
+const SubmitButton = styled(Button)`
+  background-color: #00d7a7;
+  border-color: #00d7a7;
+  display: block;
+  margin-left: auto;
+
+  &:hover {
+    background-color: #01b78e;
+    border-color: #01b78e;
+    color: black;
+  }
+
+  ${responsive.sm`
+    display: inline-block;
+    margin-left: 0.5rem;
+  `}
 `;
 
 class NewEventPage extends PureComponent {
