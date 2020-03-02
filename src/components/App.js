@@ -22,11 +22,11 @@ const App = ({ locale }) => {
           <Redirect to="fi" />
         </Route>
         <Route exact path="/login/" component={Login} />
-        <Route exact path="/:locale/" component={LandingPage} />
-        <Route path={`/:locale/accessibility`} component={AccessibilityPage} />
-        <Route exact path={`/:locale/event/new`} component={NewEventPage} />
-        <Route exact path={`/:locale/event/submitted`} component={SubmittedPage} />
-        <Route path={`/:locale/admin`} component={AdminRoutes} />
+        <Route exact path={`/${language}`} component={LandingPage} />
+        <Route path={`/${language}/accessibility`} component={AccessibilityPage} />
+        <Route exact path={`/${language}/event/new`} component={NewEventPage} />
+        <Route exact path={`/${language}/event/submitted`} component={SubmittedPage} />
+        <Route path={`/${language}/admin`} component={AdminRoutes} />
         <Route path="*" component={Error404Page} />
       </Switch>
     </IntlProvider>
