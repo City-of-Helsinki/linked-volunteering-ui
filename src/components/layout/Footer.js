@@ -69,6 +69,8 @@ const BottomLinks = styled.div`
 const BottomLinksLeft = styled.div`
   text-align: left;
   flex: 1 1 0%;
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 const BottomLinksRight = styled.div`
