@@ -35,6 +35,9 @@
   "site.table.header.report.events": "Talkoita",
   "site.table.header.report.participants": "Osallistujia",
 
+  "site.page.error404.title": "Voi harava sentään!",
+  "site.page.error404.text": "Valitettavasti emme löydä etsimääsi sivua. Mutta jospa vaikka järjestäisit talkoot?",
+  "site.page.error404.button": "Ilmoita puistotalkoo",
   "site.page.manage_events.title": "Puistotalkoot",
   "site.page.manage_events.filter_events": "Suodata tapahtumia",
   "site.page.manage_events.table.action.edit": "Muokkaa",

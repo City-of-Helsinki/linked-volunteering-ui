@@ -130,7 +130,6 @@ const UserIcon = styled(Icon)`
 const KoroSection = styled(Koros)`
   svg {
     fill: ${props => props.theme.helCopper};
-    position: absolute;
     height: 1.25rem;
     margin-top: -1.25rem;
   }

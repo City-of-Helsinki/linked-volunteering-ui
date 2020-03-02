@@ -8,6 +8,7 @@ import AccessibilityPage from './pages/accessibility/AccessibilityPage.tsx';
 import NewEventPage from './pages/events/containers/NewEventPageContainer';
 import SubmittedPage from './pages/events/containers/SubmittedPageContainer';
 import LandingPage from './pages/LandingPage.tsx';
+import Error404Page from './pages/Error404Page.tsx';
 import AdminRoutes from './Admin';
 import Login from './Login';
 
@@ -26,6 +27,7 @@ const App = ({ locale }) => {
         <Route exact path={`/:locale/event/new`} component={NewEventPage} />
         <Route exact path={`/:locale/event/submitted`} component={SubmittedPage} />
         <Route path={`/:locale/admin`} component={AdminRoutes} />
+        <Route path="*" component={Error404Page} />
       </Switch>
     </IntlProvider>
   );

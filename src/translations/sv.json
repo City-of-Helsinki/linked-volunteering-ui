@@ -35,6 +35,10 @@
   "site.table.header.report.events": "Talkon",
   "site.table.header.report.participants": "Deltagare",
 
+  "site.page.error404.title": "Fy krattan ändå!",
+  "site.page.error404.text": "Tyvärr kan vi inte hitta sidan du söker efter. Men vad sägs om att ordna ett parktalko?",
+  "site.page.error404.button": "Anmäl ett parktalko",
+
   "site.page.manage_events.title": "Parktalko",
   "site.page.manage_events.filter_events": "Filtrera evenemang",
   "site.page.manage_events.table.action.edit": "Redigera",

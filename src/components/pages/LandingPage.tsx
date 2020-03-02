@@ -68,7 +68,7 @@ const LandingPage = () => {
   }, []);
 
   const openNewEventPage = () => {
-    push(`${locale}/event/new`);
+    push(`/${locale}/event/new`);
   };
 
   return (

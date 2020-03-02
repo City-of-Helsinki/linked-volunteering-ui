@@ -35,6 +35,10 @@
   "site.table.header.report.events": "Volunteer activities",
   "site.table.header.report.participants": "Volunteers",
 
+  "site.page.error404.title": "Oops, you are lost in the woods!",
+  "site.page.error404.text": "Sorry, we can’t find the page you are looking for. What about organising a park volunteer activity?",
+  "site.page.error404.button": "Notify about a new park volunteer activity",
+
   "site.page.manage_events.title": "Park volunteer activities",
   "site.page.manage_events.filter_events": "Filter activities",
   "site.page.manage_events.table.action.edit": "Edit",
