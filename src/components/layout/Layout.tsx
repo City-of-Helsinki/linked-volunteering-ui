@@ -150,7 +150,7 @@ const Layout: React.FC<Props> = ({ children, paddingTop, paddingBottom, user, au
   return (
     <LayoutWrapper>
       {/* Set min-height to navbar to prevent page jumping */}
-      <TopNavbar expand="md" style={{ minHeight: '77px' }}>
+      <TopNavbar expand="sm" style={{ minHeight: '77px' }}>
         <Container>
           <NavbarBrand href="/" aria-label={formatMessage({ id: 'site.nav.logo.text' })}>
             <StyledHelsinkiLogo />
@@ -170,7 +170,7 @@ const Layout: React.FC<Props> = ({ children, paddingTop, paddingBottom, user, au
         </Container>
       </TopNavbar>
 
-      <TopNavbar expand="md">
+      <TopNavbar expand="sm">
         <Container>
           <NavbarRow>
             <Links>

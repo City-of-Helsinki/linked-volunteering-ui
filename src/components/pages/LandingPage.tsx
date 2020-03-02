@@ -34,10 +34,6 @@ const ContentWrapper = styled.div`
   background-color: ${props => props.theme.helWhite};
   color: ${props => props.theme.helBlack};
 
-  ${responsive.md`
-    margin-left: 1rem;
-  `}
-
   h1 {
     font-size: 3rem;
     margin-top: 0;
