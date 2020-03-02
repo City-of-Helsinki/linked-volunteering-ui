@@ -41,7 +41,7 @@ const NavbarRow = styled(Navbar)`
 const TopNavbar = styled(Navbar)`
   background-color: ${props => props.theme.colors.helWhite};
   border-bottom: 1px solid ${props => props.theme.helGray};
-  padding: 0.5rem 0.9375rem;
+  padding: 0.5rem 0;
 
   & a {
     color: #000;
@@ -50,6 +50,14 @@ const TopNavbar = styled(Navbar)`
     text-decoration: none;
     color: #000;
   }
+`;
+
+const NavbarContainer = styled(Container)`
+  padding: 0 0.9375rem;
+
+  ${responsive.sm`
+    padding: 0;
+  `}
 `;
 
 interface PageWrapperProps {
@@ -72,6 +80,7 @@ const UserAction = styled.a`
   justify-content: flex-end;
   border: none;
   background-color: none;
+
   & span {
     margin-left: 0.5em;
   }
@@ -126,10 +135,12 @@ const UserIcon = styled(Icon)`
 `;
 
 const KoroSection = styled(Koros)`
+  position: absolute;
+  margin-top: -1.25rem;
+
   svg {
     fill: ${props => props.theme.helCopper};
     height: 1.25rem;
-    margin-top: -1.25rem;
   }
 `;
 
@@ -150,8 +161,8 @@ const Layout: React.FC<Props> = ({ children, paddingTop, paddingBottom, user, au
   return (
     <LayoutWrapper>
       {/* Set min-height to navbar to prevent page jumping */}
-      <TopNavbar expand="sm" style={{ minHeight: '77px' }}>
-        <Container>
+      <TopNavbar style={{ minHeight: '77px' }}>
+        <NavbarContainer>
           <NavbarBrand href="/" aria-label={formatMessage({ id: 'site.nav.logo.text' })}>
             <StyledHelsinkiLogo />
             <AppName>{formatMessage({ id: 'site.nav.appName' })}</AppName>
@@ -167,11 +178,11 @@ const Layout: React.FC<Props> = ({ children, paddingTop, paddingBottom, user, au
               )}
             </Options>
           </NavbarRow>
-        </Container>
+        </NavbarContainer>
       </TopNavbar>
 
-      <TopNavbar expand="sm">
-        <Container>
+      <TopNavbar>
+        <NavbarContainer>
           <NavbarRow>
             <Links>
               <LocalizedLink to="event/new" translate="site.nav.create_event" />
@@ -185,7 +196,7 @@ const Layout: React.FC<Props> = ({ children, paddingTop, paddingBottom, user, au
               )}
             </Links>
           </NavbarRow>
-        </Container>
+        </NavbarContainer>
       </TopNavbar>
 
       <Content>

@@ -20,8 +20,11 @@ const TitleContainer = styled(Container)`
     font-size: ${props => props.theme.h4FontSize};
   }
 
-  ${responsive.md`
+  ${responsive.sm`
     padding-left: 0;
+  `}
+
+  ${responsive.md`
     h1 {
       font-size: ${props => props.theme.h2FontSize};
     }
