@@ -1,8 +1,13 @@
 import React, { FunctionComponent } from 'react';
+import styled from 'styled-components';
+
+const ContentWrapper = styled.div`
+  hyphens: auto;
+`;
 
 const AccessibilityStatementFi: FunctionComponent = () => {
   return (
-    <>
+    <ContentWrapper lang="fi">
       <h1>Saavutettavuus&shy;seloste</h1>
       <p>
         Tämä saavutettavuusseloste koskee Helsingin kaupungin Kulttuurin kummilapset-verkkosivustoa.
@@ -63,7 +68,7 @@ const AccessibilityStatementFi: FunctionComponent = () => {
         <br />
         Helsingin kaupunki
       </p>
-    </>
+    </ContentWrapper>
   );
 };
 

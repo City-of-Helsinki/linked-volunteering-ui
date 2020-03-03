@@ -1,8 +1,13 @@
 import React, { FunctionComponent } from 'react';
+import styled from 'styled-components';
+
+const ContentWrapper = styled.div`
+  hyphens: auto;
+`;
 
 const AccessibilityStatementSv: FunctionComponent = () => {
   return (
-    <>
+    <ContentWrapper lang="sv">
       <h1>Tillgänglighets&shy;utlåtande</h1>
       <p>
         Detta tillgänglighetsutlåtande gäller Helsingfors stads webbplats Kulturens fadderbarn
@@ -68,7 +73,7 @@ const AccessibilityStatementSv: FunctionComponent = () => {
       <p>Detta utlåtande har godkänts 30.1.2020</p>
       <p>Kultur och fritid</p>
       <p>Helsingfors stad</p>
-    </>
+    </ContentWrapper>
   );
 };
 
