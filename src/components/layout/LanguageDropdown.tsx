@@ -80,7 +80,7 @@ const LanguageDropdown: React.FC = () => {
           <DropdownIcon name={'angleUp'} color="black" rotate={dropdownOpen ? '0' : '180'} />
         </StyledSelector>
       </LanguageSelector>
-      <DropdownMenu>
+      <DropdownMenu positionFixed={true}>
         <IntlComponent
           Component={DropdownItem}
           href="/fi"
