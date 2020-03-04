@@ -21,7 +21,11 @@ const Body = ({ values }) => (
     </div>
     <div>
       <Icon name="mapMarker" />
-      <FormattedMessage tagName="span" id="modal.confirm_removal.body.location.text" />
+      {values.maintenance_location ? (
+        <span>{values.maintenance_location}</span>
+      ) : (
+        <FormattedMessage tagName="span" id="modal.confirm_removal.body.location.text" />
+      )}
     </div>
   </div>
 );
