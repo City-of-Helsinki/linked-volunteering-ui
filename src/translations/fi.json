@@ -82,7 +82,7 @@
   "form.validation.generic": "Virheellinen kenttä!",
   "form.validation.contract_zone": "Tälle alueelle ei voi ilmoittaa talkoita.",
 
-  "form.event.new.info": "Talkootarvikkeet tuodaan ennalta sovittuun paikkaan ennen talkoita. Ne noudetaan talkoiden jälkeen samasta paikasta, kuten myös kerätty. \n\nJärjestelmä antaa automaattisesti osoitteen talkookohteen mukaan, mutta tavarat voidaan tuoda myös muualle. Voit kirjoittaa osoitteen lisäksi tarkennuksia paikasta. Esimerkki: Castréninkatu 4, leikkipuisto Toinen Linja, rakennuksen sisäänkäynnin läheisyyteen. Jos talkoot ovat viikonloppuna tuodaan tarvikkeet edeltävänä arkipäivänä ja noudetaan seuraavana.",
+  "form.event.new.info": "Talkootarvikkeet tuodaan ennalta sovittuun paikkaan ennen talkoita. Ne noudetaan talkoiden jälkeen samasta paikasta, kuten myös kerätty jäte. \n\nJärjestelmä antaa automaattisesti osoitteen talkookohteen mukaan, mutta tavarat voidaan tuoda myös muualle. Voit kirjoittaa osoitteen lisäksi tarkennuksia paikasta. Esimerkki: Castréninkatu 4, leikkipuisto Toinen Linja, rakennuksen sisäänkäynnin läheisyyteen. Jos talkoot ovat viikonloppuna tuodaan tarvikkeet edeltävänä arkipäivänä ja noudetaan seuraavana.",
 
   "form.event.modify.heading": "Muokkaa tapahtumaa",
   "form.event.modify.button.reset": "Kumoa muutokset",
@@ -90,7 +90,7 @@
   "form.event.new.heading": "Ilmoita uusi puistotalkoo",
   "form.event.new.button.reset": "Tyhjennä lomake",
   "form.event.new.button.submit": "Lähetä hyväksyttäväksi",
-  "form.event.new.location_instructions": "Valitse ensin kaupunginosa ja merkitse sen jälkeen talkoo kartalle. \nVoit myös kirjoittaa tarkan osoitteen. ",
+  "form.event.new.location_instructions": "Ilmoita talkoon osoite tai merkitse paikka alla olevaan karttaan.",
   "form.event.title.name_and_description": "Tapahtuman nimi ja kuvaus",
   "form.event.title.place": "Paikka",
   "form.event.title.time": "Aika",
@@ -105,7 +105,7 @@
   "form.event.field.name.placeholder": "Tapahtuman nimi",
   "form.event.field.description.label": "Kuvausteksti",
   "form.event.field.neighborhood.label": "Talkoon sijainti",
-  "form.event.field.neighborhood.placeholder": "Etsi osoitteella tai kaupunginosalla",
+  "form.event.field.neighborhood.placeholder": "Etsi osoitteella",
   "form.event.field.first_name.label": "Etunimi",
   "form.event.field.first_name.placeholder": "Etunimi",
   "form.event.field.last_name.label": "Sukunimi",
