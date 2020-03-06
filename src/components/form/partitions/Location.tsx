@@ -134,6 +134,7 @@ const Location: React.FC<Props> = ({
               onBlur={handleBlur}
               suggestions={[...neighborhoods.sortBy(suggestionItem).values()]}
               getSuggestionValue={suggestionItem}
+              required={true}
             />
           )}
         </Col>

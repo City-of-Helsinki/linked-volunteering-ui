@@ -1,9 +1,10 @@
 import React from 'react';
 import DatePicker, { ReactDatePickerProps } from 'react-datepicker';
 import { useIntl } from 'react-intl';
-import { FormFeedback, FormGroup, Input, Label } from 'reactstrap';
+import { FormFeedback, FormGroup, Input } from 'reactstrap';
 
 import InstructionText from './InstructionText';
+import Label from './Label';
 
 interface Props extends ReactDatePickerProps {
   error?: string;

@@ -8,6 +8,7 @@ import Autosuggest, {
 import { FormGroup, Input, FormFeedback, FormText } from 'reactstrap';
 import styled from 'styled-components';
 import { useIntl } from 'react-intl';
+
 import Label from './Label';
 import './AutoSuggest.scss';
 

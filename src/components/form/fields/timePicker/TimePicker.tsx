@@ -1,10 +1,11 @@
 import { addMinutes, isEqual, isSameDay, startOfDay } from 'date-fns';
 import React from 'react';
 import { useIntl } from 'react-intl';
-import { FormFeedback, FormGroup, Input, Label } from 'reactstrap';
+import { FormFeedback, FormGroup, Input } from 'reactstrap';
 import styled from 'styled-components';
 
 import InstructionText from '../InstructionText';
+import Label from '../Label';
 import ListItem from './ListItem';
 
 import formatTime from '../../../../utils/formatTime';
@@ -85,7 +86,6 @@ const TimePicker: React.FC<Props> = ({
   error,
   id,
   label,
-  onBlur,
   onChange,
   placeholder,
   required,
@@ -170,10 +170,6 @@ const TimePicker: React.FC<Props> = ({
     );
   };
 
-  const handleBlur = () => {
-    onBlur(selected);
-  };
-
   const handleChange = (date: Date) => {
     onChange(date);
     setIsMenuOpen(false);
@@ -251,7 +247,6 @@ const TimePicker: React.FC<Props> = ({
         <Input
           id={id}
           invalid={!!error && touched}
-          onBlur={handleBlur}
           onChange={() => {}}
           placeholder={placeholder ? formatMessage({ id: placeholder }) : undefined}
           value={selected ? formatTime(selected, timeFormat, locale) : ''}

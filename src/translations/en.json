@@ -72,7 +72,9 @@
   "site.report.total_participants": "Total number of volunteers {participant_amount}",
   "site.report.download": "Download as a CSV file",
 
+  "form.validation.date.endtime": "Start time must be before end time",
   "form.validation.mixed.required": "Mandatory!",
+  "form.validation.mixed.not.date": "Date required!",
   "form.validation.mixed.not.number": "Number required!",
   "form.validation.number.positive": "Number must be positive!",
   "form.validation.string.matches": "The field must be in the given format!",

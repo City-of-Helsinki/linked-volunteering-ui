@@ -71,7 +71,9 @@
   "site.report.total_participants": "Osallistujia yhteensä {participant_amount}",
   "site.report.download": "Lataa CSV-tiedostona",
 
+  "form.validation.date.endtime": "Alkamispäivän tulee olla ennen loppumispäivää",
   "form.validation.mixed.required": "Pakollinen kenttä!",
+  "form.validation.mixed.not.date": "Kentän tulee olla päivämäärä!",
   "form.validation.mixed.not.number": "Kentän tulee olla numero!",
   "form.validation.number.positive": "Numeron pitää olla positiivinen!",
   "form.validation.number.max": "Numero on liian suuri!",

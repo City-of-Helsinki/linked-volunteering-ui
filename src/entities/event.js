@@ -35,7 +35,14 @@ export const validationSchema = yup.object().shape({
   end_time: yup
     .date()
     .nullable()
-    .required(),
+    .when('start_time', st => {
+      return st
+        ? yup.date().min(st, 'form.validation.date.endtime')
+        : yup
+            .date()
+            .nullable()
+            .required();
+    }),
   location: yup
     .object()
     .shape({

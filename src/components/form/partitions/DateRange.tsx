@@ -107,7 +107,7 @@ const DateRange: React.FC<Props> = ({
             placeholder="form.event.partitions.date_range.start_date.placeholder"
             locale={locale}
             error={errors.start_time}
-            touched={touched.start_time}
+            touched={!!touched.start_time}
             onChange={handleDateChange('start_time', values.start_time)}
             onBlur={onBlur('start_time')}
             highlightDates={[now]}
@@ -137,7 +137,7 @@ const DateRange: React.FC<Props> = ({
             timeCaption={formatMessage({ id: 'form.event.partitions.date_range.timeCaption' })}
             timeFormat={timeFormat}
             timeIntervals={timeIntervals}
-            touched={touched.start_time}
+            touched={!!touched.start_time}
           />
         </Col>
       </Row>
@@ -150,7 +150,7 @@ const DateRange: React.FC<Props> = ({
             placeholder="form.event.partitions.date_range.end_date.placeholder"
             locale={locale}
             error={errors.end_time}
-            touched={touched.end_time}
+            touched={!!touched.end_time}
             onChange={handleDateChange('end_time', values.end_time)}
             onBlur={onBlur('end_time')}
             selected={selectedEndTime}
@@ -178,7 +178,7 @@ const DateRange: React.FC<Props> = ({
             timeCaption={formatMessage({ id: 'form.event.partitions.date_range.timeCaption' })}
             timeFormat={timeFormat}
             timeIntervals={timeIntervals}
-            touched={touched.end_time}
+            touched={!!touched.end_time}
           />
         </Col>
       </Row>

@@ -72,7 +72,9 @@
   "site.report.total_participants": "Deltagare totalt {participant_amount}",
   "site.report.download": "Ladda upp som CSV-fil",
 
+  "form.validation.date.endtime": "Starttid måste vara före sluttid",
   "form.validation.mixed.required": "Obligatoriskt fält!",
+  "form.validation.mixed.not.date": "Fältet ska innehålla ett datum!",
   "form.validation.mixed.not.number": "Fältet ska innehålla ett tal!",
   "form.validation.number.positive": "Talet ska vara positivt!",
   "form.validation.string.matches": "Fältet ska vara i given form!",
