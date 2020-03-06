@@ -106,7 +106,7 @@ export default ({
         errors={errors}
         touched={touched}
         values={values}
-        unavailableDates={unavailableDates}
+        unavailableDates={unavailableDates ? unavailableDates.map(date => new Date(date)) : []}
         handleChange={handleChange}
         handleBlur={handleBlur}
       />
