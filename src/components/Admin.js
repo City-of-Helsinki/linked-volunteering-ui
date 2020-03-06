@@ -24,15 +24,9 @@ const requireUser = restrictUser(({ isContractor, isOfficial }) => !(isContracto
 
 const AdminRoutes = props => (
   <Switch>
-    <Route
-      path={`${props.match.path}/events/manage`}
-      component={requireOfficial(ManageEventsPage)}
-    />
-    <Route
-      path={`${props.match.path}/event/modify/:id`}
-      component={requireOfficial(ModifyEventPage)}
-    />
-    <Route path={`${props.match.path}/report`} component={requireUser(ReportPage)} />
+    <Route path={`${props.match.path}/events/manage`} component={requireUser(ManageEventsPage)} />
+    <Route path={`${props.match.path}/event/modify/:id`} component={requireUser(ModifyEventPage)} />
+    <Route path={`${props.match.path}/report`} component={requireOfficial(ReportPage)} />
   </Switch>
 );
 
