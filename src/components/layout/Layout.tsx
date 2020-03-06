@@ -45,6 +45,7 @@ const TopNavbar = styled(Navbar)`
 
   & a {
     color: #000;
+    white-space: normal;
   }
   & a:hover {
     text-decoration: none;

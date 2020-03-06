@@ -23,7 +23,7 @@ const AccessibilityStatementFi: FunctionComponent = () => {
         Digitaalisten palveluiden saavutettavuudessa Helsingin tavoitteena on pyrkiä vähintään WCAG
         ohjeiston mukaiseen AA- tai sitä parempaan tasoon, mikäli se on kohtuudella mahdollista.
       </p>
-      <h2>Vaatimustenmukaisuustilanne</h2>
+      <h2>Vaatimustenmukaisuus&shy;tilanne</h2>
       <p>Tämän verkkosivuston saavutettavuuden vaatimustenmukaisuutta ei ole vielä arvioitu.</p>
       <h2>Saavutettavuusselosteen laatiminen</h2>
       <p>Tämä seloste on laadittu 30.1.2020</p>

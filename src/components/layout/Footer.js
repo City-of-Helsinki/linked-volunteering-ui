@@ -37,6 +37,10 @@ const NavigationLinks = styled.div`
   justify-content: flex-end;
   flex-direction: column;
 
+  a {
+    white-space: normal;
+  }
+
   span {
     font-weight: 600;
   }
