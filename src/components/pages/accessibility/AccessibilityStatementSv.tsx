@@ -29,7 +29,7 @@ const AccessibilityStatementSv: FunctionComponent = () => {
       <h2>Fullgörandestatus</h2>
       <p>Denna webbplats förenlighet med tillgänglighetskraven är inte ännu bedömd.</p>
 
-      <h2>Utarbetande av tillgänglighetsutlåtande</h2>
+      <h2>Utarbetande av tillgänglighets&shy;utlåtande</h2>
       <p>Detta utlåtande har upprättats 30.1.2020</p>
 
       <h3>Uppdatering av tillgänglighetsutlåtande</h3>
@@ -69,7 +69,7 @@ const AccessibilityStatementSv: FunctionComponent = () => {
         på de rådgivningssidor som anges på stadens sidor och på telefonrådgivningen.
       </p>
 
-      <h2>Godkännande av tillgänglighetsutlåtande</h2>
+      <h2>Godkännande av tillgänglighets&shy;utlåtande</h2>
       <p>Detta utlåtande har godkänts 30.1.2020</p>
       <p>Kultur och fritid</p>
       <p>Helsingfors stad</p>
