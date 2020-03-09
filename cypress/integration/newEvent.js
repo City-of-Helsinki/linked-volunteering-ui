@@ -1,4 +1,3 @@
-import moment from 'moment';
 import newEvent from '../fixtures/newEvent';
 
 describe('New event', () => {
@@ -11,7 +10,7 @@ describe('New event', () => {
   it('Fill & submit', () => {
     cy.visit('/fi/event/new');
 
-    cy.get('div.leaflet-touch').click();
+    cy.get('div.leaflet-touch-drag').click();
 
     Object.entries(newEvent).forEach(([key, { method, value }]) => {
       if (method === 'click') {

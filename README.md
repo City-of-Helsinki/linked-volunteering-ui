@@ -1,6 +1,6 @@
 # Linked Volunteering UI
 
-[![Build Status](https://travis-ci.org/City-of-Helsinki/linked-volunteering-ui.svg?branch=master)](https://travis-ci.org/City-of-Helsinki/linked-volunteering-ui)
+[![Build Status](https://travis-ci.org/City-of-Helsinki/linked-volunteering-ui.svg?branch=develop)](https://travis-ci.org/City-of-Helsinki/linked-volunteering-ui)
 
 ## Prerequisites
 
@@ -37,3 +37,15 @@ End-to-end testing is created with Cypress.io framework. To run tests:
 ```
 $ yarn cypress
 ```
+
+## Docker
+
+Before building image docker image at the first time, create a new `.env.local` file from the provided `.env.example` file and configure it as needed:
+
+```
+$ cp .env.example .env.production.local
+```
+
+`docker-compose build` to build docker image
+`docker-compose up` to start the dockerized dev-environment. Not for production!!!  
+`docker-compose down` stops the container.

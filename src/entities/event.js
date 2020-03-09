@@ -19,7 +19,7 @@ export const defaultValues = {
   additional_information: '',
   large_trash_bag_count: '',
   small_trash_bag_count: '',
-  trash_picker_count: null
+  trash_picker_count: ''
 };
 
 const phoneRegex = /[0-9 +()]{6,19}/;
@@ -35,7 +35,14 @@ export const validationSchema = yup.object().shape({
   end_time: yup
     .date()
     .nullable()
-    .required(),
+    .when('start_time', st => {
+      return st
+        ? yup.date().min(st, 'form.validation.date.endtime')
+        : yup
+            .date()
+            .nullable()
+            .required();
+    }),
   location: yup
     .object()
     .shape({

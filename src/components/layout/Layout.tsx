@@ -1,14 +1,15 @@
+import { Koros } from 'hds-react';
 import React, { Fragment } from 'react';
-import { Container, Navbar, NavbarBrand, Nav } from 'reactstrap';
+import { Container, Navbar, NavbarBrand } from 'reactstrap';
 import styled from 'styled-components';
-import { injectIntl, FormattedMessage } from 'react-intl';
+import { useIntl, FormattedMessage } from 'react-intl';
 
 import Notifications from '../notification/containers/NotificationsContainer';
 import LanguageDropdown from './LanguageDropdown';
 import LocalizedLink from '../common/LocalizedLink';
 import Icon from '../common/Icon';
+import HelsinkiLogo from '../icons/HelsinkiLogo';
 import Modal from '../modal/containers/ModalContainer';
-import KoroSection from './KoroSection';
 import Footer from './Footer';
 import userManager from '../../utils/userManager';
 import responsive from '../../utils/responsive';
@@ -25,6 +26,8 @@ const Content = styled.div`
 
 const NavbarRow = styled(Navbar)`
   background-color: ${props => props.theme.helWhite};
+  padding-left: 0;
+  padding-right: 0;
 
   & a {
     color: ${props => props.theme.helBlack};
@@ -38,9 +41,11 @@ const NavbarRow = styled(Navbar)`
 const TopNavbar = styled(Navbar)`
   background-color: ${props => props.theme.colors.helWhite};
   border-bottom: 1px solid ${props => props.theme.helGray};
+  padding: 0.5rem 0;
 
   & a {
     color: #000;
+    white-space: normal;
   }
   & a:hover {
     text-decoration: none;
@@ -48,9 +53,22 @@ const TopNavbar = styled(Navbar)`
   }
 `;
 
+const NavbarContainer = styled(Container)`
+  padding: 0 0.9375rem;
+
+  ${responsive.sm`
+    padding: 0;
+  `}
+`;
+
+interface PageWrapperProps {
+  paddingBottom: boolean;
+  paddingTop: boolean;
+}
+
 const PageWrapper = styled.div`
-  padding-top: ${props => (props.paddingTop ? '3em' : 0)};
-  padding-bottom: ${props => (props.paddingBottom ? '3em' : 0)};
+  padding-top: ${(props: PageWrapperProps) => (props.paddingTop ? '3em' : 0)};
+  padding-bottom: ${(props: PageWrapperProps) => (props.paddingBottom ? '3em' : 0)};
 `;
 
 const Options = styled.div`
@@ -63,6 +81,7 @@ const UserAction = styled.a`
   justify-content: flex-end;
   border: none;
   background-color: none;
+
   & span {
     margin-left: 0.5em;
   }
@@ -76,6 +95,7 @@ const Links = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
+
   & a {
     margin-right: 1em;
   }
@@ -85,19 +105,25 @@ const Links = styled.div`
   `}
 `;
 
-const HelsinkiIcon = styled(Icon)`
-  svg {
-    height: 3rem;
-    width: 5rem;
+const StyledHelsinkiLogo = styled(HelsinkiLogo)`
+  height: 2.5rem;
+  width: 5.5rem;
+`;
 
-    ${responsive.md`
-      height: 3rem;
-      width: 7rem;
-    `}
-  }
+const AppName = styled.div`
+  display: none;
+  font-weight: bold;
+  font-size: 1.17em;
+  margin: 0 0 0 30px;
+
+  ${responsive.md`
+    display: inline-flex;
+  `}
 `;
 
 const UserIcon = styled(Icon)`
+  margin-right: 0.25rem;
+
   svg {
     height: 1.6rem;
     width: 1.6rem;
@@ -109,7 +135,26 @@ const UserIcon = styled(Icon)`
   }
 `;
 
-const Layout = ({ children, paddingTop, paddingBottom, user, auth }) => {
+const KoroSection = styled(Koros)`
+  position: absolute;
+  margin-top: -1.25rem;
+
+  svg {
+    fill: ${props => props.theme.helCopper};
+    height: 1.25rem;
+  }
+`;
+
+interface Props {
+  auth?: any;
+  paddingBottom: boolean;
+  paddingTop: boolean;
+  user?: any;
+}
+
+const Layout: React.FC<Props> = ({ children, paddingTop, paddingBottom, user, auth }) => {
+  const intl = useIntl();
+  const { formatMessage } = intl;
   const hasUser = !!user;
   const isOfficial = auth ? auth.is_official : false;
   const isContractor = auth ? auth.is_contractor : false;
@@ -117,27 +162,28 @@ const Layout = ({ children, paddingTop, paddingBottom, user, auth }) => {
   return (
     <LayoutWrapper>
       {/* Set min-height to navbar to prevent page jumping */}
-      <TopNavbar expand="md" style={{ minHeight: '75px' }}>
-        <Container>
-          <NavbarBrand href="/">
-            <HelsinkiIcon name="helsinkiLogo" color="#000" />
+      <TopNavbar style={{ minHeight: '77px' }}>
+        <NavbarContainer>
+          <NavbarBrand href="/" aria-label={formatMessage({ id: 'site.nav.logo.text' })}>
+            <StyledHelsinkiLogo />
+            <AppName>{formatMessage({ id: 'site.nav.appName' })}</AppName>
           </NavbarBrand>
-          <Nav navbar>
+          <NavbarRow>
             <Options>
               <LanguageDropdown />
               {hasUser && (
-                <UserAction onClick={() => userManager.signoutRedirect()}>
+                <UserAction onClick={() => userManager.signoutRedirect()} tabIndex={0}>
                   <UserIcon name="user" color="black" />
                   <FormattedMessage id="site.nav.user.logout" />
                 </UserAction>
               )}
             </Options>
-          </Nav>
-        </Container>
+          </NavbarRow>
+        </NavbarContainer>
       </TopNavbar>
 
-      <TopNavbar expand="md">
-        <Container>
+      <TopNavbar>
+        <NavbarContainer>
           <NavbarRow>
             <Links>
               <LocalizedLink to="event/new" translate="site.nav.create_event" />
@@ -151,7 +197,7 @@ const Layout = ({ children, paddingTop, paddingBottom, user, auth }) => {
               )}
             </Links>
           </NavbarRow>
-        </Container>
+        </NavbarContainer>
       </TopNavbar>
 
       <Content>
@@ -161,7 +207,7 @@ const Layout = ({ children, paddingTop, paddingBottom, user, auth }) => {
       </Content>
 
       <div>
-        <KoroSection color="green" />
+        <KoroSection type="basic" />
         <Footer />
       </div>
       <Notifications />
@@ -170,4 +216,4 @@ const Layout = ({ children, paddingTop, paddingBottom, user, auth }) => {
   );
 };
 
-export default injectIntl(Layout);
+export default Layout;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import Svg from 'react-svg';
+import { ReactSVG } from 'react-svg';
 
 import angleDown from 'hel-icons/dist/shapes/angle-down.svg';
 import angleLeft from 'hel-icons/dist/shapes/angle-left.svg';
@@ -83,7 +83,7 @@ const icons = {
   oval
 };
 
-export const StyledSvg = styled(Svg)`
+export const StyledSvg = styled(ReactSVG)`
   line-height: 1;
 
   svg {
@@ -105,8 +105,10 @@ export const StyledSvg = styled(Svg)`
   }
 `;
 
-const Icon = ({ name, color: fill, size, className, rotate }) => {
+const Icon = props => {
+  const { name, color: fill, size, className, rotate } = props;
   const src = icons[name];
+
   if (!src) {
     // eslint-disable-next-line no-console
     console.error('missing icon', name);

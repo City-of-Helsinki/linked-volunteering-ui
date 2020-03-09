@@ -4,15 +4,17 @@ import styled from 'styled-components';
 import { injectIntl, FormattedMessage } from 'react-intl';
 import LocalizedLink from '../common/LocalizedLink';
 import responsive from '../../utils/responsive';
-import Icon from '../common/Icon';
+
+import HelsinkiLogo from '../icons/HelsinkiLogo.tsx';
 
 const Wrapper = styled.div`
   background-color: ${props => props.theme.helCopper};
   color: #000;
-  padding-top: 2em;
-  padding-left: 2em;
-  padding-right: 2em;
-  min-height: 15em;
+  padding-top: 2rem;
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem;
+  min-height: 15rem;
+
   & a {
     color: #000;
     text-decoration: underline;
@@ -24,9 +26,9 @@ const Wrapper = styled.div`
   }
 
   ${responsive.sm`
-    padding-top: 4em;
-    padding-left: 4em;
-    padding-right: 4em;
+    padding-top: 4rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
   `}
 `;
 
@@ -34,6 +36,10 @@ const NavigationLinks = styled.div`
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
+
+  a {
+    white-space: normal;
+  }
 
   span {
     font-weight: 600;
@@ -68,6 +74,8 @@ const BottomLinks = styled.div`
 const BottomLinksLeft = styled.div`
   text-align: left;
   flex: 1 1 0%;
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 const BottomLinksRight = styled.div`
@@ -77,6 +85,11 @@ const BottomLinksRight = styled.div`
   ${responsive.sm`
     text-align: right;
   `}
+`;
+
+const StyledHelsinkiLogo = styled(HelsinkiLogo)`
+  height: 7rem;
+  width: 6rem;
 `;
 
 const Footer = ({ intl: { formatMessage, locale } }) => (
@@ -95,7 +108,7 @@ const Footer = ({ intl: { formatMessage, locale } }) => (
       </span>
     </NavigationLinks>
     <LogoWrapper>
-      <Icon name="helsinkiLogo" size="7x" color="#000" />
+      <StyledHelsinkiLogo />
     </LogoWrapper>
     <BottomLinks>
       <BottomLinksLeft>

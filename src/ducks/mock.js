@@ -1,6 +1,6 @@
 import { createAction } from 'redux-actions';
 import { addWeeks } from 'date-fns';
-import uuid from 'uuid';
+import { v4 as uuid } from 'uuid';
 
 const convertToUnixTime = time => Math.round(time.getTime() / 1000);
 
