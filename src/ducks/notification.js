@@ -1,6 +1,6 @@
 import { Record, Map } from 'immutable';
 import { createAction } from 'redux-actions';
-import * as uuid from 'uuid';
+import { v4 as uuid } from 'uuid';
 
 const defaultState = Record({
   notifications: Map()
