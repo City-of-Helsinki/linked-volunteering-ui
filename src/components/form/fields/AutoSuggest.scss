@@ -16,11 +16,11 @@
   z-index: 5000;
   width: 100%;
   max-height: 30rem;
-  overflow: auto;
   // This fixes z-index problem on Safari. Little bit hacky but works
   -webkit-transform: translate3d(0, 0, 0);
 }
 .react-autosuggest__suggestions-container--open {
+  overflow: auto;
 }
 .react-autosuggest__suggestions-list {
   list-style: none;
