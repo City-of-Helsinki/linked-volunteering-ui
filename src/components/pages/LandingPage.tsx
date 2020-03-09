@@ -1,13 +1,12 @@
 import { Button } from 'hds-react';
 import React from 'react';
-import { FormattedMessage, FormattedHTMLMessage, useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { useHistory } from 'react-router';
 import { Container, Row, Col } from 'reactstrap';
 import styled from 'styled-components';
 
 import Layout from '../layout/containers/LayoutContainer';
 import heroImage from '../../assets/images/landing_hero_image.jpeg';
-import responsive from '../../utils/responsive';
 
 const PageContainer = styled.div`
   background-image: url(${heroImage});
@@ -75,13 +74,13 @@ const LandingPage = () => {
             <Col md="12" lg="6">
               <ContentWrapper>
                 <FormattedMessage tagName="h1" id="site.page.landing.hero.headline" />
-                <FormattedHTMLMessage tagName="p" id="site.page.landing.hero.introduction" />
+                <FormattedMessage tagName="p" id="site.page.landing.hero.introduction" />
                 <FormattedMessage tagName="strong" id="site.page.landing.hero.call_to_action" />
 
                 <Row>
                   <Col sm="12">
                     <Button color="supplementary" onClick={openNewEventPage}>
-                      <FormattedHTMLMessage tagName="span" id="site.page.landing.hero.button" />
+                      <FormattedMessage tagName="span" id="site.page.landing.hero.button" />
                     </Button>
                   </Col>
                 </Row>
@@ -89,7 +88,7 @@ const LandingPage = () => {
                 <Row>
                   <Col sm="12">
                     <a href={formatMessage({ id: 'site.page.landing.hero.url' })}>
-                      <FormattedHTMLMessage tagName="span" id="site.page.landing.hero.link" />
+                      <FormattedMessage tagName="span" id="site.page.landing.hero.link" />
                     </a>
                   </Col>
                 </Row>
