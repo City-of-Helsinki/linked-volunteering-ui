@@ -5,7 +5,6 @@ export const defaultValues = {
   state: 'waiting_for_approval',
   name: '',
   description: '',
-  neighborhood: '',
   start_time: null,
   end_time: null,
   location: null,
@@ -27,7 +26,6 @@ const phoneRegex = /[0-9 +()]{6,19}/;
 export const validationSchema = yup.object().shape({
   name: yup.string().required(),
   description: yup.string().required(),
-  neighborhood: yup.string(),
   start_time: yup
     .date()
     .nullable()

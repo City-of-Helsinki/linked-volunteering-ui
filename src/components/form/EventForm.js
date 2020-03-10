@@ -14,7 +14,6 @@ const LocationInstructions = styled(Row)`
 
 export default ({
   addressCoordinates,
-  neighborhoods,
   clearCoordinatesByAddress,
   getCoordinatesByAddress,
   getGeoData,
@@ -84,7 +83,6 @@ export default ({
         setFieldValue={setFieldValue}
         setFieldTouched={setFieldTouched}
         setFieldError={setFieldError}
-        neighborhoods={neighborhoods}
         errors={errors}
         touched={touched}
         values={values}

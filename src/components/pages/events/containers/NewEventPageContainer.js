@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { get } from 'lodash';
 
 import { addNotification } from '../../../../ducks/notification';
-import { getNeighborhoods } from '../../../../ducks/neighborhood';
 import {
   clearCoordinatesByAddress,
   getCoordinatesByAddress,
@@ -22,7 +21,6 @@ export default compose(
   connect(
     state => ({
       addressCoordinates: get(state, 'geo.addressCoordinates'),
-      neighborhoods: state.neighborhood.neighborhoods,
       selectedAddress: get(state, 'geo.geoData.closest_address'),
       selectedContractZone: get(state, 'geo.geoData.contract_zone'),
       unavailableDates: get(state, 'geo.geoData.contract_zone.unavailable_dates'),
@@ -32,7 +30,6 @@ export default compose(
       clearCoordinatesByAddress,
       getCoordinatesByAddress,
       getGeoData,
-      getNeighborhoods,
       addNotification,
       submitEvent
     }
