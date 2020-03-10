@@ -58,15 +58,13 @@ class ReportPage extends Component {
   }
 
   state = {
-    activePage: 1,
-    pageCount: 1
+    activePage: 1
   };
 
   componentDidUpdate(prevProps) {
     if (prevProps.reports !== this.props.reports) {
       this.setState({
-        activePage: 1,
-        pageCount: (this.props.reports.size || 1) / TABLE_PAGE_SIZE
+        activePage: 1
       });
     }
   }
@@ -99,7 +97,8 @@ class ReportPage extends Component {
       ordering,
       intl: { formatMessage }
     } = this.props;
-    const { activePage, pageCount } = this.state;
+    const { activePage } = this.state;
+    const pageCount = Math.ceil((this.props.reports.size || 1) / TABLE_PAGE_SIZE);
     const paginatedReports = this.getPaginatedReports();
 
     const eventAmount = reports.reduce((acc, row) => acc + row.event_count, 0);
