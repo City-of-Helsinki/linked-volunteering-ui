@@ -16,8 +16,6 @@ const StyledFormGroup = styled(FormGroup)`
   margin-bottom: 0;
 `;
 
-const simplify = (value: string) => value.toLowerCase();
-
 export interface AutoSuggestEvent {
   target: {
     id: string;
