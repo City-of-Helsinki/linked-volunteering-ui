@@ -50,6 +50,7 @@ build-production:
   only:
     refs:
       - master
+      - /^release-.*$/
 
 review:
   variables:
