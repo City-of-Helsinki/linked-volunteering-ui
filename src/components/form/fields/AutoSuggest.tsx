@@ -16,8 +16,6 @@ const StyledFormGroup = styled(FormGroup)`
   margin-bottom: 0;
 `;
 
-const simplify = (value: string) => value.toLowerCase();
-
 export interface AutoSuggestEvent {
   target: {
     id: string;
@@ -37,7 +35,6 @@ interface Props {
   onChange: (e: AutoSuggestEvent) => void;
   placeholder?: string;
   required?: boolean;
-  suggestions: Array<any>;
   text?: string;
   touched: boolean;
 }
@@ -54,14 +51,12 @@ const AutoSuggestField: React.FC<Props> = ({
   onChange,
   placeholder,
   required,
-  suggestions,
   text,
   touched
 }) => {
   const intl = useIntl();
   const { formatMessage, locale } = intl;
 
-  const [filteredSuggestions, setFilteredSuggestions] = React.useState<Array<any>>([]);
   const [value, setValue] = React.useState('');
 
   const handleChange = (event: React.FormEvent<any>, data: ChangeEvent) => {
@@ -70,16 +65,10 @@ const AutoSuggestField: React.FC<Props> = ({
 
   const onSuggestionsFetchRequested = (request: SuggestionsFetchRequestedParams) => {
     getCoordinatesByAddress(request.value, locale);
-    setFilteredSuggestions(
-      suggestions.filter((suggestion: any) =>
-        simplify(getSuggestionValue(suggestion)).includes(simplify(request.value))
-      )
-    );
   };
 
   const onSuggestionsClearRequested = () => {
     clearCoordinatesByAddress();
-    setFilteredSuggestions([]);
   };
 
   const onSuggestionSelected = (
@@ -106,7 +95,7 @@ const AutoSuggestField: React.FC<Props> = ({
 
   return (
     <Autosuggest
-      suggestions={[...addressFeatures, ...filteredSuggestions]}
+      suggestions={[...addressFeatures]}
       onSuggestionsFetchRequested={onSuggestionsFetchRequested}
       onSuggestionsClearRequested={onSuggestionsClearRequested}
       onSuggestionSelected={onSuggestionSelected}

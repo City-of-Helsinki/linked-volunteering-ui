@@ -3,7 +3,6 @@ import { compose, withProps, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
 import { get } from 'lodash';
 
-import { getNeighborhoods } from '../../../../ducks/neighborhood';
 import { renderIfAuthenticated } from '../../../../utils/container';
 import { addNotification } from '../../../../ducks/notification';
 import {
@@ -28,7 +27,6 @@ export default compose(
       return {
         addressCoordinates: get(state, 'geo.addressCoordinates'),
         initialValues: state.event.events.get(parsedId),
-        neighborhoods: state.neighborhood.neighborhoods,
         selectedAddress: get(state, 'geo.geoData.closest_address'),
         selectedContractZone: get(state, 'geo.geoData.contract_zone'),
         unavailableDates: get(state, 'geo.geoData.contract_zone.unavailable_dates'),
@@ -39,8 +37,7 @@ export default compose(
       clearCoordinatesByAddress,
       getCoordinatesByAddress,
       getGeoData,
-      addNotification,
-      getNeighborhoods
+      addNotification
     }
   ),
   withHandlers({

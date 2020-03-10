@@ -7,12 +7,6 @@ export default {
     method: 'type',
     value: 'Puistotalkoot'
   },
-  // TODO: After adding address search this field breaks travis tests.
-  // This is not critical so fix later
-  // neighborhood: {
-  //   method: 'autosuggest',
-  //   value: 'Kruununhaka'
-  // },
   'date_range\\.start_time': {
     method: 'type',
     value: '11:11'

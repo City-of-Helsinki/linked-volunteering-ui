@@ -81,13 +81,6 @@ class NewEventPage extends PureComponent {
     window.scrollTo(0, 0);
   }
 
-  componentDidMount() {
-    const { neighborhoods, getNeighborhoods, apiAccessToken } = this.props;
-    if (neighborhoods.size === 0) {
-      getNeighborhoods(apiAccessToken);
-    }
-  }
-
   componentDidUpdate(prevProps) {
     if (this.props.submitCount !== prevProps.submitCount) {
       // Has short timeout to be sure errors are re-rendered
