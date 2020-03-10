@@ -16,7 +16,6 @@ interface Props {
   getGeoData: Function;
   handleBlur: (event: React.FormEvent<any>) => void;
   handleChange: (event: AutoSuggestEvent) => void;
-  neighborhoods: any;
   selectedAddress: any;
   selectedContractZone: any;
   setFieldTouched: Function;
@@ -34,7 +33,6 @@ const Location: React.FC<Props> = ({
   getGeoData,
   handleBlur,
   handleChange,
-  neighborhoods,
   selectedAddress,
   selectedContractZone,
   setFieldTouched,
@@ -120,23 +118,20 @@ const Location: React.FC<Props> = ({
     <Fragment>
       <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
-          {neighborhoods.size > 0 && (
-            <AutoSuggest
-              id="neighborhood"
-              label="form.event.field.neighborhood.label"
-              placeholder="form.event.field.neighborhood.placeholder"
-              addressFeatures={addressFeatures}
-              clearCoordinatesByAddress={clearCoordinatesByAddress}
-              getCoordinatesByAddress={getCoordinatesByAddress}
-              error={errors.area}
-              touched={touched.area}
-              onChange={handleZoom}
-              onBlur={handleBlur}
-              suggestions={[...neighborhoods.sortBy(suggestionItem).values()]}
-              getSuggestionValue={suggestionItem}
-              required={true}
-            />
-          )}
+          <AutoSuggest
+            id="neighborhood"
+            label="form.event.field.neighborhood.label"
+            placeholder="form.event.field.neighborhood.placeholder"
+            addressFeatures={addressFeatures}
+            clearCoordinatesByAddress={clearCoordinatesByAddress}
+            getCoordinatesByAddress={getCoordinatesByAddress}
+            error={errors.area}
+            touched={touched.area}
+            onChange={handleZoom}
+            onBlur={handleBlur}
+            getSuggestionValue={suggestionItem}
+            required={true}
+          />
         </Col>
       </Row>
       <Row>

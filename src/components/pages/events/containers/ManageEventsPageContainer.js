@@ -7,7 +7,6 @@ import {
   setFilterByContractZone,
   setOrderBy
 } from '../../../../ducks/event';
-import { getNeighborhoods } from '../../../../ducks/neighborhood';
 import { getContractZones } from '../../../../ducks/contractZones';
 import { addNotification } from '../../../../ducks/notification';
 import { openModal } from '../../../../ducks/modal';
@@ -31,12 +30,10 @@ export default compose(
       events: filterEvents(state.event),
       nextParams: state.event.next,
       ordering: state.event.ordering,
-      neighborhoods: state.neighborhood.neighborhoods,
       contractZones: state.contractZones.contractZones,
       apiAccessToken: state.auth.apiAccessToken
     }),
     {
-      getNeighborhoods,
       getContractZones,
       getEvents,
       publishEvent,
