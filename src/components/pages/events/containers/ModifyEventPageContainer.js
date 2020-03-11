@@ -40,13 +40,18 @@ export default compose(
       addNotification
     }
   ),
+  injectIntl,
   withHandlers({
-    onSubmit: ({ history, locale, addNotification: notify, apiAccessToken }) => async values => {
+    onSubmit: ({
+      history,
+      intl: { locale },
+      addNotification: notify,
+      apiAccessToken
+    }) => async values => {
       await modifyEvent(values, apiAccessToken);
       history.push(`/${locale}/admin/events/manage`);
       notify({ color: 'success', message: 'notification.form.event.modified' });
     }
   }),
-  injectIntl,
   withEventForm
 )(EventPage);
