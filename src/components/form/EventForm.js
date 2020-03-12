@@ -69,6 +69,22 @@ export default ({
         </Col>
       </Row>
       <Row>
+        <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
+          <Input
+            type="number"
+            id="estimated_attendee_count"
+            label="form.event.field.amount_of_volunteers.label"
+            placeholder="form.event.field.amount_of_volunteers.placeholder"
+            min={0}
+            error={errors.estimated_attendee_count}
+            touched={touched.estimated_attendee_count}
+            value={values.estimated_attendee_count}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+        </Col>
+      </Row>
+      <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }}>
           <FormattedMessage tagName="h3" id="form.event.title.place" />
         </Col>
@@ -173,22 +189,6 @@ export default ({
       <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }}>
           <FormattedMessage tagName="h3" id="form.event.title.others" />
-        </Col>
-      </Row>
-      <Row>
-        <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
-          <Input
-            type="number"
-            id="estimated_attendee_count"
-            label="form.event.field.amount_of_volunteers.label"
-            placeholder="form.event.field.amount_of_volunteers.placeholder"
-            min={0}
-            error={errors.estimated_attendee_count}
-            touched={touched.estimated_attendee_count}
-            value={values.estimated_attendee_count}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
         </Col>
       </Row>
       <Row>
