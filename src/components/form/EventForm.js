@@ -203,21 +203,6 @@ export default ({
         </Col>
       </Row>
       <Row>
-        <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 8, offset: 1 }}>
-          <Input
-            type="textarea"
-            id="additional_information"
-            label="form.event.field.details.label"
-            text="form.event.field.details.info"
-            error={errors.additional_information}
-            touched={touched.additional_information}
-            value={values.additional_information}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-        </Col>
-      </Row>
-      <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }}>
           <FormattedMessage tagName="h3" id="form.event.title.tools_and_suplies" />
           <FormattedMessage tagName="p" id="form.event.subtitle.tools_and_suplies" />
@@ -267,6 +252,21 @@ export default ({
             error={errors.trash_picker_count}
             touched={touched.trash_picker_count}
             value={values.trash_picker_count}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+        </Col>
+      </Row>
+      <Row>
+        <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 8, offset: 1 }}>
+          <Input
+            type="textarea"
+            id="additional_information"
+            label="form.event.field.details.label"
+            text="form.event.field.details.info"
+            error={errors.additional_information}
+            touched={touched.additional_information}
+            value={values.additional_information}
             onChange={handleChange}
             onBlur={handleBlur}
           />
