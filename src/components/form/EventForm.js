@@ -203,11 +203,6 @@ export default ({
         </Col>
       </Row>
       <Row>
-        <Col sm="12" md={{ size: 8, offset: 1 }}>
-          <FormattedMessage tagName="h3" id="form.event.title.others" />
-        </Col>
-      </Row>
-      <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 8, offset: 1 }}>
           <Input
             type="textarea"
