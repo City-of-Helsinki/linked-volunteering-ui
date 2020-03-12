@@ -10,7 +10,7 @@ interface Props extends InputProps {
   id: string;
   label?: string;
   placeholder?: string;
-  required: boolean;
+  required?: boolean;
   text?: string;
   touched: boolean;
 }

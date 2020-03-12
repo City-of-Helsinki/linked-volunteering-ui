@@ -102,7 +102,6 @@ const DateRange: React.FC<Props> = ({
         <Col sm="12" md={{ size: 4, offset: 1 }} id="date_range_start_date_wrapper">
           <DatePicker
             id="date_range_start_date"
-            required
             label="form.event.partitions.date_range.start_date.label"
             placeholder="form.event.partitions.date_range.start_date.placeholder"
             locale={locale}
@@ -132,7 +131,6 @@ const DateRange: React.FC<Props> = ({
             onBlur={onBlur('start_time')}
             onChange={onChange('start_time')}
             placeholder="form.event.partitions.date_range.start_time.placeholder"
-            required
             selected={values.start_time}
             timeCaption={formatMessage({ id: 'form.event.partitions.date_range.timeCaption' })}
             timeFormat={timeFormat}
@@ -145,7 +143,6 @@ const DateRange: React.FC<Props> = ({
         <Col sm="12" md={{ size: 4, offset: 1 }} id="date_range_end_date_wrapper">
           <DatePicker
             id="date_range_end_date"
-            required
             label="form.event.partitions.date_range.end_date.label"
             placeholder="form.event.partitions.date_range.end_date.placeholder"
             locale={locale}
@@ -173,7 +170,6 @@ const DateRange: React.FC<Props> = ({
             onBlur={onBlur('end_time')}
             onChange={onChange('end_time')}
             placeholder="form.event.partitions.date_range.end_time.placeholder"
-            required
             selected={values.end_time}
             timeCaption={formatMessage({ id: 'form.event.partitions.date_range.timeCaption' })}
             timeFormat={timeFormat}

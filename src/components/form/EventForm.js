@@ -43,7 +43,6 @@ export default ({
             type="text"
             id="name"
             label="form.event.field.name.label"
-            required
             placeholder="form.event.field.name.placeholder"
             error={errors.name}
             touched={touched.name}
@@ -59,7 +58,6 @@ export default ({
             type="textarea"
             id="description"
             label="form.event.field.description.label"
-            required
             error={errors.description}
             touched={touched.description}
             value={values.description}
@@ -121,7 +119,6 @@ export default ({
             id="organizer_first_name"
             label="form.event.field.first_name.label"
             placeholder="form.event.field.first_name.placeholder"
-            required
             error={errors.organizer_first_name}
             touched={touched.organizer_first_name}
             value={values.organizer_first_name}
@@ -135,7 +132,6 @@ export default ({
             id="organizer_last_name"
             label="form.event.field.last_name.label"
             placeholder="form.event.field.last_name.placeholder"
-            required
             error={errors.organizer_last_name}
             touched={touched.organizer_last_name}
             value={values.organizer_last_name}
@@ -151,7 +147,6 @@ export default ({
             id="organizer_email"
             label="form.event.field.email.label"
             placeholder="form.event.field.email.placeholder"
-            required
             error={errors.organizer_email}
             touched={touched.organizer_email}
             value={values.organizer_email}
@@ -165,7 +160,6 @@ export default ({
             id="organizer_phone"
             label="form.event.field.phone.label"
             placeholder="form.event.field.phone.placeholder"
-            required
             error={errors.organizer_phone}
             touched={touched.organizer_phone}
             value={values.organizer_phone}
@@ -186,7 +180,6 @@ export default ({
             id="estimated_attendee_count"
             label="form.event.field.amount_of_volunteers.label"
             placeholder="form.event.field.amount_of_volunteers.placeholder"
-            required
             min={0}
             error={errors.estimated_attendee_count}
             touched={touched.estimated_attendee_count}
@@ -204,7 +197,6 @@ export default ({
             label="form.event.field.cleaning_targets.label"
             placeholder="form.event.field.cleaning_targets.placeholder"
             text="form.event.field.cleaning_targets.info"
-            required
             error={errors.targets}
             touched={touched.targets}
             value={values.targets}
@@ -241,7 +233,6 @@ export default ({
             id="large_trash_bag_count"
             label="form.event.field.trash_bags.label"
             placeholder="form.event.field.trash_bags.placeholder"
-            required
             min={0}
             error={errors.large_trash_bag_count}
             touched={touched.large_trash_bag_count}
@@ -258,7 +249,6 @@ export default ({
             id="small_trash_bag_count"
             label="form.event.field.small_trash_bags.label"
             placeholder="form.event.field.small_trash_bags.placeholder"
-            required
             min={0}
             error={errors.small_trash_bag_count}
             touched={touched.small_trash_bag_count}
@@ -276,7 +266,6 @@ export default ({
             label="form.event.field.trash_pickers.label"
             placeholder="form.event.field.trash_pickers.placeholder"
             text="form.event.field.trash_pickers.info"
-            required
             min={0}
             error={errors.trash_picker_count}
             touched={touched.trash_picker_count}

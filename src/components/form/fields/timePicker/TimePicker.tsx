@@ -72,7 +72,7 @@ interface Props {
   onBlur: (date: any) => void;
   onChange: (date: Date) => void;
   placeholder?: string;
-  required: boolean;
+  required?: boolean;
   selected: Date | null | undefined;
   text?: string;
   timeCaption: string;
