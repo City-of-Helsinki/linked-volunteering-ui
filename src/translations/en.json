@@ -109,6 +109,7 @@
   "form.event.field.name.placeholder": "Name of activity",
   "form.event.field.name.info": "Name the activity, e.g. cleanup activity.",
   "form.event.field.description.label": "Description",
+  "form.event.field.description.info": "Shortly describe the aim of the activity.",
   "form.event.field.neighborhood.label": "Park volunteer activity location",
   "form.event.field.neighborhood.placeholder": "Search by address",
   "form.event.field.first_name.label": "Forename",

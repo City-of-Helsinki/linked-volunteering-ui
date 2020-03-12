@@ -109,6 +109,7 @@
   "form.event.field.name.placeholder": "Tapahtuman nimi",
   "form.event.field.name.info": "Anna tapahtumalle nimi, esimerkiksi: siivoustalkoot.",
   "form.event.field.description.label": "Kuvausteksti",
+  "form.event.field.description.info": "Kerro lyhyesti talkoon tavoitteesta.",
   "form.event.field.neighborhood.label": "Talkoon sijainti",
   "form.event.field.neighborhood.placeholder": "Etsi osoitteella",
   "form.event.field.first_name.label": "Etunimi",

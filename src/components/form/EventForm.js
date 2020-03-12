@@ -59,6 +59,7 @@ export default ({
             type="textarea"
             id="description"
             label="form.event.field.description.label"
+            text="form.event.field.description.info"
             error={errors.description}
             touched={touched.description}
             value={values.description}
