@@ -7,6 +7,7 @@ import responsive from '../../../utils/responsive';
 import IntlComponent from '../../common/IntlComponent';
 import Layout from '../../layout/containers/LayoutContainer';
 import EventForm from '../../form/EventForm';
+import InstructionText from '../../form/fields/InstructionText.tsx';
 
 const FormContainer = styled(Container)`
   background-color: ${props => props.theme.helWhite};
@@ -100,6 +101,7 @@ class NewEventPage extends PureComponent {
       <Layout paddingBottom>
         <TitleContainer>
           <IntlComponent Component="h1" id={`form.event.${pageType}.heading`} />
+          <InstructionText text={`form.event.${pageType}.infoText`} />
         </TitleContainer>
         <FormContainer>
           <EventForm {...rest} />
