@@ -161,7 +161,6 @@ const Location: React.FC<Props> = ({
           <Input
             type="textarea"
             id="maintenance_location"
-            label="form.event.field.trash_location.label"
             placeholder="form.event.field.trash_location.placeholder"
             text="form.event.new.info"
             error={errors.maintenance_location}

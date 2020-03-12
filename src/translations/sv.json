@@ -127,7 +127,6 @@
   "form.event.field.cleaning_targets.label": "Talkoområde",
   "form.event.field.cleaning_targets.placeholder": "Talkoområde",
   "form.event.field.cleaning_targets.info": "Precisera området som talkot gäller. Till exempel: Björnparken och de intilliggande parkerna.",
-  "form.event.field.trash_location.label": "Platsen (läget) dit utrustningen och skräpet förs",
   "form.event.field.trash_location.placeholder": "Läge",
   "form.event.field.details.label": "Ytterligare information",
   "form.event.field.details.placeholder": "",

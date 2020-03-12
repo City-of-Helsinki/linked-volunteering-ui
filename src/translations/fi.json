@@ -127,7 +127,6 @@
   "form.event.field.cleaning_targets.label": "Talkooalue",
   "form.event.field.cleaning_targets.placeholder": "Talkooalue",
   "form.event.field.cleaning_targets.info": "Tarkenna talkoiden kohteena olevaa aluetta. Esimerkki: Karhupuisto sekä lähialueen muut puistot.",
-  "form.event.field.trash_location.label": "Sijainti, johon tarvikkeet tuodaan ja roskat viedään",
   "form.event.field.trash_location.placeholder": "Sijainti",
   "form.event.field.details.label": "Lisätiedot",
   "form.event.field.details.placeholder": "",
