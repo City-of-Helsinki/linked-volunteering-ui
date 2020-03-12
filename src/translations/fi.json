@@ -95,7 +95,7 @@
   "form.event.new.button.reset": "Tyhjennä lomake",
   "form.event.new.button.submit": "Lähetä hyväksyttäväksi",
   "form.event.new.location_instructions": "Ilmoita talkoon osoite tai merkitse paikka alla olevaan karttaan.",
-  "form.event.title.name_and_description": "Tapahtuman nimi ja kuvaus",
+  "form.event.title.name_and_description": "Tapahtuman perustiedot",
   "form.event.title.place": "Paikka",
   "form.event.title.time": "Aika",
   "form.event.title.contact_person": "Yhteyshenkilö",
