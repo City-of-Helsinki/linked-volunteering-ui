@@ -107,6 +107,7 @@
   "form.event.subtitle.tools_and_suplies": "Ilmoita tarvittavat työkalut. Urakoitsijat hoitavat oikean määrän tarvikkeita paikan päälle.",
   "form.event.field.name.label": "Nimi",
   "form.event.field.name.placeholder": "Tapahtuman nimi",
+  "form.event.field.name.info": "Anna tapahtumalle nimi, esimerkiksi: siivoustalkoot.",
   "form.event.field.description.label": "Kuvausteksti",
   "form.event.field.neighborhood.label": "Talkoon sijainti",
   "form.event.field.neighborhood.placeholder": "Etsi osoitteella",

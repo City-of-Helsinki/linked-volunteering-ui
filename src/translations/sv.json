@@ -107,6 +107,7 @@
   "form.event.subtitle.tools_and_suplies": "Ange vilka redskap ni behöver. Entreprenörer hanterar rätt mängd leveranser på plats.",
   "form.event.field.name.label": "Namn",
   "form.event.field.name.placeholder": "Evenemangets namn",
+  "form.event.field.name.info": "Namnge evenemanget, t ex städtalko.",
   "form.event.field.description.label": "Beskrivning",
   "form.event.field.neighborhood.label": "Parktalko plats",
   "form.event.field.neighborhood.placeholder": "Sök med adress",

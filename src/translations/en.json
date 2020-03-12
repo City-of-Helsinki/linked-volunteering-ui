@@ -107,6 +107,7 @@
   "form.event.subtitle.tools_and_suplies": "Tools and equipment required. Contractors handle the right amount of supplies on site.",
   "form.event.field.name.label": "Name",
   "form.event.field.name.placeholder": "Name of activity",
+  "form.event.field.name.info": "Name the activity, e.g. cleanup activity.",
   "form.event.field.description.label": "Description",
   "form.event.field.neighborhood.label": "Park volunteer activity location",
   "form.event.field.neighborhood.placeholder": "Search by address",

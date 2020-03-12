@@ -44,6 +44,7 @@ export default ({
             id="name"
             label="form.event.field.name.label"
             placeholder="form.event.field.name.placeholder"
+            text="form.event.field.name.info"
             error={errors.name}
             touched={touched.name}
             value={values.name}
