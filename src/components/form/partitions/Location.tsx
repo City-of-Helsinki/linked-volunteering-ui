@@ -130,7 +130,6 @@ const Location: React.FC<Props> = ({
             onChange={handleZoom}
             onBlur={handleBlur}
             getSuggestionValue={suggestionItem}
-            required={true}
           />
         </Col>
       </Row>
@@ -162,10 +161,8 @@ const Location: React.FC<Props> = ({
           <Input
             type="textarea"
             id="maintenance_location"
-            label="form.event.field.trash_location.label"
             placeholder="form.event.field.trash_location.placeholder"
             text="form.event.new.info"
-            required
             error={errors.maintenance_location}
             touched={touched.maintenance_location}
             value={values.maintenance_location}

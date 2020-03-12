@@ -13,9 +13,8 @@ const { toInt, findById, findByNotId, getStatus } = require('./utils.js');
 
 const yearlyReports = {
   /* eslint-disable */
-  2019: require('./res/reports/2019.json'),
-  2018: require('./res/reports/2018.json'),
-  2017: require('./res/reports/2017.json')
+  2021: require('./res/reports/2021.json'),
+  2020: require('./res/reports/2020.json')
   /* eslint-enable */
 };
 

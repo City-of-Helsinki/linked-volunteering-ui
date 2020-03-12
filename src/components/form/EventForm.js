@@ -43,8 +43,8 @@ export default ({
             type="text"
             id="name"
             label="form.event.field.name.label"
-            required
             placeholder="form.event.field.name.placeholder"
+            text="form.event.field.name.info"
             error={errors.name}
             touched={touched.name}
             value={values.name}
@@ -59,10 +59,26 @@ export default ({
             type="textarea"
             id="description"
             label="form.event.field.description.label"
-            required
+            text="form.event.field.description.info"
             error={errors.description}
             touched={touched.description}
             value={values.description}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+        </Col>
+      </Row>
+      <Row>
+        <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
+          <Input
+            type="number"
+            id="estimated_attendee_count"
+            label="form.event.field.amount_of_volunteers.label"
+            placeholder="form.event.field.amount_of_volunteers.placeholder"
+            min={0}
+            error={errors.estimated_attendee_count}
+            touched={touched.estimated_attendee_count}
+            value={values.estimated_attendee_count}
             onChange={handleChange}
             onBlur={handleBlur}
           />
@@ -95,6 +111,22 @@ export default ({
         selectedContractZone={selectedContractZone}
       />
       <Row>
+        <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
+          <Input
+            type="text"
+            id="targets"
+            label="form.event.field.cleaning_targets.label"
+            placeholder="form.event.field.cleaning_targets.placeholder"
+            text="form.event.field.cleaning_targets.info"
+            error={errors.targets}
+            touched={touched.targets}
+            value={values.targets}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+        </Col>
+      </Row>
+      <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }}>
           <FormattedMessage tagName="h3" id="form.event.title.time" />
           <FormattedMessage tagName="p" id="form.event.subtitle.time" />
@@ -121,7 +153,6 @@ export default ({
             id="organizer_first_name"
             label="form.event.field.first_name.label"
             placeholder="form.event.field.first_name.placeholder"
-            required
             error={errors.organizer_first_name}
             touched={touched.organizer_first_name}
             value={values.organizer_first_name}
@@ -135,7 +166,6 @@ export default ({
             id="organizer_last_name"
             label="form.event.field.last_name.label"
             placeholder="form.event.field.last_name.placeholder"
-            required
             error={errors.organizer_last_name}
             touched={touched.organizer_last_name}
             value={values.organizer_last_name}
@@ -151,7 +181,6 @@ export default ({
             id="organizer_email"
             label="form.event.field.email.label"
             placeholder="form.event.field.email.placeholder"
-            required
             error={errors.organizer_email}
             touched={touched.organizer_email}
             value={values.organizer_email}
@@ -165,64 +194,9 @@ export default ({
             id="organizer_phone"
             label="form.event.field.phone.label"
             placeholder="form.event.field.phone.placeholder"
-            required
             error={errors.organizer_phone}
             touched={touched.organizer_phone}
             value={values.organizer_phone}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-        </Col>
-      </Row>
-      <Row>
-        <Col sm="12" md={{ size: 8, offset: 1 }}>
-          <FormattedMessage tagName="h3" id="form.event.title.others" />
-        </Col>
-      </Row>
-      <Row>
-        <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
-          <Input
-            type="number"
-            id="estimated_attendee_count"
-            label="form.event.field.amount_of_volunteers.label"
-            placeholder="form.event.field.amount_of_volunteers.placeholder"
-            required
-            min={0}
-            error={errors.estimated_attendee_count}
-            touched={touched.estimated_attendee_count}
-            value={values.estimated_attendee_count}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-        </Col>
-      </Row>
-      <Row>
-        <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
-          <Input
-            type="text"
-            id="targets"
-            label="form.event.field.cleaning_targets.label"
-            placeholder="form.event.field.cleaning_targets.placeholder"
-            text="form.event.field.cleaning_targets.info"
-            required
-            error={errors.targets}
-            touched={touched.targets}
-            value={values.targets}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-        </Col>
-      </Row>
-      <Row>
-        <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 8, offset: 1 }}>
-          <Input
-            type="textarea"
-            id="additional_information"
-            label="form.event.field.details.label"
-            text="form.event.field.details.info"
-            error={errors.additional_information}
-            touched={touched.additional_information}
-            value={values.additional_information}
             onChange={handleChange}
             onBlur={handleBlur}
           />
@@ -241,7 +215,6 @@ export default ({
             id="large_trash_bag_count"
             label="form.event.field.trash_bags.label"
             placeholder="form.event.field.trash_bags.placeholder"
-            required
             min={0}
             error={errors.large_trash_bag_count}
             touched={touched.large_trash_bag_count}
@@ -258,7 +231,6 @@ export default ({
             id="small_trash_bag_count"
             label="form.event.field.small_trash_bags.label"
             placeholder="form.event.field.small_trash_bags.placeholder"
-            required
             min={0}
             error={errors.small_trash_bag_count}
             touched={touched.small_trash_bag_count}
@@ -276,11 +248,25 @@ export default ({
             label="form.event.field.trash_pickers.label"
             placeholder="form.event.field.trash_pickers.placeholder"
             text="form.event.field.trash_pickers.info"
-            required
             min={0}
             error={errors.trash_picker_count}
             touched={touched.trash_picker_count}
             value={values.trash_picker_count}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+        </Col>
+      </Row>
+      <Row>
+        <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 8, offset: 1 }}>
+          <Input
+            type="textarea"
+            id="additional_information"
+            label="form.event.field.details.label"
+            text="form.event.field.details.info"
+            error={errors.additional_information}
+            touched={touched.additional_information}
+            value={values.additional_information}
             onChange={handleChange}
             onBlur={handleBlur}
           />
