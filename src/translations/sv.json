@@ -103,7 +103,7 @@
   "form.event.title.visibility": "Synlighet",
   "form.event.subtitle.contact_person": "Arrangörens kontaktuppgifter krävs för entreprenörer",
   "form.event.subtitle.time": "Evenemangets startdag kan vara tidigast om en vecka räknat från idag",
-  "form.event.subtitle.tools_and_suplies": "Ange vilka redskap ni behöver. Entreprenörer hanterar rätt mängd leveranser på plats.",
+  "form.event.subtitle.tools_and_suplies": "Meddela vilka redskap ni behöver. Entreprenörer ser till att rätt mängd levereras till utsatt plats. Sopsäckar beräknas i rullar, ej styckvis. Minsta möjliga mängd är 1 rulle. ",
   "form.event.field.name.label": "Namn",
   "form.event.field.name.placeholder": "Evenemangets namn",
   "form.event.field.name.info": "Namnge evenemanget, t ex städtalko.",

@@ -103,7 +103,7 @@
   "form.event.title.visibility": "Visibility",
   "form.event.subtitle.contact_person": "Contact details of the organizer are required for contractors",
   "form.event.subtitle.time": "The starting date must be at least one week from now",
-  "form.event.subtitle.tools_and_suplies": "Tools and equipment required. Contractors handle the right amount of supplies on site.",
+  "form.event.subtitle.tools_and_suplies": "Enter required tools and equipment. Contractors ensure the delivery of the right amount of supplies to the site. Litter bags are delivered in rolls, not as individual bags. The minimum amount is 1 roll.",
   "form.event.field.name.label": "Name",
   "form.event.field.name.placeholder": "Name of activity",
   "form.event.field.name.info": "Name the activity, e.g. cleanup activity.",
