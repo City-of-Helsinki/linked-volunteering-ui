@@ -110,7 +110,7 @@
   "form.event.field.name.info": "Namnge evenemanget, t ex städtalko.",
   "form.event.field.description.label": "Beskrivning",
   "form.event.field.description.info": "Beskriv kort evenemangets syfte.",
-  "form.event.field.neighborhood.label": "Parktalko plats",
+  "form.event.field.neighborhood.label": "Platsen (läget) dit utrustningen och skräpet förs",
   "form.event.field.neighborhood.placeholder": "Sök med adress",
   "form.event.field.first_name.label": "Förnamn",
   "form.event.field.first_name.placeholder": "Förnamn",
