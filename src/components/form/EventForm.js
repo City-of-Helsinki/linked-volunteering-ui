@@ -111,6 +111,22 @@ export default ({
         selectedContractZone={selectedContractZone}
       />
       <Row>
+        <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
+          <Input
+            type="text"
+            id="targets"
+            label="form.event.field.cleaning_targets.label"
+            placeholder="form.event.field.cleaning_targets.placeholder"
+            text="form.event.field.cleaning_targets.info"
+            error={errors.targets}
+            touched={touched.targets}
+            value={values.targets}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+        </Col>
+      </Row>
+      <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }}>
           <FormattedMessage tagName="h3" id="form.event.title.time" />
           <FormattedMessage tagName="p" id="form.event.subtitle.time" />
@@ -189,22 +205,6 @@ export default ({
       <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }}>
           <FormattedMessage tagName="h3" id="form.event.title.others" />
-        </Col>
-      </Row>
-      <Row>
-        <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
-          <Input
-            type="text"
-            id="targets"
-            label="form.event.field.cleaning_targets.label"
-            placeholder="form.event.field.cleaning_targets.placeholder"
-            text="form.event.field.cleaning_targets.info"
-            error={errors.targets}
-            touched={touched.targets}
-            value={values.targets}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
         </Col>
       </Row>
       <Row>
