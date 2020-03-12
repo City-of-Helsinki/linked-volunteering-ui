@@ -108,7 +108,7 @@
   "form.event.field.name.label": "Namn",
   "form.event.field.name.placeholder": "Evenemangets namn",
   "form.event.field.name.info": "Namnge evenemanget, t ex städtalko.",
-  "form.event.field.description.label": "Beskrivning",
+  "form.event.field.description.label": "Beskrivning (valfritt fält)",
   "form.event.field.description.info": "Beskriv kort evenemangets syfte.",
   "form.event.field.neighborhood.label": "Platsen (läget) dit utrustningen och skräpet förs",
   "form.event.field.neighborhood.placeholder": "Sök med adress",
