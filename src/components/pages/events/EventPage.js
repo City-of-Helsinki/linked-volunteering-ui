@@ -17,8 +17,12 @@ const FormContainer = styled(Container)`
 
 const TitleContainer = styled(Container)`
   h1 {
-    margin: 2rem 0;
+    margin: 2rem 0 0.5rem;
     font-size: ${props => props.theme.h4FontSize};
+  }
+
+  p {
+    margin-bottom: 2.5rem;
   }
 
   ${responsive.sm`
