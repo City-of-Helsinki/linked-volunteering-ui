@@ -7,14 +7,11 @@ describe('Yearly reports', () => {
 
   it('Loads reports from selected years', () => {
     cy.visit('/fi/admin/report');
-    cy.get('#area').select('2019');
+    cy.get('#area').select('2021');
     cy.contains('Talkoita yhteensä 10');
     cy.contains('Osallistujia yhteensä 26');
-    cy.get('#area').select('2018');
+    cy.get('#area').select('2020');
     cy.contains('Talkoita yhteensä 43');
     cy.contains('Osallistujia yhteensä 123');
-    cy.get('#area').select('2017');
-    cy.contains('Talkoita yhteensä 20');
-    cy.contains('Osallistujia yhteensä 45');
   });
 });

@@ -3,18 +3,35 @@ import { Switch, Redirect, Route } from 'react-router';
 import { IntlProvider } from 'react-intl';
 
 import messages from '../config/translations';
-import { DEFAULT_LANGUAGE, SUPPORT_LANGUAGES } from '../constants';
-import Error404Page from './pages/Error404Page.tsx';
-import LandingPage from './pages/LandingPage.tsx';
+import Error404Page from './pages/Error404Page';
+import LandingPage from './pages/LandingPage';
 import AdminRoutes from './Admin';
-import LocaleRoutes from './LocaleRoutes.tsx';
+import LocaleRoutes from './LocaleRoutes';
 import Login from './Login';
+import CommonMeta from './CommonMeta';
+import { Language } from '../types';
 
-const App = ({ locale }) => {
-  const language = SUPPORT_LANGUAGES[locale.toUpperCase()] || DEFAULT_LANGUAGE;
+interface Props {
+  locale: string;
+}
+
+const getLanguage = (locale: string): Language => {
+  switch (locale) {
+    case 'en':
+    case 'fi':
+    case 'sv':
+      return locale;
+    default:
+      return 'fi';
+  }
+};
+
+const App: React.FC<Props> = ({ locale }) => {
+  const language = getLanguage(locale);
 
   return (
     <IntlProvider locale={language} key={language} messages={messages[language]}>
+      <CommonMeta />
       <Switch>
         <Route exact path="/logged_out">
           <Redirect to="fi" />

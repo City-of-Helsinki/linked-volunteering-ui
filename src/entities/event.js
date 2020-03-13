@@ -25,7 +25,6 @@ const phoneRegex = /[0-9 +()]{6,19}/;
 
 export const validationSchema = yup.object().shape({
   name: yup.string().required(),
-  description: yup.string().required(),
   start_time: yup
     .date()
     .nullable()

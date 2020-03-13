@@ -53,6 +53,7 @@ const DropdownIcon = styled(Icon)`
 
 const LanguageDropdown: React.FC = () => {
   const intl = useIntl();
+  const { formatMessage, locale } = intl;
   const { push } = useHistory();
   const { pathname } = useLocation();
   const [dropdownOpen, setDropdownOpen] = React.useState(false);
@@ -62,7 +63,6 @@ const LanguageDropdown: React.FC = () => {
   };
 
   const changeLanguage = (language: string) => (event: any) => {
-    const { locale } = intl;
     const url = pathname.startsWith(`/${locale}`)
       ? pathname.replace(`/${locale}`, `/${language}`)
       : `/${language}${pathname}`;
@@ -73,7 +73,10 @@ const LanguageDropdown: React.FC = () => {
 
   return (
     <StyledDropdown size="lg" isOpen={dropdownOpen} toggle={toggle}>
-      <LanguageSelector color="link">
+      <LanguageSelector
+        aria-label={formatMessage({ id: 'site.language.changeLanguage' })}
+        color="link"
+      >
         <StyledSelector>
           <NavigationIcon name="globe" color="black" />
           <span>{intl.locale.toUpperCase()}</span>
@@ -86,18 +89,21 @@ const LanguageDropdown: React.FC = () => {
           href="/fi"
           onClick={changeLanguage('fi')}
           id="site.language.fi"
+          lang="fi"
         />
         <IntlComponent
           Component={DropdownItem}
           href="/sv"
           onClick={changeLanguage('sv')}
           id="site.language.sv"
+          lang="sv"
         />
         <IntlComponent
           Component={DropdownItem}
           href="/en"
           onClick={changeLanguage('en')}
           id="site.language.en"
+          lang="en"
         />
       </DropdownMenu>
     </StyledDropdown>
