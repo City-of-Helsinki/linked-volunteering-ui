@@ -17,7 +17,7 @@ import userManager from './utils/userManager';
 import { mockUser, mockUserData } from './ducks/mock';
 import { getApiAccessToken, getCurrentUserData } from './ducks/auth';
 
-import App from './components/containers/AppContainer';
+import App from './components/containers/AppContainer.tsx';
 import CallbackPage from './components/pages/containers/CallBackPageContainer';
 
 const store = configureStore();
