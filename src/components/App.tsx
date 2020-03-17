@@ -40,7 +40,7 @@ const App: React.FC<Props> = ({ locale }) => {
         <Route path={`/${language}/admin`} component={AdminRoutes} />
         <Route exact path={`/${language}`} component={LandingPage} />
         <Route path={`/${language}/*`} component={LocaleRoutes} />
-        <Route path="*" component={Error404Page} />
+        <Route component={Error404Page} />
       </Switch>
     </IntlProvider>
   );
