@@ -190,7 +190,7 @@ export default ({
         </Col>
         <Col sm="12" md={{ size: 4 }}>
           <Input
-            type="text"
+            type="tel"
             id="organizer_phone"
             label="form.event.field.phone.label"
             placeholder="form.event.field.phone.placeholder"
