@@ -10,13 +10,13 @@ const Message = styled(Container)`
   padding-top: 4em;
   padding-bottom: 4em;
 
-  h2 {
+  h1 {
     font-size: ${props => props.theme.h4FontSize};
-    margin-bottom: 1em;
+    margin: 0 0 1rem;
   }
 
   ${responsive.md`
-    h2 {
+    h1 {
       font-size: ${props => props.theme.h2FontSize};
     }
   `}
@@ -25,7 +25,7 @@ const Message = styled(Container)`
 const AccessDeniedPage = () => (
   <Layout paddingBottom>
     <Message>
-      <FormattedMessage tagName="h2" id="site.page.access_denied.heading" href="/" />
+      <FormattedMessage tagName="h1" id="site.page.access_denied.heading" href="/" />
       <FormattedMessage tagName="p" id="site.page.access_denied.message" />
       <FormattedMessage tagName="p" id="site.page.access_denied.contact_admin" />
     </Message>

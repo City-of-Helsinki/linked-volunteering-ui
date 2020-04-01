@@ -24,8 +24,9 @@ const TitleRow = styled(Row)`
 const ControlContainer = styled(Container)`
   background-color: ${props => props.theme.helWhite};
 
-  h3 {
-    margin-top: 0em;
+  h1 {
+    font-size: var(--hds-text-xxl);
+    margin: 0 0 0.5rem;
   }
 `;
 
@@ -130,7 +131,7 @@ class ReportPage extends Component {
         <ControlContainer fluid>
           <TitleRow>
             <Col sm={{ size: 11, offset: 1 }}>
-              <FormattedMessage tagName="h2" id="site.report.title" />
+              <FormattedMessage tagName="h1" id="site.report.title" />
             </Col>
           </TitleRow>
           <Row>
