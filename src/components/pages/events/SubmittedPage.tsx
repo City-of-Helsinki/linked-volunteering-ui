@@ -4,6 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { FormattedMessage } from 'react-intl';
+import PageMeta from '../PageMeta';
 import Button from '../../common/Button';
 import LocalizedLink from '../../common/LocalizedLink';
 import Layout from '../../layout/containers/LayoutContainer';
@@ -129,6 +130,7 @@ const SubmittedPage: React.FC<Props> = ({ submittedEvent }) => {
 
   return (
     <Layout>
+      <PageMeta title="site.page.thank_you.page_title" />
       <PageContainer>
         <Content>
           <FormattedMessage tagName="h1" id="site.page.thank_you.header" />

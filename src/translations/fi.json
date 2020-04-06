@@ -36,9 +36,12 @@
   "site.table.header.report.events": "Talkoita",
   "site.table.header.report.participants": "Osallistujia",
 
+  "site.page.error404.page_title": "Tapahtui virhe",
   "site.page.error404.title": "Voi harava sentään!",
   "site.page.error404.text": "Valitettavasti emme löydä etsimääsi sivua. Mutta jospa vaikka järjestäisit talkoot?",
   "site.page.error404.button": "Ilmoita puistotalkoo",
+
+  "site.page.manage_events.page_title": "Hallitse tapahtumia",
   "site.page.manage_events.title": "Puistotalkoot",
   "site.page.manage_events.filter_events": "Suodata tapahtumia",
   "site.page.manage_events.table.action.edit": "Muokkaa",
@@ -53,19 +56,25 @@
   "site.page.landing.hero.link": "Tietoa palvelusta",
   "site.page.landing.hero.url": "https://www.hel.fi/helsinki/fi/asuminen-ja-ymparisto/luonto-ja-viheralueet/puistot/vapaaehtoistyo/",
 
+  "site.page.thank_you.page_title": "Kiitos tapahtuman ilmoittamisesta",
   "site.page.thank_you.header": "Kiitos tapahtuman ilmoittamisesta!",
   "site.page.thank_you.paragraph": "Ilmoituksesi on kirjattu palveluun. Saat meiltä vahvistusviestin ja lisätietoja järjestelyistä, kun olemme tarkistaneet ilmoituksen tiedot. Yhdessä luomme viihtyisämpää kaupunkiympäristöä.",
   "site.page.thank_you.action.home_page": "Palaa etusivulle",
   "site.page.thank_you.action.add_to_calendar": "Lisää tapahtuma kalenteriin",
 
+  "site.page.accessibility.page_title": "Saavutettavuusseloste",
+
+  "site.page.error.page_title": "Tapahtui virhe",
   "site.page.error.heading": "Hups! Tapahtui virhe!",
   "site.page.error.default_message": "Järjestelmässä tapahtui virhe, ole hyvä ja yritä uudelleen tai palaa etusivulle",
   "site.page.error.to_home_page": "Palaa etusivulle",
 
+  "site.page.access_denied.page_title": "Pääsy kielletty",
   "site.page.access_denied.heading": "Hups! Pääsy kielletty!",
   "site.page.access_denied.message": "Sinulla ei ole oikeuksia avata tätä sivua.",
   "site.page.access_denied.contact_admin": "Mikäli uskot tämän olevan virheen, ole hyvä ja ota yhteyttä sivuston ylläpitoon.",
 
+  "site.report.page_title": "Vuosiraportit",
   "site.report.title": "Kevätsiivoustalkoot",
   "site.report.yearly_report": "Vuosiraportti",
   "site.report.total_events": "Talkoita yhteensä {event_amount}",
@@ -87,10 +96,12 @@
 
   "form.event.new.info": "Talkootarvikkeet tuodaan ennalta sovittuun paikkaan ennen talkoita. Ne noudetaan talkoiden jälkeen samasta paikasta, kuten myös kerätty jäte. \n\nJärjestelmä antaa automaattisesti osoitteen talkookohteen mukaan, mutta tavarat voidaan tuoda myös muualle. Voit kirjoittaa osoitteen lisäksi tarkennuksia paikasta. Esimerkki: Castréninkatu 4, leikkipuisto Toinen Linja, rakennuksen sisäänkäynnin läheisyyteen. Jos talkoot ovat viikonloppuna tuodaan tarvikkeet edeltävänä arkipäivänä ja noudetaan seuraavana.",
 
+  "form.event.modify.page_title": "Muokkaa tapahtumaa",
   "form.event.modify.heading": "Muokkaa tapahtumaa",
   "form.event.modify.infoText": "Hienoa, että haluat järjestää talkoot!\n Täytä alla oleva lomake kokonaisuudessaan. Kaikki kentät ovat pakollisia, ellei toisin mainita.",
   "form.event.modify.button.reset": "Kumoa muutokset",
   "form.event.modify.button.submit": "Päivitä tapahtumaa",
+  "form.event.new.page_title": "Ilmoita uusi puistotalkoo",
   "form.event.new.heading": "Ilmoita uusi puistotalkoo",
   "form.event.new.infoText": "Hienoa, että haluat järjestää talkoot!\n Täytä alla oleva lomake kokonaisuudessaan. Kaikki kentät ovat pakollisia, ellei toisin mainita.",
   "form.event.new.button.reset": "Tyhjennä lomake",

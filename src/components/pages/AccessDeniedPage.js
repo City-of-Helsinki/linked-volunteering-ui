@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Container } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
+
+import PageMeta from './PageMeta.tsx';
 import responsive from '../../utils/responsive';
 import Layout from '../layout/containers/LayoutContainer';
 
@@ -24,6 +26,7 @@ const Message = styled(Container)`
 
 const AccessDeniedPage = () => (
   <Layout paddingBottom>
+    <PageMeta title="site.page.access_denied.page_title" />
     <Message>
       <FormattedMessage tagName="h1" id="site.page.access_denied.heading" href="/" />
       <FormattedMessage tagName="p" id="site.page.access_denied.message" />

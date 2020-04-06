@@ -5,6 +5,7 @@ import { useHistory } from 'react-router';
 import { Container, Row, Col } from 'reactstrap';
 import styled from 'styled-components';
 
+import PageMeta from './PageMeta';
 import Layout from '../layout/containers/LayoutContainer';
 import heroImage from '../../assets/images/landing_hero_image.jpeg';
 
@@ -68,6 +69,7 @@ const LandingPage = () => {
 
   return (
     <Layout>
+      <PageMeta title="site.meta.title" />
       <PageContainer>
         <Container>
           <Row>

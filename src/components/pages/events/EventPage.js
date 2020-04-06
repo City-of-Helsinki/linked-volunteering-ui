@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Container, Row, Col } from 'reactstrap';
 import responsive from '../../../utils/responsive';
 
+import PageMeta from '../PageMeta.tsx';
 import IntlComponent from '../../common/IntlComponent';
 import Layout from '../../layout/containers/LayoutContainer';
 import EventForm from '../../form/EventForm';
@@ -103,6 +104,7 @@ class NewEventPage extends PureComponent {
 
     return (
       <Layout paddingBottom>
+        <PageMeta title={`form.event.${pageType}.page_title`} />
         <TitleContainer>
           <IntlComponent Component="h1" id={`form.event.${pageType}.heading`} />
           <InstructionText text={`form.event.${pageType}.infoText`} />

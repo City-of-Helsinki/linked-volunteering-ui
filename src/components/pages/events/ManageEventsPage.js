@@ -2,15 +2,15 @@ import React, { PureComponent, Fragment } from 'react';
 import styled from 'styled-components';
 import { Container, Row, Col } from 'reactstrap';
 import { FormattedMessage, FormattedDate } from 'react-intl';
+
+import PageMeta from '../PageMeta.tsx';
 import LocalizedLink from '../../common/LocalizedLink';
 import IntlComponent from '../../common/IntlComponent';
 import Table, { Td, Tr, DetailsRow } from '../../common/Table';
 import Button from '../../common/Button';
 import { WithIcons } from '../../common/Icon';
 import ContractZones from '../../common/ContractZones';
-
 import Layout from '../../layout/containers/LayoutContainer';
-
 import { isPending } from '../../../utils/event';
 
 const DetailsCluster = styled.div`
@@ -103,6 +103,7 @@ class EventsPage extends PureComponent {
 
     return (
       <Layout>
+        <PageMeta title="site.page.manage_events.page_title" />
         <ControlContainer fluid>
           <TitleRow>
             <Col sm={{ size: 11, offset: 1 }}>

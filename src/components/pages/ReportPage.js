@@ -5,6 +5,7 @@ import { FormattedMessage, injectIntl } from 'react-intl';
 import { CSVLink } from 'react-csv';
 
 import { TABLE_PAGE_SIZE } from '../../constants';
+import PageMeta from './PageMeta.tsx';
 import Layout from '../layout/containers/LayoutContainer';
 import Select from '../form/fields/Select';
 import Table, { Td, Tr } from '../common/Table';
@@ -128,6 +129,7 @@ class ReportPage extends Component {
 
     return (
       <Layout>
+        <PageMeta title="site.report.page_title" />
         <ControlContainer fluid>
           <TitleRow>
             <Col sm={{ size: 11, offset: 1 }}>
