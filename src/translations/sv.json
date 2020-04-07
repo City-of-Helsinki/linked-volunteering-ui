@@ -158,6 +158,7 @@
   "form.event.partitions.date_range.end_date.placeholder": "dd.mm.åååå",
   "form.event.partitions.date_range.end_time.label": "Sluttid",
   "form.event.partitions.date_range.end_time.placeholder": "tt:mm",
+  "form.event.partitions.date_range.dayAriaLabelPrefix": "Välj",
   "form.event.partitions.date_range.timeCaption": "Klockslag",
 
   "form.manage_events.field.activities.noneSelectedText": "Allt",

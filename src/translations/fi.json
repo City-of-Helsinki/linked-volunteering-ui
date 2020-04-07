@@ -159,6 +159,7 @@
   "form.event.partitions.date_range.end_date.placeholder": "pp.kk.vvvv",
   "form.event.partitions.date_range.end_time.label": "Päättymisaika",
   "form.event.partitions.date_range.end_time.placeholder": "tt:mm",
+  "form.event.partitions.date_range.dayAriaLabelPrefix": "Valitse",
   "form.event.partitions.date_range.timeCaption": "Aika",
 
   "form.manage_events.field.activities.noneSelectedText": "Kaikki",

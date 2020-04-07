@@ -102,6 +102,10 @@ const DateRange: React.FC<Props> = ({
         <Col sm="12" md={{ size: 4, offset: 1 }} id="date_range_start_date_wrapper">
           <DatePicker
             id="date_range_start_date"
+            // @ts-ignore
+            chooseDayAriaLabelPrefix={formatMessage({
+              id: 'form.event.partitions.date_range.dayAriaLabelPrefix'
+            })}
             label="form.event.partitions.date_range.start_date.label"
             placeholder="form.event.partitions.date_range.start_date.placeholder"
             locale={locale}
@@ -143,6 +147,10 @@ const DateRange: React.FC<Props> = ({
         <Col sm="12" md={{ size: 4, offset: 1 }} id="date_range_end_date_wrapper">
           <DatePicker
             id="date_range_end_date"
+            // @ts-ignore
+            chooseDayAriaLabelPrefix={formatMessage({
+              id: 'form.event.partitions.date_range.dayAriaLabelPrefix'
+            })}
             label="form.event.partitions.date_range.end_date.label"
             placeholder="form.event.partitions.date_range.end_date.placeholder"
             locale={locale}
