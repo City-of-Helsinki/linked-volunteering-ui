@@ -60,11 +60,11 @@ const ListItem: React.FC<Props> = ({
 
   React.useEffect(() => {
     // Make sure that focused option is visible
-    if (isFocused) {
-      const scrollTop = (container.current && container.current.scrollTop) || 0;
-      const height = (container.current && container.current.offsetHeight) || 0;
-      const offsetTop = (element.current && element.current.offsetTop) || 0;
-      const elHeight = (element.current && element.current.offsetHeight) || 0;
+    if (isFocused && container.current && element.current) {
+      const scrollTop = container.current.scrollTop || 0;
+      const height = container.current.offsetHeight || 0;
+      const offsetTop = element.current.offsetTop || 0;
+      const elHeight = element.current.offsetHeight || 0;
       const shouldScroll = scrollTop + height < offsetTop + elHeight || scrollTop > offsetTop;
 
       if (shouldScroll && container.current) {
@@ -74,11 +74,19 @@ const ListItem: React.FC<Props> = ({
     }
   }, [container, isFocused]);
 
+  React.useEffect(() => {
+    // Make sure that focused option is visible
+    if (isFocused && element.current) {
+      element.current.focus();
+    }
+  }, [isFocused]);
+
   return (
     <StyledListItem
       ref={element}
       role="option"
       id={id}
+      tabIndex={-1}
       className={classNames({
         isFocused: isFocused,
         isSelected: isSelected

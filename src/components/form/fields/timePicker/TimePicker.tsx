@@ -156,8 +156,10 @@ const TimePicker: React.FC<Props> = ({
   };
 
   const openMenu = () => {
-    setFocusedOption(selectedIndex);
-    setIsMenuOpen(true);
+    if (!isMenuOpen) {
+      setFocusedOption(selectedIndex);
+      setIsMenuOpen(true);
+    }
   };
 
   const focusOptionUp = () => {

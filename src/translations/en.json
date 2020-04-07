@@ -158,6 +158,7 @@
   "form.event.partitions.date_range.end_date.placeholder": "dd.mm.yyyy",
   "form.event.partitions.date_range.end_time.label": "End time",
   "form.event.partitions.date_range.end_time.placeholder": "hh:mm",
+  "form.event.partitions.date_range.dayAriaLabelPrefix": "Select",
   "form.event.partitions.date_range.timeCaption": "Time",
 
   "form.manage_events.field.activities.noneSelectedText": "All",
