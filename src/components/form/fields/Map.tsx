@@ -1,3 +1,4 @@
+import { LatLngExpression, LatLngBoundsExpression, LeafletMouseEvent } from 'leaflet';
 import React, { PureComponent } from 'react';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import styled from 'styled-components';
@@ -9,7 +10,7 @@ import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
 
 import IntlComponent from '../../common/IntlComponent';
 
-/* eslint-disable */
+// @ts-ignore
 delete L.Icon.Default.prototype._getIconUrl;
 
 L.Icon.Default.mergeOptions({
@@ -35,14 +36,27 @@ const MapContainer = styled.div`
   margin-bottom: 2em;
 `;
 
-class MapCanvas extends PureComponent {
+interface Props {
+  bounds: number[] | null;
+  center: number[] | null;
+  errorContractZone?: string;
+  errorLocation?: string;
+  handleChange: Function;
+  getGeoData: Function;
+  id: string;
+  selectedAddress: any;
+  touched: Boolean;
+  value: any;
+}
+
+class MapCanvas extends PureComponent<Props> {
   state = {
     lng: 24.93,
     lat: 60.18808,
     zoom: 11.47
   };
 
-  addMarker = e => {
+  addMarker = (e: LeafletMouseEvent) => {
     const { id, handleChange, getGeoData } = this.props;
     const { lat, lng } = e.latlng;
 
@@ -69,34 +83,39 @@ class MapCanvas extends PureComponent {
   }
 
   componentDidMount() {
-    const { value, getGeoData, apiAccessToken } = this.props;
+    const { value, getGeoData } = this.props;
 
     if (value) {
-      getGeoData(value.coordinates[1], value.coordinates[0], apiAccessToken);
+      getGeoData(value.coordinates[1], value.coordinates[0]);
     }
   }
 
   render() {
     const { bounds, center, value } = this.props;
 
-    const mapBounds = bounds
+    const mapBounds: LatLngBoundsExpression | undefined = bounds
       ? [
           [bounds[1], bounds[0]],
           [bounds[3], bounds[2]]
         ]
-      : null;
-    const maxBounds = [
+      : undefined;
+    const maxBounds: LatLngBoundsExpression = [
       [60.33, 25.33],
       [60.1, 24.73]
     ]; // Allow map scroll only inside Helsinki
-    const mapCenter = center ? [center[1], center[0]] : null;
+    const mapCenter: [number, number] | null = center ? [center[1], center[0]] : null;
 
-    const position = [this.state.lat, this.state.lng];
-    const markerPosition = value ? [value.coordinates[1], value.coordinates[0]] : position;
+    const position: LatLngExpression = [this.state.lat, this.state.lng];
+    const markerPosition: LatLngExpression = value
+      ? [value.coordinates[1], value.coordinates[0]]
+      : position;
     const marker = value ? <Marker position={markerPosition} /> : null;
 
     return (
-      <MapContainer className={this.renderMapErrors() ? 'is-invalid' : false}>
+      <MapContainer
+        className={this.renderMapErrors() ? 'is-invalid' : undefined}
+        aria-hidden={true}
+      >
         <Map
           center={mapCenter || position}
           zoom={mapCenter ? 14 : this.state.zoom}
@@ -105,6 +124,7 @@ class MapCanvas extends PureComponent {
           maxBounds={maxBounds}
           style={style}
           onClick={this.addMarker}
+          tabIndex={-1}
         >
           <TileLayer url="https://tiles.hel.ninja/wmts/osm-sm/webmercator/{z}/{x}/{y}.png" />
           {marker}

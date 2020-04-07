@@ -64,6 +64,7 @@
     "yup": "^0.28.3"
   },
   "devDependencies": {
+    "@types/react-leaflet": "^2.5.1",
     "@typescript-eslint/eslint-plugin": "^2.19.2",
     "@typescript-eslint/parser": "^2.19.2",
     "babel-eslint": "^10.0.3",
