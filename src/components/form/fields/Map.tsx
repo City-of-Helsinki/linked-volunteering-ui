@@ -124,7 +124,6 @@ class MapCanvas extends PureComponent<Props> {
           maxBounds={maxBounds}
           style={style}
           onClick={this.addMarker}
-          tabIndex={-1}
         >
           <TileLayer url="https://tiles.hel.ninja/wmts/osm-sm/webmercator/{z}/{x}/{y}.png" />
           {marker}
