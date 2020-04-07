@@ -16,10 +16,6 @@ interface Props extends ReactDatePickerProps {
 }
 
 const DatePickerField: React.FC<Props> = props => {
-  const handleDateChangeRaw = (e: React.FocusEvent<HTMLInputElement>) => {
-    e.preventDefault();
-  };
-
   const intl = useIntl();
   const { formatMessage } = intl;
 
@@ -34,7 +30,6 @@ const DatePickerField: React.FC<Props> = props => {
       {text && <InstructionText text={text} />}
       <DatePicker
         id={id}
-        onChangeRaw={handleDateChangeRaw}
         customInput={<Input invalid={!!error && touched} />}
         placeholderText={placeholder ? formatMessage({ id: placeholder }) : undefined}
         {...rest}
