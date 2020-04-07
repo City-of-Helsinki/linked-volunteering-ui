@@ -6,6 +6,7 @@ import { useIntl } from 'react-intl';
 
 import Map from '../fields/Map';
 import Input from '../fields/Input';
+import Label from '../fields/Label';
 import AutoSuggest, { AutoSuggestEvent } from '../fields/AutoSuggest';
 
 interface Props {
@@ -41,11 +42,11 @@ const Location: React.FC<Props> = ({
   values
 }) => {
   const intl = useIntl();
-  const { locale } = intl;
+  const { formatMessage, locale } = intl;
   const [updateAddress, setUpdateAddress] = React.useState(false);
   const [clickedAddress, setClickedAddress] = React.useState<string | null>(null);
-  const [bounds, setBounds] = React.useState<any>(null);
-  const [center, setCenter] = React.useState<any>(null);
+  const [bounds, setBounds] = React.useState<number[] | null>(null);
+  const [center, setCenter] = React.useState<number[] | null>(null);
 
   React.useEffect(() => {
     if (updateAddress) {
@@ -141,12 +142,11 @@ const Location: React.FC<Props> = ({
             center={center}
             errorLocation={errors.location}
             errorContractZone={
-              !selectedContractZone ? 'form.validation.contact_zone.invalid' : null
+              !selectedContractZone ? 'form.validation.contact_zone.invalid' : undefined
             }
             getGeoData={getGeoData}
             touched={touched.maintenance_location}
             selectedAddress={selectedAddress}
-            selectedContractZone={selectedContractZone}
             handleChange={(e: AutoSuggestEvent) => {
               setClickedAddress(null);
               setUpdateAddress(true);
@@ -158,6 +158,9 @@ const Location: React.FC<Props> = ({
       </Row>
       <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 8, offset: 1 }}>
+          <Label htmlFor={'maintenance_location'} srOnly={true}>
+            {formatMessage({ id: 'form.event.field.trash_location.placeholder' })}
+          </Label>
           <Input
             type="textarea"
             id="maintenance_location"
