@@ -20,6 +20,7 @@ const DatePickerField: React.FC<Props> = props => {
   const { formatMessage } = intl;
 
   const { id, label, required, error, touched, text, placeholder, ...rest } = props;
+
   return (
     <FormGroup>
       {label && (

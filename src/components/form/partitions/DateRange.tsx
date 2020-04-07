@@ -1,4 +1,4 @@
-import { addDays, addHours, startOfDay } from 'date-fns';
+import { addDays, addHours, setHours, startOfDay } from 'date-fns';
 import fi from 'date-fns/locale/fi';
 import sv from 'date-fns/locale/sv';
 import { FormikValues } from 'formik';
@@ -55,7 +55,7 @@ const DateRange: React.FC<Props> = ({
   };
 
   const handleDateChange = (id: string, oldDate: Date) => (value: Date) => {
-    onChange(id)(oldDate ? value : addHours(value, 9));
+    onChange(id)(oldDate ? setHours(value, oldDate.getHours()) : addHours(value, 9));
   };
 
   const onBlur = (id: string) => (value: any) => {
