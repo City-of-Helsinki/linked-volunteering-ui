@@ -173,7 +173,7 @@ const Layout: React.FC<Props> = ({ children, paddingTop, paddingBottom, user, au
               <LanguageDropdown />
               {hasUser && (
                 <UserAction onClick={() => userManager.signoutRedirect()} tabIndex={0}>
-                  <UserIcon name="user" color="black" />
+                  <UserIcon aria-hidden={true} name="user" color="black" />
                   <FormattedMessage id="site.nav.user.logout" />
                 </UserAction>
               )}
@@ -207,7 +207,9 @@ const Layout: React.FC<Props> = ({ children, paddingTop, paddingBottom, user, au
       </Content>
 
       <div>
-        <KoroSection type="basic" />
+        <div aria-hidden="true">
+          <KoroSection type="basic" />
+        </div>
         <Footer />
       </div>
       <Notifications />

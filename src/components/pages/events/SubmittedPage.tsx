@@ -63,6 +63,7 @@ const Content = styled.div`
 `;
 
 const BackgroundImage = styled.img.attrs({
+  alt: '',
   src: backgroundImage
 })`
   flex: 0 0 45%;

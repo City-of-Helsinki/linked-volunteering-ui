@@ -106,7 +106,7 @@ export const StyledSvg = styled(ReactSVG)`
 `;
 
 const Icon = props => {
-  const { name, color: fill, size, className, rotate } = props;
+  const { name, color: fill, size, className, rotate, ...rest } = props;
   const src = icons[name];
 
   if (!src) {
@@ -121,6 +121,7 @@ const Icon = props => {
       size={size}
       rotate={rotate}
       src={src}
+      {...rest}
     />
   );
 };

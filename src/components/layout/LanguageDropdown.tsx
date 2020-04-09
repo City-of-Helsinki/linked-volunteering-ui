@@ -78,9 +78,14 @@ const LanguageDropdown: React.FC = () => {
         color="link"
       >
         <StyledSelector>
-          <NavigationIcon name="globe" color="black" />
+          <NavigationIcon aria-hidden={true} name="globe" color="black" />
           <span>{intl.locale.toUpperCase()}</span>
-          <DropdownIcon name={'angleUp'} color="black" rotate={dropdownOpen ? '0' : '180'} />
+          <DropdownIcon
+            aria-hidden={true}
+            name={'angleUp'}
+            color="black"
+            rotate={dropdownOpen ? '0' : '180'}
+          />
         </StyledSelector>
       </LanguageSelector>
       <DropdownMenu positionFixed={true}>
