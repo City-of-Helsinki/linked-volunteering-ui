@@ -1,4 +1,5 @@
 import { Button } from 'hds-react';
+import forEach from 'lodash/forEach';
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { Container, Row, Col } from 'reactstrap';
@@ -94,6 +95,16 @@ class NewEventPage extends PureComponent {
         const errComponents = document.getElementsByClassName('is-invalid');
         if (errComponents.length) {
           errComponents[0].scrollIntoView({ block: 'center', behavior: 'smooth' });
+          forEach(errComponents, el => {
+            if (el.tagName.toLowerCase() === 'input' || el.tagName.toLowerCase() === 'textarea') {
+              setTimeout(() => {
+                el.focus();
+              }, 300);
+
+              return false;
+            }
+            return true;
+          });
         }
       }, 10);
     }
