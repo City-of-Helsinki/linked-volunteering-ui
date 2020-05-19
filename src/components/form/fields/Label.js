@@ -13,10 +13,25 @@ const StyledLabel = styled(Label)`
         margin-left: 0.25ch;
       }
     `};
+  ${props =>
+    props.srOnly &&
+    css`
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    `};
 `;
 
-export default ({ htmlFor, required, children }) => (
-  <StyledLabel htmlFor={htmlFor} required={required}>
-    {children}
-  </StyledLabel>
-);
+export default props => {
+  const { children, htmlFor, required, srOnly } = props;
+  return (
+    <StyledLabel htmlFor={htmlFor} required={required} srOnly={srOnly}>
+      {children}
+    </StyledLabel>
+  );
+};

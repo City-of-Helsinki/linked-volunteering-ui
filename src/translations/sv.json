@@ -36,10 +36,12 @@
   "site.table.header.report.events": "Talkon",
   "site.table.header.report.participants": "Deltagare",
 
+  "site.page.error404.page_title": "Nu gick något fel",
   "site.page.error404.title": "Fy krattan ändå!",
   "site.page.error404.text": "Tyvärr kan vi inte hitta sidan du söker efter. Men vad sägs om att ordna ett parktalko?",
   "site.page.error404.button": "Anmäl ett parktalko",
 
+  "site.page.manage_events.page_title": "Hantera evenemang",
   "site.page.manage_events.title": "Parktalko",
   "site.page.manage_events.filter_events": "Filtrera evenemang",
   "site.page.manage_events.table.action.edit": "Redigera",
@@ -54,19 +56,25 @@
   "site.page.landing.hero.link": "Information om tjänsten",
   "site.page.landing.hero.url": "https://www.hel.fi/helsinki/sv/boende-och-miljo/natur/parker/volontararbete/",
 
+  "site.page.thank_you.page_title": "Tack för din anmälan om evenemanget",
   "site.page.thank_you.header": "Tack för din anmälan om evenemanget!",
   "site.page.thank_you.paragraph": "Din anmälan har registrerats i tjänsten. Vi skickar ett bekräftelsemeddelande och närmare information om arrangemangen när vi har kontrollerat uppgifterna i anmälan. Tillsammans skapar vi en trivsammare stadsmiljö.",
   "site.page.thank_you.action.home_page": "Gå tillbaka till framsidan",
   "site.page.thank_you.action.add_to_calendar": "För in evenemanget i kalendern",
 
+  "site.page.accessibility.page_title": "Tillgänglighetsutlåtande",
+
+  "site.page.error.page_title": "Nu gick något fel",
   "site.page.error.heading": "Hoppsan! Nu gick något fel!",
   "site.page.error.default_message": "Ett fel inträffade i systemet, vänligen försök på nytt eller gå tillbaka till framsidan",
   "site.page.error.to_home_page": "Gå tillbaka till framsidan",
 
+  "site.page.access_denied.page_title": "Tillträde förbjudet",
   "site.page.access_denied.heading": "Hoppsan! Tillträde förbjudet!",
   "site.page.access_denied.message": "Du har inte behörighet att öppna denna sida.",
   "site.page.access_denied.contact_admin": "Om du tror att detta är ett fel, ber vi dig vänligen kontakta webbplatsens administratör.",
 
+  "site.report.page_title": "Årsrapporter",
   "site.report.title": "Vårstädtalko",
   "site.report.yearly_report": "Årsrapport",
   "site.report.total_events": "Talkon totalt {event_amount}",
@@ -87,10 +95,12 @@
 
   "form.event.new.info": "Staden för talkoredskapen till den överenskomna platsen före talkot. Efter talkot hämtas de från samma plats, liksom det insamlade skräpet. \n\nSystemet ger dig automatiskt en adress enligt området som talkot gäller, men redskapen kan också föras någon annanstans. Utöver adressen kan du precisera platsen. Till exempel: Castrénsgatan 4, lekparken, Andra linjen, intill byggnadens entré. Ordnas talkot på ett veckoslut, förs redskapen vardagen innan och hämtas vardagen efter talkot.",
 
+  "form.event.modify.page_title": "Redigera evenemanget",
   "form.event.modify.heading": "Redigera evenemanget",
   "form.event.modify.infoText": "Roligt att du vill ordna ett talko!\n Fyll i blanketten nedan. Alla fält är obligatoriska ifall inget annat nämns.",
   "form.event.modify.button.reset": "Ångra ändringarna",
   "form.event.modify.button.submit": "Uppdatera evenemanget",
+  "form.event.new.page_title": "Anmäl ett nytt parktalko",
   "form.event.new.heading": "Anmäl ett nytt parktalko",
   "form.event.new.infoText": "Roligt att du vill ordna ett talko!\n Fyll i blanketten nedan. Alla fält är obligatoriska ifall inget annat nämns.",
   "form.event.new.button.reset": "Töm blanketten",
@@ -118,7 +128,7 @@
   "form.event.field.last_name.placeholder": "Efternamn",
   "form.event.field.email.label": "E-postadress",
   "form.event.field.email.placeholder": "E-postadress",
-  "form.event.field.phone.label": "Puhelinnumero",
+  "form.event.field.phone.label": "Telefonnummer",
   "form.event.field.phone.placeholder": "040 123 4567",
   "form.event.field.show_contact_details.header": "Ska kontaktuppgifterna visas offentligt på kartan och på evenemangets egen webbplats",
   "form.event.field.show_contact_details.label": "Visa kontaktuppgifterna",
@@ -133,11 +143,11 @@
   "form.event.field.details.info": "Under ytterliga information kan du ange om du vill låna även andra redskap än enbart skräpplockare. Övriga arbetsredskap är kratta, spade och gatuborste samt lastväxlarflak. Observera, lastväxlarflak levereras enbart till stora talkon och beslutet för leveransen görs av områdets kontaktperson.",
   "form.event.field.container.label": "Växelflak",
   "form.event.field.trash_bags.label": "75 liters sopsäckar (20 säckar / rulle)",
-  "form.event.field.trash_bags.placeholder": "Rulle",
+  "form.event.field.trash_bags.placeholder": "Antal rullar",
   "form.event.field.small_trash_bags.label": "30 liters sopsäckar (50 säckar / rulle)",
-  "form.event.field.small_trash_bags.placeholder": "Rulle",
+  "form.event.field.small_trash_bags.placeholder": "Antal rullar",
   "form.event.field.trash_pickers.label": "Skräpplockare",
-  "form.event.field.trash_pickers.placeholder": "Skräpplockare",
+  "form.event.field.trash_pickers.placeholder": "Antal skräpplockare",
   "form.event.field.trash_pickers.info": "Anvisning: Man kan reservera högst 50 skräpplockare/talko. Om du behöver fler kontaktar du den kontaktperson som anges i anmälningsbekräftelsen och kommer överens om antalet.",
 
   "form.event.partitions.date_range.start_date.label": "Evenemanget börjar",
@@ -148,6 +158,7 @@
   "form.event.partitions.date_range.end_date.placeholder": "dd.mm.åååå",
   "form.event.partitions.date_range.end_time.label": "Sluttid",
   "form.event.partitions.date_range.end_time.placeholder": "tt:mm",
+  "form.event.partitions.date_range.dayAriaLabelPrefix": "Välj",
   "form.event.partitions.date_range.timeCaption": "Klockslag",
 
   "form.manage_events.field.activities.noneSelectedText": "Allt",

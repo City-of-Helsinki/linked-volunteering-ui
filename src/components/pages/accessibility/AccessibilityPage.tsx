@@ -3,6 +3,7 @@ import { useIntl } from 'react-intl';
 import { Container, Row, Col } from 'reactstrap';
 import styled from 'styled-components';
 
+import PageMeta from '../PageMeta';
 import AccessibilityStatementEn from './AccessibilityStatementEn';
 import AccessibilityStatementFi from './AccessibilityStatementFi';
 import AccessibilityStatementSv from './AccessibilityStatementSv';
@@ -42,6 +43,7 @@ const AccessibilityPage = () => {
 
   return (
     <Layout>
+      <PageMeta title="site.page.accessibility.page_title" />
       <PageContainer>
         <Container>
           <Row>

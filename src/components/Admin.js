@@ -5,6 +5,7 @@ import { compose, branch, renderComponent } from 'recompose';
 
 import { isOfficialSelector, isContractorSelector } from '../ducks/auth';
 
+import Error404Page from './pages/Error404Page.tsx';
 import ManageEventsPage from './pages/events/containers/ManageEventsPageContainer';
 import ModifyEventPage from './pages/events/containers/ModifyEventPageContainer';
 import ReportPage from './pages/containers/ReportPageContainer';
@@ -27,6 +28,7 @@ const AdminRoutes = props => (
     <Route path={`${props.match.path}/events/manage`} component={requireUser(ManageEventsPage)} />
     <Route path={`${props.match.path}/event/modify/:id`} component={requireUser(ModifyEventPage)} />
     <Route path={`${props.match.path}/report`} component={requireOfficial(ReportPage)} />
+    <Route component={Error404Page} />
   </Switch>
 );
 

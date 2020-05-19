@@ -57,7 +57,9 @@ const NavigationLinks = styled.div`
   `}
 `;
 
-const LogoWrapper = styled.div`
+const LogoWrapper = styled.div.attrs({
+  'aria-hidden': true
+})`
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 `;
 

@@ -5,7 +5,8 @@ import { useHistory } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 import styled from 'styled-components';
 
-import IconTree2 from "../icons/IconTree2";
+import PageMeta from './PageMeta';
+import IconTree2 from '../icons/IconTree2';
 import Layout from '../layout/containers/LayoutContainer';
 import responsive from '../../utils/responsive';
 
@@ -55,6 +56,7 @@ const Error404Page = () => {
 
   return (
     <Layout>
+      <PageMeta title="site.page.error404.page_title" />
       <PageContainer>
         <Container>
           <Row>

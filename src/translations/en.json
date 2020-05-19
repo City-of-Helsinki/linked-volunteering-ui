@@ -36,10 +36,12 @@
   "site.table.header.report.events": "Volunteer activities",
   "site.table.header.report.participants": "Volunteers",
 
+  "site.page.error404.page_title": "An error occurred",
   "site.page.error404.title": "Oops, you are lost in the woods!",
   "site.page.error404.text": "Sorry, we can’t find the page you are looking for. What about organising a park volunteer activity?",
   "site.page.error404.button": "Notify about a new park volunteer activity",
 
+  "site.page.manage_events.page_title": "Manage events",
   "site.page.manage_events.title": "Park volunteer activities",
   "site.page.manage_events.filter_events": "Filter activities",
   "site.page.manage_events.table.action.edit": "Edit",
@@ -54,19 +56,25 @@
   "site.page.landing.hero.link": "Information about this service",
   "site.page.landing.hero.url": "https://www.hel.fi/helsinki/en/housing/nature/parks/voluntary/",
 
-  "site.page.thank_you.header": "Thank you for notifying about a new activity",
+  "site.page.thank_you.page_title": "Thank you for notifying about a new activity",
+  "site.page.thank_you.header": "Thank you for notifying about a new activity!",
   "site.page.thank_you.paragraph": "Your notification has been added to the service. You will receive a confirmation message and further information about practical arrangements as soon as we have reviewed the details in your notification. Together we can create an even better urban environment!",
   "site.page.thank_you.action.home_page": "Return to homepage",
   "site.page.thank_you.action.add_to_calendar": "Add activity to calendar",
 
+  "site.page.accessibility.page_title": "Accessibility Statement",
+
+  "site.page.error.page_title": "An error occurred",
   "site.page.error.heading": "Oops! An error occurred",
   "site.page.error.default_message": "An error occurred in the system. Please try again or return to the homepage",
   "site.page.error.to_home_page": "Return to homepage",
 
+  "site.page.access_denied.page_title": "Access denied",
   "site.page.access_denied.heading": "Oops! Access denied.",
   "site.page.access_denied.message": "You are not authorised to open this page.",
   "site.page.access_denied.contact_admin": "If you believe this is an error, please contact the administrator.",
 
+  "site.report.page_title": "Annual report",
   "site.report.title": "Spring cleaning activities",
   "site.report.yearly_report": "Annual report",
   "site.report.total_events": "Total number of volunteer activities {event_amount}",
@@ -87,10 +95,12 @@
 
   "form.event.new.info": "Equipment will be delivered to the agreed location before the start of volunteer activities and picked up again afterwards together with the litter that has been collected. \n\nThe system will automatically assign an address according to the location of the volunteer activities, but the equipment can also be delivered elsewhere. In addition to the address, you can provide a description of the location. For example: Castréninkatu 4, Toinen Linja playground, by the entrance to the building. If the volunteer activity takes place on a weekend, the equipment will be delivered on the preceding weekday and picked up on the following weekday.",
 
+  "form.event.modify.page_title": "Edit activity",
   "form.event.modify.heading": "Edit activity",
   "form.event.modify.infoText": "Nice to hear that you want to arrange a volunteer event in the park!\n Please fill in the form below. All fields are mandatory if not otherwise stated.",
   "form.event.modify.button.reset": "Undo changes",
   "form.event.modify.button.submit": "Update activity",
+  "form.event.new.page_title": "Notify about a new park volunteer activity",
   "form.event.new.heading": "Notify about a new park volunteer activity",
   "form.event.new.infoText": "Nice to hear that you want to arrange a volunteer event in the park!\n Please fill in the form below. All fields are mandatory if not otherwise stated.",
   "form.event.new.button.reset": "Clear form",
@@ -133,11 +143,11 @@
   "form.event.field.details.info": "Under further information, you can notify if you need additional equipment, for example rakes, shovels, brooms or skip containers. Note: Skip containers are delivered only for large events and the contact person listed in the confirmation takes the final decision regarding the delivery.",
   "form.event.field.container.label": "Skip",
   "form.event.field.trash_bags.label": "75-litre litter bags (20 bags / roll)",
-  "form.event.field.trash_bags.placeholder": "Roll",
+  "form.event.field.trash_bags.placeholder": "Amount of rolls",
   "form.event.field.small_trash_bags.label": "30-litre litter bags (50 bags / roll)",
-  "form.event.field.small_trash_bags.placeholder": "Roll",
+  "form.event.field.small_trash_bags.placeholder": "Amount of rolls",
   "form.event.field.trash_pickers.label": "Litter pickers",
-  "form.event.field.trash_pickers.placeholder": "Litter pickers",
+  "form.event.field.trash_pickers.placeholder": "Amount of litter pickers",
   "form.event.field.trash_pickers.info": "Note: The number of litter pickers is limited to 50 per activity. If you need more, notify the contact person listed in the confirmation and agree to the number of litter pickers required.",
 
   "form.event.partitions.date_range.start_date.label": "Activity begins",
@@ -148,6 +158,7 @@
   "form.event.partitions.date_range.end_date.placeholder": "dd.mm.yyyy",
   "form.event.partitions.date_range.end_time.label": "End time",
   "form.event.partitions.date_range.end_time.placeholder": "hh:mm",
+  "form.event.partitions.date_range.dayAriaLabelPrefix": "Select",
   "form.event.partitions.date_range.timeCaption": "Time",
 
   "form.manage_events.field.activities.noneSelectedText": "All",

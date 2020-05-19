@@ -11,7 +11,7 @@ const LocaleRoutes = () => (
     <Route path={`/:locale/accessibility`} component={AccessibilityPage} />
     <Route exact path={`/:locale/event/new`} component={NewEventPage} />
     <Route exact path={`/:locale/event/submitted`} component={SubmittedPage} />
-    <Route path=":locale/*" component={Error404Page} />
+    <Route component={Error404Page} />
   </Switch>
 );
 

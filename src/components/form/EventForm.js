@@ -12,6 +12,12 @@ const LocationInstructions = styled(Row)`
   margin-bottom: 1em;
 `;
 
+const StyledForm = styled.form`
+  h2 {
+    font-size: var(--hds-text-xl);
+  }
+`;
+
 export default ({
   addressCoordinates,
   clearCoordinatesByAddress,
@@ -31,10 +37,10 @@ export default ({
   setFieldError
 }) => {
   return (
-    <form onSubmit={handleSubmit}>
+    <StyledForm onSubmit={handleSubmit}>
       <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }}>
-          <FormattedMessage tagName="h3" id="form.event.title.name_and_description" />
+          <FormattedMessage tagName="h2" id="form.event.title.name_and_description" />
         </Col>
       </Row>
       <Row>
@@ -86,7 +92,7 @@ export default ({
       </Row>
       <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }}>
-          <FormattedMessage tagName="h3" id="form.event.title.place" />
+          <FormattedMessage tagName="h2" id="form.event.title.place" />
         </Col>
       </Row>
       <LocationInstructions>
@@ -128,7 +134,7 @@ export default ({
       </Row>
       <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }}>
-          <FormattedMessage tagName="h3" id="form.event.title.time" />
+          <FormattedMessage tagName="h2" id="form.event.title.time" />
           <FormattedMessage tagName="p" id="form.event.subtitle.time" />
         </Col>
       </Row>
@@ -142,7 +148,7 @@ export default ({
       />
       <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }}>
-          <FormattedMessage tagName="h3" id="form.event.title.contact_person" />
+          <FormattedMessage tagName="h2" id="form.event.title.contact_person" />
           <FormattedMessage tagName="p" id="form.event.subtitle.contact_person" />
         </Col>
       </Row>
@@ -190,7 +196,7 @@ export default ({
         </Col>
         <Col sm="12" md={{ size: 4 }}>
           <Input
-            type="text"
+            type="tel"
             id="organizer_phone"
             label="form.event.field.phone.label"
             placeholder="form.event.field.phone.placeholder"
@@ -204,7 +210,7 @@ export default ({
       </Row>
       <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }}>
-          <FormattedMessage tagName="h3" id="form.event.title.tools_and_suplies" />
+          <FormattedMessage tagName="h2" id="form.event.title.tools_and_suplies" />
           <FormattedMessage tagName="p" id="form.event.subtitle.tools_and_suplies" />
         </Col>
       </Row>
@@ -272,6 +278,6 @@ export default ({
           />
         </Col>
       </Row>
-    </form>
+    </StyledForm>
   );
 };

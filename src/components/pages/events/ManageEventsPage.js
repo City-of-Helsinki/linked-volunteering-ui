@@ -2,15 +2,15 @@ import React, { PureComponent, Fragment } from 'react';
 import styled from 'styled-components';
 import { Container, Row, Col } from 'reactstrap';
 import { FormattedMessage, FormattedDate } from 'react-intl';
+
+import PageMeta from '../PageMeta.tsx';
 import LocalizedLink from '../../common/LocalizedLink';
 import IntlComponent from '../../common/IntlComponent';
 import Table, { Td, Tr, DetailsRow } from '../../common/Table';
 import Button from '../../common/Button';
 import { WithIcons } from '../../common/Icon';
 import ContractZones from '../../common/ContractZones';
-
 import Layout from '../../layout/containers/LayoutContainer';
-
 import { isPending } from '../../../utils/event';
 
 const DetailsCluster = styled.div`
@@ -36,8 +36,9 @@ const ControlContainer = styled(Container)`
   background-color: ${props => props.theme.helWhite};
   padding-bottom: 2em;
 
-  h3 {
-    margin-top: 0em;
+  h1 {
+    font-size: var(--hds-text-xxl);
+    margin: 0 0 0.5rem;
   }
 `;
 
@@ -102,10 +103,11 @@ class EventsPage extends PureComponent {
 
     return (
       <Layout>
+        <PageMeta title="site.page.manage_events.page_title" />
         <ControlContainer fluid>
           <TitleRow>
             <Col sm={{ size: 11, offset: 1 }}>
-              <FormattedMessage tagName="h2" id="site.page.manage_events.title" />
+              <FormattedMessage tagName="h1" id="site.page.manage_events.title" />
             </Col>
           </TitleRow>
           <Row>
