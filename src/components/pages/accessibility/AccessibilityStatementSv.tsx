@@ -73,7 +73,7 @@ const AccessibilityStatementSv: FunctionComponent = () => {
         e-post till <a href="mailto:helsinki.palaute@hel.fi">helsinki.palaute@hel.fi</a> eller med
         responsformulär på{' '}
         <a href="https://www.hel.fi/helsinki/sv/stad-och-forvaltning/delta/feedback">
-          https://www.hel.fi/helsinki/sv/stad-och-forvaltning/delta/feedback
+          www.hel.fi/helsinki/sv/stad-och-forvaltning/delta/feedback
         </a>
         .
       </p>
@@ -83,9 +83,9 @@ const AccessibilityStatementSv: FunctionComponent = () => {
         Om användaren inte upplever sig få webbplatsens innehåll i tillgänglig form, kan användaren
         begära denna information per e-post{' '}
         <a href="mailto:helsinki.palaute@hel.fi">helsinki.palaute@hel.fi</a> eller med
-        responsformulär på
+        responsformulär på{' '}
         <a href="https://www.hel.fi/helsinki/sv/stad-och-forvaltning/delta/feedback">
-          https://www.hel.fi/helsinki/sv/stad-och-forvaltning/delta/feedback
+          www.hel.fi/helsinki/sv/stad-och-forvaltning/delta/feedback
         </a>
         . Vår strävan är att svara på förfrågan inom rimlig tid.
       </p>
@@ -101,7 +101,7 @@ const AccessibilityStatementSv: FunctionComponent = () => {
       <h2>Regionförvaltningsverket i Södra Finland</h2>
       <p>Enheten för tillgänglighetstillsyn</p>
       <p>
-        <a href="https://www.tillgänglighetskrav.fi/">https://www.tillgänglighetskrav.fi/</a>
+        <a href="https://www.tillgänglighetskrav.fi/">www.tillgänglighetskrav.fi/</a>
       </p>
       <p>
         <a href="mailto:webbtillganglighet@rfv.fi">webbtillganglighet@rfv.fi</a>

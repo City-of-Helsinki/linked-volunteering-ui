@@ -11,7 +11,7 @@ const AccessibilityStatementFi: FunctionComponent = () => {
       <h1>Saavutettavuus&shy;seloste</h1>
       <p>
         Tämä saavutettavuusseloste koskee Helsingin kaupungin Puistotalkoot-verkkosivustoa. Sivuston
-        osoite on https://puistotalkoot.hel.fi
+        osoite on <a href="https://puistotalkoot.hel.fi">https://puistotalkoot.hel.fi</a>
       </p>
       <h2>Sivustoa koskevat lain säädökset</h2>
       <p>
@@ -63,7 +63,7 @@ const AccessibilityStatementFi: FunctionComponent = () => {
         Mikäli käyttäjä kokee, etteivät saavutettavuuden vaatimukset kuitenkaan täyty, voi tästä
         tehdä ilmoituksen sähköpostilla{' '}
         <a href="mailto:helsinki.palaute@hel.fi">helsinki.palaute@hel.fi</a> tai palautelomakkeella{' '}
-        <a href="www.hel.fi/palaute">www.hel.fi/palaute</a>.
+        <a href="https://www.hel.fi/palaute">www.hel.fi/palaute</a>.
       </p>
 
       <h3>Tietojen pyytäminen saavutettavassa muodossa</h3>
@@ -71,8 +71,8 @@ const AccessibilityStatementFi: FunctionComponent = () => {
         Mikäli käyttäjä ei koe saavansa sivuston sisältöä saavutettavassa muodossa, voi käyttäjä
         pyytää näitä tietoja sähköpostilla{' '}
         <a href="mailto:helsinki.palaute@hel.fi">helsinki.palaute@hel.fi</a> tai palautelomakkeella{' '}
-        <a href="https://hel.fi/palaute">hel.fi/palaute</a>. Tiedusteluun pyritään vastaamaan
-        kohtuullisessa ajassa.
+        <a href="https://www.hel.fi/palaute">www.hel.fi/palaute</a>. Tiedusteluun pyritään
+        vastaamaan kohtuullisessa ajassa.
       </p>
 
       <h2>Saavutettavuuden oikeussuoja, Täytäntöönpanomenettely</h2>

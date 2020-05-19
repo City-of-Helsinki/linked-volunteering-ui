@@ -67,7 +67,7 @@ const AccessibilityStatementEn: FunctionComponent = () => {
       by e-mail to <a href="mailto:helsinki.palaute@hel.fi">helsinki.palaute@hel.fi</a> or through
       the feedback form at{' '}
       <a href="https://www.hel.fi/helsinki/en/administration/participate/feedback">
-        https://www.hel.fi/helsinki/en/administration/participate/feedback
+        www.hel.fi/helsinki/en/administration/participate/feedback
       </a>
       .<h3>Requesting information in an accessible format</h3>
       <p>
@@ -76,7 +76,7 @@ const AccessibilityStatementEn: FunctionComponent = () => {
         <a href="mailto:helsinki.palaute@hel.fi">helsinki.palaute@hel.fi</a> or through the feedback
         form at{' '}
         <a href="https://www.hel.fi/helsinki/en/administration/participate/feedback">
-          https://www.hel.fi/helsinki/en/administration/participate/feedback
+          www.hel.fi/helsinki/en/administration/participate/feedback
         </a>
         . The aim is to reply to the enquiry within a reasonable time frame.
       </p>
@@ -90,9 +90,7 @@ const AccessibilityStatementEn: FunctionComponent = () => {
       <h2>Regional State Administrative Agency of Southern Finland</h2>
       <p>Accessibility monitoring unit</p>
       <p>
-        <a href="http://www.saavutettavuusvaatimukset.fi/">
-          http://www.saavutettavuusvaatimukset.fi/
-        </a>
+        <a href="http://www.saavutettavuusvaatimukset.fi/">www.saavutettavuusvaatimukset.fi/</a>
       </p>
       <p>
         <a href="mailto:saavutettavuus@avi.fi">saavutettavuus@avi.fi</a>
