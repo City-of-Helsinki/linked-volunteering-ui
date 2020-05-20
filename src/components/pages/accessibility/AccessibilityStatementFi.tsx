@@ -79,20 +79,21 @@ const AccessibilityStatementFi: FunctionComponent = () => {
       <p>
         Mikäli henkilö kokee, ettei hänen ilmoitukseensa tai tiedusteluunsa ole vastattu tai vastaus
         ei ole tyydyttävä, voi asiasta tehdä ilmoituksen Etelä-Suomen aluehallintovirastoon.
-        Etelä-Suomen aluehallintoviraston sivulla kerrotaan tarkasti, miten asia käsitellään
+        Etelä-Suomen aluehallintoviraston sivulla kerrotaan tarkasti, miten asia käsitellään.
       </p>
 
       <h2>Etelä-Suomen aluehallintovirasto</h2>
-      <p>Saavutettavuuden valvonnan yksikkö</p>
       <p>
+        Saavutettavuuden valvonnan yksikkö
+        <br />
         <a href="https://www.saavutettavuusvaatimukset.fi/">www.saavutettavuusvaatimukset.fi/</a>
-      </p>
-      <p>
+        <br />
         <a href="mailto:saavutettavuus@avi.fi">saavutettavuus@avi.fi</a>
+        <br />
+        Puhelinvaihde 0295 016 000
+        <br />
+        Avoinna: ma-pe klo 8.00 – 16.15
       </p>
-      <p>Puhelinvaihde 0295 016 000</p>
-      <p>Avoinna: ma-pe klo 8.00 – 16.15</p>
-
       <h2>Helsingin kaupunki ja saavutettavuus </h2>
       <p>
         Helsingin kaupungin tavoitteena on olla kaikille esteetön ja saavutettava kaupunki.
