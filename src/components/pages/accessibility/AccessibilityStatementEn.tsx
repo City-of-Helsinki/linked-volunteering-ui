@@ -54,14 +54,18 @@ const AccessibilityStatementEn: FunctionComponent = () => {
       </p>
       <h2>Feedback and contact information</h2>
       <p>
-        he entity responsible for site accessibility is City of Helsinki’s Culture and Leisure
+        The entity responsible for site accessibility is City of Helsinki’s Culture and Leisure
         Sector, telephone exchange +358 9 310 1060.
       </p>
       <h3>Reporting non-accessible content</h3>
       <p>
         If a user feels that accessibility requirements have not been met, they can report the issue
-        by e-mail to helsinki.palaute@hel.fi or through the feedback form at
-        https://www.hel.fi/helsinki/en/administration/participate/feedback.
+        by e-mail to <a href="mailto:helsinki.palaute@hel.fi">helsinki.palaute@hel.fi</a> or through
+        the feedback form at
+        <a href="https://www.hel.fi/helsinki/en/administration/participate/feedback">
+          www.hel.fi/helsinki/en/administration/participate/feedback
+        </a>
+        .
       </p>
       If a user feels that accessibility requirements have not been met, they can report the issue
       by e-mail to <a href="mailto:helsinki.palaute@hel.fi">helsinki.palaute@hel.fi</a> or through
@@ -88,15 +92,17 @@ const AccessibilityStatementEn: FunctionComponent = () => {
         Southern Finland explains in detail how the matter will be processed.
       </p>
       <h2>Regional State Administrative Agency of Southern Finland</h2>
-      <p>Accessibility monitoring unit</p>
       <p>
+        Accessibility monitoring unit
+        <br />
         <a href="http://www.saavutettavuusvaatimukset.fi/">www.saavutettavuusvaatimukset.fi/</a>
-      </p>
-      <p>
+        <br />
         <a href="mailto:saavutettavuus@avi.fi">saavutettavuus@avi.fi</a>
+        <br />
+        Telephone exchange +358 295 016 000
+        <br />
+        Open: Mon-Fri at 8:00–16:15
       </p>
-      <p>Telephone exchange +358 295 016 000</p>
-      <p>Open: Mon-Fri at 8:00–16:15</p>
       <h2>The City of Helsinki and accessibility</h2>
       <p>
         The objective of the city of Helsinki is to be an accessible city to all. Helsinki aims to
@@ -122,7 +128,7 @@ const AccessibilityStatementEn: FunctionComponent = () => {
       <p>This statement was approved by 18/5/2020</p>
       <p>
         Culture and Leisure Division <br />
-        City of Helsinki.
+        City of Helsinki
       </p>
     </ContentWrapper>
   );

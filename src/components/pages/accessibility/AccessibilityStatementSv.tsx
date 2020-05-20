@@ -99,15 +99,18 @@ const AccessibilityStatementSv: FunctionComponent = () => {
       </p>
 
       <h2>Regionförvaltningsverket i Södra Finland</h2>
-      <p>Enheten för tillgänglighetstillsyn</p>
+
       <p>
+        Enheten för tillgänglighetstillsyn
+        <br />
         <a href="https://www.tillgänglighetskrav.fi/">www.tillgänglighetskrav.fi/</a>
-      </p>
-      <p>
+        <br />
         <a href="mailto:webbtillganglighet@rfv.fi">webbtillganglighet@rfv.fi</a>
+        <br />
+        Telefonväxel 0295 016 000
+        <br />
+        Öppet: må–fr kl. 8.00–16.15
       </p>
-      <p>Telefonväxel 0295 016 000</p>
-      <p>Öppet: må–fr kl. 8.00–16.15</p>
 
       <h2>Helsingfors stad och tillgänglighet</h2>
       <p>
@@ -133,8 +136,11 @@ const AccessibilityStatementSv: FunctionComponent = () => {
 
       <h2>Godkännande av tillgänglighets&shy;utlåtande</h2>
       <p>Detta utlåtande har godkänts 18.5.2020</p>
-      <p>Kultur och fritid</p>
-      <p>Helsingfors stad</p>
+      <p>
+        Kultur och fritid
+        <br />
+        Helsingfors stad
+      </p>
     </ContentWrapper>
   );
 };
