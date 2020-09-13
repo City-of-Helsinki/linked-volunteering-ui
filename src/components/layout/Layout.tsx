@@ -174,10 +174,6 @@ const Layout: React.FC<Props> = ({ children, paddingTop, paddingBottom, user, au
   const isOfficial = auth ? auth.is_official : false;
   const isContractor = auth ? auth.is_contractor : false;
 
-  React.useEffect(() => {
-    console.log('test');
-  });
-
   return (
     <LayoutWrapper>
       {/* Set min-height to navbar to prevent page jumping */}
