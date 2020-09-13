@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React from 'react';
 import { Label } from 'reactstrap';
 import styled, { css } from 'styled-components';
@@ -13,24 +14,23 @@ const StyledLabel = styled(Label)`
         margin-left: 0.25ch;
       }
     `};
-  ${props =>
-    props.srOnly &&
-    css`
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      border: 0;
-    `};
+  &.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
 `;
 
 export default props => {
-  const { children, htmlFor, required, srOnly } = props;
+  const { children, htmlFor, required, srOnly = false } = props;
+
   return (
-    <StyledLabel htmlFor={htmlFor} required={required} srOnly={srOnly}>
+    <StyledLabel className={classNames(srOnly && 'srOnly')} htmlFor={htmlFor} required={required}>
       {children}
     </StyledLabel>
   );

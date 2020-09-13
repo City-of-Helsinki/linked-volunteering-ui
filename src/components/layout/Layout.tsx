@@ -1,8 +1,9 @@
 import { Koros } from 'hds-react';
 import React, { Fragment } from 'react';
-import { Container, Navbar, NavbarBrand } from 'reactstrap';
+import { Container, Navbar } from 'reactstrap';
 import styled from 'styled-components';
 import { useIntl, FormattedMessage } from 'react-intl';
+import { Link } from 'react-router-dom';
 
 import Notifications from '../notification/containers/NotificationsContainer';
 import LanguageDropdown from './LanguageDropdown';
@@ -13,6 +14,7 @@ import Modal from '../modal/containers/ModalContainer';
 import Footer from './Footer';
 import userManager from '../../utils/userManager';
 import responsive from '../../utils/responsive';
+import useLocale from '../../hooks/useLocale';
 
 const LayoutWrapper = styled.div`
   display: grid;
@@ -22,6 +24,18 @@ const LayoutWrapper = styled.div`
 
 const Content = styled.div`
   background-color: ${props => props.theme.colors.lightGray};
+`;
+
+const NavbarBrand = styled(Link)`
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  display: inline-block;
+  padding-top: 0.3125rem;
+  padding-bottom: 0.3125rem;
+  margin-right: 1rem;
+  font-size: 1rem;
+  line-height: inherit;
+  white-space: nowrap;
 `;
 
 const NavbarRow = styled(Navbar)`
@@ -153,18 +167,23 @@ interface Props {
 }
 
 const Layout: React.FC<Props> = ({ children, paddingTop, paddingBottom, user, auth }) => {
+  const locale = useLocale();
   const intl = useIntl();
   const { formatMessage } = intl;
   const hasUser = !!user;
   const isOfficial = auth ? auth.is_official : false;
   const isContractor = auth ? auth.is_contractor : false;
 
+  React.useEffect(() => {
+    console.log('test');
+  });
+
   return (
     <LayoutWrapper>
       {/* Set min-height to navbar to prevent page jumping */}
       <TopNavbar style={{ minHeight: '77px' }}>
         <NavbarContainer>
-          <NavbarBrand href="/" aria-label={formatMessage({ id: 'site.nav.logo.text' })}>
+          <NavbarBrand to={`/${locale}`} aria-label={formatMessage({ id: 'site.nav.logo.text' })}>
             <StyledHelsinkiLogo />
             <AppName>{formatMessage({ id: 'site.nav.appName' })}</AppName>
           </NavbarBrand>
