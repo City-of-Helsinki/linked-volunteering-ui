@@ -18,6 +18,9 @@ build-review:
     DOCKER_BUILD_ARG_REACT_APP_SSO_URL: 'https://tunnistamo.test.kuva.hel.ninja'
     DOCKER_BUILD_ARG_REACT_APP_OPEN_ID_API_TOKENS_SCOPE: 'https://api.hel.fi/auth/puistotalkoot'
     DOCKER_BUILD_ARG_REACT_APP_GEOCODER_API_URL: 'https://api.digitransit.fi/geocoding/v1/'
+    DOCKER_BUILD_ARG_REACT_APP_MATOMO_URL_BASE: 'https://analytics.hel.ninja/'
+    DOCKER_BUILD_ARG_REACT_APP_MATOMO_SITE_ID: 65
+    DOCKER_BUILD_ARG_REACT_APP_MATOMO_ENABLED: 'false'
   only:
     refs:
       - external_pull_requests
@@ -33,6 +36,9 @@ build-staging:
     DOCKER_BUILD_ARG_REACT_APP_SSO_URL: 'https://tunnistamo.test.kuva.hel.ninja'
     DOCKER_BUILD_ARG_REACT_APP_OPEN_ID_API_TOKENS_SCOPE: 'https://api.hel.fi/auth/puistotalkoot'
     DOCKER_BUILD_ARG_REACT_APP_GEOCODER_API_URL: 'https://api.digitransit.fi/geocoding/v1/'
+    DOCKER_BUILD_ARG_REACT_APP_MATOMO_URL_BASE: 'https://analytics.hel.ninja/'
+    DOCKER_BUILD_ARG_REACT_APP_MATOMO_SITE_ID: 65
+    DOCKER_BUILD_ARG_REACT_APP_MATOMO_ENABLED: 'false'
   only:
     refs:
       - develop
@@ -47,6 +53,9 @@ build-production:
     DOCKER_BUILD_ARG_REACT_APP_SSO_URL: 'https://api.hel.fi/sso'
     DOCKER_BUILD_ARG_REACT_APP_OPEN_ID_API_TOKENS_SCOPE: 'https://api.hel.fi/auth/puistotalkoot'
     DOCKER_BUILD_ARG_REACT_APP_GEOCODER_API_URL: 'https://api.digitransit.fi/geocoding/v1/'
+    DOCKER_BUILD_ARG_REACT_APP_MATOMO_URL_BASE: 'https://analytics.hel.ninja/'
+    DOCKER_BUILD_ARG_REACT_APP_MATOMO_SITE_ID: 65
+    DOCKER_BUILD_ARG_REACT_APP_MATOMO_ENABLED: 'true'
   only:
     refs:
       - master
