@@ -2,6 +2,7 @@ import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 import './polyfills';
 
+import { createInstance, MatomoProvider } from '@datapunt/matomo-tracker-react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -32,18 +33,26 @@ if (REACT_APP_AUTHENTICATED === 'yes') {
   store.dispatch(getCurrentUserData());
 }
 
+const instance = createInstance({
+  disabled: process.env.REACT_APP_MATOMO_ENABLED !== 'true',
+  urlBase: process.env.REACT_APP_MATOMO_URL_BASE,
+  siteId: Number(process.env.REACT_APP_MATOMO_SITE_ID)
+});
+
 const Root = () => (
   <Provider store={store}>
     <OidcProvider store={store} userManager={userManager}>
-      <ThemeProvider theme={theme}>
-        <Router>
-          <Switch>
-            <Redirect exact path="/" to="/fi" />
-            <Route path="/callback" component={CallbackPage} />
-            <Route path="/:locale" component={App} />
-          </Switch>
-        </Router>
-      </ThemeProvider>
+      <MatomoProvider value={instance}>
+        <ThemeProvider theme={theme}>
+          <Router>
+            <Switch>
+              <Redirect exact path="/" to="/fi" />
+              <Route path="/callback" component={CallbackPage} />
+              <Route path="/:locale" component={App} />
+            </Switch>
+          </Router>
+        </ThemeProvider>
+      </MatomoProvider>
     </OidcProvider>
   </Provider>
 );
