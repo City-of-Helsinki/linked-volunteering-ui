@@ -55,6 +55,11 @@ const NextPageButton = styled(Button)`
   margin-top: 1em;
 `;
 
+const EventName = styled.span`
+  overflow-wrap: break-word;
+  word-break: break-word;
+`;
+
 const tableHeaders = [
   { key: 'name', translation: 'manage_events.name', hasOrderBy: true },
   {
@@ -134,7 +139,9 @@ class EventsPage extends PureComponent {
                   return (
                     <Fragment key={event.id}>
                       <Tr firstColumn highlighted={isEventPending} selected={selected}>
-                        <Td>{event.name}</Td>
+                        <Td>
+                          <EventName>{event.name}</EventName>
+                        </Td>
                         <Td>{event.organizer_email}</Td>
                         <Td>
                           <FormattedDate value={event.start_time} />
