@@ -40,6 +40,8 @@ jobs:
           DOCKER_BUILD_ARG_REACT_APP_MATOMO_URL_BASE: 'https://analytics.hel.ninja/'
           DOCKER_BUILD_ARG_REACT_APP_MATOMO_SITE_ID: 65
           DOCKER_BUILD_ARG_REACT_APP_MATOMO_ENABLED: 'false'
+          DOCKER_BUILD_ARG_REACT_APP_SENTRY_ENVIRONMENT: 'staging'
+          DOCKER_BUILD_ARG_REACT_APP_SENTRY_DSN: 'https://3fdb9109a3604dd08288d2f95de3faff@o394401.ingest.sentry.io/5691963'
 
   staging:
     runs-on: ubuntu-latest
