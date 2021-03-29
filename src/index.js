@@ -3,6 +3,8 @@ import 'react-app-polyfill/stable';
 import './polyfills';
 
 import { createInstance, MatomoProvider } from '@datapunt/matomo-tracker-react';
+import * as Sentry from '@sentry/react';
+import { Integrations } from '@sentry/tracing';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -20,6 +22,15 @@ import { getApiAccessToken, getCurrentUserData } from './ducks/auth';
 
 import App from './components/containers/AppContainer.tsx';
 import CallbackPage from './components/pages/containers/CallBackPageContainer';
+
+if (process.env.REACT_APP_SENTRY_ENVIRONMENT) {
+  Sentry.init({
+    dsn: process.env.REACT_APP_SENTRY_DSN,
+    environment: process.env.REACT_APP_SENTRY_ENVIRONMENT,
+    integrations: [new Integrations.BrowserTracing()],
+    release: `${process.env.REACT_APP_APPLICATION_NAME}@${process.env.REACT_APP_VERSION}`
+  });
+}
 
 const store = configureStore();
 const { REACT_APP_AUTHENTICATED } = process.env;

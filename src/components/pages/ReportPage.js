@@ -4,7 +4,8 @@ import { Container, Row, Col } from 'reactstrap';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import { CSVLink } from 'react-csv';
 
-import { TABLE_PAGE_SIZE } from '../../constants';
+import range from 'lodash/range';
+import { REPORTS_START_YEAR, TABLE_PAGE_SIZE } from '../../constants';
 import PageMeta from './PageMeta.tsx';
 import Layout from '../layout/containers/LayoutContainer';
 import Select from '../form/fields/Select';
@@ -52,6 +53,12 @@ const tableHeaders = [
   { key: 'events', translation: 'report.events', hasOrderBy: true },
   { key: 'participants', translation: 'report.participants', hasOrderBy: true }
 ];
+
+const yearOptions = range(REPORTS_START_YEAR, new Date().getFullYear() + 2).map(year => (
+  <option key={year} value={year}>
+    {year}
+  </option>
+));
 
 class ReportPage extends Component {
   constructor(props) {
@@ -142,8 +149,7 @@ class ReportPage extends Component {
             </Col>
             <Col sm={{ size: 4 }}>
               <Select id="area" label="form.report.field.year.label" onChange={this.handleChange}>
-                <option value="2020">2020</option>
-                <option value="2021">2021</option>
+                {yearOptions}
               </Select>
             </Col>
             {reports.size > 0 && (

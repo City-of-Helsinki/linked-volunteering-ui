@@ -16,6 +16,11 @@ env:
   BUILD_ARTIFACT_FOLDER: 'build_artifacts'
   SERVICE_ARTIFACT_FOLDER: 'service_artifacts'
   SERVICE_PORT: 80
+  K8S_REQUEST_CPU: 1m
+  K8S_REQUEST_RAM: 10Mi
+  K8S_LIMIT_CPU: 50m
+  K8S_LIMIT_RAM: 20Mi
+  K8S_REPLICACOUNT: 2
 
 jobs:
   build:
@@ -37,6 +42,8 @@ jobs:
           DOCKER_BUILD_ARG_REACT_APP_MATOMO_URL_BASE: 'https://analytics.hel.ninja/'
           DOCKER_BUILD_ARG_REACT_APP_MATOMO_SITE_ID: 65
           DOCKER_BUILD_ARG_REACT_APP_MATOMO_ENABLED: 'true'
+          DOCKER_BUILD_ARG_REACT_APP_SENTRY_ENVIRONMENT: 'production'
+          DOCKER_BUILD_ARG_REACT_APP_SENTRY_DSN: 'https://3fdb9109a3604dd08288d2f95de3faff@o394401.ingest.sentry.io/5691963'
 
   production:
     if: startsWith(github.ref, 'refs/tags')
