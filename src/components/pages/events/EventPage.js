@@ -76,6 +76,17 @@ const SubmitButton = styled(Button)`
     color: black;
   }
 
+  &[aria-disabled='true'] {
+    background-color: #ccc;
+    border-color: #ccc;
+    color: white;
+    cursor: not-allowed;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
   ${responsive.sm`
     display: inline-block;
     margin-left: 0.5rem;
@@ -111,7 +122,7 @@ class NewEventPage extends PureComponent {
   }
 
   render() {
-    const { handleReset, handleSubmit, pageType, ...rest } = this.props;
+    const { handleReset, handleSubmit, pageType, isSubmitting, ...rest } = this.props;
 
     return (
       <Layout paddingBottom>
@@ -133,11 +144,11 @@ class NewEventPage extends PureComponent {
               />
               <IntlComponent
                 Component={SubmitButton}
-                className={'btn-success'}
                 type="submit"
-                onClick={handleSubmit}
                 color="success"
                 id={`form.event.${pageType}.button.submit`}
+                aria-disabled={isSubmitting || undefined}
+                onClick={isSubmitting ? undefined : handleSubmit}
               />
             </ButtonCol>
           </Row>

@@ -11,7 +11,7 @@ describe('Manage events', () => {
     cy.visit('/fi/admin/events/manage');
     cy.get('#manage_event_table tbody tr:first-child [id^="edit_event_"]').click();
     cy.contains('Muokkaa tapahtumaa');
-    cy.get('.btn-success').click();
+    cy.get('button[type="submit"]').click();
     cy.contains('Tapahtumaa muokattu onnistuneesti!');
   });
 
