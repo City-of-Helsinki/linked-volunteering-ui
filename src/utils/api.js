@@ -5,7 +5,7 @@ const { REACT_APP_API_URL } = process.env;
 
 const instance = axios.create({
   baseURL: `${REACT_APP_API_URL || '/'}/v1/`,
-  timeout: 3000
+  timeout: 15000
 });
 
 // Capture API errors into Sentry to make debugging easier.

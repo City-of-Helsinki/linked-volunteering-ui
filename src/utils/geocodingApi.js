@@ -4,7 +4,7 @@ const { REACT_APP_GEOCODER_API_URL } = process.env;
 
 const instance = axios.create({
   baseURL: REACT_APP_GEOCODER_API_URL,
-  timeout: 3000
+  timeout: 15000
 });
 
 // eslint-disable-next-line import/prefer-default-export
