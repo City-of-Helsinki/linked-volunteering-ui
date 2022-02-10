@@ -32,7 +32,7 @@
     "immutable": "^4.0.0-rc.12",
     "leaflet": "^1.6.0",
     "lodash": "^4.17.15",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "oidc-client": "^1.10.1",
     "open-city-design": "^1.0.0-alpha.3",
     "prop-types": "^15.7.2",
