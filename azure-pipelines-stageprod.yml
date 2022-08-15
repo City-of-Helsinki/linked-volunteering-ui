@@ -44,6 +44,6 @@ extends:
   # Django example: azure-pipelines-PROJECTNAME-api-release.yml
   # Drupal example: azure-pipelines-drupal-release.yml
   # template: azure-pipelines-PROJECTNAME-stageprod.yml@PROJECTNAME-pipelines
-  template: azure-pipelines-puistotalkoot-ui-release.yml@puistotalkoot-pipelines
+  template: azure-pipelines-puistotalkoot-ui-stageprod.yml@puistotalkoot-pipelines
   #parameters:
     #imagetag: ${{ parameters.imagetag }}
