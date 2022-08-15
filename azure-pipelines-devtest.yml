@@ -42,7 +42,7 @@ extends:
   # Django example: azure-pipelines-PROJECTNAME-api-master.yml
   # Drupal example: azure-pipelines-drupal-master.yml
   # template: azure-pipelines-PROJECTNAME-devtest.yml@PROJECTNAME-pipelines
-  template: azure-pipelines-puistotalkoot-ui-master.yml@puistotalkoot-pipelines
+  template: azure-pipelines-puistotalkoot-ui-devtest.yml@puistotalkoot-pipelines
   # Image tag name for Fuse projects
   #parameters:
     #imagetag: ${{ parameters.imagetag }}
