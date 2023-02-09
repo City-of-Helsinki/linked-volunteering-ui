@@ -55,8 +55,9 @@ COPY --from=react-builder --chown=nginx:nginx /app/build /usr/share/nginx/html
 
 COPY .prod/nginx.conf /etc/nginx/conf.d/default.conf
 
+# Permissions needed for nginx to initialize the cache dirs & write
+# out the pid file when running under arbitrary uid and group 0.
 # Nginx wants to initialize the cache dirs even if cache is not used
-# Allow doing this when running as group 0 in Openshift
-RUN chgrp -Rv 0 /var/cache/nginx && chmod -Rv g+w /var/cache/nginx
+RUN chgrp -Rv 0 /var/cache/nginx && chmod -Rv g+w /var/cache/nginx && chmod -v g+w /var/run
 
 EXPOSE 80
