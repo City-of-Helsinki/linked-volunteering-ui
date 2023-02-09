@@ -55,4 +55,8 @@ COPY --from=react-builder --chown=nginx:nginx /app/build /usr/share/nginx/html
 
 COPY .prod/nginx.conf /etc/nginx/conf.d/default.conf
 
+# Nginx wants to initialize the cache dirs even if cache is not used
+# Allow doing this when running as group 0 in Openshift
+RUN chgrp -Rv 0 /var/cache/nginx && chmod -Rv g+w /var/cache/nginx
+
 EXPOSE 80
