@@ -57,6 +57,6 @@ COPY .prod/nginx.conf /etc/nginx/conf.d/default.conf
 
 # Nginx wants to initialize the cache dirs even if cache is not used
 # Allow doing this when running as group 0 in Openshift
-RUN chgrp -Rv 0 /var/cache/nginx && chmod -Rv g+w /var/cache/nginx
+RUN chgrp -Rv 0 /var/cache/nginx && chmod -Rv g+w /var/cache/nginx && chmod -v g+w /var/run
 
 EXPOSE 80
