@@ -121,7 +121,7 @@
   "form.event.field.description.label": "Description (optional field)",
   "form.event.field.description.info": "Shortly describe the aim of the activity.",
   "form.event.field.neighborhood.label": "Location for dropping off equipment and picking up litter",
-  "form.event.field.neighborhood.placeholder": "Search by address",
+  "form.event.field.neighborhood.placeholder": "Search is out of order, tap the location directly on the map",
   "form.event.field.first_name.label": "Forename",
   "form.event.field.first_name.placeholder": "Forename",
   "form.event.field.last_name.label": "Surname",

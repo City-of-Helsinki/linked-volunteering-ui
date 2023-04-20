@@ -121,7 +121,7 @@
   "form.event.field.description.label": "Beskrivning (valfritt fält)",
   "form.event.field.description.info": "Beskriv kort evenemangets syfte.",
   "form.event.field.neighborhood.label": "Platsen (läget) dit utrustningen och skräpet förs",
-  "form.event.field.neighborhood.placeholder": "Sök med adress",
+  "form.event.field.neighborhood.placeholder": "Adressökningen är ur funktion, markera platsen direkt på kartan",
   "form.event.field.first_name.label": "Förnamn",
   "form.event.field.first_name.placeholder": "Förnamn",
   "form.event.field.last_name.label": "Efternamn",

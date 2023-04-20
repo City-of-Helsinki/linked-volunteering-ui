@@ -122,7 +122,7 @@
   "form.event.field.description.label": "Kuvausteksti (vapaaehtoinen kenttä)",
   "form.event.field.description.info": "Kerro lyhyesti talkoon tavoitteesta.",
   "form.event.field.neighborhood.label": "Sijainti, johon tarvikkeet tuodaan ja roskat viedään",
-  "form.event.field.neighborhood.placeholder": "Etsi osoitteella",
+  "form.event.field.neighborhood.placeholder": "Osoitehaku on epäkunnossa, merkitse sijainti suoraan kartalle",
   "form.event.field.first_name.label": "Etunimi",
   "form.event.field.first_name.placeholder": "Etunimi",
   "form.event.field.last_name.label": "Sukunimi",
