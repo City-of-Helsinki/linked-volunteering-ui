@@ -60,4 +60,4 @@ COPY .prod/nginx.conf /etc/nginx/conf.d/default.conf
 # Nginx wants to initialize the cache dirs even if cache is not used
 RUN chgrp -Rv 0 /var/cache/nginx && chmod -Rv g+w /var/cache/nginx && chmod -v g+w /var/run
 
-EXPOSE 80
+EXPOSE 8080
