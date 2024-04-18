@@ -1,7 +1,7 @@
 /* eslint-disable */
-require('./bootstrap.scss');
-const extractedTheme = require('sass-extract-loader?{"plugins":["sass-extract-js"]}!./theme.scss');
-/* eslint-enable */
+const theme = require('./bootstrap.scss');
+
+console.log(theme);
 
 const breakpoint = {
   sm: 576,
@@ -16,7 +16,7 @@ const maxWidth = Object.entries(breakpoint).reduce((acc, [size, pixels]) => ({
 }));
 
 export default {
-  ...extractedTheme,
+  ...theme,
   breakpoint,
   maxWidth,
   colors: {

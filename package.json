@@ -2,6 +2,9 @@
   "name": "linked-volunteering-ui",
   "version": "0.2.7",
   "private": true,
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "dependencies": {
     "@datapunt/matomo-tracker-react": "^0.2.1",
     "@sentry/react": "^6.2.3",
@@ -32,7 +35,6 @@
     "immutable": "^4.0.0-rc.12",
     "leaflet": "^1.6.0",
     "lodash": "^4.17.15",
-    "node-sass": "^4.13.1",
     "oidc-client": "^1.10.1",
     "open-city-design": "^1.0.0-alpha.3",
     "prop-types": "^15.7.2",
@@ -59,9 +61,6 @@
     "redux-oidc": "^4.0.0-beta1",
     "redux-promise-middleware": "^6.1.2",
     "redux-thunk": "^2.3.0",
-    "sass-extract": "^2.1.0",
-    "sass-extract-js": "^0.4.0",
-    "sass-extract-loader": "^1.1.0",
     "styled-components": "^5.0.1",
     "text-encoding": "^0.7.0",
     "typescript": "^3.7.5",
@@ -94,19 +93,19 @@
     "express": "^4.17.1",
     "husky": "^4.2.3",
     "prettier": "^1.19.1",
+    "sass": "^1.75.0",
     "serve": "^11.3.0"
   },
   "scripts": {
-    "start": "yarn setPackageDetails react-scripts start",
-    "build": "yarn setPackageDetails react-scripts build",
+    "start": "yarn react-scripts start",
+    "build": "yarn react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "cypress": "cypress open",
     "distribute": "yarn serve -s build",
     "lint": "eslint --ext js,jsx src",
     "api": "node ./api/index.js",
-    "test:ci": "yarn api & yarn distribute & cypress run --browser chrome",
-    "setPackageDetails": "cross-env REACT_APP_VERSION=$npm_package_version REACT_APP_APPLICATION_NAME=$npm_package_name"
+    "test:ci": "yarn api & yarn distribute & cypress run --browser chrome"
   },
   "browserslist": {
     "production": [

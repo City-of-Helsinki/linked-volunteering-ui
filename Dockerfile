@@ -1,5 +1,12 @@
-# Our First stage, that builds the application
-FROM helsinkitest/node:12-slim AS react-builder
+# ==========================================
+FROM registry.access.redhat.com/ubi8/nodejs-16 AS deployable
+# ==========================================
+
+WORKDIR /app
+
+USER root
+RUN curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo
+RUN yum -y install yarn
 
 # Offical image has npm log verbosity as info. More info - https://github.com/nodejs/docker-node#verbosity
 ENV NPM_CONFIG_LOGLEVEL warn
@@ -13,22 +20,12 @@ ENV NODE_ENV $NODE_ENV
 ENV YARN_VERSION 1.19.1
 RUN yarn policies set-version $YARN_VERSION
 
-USER root
+# Most files from source tree are needed at runtime
+COPY . /app/
+RUN chown -R default:root /app
 
-RUN apt-install.sh build-essential
-
-# Use non-root user
-USER appuser
-
-# Install dependencies
-COPY --chown=appuser:appuser package.json yarn.lock /app/
-RUN yarn && yarn cache clean --force
-
-USER root
-RUN apt-cleanup.sh build-essential
-
-# Copy all files
-COPY --chown=appuser:appuser . .
+# Install npm dependencies and build the bundle
+USER default
 
 # Set environmental variables
 ARG REACT_APP_AUTHENTICATED
@@ -43,15 +40,18 @@ ARG REACT_APP_MATOMO_ENABLED
 ARG REACT_APP_SENTRY_ENVIRONMENT
 ARG REACT_APP_SENTRY_DSN
 
-# Build application
+RUN yarn cache clean --force
+RUN yarn
 RUN yarn build
+
+# Build application
 
 # =============================
 FROM nginx:1.17 as production
 # =============================
 
 # Nginx runs with user "nginx" by default
-COPY --from=react-builder --chown=nginx:nginx /app/build /usr/share/nginx/html
+COPY --from=deployable --chown=nginx:nginx /app/build /usr/share/nginx/html
 
 COPY .prod/nginx.conf /etc/nginx/conf.d/default.conf
 
@@ -60,4 +60,4 @@ COPY .prod/nginx.conf /etc/nginx/conf.d/default.conf
 # Nginx wants to initialize the cache dirs even if cache is not used
 RUN chgrp -Rv 0 /var/cache/nginx && chmod -Rv g+w /var/cache/nginx && chmod -v g+w /var/run
 
-EXPOSE 8080
+EXPOSE 3000:8080

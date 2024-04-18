@@ -55,3 +55,15 @@ h3 {
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
+
+:export {
+  helBlack: $hel-black;
+  helGray: $hel-gray;
+  helCopper: $hel-copper;
+  helWhite: $hel-white;
+  themeColors: {
+    danger: $red
+  }
+  h2FontSize: var(--hds-text-xxl);
+  h4FontSize: var(--hds-text-xl);
+}
