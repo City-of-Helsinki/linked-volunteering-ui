@@ -1,8 +1,6 @@
 /* eslint-disable */
 const theme = require('./bootstrap.scss');
 
-console.log(theme);
-
 const breakpoint = {
   sm: 576,
   md: 768,
