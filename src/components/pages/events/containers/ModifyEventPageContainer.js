@@ -8,7 +8,7 @@ import { addNotification } from '../../../../ducks/notification';
 import {
   clearCoordinatesByAddress,
   getCoordinatesByAddress,
-  getGeoData
+  getGeoData,
 } from '../../../../ducks/geo';
 import { modifyEvent } from '../../../../ducks/event';
 import { withEventForm } from '../../../form/withForm';
@@ -16,10 +16,10 @@ import EventPage from '../EventPage';
 
 export default compose(
   renderIfAuthenticated,
-  withProps(props => ({
+  withProps((props) => ({
     pageType: 'modify',
     id: props.match.params.id,
-    locale: props.match.params.locale
+    locale: props.match.params.locale,
   })),
   connect(
     (state, { id }) => {
@@ -30,28 +30,25 @@ export default compose(
         selectedAddress: get(state, 'geo.geoData.closest_address'),
         selectedContractZone: get(state, 'geo.geoData.contract_zone'),
         unavailableDates: get(state, 'geo.geoData.contract_zone.unavailable_dates'),
-        apiAccessToken: state.auth.apiAccessToken
+        apiAccessToken: state.auth.apiAccessToken,
       };
     },
     {
       clearCoordinatesByAddress,
       getCoordinatesByAddress,
       getGeoData,
-      addNotification
-    }
+      addNotification,
+    },
   ),
   injectIntl,
   withHandlers({
-    onSubmit: ({
-      history,
-      intl: { locale },
-      addNotification: notify,
-      apiAccessToken
-    }) => async values => {
-      await modifyEvent(values, apiAccessToken);
-      history.push(`/${locale}/admin/events/manage`);
-      notify({ color: 'success', message: 'notification.form.event.modified' });
-    }
+    onSubmit:
+      ({ history, intl: { locale }, addNotification: notify, apiAccessToken }) =>
+      async (values) => {
+        await modifyEvent(values, apiAccessToken);
+        history.push(`/${locale}/admin/events/manage`);
+        notify({ color: 'success', message: 'notification.form.event.modified' });
+      },
   }),
-  withEventForm
+  withEventForm,
 )(EventPage);

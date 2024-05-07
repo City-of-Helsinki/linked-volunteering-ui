@@ -8,17 +8,19 @@ const NotificationWrapper = styled.div`
   right: 1.5rem;
 `;
 
-export default ({ notifications, dismissNotification }) => (
-  <NotificationWrapper>
-    {notifications.entrySeq().map(([key, { message, color, values }]) => (
-      <Notification
-        key={key}
-        onDismiss={() => dismissNotification(key)}
-        color={color}
-        values={values}
-      >
-        {message}
-      </Notification>
-    ))}
-  </NotificationWrapper>
-);
+export default ({ notifications, dismissNotification }) => {
+  return (
+    <NotificationWrapper>
+      {notifications.entrySeq().map(([key, { message, color, values }]) => (
+        <Notification
+          key={key}
+          onDismiss={() => dismissNotification(key)}
+          color={color}
+          values={values}
+        >
+          {message}
+        </Notification>
+      ))}
+    </NotificationWrapper>
+  );
+};

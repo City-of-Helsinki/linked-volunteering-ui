@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import PageMeta from './PageMeta.tsx';
+import PageMeta from './PageMeta';
 
 class ErrorPage extends PureComponent {
   componentDidMount() {

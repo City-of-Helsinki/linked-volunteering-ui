@@ -18,7 +18,7 @@ const PageMeta: React.FC<Props> = ({ title }) => {
   const translatedTitle =
     title !== 'site.meta.title'
       ? `${formatMessage({
-          id: title
+          id: title,
         })} - ${formatMessage({ id: 'site.meta.title' })}`
       : formatMessage({ id: 'site.meta.title' });
 
@@ -26,7 +26,7 @@ const PageMeta: React.FC<Props> = ({ title }) => {
   useDeepCompareEffect(() => {
     trackPageView({
       documentTitle: translatedTitle,
-      href: window.location.href
+      href: window.location.href,
     });
   }, [{ pathname: location.pathname, search: location.search }]);
 

@@ -3,16 +3,16 @@ import theme from '../config/theme';
 
 const { breakpoint } = theme;
 
-const breakpoints = Object.entries(breakpoint).reduce(
+const breakpoints: any = Object.entries(breakpoint).reduce(
   (acc, [size, pixels]) => ({
     ...acc,
-    [size]: (...args) => css`
-      @media (min-width: ${pixels / 16}em) {
-        ${css(...args)};
+    [size]: (args: any) => css`
+      @media (min-width: ${(pixels as number) / 16}em) {
+        ${css(args)};
       }
-    `
+    `,
   }),
-  {}
+  {},
 );
 
 export const ShowOnTablet = styled.div`

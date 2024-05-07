@@ -14,7 +14,7 @@ const { toInt, findById, findByNotId, getStatus } = require('./utils.js');
 const yearlyReports = {
   /* eslint-disable */
   2021: require('./res/reports/2021.json'),
-  2020: require('./res/reports/2020.json')
+  2020: require('./res/reports/2020.json'),
   /* eslint-enable */
 };
 
@@ -25,16 +25,16 @@ app.use(cors());
 
 const router = express.Router();
 
-const getTimeProperties = data => {
+const getTimeProperties = (data) => {
   const now = new Date();
   return {
     created_at: now,
     modified_at: now,
-    ...data
+    ...data,
   };
 };
 
-const findEventById = id => eventJson.results.find(findById(id));
+const findEventById = (id) => eventJson.results.find(findById(id));
 const modifyEventById = (id, event) => {
   const key = eventJson.results.findIndex(findById(id));
   if (key > -1) {
@@ -44,7 +44,7 @@ const modifyEventById = (id, event) => {
   return null;
 };
 
-const deleteEventById = id => {
+const deleteEventById = (id) => {
   const results = eventJson.results.filter(findByNotId(id));
 
   if (results.length === eventJson.count) {
@@ -71,7 +71,7 @@ router
     const originalEvent = findEventById(req.params.id);
     const modifiedEvent = modifyEventById(req.params.id, {
       ...originalEvent,
-      ...req.body
+      ...req.body,
     });
     return res.status(getStatus(modifiedEvent)).json(modifiedEvent);
   })
@@ -88,7 +88,7 @@ router
       ...req.body,
       // eslint-disable-next-line no-plusplus
       id: ++eventJson.count,
-      state: 'waiting_for_approval'
+      state: 'waiting_for_approval',
     });
     eventJson.results.push(newEvent);
 

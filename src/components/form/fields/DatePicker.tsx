@@ -15,7 +15,7 @@ interface Props extends ReactDatePickerProps {
   touched: boolean;
 }
 
-const DatePickerField: React.FC<Props> = props => {
+const DatePickerField: React.FC<Props> = (props) => {
   const intl = useIntl();
   const { formatMessage } = intl;
 

@@ -33,7 +33,7 @@ const PageContainer = styled.div`
   color: black;
 `;
 
-const AccessibilityPage = () => {
+function AccessibilityPage() {
   const intl = useIntl();
   const { locale } = intl;
 
@@ -55,5 +55,5 @@ const AccessibilityPage = () => {
       </PageContainer>
     </Layout>
   );
-};
+}
 export default AccessibilityPage;

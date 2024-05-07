@@ -7,12 +7,12 @@ import ReportPage from '../ReportPage';
 export default compose(
   renderIfAuthenticated,
   connect(
-    state => ({
+    (state) => ({
       reports: state.report.reports,
       ordering: state.report.ordering,
-      apiAccessToken: state.auth.apiAccessToken
+      apiAccessToken: state.auth.apiAccessToken,
     }),
-    { getReport, setOrderBy }
+    { getReport, setOrderBy },
   ),
-  orderBy('reports')
+  orderBy('reports'),
 )(ReportPage);

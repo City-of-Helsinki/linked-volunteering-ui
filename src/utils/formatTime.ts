@@ -8,6 +8,6 @@ const locales = { en, fi, sv };
 export default (date: Date, timeFormat = 'HH.mm', locale = 'fi'): string => {
   const d = isNumber(date) ? date : new Date(date);
   return format(d, timeFormat, {
-    locale: get(locales, locale)
+    locale: get(locales, locale),
   }).trim();
 };

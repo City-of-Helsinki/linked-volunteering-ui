@@ -4,7 +4,7 @@ import geoService from '../services/geoService';
 
 const defaultState = Record({
   addressCoordinates: null,
-  geoData: null
+  geoData: null,
 });
 
 export const getGeoData = createAction('GET_GEODATA_FROM_COORDINATES', geoService.getGeoData);
@@ -13,7 +13,7 @@ export const clearCoordinatesByAddress = createAction('CLEAR_COORDINATES_BY_ADDR
 
 export const getCoordinatesByAddress = createAction(
   'GET_COORDINATES_BY_ADDRESS',
-  geoService.getCoordinatesByAddress
+  geoService.getCoordinatesByAddress,
 );
 
 export default (state = defaultState(), action) => {

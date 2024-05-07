@@ -23,7 +23,7 @@ const LayoutWrapper = styled.div`
 `;
 
 const Content = styled.div`
-  background-color: ${props => props.theme.colors.lightGray};
+  background-color: ${(props) => props.theme.colors.lightGray};
 `;
 
 const NavbarBrand = styled(Link)`
@@ -39,22 +39,22 @@ const NavbarBrand = styled(Link)`
 `;
 
 const NavbarRow = styled(Navbar)`
-  background-color: ${props => props.theme.helWhite};
+  background-color: ${(props) => props.theme.helWhite};
   padding-left: 0;
   padding-right: 0;
 
   & a {
-    color: ${props => props.theme.helBlack};
+    color: ${(props) => props.theme.helBlack};
   }
   & a:hover {
     text-decoration: none;
-    color: ${props => props.theme.helBlack};
+    color: ${(props) => props.theme.helBlack};
   }
 `;
 
 const TopNavbar = styled(Navbar)`
-  background-color: ${props => props.theme.colors.helWhite};
-  border-bottom: 1px solid ${props => props.theme.helGray};
+  background-color: ${(props) => props.theme.colors.helWhite};
+  border-bottom: 1px solid ${(props) => props.theme.helGray};
   padding: 0.5rem 0;
 
   & a {
@@ -154,19 +154,26 @@ const KoroSection = styled(Koros)`
   margin-top: -1.25rem;
 
   svg {
-    fill: ${props => props.theme.helCopper};
+    fill: ${(props) => props.theme.helCopper};
     height: 1.25rem;
   }
 `;
 
 interface Props {
+  children?: any;
   auth?: any;
-  paddingBottom: boolean;
-  paddingTop: boolean;
+  paddingBottom?: boolean;
+  paddingTop?: boolean;
   user?: any;
 }
 
-const Layout: React.FC<Props> = ({ children, paddingTop, paddingBottom, user, auth }) => {
+const Layout: React.FC<Props> = ({
+  children,
+  paddingTop = false,
+  paddingBottom = false,
+  user,
+  auth,
+}) => {
   const locale = useLocale();
   const intl = useIntl();
   const { formatMessage } = intl;
@@ -188,7 +195,7 @@ const Layout: React.FC<Props> = ({ children, paddingTop, paddingBottom, user, au
               <LanguageDropdown />
               {hasUser && (
                 <UserAction onClick={() => userManager.signoutRedirect()} tabIndex={0}>
-                  <UserIcon aria-hidden={true} name="user" color="black" />
+                  <UserIcon aria-hidden name="user" color="black" />
                   <FormattedMessage id="site.nav.user.logout" />
                 </UserAction>
               )}
@@ -203,12 +210,12 @@ const Layout: React.FC<Props> = ({ children, paddingTop, paddingBottom, user, au
             <Links>
               <LocalizedLink to="event/new" translate="site.nav.create_event" />
               {hasUser && (
-                <Fragment>
+                <>
                   {(isOfficial || isContractor) && (
                     <LocalizedLink to="admin/events/manage" translate="site.nav.manage_events" />
                   )}
                   {isOfficial && <LocalizedLink to="admin/report" translate="site.nav.report" />}
-                </Fragment>
+                </>
               )}
             </Links>
           </NavbarRow>

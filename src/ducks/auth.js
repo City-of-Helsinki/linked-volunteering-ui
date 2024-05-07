@@ -6,21 +6,21 @@ import authService from '../services/authService';
 
 const defaultState = Record({
   apiAccessToken: null,
-  currentUserData: null
+  currentUserData: null,
 });
 
 export const getApiAccessToken = createAction(
   'GET_API_ACCESS_TOKEN',
-  authService.getApiAccessToken
+  authService.getApiAccessToken,
 );
 
 export const getCurrentUserData = createAction(
   'GET_CURRENT_USER_DATA',
-  authService.getCurrentUserData
+  authService.getCurrentUserData,
 );
 
-export const isOfficialSelector = state => get(state, 'auth.currentUserData.is_official');
-export const isContractorSelector = state => get(state, 'auth.currentUserData.is_contractor');
+export const isOfficialSelector = (state) => get(state, 'auth.currentUserData.is_official');
+export const isContractorSelector = (state) => get(state, 'auth.currentUserData.is_contractor');
 
 export default (state = defaultState(), action) => {
   const { type, payload } = action;

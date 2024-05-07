@@ -15,7 +15,7 @@ interface Props extends InputProps {
   touched: boolean;
 }
 
-const InputField: React.FC<Props> = props => {
+const InputField: React.FC<Props> = (props) => {
   const intl = useIntl();
   const { formatMessage } = intl;
   const { id, label, required, error, touched, text, placeholder, ...rest } = props;

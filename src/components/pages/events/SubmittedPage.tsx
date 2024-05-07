@@ -1,5 +1,5 @@
 import { saveAs } from 'file-saver';
-import { createEvent, EventAttributes } from 'ics';
+import { EventAttributes, createEvent } from 'ics';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -64,7 +64,7 @@ const Content = styled.div`
 
 const BackgroundImage = styled.img.attrs({
   alt: '',
-  src: backgroundImage
+  src: backgroundImage,
 })`
   flex: 0 0 45%;
   max-height: 80vh;
@@ -109,14 +109,14 @@ const SubmittedPage: React.FC<Props> = ({ submittedEvent }) => {
       location: submittedEvent.maintenance_location,
       geo: {
         lat: submittedEvent.location.coordinates[1],
-        lon: submittedEvent.location.coordinates[0]
+        lon: submittedEvent.location.coordinates[0],
       },
       organizer: {
         name: `${submittedEvent.organizer_first_name} ${submittedEvent.organizer_last_name}`,
-        email: submittedEvent.organizer_email
+        email: submittedEvent.organizer_email,
       },
       title: submittedEvent.name,
-      description: submittedEvent.description
+      description: submittedEvent.description,
     };
     createEvent(event, (error: Error | undefined, value: string) => {
       if (error) {

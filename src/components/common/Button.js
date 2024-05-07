@@ -3,7 +3,7 @@ import { Button } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
 import { WithIcons } from './Icon';
 
-export default props => {
+export default (props) => {
   const { translate, values, children, ...rest } = props;
   return (
     <WithIcons component={Button} {...rest}>

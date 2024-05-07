@@ -1,36 +1,33 @@
 import { withHandlers, withProps, mapProps, compose, branch, renderComponent } from 'recompose';
-import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { get } from 'lodash';
 
 import ErrorPage from '../components/pages/containers/ErrorPageContainer';
 
 export const withMatchParams = compose(
-  withRouter,
-  withProps(props => ({
-    ...props.match.params
-  }))
+  withProps((props) => ({
+    ...props.match?.params,
+  })),
 );
 
 export const withMatchParamsHandlers = compose(
   withMatchParams,
   withHandlers({
-    localePush: props => uri => {
+    localePush: (props) => (uri) => {
       const { history, locale } = props;
       history.push(`/${locale}${uri}`);
-    }
-  })
+    },
+  }),
 );
 
 export const renderIfAuthenticated = compose(
-  connect(state => ({
-    isAutenticated: state.oidc.get('user')
+  connect((state) => ({
+    isAutenticated: state.oidc.get('user'),
   })),
-  withRouter,
-  branch(({ isAutenticated }) => !isAutenticated, renderComponent(ErrorPage))
+  branch(({ isAutenticated }) => !isAutenticated, renderComponent(ErrorPage)),
 );
 
-const sortBy = orderBy => (a, b) => {
+const sortBy = (orderBy) => (a, b) => {
   const aBy = get(a, orderBy.key);
   const bBy = get(b, orderBy.key);
   if (aBy === bBy) return 0;
@@ -45,8 +42,8 @@ const sortBy = orderBy => (a, b) => {
   }
 };
 
-export const orderBy = property =>
-  mapProps(props => ({
+export const orderBy = (property) =>
+  mapProps((props) => ({
     ...props,
-    [property]: props[property].sort(sortBy(props.ordering))
+    [property]: props[property].sort(sortBy(props.ordering)),
   }));

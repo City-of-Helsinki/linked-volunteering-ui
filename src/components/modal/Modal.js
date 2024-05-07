@@ -11,7 +11,7 @@ export default ({ isOpen, closeModal, modal, meta, dispatch, apiAccessToken }) =
   const { header, Body, footer } = modals[modal];
 
   return (
-    <Modal isOpen={isOpen} toggle={closeModal} backdrop={true}>
+    <Modal isOpen={isOpen} toggle={closeModal} backdrop>
       {header && (
         <IntlComponent Component={ModalHeader} toggle={closeModal} id={header} values={meta} />
       )}

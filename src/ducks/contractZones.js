@@ -3,12 +3,12 @@ import { createAction } from 'redux-actions';
 import contractZonesService from '../services/contractZonesService';
 
 const defaultState = Record({
-  contractZones: Map()
+  contractZones: Map(),
 });
 
 export const getContractZones = createAction(
   'GET_CONTRACT_ZONES',
-  contractZonesService.getContractZones
+  contractZonesService.getContractZones,
 );
 
 export default (state = defaultState(), action) => {

@@ -38,7 +38,7 @@ interface Props {
   isFocused: boolean;
   isSelected: boolean;
   locale: string;
-  onClick: (date: Date) => void;
+  onClick: Function;
   timeFormat: string;
 }
 
@@ -50,7 +50,7 @@ const ListItem: React.FC<Props> = ({
   isSelected,
   locale,
   onClick,
-  timeFormat
+  timeFormat,
 }) => {
   const element = React.useRef<HTMLLIElement | null>(null);
 
@@ -69,6 +69,7 @@ const ListItem: React.FC<Props> = ({
 
       if (shouldScroll && container.current) {
         const scrollPosition = offsetTop + elHeight / 2 - height / 2;
+        // eslint-disable-next-line no-param-reassign
         container.current.scrollTop = scrollPosition;
       }
     }
@@ -88,8 +89,8 @@ const ListItem: React.FC<Props> = ({
       id={id}
       tabIndex={-1}
       className={classNames({
-        isFocused: isFocused,
-        isSelected: isSelected
+        isFocused,
+        isSelected,
       })}
       onClick={handleClick}
       aria-selected={isFocused}

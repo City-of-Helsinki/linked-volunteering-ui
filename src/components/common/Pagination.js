@@ -35,7 +35,7 @@ const PaginationItem = styled.li`
     }
   }
 
-  ${props => {
+  ${(props) => {
     if (props.selected) {
       return css`
         a {
@@ -48,7 +48,7 @@ const PaginationItem = styled.li`
 `;
 
 export default ({ activePage, onPageClick, pageCount }) => {
-  const handlePageClick = page => event => {
+  const handlePageClick = (page) => (event) => {
     event.preventDefault();
     onPageClick(page);
   };
@@ -60,19 +60,31 @@ export default ({ activePage, onPageClick, pageCount }) => {
   return (
     <Pagination>
       <PaginationItem>
-        <a href="/page-previous" onClick={handlePageClick(Math.max(activePage - 1, 1))}>
+        <a
+          href="/page-previous"
+          onClick={handlePageClick(Math.max(activePage - 1, 1))}
+          aria-label={activePage === 1 ? 'First page' : 'Previous page'}
+        >
           <Icon name="angleLeft" />
         </a>
       </PaginationItem>
-      {Array.from({ length: pageCount }, (v, k) => k + 1).map(page => (
+      {Array.from({ length: pageCount }, (v, k) => k + 1).map((page) => (
         <PaginationItem key={page} selected={page === activePage}>
-          <a href={`/page-${page}`} onClick={handlePageClick(page)}>
+          <a
+            href={`/page-${page}`}
+            onClick={handlePageClick(page)}
+            aria-label={page === activePage ? `Current page, page ${page}` : `Go to page ${page}`}
+          >
             {page}
           </a>
         </PaginationItem>
       ))}
       <PaginationItem>
-        <a href="/page-next" onClick={handlePageClick(Math.min(activePage + 1, pageCount))}>
+        <a
+          href="/page-next"
+          onClick={handlePageClick(Math.min(activePage + 1, pageCount))}
+          aria-label={activePage === pageCount ? 'Last page' : 'Next page'}
+        >
           <Icon name="angleRight" />
         </a>
       </PaginationItem>

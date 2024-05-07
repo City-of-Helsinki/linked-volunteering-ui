@@ -7,15 +7,15 @@ import Modal from '../Modal';
 
 export default compose(
   connect(
-    state => ({
+    (state) => ({
       isOpen: state.modal.isOpen,
       modal: state.modal.modal,
       meta: state.modal.meta,
-      apiAccessToken: state.auth.apiAccessToken
+      apiAccessToken: state.auth.apiAccessToken,
     }),
-    dispatch => ({
+    (dispatch) => ({
       dispatch,
-      closeModal: bindActionCreators(closeModal, dispatch)
-    })
-  )
+      closeModal: bindActionCreators(closeModal, dispatch),
+    }),
+  ),
 )(Modal);

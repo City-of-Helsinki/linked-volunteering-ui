@@ -1,9 +1,9 @@
 import userManager from '../utils/userManager';
 
-const Login = () => {
+function Login() {
   userManager.signinRedirect();
 
   return null;
-};
+}
 
 export default Login;

@@ -6,7 +6,7 @@ import { CSVLink } from 'react-csv';
 
 import range from 'lodash/range';
 import { REPORTS_START_YEAR, TABLE_PAGE_SIZE } from '../../constants';
-import PageMeta from './PageMeta.tsx';
+import PageMeta from './PageMeta';
 import Layout from '../layout/containers/LayoutContainer';
 import Select from '../form/fields/Select';
 import Table, { Td, Tr } from '../common/Table';
@@ -24,7 +24,7 @@ const TitleRow = styled(Row)`
 `;
 
 const ControlContainer = styled(Container)`
-  background-color: ${props => props.theme.helWhite};
+  background-color: ${(props) => props.theme.helWhite};
 
   h1 {
     font-size: var(--hds-text-xxl);
@@ -46,15 +46,15 @@ const tableHeaders = [
   {
     key: 'contact_person',
     translation: 'report.contact_person',
-    hasOrderBy: false
+    hasOrderBy: false,
   },
   { key: 'email', translation: 'report.email', hasOrderBy: false },
   { key: 'phone', translation: 'report.phone', hasOrderBy: false },
   { key: 'events', translation: 'report.events', hasOrderBy: true },
-  { key: 'participants', translation: 'report.participants', hasOrderBy: true }
+  { key: 'participants', translation: 'report.participants', hasOrderBy: true },
 ];
 
-const yearOptions = range(REPORTS_START_YEAR, new Date().getFullYear() + 2).map(year => (
+const yearOptions = range(REPORTS_START_YEAR, new Date().getFullYear() + 2).map((year) => (
   <option key={year} value={year}>
     {year}
   </option>
@@ -64,28 +64,28 @@ class ReportPage extends Component {
   constructor(props) {
     super(props);
     window.scrollTo(0, 0);
+    this.state = {
+      activePage: 1,
+    };
   }
 
-  state = {
-    activePage: 1
-  };
-
   componentDidUpdate(prevProps) {
-    if (prevProps.reports !== this.props.reports) {
+    const { reports } = this.props;
+    if (prevProps.reports !== reports) {
       this.setState({
-        activePage: 1
+        activePage: 1,
       });
     }
   }
 
-  handleChange = e => {
+  handleChange = (e) => {
     const { getReport, apiAccessToken } = this.props;
     getReport(e.target.value, apiAccessToken);
   };
 
-  handlePageClick = page => {
+  handlePageClick = (page) => {
     this.setState({
-      activePage: page
+      activePage: page,
     });
   };
 
@@ -95,7 +95,7 @@ class ReportPage extends Component {
 
     return [...reports.valueSeq()].slice(
       (activePage - 1) * TABLE_PAGE_SIZE,
-      Math.min(activePage * TABLE_PAGE_SIZE, reports.size)
+      Math.min(activePage * TABLE_PAGE_SIZE, reports.size),
     );
   };
 
@@ -104,10 +104,10 @@ class ReportPage extends Component {
       reports,
       setOrderBy,
       ordering,
-      intl: { formatMessage }
+      intl: { formatMessage },
     } = this.props;
     const { activePage } = this.state;
-    const pageCount = Math.ceil((this.props.reports.size || 1) / TABLE_PAGE_SIZE);
+    const pageCount = Math.ceil((reports.size || 1) / TABLE_PAGE_SIZE);
     const paginatedReports = this.getPaginatedReports();
 
     const eventAmount = reports.reduce((acc, row) => acc + row.event_count, 0);
@@ -120,18 +120,18 @@ class ReportPage extends Component {
         formatMessage({ id: 'site.table.header.report.email' }),
         formatMessage({ id: 'site.table.header.report.phone' }),
         formatMessage({ id: 'site.table.header.report.events' }),
-        formatMessage({ id: 'site.table.header.report.participants' })
+        formatMessage({ id: 'site.table.header.report.participants' }),
       ],
       ...reports
-        .map(report => [
+        .map((report) => [
           report.name,
           report.contact_person,
           report.email,
           report.phone,
           report.event_count,
-          report.estimated_attendee_count
+          report.estimated_attendee_count,
         ])
-        .values()
+        .values(),
     ];
 
     return (
@@ -155,7 +155,7 @@ class ReportPage extends Component {
             {reports.size > 0 && (
               <Col sm={{ size: 4 }}>
                 <CSVLink
-                  filename={'Linked Volunteering - Report.csv'}
+                  filename="Linked Volunteering - Report.csv"
                   className="btn btn-info"
                   data={csvData}
                 >
@@ -189,7 +189,7 @@ class ReportPage extends Component {
                 ordering={ordering}
               >
                 {paginatedReports &&
-                  paginatedReports.map(report => (
+                  paginatedReports.map((report) => (
                     <Tr key={report.id}>
                       <Td>{report.name}</Td>
                       <Td>{report.contact_person}</Td>
