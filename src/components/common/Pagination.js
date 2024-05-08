@@ -68,7 +68,7 @@ export default ({ activePage, onPageClick, pageCount }) => {
           <Icon name="angleLeft" />
         </a>
       </PaginationItem>
-      {Array.from({ length: pageCount }, (v, k) => k + 1).map((page) => (
+      {Array.from({ length: pageCount }, (_v, k) => k + 1).map((page) => (
         <PaginationItem key={page} selected={page === activePage}>
           <a
             href={`/page-${page}`}

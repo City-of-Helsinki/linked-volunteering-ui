@@ -10,7 +10,7 @@ const defaultState = Record({
 export const openModal = createAction(
   'OPEN_MODAL',
   (modal) => modal,
-  (modal, meta) => meta,
+  (_modal, meta) => meta,
 );
 export const closeModal = createAction('CLOSE_MODAL');
 

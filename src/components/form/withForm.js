@@ -4,7 +4,7 @@ import event, { validationSchema } from '../../entities/event';
 export const withEventForm = withFormik({
   validationSchema,
   validateOnChange: false,
-  validate: (values, { selectedContractZone }) => {
+  validate: (_values, { selectedContractZone }) => {
     const errors = {};
 
     if (!selectedContractZone) {

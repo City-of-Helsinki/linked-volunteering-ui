@@ -2,6 +2,7 @@ import { injectIntl } from 'react-intl';
 import { compose, withProps, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
 import { get } from 'lodash';
+import { useParams } from 'react-router';
 
 import { renderIfAuthenticated } from '../../../../utils/container';
 import { addNotification } from '../../../../ducks/notification';
@@ -16,10 +17,10 @@ import EventPage from '../EventPage';
 
 export default compose(
   renderIfAuthenticated,
-  withProps((props) => ({
+  withProps(() => ({
     pageType: 'modify',
-    id: props.match.params.id,
-    locale: props.match.params.locale,
+    id: useParams().id,
+    locale: useParams().locale,
   })),
   connect(
     (state, { id }) => {
