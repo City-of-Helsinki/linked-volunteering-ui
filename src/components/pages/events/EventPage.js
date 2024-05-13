@@ -44,7 +44,7 @@ const ButtonCol = styled(Col)`
 
 const ResetButton = styled(Button)`
   background-color: #ca3f00;
-  border-color: #ca3f00;
+  border-color: #ca3f00 !important;
   color: white;
   margin-bottom: 1rem;
   display: block;
@@ -66,7 +66,7 @@ const ResetButton = styled(Button)`
 
 const SubmitButton = styled(Button)`
   background-color: #00d7a7;
-  border-color: #00d7a7;
+  border-color: #00d7a7 !important;
   display: block;
   margin-left: auto;
 
