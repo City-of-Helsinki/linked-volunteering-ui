@@ -30,7 +30,7 @@
     "date-fns": "^2.10.0",
     "file-saver": "^2.0.2",
     "formik": "^2.1.4",
-    "hds-react": "^0.5.5",
+    "hds-react": "^3.1.0",
     "hel-icons": "^1.0.0-beta.3",
     "ics": "^2.19.0",
     "immutable": "^4.0.0-rc.12",

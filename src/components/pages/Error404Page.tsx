@@ -1,4 +1,4 @@
-import { Button, IconTree } from 'hds-react';
+import { Button } from 'hds-react';
 import React from 'react';
 import { useIntl } from 'react-intl';
 import { useNavigate } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { Container, Row, Col } from 'reactstrap';
 import styled from 'styled-components';
 
 import PageMeta from './PageMeta';
+import IconTree from '../icons/IconTree';
 import IconTree2 from '../icons/IconTree2';
 import Layout from '../layout/containers/LayoutContainer';
 import responsive from '../../utils/responsive';
