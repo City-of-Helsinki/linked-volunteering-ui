@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router';
+import { Route, Routes } from 'react-router';
 import { connect } from 'react-redux';
 import { compose, branch, renderComponent } from 'recompose';
 
@@ -25,12 +25,12 @@ const requireUser = restrictUser(({ isContractor, isOfficial }) => !(isContracto
 
 function AdminRoutes() {
   return (
-    <>
-      <Route path="/events/manage" component={requireUser(ManageEventsPage)} />
-      <Route path="/event/modify/:id" component={requireUser(ModifyEventPage)} />
-      <Route path="/report" component={requireOfficial(ReportPage)} />
-      <Route component={Error404Page} />
-    </>
+    <Routes>
+      <Route path="/events/manage" Component={requireUser(ManageEventsPage)} />
+      <Route path="/event/modify/:id" Component={requireUser(ModifyEventPage)} />
+      <Route path="/report" Component={requireOfficial(ReportPage)} />
+      <Route path="*" element={<Error404Page />} />
+    </Routes>
   );
 }
 

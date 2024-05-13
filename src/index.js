@@ -59,11 +59,11 @@ function Root() {
           <ThemeProvider theme={theme}>
             <Router>
               <Routes>
+                <Route path="/" element={<Navigate to="/fi/" />} />
                 <Route path="/logged_out" element={<Navigate to="/fi/" />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/callback" element={<CallbackPage />} />
                 <Route path="/:locale/*" element={<App />} />
-                <Route path="*" element={<Navigate to="/fi/" replace />} />
               </Routes>
             </Router>
           </ThemeProvider>

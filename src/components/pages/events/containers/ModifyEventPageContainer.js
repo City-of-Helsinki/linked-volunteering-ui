@@ -2,7 +2,7 @@ import { injectIntl } from 'react-intl';
 import { compose, withProps, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
 import { get } from 'lodash';
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 
 import { renderIfAuthenticated } from '../../../../utils/container';
 import { addNotification } from '../../../../ducks/notification';
@@ -21,6 +21,7 @@ export default compose(
     pageType: 'modify',
     id: useParams().id,
     locale: useParams().locale,
+    navigate: useNavigate(),
   })),
   connect(
     (state, { id }) => {
@@ -44,10 +45,10 @@ export default compose(
   injectIntl,
   withHandlers({
     onSubmit:
-      ({ history, intl: { locale }, addNotification: notify, apiAccessToken }) =>
+      ({ navigate, intl: { locale }, addNotification: notify, apiAccessToken }) =>
       async (values) => {
         await modifyEvent(values, apiAccessToken);
-        history.push(`/${locale}/admin/events/manage`);
+        navigate(`/${locale}/admin/events/manage`);
         notify({ color: 'success', message: 'notification.form.event.modified' });
       },
   }),

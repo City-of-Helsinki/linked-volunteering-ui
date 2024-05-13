@@ -1,15 +1,17 @@
 import React from 'react';
 import { CallbackComponent } from 'redux-oidc';
+import { useNavigate } from 'react-router';
 import userManager from '../../utils/userManager';
 
-function CallBackPage({ history, getApiAccessToken, getCurrentUserData }) {
+function CallBackPage({ getApiAccessToken, getCurrentUserData }) {
+  const navigate = useNavigate();
   return (
     <CallbackComponent
       userManager={userManager}
       successCallback={async () => {
         getApiAccessToken();
         getCurrentUserData();
-        history.push('/');
+        navigate('/');
       }}
       errorCallback={(error) => {
         // eslint-disable-next-line no-console

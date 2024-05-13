@@ -1,5 +1,6 @@
 import { withHandlers, withProps, mapProps, compose, branch, renderComponent } from 'recompose';
 import { connect } from 'react-redux';
+import { useNavigate } from 'react-router';
 import { get } from 'lodash';
 
 import ErrorPage from '../components/pages/containers/ErrorPageContainer';
@@ -7,6 +8,7 @@ import ErrorPage from '../components/pages/containers/ErrorPageContainer';
 export const withMatchParams = compose(
   withProps((props) => ({
     ...props.match?.params,
+    navigate: useNavigate(),
   })),
 );
 
@@ -14,8 +16,8 @@ export const withMatchParamsHandlers = compose(
   withMatchParams,
   withHandlers({
     localePush: (props) => (uri) => {
-      const { history, locale } = props;
-      history.push(`/${locale}${uri}`);
+      const { locale, navigate } = props;
+      navigate(`/${locale}${uri}`);
     },
   }),
 );
