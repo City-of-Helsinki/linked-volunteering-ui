@@ -3,7 +3,7 @@ import { createAction } from 'redux-actions';
 import { v4 as uuid } from 'uuid';
 
 const defaultState = Record({
-  notifications: Map()
+  notifications: Map(),
 });
 
 export const addNotification = createAction('ADD_NOTIFICATION');
@@ -14,7 +14,7 @@ export default (state = defaultState(), action) => {
   if (error) {
     return state.setIn(['notifications', uuid()], {
       color: 'danger',
-      message: 'notification.generic.error'
+      message: 'notification.generic.error',
     });
   }
   switch (type) {

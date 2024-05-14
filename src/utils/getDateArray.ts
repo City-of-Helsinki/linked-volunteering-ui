@@ -1,5 +1,4 @@
 import { DateArray } from 'ics';
-
 import formatDate from './formatTime';
 
 /**

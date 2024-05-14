@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Container, Row, Col } from 'reactstrap';
 import { FormattedMessage, FormattedDate } from 'react-intl';
 
-import PageMeta from '../PageMeta.tsx';
+import PageMeta from '../PageMeta';
 import LocalizedLink from '../../common/LocalizedLink';
 import IntlComponent from '../../common/IntlComponent';
 import Table, { Td, Tr, DetailsRow } from '../../common/Table';
@@ -33,7 +33,7 @@ const TitleRow = styled(Row)`
 `;
 
 const ControlContainer = styled(Container)`
-  background-color: ${props => props.theme.helWhite};
+  background-color: ${(props) => props.theme.helWhite};
   padding-bottom: 2em;
 
   h1 {
@@ -65,22 +65,21 @@ const tableHeaders = [
   {
     key: 'organizer_email',
     translation: 'manage_events.organizer_email',
-    hasOrderBy: true
+    hasOrderBy: true,
   },
   { key: 'start_time', translation: 'manage_events.start_time', hasOrderBy: true },
   { key: 'created_at', translation: 'manage_events.created_at', hasOrderBy: true },
-  { key: 'state', translation: 'manage_events.state', hasOrderBy: true }
+  { key: 'state', translation: 'manage_events.state', hasOrderBy: true },
 ];
 
 class EventsPage extends PureComponent {
   constructor(props) {
     super(props);
     window.scrollTo(0, 0);
+    this.state = {
+      visible: null,
+    };
   }
-
-  state = {
-    visible: null
-  };
 
   componentDidMount() {
     const { contractZones, nextParams, getContractZones, getEvents, apiAccessToken } = this.props;
@@ -90,9 +89,9 @@ class EventsPage extends PureComponent {
     getEvents(nextParams, apiAccessToken);
   }
 
-  toggleDetails = id => this.setState(({ visible }) => ({ visible: visible === id ? null : id }));
+  toggleDetails = (id) => this.setState(({ visible }) => ({ visible: visible === id ? null : id }));
 
-  handleChange = e => {
+  handleChange = (e) => {
     const { setFilterByContractZone } = this.props;
     setFilterByContractZone(e.target.value);
   };
@@ -133,7 +132,7 @@ class EventsPage extends PureComponent {
                 setOrderBy={setOrderBy}
                 ordering={ordering}
               >
-                {events.valueSeq().map(event => {
+                {events.valueSeq().map((event) => {
                   const selected = visible === event.id;
                   const isEventPending = isPending(event);
                   return (
@@ -154,7 +153,7 @@ class EventsPage extends PureComponent {
                           prepend={{
                             name: 'oval',
                             size: '0.5x',
-                            color: isEventPending ? 'orange' : 'green'
+                            color: isEventPending ? 'orange' : 'green',
                           }}
                         >
                           <FormattedMessage id={`entities.event.state.${event.state}`} />
@@ -175,7 +174,7 @@ class EventsPage extends PureComponent {
                             prepend={{
                               name: 'angleRight',
                               size: '2x',
-                              rotate: selected ? 90 : 0
+                              rotate: selected ? 90 : 0,
                             }}
                           />
                         </Td>

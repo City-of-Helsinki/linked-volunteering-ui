@@ -1,15 +1,56 @@
 {
-  "extends": ["react-app", "airbnb-base", "plugin:jest/recommended", "plugin:prettier/recommended"],
-  "parser": "babel-eslint",
+  "extends": ["react-app", "airbnb", "plugin:jest/recommended", "plugin:prettier/recommended"],
+  "parser": "@typescript-eslint/parser",
   "plugins": ["react", "jest", "cypress", "prettier"],
   "env": {
     "browser": true,
     "node": true,
+    "es6": true, // Add ES6 environment for new ES6 globals
     "cypress/globals": true
   },
-  "settings": {},
+  "settings": {
+    "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
   "rules": {
     "prettier/prettier": ["error"],
-    "import/no-extraneous-dependencies": ["error", { "devDependencies": ["!/src/**/*.js"] }]
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "args": "all",
+        "argsIgnorePattern": "^_",
+        "caughtErrors": "all",
+        "caughtErrorsIgnorePattern": "^_",
+        "destructuredArrayIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ],
+    "default-param-last": ["off"],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": ["**/test/**", "**/tests/**", "**/__tests__/**", "**/spec/**", "**/__mocks__/**", "cypress/**"] }], // Update the pattern to include common test directories
+    "react/function-component-definition": "off",
+    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx", ".ts", ".tsx"] }], // Update the pattern to include TypeScript files
+    "react/react-in-jsx-scope": "off", // Turn off as React 17 doesn't require React to be in scope
+    "react/jsx-props-no-spreading": "off", // Turn off if you want to allow prop spreading
+    "react/prop-types": "off",
+    "react/require-default-props": "off",
+    "no-console": "warn" // Warn on console.log usage
   }
 }

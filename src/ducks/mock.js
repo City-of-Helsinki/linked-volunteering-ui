@@ -2,7 +2,7 @@ import { createAction } from 'redux-actions';
 import { addWeeks } from 'date-fns';
 import { v4 as uuid } from 'uuid';
 
-const convertToUnixTime = time => Math.round(time.getTime() / 1000);
+const convertToUnixTime = (time) => Math.round(time.getTime() / 1000);
 
 const now = new Date();
 const expiresAt = addWeeks(now, 1);
@@ -18,9 +18,9 @@ export const mockUser = createAction('redux-oidc/USER_FOUND', () => ({
     given_name: 'Gaylord',
     family_name: 'Lohiposki',
     nickname: 'Gaylord',
-    auth_time: convertToUnixTime(now)
+    auth_time: convertToUnixTime(now),
   },
-  expires_at: convertToUnixTime(expiresAt)
+  expires_at: convertToUnixTime(expiresAt),
 }));
 
 // eslint-disable-next-line import/prefer-default-export
@@ -29,5 +29,5 @@ export const mockUserData = createAction('GET_CURRENT_USER_DATA_FULFILLED', () =
   first_name: 'Gaylord',
   last_name: 'Lohiposki',
   is_official: true,
-  is_contractor: false
+  is_contractor: false,
 }));

@@ -4,7 +4,7 @@ import Button from './Button';
 import IntlComponent from './IntlComponent';
 
 const StyledTr = styled.tr`
-  ${props => {
+  ${(props) => {
     if (props.white) {
       return css`
         background-color: white;
@@ -33,7 +33,7 @@ const StyledTr = styled.tr`
 `;
 
 const FirstTd = styled.td`
-  background: ${props => (props.highlighted ? 'orange !important' : 'none')};
+  background: ${(props) => (props.highlighted ? 'orange !important' : 'none')};
   width: 5px;
   min-width: 5px;
 `;
@@ -57,7 +57,7 @@ const Table = styled.table`
       left: 0;
       z-index: 3;
     }
-    ${props => {
+    ${(props) => {
       if (props.firstColumn) {
         return css`
           &:nth-of-type(2) {
@@ -77,7 +77,7 @@ const Table = styled.table`
       z-index: 1;
     }
 
-    ${props => {
+    ${(props) => {
       if (props.firstColumn) {
         return css`
           &:nth-of-type(2) {
@@ -97,27 +97,31 @@ const HeaderText = styled.span`
 `;
 
 export const Th = styled.th`
-  padding: ${props => (props.large ? '1em 1em' : '0.5em 1em')};
+  padding: ${(props) => (props.large ? '1em 1em' : '0.5em 1em')};
 `;
 
 export const Td = styled.td`
-  padding: ${props => (props.large ? '1em 1em' : '0.5em 1em')};
+  padding: ${(props) => (props.large ? '1em 1em' : '0.5em 1em')};
 `;
 
-export const Tr = ({ firstColumn, highlighted, children, ...rest }) => (
-  <StyledTr {...rest}>
-    {firstColumn && <FirstTd highlighted={highlighted} />}
-    {children}
-  </StyledTr>
-);
-
-export const DetailsRow = ({ children, colSpan, ...rest }) => (
-  <Tr firstColumn white {...rest}>
-    <Td colSpan={colSpan} large>
+export function Tr({ firstColumn, highlighted, children, ...rest }) {
+  return (
+    <StyledTr {...rest}>
+      {firstColumn && <FirstTd highlighted={highlighted} />}
       {children}
-    </Td>
-  </Tr>
-);
+    </StyledTr>
+  );
+}
+
+export function DetailsRow({ children, colSpan, ...rest }) {
+  return (
+    <Tr firstColumn white {...rest}>
+      <Td colSpan={colSpan} large>
+        {children}
+      </Td>
+    </Tr>
+  );
+}
 
 const getOrder = (key, ordering) => {
   if (key === ordering.key) {
@@ -126,7 +130,7 @@ const getOrder = (key, ordering) => {
   return null;
 };
 
-const getOrderIcon = order => {
+const getOrderIcon = (order) => {
   switch (order) {
     case 'ASC':
       return 'orderAsc';
@@ -137,36 +141,35 @@ const getOrderIcon = order => {
   }
 };
 
-export default ({ id, firstColumn, headers, actionColSpan, children, setOrderBy, ordering }) => (
-  <TableWrapper>
-    <Table firstColumn={firstColumn} id={id}>
-      <thead>
-        <tr>
-          {firstColumn && <th />}
-          {headers.map(({ key, translation, hasOrderBy }) => {
-            const order = getOrder(key, ordering);
-            return (
-              <Th key={key}>
-                <IntlComponent Component={HeaderText} id={`site.table.header.${translation}`} />
-                {hasOrderBy && (
-                  <Button
-                    prepend={getOrderIcon(order)}
-                    color="link"
-                    onClick={() =>
-                      setOrderBy({
-                        key,
-                        order: order || 'ASC'
-                      })
-                    }
-                  />
-                )}
-              </Th>
-            );
-          })}
-          {actionColSpan && <Th colSpan={actionColSpan} />}
-        </tr>
-      </thead>
-      <tbody>{children}</tbody>
-    </Table>
-  </TableWrapper>
-);
+export default ({ id, firstColumn, headers, actionColSpan, children, setOrderBy, ordering }) => {
+  return (
+    <TableWrapper>
+      <Table firstColumn={firstColumn} id={id}>
+        <thead>
+          <tr>
+            {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+            {firstColumn && <th />}
+            {headers.map(({ key, translation, hasOrderBy }) => {
+              const order = getOrder(key, ordering);
+              return (
+                <Th key={key}>
+                  <IntlComponent Component={HeaderText} id={`site.table.header.${translation}`} />
+                  {hasOrderBy && (
+                    <Button
+                      prepend={getOrderIcon(order)}
+                      color="link"
+                      onClick={() => setOrderBy({ key, order: order || 'ASC' })}
+                      aria-label={order || 'ASC'}
+                    />
+                  )}
+                </Th>
+              );
+            })}
+            {actionColSpan && <Th colSpan={actionColSpan} />}
+          </tr>
+        </thead>
+        <tbody>{children}</tbody>
+      </Table>
+    </TableWrapper>
+  );
+};

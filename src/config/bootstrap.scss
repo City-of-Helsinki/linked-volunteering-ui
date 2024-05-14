@@ -12,7 +12,7 @@ $theme-colors: (
   'warning': $yellow,
   'danger': $red,
   'light': $hel-light,
-  'dark': $hel-dark
+  'dark': $hel-dark,
 );
 
 @import '~bootstrap/scss/mixins';
@@ -54,4 +54,16 @@ $theme-colors: (
 h3 {
   margin-top: 2rem;
   margin-bottom: 1rem;
+}
+
+:export {
+  helBlack: $hel-black;
+  helGray: $hel-gray;
+  helCopper: $hel-copper;
+  helWhite: $hel-white;
+  themecolors: {
+    danger: $red;
+  }
+  h2FontSize: var(--hds-text-xxl);
+  h4FontSize: var(--hds-text-xl);
 }

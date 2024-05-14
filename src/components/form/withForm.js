@@ -4,7 +4,7 @@ import event, { validationSchema } from '../../entities/event';
 export const withEventForm = withFormik({
   validationSchema,
   validateOnChange: false,
-  validate: (values, { selectedContractZone }) => {
+  validate: (_values, { selectedContractZone }) => {
     const errors = {};
 
     if (!selectedContractZone) {
@@ -28,7 +28,7 @@ export const withEventForm = withFormik({
       setSubmitting(false);
     }
   },
-  displayName: 'EventForm'
+  displayName: 'EventForm',
 });
 
 export const withEventFilterForm = withFormik({
@@ -39,5 +39,5 @@ export const withEventFilterForm = withFormik({
     await onSubmit(values);
     setSubmitting(false);
   },
-  displayName: 'EventFilterForm'
+  displayName: 'EventFilterForm',
 });

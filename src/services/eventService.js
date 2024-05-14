@@ -3,19 +3,19 @@ import { get, post, put, patch, remove } from '../utils/api';
 
 const publishedState = 'approved';
 
-const constructEvent = event => {
+const constructEvent = (event) => {
   const {
     start_time: startTime,
     end_time: endTime,
     created_at: createdAt,
-    modified_at: modifiedAt
+    modified_at: modifiedAt,
   } = event;
   return {
     ...event,
     start_time: new Date(startTime),
     end_time: new Date(endTime),
     created_at: new Date(createdAt),
-    modified_at: new Date(modifiedAt)
+    modified_at: new Date(modifiedAt),
   };
 };
 
@@ -27,10 +27,10 @@ export default {
         ...event,
         location: {
           type: 'Point',
-          coordinates: [event.location.coordinates[0], event.location.coordinates[1]]
-        }
+          coordinates: [event.location.coordinates[0], event.location.coordinates[1]],
+        },
       },
-      apiAccessToken
+      apiAccessToken,
     );
     return constructEvent(e);
   },
@@ -42,9 +42,9 @@ export default {
     const e = await patch(
       `event/${event.id}/`,
       {
-        state: publishedState
+        state: publishedState,
       },
-      apiAccessToken
+      apiAccessToken,
     );
     return constructEvent(e);
   },
@@ -56,7 +56,7 @@ export default {
     const data = await get('event/', params, apiAccessToken);
     return {
       data,
-      events: Map(data.results.map(event => [event.id, constructEvent(event)]))
+      events: Map(data.results.map((event) => [event.id, constructEvent(event)])),
     };
-  }
+  },
 };

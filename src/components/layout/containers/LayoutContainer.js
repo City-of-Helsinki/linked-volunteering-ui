@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import Layout from '../Layout.tsx';
+import Layout from '../Layout';
 
 export default connect(
-  state => ({
+  (state) => ({
     user: state.oidc.get('user'),
-    auth: state.auth.get('currentUserData')
+    auth: state.auth.get('currentUserData'),
   }),
-  {}
+  {},
 )(Layout);

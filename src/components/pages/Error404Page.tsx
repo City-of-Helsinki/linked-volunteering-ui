@@ -1,11 +1,12 @@
-import { Button, IconTree } from 'hds-react';
+import { Button } from 'hds-react';
 import React from 'react';
 import { useIntl } from 'react-intl';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 import styled from 'styled-components';
 
 import PageMeta from './PageMeta';
+import IconTree from '../icons/IconTree';
 import IconTree2 from '../icons/IconTree2';
 import Layout from '../layout/containers/LayoutContainer';
 import responsive from '../../utils/responsive';
@@ -41,13 +42,13 @@ const PageContainer = styled.div`
   `}
 `;
 
-const Error404Page = () => {
-  const history = useHistory();
+function Error404Page() {
+  const navigate = useNavigate();
   const intl = useIntl();
   const { formatMessage, locale } = intl;
 
   const openNewEventPage = () => {
-    history.push(`/${locale}/event/new`);
+    navigate(`/${locale}/event/new`);
   };
 
   React.useEffect(() => {
@@ -77,5 +78,5 @@ const Error404Page = () => {
       </PageContainer>
     </Layout>
   );
-};
+}
 export default Error404Page;

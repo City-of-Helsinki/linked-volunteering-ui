@@ -3,7 +3,7 @@ import Autosuggest, {
   BlurEvent,
   ChangeEvent,
   SuggestionsFetchRequestedParams,
-  SuggestionSelectedEventData
+  SuggestionSelectedEventData,
 } from 'react-autosuggest';
 import { FormGroup, Input, FormFeedback, FormText } from 'reactstrap';
 import styled from 'styled-components';
@@ -28,11 +28,11 @@ interface Props {
   clearCoordinatesByAddress: Function;
   error?: string;
   getCoordinatesByAddress: Function;
-  getSuggestionValue: (item: any) => string;
+  getSuggestionValue: (_item: any) => string;
   id: string;
   label?: string;
-  onBlur?: (event: React.FocusEvent<any>, params?: BlurEvent<any>) => void;
-  onChange: (e: AutoSuggestEvent) => void;
+  onBlur?: (_event: React.FocusEvent<any>, _params?: BlurEvent<any>) => void;
+  onChange: (_e: AutoSuggestEvent) => void;
   placeholder?: string;
   required?: boolean;
   text?: string;
@@ -52,14 +52,14 @@ const AutoSuggestField: React.FC<Props> = ({
   placeholder,
   required,
   text,
-  touched
+  touched,
 }) => {
   const intl = useIntl();
   const { formatMessage, locale } = intl;
 
   const [value, setValue] = React.useState('');
 
-  const handleChange = (event: React.FormEvent<any>, data: ChangeEvent) => {
+  const handleChange = (_event: React.FormEvent<any>, data: ChangeEvent) => {
     setValue(data.newValue);
   };
 
@@ -72,14 +72,14 @@ const AutoSuggestField: React.FC<Props> = ({
   };
 
   const onSuggestionSelected = (
-    event: React.FormEvent<any>,
-    data: SuggestionSelectedEventData<any>
+    _event: React.FormEvent<any>,
+    data: SuggestionSelectedEventData<any>,
   ) => {
     onChange({
       target: {
         id,
-        value: data.suggestion
-      }
+        value: data.suggestion,
+      },
     });
   };
 
@@ -90,7 +90,7 @@ const AutoSuggestField: React.FC<Props> = ({
   const inputProps = {
     value,
     onBlur,
-    onChange: handleChange
+    onChange: handleChange,
   };
 
   return (

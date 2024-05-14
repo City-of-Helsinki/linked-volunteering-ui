@@ -80,17 +80,17 @@ const icons = {
   order,
   orderAsc,
   orderDesc,
-  oval
+  oval,
 };
 
 export const StyledSvg = styled(ReactSVG)`
   line-height: 1;
 
   svg {
-    fill: ${props => props.fill || 'currentColor'};
-    transform: rotate(${props => props.rotate || 0}deg);
+    fill: ${(props) => props.fill || 'currentColor'};
+    transform: rotate(${(props) => props.rotate || 0}deg);
 
-    ${props => {
+    ${(props) => {
       if (typeof props.size === 'string' && props.size.endsWith('x')) {
         return css`
           width: ${parseFloat(props.size)}em;
@@ -105,7 +105,7 @@ export const StyledSvg = styled(ReactSVG)`
   }
 `;
 
-const Icon = props => {
+function Icon(props) {
   const { name, color: fill, size, className, rotate, ...rest } = props;
   const src = icons[name];
 
@@ -124,7 +124,7 @@ const Icon = props => {
       {...rest}
     />
   );
-};
+}
 
 const StyledWithIcons = styled.span`
   white-space: nowrap;
@@ -138,7 +138,7 @@ const StyledWithIcons = styled.span`
   }
 `;
 
-export const WithIcons = ({ append, prepend, children, component, ...rest }) => {
+export function WithIcons({ append, prepend, children, component, ...rest }) {
   const prependProps = typeof prepend === 'string' ? { name: prepend } : prepend;
   const appendProps = typeof append === 'string' ? { name: append } : append;
   return (
@@ -148,6 +148,6 @@ export const WithIcons = ({ append, prepend, children, component, ...rest }) => 
       {append && <Icon {...appendProps} />}
     </StyledWithIcons>
   );
-};
+}
 
 export default Icon;

@@ -2,7 +2,7 @@ import React from 'react';
 import { FormGroup, CustomInput, FormFeedback, FormText } from 'reactstrap';
 import { injectIntl } from 'react-intl';
 
-const CheckboxField = ({
+function CheckboxField({
   id,
   label,
   required,
@@ -11,20 +11,22 @@ const CheckboxField = ({
   text,
   intl: { formatMessage },
   ...rest
-}) => (
-  <FormGroup check>
-    <CustomInput
-      label={label ? formatMessage({ id: label }) : undefined}
-      id={id}
-      type="checkbox"
-      required={required}
-      invalid={error && touched}
-      {...rest}
-    >
-      <FormFeedback>{error && formatMessage({ id: error })}</FormFeedback>
-      <FormText>{text && formatMessage({ id: text })}</FormText>
-    </CustomInput>
-  </FormGroup>
-);
+}) {
+  return (
+    <FormGroup check>
+      <CustomInput
+        label={label ? formatMessage({ id: label }) : undefined}
+        id={id}
+        type="checkbox"
+        required={required}
+        invalid={error && touched}
+        {...rest}
+      >
+        <FormFeedback>{error && formatMessage({ id: error })}</FormFeedback>
+        <FormText>{text && formatMessage({ id: text })}</FormText>
+      </CustomInput>
+    </FormGroup>
+  );
+}
 
 export default injectIntl(CheckboxField);

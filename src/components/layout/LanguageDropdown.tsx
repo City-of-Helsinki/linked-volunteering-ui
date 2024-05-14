@@ -1,4 +1,4 @@
-import { useHistory, useLocation } from 'react-router';
+import { useNavigate, useLocation } from 'react-router';
 import React from 'react';
 import { useIntl } from 'react-intl';
 import { Dropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap';
@@ -54,7 +54,7 @@ const DropdownIcon = styled(Icon)`
 const LanguageDropdown: React.FC = () => {
   const intl = useIntl();
   const { formatMessage, locale } = intl;
-  const { push } = useHistory();
+  const navigate = useNavigate();
   const { pathname } = useLocation();
   const [dropdownOpen, setDropdownOpen] = React.useState(false);
 
@@ -68,7 +68,7 @@ const LanguageDropdown: React.FC = () => {
       : `/${language}${pathname}`;
 
     event.preventDefault();
-    push(url);
+    navigate(url);
   };
 
   return (
@@ -78,17 +78,17 @@ const LanguageDropdown: React.FC = () => {
         color="link"
       >
         <StyledSelector>
-          <NavigationIcon aria-hidden={true} name="globe" color="black" />
+          <NavigationIcon aria-hidden name="globe" color="black" />
           <span>{intl.locale.toUpperCase()}</span>
           <DropdownIcon
-            aria-hidden={true}
-            name={'angleUp'}
+            aria-hidden
+            name="angleUp"
             color="black"
             rotate={dropdownOpen ? '0' : '180'}
           />
         </StyledSelector>
       </LanguageSelector>
-      <DropdownMenu positionFixed={true}>
+      <DropdownMenu positionFixed>
         <IntlComponent
           Component={DropdownItem}
           href="/fi"

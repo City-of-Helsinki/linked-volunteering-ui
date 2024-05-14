@@ -21,17 +21,10 @@ const now = startOfDay(new Date());
 const minDate = addDays(now, 8);
 const timeIntervals = 30;
 
-interface Target {
-  target: {
-    id: string;
-    value: Date;
-  };
-}
-
 interface Props {
   errors: any;
-  handleBlur: (target: Target) => void;
-  handleChange: (target: Target) => void;
+  handleBlur: Function;
+  handleChange: Function;
   touched: any;
   unavailableDates?: Date[];
   values: FormikValues;
@@ -43,14 +36,14 @@ const DateRange: React.FC<Props> = ({
   handleChange,
   touched,
   unavailableDates,
-  values
+  values,
 }) => {
   const onChange = (id: string) => (value: Date) => {
     handleChange({
       target: {
         id,
-        value
-      }
+        value,
+      },
     });
   };
 
@@ -62,8 +55,8 @@ const DateRange: React.FC<Props> = ({
     handleBlur({
       target: {
         id,
-        value
-      }
+        value,
+      },
     });
   };
 
@@ -97,14 +90,14 @@ const DateRange: React.FC<Props> = ({
   const timeFormat = getTimeFormat(locale);
 
   return (
-    <Fragment>
+    <>
       <Row>
         <Col sm="12" md={{ size: 4, offset: 1 }} id="date_range_start_date_wrapper">
           <DatePicker
             id="date_range_start_date"
             // @ts-ignore
             chooseDayAriaLabelPrefix={formatMessage({
-              id: 'form.event.partitions.date_range.dayAriaLabelPrefix'
+              id: 'form.event.partitions.date_range.dayAriaLabelPrefix',
             })}
             label="form.event.partitions.date_range.start_date.label"
             placeholder="form.event.partitions.date_range.start_date.placeholder"
@@ -132,7 +125,6 @@ const DateRange: React.FC<Props> = ({
             defaultDate={minDate}
             error={errors.start_time}
             label="form.event.partitions.date_range.start_time.label"
-            onBlur={onBlur('start_time')}
             onChange={onChange('start_time')}
             placeholder="form.event.partitions.date_range.start_time.placeholder"
             selected={values.start_time}
@@ -149,7 +141,7 @@ const DateRange: React.FC<Props> = ({
             id="date_range_end_date"
             // @ts-ignore
             chooseDayAriaLabelPrefix={formatMessage({
-              id: 'form.event.partitions.date_range.dayAriaLabelPrefix'
+              id: 'form.event.partitions.date_range.dayAriaLabelPrefix',
             })}
             label="form.event.partitions.date_range.end_date.label"
             placeholder="form.event.partitions.date_range.end_date.placeholder"
@@ -175,7 +167,6 @@ const DateRange: React.FC<Props> = ({
             defaultDate={values.start_time || minDate}
             error={errors.end_time}
             label="form.event.partitions.date_range.end_time.label"
-            onBlur={onBlur('end_time')}
             onChange={onChange('end_time')}
             placeholder="form.event.partitions.date_range.end_time.placeholder"
             selected={values.end_time}
@@ -186,7 +177,7 @@ const DateRange: React.FC<Props> = ({
           />
         </Col>
       </Row>
-    </Fragment>
+    </>
   );
 };
 

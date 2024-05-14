@@ -8,7 +8,7 @@ const defaultState = Record({
   next: null,
   previous: null,
   reports: Map(),
-  ordering: ordering()
+  ordering: ordering(),
 });
 
 export const getReport = createAction('GET_REPORT', reportService.getReport);

@@ -5,7 +5,7 @@ import {
   getEvents,
   publishEvent,
   setFilterByContractZone,
-  setOrderBy
+  setOrderBy,
 } from '../../../../ducks/event';
 import { getContractZones } from '../../../../ducks/contractZones';
 import { addNotification } from '../../../../ducks/notification';
@@ -13,10 +13,10 @@ import { openModal } from '../../../../ducks/modal';
 import ManageEventsPage from '../ManageEventsPage';
 import { renderIfAuthenticated, orderBy } from '../../../../utils/container';
 
-const filterEvents = eventState => {
+const filterEvents = (eventState) => {
   if (eventState.filterByContractZone) {
     return eventState.events.filter(
-      event => event.contract_zone === eventState.filterByContractZone
+      (event) => event.contract_zone === eventState.filterByContractZone,
     );
   }
 
@@ -26,12 +26,12 @@ const filterEvents = eventState => {
 export default compose(
   renderIfAuthenticated,
   connect(
-    state => ({
+    (state) => ({
       events: filterEvents(state.event),
       nextParams: state.event.next,
       ordering: state.event.ordering,
       contractZones: state.contractZones.contractZones,
-      apiAccessToken: state.auth.apiAccessToken
+      apiAccessToken: state.auth.apiAccessToken,
     }),
     {
       getContractZones,
@@ -40,21 +40,25 @@ export default compose(
       setFilterByContractZone,
       addNotification,
       openModal,
-      setOrderBy
-    }
+      setOrderBy,
+    },
   ),
   orderBy('events'),
   withHandlers({
-    remove: ({ openModal: showModal, apiAccessToken }) => event => {
-      showModal('confirmRemoval', event, apiAccessToken);
-    },
-    approve: ({ addNotification: notify, publishEvent: publish, apiAccessToken }) => event => {
-      publish(event, apiAccessToken);
-      notify({
-        color: 'success',
-        message: 'notification.manage_events.approve',
-        values: { name: event.name }
-      });
-    }
-  })
+    remove:
+      ({ openModal: showModal, apiAccessToken }) =>
+      (event) => {
+        showModal('confirmRemoval', event, apiAccessToken);
+      },
+    approve:
+      ({ addNotification: notify, publishEvent: publish, apiAccessToken }) =>
+      (event) => {
+        publish(event, apiAccessToken);
+        notify({
+          color: 'success',
+          message: 'notification.manage_events.approve',
+          values: { name: event.name },
+        });
+      },
+  }),
 )(ManageEventsPage);

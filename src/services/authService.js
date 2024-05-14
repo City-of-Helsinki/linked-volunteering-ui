@@ -3,12 +3,12 @@ import userManager from '../utils/userManager';
 
 const { REACT_APP_API_URL, REACT_APP_SSO_URL, REACT_APP_OPEN_ID_API_TOKENS_SCOPE } = process.env;
 
-const getUserAuth = async user => {
+const getUserAuth = async (user) => {
   const accessToken = user.access_token;
 
   return axios.get(`${REACT_APP_SSO_URL}/api-tokens/`, {
     headers: { Authorization: `Bearer ${accessToken}` },
-    scope: REACT_APP_OPEN_ID_API_TOKENS_SCOPE
+    scope: REACT_APP_OPEN_ID_API_TOKENS_SCOPE,
   });
 };
 
@@ -31,7 +31,7 @@ const getCurrentUserData = async () => {
 
   const userData = await axios.get(`${REACT_APP_API_URL}/v1/user/me/`, {
     headers: { Authorization: `Bearer ${apiAccessToken}` },
-    scope: REACT_APP_OPEN_ID_API_TOKENS_SCOPE
+    scope: REACT_APP_OPEN_ID_API_TOKENS_SCOPE,
   });
 
   return userData.data;
@@ -40,5 +40,5 @@ const getCurrentUserData = async () => {
 export default {
   getUserAuth,
   getApiAccessToken,
-  getCurrentUserData
+  getCurrentUserData,
 };

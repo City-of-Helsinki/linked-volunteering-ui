@@ -10,7 +10,7 @@ const defaultState = Record({
   events: Map(),
   filterByContractZone: null,
   ordering: ordering(),
-  submittedEvent: null
+  submittedEvent: null,
 });
 
 export const getEvents = createAction('GET_EVENTS', eventService.getEvents);
@@ -31,12 +31,12 @@ export default (state = defaultState(), action) => {
         .set('count', payload.data.count)
         .set('next', next.query)
         .set('ordering', ordering())
-        .update('events', events => events.merge(payload.events));
+        .update('events', (events) => events.merge(payload.events));
     }
     case 'SUBMIT_EVENT_FULFILLED':
       return state
         .set('submittedEvent', payload)
-        .update('count', count => count + 1)
+        .update('count', (count) => count + 1)
         .setIn(['events', payload.id], payload);
     case 'MODIFY_EVENT_FULFILLED':
     case 'PUBLISH_EVENT_FULFILLED':
@@ -44,7 +44,7 @@ export default (state = defaultState(), action) => {
     case 'REMOVE_EVENT_FULFILLED':
       return state.deleteIn(['events', payload]);
     case 'SET_EVENT_FILTER':
-      return state.set('filterByContractZone', parseInt(payload, 0));
+      return state.set('filterByContractZone', parseInt(payload, 10));
     case 'SET_EVENT_ORDER_BY':
       return state
         .setIn(['ordering', 'key'], payload.key)

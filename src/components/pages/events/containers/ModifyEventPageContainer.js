@@ -2,13 +2,14 @@ import { injectIntl } from 'react-intl';
 import { compose, withProps, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
 import { get } from 'lodash';
+import { useNavigate, useParams } from 'react-router';
 
 import { renderIfAuthenticated } from '../../../../utils/container';
 import { addNotification } from '../../../../ducks/notification';
 import {
   clearCoordinatesByAddress,
   getCoordinatesByAddress,
-  getGeoData
+  getGeoData,
 } from '../../../../ducks/geo';
 import { modifyEvent } from '../../../../ducks/event';
 import { withEventForm } from '../../../form/withForm';
@@ -16,10 +17,11 @@ import EventPage from '../EventPage';
 
 export default compose(
   renderIfAuthenticated,
-  withProps(props => ({
+  withProps(() => ({
     pageType: 'modify',
-    id: props.match.params.id,
-    locale: props.match.params.locale
+    id: useParams().id,
+    locale: useParams().locale,
+    navigate: useNavigate(),
   })),
   connect(
     (state, { id }) => {
@@ -30,28 +32,25 @@ export default compose(
         selectedAddress: get(state, 'geo.geoData.closest_address'),
         selectedContractZone: get(state, 'geo.geoData.contract_zone'),
         unavailableDates: get(state, 'geo.geoData.contract_zone.unavailable_dates'),
-        apiAccessToken: state.auth.apiAccessToken
+        apiAccessToken: state.auth.apiAccessToken,
       };
     },
     {
       clearCoordinatesByAddress,
       getCoordinatesByAddress,
       getGeoData,
-      addNotification
-    }
+      addNotification,
+    },
   ),
   injectIntl,
   withHandlers({
-    onSubmit: ({
-      history,
-      intl: { locale },
-      addNotification: notify,
-      apiAccessToken
-    }) => async values => {
-      await modifyEvent(values, apiAccessToken);
-      history.push(`/${locale}/admin/events/manage`);
-      notify({ color: 'success', message: 'notification.form.event.modified' });
-    }
+    onSubmit:
+      ({ navigate, intl: { locale }, addNotification: notify, apiAccessToken }) =>
+      async (values) => {
+        await modifyEvent(values, apiAccessToken);
+        navigate(`/${locale}/admin/events/manage`);
+        notify({ color: 'success', message: 'notification.form.event.modified' });
+      },
   }),
-  withEventForm
+  withEventForm,
 )(EventPage);

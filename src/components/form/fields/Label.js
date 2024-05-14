@@ -6,7 +6,7 @@ import styled, { css } from 'styled-components';
 const StyledLabel = styled(Label)`
   font-weight: 600;
 
-  ${props =>
+  ${(props) =>
     props.required &&
     css`
       &::after {
@@ -26,7 +26,7 @@ const StyledLabel = styled(Label)`
   }
 `;
 
-export default props => {
+export default (props) => {
   const { children, htmlFor, required, srOnly = false } = props;
 
   return (

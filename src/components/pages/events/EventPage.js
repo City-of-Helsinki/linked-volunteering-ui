@@ -5,14 +5,14 @@ import styled from 'styled-components';
 import { Container, Row, Col } from 'reactstrap';
 import responsive from '../../../utils/responsive';
 
-import PageMeta from '../PageMeta.tsx';
+import PageMeta from '../PageMeta';
 import IntlComponent from '../../common/IntlComponent';
 import Layout from '../../layout/containers/LayoutContainer';
 import EventForm from '../../form/EventForm';
-import InstructionText from '../../form/fields/InstructionText.tsx';
+import InstructionText from '../../form/fields/InstructionText';
 
 const FormContainer = styled(Container)`
-  background-color: ${props => props.theme.helWhite};
+  background-color: ${(props) => props.theme.helWhite};
   padding-top: 2em;
   padding-bottom: 2em;
 `;
@@ -20,7 +20,7 @@ const FormContainer = styled(Container)`
 const TitleContainer = styled(Container)`
   h1 {
     margin: 2rem 0 0.5rem;
-    font-size: ${props => props.theme.h4FontSize};
+    font-size: ${(props) => props.theme.h4FontSize};
   }
 
   p {
@@ -33,7 +33,7 @@ const TitleContainer = styled(Container)`
 
   ${responsive.md`
     h1 {
-      font-size: ${props => props.theme.h2FontSize};
+      font-size: ${(props) => props.theme.h2FontSize};
     }
   `}
 `;
@@ -44,7 +44,7 @@ const ButtonCol = styled(Col)`
 
 const ResetButton = styled(Button)`
   background-color: #ca3f00;
-  border-color: #ca3f00;
+  border-color: #ca3f00 !important;
   color: white;
   margin-bottom: 1rem;
   display: block;
@@ -57,7 +57,7 @@ const ResetButton = styled(Button)`
   }
 
   ${responsive.sm`
-    display: inline-block;
+    display: inline-flex;
     margin-left: 0;
     margin-right: 0.5rem;
     margin-bottom: 0;
@@ -66,7 +66,7 @@ const ResetButton = styled(Button)`
 
 const SubmitButton = styled(Button)`
   background-color: #00d7a7;
-  border-color: #00d7a7;
+  border-color: #00d7a7 !important;
   display: block;
   margin-left: auto;
 
@@ -88,7 +88,7 @@ const SubmitButton = styled(Button)`
   }
 
   ${responsive.sm`
-    display: inline-block;
+    display: inline-flex;
     margin-left: 0.5rem;
   `}
 `;
@@ -100,13 +100,14 @@ class NewEventPage extends PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.submitCount !== prevProps.submitCount) {
+    const { submitCount } = this.props;
+    if (submitCount !== prevProps.submitCount) {
       // Has short timeout to be sure errors are re-rendered
       setTimeout(() => {
         const errComponents = document.getElementsByClassName('is-invalid');
         if (errComponents.length) {
           errComponents[0].scrollIntoView({ block: 'center', behavior: 'smooth' });
-          forEach(errComponents, el => {
+          forEach(errComponents, (el) => {
             if (el.tagName.toLowerCase() === 'input' || el.tagName.toLowerCase() === 'textarea') {
               setTimeout(() => {
                 el.focus();

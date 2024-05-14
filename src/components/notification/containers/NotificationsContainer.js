@@ -6,9 +6,9 @@ import Notifications from '../Notifications';
 
 export default compose(
   connect(
-    state => ({
-      notifications: state.notification.notifications
+    (state) => ({
+      notifications: state.notification.notifications,
     }),
-    { dismissNotification }
-  )
+    { dismissNotification },
+  ),
 )(Notifications);

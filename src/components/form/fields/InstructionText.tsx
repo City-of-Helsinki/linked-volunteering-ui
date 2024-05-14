@@ -6,7 +6,7 @@ import responsive from '../../../utils/responsive';
 
 export const StyledFormText = styled.p`
   font-size: 1rem;
-  color: ${props => props.theme.helBlack};
+  color: ${(props) => props.theme.helBlack};
 
   ${responsive.lg`
     min-width: 550px;
@@ -26,6 +26,7 @@ const InstructionText: React.FC<Props> = ({ text }) => {
         .split('\n')
         .map((item, key) => {
           return (
+            // eslint-disable-next-line react/no-array-index-key
             <React.Fragment key={key}>
               {item}
               <br />

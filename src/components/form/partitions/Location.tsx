@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { FormikValues } from 'formik';
 import { Row, Col } from 'reactstrap';
-import { get } from 'lodash';
+import get from 'lodash/get';
 import { useIntl } from 'react-intl';
 
 import Map from '../fields/Map';
@@ -15,14 +15,13 @@ interface Props {
   errors: any;
   getCoordinatesByAddress: Function;
   getGeoData: Function;
-  handleBlur: (event: React.FormEvent<any>) => void;
-  handleChange: (event: AutoSuggestEvent) => void;
+  handleBlur: (_event: React.FormEvent<any>) => void;
+  handleChange: (_event: AutoSuggestEvent) => void;
   selectedAddress: any;
   selectedContractZone: any;
   setFieldTouched: Function;
   setFieldValue: Function;
   touched: any;
-  validateForm: Function;
   values: FormikValues;
 }
 
@@ -39,7 +38,7 @@ const Location: React.FC<Props> = ({
   setFieldTouched,
   setFieldValue,
   touched,
-  values
+  values,
 }) => {
   const intl = useIntl();
   const { formatMessage, locale } = intl;
@@ -55,11 +54,11 @@ const Location: React.FC<Props> = ({
       const paths = [
         // API doesn't return English street name so use Finnish street name in that
         ['street', 'name', language],
-        ['number']
+        ['number'],
       ];
 
       const newAddrs = paths
-        .map(path => get(selectedAddress, path))
+        .map((path) => get(selectedAddress, path))
         .filter(Boolean)
         .join(' ');
 
@@ -79,7 +78,7 @@ const Location: React.FC<Props> = ({
     setFieldValue,
     setUpdateAddress,
     updateAddress,
-    values
+    values,
   ]);
 
   const handleZoom = (e: AutoSuggestEvent) => {
@@ -93,8 +92,8 @@ const Location: React.FC<Props> = ({
       handleChange({
         target: {
           id: 'location',
-          value: e.target.value.geometry
-        }
+          value: e.target.value.geometry,
+        },
       });
       setCenter(e.target.value.geometry.coordinates);
     } else {
@@ -116,7 +115,7 @@ const Location: React.FC<Props> = ({
   };
 
   return (
-    <Fragment>
+    <>
       <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
           <AutoSuggest
@@ -146,7 +145,6 @@ const Location: React.FC<Props> = ({
             }
             getGeoData={getGeoData}
             touched={touched.maintenance_location}
-            selectedAddress={selectedAddress}
             handleChange={(e: AutoSuggestEvent) => {
               setClickedAddress(null);
               setUpdateAddress(true);
@@ -158,7 +156,7 @@ const Location: React.FC<Props> = ({
       </Row>
       <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 8, offset: 1 }}>
-          <Label htmlFor={'maintenance_location'} srOnly={true}>
+          <Label htmlFor="maintenance_location" srOnly>
             {formatMessage({ id: 'form.event.field.trash_location.placeholder' })}
           </Label>
           <Input
@@ -174,7 +172,7 @@ const Location: React.FC<Props> = ({
           />
         </Col>
       </Row>
-    </Fragment>
+    </>
   );
 };
 

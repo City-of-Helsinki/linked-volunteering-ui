@@ -3,7 +3,7 @@ import { FormGroup, Input, FormFeedback, FormText } from 'reactstrap';
 import { injectIntl } from 'react-intl';
 import Label from './Label';
 
-const SelectField = ({
+function SelectField({
   id,
   label,
   children,
@@ -14,20 +14,22 @@ const SelectField = ({
   text,
   intl: { formatMessage },
   ...rest
-}) => (
-  <FormGroup>
-    {label && (
-      <Label htmlFor={id} required={required}>
-        {formatMessage({ id: label })}
-      </Label>
-    )}
-    <Input type="select" id={id} {...rest} invalid={error && touched}>
-      <option>{noneSelectedText}</option>
-      {children}
-    </Input>
-    <FormFeedback>{error && formatMessage({ id: error })}</FormFeedback>
-    <FormText>{text && formatMessage({ id: text })}</FormText>
-  </FormGroup>
-);
+}) {
+  return (
+    <FormGroup>
+      {label && (
+        <Label htmlFor={id} required={required}>
+          {formatMessage({ id: label })}
+        </Label>
+      )}
+      <Input type="select" id={id} {...rest} invalid={error && touched}>
+        <option>{noneSelectedText}</option>
+        {children}
+      </Input>
+      <FormFeedback>{error && formatMessage({ id: error })}</FormFeedback>
+      <FormText>{text && formatMessage({ id: text })}</FormText>
+    </FormGroup>
+  );
+}
 
 export default injectIntl(SelectField);

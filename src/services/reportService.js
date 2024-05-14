@@ -11,7 +11,7 @@ export default {
 
     return {
       ...payload,
-      results: Map(payload.results.map(report => [report.id, report]))
+      results: Map(payload.results.map((report) => [report.id, report])),
     };
-  }
+  },
 };

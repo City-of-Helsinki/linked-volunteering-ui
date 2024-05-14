@@ -8,7 +8,7 @@ import { Integrations } from '@sentry/tracing';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { OidcProvider, loadUser } from 'redux-oidc';
 
 import { ThemeProvider } from 'styled-components';
@@ -20,15 +20,16 @@ import userManager from './utils/userManager';
 import { mockUser, mockUserData } from './ducks/mock';
 import { getApiAccessToken, getCurrentUserData } from './ducks/auth';
 
-import App from './components/containers/AppContainer.tsx';
+import App from './components/containers/AppContainer';
 import CallbackPage from './components/pages/containers/CallBackPageContainer';
+import Login from './components/Login';
 
 if (process.env.REACT_APP_SENTRY_ENVIRONMENT) {
   Sentry.init({
     dsn: process.env.REACT_APP_SENTRY_DSN,
     environment: process.env.REACT_APP_SENTRY_ENVIRONMENT,
     integrations: [new Integrations.BrowserTracing()],
-    release: `${process.env.REACT_APP_APPLICATION_NAME}@${process.env.REACT_APP_VERSION}`
+    release: `${process.env.REACT_APP_APPLICATION_NAME}@${process.env.REACT_APP_VERSION}`,
   });
 }
 
@@ -47,26 +48,30 @@ if (REACT_APP_AUTHENTICATED === 'yes') {
 const instance = createInstance({
   disabled: process.env.REACT_APP_MATOMO_ENABLED !== 'true',
   urlBase: process.env.REACT_APP_MATOMO_URL_BASE,
-  siteId: Number(process.env.REACT_APP_MATOMO_SITE_ID)
+  siteId: Number(process.env.REACT_APP_MATOMO_SITE_ID),
 });
 
-const Root = () => (
-  <Provider store={store}>
-    <OidcProvider store={store} userManager={userManager}>
-      <MatomoProvider value={instance}>
-        <ThemeProvider theme={theme}>
-          <Router>
-            <Switch>
-              <Redirect exact path="/" to="/fi" />
-              <Route path="/callback" component={CallbackPage} />
-              <Route path="/:locale" component={App} />
-            </Switch>
-          </Router>
-        </ThemeProvider>
-      </MatomoProvider>
-    </OidcProvider>
-  </Provider>
-);
+function Root() {
+  return (
+    <Provider store={store}>
+      <OidcProvider store={store} userManager={userManager}>
+        <MatomoProvider value={instance}>
+          <ThemeProvider theme={theme}>
+            <Router>
+              <Routes>
+                <Route path="/" element={<Navigate to="/fi/" />} />
+                <Route path="/logged_out" element={<Navigate to="/fi/" />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/callback" element={<CallbackPage />} />
+                <Route path="/:locale/*" element={<App />} />
+              </Routes>
+            </Router>
+          </ThemeProvider>
+        </MatomoProvider>
+      </OidcProvider>
+    </Provider>
+  );
+}
 
 const rootElement = document.getElementById('root');
 if (rootElement) {

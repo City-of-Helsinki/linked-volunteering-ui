@@ -1,7 +1,7 @@
 import { Button } from 'hds-react';
 import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 import { Container, Row, Col } from 'reactstrap';
 import styled from 'styled-components';
 
@@ -31,8 +31,8 @@ const PageContainer = styled.div`
 const ContentWrapper = styled.div`
   margin-bottom: 2rem;
   padding: 2.5rem;
-  background-color: ${props => props.theme.helWhite};
-  color: ${props => props.theme.helBlack};
+  background-color: ${(props) => props.theme.helWhite};
+  color: ${(props) => props.theme.helBlack};
 
   h1 {
     font-size: 3rem;
@@ -45,7 +45,7 @@ const ContentWrapper = styled.div`
   a {
     font-size: 1rem;
     display: block;
-    color: ${props => props.theme.helBlack};
+    color: ${(props) => props.theme.helBlack};
     text-decoration: underline;
   }
   a,
@@ -54,8 +54,8 @@ const ContentWrapper = styled.div`
   }
 `;
 
-const LandingPage = () => {
-  const { push } = useHistory();
+function LandingPage() {
+  const navigate = useNavigate();
   const intl = useIntl();
   const { formatMessage, locale } = intl;
 
@@ -64,7 +64,7 @@ const LandingPage = () => {
   }, []);
 
   const openNewEventPage = () => {
-    push(`/${locale}/event/new`);
+    navigate(`/${locale}/event/new`);
   };
 
   return (
@@ -89,7 +89,10 @@ const LandingPage = () => {
 
                 <Row>
                   <Col sm="12">
-                    <a href={formatMessage({ id: 'site.page.landing.hero.url' })}>
+                    <a
+                      href={formatMessage({ id: 'site.page.landing.hero.url' })}
+                      aria-label={formatMessage({ id: 'site.page.landing.hero.link' })}
+                    >
                       <FormattedMessage tagName="span" id="site.page.landing.hero.link" />
                     </a>
                   </Col>
@@ -101,6 +104,6 @@ const LandingPage = () => {
       </PageContainer>
     </Layout>
   );
-};
+}
 
 export default LandingPage;

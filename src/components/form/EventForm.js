@@ -3,10 +3,10 @@ import { Row, Col } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 
-import InstructionText from './fields/InstructionText.tsx';
-import Input from './fields/Input.tsx';
-import DateRange from './partitions/DateRange.tsx';
-import Location from './partitions/Location.tsx';
+import InstructionText from './fields/InstructionText';
+import Input from './fields/Input';
+import DateRange from './partitions/DateRange';
+import Location from './partitions/Location';
 
 const LocationInstructions = styled(Row)`
   margin-bottom: 1em;
@@ -34,7 +34,7 @@ export default ({
   handleSubmit,
   setFieldValue,
   setFieldTouched,
-  setFieldError
+  setFieldError,
 }) => {
   return (
     <StyledForm onSubmit={handleSubmit}>
@@ -142,7 +142,7 @@ export default ({
         errors={errors}
         touched={touched}
         values={values}
-        unavailableDates={unavailableDates ? unavailableDates.map(date => new Date(date)) : []}
+        unavailableDates={unavailableDates ? unavailableDates.map((date) => new Date(date)) : []}
         handleChange={handleChange}
         handleBlur={handleBlur}
       />

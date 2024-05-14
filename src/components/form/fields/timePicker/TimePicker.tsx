@@ -69,8 +69,7 @@ interface Props {
   error?: any;
   id: string;
   label?: string;
-  onBlur: (date: any) => void;
-  onChange: (date: Date) => void;
+  onChange: Function;
   placeholder?: string;
   required?: boolean;
   selected: Date | null | undefined;
@@ -94,7 +93,7 @@ const TimePicker: React.FC<Props> = ({
   timeCaption,
   timeFormat,
   timeIntervals,
-  touched
+  touched,
 }) => {
   const container = React.useRef<HTMLDivElement | null>(null);
   const listWrapper = React.useRef<HTMLDivElement | null>(null);
@@ -105,11 +104,8 @@ const TimePicker: React.FC<Props> = ({
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const timeOptions: Date[] = React.useMemo(() => {
-    const startDay = selected
-      ? startOfDay(selected)
-      : defaultDate
-      ? startOfDay(defaultDate)
-      : startOfDay(new Date());
+    const defaultDay = defaultDate ? startOfDay(defaultDate) : startOfDay(new Date());
+    const startDay = selected ? startOfDay(selected) : defaultDay;
     let day = startDay;
     const options: Date[] = [];
 
@@ -122,7 +118,7 @@ const TimePicker: React.FC<Props> = ({
   }, [defaultDate, selected, timeIntervals]);
 
   const selectedIndex = React.useMemo(() => {
-    return selected ? timeOptions.findIndex(option => isEqual(option, selected)) : -1;
+    return selected ? timeOptions.findIndex((option) => isEqual(option, selected)) : -1;
   }, [selected, timeOptions]);
 
   const isComponentFocused = () => {
@@ -136,22 +132,11 @@ const TimePicker: React.FC<Props> = ({
   };
 
   const onDocumentClick = (event: FocusEvent) => {
-    const target = event.target;
+    const { target } = event;
     const current = container && container.current;
 
     if (!(current && target instanceof Node && current.contains(target))) {
       setIsMenuOpen(false);
-    }
-  };
-
-  const onDocumentFocusin = (event: FocusEvent) => {
-    const target = event.target;
-    const current = container && container.current;
-
-    if (!(current && target instanceof Node && current.contains(target))) {
-      setIsMenuOpen(false);
-    } else {
-      openMenu();
     }
   };
 
@@ -162,13 +147,24 @@ const TimePicker: React.FC<Props> = ({
     }
   };
 
+  const onDocumentFocusin = (event: FocusEvent) => {
+    const { target } = event;
+    const current = container && container.current;
+
+    if (!(current && target instanceof Node && current.contains(target))) {
+      setIsMenuOpen(false);
+    } else {
+      openMenu();
+    }
+  };
+
   const focusOptionUp = () => {
     setFocusedOption(focusedOption > 0 ? focusedOption - 1 : 0);
   };
 
   const focusOptionDown = () => {
     setFocusedOption(
-      focusedOption < timeOptions.length - 1 ? focusedOption + 1 : timeOptions.length - 1
+      focusedOption < timeOptions.length - 1 ? focusedOption + 1 : timeOptions.length - 1,
     );
   };
 
@@ -203,12 +199,12 @@ const TimePicker: React.FC<Props> = ({
         event.preventDefault();
         break;
       case 'Enter':
-        const selectedItem = timeOptions[focusedOption];
-
-        if (selectedItem) {
-          handleChange(selectedItem);
+        if (timeOptions[focusedOption]) {
+          handleChange(timeOptions[focusedOption]);
         }
         event.preventDefault();
+        break;
+      default:
         break;
     }
   };
@@ -262,7 +258,7 @@ const TimePicker: React.FC<Props> = ({
                 {timeOptions.map((option, index) => {
                   return (
                     <ListItem
-                      key={index}
+                      key={option.getMilliseconds as any}
                       container={listWrapper}
                       date={option}
                       id={`${id}--item_${index}`}
