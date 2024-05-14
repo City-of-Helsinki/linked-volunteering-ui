@@ -57,7 +57,7 @@ const ResetButton = styled(Button)`
   }
 
   ${responsive.sm`
-    display: inline-block;
+    display: inline-flex;
     margin-left: 0;
     margin-right: 0.5rem;
     margin-bottom: 0;
@@ -88,7 +88,7 @@ const SubmitButton = styled(Button)`
   }
 
   ${responsive.sm`
-    display: inline-block;
+    display: inline-flex;
     margin-left: 0.5rem;
   `}
 `;

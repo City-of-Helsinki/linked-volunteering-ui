@@ -29,7 +29,7 @@ const Content = styled.div`
 const NavbarBrand = styled(Link)`
   font-weight: 500;
   letter-spacing: 0.03em;
-  display: inline-block;
+  display: inline-flex;
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
   margin-right: 1rem;

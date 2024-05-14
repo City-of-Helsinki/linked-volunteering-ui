@@ -27,7 +27,6 @@ RUN chown -R default:root /app
 # Install npm dependencies and build the bundle
 USER default
 
-RUN yarn cache clean --force
 RUN yarn
 RUN yarn cache clean --force
 
