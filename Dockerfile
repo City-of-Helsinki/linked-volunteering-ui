@@ -1,5 +1,5 @@
 # ==========================================
-FROM registry.access.redhat.com/ubi8/nodejs-18 AS appbase
+FROM registry.access.redhat.com/ubi9/nodejs-18 AS appbase
 # ==========================================
 
 WORKDIR /app
@@ -29,6 +29,7 @@ USER default
 
 RUN yarn cache clean --force
 RUN yarn
+RUN yarn cache clean --force
 
 # ==========================================
 FROM appbase AS development
@@ -66,7 +67,7 @@ ARG REACT_APP_SENTRY_DSN
 RUN yarn build
 
 # =============================
-FROM registry.access.redhat.com/ubi8/nginx-120 AS production
+FROM registry.access.redhat.com/ubi9/nginx-120 AS production
 # =============================
 
 USER root
