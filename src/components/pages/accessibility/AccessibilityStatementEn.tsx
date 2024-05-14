@@ -95,7 +95,7 @@ const AccessibilityStatementEn: FunctionComponent = () => {
       <p>
         Accessibility monitoring unit
         <br />
-        <a href="http://www.saavutettavuusvaatimukset.fi/">www.saavutettavuusvaatimukset.fi/</a>
+        <a href="https://www.saavutettavuusvaatimukset.fi/">www.saavutettavuusvaatimukset.fi/</a>
         <br />
         <a href="mailto:saavutettavuus@avi.fi">saavutettavuus@avi.fi</a>
         <br />
