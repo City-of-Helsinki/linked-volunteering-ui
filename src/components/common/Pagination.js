@@ -10,7 +10,7 @@ const Pagination = styled.ul`
 `;
 
 const PaginationItem = styled.li`
-  display: inline-block;
+  display: inline-flex;
 
   a {
     height: 40px;
