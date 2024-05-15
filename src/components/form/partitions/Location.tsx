@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { FormikValues } from 'formik';
 import { Row, Col } from 'reactstrap';
 import get from 'lodash/get';

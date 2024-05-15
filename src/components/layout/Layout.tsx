@@ -53,7 +53,7 @@ const NavbarRow = styled(Navbar)`
 `;
 
 const TopNavbar = styled(Navbar)`
-  background-color: ${(props) => props.theme.colors.helWhite};
+  background-color: ${(props) => props.theme.helWhite};
   border-bottom: 1px solid ${(props) => props.theme.helGray};
   padding: 0.5rem 0;
 
