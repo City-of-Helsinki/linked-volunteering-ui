@@ -31,7 +31,7 @@ const style = {
 };
 
 const ErrorMessage = styled.div`
-  color: ${(props) => props.theme.themeColors.danger};
+  color: ${(props) => props.theme['themecolors-danger']};
   margin-top: 0.25rem;
   font-size: 80%;
 `;
