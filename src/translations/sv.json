@@ -85,7 +85,7 @@
   "form.validation.mixed.required": "Obligatoriskt fält!",
   "form.validation.mixed.not.date": "Fältet ska innehålla ett datum!",
   "form.validation.mixed.not.number": "Fältet ska innehålla ett tal!",
-  "form.validation.number.positive": "Talet ska vara positivt!",
+  "form.validation.number.positive_or_zero": "Talet ska vara positivt eller noll!",
   "form.validation.string.matches": "Fältet ska vara i given form!",
   "form.validation.string.email": "Fältet ska innehålla en e-postadress!",
   "form.validation.string.phone": "Kontrollera telefonnumret!",

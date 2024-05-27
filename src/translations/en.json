@@ -85,7 +85,7 @@
   "form.validation.mixed.required": "Mandatory!",
   "form.validation.mixed.not.date": "Date required!",
   "form.validation.mixed.not.number": "Number required!",
-  "form.validation.number.positive": "Number must be positive!",
+  "form.validation.number.positive_or_zero": "Number must be positive or zero!",
   "form.validation.string.matches": "The field must be in the given format!",
   "form.validation.string.email": "The field must be an e-mail address!",
   "form.validation.string.phone": "Check phone number!",
