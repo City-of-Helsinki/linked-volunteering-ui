@@ -57,15 +57,15 @@ export const validationSchema = yup.object().shape({
   additional_information: yup.string(),
   small_trash_bag_count: yup
     .number()
-    .positive('form.validation.number.positive')
+    .min(0, 'form.validation.number.positive_or_zero')
     .required('form.validation.mixed.not.number'),
   large_trash_bag_count: yup
     .number()
-    .positive('form.validation.number.positive')
+    .min(0, 'form.validation.number.positive_or_zero')
     .required('form.validation.mixed.not.number'),
   trash_picker_count: yup
     .number()
-    .positive('form.validation.number.positive')
+    .min(0, 'form.validation.number.positive_or_zero')
     .max(50, 'form.validation.number.max')
     .required('form.validation.mixed.not.number'),
 });
