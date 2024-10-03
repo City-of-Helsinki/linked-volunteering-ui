@@ -11,7 +11,7 @@
     "@babel/plugin-transform-react-jsx": "^7.14.9",
     "@datapunt/matomo-tracker-react": "^0.2.1",
     "@redux-devtools/extension": "^3.3.0",
-    "@sentry/browser": "^7.113.0",
+    "@sentry/browser": "^8.33.0",
     "@sentry/react": "^6.2.3",
     "@sentry/tracing": "^6.2.3",
     "@types/file-saver": "^2.0.1",
