@@ -1,5 +1,5 @@
 import L, { LatLngExpression, LatLngBoundsExpression, LeafletMouseEvent } from 'leaflet';
-import React, { PureComponent } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import styled from 'styled-components';
 import 'leaflet/dist/leaflet.css';
@@ -8,6 +8,9 @@ import iconUrl from 'leaflet/dist/images/marker-icon.png';
 import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
 
 import IntlComponent from '../../common/IntlComponent';
+import { useAppDispatch } from '../../../store/hooks';
+import { getGeoData } from '../../../store/reducers/geo';
+import useAuth from '../../../hooks/useAuth';
 
 // @ts-ignore
 delete L.Icon.Default.prototype.getIconUrl;
@@ -18,12 +21,6 @@ L.Icon.Default.mergeOptions({
   shadowUrl,
 });
 /* eslint-enable */
-
-interface State {
-  lng: number;
-  lat: number;
-  zoom: number;
-}
 
 const style = {
   width: '100%',
@@ -41,41 +38,51 @@ const MapContainer = styled.div`
   margin-bottom: 2em;
 `;
 
-interface Props {
+interface MapCanvasProps {
   bounds: number[] | null;
   center: number[] | null;
   errorContractZone?: string;
   errorLocation?: string;
   handleChange: Function;
-  getGeoData: Function;
   id: string;
   touched: Boolean;
   value: any;
 }
 
-class MapCanvas extends PureComponent<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      lng: 24.93,
-      lat: 60.18808,
-      zoom: 11.47,
-    };
-  }
+const MapCanvas: React.FC<MapCanvasProps> = ({
+  value,
+  id,
+  touched,
+  errorLocation,
+  errorContractZone,
+  bounds,
+  center,
+  handleChange,
+}) => {
+  const [mapState] = useState({
+    lng: 24.93,
+    lat: 60.18808,
+    zoom: 11.47,
+  });
 
-  componentDidMount() {
-    const { value, getGeoData } = this.props;
+  const dispatch = useAppDispatch();
+  const { getApiToken } = useAuth();
 
-    if (value) {
-      getGeoData(value.coordinates[1], value.coordinates[0]);
+  const apiAccessToken = getApiToken();
+
+  useEffect(() => {
+    if (value && apiAccessToken) {
+      dispatch(
+        getGeoData({ lat: value.coordinates[1], long: value.coordinates[0], apiAccessToken }),
+      );
     }
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value, apiAccessToken]);
 
-  addMarker = (e: LeafletMouseEvent) => {
-    const { id, handleChange, getGeoData } = this.props;
+  const addMarker = (e: LeafletMouseEvent) => {
     const { lat, lng } = e.latlng;
 
-    getGeoData(lat, lng);
+    dispatch(getGeoData({ lat, long: lng, apiAccessToken }));
 
     handleChange({
       target: {
@@ -85,9 +92,7 @@ class MapCanvas extends PureComponent<Props, State> {
     });
   };
 
-  renderMapErrors() {
-    const { touched, errorLocation, errorContractZone } = this.props;
-
+  const renderMapErrors = () => {
     if (touched && errorLocation) {
       return <IntlComponent Component={ErrorMessage} id="form.validation.map" />;
     }
@@ -95,49 +100,45 @@ class MapCanvas extends PureComponent<Props, State> {
       return <IntlComponent Component={ErrorMessage} id="form.validation.contract_zone" />;
     }
     return null;
-  }
+  };
 
-  render() {
-    const { bounds, center, value } = this.props;
+  const mapBounds: LatLngBoundsExpression | undefined = bounds
+    ? [
+        [bounds[1], bounds[0]],
+        [bounds[3], bounds[2]],
+      ]
+    : undefined;
+  const maxBounds: LatLngBoundsExpression = [
+    [60.33, 25.33],
+    [60.1, 24.73],
+  ]; // Allow map scroll only inside Helsinki
+  const mapCenter: [number, number] | null = center ? [center[1], center[0]] : null;
 
-    const mapBounds: LatLngBoundsExpression | undefined = bounds
-      ? [
-          [bounds[1], bounds[0]],
-          [bounds[3], bounds[2]],
-        ]
-      : undefined;
-    const maxBounds: LatLngBoundsExpression = [
-      [60.33, 25.33],
-      [60.1, 24.73],
-    ]; // Allow map scroll only inside Helsinki
-    const mapCenter: [number, number] | null = center ? [center[1], center[0]] : null;
+  const { lat, lng, zoom } = mapState;
 
-    const { lat, lng, zoom } = this.state;
+  const position: LatLngExpression = [lat, lng];
+  const markerPosition: LatLngExpression = value
+    ? [value.coordinates[1], value.coordinates[0]]
+    : position;
+  const marker = value ? <Marker position={markerPosition} /> : null;
 
-    const position: LatLngExpression = [lat, lng];
-    const markerPosition: LatLngExpression = value
-      ? [value.coordinates[1], value.coordinates[0]]
-      : position;
-    const marker = value ? <Marker position={markerPosition} /> : null;
-
-    return (
-      <MapContainer className={this.renderMapErrors() ? 'is-invalid' : undefined} aria-hidden>
-        <Map
-          center={mapCenter || position}
-          zoom={mapCenter ? 14 : zoom}
-          minZoom={11}
-          bounds={mapBounds}
-          maxBounds={maxBounds}
-          style={style}
-          onClick={this.addMarker}
-        >
-          <TileLayer url="https://tiles.hel.ninja/wmts/osm-sm/webmercator/{z}/{x}/{y}.png" />
-          {marker}
-        </Map>
-        {this.renderMapErrors()}
-      </MapContainer>
-    );
-  }
-}
+  return (
+    <MapContainer className={renderMapErrors() ? 'is-invalid' : undefined} aria-hidden>
+      <Map
+        center={mapCenter || position}
+        zoom={mapCenter ? 14 : zoom}
+        minZoom={11}
+        bounds={mapBounds}
+        maxBounds={maxBounds}
+        style={style}
+        onClick={addMarker}
+      >
+        <TileLayer url="https://tiles.hel.ninja/wmts/osm-sm/webmercator/{z}/{x}/{y}.png" />
+        {marker}
+      </Map>
+      {renderMapErrors()}
+    </MapContainer>
+  );
+};
 
 export default MapCanvas;

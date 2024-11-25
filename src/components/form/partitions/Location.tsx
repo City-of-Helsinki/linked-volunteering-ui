@@ -8,13 +8,13 @@ import Map from '../fields/Map';
 import Input from '../fields/Input';
 import Label from '../fields/Label';
 import AutoSuggest, { AutoSuggestEvent } from '../fields/AutoSuggest';
+import { useAppDispatch } from '../../../store/hooks';
+import { getGeoData } from '../../../store/reducers/geo';
+import useAuth from '../../../hooks/useAuth';
 
 interface Props {
   addressFeatures: Array<any>;
-  clearCoordinatesByAddress: Function;
   errors: any;
-  getCoordinatesByAddress: Function;
-  getGeoData: Function;
   handleBlur: (_event: React.FormEvent<any>) => void;
   handleChange: (_event: AutoSuggestEvent) => void;
   selectedAddress: any;
@@ -27,10 +27,7 @@ interface Props {
 
 const Location: React.FC<Props> = ({
   addressFeatures,
-  clearCoordinatesByAddress,
   errors,
-  getCoordinatesByAddress,
-  getGeoData,
   handleBlur,
   handleChange,
   selectedAddress,
@@ -41,11 +38,16 @@ const Location: React.FC<Props> = ({
   values,
 }) => {
   const intl = useIntl();
+  const dispatch = useAppDispatch();
+  const { getApiToken } = useAuth();
+
   const { formatMessage, locale } = intl;
   const [updateAddress, setUpdateAddress] = React.useState(false);
   const [clickedAddress, setClickedAddress] = React.useState<string | null>(null);
   const [bounds, setBounds] = React.useState<number[] | null>(null);
   const [center, setCenter] = React.useState<number[] | null>(null);
+
+  const apiAccessToken = getApiToken();
 
   React.useEffect(() => {
     if (updateAddress) {
@@ -87,7 +89,15 @@ const Location: React.FC<Props> = ({
       setUpdateAddress(true);
       setClickedAddress(e.target.value.properties.name);
       // Refetch the address from own API to check validity
-      getGeoData(e.target.value.geometry.coordinates[1], e.target.value.geometry.coordinates[0]);
+
+      dispatch(
+        getGeoData({
+          lat: e.target.value.geometry.coordinates[1],
+          long: e.target.value.geometry.coordinates[0],
+          apiAccessToken,
+        }),
+      );
+
       // Save location to show marker on map
       handleChange({
         target: {
@@ -123,8 +133,6 @@ const Location: React.FC<Props> = ({
             label="form.event.field.neighborhood.label"
             placeholder="form.event.field.neighborhood.placeholder"
             addressFeatures={addressFeatures}
-            clearCoordinatesByAddress={clearCoordinatesByAddress}
-            getCoordinatesByAddress={getCoordinatesByAddress}
             error={errors.area}
             touched={touched.area}
             onChange={handleZoom}
@@ -143,7 +151,6 @@ const Location: React.FC<Props> = ({
             errorContractZone={
               !selectedContractZone ? 'form.validation.contact_zone.invalid' : undefined
             }
-            getGeoData={getGeoData}
             touched={touched.maintenance_location}
             handleChange={(e: AutoSuggestEvent) => {
               setClickedAddress(null);

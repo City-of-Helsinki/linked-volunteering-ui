@@ -6,7 +6,7 @@ import { Container, Row, Col } from 'reactstrap';
 import styled from 'styled-components';
 
 import PageMeta from './PageMeta';
-import Layout from '../layout/containers/LayoutContainer';
+import Layout from '../layout/Layout';
 import heroImage from '../../assets/images/landing_hero_image.jpeg';
 
 const PageContainer = styled.div`

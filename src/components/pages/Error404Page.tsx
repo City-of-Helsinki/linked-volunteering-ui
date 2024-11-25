@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import PageMeta from './PageMeta';
 import IconTree from '../icons/IconTree';
 import IconTree2 from '../icons/IconTree2';
-import Layout from '../layout/containers/LayoutContainer';
+import Layout from '../layout/Layout';
 import responsive from '../../utils/responsive';
 
 const PageContainer = styled.div`

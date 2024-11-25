@@ -11,6 +11,8 @@ import { useIntl } from 'react-intl';
 
 import Label from './Label';
 import './AutoSuggest.scss';
+import { useAppDispatch } from '../../../store/hooks';
+import { clearCoordinatesByAddress, getCoordinatesByAddress } from '../../../store/reducers/geo';
 
 const StyledFormGroup = styled(FormGroup)`
   margin-bottom: 0;
@@ -25,9 +27,7 @@ export interface AutoSuggestEvent {
 
 interface Props {
   addressFeatures: any[];
-  clearCoordinatesByAddress: Function;
   error?: string;
-  getCoordinatesByAddress: Function;
   getSuggestionValue: (_item: any) => string;
   id: string;
   label?: string;
@@ -41,9 +41,7 @@ interface Props {
 
 const AutoSuggestField: React.FC<Props> = ({
   addressFeatures,
-  clearCoordinatesByAddress,
   error,
-  getCoordinatesByAddress,
   getSuggestionValue,
   id,
   label,
@@ -55,6 +53,7 @@ const AutoSuggestField: React.FC<Props> = ({
   touched,
 }) => {
   const intl = useIntl();
+  const dispatch = useAppDispatch();
   const { formatMessage, locale } = intl;
 
   const [value, setValue] = React.useState('');
@@ -64,11 +63,11 @@ const AutoSuggestField: React.FC<Props> = ({
   };
 
   const onSuggestionsFetchRequested = (request: SuggestionsFetchRequestedParams) => {
-    getCoordinatesByAddress(request.value, locale);
+    dispatch(getCoordinatesByAddress({ text: request.value, lang: locale }));
   };
 
   const onSuggestionsClearRequested = () => {
-    clearCoordinatesByAddress();
+    dispatch(clearCoordinatesByAddress());
   };
 
   const onSuggestionSelected = (

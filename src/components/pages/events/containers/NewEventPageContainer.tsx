@@ -1,0 +1,28 @@
+import React from 'react';
+import { useIntl } from 'react-intl';
+import { useNavigate } from 'react-router';
+import EventPage from '../EventPage';
+import { createEvent, Event } from '../../../../store/reducers/event';
+import { useAppDispatch } from '../../../../store/hooks';
+import useAuth from '../../../../hooks/useAuth';
+import { addNotification } from '../../../../store/reducers/notifications';
+
+const ModifyEventPageContainer = () => {
+  const dispatch = useAppDispatch();
+  const { getApiToken } = useAuth();
+  const navigate = useNavigate();
+  const intl = useIntl();
+
+  const apiAccessToken = getApiToken();
+
+  const handleSubmit = async (values: Event) => {
+    await dispatch(createEvent({ event: values, apiAccessToken }));
+    dispatch(addNotification({ color: 'success', message: 'notification.form.event.created' }));
+
+    navigate(`/${intl.locale}/event/submitted`);
+  };
+
+  return <EventPage handleSubmit={handleSubmit} pageType="new" />;
+};
+
+export default ModifyEventPageContainer;

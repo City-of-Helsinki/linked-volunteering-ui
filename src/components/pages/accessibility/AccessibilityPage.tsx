@@ -7,7 +7,7 @@ import PageMeta from '../PageMeta';
 import AccessibilityStatementEn from './AccessibilityStatementEn';
 import AccessibilityStatementFi from './AccessibilityStatementFi';
 import AccessibilityStatementSv from './AccessibilityStatementSv';
-import Layout from '../../layout/containers/LayoutContainer';
+import Layout from '../../layout/Layout';
 
 type StatementProps = {
   lang: string;

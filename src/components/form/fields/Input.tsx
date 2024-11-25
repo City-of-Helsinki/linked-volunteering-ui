@@ -12,7 +12,7 @@ interface Props extends InputProps {
   placeholder?: string;
   required?: boolean;
   text?: string;
-  touched: boolean;
+  touched?: boolean;
 }
 
 const InputField: React.FC<Props> = (props) => {
