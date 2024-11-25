@@ -82,7 +82,7 @@ function LandingPage() {
                 <Row>
                   <Col sm="12">
                     <Button color="supplementary" onClick={openNewEventPage}>
-                      <FormattedMessage tagName="span" id="site.page.landing.hero.button" />
+                      {intl.formatMessage({ id: 'site.page.landing.hero.button' })}
                     </Button>
                   </Col>
                 </Row>
