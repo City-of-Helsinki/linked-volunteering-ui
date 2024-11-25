@@ -1,0 +1,228 @@
+import { Button } from 'hds-react';
+import forEach from 'lodash/forEach';
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
+import { Container, Row, Col } from 'reactstrap';
+import { useFormik } from 'formik';
+import { useParams } from 'react-router';
+import responsive from '../../../utils/responsive';
+
+import PageMeta from '../PageMeta';
+import IntlComponent from '../../common/IntlComponent';
+import Layout from '../../layout/Layout';
+import EventForm from '../../form/EventForm';
+import InstructionText from '../../form/fields/InstructionText';
+import { Event, eventByIdSelector } from '../../../store/reducers/event';
+
+import event, { validationSchema } from '../../../utils/entities/event';
+import { useAppSelector } from '../../../store/hooks';
+import { selectedContractZoneSelector } from '../../../store/reducers/geo';
+
+const FormContainer = styled(Container)`
+  background-color: ${(props) => props.theme.helWhite};
+  padding-top: 2em;
+  padding-bottom: 2em;
+`;
+
+const TitleContainer = styled(Container)`
+  h1 {
+    margin: 2rem 0 0.5rem;
+    font-size: ${(props) => props.theme.h4FontSize};
+  }
+
+  p {
+    margin-bottom: 2.5rem;
+  }
+
+  ${responsive.sm`
+    padding-left: 0;
+  `}
+
+  ${responsive.md`
+    h1 {
+      font-size: ${(props: any) => props.theme.h2FontSize};
+    }
+  `}
+`;
+
+const ButtonCol = styled(Col)`
+  text-align: right;
+`;
+
+const ResetButton = styled(Button)`
+  background-color: #ca3f00;
+  border-color: #ca3f00 !important;
+  color: white;
+  margin-bottom: 1rem;
+  display: block;
+  margin-left: auto;
+
+  &:hover {
+    background-color: #bd2719;
+    border-color: #bd2719;
+    color: white;
+  }
+
+  ${responsive.sm`
+    display: inline-flex;
+    margin-left: 0;
+    margin-right: 0.5rem;
+    margin-bottom: 0;
+  `}
+`;
+
+const SubmitButton = styled(Button)`
+  background-color: #00d7a7;
+  border-color: #00d7a7 !important;
+  display: block;
+  margin-left: auto;
+
+  &:hover {
+    background-color: #01b78e;
+    border-color: #01b78e;
+    color: black;
+  }
+
+  &[aria-disabled='true'] {
+    background-color: #ccc;
+    border-color: #ccc;
+    color: white;
+    cursor: not-allowed;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  ${responsive.sm`
+    display: inline-flex;
+    margin-left: 0.5rem;
+  `}
+`;
+
+interface EventPageProps {
+  handleSubmit: (values: Event) => Promise<void>;
+  pageType: string;
+}
+
+const NewEventPage: React.FC<EventPageProps> = ({ handleSubmit: handleSubmitFn, pageType }) => {
+  const { id } = useParams();
+
+  const eventById = useAppSelector((state) => eventByIdSelector(state, id));
+  const selectedContractZone = useAppSelector(selectedContractZoneSelector);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const {
+    errors,
+    touched,
+    values: formValues,
+    submitCount,
+    isSubmitting,
+    handleSubmit,
+    handleChange,
+    handleBlur,
+    handleReset,
+    setFieldValue,
+    setFieldTouched,
+  } = useFormik({
+    validationSchema,
+    validateOnChange: false,
+    initialValues: eventById || event,
+    validate: () => {
+      const validationErrors: { contractZone?: string } = {};
+
+      if (!selectedContractZone) {
+        validationErrors.contractZone = 'form.validation.contact_zone.invalid';
+      }
+
+      return validationErrors;
+    },
+    onSubmit: async (values, { setSubmitting, setErrors }) => {
+      setSubmitting(true);
+
+      try {
+        await handleSubmitFn(values);
+      } catch (error: any) {
+        const submitErrors = Object.entries(error.response.data).reduce(
+          (acc: { [key: string]: string }, [key]) => {
+            acc[key] = 'form.validation.generic';
+            return acc;
+          },
+          {},
+        );
+
+        setErrors(submitErrors);
+      } finally {
+        setSubmitting(false);
+      }
+    },
+  });
+
+  useEffect(() => {
+    // Has short timeout to be sure errors are re-rendered
+    setTimeout(() => {
+      const errComponents = document.getElementsByClassName('is-invalid');
+      if (errComponents.length) {
+        errComponents[0].scrollIntoView({ block: 'center', behavior: 'smooth' });
+        forEach(errComponents, (el) => {
+          if (el.tagName.toLowerCase() === 'input' || el.tagName.toLowerCase() === 'textarea') {
+            setTimeout(() => {
+              const htmlEl = el as HTMLElement;
+
+              htmlEl.focus();
+            }, 300);
+
+            return false;
+          }
+          return true;
+        });
+      }
+    }, 10);
+  }, [submitCount]);
+
+  return (
+    <Layout paddingBottom>
+      <PageMeta title={`form.event.${pageType}.page_title`} />
+      <TitleContainer>
+        <IntlComponent Component="h1" id={`form.event.${pageType}.heading`} />
+        <InstructionText text={`form.event.${pageType}.infoText`} />
+      </TitleContainer>
+      <FormContainer>
+        <EventForm
+          handleSubmit={handleSubmit}
+          errors={errors}
+          touched={touched}
+          values={formValues}
+          handleChange={handleChange}
+          handleBlur={handleBlur}
+          setFieldValue={setFieldValue}
+          setFieldTouched={setFieldTouched}
+        />
+        <Row>
+          <ButtonCol sm="12" md={{ size: 8, offset: 1 }}>
+            <IntlComponent
+              Component={ResetButton}
+              id={`form.event.${pageType}.button.reset`}
+              type="button"
+              onClick={handleReset}
+              color="danger"
+            />
+            <IntlComponent
+              Component={SubmitButton}
+              type="submit"
+              color="success"
+              id={`form.event.${pageType}.button.submit`}
+              aria-disabled={isSubmitting || undefined}
+              onClick={isSubmitting ? undefined : handleSubmit}
+            />
+          </ButtonCol>
+        </Row>
+      </FormContainer>
+    </Layout>
+  );
+};
+
+export default NewEventPage;

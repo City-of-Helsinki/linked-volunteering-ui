@@ -4,7 +4,9 @@
   "site.language.fi": "Suomeksi",
   "site.language.sv": "På svenska",
   "site.language.en": "In English",
-
+  "site.login-prompt.title": "Istunto on päättynyt",
+  "site.login-prompt.body": "Kirjaudu uudelleen sisään jatkaaksesi palvelun käyttöä.",
+  "site.login-prompt.button-label": "Kirjaudu uudelleen",
   "site.nav.appName": "Puistotalkoot",
   "site.nav.create_event": "Ilmoita uusi puistotalkoo",
   "site.nav.logo.text": "Etusivu",

@@ -1,9 +1,6 @@
-import { withHandlers, withProps, mapProps, compose, branch, renderComponent } from 'recompose';
-import { connect } from 'react-redux';
+import { withHandlers, withProps, mapProps, compose } from 'recompose';
 import { useNavigate } from 'react-router';
 import { get } from 'lodash';
-
-import ErrorPage from '../components/pages/containers/ErrorPageContainer';
 
 export const withMatchParams = compose(
   withProps((props) => ({
@@ -20,13 +17,6 @@ export const withMatchParamsHandlers = compose(
       navigate(`/${locale}${uri}`);
     },
   }),
-);
-
-export const renderIfAuthenticated = compose(
-  connect((state) => ({
-    isAutenticated: state.oidc.get('user'),
-  })),
-  branch(({ isAutenticated }) => !isAutenticated, renderComponent(ErrorPage)),
 );
 
 const sortBy = (orderBy) => (a, b) => {

@@ -7,7 +7,7 @@ import { FormattedMessage } from 'react-intl';
 import PageMeta from '../PageMeta';
 import Button from '../../common/Button';
 import LocalizedLink from '../../common/LocalizedLink';
-import Layout from '../../layout/containers/LayoutContainer';
+import Layout from '../../layout/Layout';
 import backgroundImage from '../../../assets/images/_MG_2851_c_Jussi_Hellsten.jpg';
 import responsive from '../../../utils/responsive';
 import getDateArray from '../../../utils/getDateArray';

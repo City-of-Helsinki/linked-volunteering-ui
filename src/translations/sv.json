@@ -4,7 +4,9 @@
   "site.language.fi": "Suomeksi",
   "site.language.sv": "På svenska",
   "site.language.en": "In English",
-
+  "site.login-prompt.title": "Sessionen har avslutats",
+  "site.login-prompt.body": "Logga in på nytt för att fortsätta använda tjänsten.",
+  "site.login-prompt.button-label": "Logga in igen",
   "site.nav.appName": "Parktalko",
   "site.nav.create_event": "Anmäl ett nytt parktalko",
   "site.nav.logo.text": "Framsidan",

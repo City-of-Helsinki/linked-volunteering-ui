@@ -4,7 +4,9 @@
   "site.language.fi": "Suomeksi",
   "site.language.sv": "På svenska",
   "site.language.en": "In English",
-
+  "site.login-prompt.title": "The session has ended",
+  "site.login-prompt.body": "Log in to continue.",
+  "site.login-prompt.button-label": "Log in again",
   "site.nav.appName": "Park volunteer activities",
   "site.nav.create_event": "Notify about a new park volunteer activity",
   "site.nav.logo.text": "Home",

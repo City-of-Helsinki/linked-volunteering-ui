@@ -5,14 +5,16 @@ import styled from 'styled-components';
 import { useIntl, FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 
-import Notifications from '../notification/containers/NotificationsContainer';
+import { currentUserDataSelector } from '../../store/reducers/auth';
+import { useAppSelector } from '../../store/hooks';
+import useAuth from '../../hooks/useAuth';
+import Notifications from '../notification/Notifications';
 import LanguageDropdown from './LanguageDropdown';
 import LocalizedLink from '../common/LocalizedLink';
 import Icon from '../common/Icon';
 import HelsinkiLogo from '../icons/HelsinkiLogo';
-import Modal from '../modal/containers/ModalContainer';
+import Modal from '../modal/Modal';
 import Footer from './Footer';
-import userManager from '../../utils/userManager';
 import responsive from '../../utils/responsive';
 import useLocale from '../../hooks/useLocale';
 
@@ -161,25 +163,23 @@ const KoroSection = styled(Koros)`
 
 interface Props {
   children?: any;
-  auth?: any;
   paddingBottom?: boolean;
   paddingTop?: boolean;
-  user?: any;
 }
 
-const Layout: React.FC<Props> = ({
-  children,
-  paddingTop = false,
-  paddingBottom = false,
-  user,
-  auth,
-}) => {
+const Layout: React.FC<Props> = ({ children, paddingTop = false, paddingBottom = false }) => {
   const locale = useLocale();
   const intl = useIntl();
   const { formatMessage } = intl;
-  const hasUser = !!user;
+
+  const { authenticated } = useAuth();
+
+  const auth = useAppSelector(currentUserDataSelector);
+
   const isOfficial = auth ? auth.is_official : false;
   const isContractor = auth ? auth.is_contractor : false;
+
+  const { logout } = useAuth();
 
   return (
     <LayoutWrapper>
@@ -193,8 +193,8 @@ const Layout: React.FC<Props> = ({
           <NavbarRow>
             <Options>
               <LanguageDropdown />
-              {hasUser && (
-                <UserAction onClick={() => userManager.signoutRedirect()} tabIndex={0}>
+              {authenticated && (
+                <UserAction onClick={() => logout()} tabIndex={0}>
                   <UserIcon aria-hidden name="user" color="black" />
                   <FormattedMessage id="site.nav.user.logout" />
                 </UserAction>
@@ -209,7 +209,7 @@ const Layout: React.FC<Props> = ({
           <NavbarRow>
             <Links>
               <LocalizedLink to="event/new" translate="site.nav.create_event" />
-              {hasUser && (
+              {authenticated && (
                 <>
                   {(isOfficial || isContractor) && (
                     <LocalizedLink to="admin/events/manage" translate="site.nav.manage_events" />

@@ -8,6 +8,9 @@ interface IntlComponentProps extends WrappedComponentProps {
   href?: string;
   onClick?: Function;
   lang?: string;
+  type?: string;
+  color?: string;
+  sm?: any;
 }
 
 const IntlComponent: React.FC<IntlComponentProps> = ({ Component, id, values, intl, ...rest }) => {
