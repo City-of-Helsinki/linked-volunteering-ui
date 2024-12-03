@@ -5,26 +5,29 @@ import ordering, { Ordering } from '../../utils/entities/ordering';
 
 export interface Event {
   [key: string]: any;
-  id: string;
+  id: number;
   state: string;
   name: string;
   description: string;
-  start_time: string;
-  created_at: string;
-  end_time: string;
-  location: string;
+  start_time?: string;
+  created_at?: string;
+  end_time?: string;
+  location?: {
+    type: string;
+    coordinates: number[];
+  };
   organizer_first_name: string;
   organizer_last_name: string;
   organizer_email: string;
   organizer_phone: string;
-  estimated_attendee_count: string;
+  estimated_attendee_count?: number;
   targets: string;
   maintenance_location: string;
   additional_information: string;
-  large_trash_bag_count: string;
-  small_trash_bag_count: string;
-  trash_picker_count: string;
-  contract_zone: number;
+  large_trash_bag_count?: number;
+  small_trash_bag_count?: number;
+  trash_picker_count?: number;
+  contract_zone?: number;
 }
 
 interface EventState {
@@ -112,11 +115,11 @@ export const publishEvent = createAsyncThunk(
 export const removeEvent = createAsyncThunk(
   'REMOVE_EVENT',
   async (
-    { id, apiAccessToken }: { id: string; apiAccessToken: string | undefined },
+    { event, apiAccessToken }: { event: Event; apiAccessToken: string | undefined },
     { rejectWithValue },
   ) => {
     try {
-      const response = await eventService.remove(id, apiAccessToken);
+      const response = await eventService.remove(event, apiAccessToken);
       return response;
     } catch (error) {
       return rejectWithValue(error);

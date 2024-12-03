@@ -1,24 +1,25 @@
 import * as yup from 'yup';
+import { Event } from '../../store/reducers/event';
 
-export const defaultValues = {
+export const defaultValues: Event = {
   id: 0,
   state: 'waiting_for_approval',
   name: '',
   description: '',
-  start_time: null,
-  end_time: null,
-  location: null,
+  start_time: undefined,
+  end_time: undefined,
+  location: undefined,
   organizer_first_name: '',
   organizer_last_name: '',
   organizer_email: '',
   organizer_phone: '',
-  estimated_attendee_count: '',
+  estimated_attendee_count: undefined,
   targets: '',
   maintenance_location: '',
   additional_information: '',
-  large_trash_bag_count: '',
-  small_trash_bag_count: '',
-  trash_picker_count: '',
+  large_trash_bag_count: undefined,
+  small_trash_bag_count: undefined,
+  trash_picker_count: undefined,
 };
 
 const phoneRegex = /[0-9 +()]{6,19}/;

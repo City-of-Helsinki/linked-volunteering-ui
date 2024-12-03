@@ -3,12 +3,12 @@ import { Route, Routes } from 'react-router';
 import { useParams } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 
-import { useDispatch } from 'react-redux';
-import { getCurrentUserData } from '../store/reducers/auth';
+import { isEmpty } from 'lodash';
+import { currentUserDataSelector, getCurrentUserData } from '../store/reducers/auth';
 
 import messages from '../config/translations';
 import LandingPage from './pages/LandingPage';
-import AdminRoutes from './Admin';
+import AdminRoutes from './AdminRoutes';
 import LocaleRoutes from './LocaleRoutes';
 import CommonMeta from './CommonMeta';
 import { Language } from '../types';
@@ -16,6 +16,7 @@ import Error404Page from './pages/Error404Page';
 import useAuth from '../hooks/useAuth';
 import SessionEndedDialog from './SessionEndedDialog';
 import ErrorPage from './pages/ErrorPage';
+import { useAppDispatch, useAppSelector } from '../store/hooks';
 
 const getLanguage = (locale: string): Language => {
   switch (locale) {
@@ -32,24 +33,28 @@ const App: React.FC = () => {
   const { locale } = useParams();
   const language = getLanguage(locale || '');
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const { getApiToken } = useAuth();
 
   const apiToken = getApiToken();
 
+  const currentUser = useAppSelector(currentUserDataSelector);
+
   useEffect(() => {
-    if (process.env.REACT_APP_MOCK_USER === 'true') {
-      dispatch(getCurrentUserData());
-    } else {
-      // eslint-disable-next-line no-lonely-if
-      if (apiToken) {
-        dispatch(getCurrentUserData(apiToken));
+    if (isEmpty(currentUser)) {
+      if (process.env.REACT_APP_MOCK_USER === 'true') {
+        dispatch(getCurrentUserData());
+      } else {
+        // eslint-disable-next-line no-lonely-if
+        if (apiToken) {
+          dispatch(getCurrentUserData(apiToken));
+        }
       }
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [apiToken]);
+  }, [apiToken, currentUser]);
 
   if (locale !== 'en' && locale !== 'fi' && locale !== 'sv') {
     return (

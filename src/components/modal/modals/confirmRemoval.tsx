@@ -13,11 +13,12 @@ function Body({ values }: { values: Partial<Event> }) {
       </div>
       <div>
         <Icon name="calendar" />
-        <FormattedDate value={values.start_time} />
+        <FormattedDate value={values.start_time || ''} />
         <span>
           {' '}
           <FormattedMessage tagName="span" id="modal.confirm_removal.body.time.at" />{' '}
-          <FormattedTime value={values.start_time} /> - <FormattedTime value={values.end_time} />
+          <FormattedTime value={values.start_time || ''} /> -{' '}
+          <FormattedTime value={values.end_time || ''} />
         </span>
       </div>
       <div>
@@ -39,14 +40,16 @@ export default {
     {
       intl: 'modal.confirm_removal.footer.button1.text',
       color: 'primary',
-      action: async (dispatch: any, values: any, apiAccessToken: string | undefined) => {
-        dispatch(removeEvent({ id: values, apiAccessToken }));
+      action: async (dispatch: any, meta: any) => {
+        const { event, apiAccessToken } = meta;
+
+        dispatch(removeEvent({ event, apiAccessToken }));
 
         dispatch(
           addNotification({
             color: 'info',
             message: 'notification.manage_events.remove',
-            values,
+            values: event,
           }),
         );
       },
