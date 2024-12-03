@@ -21,13 +21,16 @@ const rootReducer = combineReducers({
   report,
 });
 
-const store = configureStore({
-  reducer: rootReducer,
-  middleware: (getDefaultMiddleWare) => getDefaultMiddleWare().concat(...middlewares),
-});
+export type RootState = ReturnType<typeof rootReducer>;
 
-export type AppStore = typeof store;
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export const createStore = (preloadedState?: Partial<RootState>) => {
+  return configureStore({
+    preloadedState,
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleWare) =>
+      getDefaultMiddleWare({ serializableCheck: false }).concat(...middlewares),
+  });
+};
 
-export default store;
+export type AppStore = ReturnType<typeof createStore>;
+export type AppDispatch = AppStore['dispatch'];

@@ -2,17 +2,22 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { v4 as uuid } from 'uuid';
 import authService from '../../services/authService';
 
-interface CurrentUserData {
+interface UserData {
+  uuid: string;
+  first_name: string;
+  last_name: string;
   is_official: boolean;
   is_contractor: boolean;
 }
 
 interface AuthState {
-  currentUserData: CurrentUserData | null;
+  currentUserData: UserData | null;
+  isLoading: boolean;
 }
 
 const initialState: AuthState = {
   currentUserData: null,
+  isLoading: false,
 };
 
 export const getCurrentUserData = createAsyncThunk(
@@ -30,6 +35,7 @@ export const getCurrentUserData = createAsyncThunk(
       }
 
       const response = await authService.getCurrentUserData(apiAccessToken);
+
       return response;
     } catch (error) {
       return rejectWithValue(error);
@@ -42,21 +48,31 @@ export const authSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(
-      getCurrentUserData.fulfilled,
-      (state, action: PayloadAction<CurrentUserData>) => {
+    builder
+      .addCase(getCurrentUserData.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getCurrentUserData.fulfilled, (state, action: PayloadAction<UserData>) => {
         state.currentUserData = action.payload;
-      },
-    );
+        state.isLoading = false;
+      })
+      .addCase(getCurrentUserData.rejected, (state) => {
+        state.isLoading = false;
+      });
   },
   selectors: {
     currentUserDataSelector: (state) => state.currentUserData,
-    isOfficialSelector: (state) => state.currentUserData?.is_official,
-    isContractorSelector: (state) => state.currentUserData?.is_contractor,
+    userLoadingSelector: (state) => state.isLoading,
+    isOfficialSelector: (state) => !state.isLoading && state.currentUserData?.is_official,
+    isContractorSelector: (state) => !state.isLoading && state.currentUserData?.is_contractor,
   },
 });
 
-export const { currentUserDataSelector, isOfficialSelector, isContractorSelector } =
-  authSlice.selectors;
+export const {
+  currentUserDataSelector,
+  userLoadingSelector,
+  isOfficialSelector,
+  isContractorSelector,
+} = authSlice.selectors;
 
 export default authSlice.reducer;

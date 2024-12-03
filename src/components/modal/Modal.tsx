@@ -5,14 +5,10 @@ import IntlComponent from '../common/IntlComponent';
 import Button from '../common/Button';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { closeModal, modalSelector } from '../../store/reducers/modal';
-import useAuth from '../../hooks/useAuth';
 
 export default () => {
   const dispatch = useAppDispatch();
   const { isOpen, modal, meta } = useAppSelector(modalSelector);
-  const { getApiToken } = useAuth();
-
-  const apiAccessToken = getApiToken();
 
   if (!isOpen || !modal) {
     return null;
@@ -31,7 +27,7 @@ export default () => {
               onClick={() => {
                 dispatch(closeModal());
                 if (typeof action === 'function') {
-                  action(dispatch, meta, apiAccessToken);
+                  action(dispatch, meta);
                 }
               }}
               translate={intl}

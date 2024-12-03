@@ -7,7 +7,7 @@ import { useAppDispatch } from '../../../../store/hooks';
 import useAuth from '../../../../hooks/useAuth';
 import { addNotification } from '../../../../store/reducers/notifications';
 
-const ModifyEventPageContainer = () => {
+const NewEventPageContainer = () => {
   const dispatch = useAppDispatch();
   const { getApiToken } = useAuth();
   const navigate = useNavigate();
@@ -25,4 +25,4 @@ const ModifyEventPageContainer = () => {
   return <EventPage handleSubmit={handleSubmit} pageType="new" />;
 };
 
-export default ModifyEventPageContainer;
+export default NewEventPageContainer;

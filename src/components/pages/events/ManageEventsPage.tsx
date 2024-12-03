@@ -1,8 +1,9 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import styled from 'styled-components';
 import { Container, Row, Col } from 'reactstrap';
 import { FormattedMessage, FormattedDate } from 'react-intl';
 
+import { isEmpty } from 'lodash';
 import { contractZonesSelector, getContractZones } from '../../../store/reducers/contractZones';
 import {
   Event,
@@ -87,8 +88,8 @@ const tableHeaders = [
   { key: 'state', translation: 'manage_events.state', hasOrderBy: true },
 ];
 
-const EventsPage = () => {
-  const [visible, setVisible] = useState<string | null>(null);
+const ManageEventsPage = () => {
+  const [visible, setVisible] = useState<number | null>(null);
 
   const { getApiToken } = useAuth();
   const dispatch = useAppDispatch();
@@ -106,15 +107,18 @@ const EventsPage = () => {
 
   useEffect(() => {
     if (apiAccessToken) {
-      if (!contractZones) {
+      if (isEmpty(contractZones)) {
         dispatch(getContractZones(apiAccessToken));
       }
-      dispatch(getEvents({ params: nextParams, apiAccessToken }));
+
+      if (isEmpty(events)) {
+        dispatch(getEvents({ params: nextParams, apiAccessToken }));
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [apiAccessToken, contractZones, nextParams]);
+  }, [apiAccessToken]);
 
-  const toggleDetails = (id: string) => {
+  const toggleDetails = (id: number) => {
     setVisible(visible === id ? null : id);
   };
 
@@ -194,7 +198,7 @@ const EventsPage = () => {
                       </Td>
                       <Td>{event.organizer_email}</Td>
                       <Td>
-                        <FormattedDate value={event.start_time} />
+                        <FormattedDate value={event.start_time || ''} />
                       </Td>
                       <Td>
                         <FormattedDate value={event.created_at} />
@@ -221,6 +225,7 @@ const EventsPage = () => {
                       <Td>
                         <Button
                           id={`extend_event_${event.id}`}
+                          data-testid={`extend_event_${event.id}`}
                           color="link"
                           onClick={() => toggleDetails(event.id)}
                           prepend={{
@@ -259,6 +264,7 @@ const EventsPage = () => {
                           )}
                           <Button
                             id={`reject_event_${event.id}`}
+                            data-testid={`reject_event_${event.id}`}
                             translate="site.page.manage_events.table.action.remove"
                             color="danger"
                             onClick={() => remove(event)}
@@ -289,4 +295,4 @@ const EventsPage = () => {
   );
 };
 
-export default EventsPage;
+export default ManageEventsPage;

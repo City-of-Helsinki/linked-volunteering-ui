@@ -102,14 +102,16 @@ const SubmitButton = styled(Button)`
 
 interface EventPageProps {
   handleSubmit: (values: Event) => Promise<void>;
-  pageType: string;
+  pageType: 'new' | 'modify';
 }
 
-const NewEventPage: React.FC<EventPageProps> = ({ handleSubmit: handleSubmitFn, pageType }) => {
+const EventPage: React.FC<EventPageProps> = ({ handleSubmit: handleSubmitFn, pageType }) => {
   const { id } = useParams();
 
   const eventById = useAppSelector((state) => eventByIdSelector(state, id));
   const selectedContractZone = useAppSelector(selectedContractZoneSelector);
+
+  const initialValues = pageType === 'new' ? event : eventById;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -130,7 +132,7 @@ const NewEventPage: React.FC<EventPageProps> = ({ handleSubmit: handleSubmitFn, 
   } = useFormik({
     validationSchema,
     validateOnChange: false,
-    initialValues: eventById || event,
+    initialValues,
     validate: () => {
       const validationErrors: { contractZone?: string } = {};
 
@@ -225,4 +227,4 @@ const NewEventPage: React.FC<EventPageProps> = ({ handleSubmit: handleSubmitFn, 
   );
 };
 
-export default NewEventPage;
+export default EventPage;

@@ -15,7 +15,7 @@ import { LoginProvider } from 'hds-react';
 import theme from './config/theme';
 
 import * as serviceWorker from './serviceWorker';
-import store from './store/configureStore';
+import { createStore } from './store/configureStore';
 import providerProperties from './utils/userManager';
 
 import App from './components/containers/AppContainer';
@@ -36,6 +36,8 @@ const instance = createInstance({
   urlBase: process.env.REACT_APP_MATOMO_URL_BASE || '',
   siteId: Number(process.env.REACT_APP_MATOMO_SITE_ID),
 });
+
+const store = createStore();
 
 function Root() {
   return (

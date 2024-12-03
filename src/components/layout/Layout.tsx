@@ -172,14 +172,12 @@ const Layout: React.FC<Props> = ({ children, paddingTop = false, paddingBottom =
   const intl = useIntl();
   const { formatMessage } = intl;
 
-  const { authenticated } = useAuth();
+  const { authenticated, logout } = useAuth();
 
   const auth = useAppSelector(currentUserDataSelector);
 
   const isOfficial = auth ? auth.is_official : false;
   const isContractor = auth ? auth.is_contractor : false;
-
-  const { logout } = useAuth();
 
   return (
     <LayoutWrapper>

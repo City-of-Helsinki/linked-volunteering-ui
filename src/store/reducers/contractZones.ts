@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import contractZonesService from '../../services/contractZonesService';
 
-interface ContractZone {
-  id: string;
+export interface ContractZone {
+  id: number;
   name: string;
 }
 
@@ -20,7 +20,7 @@ export const getContractZones = createAsyncThunk(
     try {
       const response = await contractZonesService.getContractZones(apiAccessToken);
 
-      const contractZones = response.reduce(
+      const contractZones = response.results.reduce(
         (acc: Record<string, ContractZone>, zone: ContractZone) => {
           acc[zone.id] = zone;
           return acc;

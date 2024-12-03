@@ -19,9 +19,14 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "types": [
+      "jest",
+      "jest-dom"
+    ]
   },
   "include": [
-    "src"
+    "src",
+    "src/setupTests.ts"
   ]
 }

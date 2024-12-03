@@ -2,11 +2,7 @@ import React from 'react';
 import { useIntl } from 'react-intl';
 
 import Select from '../form/fields/Select';
-
-interface ContractZone {
-  id: string;
-  name: string;
-}
+import { ContractZone } from '../../store/reducers/contractZones';
 
 interface ContractZonesProps {
   contractZones: Record<string, ContractZone>;
