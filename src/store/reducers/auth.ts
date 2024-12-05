@@ -34,9 +34,7 @@ export const getCurrentUserData = createAsyncThunk(
         };
       }
 
-      const response = await authService.getCurrentUserData(apiAccessToken);
-
-      return response;
+      return authService.getCurrentUserData(apiAccessToken);
     } catch (error) {
       return rejectWithValue(error);
     }

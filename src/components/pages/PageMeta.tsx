@@ -9,6 +9,8 @@ interface Props {
   title: string;
 }
 
+const META_TITLE = 'site.meta.title';
+
 const PageMeta: React.FC<Props> = ({ title }) => {
   const location = useLocation();
   const intl = useIntl();
@@ -16,11 +18,11 @@ const PageMeta: React.FC<Props> = ({ title }) => {
   const { trackPageView } = useMatomo();
 
   const translatedTitle =
-    title !== 'site.meta.title'
+    title !== META_TITLE
       ? `${formatMessage({
           id: title,
-        })} - ${formatMessage({ id: 'site.meta.title' })}`
-      : formatMessage({ id: 'site.meta.title' });
+        })} - ${formatMessage({ id: META_TITLE })}`
+      : formatMessage({ id: META_TITLE });
 
   // Track page view
   useDeepCompareEffect(() => {

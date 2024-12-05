@@ -5,7 +5,7 @@ import Icon from '../../common/Icon';
 import { Event, removeEvent } from '../../../store/reducers/event';
 import { addNotification } from '../../../store/reducers/notifications';
 
-function Body({ values }: { values: Partial<Event> }) {
+function Body({ values }: { readonly values: Partial<Event> }) {
   return (
     <div>
       <div>
@@ -13,12 +13,11 @@ function Body({ values }: { values: Partial<Event> }) {
       </div>
       <div>
         <Icon name="calendar" />
-        <FormattedDate value={values.start_time || ''} />
+        <FormattedDate value={values.start_time} />
         <span>
           {' '}
           <FormattedMessage tagName="span" id="modal.confirm_removal.body.time.at" />{' '}
-          <FormattedTime value={values.start_time || ''} /> -{' '}
-          <FormattedTime value={values.end_time || ''} />
+          <FormattedTime value={values.start_time} /> - <FormattedTime value={values.end_time} />
         </span>
       </div>
       <div>

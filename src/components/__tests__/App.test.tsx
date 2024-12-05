@@ -6,7 +6,7 @@ import { mockUserCreator } from '../../test-utils/mocks/user';
 import { createStore } from '../../store/configureStore';
 import * as useAuthMock from '../../hooks/useAuth';
 import renderWithProviders from '../../test-utils/renderWithProviders';
-import App from '../containers/AppContainer';
+import App from '../App';
 
 const mockUser = mockUserCreator();
 

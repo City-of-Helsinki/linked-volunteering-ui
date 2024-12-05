@@ -9,7 +9,9 @@ const {
 
 const getRedirectUri = (ext: string) => {
   const { protocol, hostname, port } = window.location;
-  return `${protocol}//${hostname}${port ? `:${port}` : ''}/${ext}`;
+  const portPart = port ? `:${port}` : '';
+
+  return `${protocol}//${hostname}${portPart}/${ext}`;
 };
 
 const providerProperties: LoginProviderProps = {

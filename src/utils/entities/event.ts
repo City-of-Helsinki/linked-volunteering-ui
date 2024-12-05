@@ -24,6 +24,9 @@ export const defaultValues: Event = {
 
 const phoneRegex = /[0-9 +()]{6,19}/;
 
+const VALIDATION_NUMBER_POSITIVE = 'form.validation.number.positive_or_zero';
+const VALIDATION_NOT_NUMBER = 'form.validation.mixed.not.number';
+
 export const validationSchema = yup.object().shape({
   name: yup.string().required(),
   start_time: yup.date().nullable().required(),
@@ -52,23 +55,23 @@ export const validationSchema = yup.object().shape({
   estimated_attendee_count: yup
     .number()
     .positive('form.validation.number.positive')
-    .required('form.validation.mixed.not.number'),
+    .required(VALIDATION_NOT_NUMBER),
   targets: yup.string().required(),
   maintenance_location: yup.string().required(),
   additional_information: yup.string(),
   small_trash_bag_count: yup
     .number()
-    .min(0, 'form.validation.number.positive_or_zero')
-    .required('form.validation.mixed.not.number'),
+    .min(0, VALIDATION_NUMBER_POSITIVE)
+    .required(VALIDATION_NOT_NUMBER),
   large_trash_bag_count: yup
     .number()
-    .min(0, 'form.validation.number.positive_or_zero')
-    .required('form.validation.mixed.not.number'),
+    .min(0, VALIDATION_NUMBER_POSITIVE)
+    .required(VALIDATION_NOT_NUMBER),
   trash_picker_count: yup
     .number()
-    .min(0, 'form.validation.number.positive_or_zero')
+    .min(0, VALIDATION_NUMBER_POSITIVE)
     .max(50, 'form.validation.number.max')
-    .required('form.validation.mixed.not.number'),
+    .required(VALIDATION_NOT_NUMBER),
 });
 
 export default defaultValues;

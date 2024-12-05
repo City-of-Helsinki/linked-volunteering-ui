@@ -2,7 +2,7 @@ import { addDays, addHours, setHours, startOfDay } from 'date-fns';
 import fi from 'date-fns/locale/fi';
 import sv from 'date-fns/locale/sv';
 import { FormikValues } from 'formik';
-import React, { Fragment } from 'react';
+import React from 'react';
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import { useIntl } from 'react-intl';
 import { Row, Col } from 'reactstrap';
