@@ -51,7 +51,6 @@ FROM appbase AS staticbuilder
 # ==========================================
 
 # Set environmental variables
-ARG REACT_APP_MOCK_USER
 ARG REACT_APP_API_URL
 # ARG REACT_APP_OPENID_CLIENT_ID
 # ARG REACT_APP_SSO_URL

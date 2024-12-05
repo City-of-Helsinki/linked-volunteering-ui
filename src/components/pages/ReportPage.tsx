@@ -9,13 +9,17 @@ import { REPORTS_START_YEAR, TABLE_PAGE_SIZE } from '../../constants';
 import PageMeta from './PageMeta';
 import Layout from '../layout/Layout';
 import Select from '../form/fields/Select';
-import Table, { Td, Tr } from '../common/Table';
+import Table, { StyledTd, Tr } from '../common/Table';
 import Pagination from '../common/Pagination';
 import IntlComponent from '../common/IntlComponent';
 import useAuth from '../../hooks/useAuth';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { getReport, reportsSelector, setOrderBy } from '../../store/reducers/report';
-import { orderingSelector } from '../../store/reducers/event';
+import {
+  getReport,
+  reportsSelector,
+  orderingSelector,
+  setOrderBy,
+} from '../../store/reducers/report';
 
 const FormContainer = styled(Container)`
   margin-top: 1em;
@@ -111,6 +115,7 @@ const ReportPage = () => {
   const paginatedReports = getPaginatedReports();
 
   const eventAmount = Object.keys(reports).reduce((acc, key) => acc + reports[key].event_count, 0);
+
   const participantAmount = Object.keys(reports).reduce(
     (acc, key) => acc + reports[key].estimated_attendee_count,
     0,
@@ -125,16 +130,14 @@ const ReportPage = () => {
       intl.formatMessage({ id: 'site.table.header.report.events' }),
       intl.formatMessage({ id: 'site.table.header.report.participants' }),
     ],
-    Object.keys(reports)
-      .map((key) => [
-        reports[key].name,
-        reports[key].contact_person,
-        reports[key].email,
-        reports[key].phone,
-        reports[key].event_count,
-        reports[key].estimated_attendee_count,
-      ])
-      .values(),
+    Object.keys(reports).map((key) => [
+      reports[key].name,
+      reports[key].contact_person,
+      reports[key].email,
+      reports[key].phone,
+      reports[key].event_count,
+      reports[key].estimated_attendee_count,
+    ]),
   ];
 
   return (
@@ -200,12 +203,12 @@ const ReportPage = () => {
             >
               {paginatedReports?.map((key) => (
                 <Tr key={reports[key].id} firstColumn={undefined} highlighted={undefined}>
-                  <Td>{reports[key].name}</Td>
-                  <Td>{reports[key].contact_person}</Td>
-                  <Td>{reports[key].email}</Td>
-                  <Td>{reports[key].phone}</Td>
-                  <Td>{reports[key].event_count}</Td>
-                  <Td>{reports[key].estimated_attendee_count}</Td>
+                  <StyledTd>{reports[key].name}</StyledTd>
+                  <StyledTd>{reports[key].contact_person}</StyledTd>
+                  <StyledTd>{reports[key].email}</StyledTd>
+                  <StyledTd>{reports[key].phone}</StyledTd>
+                  <StyledTd>{reports[key].event_count}</StyledTd>
+                  <StyledTd>{reports[key].estimated_attendee_count}</StyledTd>
                 </Tr>
               ))}
             </Table>

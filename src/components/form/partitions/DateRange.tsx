@@ -121,7 +121,7 @@ const DateRange: React.FC<Props> = ({
         </Col>
         <Col sm="12" md={{ size: 4 }}>
           <TimePicker
-            id="date_range.start_time"
+            id="date_range_start_time"
             defaultDate={minDate}
             error={errors.start_time}
             label="form.event.partitions.date_range.start_time.label"
@@ -163,7 +163,7 @@ const DateRange: React.FC<Props> = ({
         </Col>
         <Col sm="12" md={{ size: 4 }}>
           <TimePicker
-            id="date_range.end_time"
+            id="date_range_end_time"
             defaultDate={values.start_time || minDate}
             error={errors.end_time}
             label="form.event.partitions.date_range.end_time.label"

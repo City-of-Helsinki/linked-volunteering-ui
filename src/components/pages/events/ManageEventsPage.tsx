@@ -21,7 +21,7 @@ import { openModal } from '../../../store/reducers/modal';
 import PageMeta from '../PageMeta';
 import LocalizedLink from '../../common/LocalizedLink';
 import IntlComponent from '../../common/IntlComponent';
-import Table, { Td, Tr, DetailsRow } from '../../common/Table';
+import Table, { StyledTd, Tr, DetailsRow } from '../../common/Table';
 import Button from '../../common/Button';
 import { WithIcons } from '../../common/Icon';
 import ContractZones from '../../common/ContractZones';
@@ -193,18 +193,18 @@ const ManageEventsPage = () => {
                 return (
                   <Fragment key={event.id}>
                     <Tr firstColumn highlighted={isEventPending} selected={selected}>
-                      <Td>
+                      <StyledTd>
                         <EventName>{event.name}</EventName>
-                      </Td>
-                      <Td>{event.organizer_email}</Td>
-                      <Td>
+                      </StyledTd>
+                      <StyledTd>{event.organizer_email}</StyledTd>
+                      <StyledTd>
                         <FormattedDate value={event.start_time} />
-                      </Td>
-                      <Td>
+                      </StyledTd>
+                      <StyledTd>
                         <FormattedDate value={event.created_at} />
-                      </Td>
+                      </StyledTd>
                       <WithIcons
-                        component={Td}
+                        component={StyledTd}
                         prepend={{
                           name: 'oval',
                           size: '0.5x',
@@ -214,18 +214,18 @@ const ManageEventsPage = () => {
                       >
                         <FormattedMessage id={`entities.event.state.${event.state}`} />
                       </WithIcons>
-                      <Td>
+                      <StyledTd>
                         <LocalizedLink
                           id={`edit_event_${event.id}`}
                           to={`admin/event/modify/${event.id}`}
                           prepend="pencil"
                           translate="site.page.manage_events.table.action.edit"
                         />
-                      </Td>
-                      <Td>
+                      </StyledTd>
+                      <StyledTd>
                         <Button
                           id={`extend_event_${event.id}`}
-                          data-testid={`extend_event_${event.id}`}
+                          data-testid="toggle-details"
                           color="link"
                           onClick={() => toggleDetails(event.id)}
                           prepend={{
@@ -234,7 +234,7 @@ const ManageEventsPage = () => {
                             rotate: selected ? 90 : 0,
                           }}
                         />
-                      </Td>
+                      </StyledTd>
                     </Tr>
                     {selected && (
                       <DetailsRow id={`event_details_${event.id}`} colSpan={7}>
