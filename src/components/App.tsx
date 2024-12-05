@@ -42,16 +42,8 @@ const App: React.FC = () => {
   const currentUser = useAppSelector(currentUserDataSelector);
 
   useEffect(() => {
-    if (isEmpty(currentUser)) {
-      if (process.env.REACT_APP_MOCK_USER === 'true') {
-        dispatch(getCurrentUserData());
-
-        return;
-      }
-
-      if (apiToken) {
-        dispatch(getCurrentUserData(apiToken));
-      }
+    if (isEmpty(currentUser) && apiToken) {
+      dispatch(getCurrentUserData(apiToken));
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

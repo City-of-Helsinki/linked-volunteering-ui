@@ -10,6 +10,7 @@
     "@babel/plugin-syntax-flow": "^7.14.5",
     "@babel/plugin-transform-react-jsx": "^7.14.9",
     "@datapunt/matomo-tracker-react": "^0.2.1",
+    "@playwright/test": "^1.49.0",
     "@reduxjs/toolkit": "^2.3.0",
     "@sentry/browser": "^7.113.0",
     "@sentry/react": "^6.2.3",
@@ -43,6 +44,7 @@
     "classnames": "^2.2.6",
     "cross-env": "^7.0.3",
     "date-fns": "^2.10.0",
+    "dotenv": "^16.4.7",
     "eslint": "^8.2.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
@@ -101,12 +103,6 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@playwright/test": "^1.40.1",
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "cypress": "^13.0.1",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
     "husky": "^4.2.3",
     "prettier": "^3.0.0",
     "sass": "^1.75.0",
@@ -118,15 +114,11 @@
     "test": "react-scripts test",
     "test:cov": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
-    "cypress": "cypress open",
-    "distribute": "serve -s build",
     "lint": "eslint --ext js,jsx,ts,tsx src",
-    "api": "node ./api/index.js",
-    "test:ci": "yarn api & yarn distribute & cypress run --browser chrome",
     "test:e2e:install": "yarn playwright install",
     "test:e2e:ci": "npx playwright test",
     "test:e2e:start": "npx playwright test",
-    "test:e2e:record": "npx playwright codegen https://puistotalkoot.dev.hel.ninja/"
+    "test:e2e:record": "npx playwright codegen http://localhost:3000/"
   },
   "browserslist": {
     "production": [

@@ -31,7 +31,12 @@ export const getReport = createAsyncThunk(
   ) => {
     try {
       const response = await reportService.getReport(year, apiAccessToken);
-      const reports = response.results;
+
+      const reports = response.results.reduce((acc: Record<string, Report>, report: Report) => {
+        acc[report.id] = report;
+
+        return acc;
+      }, {});
 
       return {
         count: response.count,

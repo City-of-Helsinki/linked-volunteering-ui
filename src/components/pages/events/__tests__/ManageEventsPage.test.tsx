@@ -103,7 +103,7 @@ describe('<ManageEventsPage />', () => {
   it('should remove event', async () => {
     renderComponent();
 
-    const extendButton = await screen.findByTestId('extend_event_1');
+    const extendButton = await screen.findByTestId('toggle-details');
 
     const user = userEvent.setup();
 
