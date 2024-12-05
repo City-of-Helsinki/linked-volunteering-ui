@@ -74,8 +74,7 @@ export const createEvent = createAsyncThunk(
     { rejectWithValue },
   ) => {
     try {
-      const response = await eventService.create(event, apiAccessToken);
-      return response;
+      return await eventService.create(event, apiAccessToken);
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -89,8 +88,7 @@ export const modifyEvent = createAsyncThunk(
     { rejectWithValue },
   ) => {
     try {
-      const response = await eventService.modify(event, apiAccessToken);
-      return response;
+      return await eventService.modify(event, apiAccessToken);
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -104,8 +102,7 @@ export const publishEvent = createAsyncThunk(
     { rejectWithValue },
   ) => {
     try {
-      const response = await eventService.publish(event, apiAccessToken);
-      return response;
+      return await eventService.publish(event, apiAccessToken);
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -119,8 +116,7 @@ export const removeEvent = createAsyncThunk(
     { rejectWithValue },
   ) => {
     try {
-      const response = await eventService.remove(event, apiAccessToken);
-      return response;
+      return await eventService.remove(event, apiAccessToken);
     } catch (error) {
       return rejectWithValue(error);
     }

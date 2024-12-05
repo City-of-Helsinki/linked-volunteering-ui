@@ -45,7 +45,7 @@ interface MapCanvasProps {
   errorLocation?: string;
   handleChange: Function;
   id: string;
-  touched: Boolean;
+  touched: boolean;
   value: any;
 }
 

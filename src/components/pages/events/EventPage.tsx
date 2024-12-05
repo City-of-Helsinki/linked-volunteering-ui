@@ -171,6 +171,7 @@ const EventPage: React.FC<EventPageProps> = ({ handleSubmit: handleSubmitFn, pag
         errComponents[0].scrollIntoView({ block: 'center', behavior: 'smooth' });
         forEach(errComponents, (el) => {
           if (el.tagName.toLowerCase() === 'input' || el.tagName.toLowerCase() === 'textarea') {
+            // eslint-disable-next-line sonarjs/no-nested-functions
             setTimeout(() => {
               const htmlEl = el as HTMLElement;
 

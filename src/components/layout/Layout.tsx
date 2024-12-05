@@ -1,5 +1,5 @@
 import { Koros } from 'hds-react';
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Container, Navbar } from 'reactstrap';
 import styled from 'styled-components';
 import { useIntl, FormattedMessage } from 'react-intl';

@@ -2,7 +2,20 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import geoService from '../../services/geoService';
 
 interface GeoState {
-  addressCoordinates: any | null;
+  addressCoordinates: {
+    type: string;
+    features: {
+      type: string;
+      geometry: {
+        type: string;
+        coordinates: number[];
+      };
+      properties: {
+        name: string;
+      };
+    }[];
+    properties: {};
+  } | null;
   geoData: {
     closest_address: {
       street: any;
@@ -36,8 +49,7 @@ export const getGeoData = createAsyncThunk(
     { rejectWithValue },
   ) => {
     try {
-      const response = await geoService.getGeoData(lat, long, apiAccessToken);
-      return response;
+      return await geoService.getGeoData(lat, long, apiAccessToken);
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -48,8 +60,7 @@ export const getCoordinatesByAddress = createAsyncThunk(
   'GET_COORDINATES_BY_ADDRESS',
   async ({ text, lang }: { text: string; lang: string }, { rejectWithValue }) => {
     try {
-      const response = await geoService.getCoordinatesByAddress(text, lang);
-      return response;
+      return await geoService.getCoordinatesByAddress(text, lang);
     } catch (error) {
       return rejectWithValue(error);
     }

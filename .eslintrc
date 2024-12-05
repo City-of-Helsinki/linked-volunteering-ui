@@ -3,14 +3,16 @@
     "react-app",
     "airbnb",
     "plugin:jest/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:sonarjs/recommended-legacy"
   ],
   "parser": "@typescript-eslint/parser",
   "plugins": [
     "react",
     "jest",
     "cypress",
-    "prettier"
+    "prettier",
+    "sonarjs"
   ],
   "env": {
     "browser": true,
@@ -106,6 +108,7 @@
       {
         "props": false
       }
-    ]
+    ],
+    "jest/expect-expect": 0
   }
 }

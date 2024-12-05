@@ -198,7 +198,7 @@ const ManageEventsPage = () => {
                       </Td>
                       <Td>{event.organizer_email}</Td>
                       <Td>
-                        <FormattedDate value={event.start_time || ''} />
+                        <FormattedDate value={event.start_time} />
                       </Td>
                       <Td>
                         <FormattedDate value={event.created_at} />

@@ -18,7 +18,7 @@ import * as serviceWorker from './serviceWorker';
 import { createStore } from './store/configureStore';
 import providerProperties from './utils/userManager';
 
-import App from './components/containers/AppContainer';
+import App from './components/App';
 import CallbackPage from './components/pages/CallBackPage';
 import Login from './components/Login';
 
@@ -62,6 +62,7 @@ function Root() {
 
 const rootElement = document.getElementById('root');
 if (rootElement) {
+  // eslint-disable-next-line react/no-deprecated
   ReactDOM.render(<Root />, rootElement);
 }
 

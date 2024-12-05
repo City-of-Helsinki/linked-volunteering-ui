@@ -198,17 +198,16 @@ const ReportPage = () => {
               firstColumn={undefined}
               actionColSpan={undefined}
             >
-              {paginatedReports &&
-                paginatedReports.map((key) => (
-                  <Tr key={reports[key].id} firstColumn={undefined} highlighted={undefined}>
-                    <Td>{reports[key].name}</Td>
-                    <Td>{reports[key].contact_person}</Td>
-                    <Td>{reports[key].email}</Td>
-                    <Td>{reports[key].phone}</Td>
-                    <Td>{reports[key].event_count}</Td>
-                    <Td>{reports[key].estimated_attendee_count}</Td>
-                  </Tr>
-                ))}
+              {paginatedReports?.map((key) => (
+                <Tr key={reports[key].id} firstColumn={undefined} highlighted={undefined}>
+                  <Td>{reports[key].name}</Td>
+                  <Td>{reports[key].contact_person}</Td>
+                  <Td>{reports[key].email}</Td>
+                  <Td>{reports[key].phone}</Td>
+                  <Td>{reports[key].event_count}</Td>
+                  <Td>{reports[key].estimated_attendee_count}</Td>
+                </Tr>
+              ))}
             </Table>
             <Pagination
               activePage={activePage}

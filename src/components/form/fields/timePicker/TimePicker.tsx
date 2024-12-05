@@ -125,10 +125,7 @@ const TimePicker: React.FC<Props> = ({
     const active = document.activeElement;
     const current = container && container.current;
 
-    if (current && active instanceof Node && current.contains(active)) {
-      return true;
-    }
-    return false;
+    return current && active instanceof Node && current.contains(active);
   };
 
   const onDocumentClick = (event: FocusEvent) => {

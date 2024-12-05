@@ -66,7 +66,7 @@ const Location: React.FC<Props> = ({
 
       if (address !== newAddrs) {
         setFieldTouched('maintenance_location');
-        setFieldValue('maintenance_location', clickedAddress || newAddrs, true);
+        setFieldValue('maintenance_location', clickedAddress ?? newAddrs, true);
 
         setUpdateAddress(false);
         setClickedAddress(null);

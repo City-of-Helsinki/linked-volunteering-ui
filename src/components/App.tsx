@@ -31,7 +31,7 @@ const getLanguage = (locale: string): Language => {
 
 const App: React.FC = () => {
   const { locale } = useParams();
-  const language = getLanguage(locale || '');
+  const language = getLanguage(locale ?? '');
 
   const dispatch = useAppDispatch();
 
@@ -45,11 +45,12 @@ const App: React.FC = () => {
     if (isEmpty(currentUser)) {
       if (process.env.REACT_APP_MOCK_USER === 'true') {
         dispatch(getCurrentUserData());
-      } else {
-        // eslint-disable-next-line no-lonely-if
-        if (apiToken) {
-          dispatch(getCurrentUserData(apiToken));
-        }
+
+        return;
+      }
+
+      if (apiToken) {
+        dispatch(getCurrentUserData(apiToken));
       }
     }
 
