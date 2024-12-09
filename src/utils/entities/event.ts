@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { Event } from '../../store/reducers/event';
+import { Event } from '../../store/types';
 
 export const defaultValues: Event = {
   id: 0,

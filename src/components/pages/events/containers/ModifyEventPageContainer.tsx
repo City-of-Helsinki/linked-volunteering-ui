@@ -5,8 +5,9 @@ import { useNavigate } from 'react-router';
 import EventPage from '../EventPage';
 import { useAppDispatch } from '../../../../store/hooks';
 import useAuth from '../../../../hooks/useAuth';
-import { Event, modifyEvent } from '../../../../store/reducers/event';
+import { modifyEvent } from '../../../../store/reducers/event';
 import { addNotification } from '../../../../store/reducers/notifications';
+import { Event } from '../../../../store/types';
 
 const ModifyEventPageContainer = () => {
   const dispatch = useAppDispatch();

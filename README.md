@@ -32,10 +32,11 @@ This will start [the application](http://localhost:3000) to run in port `3000`
 
 ## Testing
 
-End-to-end testing is created with Cypress.io framework. To run tests:
+End-to-end testing is created with Playwright. To run tests:
 
 ```
-$ yarn cypress
+$ yarn test:e2e:install
+$ yarn test:e2e:start
 ```
 
 ## Docker

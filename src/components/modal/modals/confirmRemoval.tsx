@@ -2,8 +2,9 @@ import React from 'react';
 import { FormattedDate, FormattedMessage, FormattedTime } from 'react-intl';
 
 import Icon from '../../common/Icon';
-import { Event, removeEvent } from '../../../store/reducers/event';
+import { removeEvent } from '../../../store/reducers/event';
 import { addNotification } from '../../../store/reducers/notifications';
+import { Event } from '../../../store/types';
 
 function Body({ values }: { readonly values: Partial<Event> }) {
   return (
@@ -39,7 +40,7 @@ export default {
     {
       intl: 'modal.confirm_removal.footer.button1.text',
       color: 'primary',
-      action: async (dispatch: any, meta: any) => {
+      action: async (dispatch: any, meta: { event: Event; apiAccessToken: string | undefined }) => {
         const { event, apiAccessToken } = meta;
 
         dispatch(removeEvent({ event, apiAccessToken }));

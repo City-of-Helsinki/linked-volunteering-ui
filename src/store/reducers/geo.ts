@@ -1,36 +1,47 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import geoService from '../../services/geoService';
+import geoService from '../services/geoService';
+
+interface AddressCoordinates {
+  type: string;
+  features: {
+    type: string;
+    geometry: {
+      type: string;
+      coordinates: number[];
+    };
+    properties: {
+      name: string;
+    };
+  }[];
+  properties: {};
+}
+
+interface GeoData {
+  closest_address: {
+    street: {
+      name: {
+        [key: string]: string;
+      };
+    };
+    distance: number;
+    number: string;
+    number_end: string;
+    letter: string;
+    location: {
+      type: string;
+      coordinates: number[];
+    };
+  };
+  contract_zone: {
+    id: number;
+    name: string;
+    unavailable_dates?: string[] | null;
+  };
+}
 
 interface GeoState {
-  addressCoordinates: {
-    type: string;
-    features: {
-      type: string;
-      geometry: {
-        type: string;
-        coordinates: number[];
-      };
-      properties: {
-        name: string;
-      };
-    }[];
-    properties: {};
-  } | null;
-  geoData: {
-    closest_address: {
-      street: any;
-      distance: number;
-      number: string;
-      number_end: string;
-      letter: string;
-      location: any;
-    };
-    contract_zone: {
-      id: number;
-      name: string;
-      unavailable_dates?: string[] | null;
-    };
-  } | null;
+  addressCoordinates: AddressCoordinates | null;
+  geoData: GeoData | null;
 }
 
 const initialState: GeoState = {
@@ -76,10 +87,13 @@ export const geoSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(getCoordinatesByAddress.fulfilled, (state, action: PayloadAction<any>) => {
-      state.addressCoordinates = action.payload;
-    });
-    builder.addCase(getGeoData.fulfilled, (state, action: PayloadAction<any>) => {
+    builder.addCase(
+      getCoordinatesByAddress.fulfilled,
+      (state, action: PayloadAction<AddressCoordinates>) => {
+        state.addressCoordinates = action.payload;
+      },
+    );
+    builder.addCase(getGeoData.fulfilled, (state, action: PayloadAction<GeoData>) => {
       state.geoData = action.payload;
     });
   },

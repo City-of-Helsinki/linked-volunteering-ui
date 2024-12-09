@@ -42,12 +42,12 @@ const initialState = {
       '1': {
         id: 1,
         state: 'waiting_for_approval',
-        created_at: '2024-12-04T06:17:08.196Z',
-        modified_at: '2024-12-04T06:17:08.196Z',
+        created_at: new Date('2024-12-04T06:17:08.196Z'),
+        modified_at: new Date('2024-12-04T06:17:08.196Z'),
         name: 'Puistotalkoot',
         description: 'Puistotalkoot',
-        start_time: '2025-01-15T07:00:00.000Z',
-        end_time: '2025-02-16T07:00:00.000Z',
+        start_time: new Date('2025-01-15T07:00:00.000Z'),
+        end_time: new Date('2025-02-16T07:00:00.000Z'),
         location: {
           type: 'Point',
           coordinates: [24.93931620883691, 60.18799324237526],

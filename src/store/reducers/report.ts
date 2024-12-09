@@ -1,11 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import reportService from '../../services/reportService';
+import reportService from '../services/reportService';
 import ordering, { Ordering } from '../../utils/entities/ordering';
-
-interface Report {
-  id: string;
-  [key: string]: any;
-}
+import { Report } from '../types';
 
 interface ReportState {
   count: number;
