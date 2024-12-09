@@ -10,7 +10,7 @@ interface IntlComponentProps extends WrappedComponentProps {
   lang?: string;
   type?: string;
   color?: string;
-  sm?: any;
+  sm?: { size: number; offset: number };
 }
 
 const IntlComponent: React.FC<IntlComponentProps> = ({ Component, id, values, intl, ...rest }) => {

@@ -2,7 +2,7 @@ import React from 'react';
 import { useIntl } from 'react-intl';
 
 import Select from '../form/fields/Select';
-import { ContractZone } from '../../store/reducers/contractZones';
+import { ContractZone } from '../../store/types';
 
 interface ContractZonesProps {
   contractZones: Record<string, ContractZone>;

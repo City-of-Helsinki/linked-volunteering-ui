@@ -9,7 +9,7 @@ import Input from './fields/Input';
 import DateRange from './partitions/DateRange';
 import Location from './partitions/Location';
 import { useAppSelector } from '../../store/hooks';
-import { Event } from '../../store/reducers/event';
+import { Event } from '../../store/types';
 import {
   addressCoordinatesSelector,
   selectedAddressSelector,

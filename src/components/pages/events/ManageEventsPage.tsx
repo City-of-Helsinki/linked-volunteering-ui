@@ -6,7 +6,6 @@ import { FormattedMessage, FormattedDate } from 'react-intl';
 import { isEmpty } from 'lodash';
 import { contractZonesSelector, getContractZones } from '../../../store/reducers/contractZones';
 import {
-  Event,
   eventsSelector,
   getEvents,
   nextParamsSelector,
@@ -28,6 +27,7 @@ import ContractZones from '../../common/ContractZones';
 import Layout from '../../layout/Layout';
 import { isPending } from '../../../utils/event';
 import useAuth from '../../../hooks/useAuth';
+import { Event } from '../../../store/types';
 
 const DetailsCluster = styled.div`
   display: flex;

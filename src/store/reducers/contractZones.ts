@@ -1,10 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import contractZonesService from '../../services/contractZonesService';
-
-export interface ContractZone {
-  id: number;
-  name: string;
-}
+import contractZonesService from '../services/contractZonesService';
+import { ContractZone } from '../types';
 
 interface ContractZonesState {
   contractZones: Record<string, ContractZone>;

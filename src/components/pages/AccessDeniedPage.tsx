@@ -19,7 +19,7 @@ const Message = styled(Container)`
 
   ${responsive.md`
     h1 {
-      font-size: ${(props: any) => props.theme.h2FontSize};
+      font-size: ${(props: { theme: { h2FontSize: any } }) => props.theme.h2FontSize};
     }
   `}
 `;

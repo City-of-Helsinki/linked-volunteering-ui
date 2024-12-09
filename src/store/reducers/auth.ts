@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import authService from '../../services/authService';
+import authService from '../services/authService';
 
 interface UserData {
   uuid: string;

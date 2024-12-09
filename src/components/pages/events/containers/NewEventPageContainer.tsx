@@ -2,10 +2,11 @@ import React from 'react';
 import { useIntl } from 'react-intl';
 import { useNavigate } from 'react-router';
 import EventPage from '../EventPage';
-import { createEvent, Event } from '../../../../store/reducers/event';
+import { createEvent } from '../../../../store/reducers/event';
 import { useAppDispatch } from '../../../../store/hooks';
 import useAuth from '../../../../hooks/useAuth';
 import { addNotification } from '../../../../store/reducers/notifications';
+import { Event } from '../../../../store/types';
 
 const NewEventPageContainer = () => {
   const dispatch = useAppDispatch();

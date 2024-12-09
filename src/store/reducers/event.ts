@@ -1,34 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import urlParse from 'url-parse';
-import eventService from '../../services/eventService';
+import eventService from '../services/eventService';
 import ordering, { Ordering } from '../../utils/entities/ordering';
-
-export interface Event {
-  [key: string]: any;
-  id: number;
-  state: string;
-  name: string;
-  description: string;
-  start_time?: string;
-  created_at?: string;
-  end_time?: string;
-  location?: {
-    type: string;
-    coordinates: number[];
-  };
-  organizer_first_name: string;
-  organizer_last_name: string;
-  organizer_email: string;
-  organizer_phone: string;
-  estimated_attendee_count?: number;
-  targets: string;
-  maintenance_location: string;
-  additional_information: string;
-  large_trash_bag_count?: number;
-  small_trash_bag_count?: number;
-  trash_picker_count?: number;
-  contract_zone?: number;
-}
+import { Event } from '../types';
 
 interface EventState {
   count: number;
@@ -51,7 +25,7 @@ const initialState: EventState = {
 export const getEvents = createAsyncThunk(
   'GET_EVENTS',
   async (
-    { params, apiAccessToken }: { params: any; apiAccessToken: string | undefined },
+    { params, apiAccessToken }: { params: object; apiAccessToken: string | undefined },
     { rejectWithValue },
   ) => {
     try {
@@ -145,9 +119,12 @@ const eventSlice = createSlice({
   reducers: {
     getEventsFulfilled: (
       state,
-      action: PayloadAction<{ data: any; events: Record<string, Event> }>,
+      action: PayloadAction<{
+        data: { next: { limit: number }; count: number };
+        events: Record<string, Event>;
+      }>,
     ) => {
-      const next = urlParse(action.payload.data.next, true).query;
+      const next = urlParse(JSON.stringify(action.payload.data.next), true).query;
       state.count = action.payload.data.count;
       state.next = {
         limit: parseInt(next.limit as string, 10) || 10,
@@ -168,7 +145,7 @@ const eventSlice = createSlice({
     publishEventFulfilled: (state, action: PayloadAction<Event>) => {
       state.events[action.payload.id] = action.payload;
     },
-    removeEventFulfilled: (state, action: PayloadAction<string>) => {
+    removeEventFulfilled: (state, action: PayloadAction<number>) => {
       delete state.events[action.payload];
     },
     setFilterByContractZone: (state, action: PayloadAction<number>) => {

@@ -10,7 +10,6 @@
   "plugins": [
     "react",
     "jest",
-    "cypress",
     "prettier",
     "sonarjs"
   ],
@@ -18,7 +17,6 @@
     "browser": true,
     "node": true,
     "es6": true, // Add ES6 environment for new ES6 globals
-    "cypress/globals": true
   },
   "settings": {
     "import/extensions": [
@@ -82,7 +80,6 @@
           "**/__tests__/**",
           "**/spec/**",
           "**/__mocks__/**",
-          "cypress/**"
         ]
       }
     ], // Update the pattern to include common test directories

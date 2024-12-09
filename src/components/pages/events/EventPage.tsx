@@ -12,11 +12,12 @@ import IntlComponent from '../../common/IntlComponent';
 import Layout from '../../layout/Layout';
 import EventForm from '../../form/EventForm';
 import InstructionText from '../../form/fields/InstructionText';
-import { Event, eventByIdSelector } from '../../../store/reducers/event';
+import { eventByIdSelector } from '../../../store/reducers/event';
 
 import event, { validationSchema } from '../../../utils/entities/event';
 import { useAppSelector } from '../../../store/hooks';
 import { selectedContractZoneSelector } from '../../../store/reducers/geo';
+import { Event } from '../../../store/types';
 
 const FormContainer = styled(Container)`
   background-color: ${(props) => props.theme.helWhite};
@@ -40,7 +41,7 @@ const TitleContainer = styled(Container)`
 
   ${responsive.md`
     h1 {
-      font-size: ${(props: any) => props.theme.h2FontSize};
+      font-size: ${(props: { theme: { h2FontSize: any } }) => props.theme.h2FontSize};
     }
   `}
 `;

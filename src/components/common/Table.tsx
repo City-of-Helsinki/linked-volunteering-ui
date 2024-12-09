@@ -21,20 +21,20 @@ interface TableProps {
 }
 
 interface TrProps {
-  firstColumn?: boolean;
-  highlighted?: boolean;
-  children: ReactNode;
-  [key: string]: any;
+  readonly firstColumn?: boolean;
+  readonly highlighted?: boolean;
+  readonly children: ReactNode;
+  readonly [key: string]: any;
 }
 
 interface DetailsRowProps {
-  children: ReactNode;
-  colSpan: number;
-  [key: string]: any;
+  readonly children: ReactNode;
+  readonly colSpan: number;
+  readonly [key: string]: any;
 }
 
-const StyledTr = styled.tr`
-  ${(props: any) => {
+const StyledTr = styled.tr<{ white?: boolean; selected?: boolean }>`
+  ${(props) => {
     if (props.white) {
       return css`
         background-color: white;
@@ -126,24 +126,24 @@ const StyledHeaderText = styled.span`
   margin-right: 0.5em;
 `;
 
-export const StyledTh = styled.th`
-  padding: ${(props: any) => (props.large ? '1em 1em' : '0.5em 1em')};
+export const StyledTh = styled.th<{ large?: boolean }>`
+  padding: ${(props) => (props.large ? '1em 1em' : '0.5em 1em')};
 `;
 
 export const StyledTd = styled.td<{ large?: boolean }>`
   padding: ${(props) => (props.large ? '1em 1em' : '0.5em 1em')};
 `;
 
-export function Tr({ firstColumn, highlighted, children, ...rest }: TrProps) {
+export const Tr: React.FC<TrProps> = ({ firstColumn, highlighted, children, ...rest }) => {
   return (
     <StyledTr {...rest}>
       {firstColumn && <StyledFirstTd highlighted={highlighted} />}
       {children}
     </StyledTr>
   );
-}
+};
 
-export function DetailsRow({ children, colSpan, ...rest }: DetailsRowProps) {
+export const DetailsRow: React.FC<DetailsRowProps> = ({ children, colSpan, ...rest }) => {
   return (
     <Tr firstColumn white {...rest}>
       <StyledTd colSpan={colSpan} large>
@@ -151,7 +151,7 @@ export function DetailsRow({ children, colSpan, ...rest }: DetailsRowProps) {
       </StyledTd>
     </Tr>
   );
-}
+};
 
 const getOrder = (key: string, ordering: Ordering) => {
   if (key === ordering.key) {
@@ -200,8 +200,8 @@ const Table: React.FC<TableProps> = ({
                     <Button
                       prepend={getOrderIcon(order ?? 'ASC')}
                       color="link"
-                      onClick={() => setOrderBy({ key, order: order || 'ASC' })}
-                      aria-label={order || 'ASC'}
+                      onClick={() => setOrderBy({ key, order: order ?? 'ASC' })}
+                      aria-label={order ?? 'ASC'}
                     />
                   )}
                 </StyledTh>
