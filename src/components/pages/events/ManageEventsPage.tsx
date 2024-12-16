@@ -28,6 +28,7 @@ import Layout from '../../layout/Layout';
 import { isPending } from '../../../utils/event';
 import useAuth from '../../../hooks/useAuth';
 import { Event } from '../../../store/types';
+import { isOfficialSelector } from '../../../store/reducers/auth';
 
 const DetailsCluster = styled.div`
   display: flex;
@@ -98,6 +99,7 @@ const ManageEventsPage = () => {
   const nextParams = useAppSelector(nextParamsSelector);
   const events = useAppSelector(eventsSelector);
   const ordering = useAppSelector(orderingSelector);
+  const isOfficial = useAppSelector(isOfficialSelector);
 
   const apiAccessToken = getApiToken();
 
@@ -262,14 +264,17 @@ const ManageEventsPage = () => {
                               disabled={!isEventPending}
                             />
                           )}
-                          <Button
-                            id={`reject_event_${event.id}`}
-                            data-testid={`reject_event_${event.id}`}
-                            translate="site.page.manage_events.table.action.remove"
-                            color="danger"
-                            onClick={() => remove(event)}
-                            append="times"
-                          />
+
+                          {isOfficial && (
+                            <Button
+                              id={`reject_event_${event.id}`}
+                              data-testid={`reject_event_${event.id}`}
+                              translate="site.page.manage_events.table.action.remove"
+                              color="danger"
+                              onClick={() => remove(event)}
+                              append="times"
+                            />
+                          )}
                         </div>
                       </DetailsRow>
                     )}
