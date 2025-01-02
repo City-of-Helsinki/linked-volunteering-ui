@@ -87,21 +87,19 @@ const AccessibilityStatementEn: FunctionComponent = () => {
       <h2>Legal protection of accessibility, Enforcement procedure</h2>
       <p>
         If a user feels that their report or enquiry has not received a response or that the
-        response is unsatisfactory, they can report the issue to the Regional State Administrative
-        Agency of Southern Finland. The website of the Regional State Administrative Agency of
-        Southern Finland explains in detail how the matter will be processed.
+        response is unsatisfactory, they can report the issue to the Finnish Transport and
+        Communication Agency Traficom. The website of the Finnish Transport and Communication Agency
+        Traficom explains in detail how the matter will be processed.
       </p>
-      <h2>Regional State Administrative Agency of Southern Finland</h2>
+      <h2>Finnish Transport and Communication Agency Traficom</h2>
       <p>
-        Accessibility monitoring unit
+        Digital Accessibility Supervision Unit
         <br />
-        <a href="https://www.saavutettavuusvaatimukset.fi/">www.saavutettavuusvaatimukset.fi/</a>
+        <a href="https://www.webaccessibility.fi">www.webaccessibility.fi</a>
         <br />
-        <a href="mailto:saavutettavuus@avi.fi">saavutettavuus@avi.fi</a>
+        <a href="mailto:saavutettavuus@traficom.fi">saavutettavuus@traficom.fi</a>
         <br />
-        Telephone exchange +358 295 016 000
-        <br />
-        Open: Mon-Fri at 8:00–16:15
+        Telephone switchboard 029 534 5000
       </p>
       <h2>The City of Helsinki and accessibility</h2>
       <p>
