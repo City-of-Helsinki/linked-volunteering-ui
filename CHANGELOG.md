@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.4.0](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.3.0...linked-volunteering-ui-v0.4.0) (2025-01-06)
+
+
+### Features
+
+* Block reject event if is_official false PS-161 ([b405133](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/b405133432caccbb618247eeb3c999bd77f885b3))
+* Hds login PS-157 ([b3d8ae0](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/b3d8ae019147f85713dcecd0606fcb6fafad3c12))
+
+
+### Dependencies
+
+* Upgrade hds to 4.0.0 PS-157 ([b1dd104](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/b1dd104d2c407ab823371d1556c5f8a3f0c549bf))
+
 ## [0.3.0](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.2.7...linked-volunteering-ui-v0.3.0) (2024-05-28)
 
 
