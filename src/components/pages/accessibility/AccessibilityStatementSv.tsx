@@ -93,23 +93,21 @@ const AccessibilityStatementSv: FunctionComponent = () => {
       <h2>Rättsskydd för tillgänglighet, Verkställighetsförfarande</h2>
       <p>
         Om en person upplever att svar inte har erhållits på hans eller hennes anmälan eller
-        förfrågan, eller om svaret inte är tillfredsställande, kan ärendet anmälas till
-        regionförvaltningsverket i Södra Finland. På webbplatsen för regionförvaltningsverket i
-        Södra Finland finns detaljerad information om hur ärendet behandlas.
+        förfrågan, eller om svaret inte är tillfredsställande, kan ärendet anmälas till Transport-
+        och kommunikationsverket Traficom. På webbplatsen för Transport- och kommunikationsverket
+        Traficom finns detaljerad information om hur ärendet behandlas.
       </p>
 
-      <h2>Regionförvaltningsverket i Södra Finland</h2>
+      <h2>Transport- och kommunikationsverket Traficom</h2>
 
       <p>
-        Enheten för tillgänglighetstillsyn
+        Enheten för tillsyn över digital tillgänglighet
         <br />
         <a href="https://www.tillgänglighetskrav.fi/">www.tillgänglighetskrav.fi/</a>
         <br />
-        <a href="mailto:webbtillganglighet@rfv.fi">webbtillganglighet@rfv.fi</a>
+        <a href="mailto:tillganglighet@traficom.fi">tillganglighet@traficom.fi</a>
         <br />
-        Telefonväxel 0295 016 000
-        <br />
-        Öppet: må–fr kl. 8.00–16.15
+        Telefonnummer (växeln) 029 534 5000
       </p>
 
       <h2>Helsingfors stad och tillgänglighet</h2>

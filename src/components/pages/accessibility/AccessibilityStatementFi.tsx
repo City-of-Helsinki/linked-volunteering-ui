@@ -78,21 +78,19 @@ const AccessibilityStatementFi: FunctionComponent = () => {
       <h2>Saavutettavuuden oikeussuoja, Täytäntöönpanomenettely</h2>
       <p>
         Mikäli henkilö kokee, ettei hänen ilmoitukseensa tai tiedusteluunsa ole vastattu tai vastaus
-        ei ole tyydyttävä, voi asiasta tehdä ilmoituksen Etelä-Suomen aluehallintovirastoon.
-        Etelä-Suomen aluehallintoviraston sivulla kerrotaan tarkasti, miten asia käsitellään.
+        ei ole tyydyttävä, voi asiasta tehdä ilmoituksen Liikenne- ja viestintävirasto Traficomiin.
+        Liikenne- ja viestintävirasto Traficomin sivulla kerrotaan tarkasti, miten asia käsitellään.
       </p>
 
-      <h2>Etelä-Suomen aluehallintovirasto</h2>
+      <h2>Liikenne- ja viestintävirasto Traficom</h2>
       <p>
-        Saavutettavuuden valvonnan yksikkö
+        Digitaalisen esteettömyyden ja saavutettavuuden valvontayksikkö
         <br />
         <a href="https://www.saavutettavuusvaatimukset.fi/">www.saavutettavuusvaatimukset.fi/</a>
         <br />
-        <a href="mailto:saavutettavuus@avi.fi">saavutettavuus@avi.fi</a>
+        <a href="mailto:saavutettavuus@traficom.fi">saavutettavuus@traficom.fi</a>
         <br />
-        Puhelinvaihde 0295 016 000
-        <br />
-        Avoinna: ma-pe klo 8.00 – 16.15
+        Puhelinnumero (vaihde) 029 534 5000
       </p>
       <h2>Helsingin kaupunki ja saavutettavuus </h2>
       <p>
