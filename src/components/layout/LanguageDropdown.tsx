@@ -88,7 +88,7 @@ const LanguageDropdown: React.FC = () => {
           />
         </StyledSelector>
       </LanguageSelector>
-      <DropdownMenu positionFixed>
+      <DropdownMenu>
         <IntlComponent
           Component={DropdownItem}
           href="/fi"
