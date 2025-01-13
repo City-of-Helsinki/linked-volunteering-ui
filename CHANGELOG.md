@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.4.1](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.4.0...linked-volunteering-ui-v0.4.1) (2025-01-13)
+
+
+### Dependencies
+
+* Bump axios from 0.19.2 to 0.28.0 ([#209](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/209)) ([ec07eb6](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/ec07eb6ab77c2a8e34813a8e4ae57236009f0a42))
+* Bump braces from 3.0.2 to 3.0.3 ([#199](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/199)) ([d3d5eac](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/d3d5eaca1c62317b926fc872a9cb8407ba84789e))
+* Bump http-proxy-middleware from 2.0.6 to 2.0.7 ([#204](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/204)) ([43d6483](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/43d648340fd3e5263aea78cb1e21e51281906c4f))
+* Bump micromatch from 4.0.5 to 4.0.8 ([#195](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/195)) ([c1fbb0c](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/c1fbb0c77bc29541a7e97d011bae7810636d857d))
+* Bump nanoid from 3.3.7 to 3.3.8 ([#211](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/211)) ([61d67d7](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/61d67d7c81b3bd2ab66ffc37b4c01a5bdd370dd3))
+* Bump rollup from 2.79.1 to 2.79.2 ([#201](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/201)) ([185fe96](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/185fe96340aa2d64de230bb2954b48b79a0bec90))
+* Bump webpack from 5.91.0 to 5.97.1 ([#213](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/213)) ([1d402bd](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/1d402bd4777dc11b46f3dd379621b878d2cb75be))
+
 ## [0.4.0](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.3.0...linked-volunteering-ui-v0.4.0) (2025-01-06)
 
 
