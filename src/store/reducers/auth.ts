@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { isEmpty } from 'lodash';
 import authService from '../services/authService';
 
 interface UserData {
@@ -49,9 +50,9 @@ export const authSlice = createSlice({
   },
   selectors: {
     currentUserDataSelector: (state) => state.currentUserData,
-    userLoadingSelector: (state) => state.isLoading,
-    isOfficialSelector: (state) => !state.isLoading && state.currentUserData?.is_official,
-    isContractorSelector: (state) => !state.isLoading && state.currentUserData?.is_contractor,
+    userLoadingSelector: (state) => isEmpty(state.currentUserData) || state.isLoading,
+    isOfficialSelector: (state) => state.currentUserData?.is_official,
+    isContractorSelector: (state) => state.currentUserData?.is_contractor,
   },
 });
 

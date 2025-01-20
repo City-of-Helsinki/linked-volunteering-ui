@@ -27,6 +27,29 @@ const renderComponent = (initialEntries = ['/'], preloadedState = {}) => {
 };
 
 describe('<AdminRoutes />', () => {
+  it('should navigate to authError', async () => {
+    const mockState = {
+      auth: {
+        currentUserData: {
+          uuid: uuid(),
+          first_name: 'Gaylord',
+          last_name: 'Lohiposki',
+          is_official: false,
+          is_contractor: false,
+        },
+        isLoading: false,
+      },
+    };
+
+    renderComponent(['/events/manage'], mockState);
+
+    await waitFor(() =>
+      expect(
+        screen.getByRole('heading', { name: 'Oops, you are lost in the woods!' }),
+      ).toBeInTheDocument(),
+    );
+  });
+
   it('renders ManageEventsPage for /events/manage route', async () => {
     const mockState = {
       auth: {
