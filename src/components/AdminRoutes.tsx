@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Navigate, Route, Routes } from 'react-router';
 
 import { LoadingSpinner } from 'hds-react';
@@ -18,7 +18,7 @@ const RequireUserComponent = ({ Page }: { Page: React.ComponentType }) => {
   const isOfficial = useAppSelector(isOfficialSelector);
   const isContractor = useAppSelector(isContractorSelector);
 
-  if (!isOfficial || !isContractor) {
+  if (!(isOfficial || isContractor)) {
     return <Navigate to="/authError" replace />;
   }
 
@@ -36,25 +36,15 @@ const RequireOfficialComponent = ({ Page }: { Page: React.ComponentType }) => {
 };
 
 function AdminRoutes() {
-  const [userLoaded, setUserLoaded] = useState(false);
-
   const { authenticated } = useAuth();
 
   const userLoading = useAppSelector(userLoadingSelector);
-  const isOfficial = useAppSelector(isOfficialSelector);
-  const isContractor = useAppSelector(isContractorSelector);
-
-  useEffect(() => {
-    if ((!userLoading && Boolean(isOfficial)) || Boolean(isContractor)) {
-      setUserLoaded(true);
-    }
-  }, [userLoading, isOfficial, isContractor]);
 
   if (!authenticated) {
     return <Navigate to="/authError" replace />;
   }
 
-  if (!userLoaded) {
+  if (userLoading) {
     return <LoadingSpinner />;
   }
 
