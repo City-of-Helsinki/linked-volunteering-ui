@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.2](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.4.1...linked-volunteering-ui-v0.4.2) (2025-01-21)
+
+
+### Bug Fixes
+
+* Allowed user actions fixes PS-174 ([9c74001](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/9c74001c2bf469c2f0c617748285f818f76df866))
+
 ## [0.4.1](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.4.0...linked-volunteering-ui-v0.4.1) (2025-01-13)
 
 
