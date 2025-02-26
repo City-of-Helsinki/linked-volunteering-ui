@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.3](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.4.2...linked-volunteering-ui-v0.4.3) (2025-02-26)
+
+
+### Bug Fixes
+
+* Routing when user has logged out ([#216](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/216)) ([6128a69](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/6128a69aa8e86aee7acca791ae9c1700df7cb3d7))
+
 ## [0.4.2](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.4.1...linked-volunteering-ui-v0.4.2) (2025-01-21)
 
 
