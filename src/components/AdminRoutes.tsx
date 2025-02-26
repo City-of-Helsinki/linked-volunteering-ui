@@ -36,11 +36,15 @@ const RequireOfficialComponent = ({ Page }: { Page: React.ComponentType }) => {
 };
 
 function AdminRoutes() {
-  const { authenticated } = useAuth();
+  const { authenticated, loggingOut } = useAuth();
 
   const userLoading = useAppSelector(userLoadingSelector);
 
   if (!authenticated) {
+    if (loggingOut) {
+      return <Navigate to="/" replace />;
+    }
+
     return <Navigate to="/authError" replace />;
   }
 

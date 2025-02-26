@@ -9,7 +9,7 @@ import {
 import { useCallback } from 'react';
 
 const useAuth = () => {
-  const { isAuthenticated, getUser, logout, login } = useOidcClient();
+  const { isAuthenticated, getUser, logout, login, getState } = useOidcClient();
   const { isRenewing, getStoredApiTokens } = useApiTokens();
 
   const [error, tokens] = getStoredApiTokens();
@@ -29,12 +29,15 @@ const useAuth = () => {
 
   useSignalListener(signalListener);
 
+  const loggingOut = getState() === 'LOGGING_OUT';
+
   return {
     authenticated: isAuthenticated(),
     user: getUser(),
     getApiToken,
     login,
     logout,
+    loggingOut,
   };
 };
 
