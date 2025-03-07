@@ -3,6 +3,7 @@ import urlParse from 'url-parse';
 import eventService from '../services/eventService';
 import ordering, { Ordering } from '../../utils/entities/ordering';
 import { Event } from '../types';
+import { EVENTS_PAGE_SIZE } from '../../constants';
 
 interface EventState {
   count: number;
@@ -15,7 +16,7 @@ interface EventState {
 
 const initialState: EventState = {
   count: 0,
-  next: { limit: 10 },
+  next: { limit: EVENTS_PAGE_SIZE },
   events: {},
   filterByContractZone: null,
   ordering,
