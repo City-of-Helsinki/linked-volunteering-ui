@@ -9,3 +9,5 @@ export const SUPPORT_LANGUAGES = {
 export const DEFAULT_LANGUAGE = 'fi';
 
 export const REPORTS_START_YEAR = 2020;
+
+export const EVENTS_PAGE_SIZE = 10;
