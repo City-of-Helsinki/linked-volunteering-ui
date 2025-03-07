@@ -7,7 +7,7 @@ import { EVENTS_PAGE_SIZE } from '../../constants';
 
 interface EventState {
   count: number;
-  next: { limit: number };
+  next: { limit?: number; offset?: number };
   events: Record<string, Event>;
   filterByContractZone: number | null;
   ordering: Ordering;
@@ -121,18 +121,19 @@ const eventSlice = createSlice({
     getEventsFulfilled: (
       state,
       action: PayloadAction<{
-        data: { next: { limit: number }; count: number };
+        data: { next: { limit?: number; offset?: number }; count: number };
         events: Record<string, Event>;
       }>,
     ) => {
       const next = urlParse(JSON.stringify(action.payload.data.next), true).query;
       state.count = action.payload.data.count;
       state.next = {
-        limit: parseInt(next.limit as string, 10) || 10,
+        ...(next.limit && { limit: parseInt(next.limit, 10) }),
+        ...(next.offset && { offset: parseInt(next.offset, 10) }),
       };
       state.ordering = ordering;
 
-      state.events = action.payload.events;
+      state.events = { ...state.events, ...action.payload.events };
     },
     submitEventFulfilled: (state, action: PayloadAction<Event>) => {
       state.submittedEvent = action.payload;
