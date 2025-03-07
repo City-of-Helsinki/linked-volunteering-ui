@@ -7,6 +7,10 @@ import * as useAuthMock from '../../../../hooks/useAuth';
 import renderWithProviders from '../../../../test-utils/renderWithProviders';
 import { mockUserCreator } from '../../../../test-utils/mocks/user';
 import ManageEventsPage from '../ManageEventsPage';
+import { RootState } from 'store/configureStore';
+import eventService from 'store/services/eventService';
+import { Event } from '../../../../store/types';
+import { Map } from 'immutable';
 
 const mockUser = mockUserCreator();
 
@@ -35,9 +39,7 @@ const initialState = {
   },
   event: {
     count: 1,
-    next: {
-      limit: 10,
-    },
+    next: {},
     events: {
       '1': {
         id: 1,
@@ -76,7 +78,7 @@ const initialState = {
   },
 };
 
-const renderComponent = () => {
+const renderComponent = (preloadedState?: Partial<RootState>) => {
   jest.spyOn(useAuthMock, 'default').mockImplementation(() => ({
     authenticated: true,
     user: mockUser,
@@ -89,7 +91,7 @@ const renderComponent = () => {
     <BrowserRouter>
       <ManageEventsPage />
     </BrowserRouter>,
-    { preloadedState: initialState },
+    { preloadedState: preloadedState || initialState },
   );
 };
 
@@ -98,6 +100,97 @@ describe('<ManageEventsPage />', () => {
     renderComponent();
 
     await waitFor(() => expect(screen.getByRole('table').children[1].children).toHaveLength(1));
+    await waitFor(() => expect(screen.queryByTestId('next-page')).not.toBeInTheDocument());
+  });
+
+  it('should show the next page button when there are more events', async () => {
+    const state = {
+      ...initialState,
+      event: {
+        ...initialState.event,
+        count: 2,
+        next: {
+          limit: 1,
+          offset: 1,
+        },
+      },
+    };
+
+    renderComponent(state);
+
+    await waitFor(() => expect(screen.getByTestId('next-page')).toBeInTheDocument());
+  });
+
+  it('should fetch next page of events', async () => {
+    const event = {
+      id: 2,
+      state: 'waiting_for_approval',
+      created_at: '2024-12-04T06:17:08.196Z',
+      modified_at: '2024-12-04T06:17:08.196Z',
+      name: 'Puistotalkoot',
+      description: 'Puistotalkoot',
+      start_time: '2025-01-15T07:00:00.000Z',
+      end_time: '2025-02-16T07:00:00.000Z',
+      location: {
+        type: 'Point',
+        coordinates: [24.93931620883691, 60.18799324237526],
+      },
+      organizer_first_name: 'Etunimi',
+      organizer_last_name: 'Sukunimi',
+      organizer_email: 'sahko@posti.fi',
+      organizer_phone: '1234567',
+      estimated_attendee_count: 1,
+      targets: '1',
+      maintenance_location: 'Tivolikuja 1',
+      additional_information: '1',
+      small_trash_bag_count: 1,
+      large_trash_bag_count: 1,
+      trash_picker_count: 1,
+      equipment_information: '',
+      contract_zone: 1,
+    };
+
+    jest.spyOn(eventService, 'getEvents').mockResolvedValue({
+      data: {
+        count: 2,
+        next: null,
+        previous: null,
+        results: [event],
+      },
+      events: Map<string, Event>({
+        '2': {
+          ...event,
+          start_time: new Date(`${event.start_time}`),
+          end_time: new Date(`${event.end_time}`),
+          created_at: new Date(`${event.created_at}`),
+          modified_at: new Date(`${event.modified_at}`),
+        },
+      }),
+    });
+
+    const state = {
+      ...initialState,
+      event: {
+        ...initialState.event,
+        count: 2,
+        next: {
+          limit: 1,
+          offset: 1,
+        },
+      },
+    };
+
+    renderComponent(state);
+
+    const nextPageButton = await screen.findByTestId('next-page');
+
+    const user = userEvent.setup();
+
+    await user.click(nextPageButton);
+
+    await waitFor(() => expect(screen.getByRole('table').children[1].children).toHaveLength(2));
+
+    await waitFor(() => expect(screen.queryByTestId('next-page')).not.toBeInTheDocument());
   });
 
   it('should remove event', async () => {

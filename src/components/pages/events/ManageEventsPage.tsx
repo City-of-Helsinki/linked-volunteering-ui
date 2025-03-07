@@ -290,6 +290,7 @@ const ManageEventsPage = () => {
           <ButtonControls>
             {Object.keys(nextParams).length > 0 && (
               <NextPageButton
+                data-testid="next-page"
                 translate="site.page.manage_events.next_events"
                 color="info"
                 onClick={() => handleNextEvents()}
