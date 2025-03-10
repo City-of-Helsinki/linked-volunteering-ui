@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.4](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.4.3...linked-volunteering-ui-v0.4.4) (2025-03-10)
+
+
+### Bug Fixes
+
+* Fix next page button ([ca8860f](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/ca8860fb47424c0d20199f8ee6a7afec8ff4a6e1))
+
 ## [0.4.3](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.4.2...linked-volunteering-ui-v0.4.3) (2025-02-26)
 
 
