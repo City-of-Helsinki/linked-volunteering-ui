@@ -216,16 +216,14 @@ const ManageEventsPage = () => {
                       >
                         <FormattedMessage id={`entities.event.state.${event.state}`} />
                       </WithIcons>
-                      {isOfficial && (
-                        <StyledTd>
-                          <LocalizedLink
-                            id={`edit_event_${event.id}`}
-                            to={`admin/event/modify/${event.id}`}
-                            prepend="pencil"
-                            translate="site.page.manage_events.table.action.edit"
-                          />
-                        </StyledTd>
-                      )}
+                      <StyledTd>
+                        <LocalizedLink
+                          id={`edit_event_${event.id}`}
+                          to={`admin/event/modify/${event.id}`}
+                          prepend="pencil"
+                          translate="site.page.manage_events.table.action.edit"
+                        />
+                      </StyledTd>
                       <StyledTd>
                         <Button
                           id={`extend_event_${event.id}`}
