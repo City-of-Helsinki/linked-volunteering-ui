@@ -1,13 +1,14 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
-import axios from 'axios';
 import { mockUserCreator } from '../../test-utils/mocks/user';
 import { createStore } from '../../store/configureStore';
 import * as useAuthMock from '../../hooks/useAuth';
 import renderWithProviders from '../../test-utils/renderWithProviders';
 import App from '../App';
 
+// Setup fetch mock
+global.fetch = jest.fn();
 const mockUser = mockUserCreator();
 
 const renderComponent = () => {
@@ -31,14 +32,17 @@ const renderComponent = () => {
 
 describe('<App />', () => {
   it('renders correctly', async () => {
-    jest.spyOn(axios, 'get').mockResolvedValue({
-      data: {
-        uuid: uuid(),
-        first_name: 'Gaylord',
-        last_name: 'Lohiposki',
-        is_official: true,
-        is_contractor: false,
-      },
+    const mockResponse = {
+      uuid: uuid(),
+      first_name: 'Gaylord',
+      last_name: 'Lohiposki',
+      is_official: true,
+      is_contractor: false,
+    };
+
+    (global.fetch as jest.Mock).mockResolvedValue({
+      ok: true,
+      json: async () => mockResponse,
     });
 
     renderComponent();
