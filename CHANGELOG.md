@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.5](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.4.4...linked-volunteering-ui-v0.4.5) (2025-03-24)
+
+
+### Bug Fixes
+
+* Manage link for contactors ([#222](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/222)) PS-185 ([57de5aa](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/57de5aaaa7140605ea39476026201c750e817d98))
+
 ## [0.4.4](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.4.3...linked-volunteering-ui-v0.4.4) (2025-03-10)
 
 
