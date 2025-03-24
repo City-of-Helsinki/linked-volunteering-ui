@@ -1,4 +1,4 @@
-const { REACT_APP_API_URL } = process.env;
+import { REACT_APP_API_URL } from '../../utils/environment';
 
 const getCurrentUserData = async (apiAccessToken: string | undefined) => {
   const response = await fetch(`${REACT_APP_API_URL}/v1/user/me/`, {

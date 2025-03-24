@@ -1,6 +1,7 @@
 import * as Sentry from '@sentry/browser';
 
-const { REACT_APP_API_URL } = process.env;
+import { REACT_APP_API_URL } from './environment';
+
 const BASE_URL = `${REACT_APP_API_URL || '/'}/v1/`;
 const TIMEOUT = 15000;
 
