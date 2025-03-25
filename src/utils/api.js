@@ -1,39 +1,56 @@
-import axios from 'axios';
 import * as Sentry from '@sentry/browser';
 
-const { REACT_APP_API_URL } = process.env;
+import { REACT_APP_API_URL } from './environment';
 
-const instance = axios.create({
-  baseURL: `${REACT_APP_API_URL || '/'}/v1/`,
-  timeout: 15000,
-});
+const BASE_URL = `${REACT_APP_API_URL || '/'}/v1/`;
+const TIMEOUT = 15000;
 
-// Capture API errors into Sentry to make debugging easier.
-const errorInterceptionArguments = [
-  (config) => config,
-  (error) => {
+const fetchWithTimeout = async (resource, options = {}) => {
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), TIMEOUT);
+
+  try {
+    const response = await fetch(resource, { ...options, signal: controller.signal });
+    clearTimeout(id);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  } catch (error) {
     Sentry.captureException(error);
-
-    return Promise.reject(error);
-  },
-];
-instance.interceptors.request.use(...errorInterceptionArguments);
-instance.interceptors.response.use(...errorInterceptionArguments);
+    throw error;
+  }
+};
 
 const securityHeader = (apiAccessToken) =>
-  apiAccessToken ? { Authorization: `Bearer ${apiAccessToken}` } : null;
+  apiAccessToken ? { Authorization: `Bearer ${apiAccessToken}` } : {};
 
-export const get = (endPoint, params = {}, apiAccessToken) =>
-  instance.get(endPoint, { params, headers: securityHeader(apiAccessToken) }).then((r) => r.data);
+const createUrl = (endpoint, params = {}) => {
+  const url = new URL(`${BASE_URL}${endpoint}`);
+  Object.entries(params).forEach(([key, value]) => url.searchParams.append(key, value));
+  return url;
+};
 
-export const post = (endPoint, data = {}, apiAccessToken) =>
-  instance.post(endPoint, data, { headers: securityHeader(apiAccessToken) }).then((r) => r.data);
+const request = async (method, endpoint, { params = {}, data = null, apiAccessToken } = {}) => {
+  const options = {
+    method,
+    headers: {
+      'Content-Type': 'application/json',
+      ...securityHeader(apiAccessToken),
+    },
+    ...(data && { body: JSON.stringify(data) }),
+  };
 
-export const put = (endPoint, data = {}, apiAccessToken) =>
-  instance.put(endPoint, data, { headers: securityHeader(apiAccessToken) }).then((r) => r.data);
+  return fetchWithTimeout(createUrl(endpoint, params), options);
+};
 
-export const patch = (endPoint, data = {}, apiAccessToken) =>
-  instance.patch(endPoint, data, { headers: securityHeader(apiAccessToken) }).then((r) => r.data);
-
-export const remove = (endPoint, apiAccessToken) =>
-  instance.delete(endPoint, { headers: securityHeader(apiAccessToken) }).then((r) => r.data);
+export const get = (endpoint, params, apiAccessToken) =>
+  request('GET', endpoint, { params, apiAccessToken });
+export const post = (endpoint, data, apiAccessToken) =>
+  request('POST', endpoint, { data, apiAccessToken });
+export const put = (endpoint, data, apiAccessToken) =>
+  request('PUT', endpoint, { data, apiAccessToken });
+export const patch = (endpoint, data, apiAccessToken) =>
+  request('PATCH', endpoint, { data, apiAccessToken });
+export const remove = (endpoint, apiAccessToken) => request('DELETE', endpoint, { apiAccessToken });

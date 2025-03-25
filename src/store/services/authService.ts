@@ -1,13 +1,18 @@
-import axios from 'axios';
-
-const { REACT_APP_API_URL } = process.env;
+import { REACT_APP_API_URL } from '../../utils/environment';
 
 const getCurrentUserData = async (apiAccessToken: string | undefined) => {
-  const userData = await axios.get(`${REACT_APP_API_URL}/v1/user/me/`, {
-    headers: { Authorization: `Bearer ${apiAccessToken}` },
+  const response = await fetch(`${REACT_APP_API_URL}/v1/user/me/`, {
+    headers: {
+      Authorization: `Bearer ${apiAccessToken}`,
+      'Content-Type': 'application/json',
+    },
   });
 
-  return userData.data;
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  return response.json();
 };
 
 export default {
