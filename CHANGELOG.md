@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.4.6](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.4.5...linked-volunteering-ui-v0.4.6) (2025-03-25)
+
+
+### Dependencies
+
+* Bump @babel/helpers from 7.24.5 to 7.26.10 ([d19c36b](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/d19c36b705ddafdd36874920291a5f0a047ded4c))
+
+
+### Miscellaneous Chores
+
+* Remove axios ([9b37756](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/9b37756e25e0032ca05cecdff246f2756ec9af58))
+
 ## [0.4.5](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.4.4...linked-volunteering-ui-v0.4.5) (2025-03-24)
 
 
