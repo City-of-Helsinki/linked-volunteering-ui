@@ -9,7 +9,7 @@ const Pagination = styled.ul`
   margin-top: 10px;
 `;
 
-const PaginationItem = styled.li`
+const PaginationItem = styled.li<{ selected?: boolean }>`
   display: inline-flex;
 
   a {
@@ -47,8 +47,14 @@ const PaginationItem = styled.li`
   }}
 `;
 
-export default ({ activePage, onPageClick, pageCount }) => {
-  const handlePageClick = (page) => (event) => {
+type PaginationProps = {
+  activePage: number;
+  onPageClick: (page: number) => void;
+  pageCount: number;
+};
+
+const PaginationComponent: React.FC<PaginationProps> = ({ activePage, onPageClick, pageCount }) => {
+  const handlePageClick = (page: number) => (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
     onPageClick(page);
   };
@@ -91,3 +97,5 @@ export default ({ activePage, onPageClick, pageCount }) => {
     </Pagination>
   );
 };
+
+export default PaginationComponent;

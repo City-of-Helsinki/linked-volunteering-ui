@@ -1,10 +1,11 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { Mock } from 'vitest';
 import Login from '../../Login';
 import renderWithProviders from '../../../test-utils/renderWithProviders';
 import useAuth from '../../../hooks/useAuth';
 
-jest.mock('../../../hooks/useAuth');
+vi.mock('../../../hooks/useAuth');
 
 const renderComponent = () => {
   return renderWithProviders(
@@ -16,9 +17,9 @@ const renderComponent = () => {
 
 describe('<Login />', () => {
   it('calls OIDC login', async () => {
-    const loginMock = jest.fn();
+    const loginMock = vi.fn();
 
-    (useAuth as jest.Mock).mockReturnValue({ login: loginMock });
+    (useAuth as Mock).mockReturnValue({ login: loginMock });
 
     renderComponent();
 

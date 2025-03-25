@@ -1,9 +1,9 @@
 import classNames from 'classnames';
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { Label } from 'reactstrap';
 import styled, { css } from 'styled-components';
 
-const StyledLabel = styled(Label)`
+const StyledLabel = styled(Label)<{ required: boolean; className: string }>`
   font-weight: 600;
 
   ${(props) =>
@@ -26,12 +26,18 @@ const StyledLabel = styled(Label)`
   }
 `;
 
-export default (props) => {
-  const { children, htmlFor, required, srOnly = false } = props;
+type LabelProps = {
+  htmlFor: string;
+  required?: boolean;
+  srOnly?: boolean;
+} & PropsWithChildren;
 
+const LabelComponent: React.FC<LabelProps> = ({ children, htmlFor, required, srOnly = false }) => {
   return (
     <StyledLabel className={classNames(srOnly && 'srOnly')} htmlFor={htmlFor} required={required}>
       {children}
     </StyledLabel>
   );
 };
+
+export default LabelComponent;

@@ -24,7 +24,7 @@ const useAuth = () => {
       return undefined;
     }
 
-    return tokens ? tokens[`${process.env.REACT_APP_OIDC_API_SCOPE}`] : undefined;
+    return tokens ? tokens[`${import.meta.env.REACT_APP_OIDC_API_SCOPE}`] : undefined;
   }, [error, isRenewing, tokens]);
 
   useSignalListener(signalListener);

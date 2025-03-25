@@ -1,2 +1,47 @@
-@import '../../node_modules/open-city-design/src/scss/helsinki/colors';
-@import '../../node_modules/open-city-design/src/scss/helsinki/fonts';
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/_variables';
+
+@import '@open-city-design/src/scss/helsinki/variables';
+
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/root';
+@import 'bootstrap/scss/reboot';
+@import 'bootstrap/scss/type';
+@import 'bootstrap/scss/grid';
+@import 'bootstrap/scss/forms';
+@import 'bootstrap/scss/buttons';
+@import 'bootstrap/scss/dropdown';
+@import 'bootstrap/scss/input-group';
+@import 'bootstrap/scss/custom-forms';
+@import 'bootstrap/scss/close';
+@import 'bootstrap/scss/modal';
+@import 'bootstrap/scss/nav';
+@import 'bootstrap/scss/navbar';
+@import 'bootstrap/scss/badge';
+@import 'bootstrap/scss/alert';
+@import 'bootstrap/scss/utilities';
+@import 'bootstrap/scss/print';
+
+@import '@open-city-design/src/scss/helsinki/mixins';
+@import '@open-city-design/src/scss/helsinki/colors';
+@import '@open-city-design/src/scss/helsinki/fonts';
+
+// Import city specific style overrides.
+@import '@open-city-design/src/scss/helsinki/custom-styles';
+
+.custom-select {
+  background-color: transparent;
+}
+
+.btn-link.btn-link {
+  color: currentColor;
+  &:active,
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}

@@ -84,8 +84,8 @@ const DateRange: React.FC<Props> = ({
   };
   const intl = useIntl();
   const { formatMessage, locale } = intl;
-  const selectedStartTime = values.start_time;
-  const selectedEndTime = values.end_time;
+  const selectedStartTime = values.start_time ? new Date(values.start_time) : undefined;
+  const selectedEndTime = values.end_time ? new Date(values.end_time) : undefined;
   const dateFormat = getDateFormat(locale);
   const timeFormat = getTimeFormat(locale);
 

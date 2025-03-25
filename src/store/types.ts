@@ -8,10 +8,10 @@ export interface Event {
   state: string;
   name: string;
   description: string;
-  start_time?: Date;
-  created_at?: Date;
-  end_time?: Date;
-  modified_at?: Date;
+  start_time: string;
+  created_at?: string;
+  end_time: string;
+  modified_at?: string;
   location?: {
     type: string;
     coordinates: number[];

@@ -31,10 +31,12 @@ export const getEvents = createAsyncThunk(
   ) => {
     try {
       const response = await eventService.getEvents(params, apiAccessToken);
+
       const events = response.events.reduce((acc: Record<string, Event>, event: Event) => {
         acc[event.id] = event;
         return acc;
       }, {});
+
       return { data: response.data, events };
     } catch (error) {
       return rejectWithValue(error);
@@ -180,6 +182,7 @@ const eventSlice = createSlice({
     eventByIdSelector: (state, id) => state.events[id],
     nextParamsSelector: (state) => state.next,
     orderingSelector: (state) => state.ordering,
+    submittedEventSelector: (state) => state.submittedEvent,
   },
 });
 
@@ -193,7 +196,12 @@ export const {
   setOrderBy,
 } = eventSlice.actions;
 
-export const { eventsSelector, eventByIdSelector, nextParamsSelector, orderingSelector } =
-  eventSlice.selectors;
+export const {
+  eventsSelector,
+  eventByIdSelector,
+  nextParamsSelector,
+  orderingSelector,
+  submittedEventSelector,
+} = eventSlice.selectors;
 
 export default eventSlice.reducer;

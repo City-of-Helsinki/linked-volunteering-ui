@@ -1,6 +1,4 @@
-/* eslint-disable */
-const theme = require('./bootstrap.scss');
-/* eslint-enable */
+import * as bootstrapTheme from './bootstrap.module.scss';
 
 const breakpoint = {
   sm: 576,
@@ -9,13 +7,12 @@ const breakpoint = {
   xl: 1200,
 };
 
-const maxWidth = Object.entries(breakpoint).reduce((acc, [size, pixels]) => ({
-  ...acc,
+const maxWidth = Object.entries(breakpoint).map(([size, pixels]) => ({
   [size]: `${pixels / 16}em`,
 }));
 
 export default {
-  ...theme.default,
+  ...bootstrapTheme,
   breakpoint,
   maxWidth,
   colors: {

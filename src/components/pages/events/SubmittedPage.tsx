@@ -4,6 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { FormattedMessage } from 'react-intl';
+import { Event } from '../../../store/types';
 import PageMeta from '../PageMeta';
 import Button from '../../common/Button';
 import LocalizedLink from '../../common/LocalizedLink';
@@ -75,30 +76,18 @@ const BackgroundImage = styled.img.attrs({
   `}
 `;
 
-interface Location {
-  coordinates: [number, number];
-}
-
-interface Event {
-  description: string;
-  end_time: string;
-  location: Location;
-  maintenance_location: string;
-  name: string;
-  organizer_email: string;
-  organizer_first_name: string;
-  organizer_last_name: string;
-  start_time: string;
-}
-
 interface Props {
-  submittedEvent: Event;
+  submittedEvent: Event | null;
 }
 
 const SubmittedPage: React.FC<Props> = ({ submittedEvent }) => {
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  if (!submittedEvent) {
+    return null;
+  }
 
   const downloadIcsFile = () => {
     const event: EventAttributes = {
@@ -107,10 +96,12 @@ const SubmittedPage: React.FC<Props> = ({ submittedEvent }) => {
       start: getDateArray(submittedEvent.start_time),
       end: getDateArray(submittedEvent.end_time),
       location: submittedEvent.maintenance_location,
-      geo: {
-        lat: submittedEvent.location.coordinates[1],
-        lon: submittedEvent.location.coordinates[0],
-      },
+      ...(submittedEvent.location && {
+        geo: {
+          lat: submittedEvent.location.coordinates[1],
+          lon: submittedEvent.location.coordinates[0],
+        },
+      }),
       organizer: {
         name: `${submittedEvent.organizer_first_name} ${submittedEvent.organizer_last_name}`,
         email: submittedEvent.organizer_email,

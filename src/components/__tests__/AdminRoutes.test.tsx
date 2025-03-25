@@ -10,12 +10,13 @@ import AdminRoutes from '../AdminRoutes';
 const mockUser = mockUserCreator();
 
 const renderComponent = (initialEntries = ['/'], preloadedState = {}) => {
-  jest.spyOn(useAuthMock, 'default').mockImplementation(() => ({
+  vi.spyOn(useAuthMock, 'default').mockImplementation(() => ({
     authenticated: true,
     user: mockUser,
     getApiToken: () => 'mockApiToken',
-    login: jest.fn(),
-    logout: jest.fn(),
+    login: vi.fn(),
+    logout: vi.fn(),
+    loggingOut: false,
   }));
 
   return renderWithProviders(

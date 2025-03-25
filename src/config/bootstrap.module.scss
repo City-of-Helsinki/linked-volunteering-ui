@@ -1,0 +1,27 @@
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/_variables';
+
+@import '@open-city-design/src/scss/helsinki/variables';
+
+$theme-colors: (
+  'primary': $hel-black,
+  'secondary': $hel-coat,
+  'success': $green,
+  'info': $cyan,
+  'warning': $yellow,
+  'danger': $red,
+  'light': $hel-light,
+  'dark': $hel-dark,
+);
+
+:export {
+  helBlack: $hel-black;
+  helGray: $hel-gray;
+  helCopper: $hel-copper;
+  helWhite: $hel-white;
+  themecolors: {
+    danger: $red;
+  }
+  h2FontSize: var(--hds-text-xxl);
+  h4FontSize: var(--hds-text-xl);
+}
