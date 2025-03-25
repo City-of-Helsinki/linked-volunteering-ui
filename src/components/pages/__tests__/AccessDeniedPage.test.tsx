@@ -12,12 +12,13 @@ const mockUser = mockUserCreator();
 const renderComponent = () => {
   const store = createStore();
 
-  jest.spyOn(useAuthMock, 'default').mockImplementation(() => ({
+  vi.spyOn(useAuthMock, 'default').mockImplementation(() => ({
     authenticated: true,
     user: mockUser,
     getApiToken: () => 'mockApiToken',
-    login: jest.fn(),
-    logout: jest.fn(),
+    login: vi.fn(),
+    logout: vi.fn(),
+    loggingOut: false,
   }));
 
   return renderWithProviders(

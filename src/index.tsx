@@ -1,6 +1,8 @@
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 import './polyfills';
+import 'bootstrap/dist/css/bootstrap.css';
+import './config/theme.scss';
 
 import { createInstance, MatomoProvider } from '@datapunt/matomo-tracker-react';
 import * as Sentry from '@sentry/react';
@@ -22,19 +24,19 @@ import App from './components/App';
 import CallbackPage from './components/pages/CallBackPage';
 import Login from './components/Login';
 
-if (process.env.REACT_APP_SENTRY_ENVIRONMENT) {
+if (import.meta.env.REACT_APP_SENTRY_ENVIRONMENT) {
   Sentry.init({
-    dsn: process.env.REACT_APP_SENTRY_DSN,
-    environment: process.env.REACT_APP_SENTRY_ENVIRONMENT,
+    dsn: import.meta.env.REACT_APP_SENTRY_DSN,
+    environment: import.meta.env.REACT_APP_SENTRY_ENVIRONMENT,
     integrations: [new Integrations.BrowserTracing()],
-    release: `${process.env.REACT_APP_APPLICATION_NAME}@${process.env.REACT_APP_VERSION}`,
+    release: `${import.meta.env.REACT_APP_APPLICATION_NAME}@${import.meta.env.REACT_APP_VERSION}`,
   });
 }
 
 const instance = createInstance({
-  disabled: process.env.REACT_APP_MATOMO_ENABLED !== 'true',
-  urlBase: process.env.REACT_APP_MATOMO_URL_BASE || '',
-  siteId: Number(process.env.REACT_APP_MATOMO_SITE_ID),
+  disabled: import.meta.env.REACT_APP_MATOMO_ENABLED !== 'true',
+  urlBase: import.meta.env.REACT_APP_MATOMO_URL_BASE || '',
+  siteId: Number(import.meta.env.REACT_APP_MATOMO_SITE_ID),
 });
 
 const store = createStore();

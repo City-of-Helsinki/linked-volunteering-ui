@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
-import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/vitest';
 
-window.scrollTo = jest.fn();
+window.scrollTo = vi.fn();
 
 const originalError = console.error.bind(console.error);
 

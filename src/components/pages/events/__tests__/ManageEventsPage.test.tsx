@@ -3,14 +3,14 @@ import { BrowserRouter } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import { screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Map } from 'immutable';
+import { RootState } from '../../../../store/configureStore';
+import eventService from '../../../../store/services/eventService';
 import * as useAuthMock from '../../../../hooks/useAuth';
 import renderWithProviders from '../../../../test-utils/renderWithProviders';
 import { mockUserCreator } from '../../../../test-utils/mocks/user';
 import ManageEventsPage from '../ManageEventsPage';
-import { RootState } from 'store/configureStore';
-import eventService from 'store/services/eventService';
 import { Event } from '../../../../store/types';
-import { Map } from 'immutable';
 
 const mockUser = mockUserCreator();
 
@@ -44,12 +44,12 @@ const initialState = {
       '1': {
         id: 1,
         state: 'waiting_for_approval',
-        created_at: new Date('2024-12-04T06:17:08.196Z'),
-        modified_at: new Date('2024-12-04T06:17:08.196Z'),
+        created_at: '2024-12-04T06:17:08.196Z',
+        modified_at: '2024-12-04T06:17:08.196Z',
         name: 'Puistotalkoot',
         description: 'Puistotalkoot',
-        start_time: new Date('2025-01-15T07:00:00.000Z'),
-        end_time: new Date('2025-02-16T07:00:00.000Z'),
+        start_time: '2025-01-15T07:00:00.000Z',
+        end_time: '2025-02-16T07:00:00.000Z',
         location: {
           type: 'Point',
           coordinates: [24.93931620883691, 60.18799324237526],
@@ -79,12 +79,13 @@ const initialState = {
 };
 
 const renderComponent = (preloadedState?: Partial<RootState>) => {
-  jest.spyOn(useAuthMock, 'default').mockImplementation(() => ({
+  vi.spyOn(useAuthMock, 'default').mockImplementation(() => ({
     authenticated: true,
     user: mockUser,
     getApiToken: () => 'mockApiToken',
-    login: jest.fn(),
-    logout: jest.fn(),
+    login: vi.fn(),
+    logout: vi.fn(),
+    loggingOut: false,
   }));
 
   return renderWithProviders(
@@ -150,7 +151,7 @@ describe('<ManageEventsPage />', () => {
       contract_zone: 1,
     };
 
-    jest.spyOn(eventService, 'getEvents').mockResolvedValue({
+    vi.spyOn(eventService, 'getEvents').mockResolvedValue({
       data: {
         count: 2,
         next: null,
@@ -158,13 +159,7 @@ describe('<ManageEventsPage />', () => {
         results: [event],
       },
       events: Map<string, Event>({
-        '2': {
-          ...event,
-          start_time: new Date(`${event.start_time}`),
-          end_time: new Date(`${event.end_time}`),
-          created_at: new Date(`${event.created_at}`),
-          modified_at: new Date(`${event.modified_at}`),
-        },
+        '2': event,
       }),
     });
 

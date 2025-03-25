@@ -1,13 +1,13 @@
 import * as Sentry from '@sentry/browser';
 import { get, post, put, patch, remove } from '../api';
 
-jest.mock('@sentry/browser');
+vi.mock('@sentry/browser');
 
-jest.mock('../environment', () => ({
+vi.mock('../environment', () => ({
   REACT_APP_API_URL: 'https://test-api.com',
 }));
 
-global.fetch = jest.fn();
+global.fetch = vi.fn();
 
 describe('API utility functions', () => {
   const mockResponse = (status, data) =>
@@ -18,7 +18,7 @@ describe('API utility functions', () => {
     });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   test('get() makes a GET request and returns data', async () => {

@@ -1,18 +1,19 @@
+import { Mock } from 'vitest';
 import authService from '../authService';
 
 // Setup environment variable
 // Mock environment variables before importing the service
-jest.mock('../../../utils/environment', () => ({
+vi.mock('../../../utils/environment', () => ({
   REACT_APP_API_URL: 'https://test-api.com',
 }));
 
 describe('authService', () => {
   beforeEach(() => {
-    global.fetch = jest.fn();
+    global.fetch = vi.fn();
   });
 
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
   });
 
   describe('getCurrentUserData', () => {
@@ -23,7 +24,7 @@ describe('authService', () => {
         email: 'test@example.com',
       };
 
-      (global.fetch as jest.Mock).mockResolvedValueOnce({
+      (global.fetch as Mock).mockResolvedValueOnce({
         ok: true,
         json: async () => mockUser,
       });
@@ -41,7 +42,7 @@ describe('authService', () => {
     });
 
     it('should throw error when response is not ok', async () => {
-      (global.fetch as jest.Mock).mockResolvedValueOnce({
+      (global.fetch as Mock).mockResolvedValueOnce({
         ok: false,
         status: 401,
       });
@@ -53,7 +54,7 @@ describe('authService', () => {
     });
 
     it('should handle network errors', async () => {
-      (global.fetch as jest.Mock).mockRejectedValueOnce(new Error('Network error'));
+      (global.fetch as Mock).mockRejectedValueOnce(new Error('Network error'));
 
       const token = 'test-token';
       await expect(authService.getCurrentUserData(token)).rejects.toThrow('Network error');
@@ -65,7 +66,7 @@ describe('authService', () => {
         username: 'testuser',
       };
 
-      (global.fetch as jest.Mock).mockResolvedValueOnce({
+      (global.fetch as Mock).mockResolvedValueOnce({
         ok: true,
         json: async () => mockUser,
       });

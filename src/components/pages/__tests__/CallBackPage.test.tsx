@@ -6,9 +6,9 @@ import * as routerMock from 'react-router';
 import { LoginProvider, LoginProviderProps } from 'hds-react';
 import CallBackPage from '../CallBackPage';
 
-jest.mock('hds-react', () => {
+vi.mock('hds-react', async () => {
   // Get the original module to keep other functionalities intact
-  const actualHdsReact = jest.requireActual('hds-react');
+  const actualHdsReact = await vi.importActual('hds-react');
 
   return {
     ...actualHdsReact, // Spread the original implementation
@@ -29,7 +29,7 @@ jest.mock('hds-react', () => {
         <div>oidc.authenticating</div>
       </div>
     ),
-    getApiTokensFromStorage: jest.fn(() => ({ foo: 'bar' })),
+    getApiTokensFromStorage: vi.fn(() => ({ foo: 'bar' })),
   };
 });
 
@@ -49,13 +49,13 @@ const renderComponent = () => {
 
 describe('<CallbackPage />', () => {
   afterEach(() => {
-    jest.restoreAllMocks();
+    vi.restoreAllMocks();
   });
 
   it('handles successful login', async () => {
     renderComponent();
 
-    const navigateSpy = jest.spyOn(routerMock, 'useNavigate');
+    const navigateSpy = vi.spyOn(routerMock, 'useNavigate');
 
     // Simulate the success callback
     const successButton = screen.getByText('Trigger Success');
@@ -72,7 +72,7 @@ describe('<CallbackPage />', () => {
   it('handles error during login', async () => {
     renderComponent();
 
-    const navigateSpy = jest.spyOn(routerMock, 'useNavigate');
+    const navigateSpy = vi.spyOn(routerMock, 'useNavigate');
 
     // Simulate the error callback
     const errorButton = screen.getByText('Trigger Error');

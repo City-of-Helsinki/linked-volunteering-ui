@@ -2,7 +2,7 @@ import L, { LatLngExpression, LatLngBoundsExpression, LeafletMouseEvent } from '
 import React, { useEffect, useState } from 'react';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import styled from 'styled-components';
-import 'leaflet/dist/leaflet.css';
+
 import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
 import iconUrl from 'leaflet/dist/images/marker-icon.png';
 import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
@@ -12,15 +12,15 @@ import { useAppDispatch } from '../../../store/hooks';
 import { getGeoData } from '../../../store/reducers/geo';
 import useAuth from '../../../hooks/useAuth';
 
-// @ts-ignore
-delete L.Icon.Default.prototype.getIconUrl;
+import 'leaflet/dist/leaflet.css';
 
-L.Icon.Default.mergeOptions({
+L.Marker.prototype.options.icon = new L.Icon({
   iconRetinaUrl,
   iconUrl,
   shadowUrl,
+  iconSize: [25, 41],
+  iconAnchor: [13, 41],
 });
-/* eslint-enable */
 
 const style = {
   width: '100%',

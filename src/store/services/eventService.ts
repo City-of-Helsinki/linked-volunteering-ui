@@ -4,25 +4,9 @@ import { Event } from '../types';
 
 const publishedState = 'approved';
 
-const constructEvent = (event: Event) => {
-  const {
-    start_time: startTime,
-    end_time: endTime,
-    created_at: createdAt,
-    modified_at: modifiedAt,
-  } = event;
-  return {
-    ...event,
-    start_time: new Date(`${startTime}`),
-    end_time: new Date(`${endTime}`),
-    created_at: new Date(`${createdAt}`),
-    modified_at: new Date(`${modifiedAt}`),
-  };
-};
-
 export default {
   create: async (event: Event, apiAccessToken: string | undefined) => {
-    const e = await post(
+    const newEvent = await post(
       'event/',
       {
         ...event,
@@ -33,21 +17,21 @@ export default {
       },
       apiAccessToken,
     );
-    return constructEvent(e);
+    return newEvent;
   },
   modify: async (event: Event, apiAccessToken: string | undefined) => {
-    const e = await put(`event/${event.id}/`, event, apiAccessToken);
-    return constructEvent(e);
+    const modifiedEvent = await put(`event/${event.id}/`, event, apiAccessToken);
+    return modifiedEvent;
   },
   publish: async (event: Event, apiAccessToken: string | undefined) => {
-    const e = await patch(
+    const publishedEvent = await patch(
       `event/${event.id}/`,
       {
         state: publishedState,
       },
       apiAccessToken,
     );
-    return constructEvent(e);
+    return publishedEvent;
   },
   remove: async (event: Event, apiAccessToken: string | undefined) => {
     await remove(`event/${event.id}/`, apiAccessToken);
@@ -57,9 +41,7 @@ export default {
     const data = await get('event/', params, apiAccessToken);
     return {
       data,
-      events: Map<string, Event>(
-        data.results.map((event: Event) => [event.id, constructEvent(event)]),
-      ),
+      events: Map<string, Event>(data.results.map((event: Event) => [event.id, event])),
     };
   },
 };

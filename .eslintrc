@@ -2,14 +2,13 @@
   "extends": [
     "react-app",
     "airbnb",
-    "plugin:jest/recommended",
     "plugin:prettier/recommended",
+    "plugin:vitest-globals/recommended",
     "plugin:sonarjs/recommended-legacy"
   ],
   "parser": "@typescript-eslint/parser",
   "plugins": [
     "react",
-    "jest",
     "prettier",
     "sonarjs"
   ],
@@ -17,6 +16,7 @@
     "browser": true,
     "node": true,
     "es6": true, // Add ES6 environment for new ES6 globals
+    "vitest-globals/env": true
   },
   "settings": {
     "import/extensions": [
@@ -106,6 +106,6 @@
         "props": false
       }
     ],
-    "jest/expect-expect": 0
+    "sonarjs/assertions-in-tests": 0
   }
 }

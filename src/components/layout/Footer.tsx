@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { injectIntl, FormattedMessage } from 'react-intl';
+import { injectIntl, FormattedMessage, useIntl } from 'react-intl';
 import LocalizedLink from '../common/LocalizedLink';
 import responsive from '../../utils/responsive';
 
@@ -94,7 +94,9 @@ const StyledHelsinkiLogo = styled(HelsinkiLogo)`
   width: 6rem;
 `;
 
-function Footer({ intl: { formatMessage, locale } }) {
+const Footer: React.FC = () => {
+  const { formatMessage, locale } = useIntl();
+
   return (
     <Wrapper>
       <NavigationLinks>
@@ -139,6 +141,6 @@ function Footer({ intl: { formatMessage, locale } }) {
       </BottomLinks>
     </Wrapper>
   );
-}
+};
 
 export default injectIntl(Footer);
