@@ -101,7 +101,7 @@ export const geoSlice = createSlice({
     addressCoordinatesSelector: (state) => state.addressCoordinates,
     selectedAddressSelector: (state) => state.geoData?.closest_address,
     selectedContractZoneSelector: (state) => state.geoData?.contract_zone,
-    unavailableDatesSelector: (state) => state.geoData?.contract_zone.unavailable_dates,
+    unavailableDatesSelector: (state) => state.geoData?.contract_zone?.unavailable_dates,
   },
 });
 

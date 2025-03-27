@@ -1,4 +1,4 @@
-import * as bootstrapTheme from './bootstrap.module.scss';
+import bootstrapTheme from './bootstrap.module.scss';
 
 const breakpoint = {
   sm: 576,
