@@ -46,7 +46,7 @@ test.describe('New event', () => {
     await page.getByLabel('Alkamisaika').click();
     await page.getByRole('option', { name: '11.00' }).click();
 
-    await page.getByLabel('Tapahtuma päättyy').fill(`15.06.${testNextYear}`);
+    await page.getByLabel('Tapahtuma päättyy').fill(`15.05.${testNextYear}`);
 
     await page.getByLabel('Päättymisaika').click();
     await page.getByRole('option', { name: '11.00' }).click();
