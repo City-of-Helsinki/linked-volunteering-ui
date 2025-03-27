@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.8](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.4.7...linked-volunteering-ui-v0.4.8) (2025-03-27)
+
+
+### Bug Fixes
+
+* Neighborhood field selector and styles PS-188 ([7cb1923](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/7cb19238da7acc917853b3f129884c4ff733cca4))
+* SubmittedEvent event undefined PS-188 ([d3cf926](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/d3cf926febda325aadefa4f63c3e4f9ff18e3205))
+
 ## [0.4.7](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.4.6...linked-volunteering-ui-v0.4.7) (2025-03-27)
 
 
