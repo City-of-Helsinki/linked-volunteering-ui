@@ -85,29 +85,25 @@ const SubmittedPage: React.FC<Props> = ({ submittedEvent }) => {
     window.scrollTo(0, 0);
   }, []);
 
-  if (!submittedEvent) {
-    return null;
-  }
-
   const downloadIcsFile = () => {
     const event: EventAttributes = {
       productId: 'puistotalkoot/ics',
       startOutputType: 'local',
-      start: getDateArray(submittedEvent.start_time),
-      end: getDateArray(submittedEvent.end_time),
-      location: submittedEvent.maintenance_location,
-      ...(submittedEvent.location && {
+      start: getDateArray(submittedEvent?.start_time ?? ''),
+      end: getDateArray(submittedEvent?.end_time ?? ''),
+      location: submittedEvent?.maintenance_location,
+      ...(submittedEvent?.location && {
         geo: {
-          lat: submittedEvent.location.coordinates[1],
-          lon: submittedEvent.location.coordinates[0],
+          lat: submittedEvent?.location.coordinates[1],
+          lon: submittedEvent?.location.coordinates[0],
         },
       }),
       organizer: {
-        name: `${submittedEvent.organizer_first_name} ${submittedEvent.organizer_last_name}`,
-        email: submittedEvent.organizer_email,
+        name: `${submittedEvent?.organizer_first_name} ${submittedEvent?.organizer_last_name}`,
+        email: submittedEvent?.organizer_email,
       },
-      title: submittedEvent.name,
-      description: submittedEvent.description,
+      title: submittedEvent?.name,
+      description: submittedEvent?.description,
     };
     createEvent(event, (error: Error | undefined, value: string) => {
       if (error) {
