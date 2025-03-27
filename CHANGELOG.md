@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.7](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.4.6...linked-volunteering-ui-v0.4.7) (2025-03-27)
+
+
+### Dependencies
+
+* Replace CRA with Vite PS-186 ([b624fa0](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/b624fa062713cf51ecf71b388d1023dbf4e60358))
+
 ## [0.4.6](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.4.5...linked-volunteering-ui-v0.4.6) (2025-03-25)
 
 
