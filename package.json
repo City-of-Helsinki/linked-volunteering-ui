@@ -1,6 +1,6 @@
 {
   "name": "linked-volunteering-ui",
-  "version": "0.4.9",
+  "version": "0.4.10",
   "private": true,
   "engines": {
     "node": ">=18.0.0"

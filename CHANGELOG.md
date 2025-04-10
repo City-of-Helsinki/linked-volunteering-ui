@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.10](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.4.9...linked-volunteering-ui-v0.4.10) (2025-04-10)
+
+
+### Bug Fixes
+
+* Event ordering resetting on each loaded event slice ([#236](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/236)) ([70ad76c](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/70ad76c6cb7cfb3655d42a392960a92441c2f773))
+
 ## [0.4.9](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.4.8...linked-volunteering-ui-v0.4.9) (2025-04-10)
 
 
