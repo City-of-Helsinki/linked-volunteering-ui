@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.4.9](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.4.8...linked-volunteering-ui-v0.4.9) (2025-04-10)
+
+
+### Bug Fixes
+
+* Sorting according to the selected ordering ([#235](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/235)) ([de5f361](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/de5f36176357d86c344038648fc2810bdc8417d6))
+
+
+### Dependencies
+
+* Bump vite from 6.2.3 to 6.2.4 ([#232](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/232)) ([a361eb2](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/a361eb2a1f657450f7357de44dafa2d7233e5d39))
+* Bump vite from 6.2.4 to 6.2.5 ([#234](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/234)) ([de60b7a](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/de60b7aa388530ce7db3f101d249b19538800263))
+
 ## [0.4.8](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.4.7...linked-volunteering-ui-v0.4.8) (2025-03-27)
 
 
