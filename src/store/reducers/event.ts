@@ -133,7 +133,10 @@ const eventSlice = createSlice({
         ...(next.limit && { limit: parseInt(next.limit, 10) }),
         ...(next.offset && { offset: parseInt(next.offset, 10) }),
       };
-      state.ordering = ordering;
+
+      // commented out to avoid reordering the events because it's done in the frontend-side currently
+      // ordering would be null
+      // state.ordering = ordering;
 
       state.events = { ...state.events, ...action.payload.events };
     },
