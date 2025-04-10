@@ -78,6 +78,57 @@ const initialState = {
   },
 };
 
+const eventsForDateSorting = {
+  '1': {
+    id: 1,
+    name: 'Bravo Event',
+    organizer_email: 'sahko@posti.fi',
+    start_time: '2025-01-16T07:00:00.000Z',
+    created_at: '2024-12-04T06:17:08.196Z',
+    state: 'waiting_for_approval',
+    contract_zone: 1,
+    description: 'Event description',
+    end_time: '2025-01-16T10:00:00.000Z',
+    organizer_first_name: 'First',
+    organizer_last_name: 'Last',
+    organizer_phone: '0401234567',
+    modified_at: '2024-12-04T06:17:08.196Z',
+    location: { type: 'Point', coordinates: [0, 0] },
+    estimated_attendee_count: 10,
+    targets: 'Targets',
+    maintenance_location: 'Location',
+    additional_information: 'Additional info',
+    small_trash_bag_count: 5,
+    large_trash_bag_count: 2,
+    trash_picker_count: 10,
+    equipment_information: '',
+  },
+  '2': {
+    id: 2,
+    name: 'Alpha Event',
+    organizer_email: 'sahko@posti.fi',
+    start_time: '2025-01-15T07:00:00.000Z',
+    created_at: '2024-12-04T06:17:08.196Z',
+    state: 'waiting_for_approval',
+    contract_zone: 1,
+    description: 'Event description',
+    end_time: '2025-01-15T10:00:00.000Z',
+    organizer_first_name: 'First',
+    organizer_last_name: 'Last',
+    organizer_phone: '0401234567',
+    modified_at: '2024-12-04T06:17:08.196Z',
+    location: { type: 'Point', coordinates: [0, 0] },
+    estimated_attendee_count: 10,
+    targets: 'Targets',
+    maintenance_location: 'Location',
+    additional_information: 'Additional info',
+    small_trash_bag_count: 5,
+    large_trash_bag_count: 2,
+    trash_picker_count: 10,
+    equipment_information: '',
+  },
+};
+
 const renderComponent = (preloadedState?: Partial<RootState>) => {
   vi.spyOn(useAuthMock, 'default').mockImplementation(() => ({
     authenticated: true,
@@ -210,5 +261,53 @@ describe('<ManageEventsPage />', () => {
     await user.click(removeButton);
 
     await waitFor(() => expect(modal).not.toBeInTheDocument());
+  });
+
+  it('should sort events by start_time in ascending order', async () => {
+    const state = {
+      ...initialState,
+      event: {
+        ...initialState.event,
+        events: eventsForDateSorting,
+        ordering: {
+          key: 'start_time',
+          order: 'ASC',
+        },
+      },
+    };
+
+    renderComponent(state);
+
+    const table = await screen.findByRole('table');
+    const rows = within(table).getAllByRole('row');
+
+    await waitFor(() => {
+      expect(rows[1].children[3].textContent).toBe('1/15/2025');
+      expect(rows[2].children[3].textContent).toBe('1/16/2025');
+    });
+  });
+
+  it('should sort events by start_time in descending order', async () => {
+    const state = {
+      ...initialState,
+      event: {
+        ...initialState.event,
+        events: eventsForDateSorting,
+        ordering: {
+          key: 'start_time',
+          order: 'DESC',
+        },
+      },
+    };
+
+    renderComponent(state);
+
+    const table = await screen.findByRole('table');
+    const rows = within(table).getAllByRole('row');
+
+    await waitFor(() => {
+      expect(rows[1].children[3].textContent).toBe('1/16/2025');
+      expect(rows[2].children[3].textContent).toBe('1/15/2025');
+    });
   });
 });

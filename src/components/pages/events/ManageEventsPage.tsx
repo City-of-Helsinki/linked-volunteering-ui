@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect, Fragment, useMemo } from 'react';
 import styled from 'styled-components';
 import { Container, Row, Col } from 'reactstrap';
 import { FormattedMessage, FormattedDate } from 'react-intl';
@@ -103,6 +103,25 @@ const ManageEventsPage = () => {
 
   const apiAccessToken = getApiToken();
 
+  const sortedEvents = useMemo(() => {
+    const eventArray = [...Object.values(events)];
+    if (!ordering.key) return eventArray;
+
+    return eventArray.sort((a, b) => {
+      const key = ordering.key as keyof Event;
+      const aValue = a[key];
+      const bValue = b[key];
+
+      if (aValue === bValue) return 0;
+      // Sorting logic: `null` and `undefined` values are always placed last.
+      if (aValue === null || aValue === undefined) return 1;
+      if (bValue === null || bValue === undefined) return -1;
+
+      const comparison = aValue < bValue ? -1 : 1;
+      return ordering.order === 'DESC' ? -comparison : comparison;
+    });
+  }, [events, ordering]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -187,9 +206,7 @@ const ManageEventsPage = () => {
               setOrderBy={(order: { key: string; order: string }) => dispatch(setOrderBy(order))}
               ordering={ordering}
             >
-              {Object.keys(events).map((key) => {
-                const event = events[key];
-
+              {sortedEvents.map((event) => {
                 const selected = visible === event.id;
                 const isEventPending = isPending(event);
                 return (
