@@ -39,7 +39,7 @@ resources:
 extends:
   # Filename in Azure DevOps Repository
   template: azure-pipelines-puistotalkoot-ui-dev.yml@puistotalkoot-pipelines
-  # parameters:
+  parameters:
   # Application build arguments and config map values as key value pairs.
   # Does not contain all buildArguments or configMap values, the rest located in puistotalkoot-pipelines
   # Default value to nodeVersion is set on template.
@@ -49,4 +49,4 @@ extends:
   # configMap: # pod environment variables
   #   DEBUG: 1
   ## Used tool version
-  # nodeVersion: 18
+    nodeVersion: 22
