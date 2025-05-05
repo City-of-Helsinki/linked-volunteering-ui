@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.5.0](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.4.10...linked-volunteering-ui-v0.5.0) (2025-05-05)
+
+
+### Features
+
+* Upgrade to node v22 ([#241](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/241)) ([2c81114](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/2c81114f4c11e219d7eb9fc17993f5fa4c4f2f21))
+
+
+### Dependencies
+
+* Bump vite from 6.2.5 to 6.2.6 ([#238](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/238)) ([7d3b558](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/7d3b55875d2c91d19ef11657122a4d762b96485e))
+* Bump vite from 6.3.3 to 6.3.4 ([#242](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/242)) ([eff6922](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/eff6922afd8cd93f45ec113ab237c1d9fbae03ee))
+
 ## [0.4.10](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.4.9...linked-volunteering-ui-v0.4.10) (2025-04-10)
 
 
