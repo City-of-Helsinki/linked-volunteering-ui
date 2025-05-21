@@ -111,6 +111,7 @@ const AutoSuggestField: React.FC<Props> = ({
           <Input
             {...props}
             id={id}
+            key={id}
             invalid={error && touched}
             placeholder={placeholder ? formatMessage({ id: placeholder }) : undefined}
           />
