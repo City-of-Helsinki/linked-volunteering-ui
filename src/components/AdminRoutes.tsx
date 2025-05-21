@@ -3,12 +3,14 @@ import { Navigate, Route, Routes } from 'react-router';
 
 import { LoadingSpinner } from 'hds-react';
 import Error404Page from './pages/Error404Page';
-import ManageEventsPage from './pages/events/ManageEventsPage';
-import ModifyEventPage from './pages/events/containers/ModifyEventPageContainer';
-import ReportPage from './pages/ReportPage';
 import useAuth from '../hooks/useAuth';
 import { useAppSelector } from '../store/hooks';
 import { isContractorSelector, isOfficialSelector, userLoadingSelector } from '../store/reducers/auth';
+
+const ManageEventsPage = React.lazy(() => import('./pages/events/ManageEventsPage'));
+const ModifyEventPage = React.lazy(() => import('./pages/events/containers/ModifyEventPageContainer'));
+
+const ReportPage = React.lazy(() => import('./pages/ReportPage'));
 
 const RequireUserComponent = ({ Page }: { Page: React.ComponentType }) => {
   const isOfficial = useAppSelector(isOfficialSelector);
@@ -49,12 +51,14 @@ function AdminRoutes() {
   }
 
   return (
-    <Routes>
-      <Route path='/events/manage' element={<RequireUserComponent Page={ManageEventsPage} />} />
-      <Route path='/event/modify/:id' element={<RequireUserComponent Page={ModifyEventPage} />} />
-      <Route path='/report' element={<RequireOfficialComponent Page={ReportPage} />} />
-      <Route path='*' element={<Error404Page />} />
-    </Routes>
+    <React.Suspense fallback={<LoadingSpinner />}>
+      <Routes>
+        <Route path='/events/manage' element={<RequireUserComponent Page={ManageEventsPage} />} />
+        <Route path='/event/modify/:id' element={<RequireUserComponent Page={ModifyEventPage} />} />
+        <Route path='/report' element={<RequireOfficialComponent Page={ReportPage} />} />
+        <Route path='*' element={<Error404Page />} />
+      </Routes>
+    </React.Suspense>
   );
 }
 
