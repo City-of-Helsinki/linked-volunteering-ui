@@ -76,7 +76,7 @@
     "react-csv": "^2.0.1",
     "react-datepicker": "^2.14.1",
     "react-dom": "^18.3.1",
-    "react-helmet": "^5.2.1",
+    "react-helmet-async": "^2.0.5",
     "react-intl": "^5.1.1",
     "react-is": "^16.13.0",
     "react-leaflet": "^2.6.1",
