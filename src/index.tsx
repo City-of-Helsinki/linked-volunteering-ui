@@ -8,7 +8,7 @@ import { createInstance, MatomoProvider } from '@datapunt/matomo-tracker-react';
 import * as Sentry from '@sentry/react';
 import { Integrations } from '@sentry/tracing';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 
@@ -63,9 +63,12 @@ function Root() {
 }
 
 const rootElement = document.getElementById('root');
+
 if (rootElement) {
   // eslint-disable-next-line react/no-deprecated
-  ReactDOM.render(<Root />, rootElement);
+  const root = ReactDOM.createRoot(rootElement as HTMLElement);
+
+  root.render(<Root />);
 }
 
 // If you want your app to work offline and load faster, you can change
