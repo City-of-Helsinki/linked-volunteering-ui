@@ -9,7 +9,6 @@ import modal from './reducers/modal';
 import geo from './reducers/geo';
 import report from './reducers/report';
 
-// Redux Toolkit includes thunk by default, so we don't need to import it
 const rootReducer = combineReducers({
   auth,
   contractZones,
