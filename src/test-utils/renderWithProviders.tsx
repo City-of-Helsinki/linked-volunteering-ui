@@ -4,6 +4,7 @@ import React, { PropsWithChildren, ReactElement } from 'react';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
+import { HelmetProvider } from 'react-helmet-async';
 import { AppStore, createStore, RootState } from '../store/configureStore';
 import messages from '../config/translations';
 import { Language } from '../types';
@@ -28,7 +29,7 @@ const renderWithProviders = (ui: ReactElement, renderOptions: RenderWithProvider
         <Provider store={store}>
           <ThemeProvider theme={theme}>
             <IntlProvider locale={locale} key={locale} messages={messages[locale]}>
-              {children}
+              <HelmetProvider>{children}</HelmetProvider>
             </IntlProvider>
           </ThemeProvider>
         </Provider>

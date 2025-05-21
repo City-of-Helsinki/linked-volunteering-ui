@@ -5,6 +5,7 @@ import { IntlProvider } from 'react-intl';
 
 import { isEmpty } from 'lodash';
 import { LoadingSpinner } from 'hds-react';
+import { HelmetProvider } from 'react-helmet-async';
 import { currentUserDataSelector, getCurrentUserData } from '../store/reducers/auth';
 
 import messages from '../config/translations';
@@ -62,16 +63,18 @@ const App: React.FC = () => {
   return (
     <React.StrictMode>
       <IntlProvider locale={language} key={language} messages={messages[language]}>
-        <CommonMeta />
-        <SessionEndedDialog />
-        <React.Suspense fallback={<LoadingSpinner />}>
-          <Routes>
-            <Route path='/' element={<LandingPage />} />
-            <Route path='/admin/*' element={<AdminRoutes />} />
-            <Route path='/*' element={<LocaleRoutes />} />
-            <Route path='/authError' element={<ErrorPage />} />
-          </Routes>
-        </React.Suspense>
+        <HelmetProvider>
+          <CommonMeta />
+          <SessionEndedDialog />
+          <React.Suspense fallback={<LoadingSpinner />}>
+            <Routes>
+              <Route path='/' element={<LandingPage />} />
+              <Route path='/admin/*' element={<AdminRoutes />} />
+              <Route path='/*' element={<LocaleRoutes />} />
+              <Route path='/authError' element={<ErrorPage />} />
+            </Routes>
+          </React.Suspense>
+        </HelmetProvider>
       </IntlProvider>
     </React.StrictMode>
   );
