@@ -42,16 +42,7 @@ interface Props {
   timeFormat: string;
 }
 
-const ListItem: React.FC<Props> = ({
-  container,
-  date,
-  id,
-  isFocused,
-  isSelected,
-  locale,
-  onClick,
-  timeFormat,
-}) => {
+const ListItem: React.FC<Props> = ({ container, date, id, isFocused, isSelected, locale, onClick, timeFormat }) => {
   const element = React.useRef<HTMLLIElement | null>(null);
 
   const handleClick = () => {
@@ -85,7 +76,7 @@ const ListItem: React.FC<Props> = ({
   return (
     <StyledListItem
       ref={element}
-      role="option"
+      role='option'
       id={id}
       tabIndex={-1}
       className={classNames({

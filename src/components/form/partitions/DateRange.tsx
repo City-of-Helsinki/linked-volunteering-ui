@@ -30,14 +30,7 @@ interface Props {
   values: FormikValues;
 }
 
-const DateRange: React.FC<Props> = ({
-  errors,
-  handleBlur,
-  handleChange,
-  touched,
-  unavailableDates,
-  values,
-}) => {
+const DateRange: React.FC<Props> = ({ errors, handleBlur, handleChange, touched, unavailableDates, values }) => {
   const onChange = (id: string) => (value: Date) => {
     handleChange({
       target: {
@@ -92,15 +85,15 @@ const DateRange: React.FC<Props> = ({
   return (
     <>
       <Row>
-        <Col sm="12" md={{ size: 4, offset: 1 }} id="date_range_start_date_wrapper">
+        <Col sm='12' md={{ size: 4, offset: 1 }} id='date_range_start_date_wrapper'>
           <DatePicker
-            id="date_range_start_date"
+            id='date_range_start_date'
             // @ts-ignore
             chooseDayAriaLabelPrefix={formatMessage({
               id: 'form.event.partitions.date_range.dayAriaLabelPrefix',
             })}
-            label="form.event.partitions.date_range.start_date.label"
-            placeholder="form.event.partitions.date_range.start_date.placeholder"
+            label='form.event.partitions.date_range.start_date.label'
+            placeholder='form.event.partitions.date_range.start_date.placeholder'
             locale={locale}
             error={errors.start_time}
             touched={!!touched.start_time}
@@ -119,14 +112,14 @@ const DateRange: React.FC<Props> = ({
             useShortMonthInDropdown
           />
         </Col>
-        <Col sm="12" md={{ size: 4 }}>
+        <Col sm='12' md={{ size: 4 }}>
           <TimePicker
-            id="date_range_start_time"
+            id='date_range_start_time'
             defaultDate={minDate}
             error={errors.start_time}
-            label="form.event.partitions.date_range.start_time.label"
+            label='form.event.partitions.date_range.start_time.label'
             onChange={onChange('start_time')}
-            placeholder="form.event.partitions.date_range.start_time.placeholder"
+            placeholder='form.event.partitions.date_range.start_time.placeholder'
             selected={values.start_time}
             timeCaption={formatMessage({ id: 'form.event.partitions.date_range.timeCaption' })}
             timeFormat={timeFormat}
@@ -136,15 +129,15 @@ const DateRange: React.FC<Props> = ({
         </Col>
       </Row>
       <Row>
-        <Col sm="12" md={{ size: 4, offset: 1 }} id="date_range_end_date_wrapper">
+        <Col sm='12' md={{ size: 4, offset: 1 }} id='date_range_end_date_wrapper'>
           <DatePicker
-            id="date_range_end_date"
+            id='date_range_end_date'
             // @ts-ignore
             chooseDayAriaLabelPrefix={formatMessage({
               id: 'form.event.partitions.date_range.dayAriaLabelPrefix',
             })}
-            label="form.event.partitions.date_range.end_date.label"
-            placeholder="form.event.partitions.date_range.end_date.placeholder"
+            label='form.event.partitions.date_range.end_date.label'
+            placeholder='form.event.partitions.date_range.end_date.placeholder'
             locale={locale}
             error={errors.end_time}
             touched={!!touched.end_time}
@@ -161,14 +154,14 @@ const DateRange: React.FC<Props> = ({
             useShortMonthInDropdown
           />
         </Col>
-        <Col sm="12" md={{ size: 4 }}>
+        <Col sm='12' md={{ size: 4 }}>
           <TimePicker
-            id="date_range_end_time"
+            id='date_range_end_time'
             defaultDate={values.start_time || minDate}
             error={errors.end_time}
-            label="form.event.partitions.date_range.end_time.label"
+            label='form.event.partitions.date_range.end_time.label'
             onChange={onChange('end_time')}
-            placeholder="form.event.partitions.date_range.end_time.placeholder"
+            placeholder='form.event.partitions.date_range.end_time.placeholder'
             selected={values.end_time}
             timeCaption={formatMessage({ id: 'form.event.partitions.date_range.timeCaption' })}
             timeFormat={timeFormat}

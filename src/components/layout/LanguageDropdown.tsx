@@ -72,43 +72,35 @@ const LanguageDropdown: React.FC = () => {
   };
 
   return (
-    <StyledDropdown size="lg" isOpen={dropdownOpen} toggle={toggle}>
-      <LanguageSelector
-        aria-label={formatMessage({ id: 'site.language.changeLanguage' })}
-        color="link"
-      >
+    <StyledDropdown size='lg' isOpen={dropdownOpen} toggle={toggle}>
+      <LanguageSelector aria-label={formatMessage({ id: 'site.language.changeLanguage' })} color='link'>
         <StyledSelector>
-          <NavigationIcon aria-hidden name="globe" color="black" />
+          <NavigationIcon aria-hidden name='globe' color='black' />
           <span>{intl.locale.toUpperCase()}</span>
-          <DropdownIcon
-            aria-hidden
-            name="angleUp"
-            color="black"
-            rotate={dropdownOpen ? '0' : '180'}
-          />
+          <DropdownIcon aria-hidden name='angleUp' color='black' rotate={dropdownOpen ? '0' : '180'} />
         </StyledSelector>
       </LanguageSelector>
       <DropdownMenu>
         <IntlComponent
           Component={DropdownItem}
-          href="/fi"
+          href='/fi'
           onClick={changeLanguage('fi')}
-          id="site.language.fi"
-          lang="fi"
+          id='site.language.fi'
+          lang='fi'
         />
         <IntlComponent
           Component={DropdownItem}
-          href="/sv"
+          href='/sv'
           onClick={changeLanguage('sv')}
-          id="site.language.sv"
-          lang="sv"
+          id='site.language.sv'
+          lang='sv'
         />
         <IntlComponent
           Component={DropdownItem}
-          href="/en"
+          href='/en'
           onClick={changeLanguage('en')}
-          id="site.language.en"
-          lang="en"
+          id='site.language.en'
+          lang='en'
         />
       </DropdownMenu>
     </StyledDropdown>

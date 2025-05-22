@@ -16,13 +16,10 @@ export const getContractZones = createAsyncThunk(
     try {
       const response = await contractZonesService.getContractZones(apiAccessToken);
 
-      const contractZones = response.results.reduce(
-        (acc: Record<string, ContractZone>, zone: ContractZone) => {
-          acc[zone.id] = zone;
-          return acc;
-        },
-        {},
-      );
+      const contractZones = response.results.reduce((acc: Record<string, ContractZone>, zone: ContractZone) => {
+        acc[zone.id] = zone;
+        return acc;
+      }, {});
 
       return { results: contractZones };
     } catch (error) {

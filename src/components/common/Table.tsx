@@ -171,15 +171,7 @@ const getOrderIcon = (order: string) => {
   }
 };
 
-const Table: React.FC<TableProps> = ({
-  id,
-  firstColumn,
-  headers,
-  actionColSpan,
-  children,
-  setOrderBy,
-  ordering,
-}) => {
+const Table: React.FC<TableProps> = ({ id, firstColumn, headers, actionColSpan, children, setOrderBy, ordering }) => {
   return (
     <StyledTableWrapper>
       <StyledTable firstColumn={firstColumn} id={id} data-testid={id}>
@@ -192,14 +184,11 @@ const Table: React.FC<TableProps> = ({
 
               return (
                 <StyledTh key={key}>
-                  <IntlComponent
-                    Component={StyledHeaderText}
-                    id={`site.table.header.${translation}`}
-                  />
+                  <IntlComponent Component={StyledHeaderText} id={`site.table.header.${translation}`} />
                   {hasOrderBy && (
                     <Button
                       prepend={getOrderIcon(order ?? 'ASC')}
-                      color="link"
+                      color='link'
                       onClick={() => setOrderBy({ key, order: order ?? 'ASC' })}
                       aria-label={order ?? 'ASC'}
                     />

@@ -34,10 +34,7 @@ export function mockProfileCreator(overrides?: MockedUserOverrides['profileOverr
   } as Profile;
 }
 
-export function mockUserCreator({
-  userOverrides,
-  profileOverrides,
-}: MockedUserOverrides = {}): User {
+export function mockUserCreator({ userOverrides, profileOverrides }: MockedUserOverrides = {}): User {
   const expirationTimeInMs = 100000;
   const scopes = ['openid', 'profile', 'https://api.hel.fi/foobar'];
   return {

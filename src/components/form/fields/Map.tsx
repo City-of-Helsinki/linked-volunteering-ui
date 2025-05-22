@@ -72,9 +72,7 @@ const MapCanvas: React.FC<MapCanvasProps> = ({
 
   useEffect(() => {
     if (value && apiAccessToken) {
-      dispatch(
-        getGeoData({ lat: value.coordinates[1], long: value.coordinates[0], apiAccessToken }),
-      );
+      dispatch(getGeoData({ lat: value.coordinates[1], long: value.coordinates[0], apiAccessToken }));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value, apiAccessToken]);
@@ -94,10 +92,10 @@ const MapCanvas: React.FC<MapCanvasProps> = ({
 
   const renderMapErrors = () => {
     if (touched && errorLocation) {
-      return <IntlComponent Component={ErrorMessage} id="form.validation.map" />;
+      return <IntlComponent Component={ErrorMessage} id='form.validation.map' />;
     }
     if (touched && errorContractZone) {
-      return <IntlComponent Component={ErrorMessage} id="form.validation.contract_zone" />;
+      return <IntlComponent Component={ErrorMessage} id='form.validation.contract_zone' />;
     }
     return null;
   };
@@ -117,9 +115,7 @@ const MapCanvas: React.FC<MapCanvasProps> = ({
   const { lat, lng, zoom } = mapState;
 
   const position: LatLngExpression = [lat, lng];
-  const markerPosition: LatLngExpression = value
-    ? [value.coordinates[1], value.coordinates[0]]
-    : position;
+  const markerPosition: LatLngExpression = value ? [value.coordinates[1], value.coordinates[0]] : position;
   const marker = value ? <Marker position={markerPosition} /> : null;
 
   return (
@@ -133,7 +129,7 @@ const MapCanvas: React.FC<MapCanvasProps> = ({
         style={style}
         onClick={addMarker}
       >
-        <TileLayer url="https://tiles.hel.ninja/wmts/osm-sm/webmercator/{z}/{x}/{y}.png" />
+        <TileLayer url='https://tiles.hel.ninja/wmts/osm-sm/webmercator/{z}/{x}/{y}.png' />
         {marker}
       </Map>
       {renderMapErrors()}

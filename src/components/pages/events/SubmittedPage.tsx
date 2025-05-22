@@ -118,26 +118,22 @@ const SubmittedPage: React.FC<Props> = ({ submittedEvent }) => {
 
   return (
     <Layout>
-      <PageMeta title="site.page.thank_you.page_title" />
+      <PageMeta title='site.page.thank_you.page_title' />
       <PageContainer>
         <Content>
-          <FormattedMessage tagName="h1" id="site.page.thank_you.header" />
-          <FormattedMessage tagName="strong" id="site.page.thank_you.paragraph" />
+          <FormattedMessage tagName='h1' id='site.page.thank_you.header' />
+          <FormattedMessage tagName='strong' id='site.page.thank_you.paragraph' />
           {submittedEvent && (
             <Button
-              prepend="calendar"
-              append="arrowRight"
-              color="link"
+              prepend='calendar'
+              append='arrowRight'
+              color='link'
               onClick={downloadIcsFile}
-              translate="site.page.thank_you.action.add_to_calendar"
+              translate='site.page.thank_you.action.add_to_calendar'
             />
           )}
 
-          <LocalizedLink
-            className="btn btn-primary"
-            translate="site.page.thank_you.action.home_page"
-            to=""
-          />
+          <LocalizedLink className='btn btn-primary' translate='site.page.thank_you.action.home_page' to='' />
         </Content>
         <BackgroundImage />
       </PageContainer>

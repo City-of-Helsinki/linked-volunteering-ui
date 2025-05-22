@@ -160,9 +160,7 @@ const TimePicker: React.FC<Props> = ({
   };
 
   const focusOptionDown = () => {
-    setFocusedOption(
-      focusedOption < timeOptions.length - 1 ? focusedOption + 1 : timeOptions.length - 1,
-    );
+    setFocusedOption(focusedOption < timeOptions.length - 1 ? focusedOption + 1 : timeOptions.length - 1);
   };
 
   const handleChange = (date: Date) => {
@@ -251,7 +249,7 @@ const TimePicker: React.FC<Props> = ({
             <Triangle />
             <TimeCaption>{timeCaption}</TimeCaption>
             <ListWrapper ref={listWrapper}>
-              <DateList role="listbox">
+              <DateList role='listbox'>
                 {timeOptions.map((option, index) => {
                   return (
                     <ListItem

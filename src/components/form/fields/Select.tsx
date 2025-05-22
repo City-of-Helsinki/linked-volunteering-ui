@@ -38,7 +38,7 @@ const SelectField: React.FC<SelectFieldProps> = ({
           {intl.formatMessage({ id: label })}
         </Label>
       )}
-      <Input type="select" id={id} onChange={onChange} {...rest} invalid={isInvalid}>
+      <Input type='select' id={id} onChange={onChange} {...rest} invalid={isInvalid}>
         <option>{noneSelectedText}</option>
         {children}
       </Input>

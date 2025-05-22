@@ -43,11 +43,11 @@ function AccessibilityPage() {
 
   return (
     <Layout>
-      <PageMeta title="site.page.accessibility.page_title" />
+      <PageMeta title='site.page.accessibility.page_title' />
       <PageContainer>
         <Container>
           <Row>
-            <Col md="12" lg="12">
+            <Col md='12' lg='12'>
               <Statement lang={locale} />
             </Col>
           </Row>

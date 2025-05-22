@@ -21,10 +21,7 @@ const initialState: ReportState = {
 
 export const getReport = createAsyncThunk(
   'GET_REPORT',
-  async (
-    { year, apiAccessToken }: { year: string; apiAccessToken: string | undefined },
-    { rejectWithValue },
-  ) => {
+  async ({ year, apiAccessToken }: { year: string; apiAccessToken: string | undefined }, { rejectWithValue }) => {
     try {
       const response = await reportService.getReport(year, apiAccessToken);
 

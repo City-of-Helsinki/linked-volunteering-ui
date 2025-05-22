@@ -48,9 +48,7 @@ describe('authService', () => {
       });
 
       const token = 'invalid-token';
-      await expect(authService.getCurrentUserData(token)).rejects.toThrow(
-        'HTTP error! status: 401',
-      );
+      await expect(authService.getCurrentUserData(token)).rejects.toThrow('HTTP error! status: 401');
     });
 
     it('should handle network errors', async () => {

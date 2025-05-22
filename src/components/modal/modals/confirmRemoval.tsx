@@ -13,20 +13,20 @@ function Body({ values }: { readonly values: Partial<Event> }) {
         <strong>{values.name}</strong>
       </div>
       <div>
-        <Icon name="calendar" />
+        <Icon name='calendar' />
         <FormattedDate value={values.start_time} />
         <span>
           {' '}
-          <FormattedMessage tagName="span" id="modal.confirm_removal.body.time.at" />{' '}
+          <FormattedMessage tagName='span' id='modal.confirm_removal.body.time.at' />{' '}
           <FormattedTime value={values.start_time} /> - <FormattedTime value={values.end_time} />
         </span>
       </div>
       <div>
-        <Icon name="mapMarker" />
+        <Icon name='mapMarker' />
         {values.maintenance_location ? (
           <span>{values.maintenance_location}</span>
         ) : (
-          <FormattedMessage tagName="span" id="modal.confirm_removal.body.location.text" />
+          <FormattedMessage tagName='span' id='modal.confirm_removal.body.location.text' />
         )}
       </div>
     </div>

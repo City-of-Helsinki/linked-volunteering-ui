@@ -70,10 +70,7 @@ const AutoSuggestField: React.FC<Props> = ({
     dispatch(clearCoordinatesByAddress());
   };
 
-  const onSuggestionSelected = (
-    _event: React.FormEvent<any>,
-    data: SuggestionSelectedEventData<any>,
-  ) => {
+  const onSuggestionSelected = (_event: React.FormEvent<any>, data: SuggestionSelectedEventData<any>) => {
     onChange({
       target: {
         id,

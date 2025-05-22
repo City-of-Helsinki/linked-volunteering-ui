@@ -23,7 +23,7 @@ const NewEventPageContainer = () => {
     navigate(`/${intl.locale}/event/submitted`);
   };
 
-  return <EventPage handleSubmit={handleSubmit} pageType="new" />;
+  return <EventPage handleSubmit={handleSubmit} pageType='new' />;
 };
 
 export default NewEventPageContainer;

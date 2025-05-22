@@ -18,10 +18,10 @@ const ErrorPage = () => {
 
   return (
     <div>
-      <PageMeta title="site.page.error.page_title" />
-      <FormattedMessage tagName="h1" id="site.page.error.heading" />
-      <FormattedMessage tagName="p" id="site.page.error.default_message" />
-      <FormattedMessage tagName="a" id="site.page.error.to_home_page" />
+      <PageMeta title='site.page.error.page_title' />
+      <FormattedMessage tagName='h1' id='site.page.error.heading' />
+      <FormattedMessage tagName='p' id='site.page.error.default_message' />
+      <FormattedMessage tagName='a' id='site.page.error.to_home_page' />
     </div>
   );
 };

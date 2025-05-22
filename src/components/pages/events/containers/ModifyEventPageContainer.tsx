@@ -24,7 +24,7 @@ const ModifyEventPageContainer = () => {
     navigate(`/${intl.locale}/admin/events/manage`);
   };
 
-  return <EventPage handleSubmit={handleSubmit} pageType="modify" />;
+  return <EventPage handleSubmit={handleSubmit} pageType='modify' />;
 };
 
 export default ModifyEventPageContainer;

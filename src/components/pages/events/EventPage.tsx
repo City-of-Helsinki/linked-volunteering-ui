@@ -149,13 +149,10 @@ const EventPage: React.FC<EventPageProps> = ({ handleSubmit: handleSubmitFn, pag
       try {
         await handleSubmitFn(values);
       } catch (error: any) {
-        const submitErrors = Object.entries(error.response.data).reduce(
-          (acc: { [key: string]: string }, [key]) => {
-            acc[key] = 'form.validation.generic';
-            return acc;
-          },
-          {},
-        );
+        const submitErrors = Object.entries(error.response.data).reduce((acc: { [key: string]: string }, [key]) => {
+          acc[key] = 'form.validation.generic';
+          return acc;
+        }, {});
 
         setErrors(submitErrors);
       } finally {
@@ -191,7 +188,7 @@ const EventPage: React.FC<EventPageProps> = ({ handleSubmit: handleSubmitFn, pag
     <Layout paddingBottom>
       <PageMeta title={`form.event.${pageType}.page_title`} />
       <TitleContainer>
-        <IntlComponent Component="h1" id={`form.event.${pageType}.heading`} />
+        <IntlComponent Component='h1' id={`form.event.${pageType}.heading`} />
         <InstructionText text={`form.event.${pageType}.infoText`} />
       </TitleContainer>
       <FormContainer>
@@ -206,18 +203,18 @@ const EventPage: React.FC<EventPageProps> = ({ handleSubmit: handleSubmitFn, pag
           setFieldTouched={setFieldTouched}
         />
         <Row>
-          <ButtonCol sm="12" md={{ size: 8, offset: 1 }}>
+          <ButtonCol sm='12' md={{ size: 8, offset: 1 }}>
             <IntlComponent
               Component={ResetButton}
               id={`form.event.${pageType}.button.reset`}
-              type="button"
+              type='button'
               onClick={handleReset}
-              color="danger"
+              color='danger'
             />
             <IntlComponent
               Component={SubmitButton}
-              type="submit"
-              color="success"
+              type='submit'
+              color='success'
               id={`form.event.${pageType}.button.submit`}
               aria-disabled={isSubmitting || undefined}
               onClick={isSubmitting ? undefined : handleSubmit}

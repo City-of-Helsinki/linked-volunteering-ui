@@ -8,18 +8,14 @@ import ModifyEventPage from './pages/events/containers/ModifyEventPageContainer'
 import ReportPage from './pages/ReportPage';
 import useAuth from '../hooks/useAuth';
 import { useAppSelector } from '../store/hooks';
-import {
-  isContractorSelector,
-  isOfficialSelector,
-  userLoadingSelector,
-} from '../store/reducers/auth';
+import { isContractorSelector, isOfficialSelector, userLoadingSelector } from '../store/reducers/auth';
 
 const RequireUserComponent = ({ Page }: { Page: React.ComponentType }) => {
   const isOfficial = useAppSelector(isOfficialSelector);
   const isContractor = useAppSelector(isContractorSelector);
 
   if (!(isOfficial || isContractor)) {
-    return <Navigate to="/authError" replace />;
+    return <Navigate to='/authError' replace />;
   }
 
   return <Page />;
@@ -29,7 +25,7 @@ const RequireOfficialComponent = ({ Page }: { Page: React.ComponentType }) => {
   const isOfficial = useAppSelector(isOfficialSelector);
 
   if (!isOfficial) {
-    return <Navigate to="/authError" replace />;
+    return <Navigate to='/authError' replace />;
   }
 
   return <Page />;
@@ -42,10 +38,10 @@ function AdminRoutes() {
 
   if (!authenticated) {
     if (loggingOut) {
-      return <Navigate to="/" replace />;
+      return <Navigate to='/' replace />;
     }
 
-    return <Navigate to="/authError" replace />;
+    return <Navigate to='/authError' replace />;
   }
 
   if (userLoading) {
@@ -54,10 +50,10 @@ function AdminRoutes() {
 
   return (
     <Routes>
-      <Route path="/events/manage" element={<RequireUserComponent Page={ManageEventsPage} />} />
-      <Route path="/event/modify/:id" element={<RequireUserComponent Page={ModifyEventPage} />} />
-      <Route path="/report" element={<RequireOfficialComponent Page={ReportPage} />} />
-      <Route path="*" element={<Error404Page />} />
+      <Route path='/events/manage' element={<RequireUserComponent Page={ManageEventsPage} />} />
+      <Route path='/event/modify/:id' element={<RequireUserComponent Page={ModifyEventPage} />} />
+      <Route path='/report' element={<RequireOfficialComponent Page={ReportPage} />} />
+      <Route path='*' element={<Error404Page />} />
     </Routes>
   );
 }

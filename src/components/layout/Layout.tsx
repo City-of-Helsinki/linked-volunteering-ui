@@ -193,8 +193,8 @@ const Layout: React.FC<Props> = ({ children, paddingTop = false, paddingBottom =
               <LanguageDropdown />
               {authenticated && (
                 <UserAction onClick={() => logout()} tabIndex={0}>
-                  <UserIcon aria-hidden name="user" color="black" />
-                  <FormattedMessage id="site.nav.user.logout" />
+                  <UserIcon aria-hidden name='user' color='black' />
+                  <FormattedMessage id='site.nav.user.logout' />
                 </UserAction>
               )}
             </Options>
@@ -206,13 +206,13 @@ const Layout: React.FC<Props> = ({ children, paddingTop = false, paddingBottom =
         <NavbarContainer>
           <NavbarRow>
             <Links>
-              <LocalizedLink to="event/new" translate="site.nav.create_event" />
+              <LocalizedLink to='event/new' translate='site.nav.create_event' />
               {authenticated && (
                 <>
                   {(isOfficial || isContractor) && (
-                    <LocalizedLink to="admin/events/manage" translate="site.nav.manage_events" />
+                    <LocalizedLink to='admin/events/manage' translate='site.nav.manage_events' />
                   )}
-                  {isOfficial && <LocalizedLink to="admin/report" translate="site.nav.report" />}
+                  {isOfficial && <LocalizedLink to='admin/report' translate='site.nav.report' />}
                 </>
               )}
             </Links>
@@ -227,8 +227,8 @@ const Layout: React.FC<Props> = ({ children, paddingTop = false, paddingBottom =
       </Content>
 
       <div>
-        <div aria-hidden="true">
-          <KoroSection type="basic" />
+        <div aria-hidden='true'>
+          <KoroSection type='basic' />
         </div>
         <Footer />
       </div>
