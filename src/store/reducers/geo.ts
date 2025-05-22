@@ -52,11 +52,7 @@ const initialState: GeoState = {
 export const getGeoData = createAsyncThunk(
   'GET_GEODATA_FROM_COORDINATES',
   async (
-    {
-      lat,
-      long,
-      apiAccessToken,
-    }: { lat: number; long: number; apiAccessToken: string | undefined },
+    { lat, long, apiAccessToken }: { lat: number; long: number; apiAccessToken: string | undefined },
     { rejectWithValue },
   ) => {
     try {
@@ -87,12 +83,9 @@ export const geoSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(
-      getCoordinatesByAddress.fulfilled,
-      (state, action: PayloadAction<AddressCoordinates>) => {
-        state.addressCoordinates = action.payload;
-      },
-    );
+    builder.addCase(getCoordinatesByAddress.fulfilled, (state, action: PayloadAction<AddressCoordinates>) => {
+      state.addressCoordinates = action.payload;
+    });
     builder.addCase(getGeoData.fulfilled, (state, action: PayloadAction<GeoData>) => {
       state.geoData = action.payload;
     });

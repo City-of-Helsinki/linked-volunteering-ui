@@ -67,11 +67,11 @@ const PaginationComponent: React.FC<PaginationProps> = ({ activePage, onPageClic
     <Pagination>
       <PaginationItem>
         <a
-          href="/page-previous"
+          href='/page-previous'
           onClick={handlePageClick(Math.max(activePage - 1, 1))}
           aria-label={activePage === 1 ? 'First page' : 'Previous page'}
         >
-          <Icon name="angleLeft" />
+          <Icon name='angleLeft' />
         </a>
       </PaginationItem>
       {Array.from({ length: pageCount }, (_v, k) => k + 1).map((page) => (
@@ -87,11 +87,11 @@ const PaginationComponent: React.FC<PaginationProps> = ({ activePage, onPageClic
       ))}
       <PaginationItem>
         <a
-          href="/page-next"
+          href='/page-next'
           onClick={handlePageClick(Math.min(activePage + 1, pageCount))}
           aria-label={activePage === pageCount ? 'Last page' : 'Next page'}
         >
-          <Icon name="angleRight" />
+          <Icon name='angleRight' />
         </a>
       </PaginationItem>
     </Pagination>

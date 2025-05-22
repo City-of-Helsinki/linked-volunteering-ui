@@ -12,9 +12,7 @@ export default {
 
     return {
       ...payload,
-      results: Map(
-        payload.results.map((contractZone: ContractZone) => [contractZone.id, contractZone]),
-      ),
+      results: Map(payload.results.map((contractZone: ContractZone) => [contractZone.id, contractZone])),
     };
   },
 };

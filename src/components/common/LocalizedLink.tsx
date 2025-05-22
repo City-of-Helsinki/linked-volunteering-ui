@@ -13,13 +13,7 @@ type LocalizedLinkProps = {
   className?: string;
 } & PropsWithChildren;
 
-const LocalizedLink: React.FC<LocalizedLinkProps> = ({
-  to,
-  children,
-  translate,
-  values,
-  ...rest
-}) => {
+const LocalizedLink: React.FC<LocalizedLinkProps> = ({ to, children, translate, values, ...rest }) => {
   const { locale } = useIntl();
 
   return (

@@ -20,7 +20,7 @@ function CallBackPage() {
     <LoginCallbackHandler onSuccess={onSuccess} onError={onError}>
       <div>
         <p>Uudelleen ohjataan takaisin sivustolle...</p>
-        <a href="/">Jatka sivustolle</a>
+        <a href='/'>Jatka sivustolle</a>
       </div>
     </LoginCallbackHandler>
   );

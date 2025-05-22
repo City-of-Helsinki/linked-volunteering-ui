@@ -127,11 +127,11 @@ const Location: React.FC<Props> = ({
   return (
     <>
       <Row>
-        <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
+        <Col sm='12' md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
           <AutoSuggest
-            id="neighborhood"
-            label="form.event.field.neighborhood.label"
-            placeholder="form.event.field.neighborhood.placeholder"
+            id='neighborhood'
+            label='form.event.field.neighborhood.label'
+            placeholder='form.event.field.neighborhood.placeholder'
             addressFeatures={addressFeatures}
             error={errors.area}
             touched={touched.area}
@@ -142,15 +142,13 @@ const Location: React.FC<Props> = ({
         </Col>
       </Row>
       <Row>
-        <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 8, offset: 1 }}>
+        <Col sm='12' md={{ size: 8, offset: 1 }} lg={{ size: 8, offset: 1 }}>
           <Map
-            id="location"
+            id='location'
             bounds={bounds}
             center={center}
             errorLocation={errors.location}
-            errorContractZone={
-              !selectedContractZone ? 'form.validation.contact_zone.invalid' : undefined
-            }
+            errorContractZone={!selectedContractZone ? 'form.validation.contact_zone.invalid' : undefined}
             touched={touched.maintenance_location}
             handleChange={(e: AutoSuggestEvent) => {
               setClickedAddress(null);
@@ -162,15 +160,15 @@ const Location: React.FC<Props> = ({
         </Col>
       </Row>
       <Row>
-        <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 8, offset: 1 }}>
-          <Label htmlFor="maintenance_location" srOnly>
+        <Col sm='12' md={{ size: 8, offset: 1 }} lg={{ size: 8, offset: 1 }}>
+          <Label htmlFor='maintenance_location' srOnly>
             {formatMessage({ id: 'form.event.field.trash_location.placeholder' })}
           </Label>
           <Input
-            type="textarea"
-            id="maintenance_location"
-            placeholder="form.event.field.trash_location.placeholder"
-            text="form.event.new.info"
+            type='textarea'
+            id='maintenance_location'
+            placeholder='form.event.field.trash_location.placeholder'
+            text='form.event.new.info'
             error={errors.maintenance_location}
             touched={touched.maintenance_location}
             value={values.maintenance_location}

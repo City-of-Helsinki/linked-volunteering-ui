@@ -14,14 +14,7 @@ type ButtonComponentProps = {
   onClick?: () => void;
 } & PropsWithChildren;
 
-const ButtonComponent: React.FC<ButtonComponentProps> = ({
-  translate,
-  values,
-  append,
-  prepend,
-  children,
-  ...rest
-}) => {
+const ButtonComponent: React.FC<ButtonComponentProps> = ({ translate, values, append, prepend, children, ...rest }) => {
   return (
     <WithIcons component={Button} append={append} prepend={prepend} {...rest}>
       {translate ? <FormattedMessage id={translate} values={values} /> : children}

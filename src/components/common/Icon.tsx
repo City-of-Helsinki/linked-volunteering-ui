@@ -122,17 +122,7 @@ const Icon: React.FC<IconProps> = ({ name, color: fill, size, className, rotate,
     // eslint-disable-next-line no-console
     console.error('missing icon', name);
   }
-  return (
-    <StyledSvg
-      className={className}
-      wrapper="span"
-      fill={fill}
-      size={size}
-      rotate={rotate}
-      src={src}
-      {...rest}
-    />
-  );
+  return <StyledSvg className={className} wrapper='span' fill={fill} size={size} rotate={rotate} src={src} {...rest} />;
 };
 
 const StyledWithIcons = styled.span`

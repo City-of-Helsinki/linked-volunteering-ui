@@ -106,7 +106,7 @@
     "@vitest/coverage-istanbul": "^3.0.9",
     "husky": "^4.2.3",
     "jsdom": "^26.0.0",
-    "prettier": "^3.0.0",
+    "prettier": "^3.5.3",
     "sass": "^1.75.0"
   },
   "scripts": {
@@ -115,7 +115,8 @@
     "serve": "vite preview",
     "test": "vitest",
     "test:cov": "vitest run --coverage --watch=false",
-    "lint": "eslint --ext js,jsx,ts,tsx src",
+    "lint": "eslint --ext js,jsx,ts,tsx src && prettier src --check",
+    "lint:fix": "eslint --ext js,jsx,ts,tsx src --fix && prettier src --write",
     "test:e2e:install": "yarn playwright install",
     "test:e2e:ci": "npx playwright test",
     "test:e2e:start": "npx playwright test",

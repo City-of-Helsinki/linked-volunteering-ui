@@ -45,9 +45,7 @@ describe('<AdminRoutes />', () => {
     renderComponent(['/events/manage'], mockState);
 
     await waitFor(() =>
-      expect(
-        screen.getByRole('heading', { name: 'Oops, you are lost in the woods!' }),
-      ).toBeInTheDocument(),
+      expect(screen.getByRole('heading', { name: 'Oops, you are lost in the woods!' })).toBeInTheDocument(),
     );
   });
 
@@ -67,11 +65,7 @@ describe('<AdminRoutes />', () => {
 
     renderComponent(['/events/manage'], mockState);
 
-    await waitFor(() =>
-      expect(
-        screen.getByRole('heading', { name: 'Park volunteer activities' }),
-      ).toBeInTheDocument(),
-    );
+    await waitFor(() => expect(screen.getByRole('heading', { name: 'Park volunteer activities' })).toBeInTheDocument());
   });
 
   it('renders ModifyEventPage for /event/modify/:id route', async () => {
@@ -97,9 +91,7 @@ describe('<AdminRoutes />', () => {
 
     renderComponent(['/event/modify/1'], mockState);
 
-    await waitFor(() =>
-      expect(screen.getByRole('heading', { name: 'Edit activity' })).toBeInTheDocument(),
-    );
+    await waitFor(() => expect(screen.getByRole('heading', { name: 'Edit activity' })).toBeInTheDocument());
   });
 
   it('renders ReportPage for /report route', async () => {
@@ -119,9 +111,7 @@ describe('<AdminRoutes />', () => {
     renderComponent(['/report'], mockState);
 
     await waitFor(() =>
-      expect(
-        screen.getByRole('heading', { name: 'Spring cleaning activities' }),
-      ).toBeInTheDocument(),
+      expect(screen.getByRole('heading', { name: 'Spring cleaning activities' })).toBeInTheDocument(),
     );
   });
 });
