@@ -14,12 +14,7 @@ import Pagination from '../common/Pagination';
 import IntlComponent from '../common/IntlComponent';
 import useAuth from '../../hooks/useAuth';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import {
-  getReport,
-  reportsSelector,
-  orderingSelector,
-  setOrderBy,
-} from '../../store/reducers/report';
+import { getReport, reportsSelector, orderingSelector, setOrderBy } from '../../store/reducers/report';
 
 const FormContainer = styled(Container)`
   margin-top: 1em;
@@ -116,10 +111,7 @@ const ReportPage = () => {
 
   const eventAmount = Object.keys(reports).reduce((acc, key) => acc + reports[key].event_count, 0);
 
-  const participantAmount = Object.keys(reports).reduce(
-    (acc, key) => acc + reports[key].estimated_attendee_count,
-    0,
-  );
+  const participantAmount = Object.keys(reports).reduce((acc, key) => acc + reports[key].estimated_attendee_count, 0);
 
   const csvData = [
     [
@@ -142,35 +134,26 @@ const ReportPage = () => {
 
   return (
     <Layout>
-      <PageMeta title="site.report.page_title" />
+      <PageMeta title='site.report.page_title' />
       <ControlContainer fluid>
         <TitleRow>
           <Col sm={{ size: 11, offset: 1 }}>
-            <FormattedMessage tagName="h1" id="site.report.title" />
+            <FormattedMessage tagName='h1' id='site.report.title' />
           </Col>
         </TitleRow>
         <Row>
           <Col sm={{ size: 2, offset: 1 }}>
-            <IntlComponent Component={ReportTitle} id="site.report.yearly_report" />
+            <IntlComponent Component={ReportTitle} id='site.report.yearly_report' />
           </Col>
           <Col sm={{ size: 4 }}>
-            <Select
-              id="area"
-              label="form.report.field.year.label"
-              onChange={handleChange}
-              noneSelectedText=""
-            >
+            <Select id='area' label='form.report.field.year.label' onChange={handleChange} noneSelectedText=''>
               {yearOptions}
             </Select>
           </Col>
           {Object.keys(reports).length > 0 && (
             <Col sm={{ size: 4 }}>
-              <CSVLink
-                filename="Linked Volunteering - Report.csv"
-                className="btn btn-info"
-                data={csvData}
-              >
-                <FormattedMessage tagName="span" id="site.report.download" />
+              <CSVLink filename='Linked Volunteering - Report.csv' className='btn btn-info' data={csvData}>
+                <FormattedMessage tagName='span' id='site.report.download' />
               </CSVLink>
             </Col>
           )}
@@ -179,13 +162,13 @@ const ReportPage = () => {
           <IntlComponent
             Component={Col}
             sm={{ size: 2, offset: 1 }}
-            id="site.report.total_events"
+            id='site.report.total_events'
             values={{ event_amount: eventAmount }}
           />
           <IntlComponent
             Component={Col}
             sm={{ size: 2, offset: 1 }}
-            id="site.report.total_participants"
+            id='site.report.total_participants'
             values={{ participant_amount: participantAmount }}
           />
         </StatisticsRow>
@@ -194,7 +177,7 @@ const ReportPage = () => {
         <Row>
           <Col>
             <Table
-              id="report_table"
+              id='report_table'
               headers={tableHeaders}
               setOrderBy={setOrder}
               ordering={ordering}
@@ -212,11 +195,7 @@ const ReportPage = () => {
                 </Tr>
               ))}
             </Table>
-            <Pagination
-              activePage={activePage}
-              onPageClick={handlePageClick}
-              pageCount={pageCount}
-            />
+            <Pagination activePage={activePage} onPageClick={handlePageClick} pageCount={pageCount} />
           </Col>
         </Row>
       </FormContainer>

@@ -34,9 +34,7 @@ export const validationSchema = yup.object().shape({
     .date()
     .nullable()
     .when('start_time', (st) => {
-      return st
-        ? yup.date().min(st, 'form.validation.date.endtime')
-        : yup.date().nullable().required();
+      return st ? yup.date().min(st, 'form.validation.date.endtime') : yup.date().nullable().required();
     }),
   location: yup
     .object()
@@ -48,25 +46,13 @@ export const validationSchema = yup.object().shape({
   organizer_first_name: yup.string().required(),
   organizer_last_name: yup.string().required(),
   organizer_email: yup.string().required().email(),
-  organizer_phone: yup
-    .string()
-    .required()
-    .matches(phoneRegex, { message: 'form.validation.string.phone' }),
-  estimated_attendee_count: yup
-    .number()
-    .positive('form.validation.number.positive')
-    .required(VALIDATION_NOT_NUMBER),
+  organizer_phone: yup.string().required().matches(phoneRegex, { message: 'form.validation.string.phone' }),
+  estimated_attendee_count: yup.number().positive('form.validation.number.positive').required(VALIDATION_NOT_NUMBER),
   targets: yup.string().required(),
   maintenance_location: yup.string().required(),
   additional_information: yup.string(),
-  small_trash_bag_count: yup
-    .number()
-    .min(0, VALIDATION_NUMBER_POSITIVE)
-    .required(VALIDATION_NOT_NUMBER),
-  large_trash_bag_count: yup
-    .number()
-    .min(0, VALIDATION_NUMBER_POSITIVE)
-    .required(VALIDATION_NOT_NUMBER),
+  small_trash_bag_count: yup.number().min(0, VALIDATION_NUMBER_POSITIVE).required(VALIDATION_NOT_NUMBER),
+  large_trash_bag_count: yup.number().min(0, VALIDATION_NUMBER_POSITIVE).required(VALIDATION_NOT_NUMBER),
   trash_picker_count: yup
     .number()
     .min(0, VALIDATION_NUMBER_POSITIVE)

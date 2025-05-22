@@ -56,11 +56,7 @@ export const authSlice = createSlice({
   },
 });
 
-export const {
-  currentUserDataSelector,
-  userLoadingSelector,
-  isOfficialSelector,
-  isContractorSelector,
-} = authSlice.selectors;
+export const { currentUserDataSelector, userLoadingSelector, isOfficialSelector, isContractorSelector } =
+  authSlice.selectors;
 
 export default authSlice.reducer;

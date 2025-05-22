@@ -14,7 +14,7 @@ const ContractZones: React.FC<ContractZonesProps> = ({ contractZones, onChange }
 
   return (
     <Select
-      id="contactZones"
+      id='contactZones'
       noneSelectedText={intl.formatMessage({
         id: 'form.manage_events.field.activities.noneSelectedText',
       })}

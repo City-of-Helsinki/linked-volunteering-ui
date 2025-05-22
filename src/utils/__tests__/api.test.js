@@ -61,10 +61,7 @@ describe('API utility functions', () => {
   test('remove() makes a DELETE request', async () => {
     fetch.mockResolvedValue(mockResponse(204, {}));
     const data = await remove('test-endpoint');
-    expect(fetch).toHaveBeenCalledWith(
-      expect.any(URL),
-      expect.objectContaining({ method: 'DELETE' }),
-    );
+    expect(fetch).toHaveBeenCalledWith(expect.any(URL), expect.objectContaining({ method: 'DELETE' }));
     expect(data).toEqual({});
   });
 

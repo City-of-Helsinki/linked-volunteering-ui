@@ -9,10 +9,10 @@ import SubmittedPage from './pages/events/containers/SubmittedPageContainer';
 function LocaleRoutes() {
   return (
     <Routes>
-      <Route path="/accessibility" element={<AccessibilityPage />} />
-      <Route path="/event/new" element={<NewEventPage />} />
-      <Route path="/event/submitted" element={<SubmittedPage />} />
-      <Route path="*" element={<Error404Page />} />
+      <Route path='/accessibility' element={<AccessibilityPage />} />
+      <Route path='/event/new' element={<NewEventPage />} />
+      <Route path='/event/submitted' element={<SubmittedPage />} />
+      <Route path='*' element={<Error404Page />} />
     </Routes>
   );
 }

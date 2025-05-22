@@ -20,12 +20,7 @@ export default () => {
         const { message, color, values } = notifications[key];
 
         return (
-          <Notification
-            key={key}
-            onDismiss={() => dispatch(dismissNotification(key))}
-            color={color}
-            values={values}
-          >
+          <Notification key={key} onDismiss={() => dispatch(dismissNotification(key))} color={color} values={values}>
             {message}
           </Notification>
         );

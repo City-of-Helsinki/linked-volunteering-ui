@@ -62,10 +62,10 @@ const App: React.FC = () => {
       <CommonMeta />
       <SessionEndedDialog />
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/admin/*" element={<AdminRoutes />} />
-        <Route path="/*" element={<LocaleRoutes />} />
-        <Route path="/authError" element={<ErrorPage />} />
+        <Route path='/' element={<LandingPage />} />
+        <Route path='/admin/*' element={<AdminRoutes />} />
+        <Route path='/*' element={<LocaleRoutes />} />
+        <Route path='/authError' element={<ErrorPage />} />
       </Routes>
     </IntlProvider>
   );

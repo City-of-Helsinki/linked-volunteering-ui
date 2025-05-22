@@ -20,12 +20,7 @@ interface RenderWithProvidersProps extends Omit<RenderOptions, 'queries'> {
 }
 
 const renderWithProviders = (ui: ReactElement, renderOptions: RenderWithProvidersProps = {}) => {
-  const {
-    preloadedState = {},
-    store = createStore(preloadedState),
-    locale = 'en',
-    ...rest
-  } = renderOptions;
+  const { preloadedState = {}, store = createStore(preloadedState), locale = 'en', ...rest } = renderOptions;
 
   const Wrapper: React.FC<PropsWithChildren<{}>> = ({ children }) => {
     return (
