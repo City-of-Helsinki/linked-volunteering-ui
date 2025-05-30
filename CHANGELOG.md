@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.5.1](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.5.0...linked-volunteering-ui-v0.5.1) (2025-05-30)
+
+
+### Bug Fixes
+
+* AutoSuggest input missing key PS-189 ([aad30d0](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/aad30d04f5d0a53bb3baed18aa702f80cc694526))
+
+
+### Dependencies
+
+* Fix @babel/core incompability PS-189 ([02be1c1](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/02be1c1c4e9fbdfd8bdd29c65b8dac270a6b1294))
+* Remove react-is PS-189 ([ad94765](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/ad94765b1312d492c4ece6ab63ad9f4222d16e28))
+* Remove unnecessary packages PS-189 ([9531c1e](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/9531c1e1535749d79781b4976dd2491439defb48))
+* Replace react-helmet with react-helmet-async PS-189 ([7d55846](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/7d55846bd05d2bc2540469a52bcf284305dcc357))
+* Upgrade @testing-library/react to 15.0.7 ([5a218c7](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/5a218c7bd5bfa7b5c70ebf889fb7020997a18498))
+* Upgrade react to 18.2.0, testing library to 13.4.0 PS-189 ([4f49c0a](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/4f49c0aee0a7d8f96e936dd378f110c137caf0e0))
+* Upgrade react-intl PS-189 ([73d0a64](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/73d0a648b477be2dc101258307b977fb3d8e1ff4))
+* Upgrade react-redux PS-189 ([df21c2c](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/df21c2ca403069697d9213c4589fe26720d448d4))
+* Upgrade styled-components PS-189 ([3c8e4e1](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/3c8e4e13a5531b5372b45d1e5ef3ab6000a4a936))
+
 ## [0.5.0](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.4.10...linked-volunteering-ui-v0.5.0) (2025-05-05)
 
 
