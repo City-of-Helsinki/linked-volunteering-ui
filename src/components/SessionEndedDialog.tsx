@@ -10,8 +10,12 @@ const SessionEndedDialog = () => {
       content={{
         title: intl.formatMessage({ id: 'site.login-prompt.title' }),
         text: intl.formatMessage({ id: 'site.login-prompt.body' }),
-        buttonText: intl.formatMessage({ id: 'site.login-prompt.button-label' }),
-        closeButtonLabelText: intl.formatMessage({ id: 'site.login-prompt.button-label' }),
+        buttonText: intl.formatMessage({
+          id: 'site.login-prompt.button-label',
+        }),
+        closeButtonLabelText: intl.formatMessage({
+          id: 'site.login-prompt.button-label',
+        }),
       }}
     />
   );

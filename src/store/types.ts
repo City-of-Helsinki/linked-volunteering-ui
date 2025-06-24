@@ -3,7 +3,7 @@ export interface ContractZone {
   name: string;
 }
 export interface Event {
-  [key: string]: any;
+  [key: string]: unknown;
   id: number;
   state: string;
   name: string;
@@ -32,5 +32,11 @@ export interface Event {
 
 export interface Report {
   id: string;
-  [key: string]: any;
+  name: string;
+  contact_person: string;
+  email: string;
+  phone: string;
+  event_count: number;
+  estimated_attendee_count: number;
+  [key: string]: unknown;
 }

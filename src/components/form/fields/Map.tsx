@@ -1,4 +1,8 @@
-import L, { LatLngExpression, LatLngBoundsExpression, LeafletMouseEvent } from 'leaflet';
+import L, {
+  LatLngExpression,
+  LatLngBoundsExpression,
+  LeafletMouseEvent,
+} from 'leaflet';
 import React, { useEffect, useState } from 'react';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import styled from 'styled-components';
@@ -43,10 +47,10 @@ interface MapCanvasProps {
   center: number[] | null;
   errorContractZone?: string;
   errorLocation?: string;
-  handleChange: Function;
+  handleChange: (event: { target: { id: string; value: unknown } }) => void;
   id: string;
   touched: boolean;
-  value: any;
+  value: { type: string; coordinates: number[] } | null;
 }
 
 const MapCanvas: React.FC<MapCanvasProps> = ({
@@ -72,7 +76,13 @@ const MapCanvas: React.FC<MapCanvasProps> = ({
 
   useEffect(() => {
     if (value && apiAccessToken) {
-      dispatch(getGeoData({ lat: value.coordinates[1], long: value.coordinates[0], apiAccessToken }));
+      dispatch(
+        getGeoData({
+          lat: value.coordinates[1],
+          long: value.coordinates[0],
+          apiAccessToken,
+        })
+      );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value, apiAccessToken]);
@@ -92,10 +102,17 @@ const MapCanvas: React.FC<MapCanvasProps> = ({
 
   const renderMapErrors = () => {
     if (touched && errorLocation) {
-      return <IntlComponent Component={ErrorMessage} id='form.validation.map' />;
+      return (
+        <IntlComponent Component={ErrorMessage} id="form.validation.map" />
+      );
     }
     if (touched && errorContractZone) {
-      return <IntlComponent Component={ErrorMessage} id='form.validation.contract_zone' />;
+      return (
+        <IntlComponent
+          Component={ErrorMessage}
+          id="form.validation.contract_zone"
+        />
+      );
     }
     return null;
   };
@@ -110,16 +127,23 @@ const MapCanvas: React.FC<MapCanvasProps> = ({
     [60.33, 25.33],
     [60.1, 24.73],
   ]; // Allow map scroll only inside Helsinki
-  const mapCenter: [number, number] | null = center ? [center[1], center[0]] : null;
+  const mapCenter: [number, number] | null = center
+    ? [center[1], center[0]]
+    : null;
 
   const { lat, lng, zoom } = mapState;
 
   const position: LatLngExpression = [lat, lng];
-  const markerPosition: LatLngExpression = value ? [value.coordinates[1], value.coordinates[0]] : position;
+  const markerPosition: LatLngExpression = value
+    ? [value.coordinates[1], value.coordinates[0]]
+    : position;
   const marker = value ? <Marker position={markerPosition} /> : null;
 
   return (
-    <MapContainer className={renderMapErrors() ? 'is-invalid' : undefined} aria-hidden>
+    <MapContainer
+      className={renderMapErrors() ? 'is-invalid' : undefined}
+      aria-hidden
+    >
       <Map
         center={mapCenter || position}
         zoom={mapCenter ? 14 : zoom}
@@ -129,7 +153,7 @@ const MapCanvas: React.FC<MapCanvasProps> = ({
         style={style}
         onClick={addMarker}
       >
-        <TileLayer url='https://tiles.hel.ninja/wmts/osm-sm/webmercator/{z}/{x}/{y}.png' />
+        <TileLayer url="https://tiles.hel.ninja/wmts/osm-sm/webmercator/{z}/{x}/{y}.png" />
         {marker}
       </Map>
       {renderMapErrors()}

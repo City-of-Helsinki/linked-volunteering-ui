@@ -24,7 +24,11 @@ const PageContainer = styled.div`
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.65) 100%);
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.25) 0%,
+      rgba(0, 0, 0, 0.65) 100%
+    );
   }
 `;
 
@@ -69,31 +73,47 @@ function LandingPage() {
 
   return (
     <Layout>
-      <PageMeta title='site.meta.title' />
+      <PageMeta title="site.meta.title" />
       <PageContainer>
         <Container>
           <Row>
-            <Col md='12' lg='6'>
+            <Col md="12" lg="6">
               <ContentWrapper>
-                <FormattedMessage tagName='h1' id='site.page.landing.hero.headline' />
-                <FormattedMessage tagName='p' id='site.page.landing.hero.introduction' />
-                <FormattedMessage tagName='strong' id='site.page.landing.hero.call_to_action' />
+                <FormattedMessage
+                  tagName="h1"
+                  id="site.page.landing.hero.headline"
+                />
+                <FormattedMessage
+                  tagName="p"
+                  id="site.page.landing.hero.introduction"
+                />
+                <FormattedMessage
+                  tagName="strong"
+                  id="site.page.landing.hero.call_to_action"
+                />
 
                 <Row>
-                  <Col sm='12'>
-                    <Button color='supplementary' onClick={openNewEventPage}>
-                      {intl.formatMessage({ id: 'site.page.landing.hero.button' })}
+                  <Col sm="12">
+                    <Button color="supplementary" onClick={openNewEventPage}>
+                      {intl.formatMessage({
+                        id: 'site.page.landing.hero.button',
+                      })}
                     </Button>
                   </Col>
                 </Row>
 
                 <Row>
-                  <Col sm='12'>
+                  <Col sm="12">
                     <a
                       href={formatMessage({ id: 'site.page.landing.hero.url' })}
-                      aria-label={formatMessage({ id: 'site.page.landing.hero.link' })}
+                      aria-label={formatMessage({
+                        id: 'site.page.landing.hero.link',
+                      })}
                     >
-                      <FormattedMessage tagName='span' id='site.page.landing.hero.link' />
+                      <FormattedMessage
+                        tagName="span"
+                        id="site.page.landing.hero.link"
+                      />
                     </a>
                   </Col>
                 </Row>

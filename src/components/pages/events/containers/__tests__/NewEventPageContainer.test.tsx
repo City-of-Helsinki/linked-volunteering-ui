@@ -24,7 +24,7 @@ const renderComponent = () => {
     <BrowserRouter>
       <NewEventPageContainer />
     </BrowserRouter>,
-    { store },
+    { store }
   );
 };
 

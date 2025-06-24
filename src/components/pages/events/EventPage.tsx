@@ -41,7 +41,7 @@ const TitleContainer = styled(Container)`
 
   ${responsive.md`
     h1 {
-      font-size: ${(props: { theme: { h2FontSize: any } }) => props.theme.h2FontSize};
+      font-size: ${(props: { theme: { h2FontSize: unknown } }) => props.theme.h2FontSize};
     }
   `}
 `;
@@ -106,7 +106,10 @@ interface EventPageProps {
   pageType: 'new' | 'modify';
 }
 
-const EventPage: React.FC<EventPageProps> = ({ handleSubmit: handleSubmitFn, pageType }) => {
+const EventPage: React.FC<EventPageProps> = ({
+  handleSubmit: handleSubmitFn,
+  pageType,
+}) => {
   const { id } = useParams();
 
   const eventById = useAppSelector((state) => eventByIdSelector(state, id));
@@ -148,13 +151,26 @@ const EventPage: React.FC<EventPageProps> = ({ handleSubmit: handleSubmitFn, pag
 
       try {
         await handleSubmitFn(values);
-      } catch (error: any) {
-        const submitErrors = Object.entries(error.response.data).reduce((acc: { [key: string]: string }, [key]) => {
-          acc[key] = 'form.validation.generic';
-          return acc;
-        }, {});
+      } catch (error: unknown) {
+        if (
+          error &&
+          typeof error === 'object' &&
+          'response' in error &&
+          error.response &&
+          typeof error.response === 'object' &&
+          'data' in error.response
+        ) {
+          const apiError = error.response as { data: Record<string, unknown> };
+          const submitErrors = Object.entries(apiError.data).reduce(
+            (acc: { [key: string]: string }, [key]) => {
+              acc[key] = 'form.validation.generic';
+              return acc;
+            },
+            {}
+          );
 
-        setErrors(submitErrors);
+          setErrors(submitErrors);
+        }
       } finally {
         setSubmitting(false);
       }
@@ -166,9 +182,15 @@ const EventPage: React.FC<EventPageProps> = ({ handleSubmit: handleSubmitFn, pag
     setTimeout(() => {
       const errComponents = document.getElementsByClassName('is-invalid');
       if (errComponents.length) {
-        errComponents[0].scrollIntoView({ block: 'center', behavior: 'smooth' });
+        errComponents[0].scrollIntoView({
+          block: 'center',
+          behavior: 'smooth',
+        });
         forEach(errComponents, (el) => {
-          if (el.tagName.toLowerCase() === 'input' || el.tagName.toLowerCase() === 'textarea') {
+          if (
+            el.tagName.toLowerCase() === 'input' ||
+            el.tagName.toLowerCase() === 'textarea'
+          ) {
             // eslint-disable-next-line sonarjs/no-nested-functions
             setTimeout(() => {
               const htmlEl = el as HTMLElement;
@@ -188,7 +210,7 @@ const EventPage: React.FC<EventPageProps> = ({ handleSubmit: handleSubmitFn, pag
     <Layout paddingBottom>
       <PageMeta title={`form.event.${pageType}.page_title`} />
       <TitleContainer>
-        <IntlComponent Component='h1' id={`form.event.${pageType}.heading`} />
+        <IntlComponent Component="h1" id={`form.event.${pageType}.heading`} />
         <InstructionText text={`form.event.${pageType}.infoText`} />
       </TitleContainer>
       <FormContainer>
@@ -203,21 +225,28 @@ const EventPage: React.FC<EventPageProps> = ({ handleSubmit: handleSubmitFn, pag
           setFieldTouched={setFieldTouched}
         />
         <Row>
-          <ButtonCol sm='12' md={{ size: 8, offset: 1 }}>
+          <ButtonCol sm="12" md={{ size: 8, offset: 1 }}>
             <IntlComponent
               Component={ResetButton}
               id={`form.event.${pageType}.button.reset`}
-              type='button'
+              type="button"
               onClick={handleReset}
-              color='danger'
+              color="danger"
             />
             <IntlComponent
               Component={SubmitButton}
-              type='submit'
-              color='success'
+              type="submit"
+              color="success"
               id={`form.event.${pageType}.button.submit`}
               aria-disabled={isSubmitting || undefined}
-              onClick={isSubmitting ? undefined : handleSubmit}
+              onClick={
+                isSubmitting
+                  ? undefined
+                  : (e) =>
+                      handleSubmit(
+                        e as unknown as React.FormEvent<HTMLFormElement>
+                      )
+              }
             />
           </ButtonCol>
         </Row>

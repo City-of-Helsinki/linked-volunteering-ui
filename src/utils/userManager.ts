@@ -1,7 +1,11 @@
 import { LoginProviderProps } from 'hds-react';
 
-const { REACT_APP_OIDC_API_TOKENS_URL, REACT_APP_OIDC_CLIENT_ID, REACT_APP_OIDC_AUTHORITY, REACT_APP_OIDC_API_SCOPE } =
-  import.meta.env;
+const {
+  REACT_APP_OIDC_API_TOKENS_URL,
+  REACT_APP_OIDC_CLIENT_ID,
+  REACT_APP_OIDC_AUTHORITY,
+  REACT_APP_OIDC_API_SCOPE,
+} = import.meta.env;
 
 const getRedirectUri = (ext: string) => {
   const { protocol, hostname, port } = window.location;

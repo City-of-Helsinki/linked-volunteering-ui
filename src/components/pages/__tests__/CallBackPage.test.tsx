@@ -20,10 +20,16 @@ vi.mock('hds-react', async () => {
       onError: (error?: { message: string }) => void;
     }) => (
       <div>
-        <button type='button' onClick={() => onSuccess({ profile: { name: 'Test User' } })}>
+        <button
+          type="button"
+          onClick={() => onSuccess({ profile: { name: 'Test User' } })}
+        >
           Trigger Success
         </button>
-        <button type='button' onClick={() => onError({ message: 'Some error' })}>
+        <button
+          type="button"
+          onClick={() => onError({ message: 'Some error' })}
+        >
           Trigger Error
         </button>
         <div>oidc.authenticating</div>
@@ -43,7 +49,7 @@ const renderComponent = () => {
       <BrowserRouter>
         <CallBackPage />
       </BrowserRouter>
-    </LoginProvider>,
+    </LoginProvider>
   );
 };
 

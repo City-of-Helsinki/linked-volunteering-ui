@@ -32,9 +32,18 @@ type LabelProps = {
   srOnly?: boolean;
 } & PropsWithChildren;
 
-const LabelComponent: React.FC<LabelProps> = ({ children, htmlFor, required, srOnly = false }) => {
+const LabelComponent: React.FC<LabelProps> = ({
+  children,
+  htmlFor,
+  required,
+  srOnly = false,
+}) => {
   return (
-    <StyledLabel className={classNames(srOnly && 'srOnly')} htmlFor={htmlFor} required={required}>
+    <StyledLabel
+      className={classNames(srOnly && 'srOnly')}
+      htmlFor={htmlFor}
+      required={required}
+    >
       {children}
     </StyledLabel>
   );

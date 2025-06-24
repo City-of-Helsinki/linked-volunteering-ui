@@ -101,17 +101,17 @@ const Footer: React.FC = () => {
     <Wrapper>
       <NavigationLinks>
         <span>
-          <LocalizedLink to='' translate='site.footer.front_page' />
+          <LocalizedLink to="" translate="site.footer.front_page" />
         </span>
         <span>
-          <LocalizedLink to='event/new' translate='site.footer.create_event' />
+          <LocalizedLink to="event/new" translate="site.footer.create_event" />
         </span>
         <span>
           <a
             href={formatMessage({ id: 'site.footer.url.contacts' })}
             aria-label={formatMessage({ id: 'site.footer.contacts' })}
           >
-            <FormattedMessage tagName='span' id='site.footer.contacts' />
+            <FormattedMessage tagName="span" id="site.footer.contacts" />
           </a>
         </span>
       </NavigationLinks>
@@ -124,10 +124,16 @@ const Footer: React.FC = () => {
             href={formatMessage({ id: 'site.footer.privacyPolicy.url' })}
             aria-label={formatMessage({ id: 'site.footer.privacyPolicy.text' })}
           >
-            <FormattedMessage tagName='span' id='site.footer.privacyPolicy.text' />
+            <FormattedMessage
+              tagName="span"
+              id="site.footer.privacyPolicy.text"
+            />
           </a>
           <Link to={`/${locale}/accessibility`}>
-            <FormattedMessage tagName='span' id='site.footer.accessibility.text' />
+            <FormattedMessage
+              tagName="span"
+              id="site.footer.accessibility.text"
+            />
           </Link>
         </BottomLinksLeft>
         <BottomLinksRight>
@@ -135,7 +141,7 @@ const Footer: React.FC = () => {
             href={formatMessage({ id: 'site.footer.url.feedback' })}
             aria-label={formatMessage({ id: 'site.footer.give_feedback' })}
           >
-            <FormattedMessage tagName='span' id='site.footer.give_feedback' />
+            <FormattedMessage tagName="span" id="site.footer.give_feedback" />
           </a>
         </BottomLinksRight>
       </BottomLinks>

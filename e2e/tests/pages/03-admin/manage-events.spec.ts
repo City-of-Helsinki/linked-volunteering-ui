@@ -1,11 +1,16 @@
 import { Page, test, expect } from '@playwright/test';
 
-import { TEST_USER_EMAIL, TEST_USER_PASSWORD } from '../../../../playwright.config';
+import {
+  TEST_USER_EMAIL,
+  TEST_USER_PASSWORD,
+} from '../../../../playwright.config';
 import { login } from '../../utils';
 
 test.describe('Manage events', () => {
-  // eslint-disable-next-line sonarjs/no-skipped-tests
-  test.skip(!TEST_USER_EMAIL || !TEST_USER_PASSWORD, 'No test user credentials provided');
+  test.skip(
+    !TEST_USER_EMAIL || !TEST_USER_PASSWORD,
+    'No test user credentials provided'
+  );
 
   let page: Page;
 
@@ -32,7 +37,9 @@ test.describe('Manage events', () => {
 
     await page.getByRole('button', { name: 'Hyväksy tapahtuma' }).click();
 
-    await expect(page.getByText('Puistotalkoot e2e testi hyväksytty!')).toBeVisible();
+    await expect(
+      page.getByText('Puistotalkoot e2e testi hyväksytty!')
+    ).toBeVisible();
   });
 
   test('Remove will bring up modal and will activate removed info text', async () => {
@@ -45,11 +52,15 @@ test.describe('Manage events', () => {
 
     await page.getByRole('button', { name: 'Poista tapahtuma' }).click();
 
-    await expect(page.getByRole('heading', { name: 'Poistetaanko tapahtuma?' })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: 'Poistetaanko tapahtuma?' })
+    ).toBeVisible();
 
     await page.getByRole('button', { name: 'Kyllä, poista tapahtuma' }).click();
 
-    await expect(page.getByText('Puistotalkoot e2e testi peruttu!')).toBeVisible();
+    await expect(
+      page.getByText('Puistotalkoot e2e testi peruttu!')
+    ).toBeVisible();
   });
 
   test('Modify will take to event modification page', async () => {

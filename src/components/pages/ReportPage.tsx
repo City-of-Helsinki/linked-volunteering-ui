@@ -14,7 +14,12 @@ import Pagination from '../common/Pagination';
 import IntlComponent from '../common/IntlComponent';
 import useAuth from '../../hooks/useAuth';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { getReport, reportsSelector, orderingSelector, setOrderBy } from '../../store/reducers/report';
+import {
+  getReport,
+  reportsSelector,
+  orderingSelector,
+  setOrderBy,
+} from '../../store/reducers/report';
 
 const FormContainer = styled(Container)`
   margin-top: 1em;
@@ -57,11 +62,13 @@ const tableHeaders = [
   { key: 'participants', translation: 'report.participants', hasOrderBy: true },
 ];
 
-const yearOptions = range(REPORTS_START_YEAR, new Date().getFullYear() + 2).map((year) => (
-  <option key={year} value={year}>
-    {year}
-  </option>
-));
+const yearOptions = range(REPORTS_START_YEAR, new Date().getFullYear() + 2).map(
+  (year) => (
+    <option key={year} value={year}>
+      {year}
+    </option>
+  )
+);
 
 const ReportPage = () => {
   const [activePage, setActivePage] = useState(1);
@@ -102,16 +109,24 @@ const ReportPage = () => {
 
     return reportsKeys.slice(
       (activePage - 1) * TABLE_PAGE_SIZE,
-      Math.min(activePage * TABLE_PAGE_SIZE, reportsKeys.length),
+      Math.min(activePage * TABLE_PAGE_SIZE, reportsKeys.length)
     );
   };
 
-  const pageCount = Math.ceil((Object.keys(reports).length || 1) / TABLE_PAGE_SIZE);
+  const pageCount = Math.ceil(
+    (Object.keys(reports).length || 1) / TABLE_PAGE_SIZE
+  );
   const paginatedReports = getPaginatedReports();
 
-  const eventAmount = Object.keys(reports).reduce((acc, key) => acc + reports[key].event_count, 0);
+  const eventAmount = Object.keys(reports).reduce(
+    (acc, key) => acc + reports[key].event_count,
+    0
+  );
 
-  const participantAmount = Object.keys(reports).reduce((acc, key) => acc + reports[key].estimated_attendee_count, 0);
+  const participantAmount = Object.keys(reports).reduce(
+    (acc, key) => acc + reports[key].estimated_attendee_count,
+    0
+  );
 
   const csvData = [
     [
@@ -134,26 +149,38 @@ const ReportPage = () => {
 
   return (
     <Layout>
-      <PageMeta title='site.report.page_title' />
+      <PageMeta title="site.report.page_title" />
       <ControlContainer fluid>
         <TitleRow>
           <Col sm={{ size: 11, offset: 1 }}>
-            <FormattedMessage tagName='h1' id='site.report.title' />
+            <FormattedMessage tagName="h1" id="site.report.title" />
           </Col>
         </TitleRow>
         <Row>
           <Col sm={{ size: 2, offset: 1 }}>
-            <IntlComponent Component={ReportTitle} id='site.report.yearly_report' />
+            <IntlComponent
+              Component={ReportTitle}
+              id="site.report.yearly_report"
+            />
           </Col>
           <Col sm={{ size: 4 }}>
-            <Select id='area' label='form.report.field.year.label' onChange={handleChange} noneSelectedText=''>
+            <Select
+              id="area"
+              label="form.report.field.year.label"
+              onChange={handleChange}
+              noneSelectedText=""
+            >
               {yearOptions}
             </Select>
           </Col>
           {Object.keys(reports).length > 0 && (
             <Col sm={{ size: 4 }}>
-              <CSVLink filename='Linked Volunteering - Report.csv' className='btn btn-info' data={csvData}>
-                <FormattedMessage tagName='span' id='site.report.download' />
+              <CSVLink
+                filename="Linked Volunteering - Report.csv"
+                className="btn btn-info"
+                data={csvData}
+              >
+                <FormattedMessage tagName="span" id="site.report.download" />
               </CSVLink>
             </Col>
           )}
@@ -162,13 +189,13 @@ const ReportPage = () => {
           <IntlComponent
             Component={Col}
             sm={{ size: 2, offset: 1 }}
-            id='site.report.total_events'
+            id="site.report.total_events"
             values={{ event_amount: eventAmount }}
           />
           <IntlComponent
             Component={Col}
             sm={{ size: 2, offset: 1 }}
-            id='site.report.total_participants'
+            id="site.report.total_participants"
             values={{ participant_amount: participantAmount }}
           />
         </StatisticsRow>
@@ -177,25 +204,36 @@ const ReportPage = () => {
         <Row>
           <Col>
             <Table
-              id='report_table'
+              id="report_table"
               headers={tableHeaders}
               setOrderBy={setOrder}
               ordering={ordering}
               firstColumn={undefined}
               actionColSpan={undefined}
             >
-              {paginatedReports?.map((key) => (
-                <Tr key={reports[key].id} firstColumn={undefined} highlighted={undefined}>
-                  <StyledTd>{reports[key].name}</StyledTd>
-                  <StyledTd>{reports[key].contact_person}</StyledTd>
-                  <StyledTd>{reports[key].email}</StyledTd>
-                  <StyledTd>{reports[key].phone}</StyledTd>
-                  <StyledTd>{reports[key].event_count}</StyledTd>
-                  <StyledTd>{reports[key].estimated_attendee_count}</StyledTd>
-                </Tr>
-              ))}
+              {paginatedReports?.map((key) => {
+                const report = reports[key];
+                return (
+                  <Tr
+                    key={report.id}
+                    firstColumn={undefined}
+                    highlighted={undefined}
+                  >
+                    <StyledTd>{report.name}</StyledTd>
+                    <StyledTd>{report.contact_person}</StyledTd>
+                    <StyledTd>{report.email}</StyledTd>
+                    <StyledTd>{report.phone}</StyledTd>
+                    <StyledTd>{report.event_count}</StyledTd>
+                    <StyledTd>{report.estimated_attendee_count}</StyledTd>
+                  </Tr>
+                );
+              })}
             </Table>
-            <Pagination activePage={activePage} onPageClick={handlePageClick} pageCount={pageCount} />
+            <Pagination
+              activePage={activePage}
+              onPageClick={handlePageClick}
+              pageCount={pageCount}
+            />
           </Col>
         </Row>
       </FormContainer>
