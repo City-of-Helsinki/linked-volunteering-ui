@@ -28,7 +28,7 @@ const renderComponent = () => {
     <BrowserRouter>
       <App />
     </BrowserRouter>,
-    { store },
+    { store }
   );
 };
 

@@ -32,12 +32,15 @@ describe('authService', () => {
       const token = 'test-token';
       const result = await authService.getCurrentUserData(token);
 
-      expect(global.fetch).toHaveBeenCalledWith('https://test-api.com/v1/user/me/', {
-        headers: {
-          Authorization: 'Bearer test-token',
-          'Content-Type': 'application/json',
-        },
-      });
+      expect(global.fetch).toHaveBeenCalledWith(
+        'https://test-api.com/v1/user/me/',
+        {
+          headers: {
+            Authorization: 'Bearer test-token',
+            'Content-Type': 'application/json',
+          },
+        }
+      );
       expect(result).toEqual(mockUser);
     });
 
@@ -48,14 +51,18 @@ describe('authService', () => {
       });
 
       const token = 'invalid-token';
-      await expect(authService.getCurrentUserData(token)).rejects.toThrow('HTTP error! status: 401');
+      await expect(authService.getCurrentUserData(token)).rejects.toThrow(
+        'HTTP error! status: 401'
+      );
     });
 
     it('should handle network errors', async () => {
       (global.fetch as Mock).mockRejectedValueOnce(new Error('Network error'));
 
       const token = 'test-token';
-      await expect(authService.getCurrentUserData(token)).rejects.toThrow('Network error');
+      await expect(authService.getCurrentUserData(token)).rejects.toThrow(
+        'Network error'
+      );
     });
 
     it('should handle undefined token', async () => {
@@ -71,12 +78,15 @@ describe('authService', () => {
 
       await authService.getCurrentUserData(undefined);
 
-      expect(global.fetch).toHaveBeenCalledWith('https://test-api.com/v1/user/me/', {
-        headers: {
-          Authorization: 'Bearer undefined',
-          'Content-Type': 'application/json',
-        },
-      });
+      expect(global.fetch).toHaveBeenCalledWith(
+        'https://test-api.com/v1/user/me/',
+        {
+          headers: {
+            Authorization: 'Bearer undefined',
+            'Content-Type': 'application/json',
+          },
+        }
+      );
     });
   });
 });

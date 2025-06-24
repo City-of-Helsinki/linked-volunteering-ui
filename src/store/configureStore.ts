@@ -26,7 +26,9 @@ export const createStore = (preloadedState?: Partial<RootState>) => {
     preloadedState,
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({ serializableCheck: false }).concat([promiseMiddleware]),
+      getDefaultMiddleware({ serializableCheck: false }).concat([
+        promiseMiddleware,
+      ]),
   });
 };
 

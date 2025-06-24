@@ -143,7 +143,7 @@ const renderComponent = (preloadedState?: Partial<RootState>) => {
     <BrowserRouter>
       <ManageEventsPage />
     </BrowserRouter>,
-    { preloadedState: preloadedState || initialState },
+    { preloadedState: preloadedState || initialState }
   );
 };
 
@@ -151,8 +151,12 @@ describe('<ManageEventsPage />', () => {
   it('renders correctly', async () => {
     renderComponent();
 
-    await waitFor(() => expect(screen.getByRole('table').children[1].children).toHaveLength(1));
-    await waitFor(() => expect(screen.queryByTestId('next-page')).not.toBeInTheDocument());
+    await waitFor(() =>
+      expect(screen.getByRole('table').children[1].children).toHaveLength(1)
+    );
+    await waitFor(() =>
+      expect(screen.queryByTestId('next-page')).not.toBeInTheDocument()
+    );
   });
 
   it('should show the next page button when there are more events', async () => {
@@ -170,7 +174,9 @@ describe('<ManageEventsPage />', () => {
 
     renderComponent(state);
 
-    await waitFor(() => expect(screen.getByTestId('next-page')).toBeInTheDocument());
+    await waitFor(() =>
+      expect(screen.getByTestId('next-page')).toBeInTheDocument()
+    );
   });
 
   it('should fetch next page of events', async () => {
@@ -234,9 +240,13 @@ describe('<ManageEventsPage />', () => {
 
     await user.click(nextPageButton);
 
-    await waitFor(() => expect(screen.getByRole('table').children[1].children).toHaveLength(2));
+    await waitFor(() =>
+      expect(screen.getByRole('table').children[1].children).toHaveLength(2)
+    );
 
-    await waitFor(() => expect(screen.queryByTestId('next-page')).not.toBeInTheDocument());
+    await waitFor(() =>
+      expect(screen.queryByTestId('next-page')).not.toBeInTheDocument()
+    );
   });
 
   it('should remove event', async () => {

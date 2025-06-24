@@ -15,8 +15,9 @@ const useAuth = () => {
   const [error, tokens] = getStoredApiTokens();
 
   const signalListener = useCallback(
-    (signal?: Signal) => isApiTokensUpdatedSignal(signal) || isApiTokensRemovedSignal(signal),
-    [],
+    (signal?: Signal) =>
+      isApiTokensUpdatedSignal(signal) || isApiTokensRemovedSignal(signal),
+    []
   );
 
   const getApiToken = useCallback(() => {
@@ -24,7 +25,9 @@ const useAuth = () => {
       return undefined;
     }
 
-    return tokens ? tokens[`${import.meta.env.REACT_APP_OIDC_API_SCOPE}`] : undefined;
+    return tokens
+      ? tokens[`${import.meta.env.REACT_APP_OIDC_API_SCOPE}`]
+      : undefined;
   }, [error, isRenewing, tokens]);
 
   useSignalListener(signalListener);

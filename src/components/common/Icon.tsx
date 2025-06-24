@@ -85,14 +85,20 @@ const icons = {
 
 export type IconName = keyof typeof icons;
 
+type StyledSvgProps = {
+  fill?: string;
+  rotate?: string | number;
+  size?: string;
+};
+
 export const StyledSvg = styled(ReactSVG)`
   line-height: 1;
 
   svg {
-    fill: ${(props: any) => props.fill || 'currentColor'};
-    transform: rotate(${(props: any) => props.rotate || 0}deg);
+    fill: ${(props: StyledSvgProps) => props.fill || 'currentColor'};
+    transform: rotate(${(props: StyledSvgProps) => props.rotate || 0}deg);
 
-    ${(props) => {
+    ${(props: StyledSvgProps) => {
       if (typeof props.size === 'string' && props.size.endsWith('x')) {
         return css`
           width: ${parseFloat(props.size)}em;
@@ -115,14 +121,31 @@ export type IconProps = {
   className?: string;
 };
 
-const Icon: React.FC<IconProps> = ({ name, color: fill, size, className, rotate, ...rest }) => {
+const Icon: React.FC<IconProps> = ({
+  name,
+  color: fill,
+  size,
+  className,
+  rotate,
+  ...rest
+}) => {
   const src = name ? icons[name] : undefined;
 
   if (!src) {
     // eslint-disable-next-line no-console
     console.error('missing icon', name);
   }
-  return <StyledSvg className={className} wrapper='span' fill={fill} size={size} rotate={rotate} src={src} {...rest} />;
+  return (
+    <StyledSvg
+      className={className}
+      wrapper="span"
+      fill={fill}
+      size={size}
+      rotate={rotate}
+      src={src}
+      {...rest}
+    />
+  );
 };
 
 const StyledWithIcons = styled.span`
@@ -144,9 +167,17 @@ type WithIconProps = {
   component?: React.ElementType;
 } & PropsWithChildren;
 
-export function WithIcons({ append, prepend, children, component, ...rest }: WithIconProps) {
-  const prependProps = typeof prepend === 'string' ? { name: prepend as IconName } : prepend;
-  const appendProps = typeof append === 'string' ? { name: append as IconName } : append;
+export function WithIcons({
+  append,
+  prepend,
+  children,
+  component,
+  ...rest
+}: WithIconProps) {
+  const prependProps =
+    typeof prepend === 'string' ? { name: prepend as IconName } : prepend;
+  const appendProps =
+    typeof append === 'string' ? { name: append as IconName } : append;
 
   return (
     <StyledWithIcons as={component} {...rest}>

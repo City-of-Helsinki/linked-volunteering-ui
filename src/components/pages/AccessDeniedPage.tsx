@@ -19,7 +19,7 @@ const Message = styled(Container)`
 
   ${responsive.md`
     h1 {
-      font-size: ${(props: { theme: { h2FontSize: any } }) => props.theme.h2FontSize};
+      font-size: ${(props: { theme: { h2FontSize: unknown } }) => props.theme.h2FontSize};
     }
   `}
 `;
@@ -27,11 +27,14 @@ const Message = styled(Container)`
 function AccessDeniedPage() {
   return (
     <Layout paddingBottom>
-      <PageMeta title='site.page.access_denied.page_title' />
+      <PageMeta title="site.page.access_denied.page_title" />
       <Message>
-        <FormattedMessage tagName='h1' id='site.page.access_denied.heading' />
-        <FormattedMessage tagName='p' id='site.page.access_denied.message' />
-        <FormattedMessage tagName='p' id='site.page.access_denied.contact_admin' />
+        <FormattedMessage tagName="h1" id="site.page.access_denied.heading" />
+        <FormattedMessage tagName="p" id="site.page.access_denied.message" />
+        <FormattedMessage
+          tagName="p"
+          id="site.page.access_denied.contact_admin"
+        />
       </Message>
     </Layout>
   );

@@ -38,11 +38,20 @@ interface Props {
   isFocused: boolean;
   isSelected: boolean;
   locale: string;
-  onClick: Function;
+  onClick: (date: Date) => void;
   timeFormat: string;
 }
 
-const ListItem: React.FC<Props> = ({ container, date, id, isFocused, isSelected, locale, onClick, timeFormat }) => {
+const ListItem: React.FC<Props> = ({
+  container,
+  date,
+  id,
+  isFocused,
+  isSelected,
+  locale,
+  onClick,
+  timeFormat,
+}) => {
   const element = React.useRef<HTMLLIElement | null>(null);
 
   const handleClick = () => {
@@ -56,11 +65,12 @@ const ListItem: React.FC<Props> = ({ container, date, id, isFocused, isSelected,
       const height = container.current.offsetHeight || 0;
       const offsetTop = element.current.offsetTop || 0;
       const elHeight = element.current.offsetHeight || 0;
-      const shouldScroll = scrollTop + height < offsetTop + elHeight || scrollTop > offsetTop;
+      const shouldScroll =
+        scrollTop + height < offsetTop + elHeight || scrollTop > offsetTop;
 
       if (shouldScroll && container.current) {
         const scrollPosition = offsetTop + elHeight / 2 - height / 2;
-        // eslint-disable-next-line no-param-reassign
+
         container.current.scrollTop = scrollPosition;
       }
     }
@@ -76,7 +86,7 @@ const ListItem: React.FC<Props> = ({ container, date, id, isFocused, isSelected,
   return (
     <StyledListItem
       ref={element}
-      role='option'
+      role="option"
       id={id}
       tabIndex={-1}
       className={classNames({

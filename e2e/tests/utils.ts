@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { expect, Page } from '@playwright/test';
 
 export const login = async (page: Page, email: string, password: string) => {

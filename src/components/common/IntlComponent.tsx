@@ -4,16 +4,22 @@ import { WrappedComponentProps, injectIntl } from 'react-intl';
 interface IntlComponentProps extends WrappedComponentProps {
   Component: React.ElementType;
   id: string;
-  values?: any;
+  values?: Record<string, React.ReactNode>;
   href?: string;
-  onClick?: Function;
+  onClick?: (event?: React.MouseEvent<HTMLElement>) => void;
   lang?: string;
   type?: string;
   color?: string;
   sm?: { size: number; offset: number };
 }
 
-const IntlComponent: React.FC<IntlComponentProps> = ({ Component, id, values, intl, ...rest }) => {
+const IntlComponent: React.FC<IntlComponentProps> = ({
+  Component,
+  id,
+  values,
+  intl,
+  ...rest
+}) => {
   return <Component {...rest}>{intl.formatMessage({ id }, values)}</Component>;
 };
 

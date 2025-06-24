@@ -10,7 +10,10 @@ const fetchWithTimeout = async (resource, options = {}) => {
   const id = setTimeout(() => controller.abort(), TIMEOUT);
 
   try {
-    const response = await fetch(resource, { ...options, signal: controller.signal });
+    const response = await fetch(resource, {
+      ...options,
+      signal: controller.signal,
+    });
     clearTimeout(id);
 
     if (!response.ok) {
@@ -23,15 +26,22 @@ const fetchWithTimeout = async (resource, options = {}) => {
   }
 };
 
-const securityHeader = (apiAccessToken) => (apiAccessToken ? { Authorization: `Bearer ${apiAccessToken}` } : {});
+const securityHeader = (apiAccessToken) =>
+  apiAccessToken ? { Authorization: `Bearer ${apiAccessToken}` } : {};
 
 const createUrl = (endpoint, params = {}) => {
   const url = new URL(`${BASE_URL}${endpoint}`);
-  Object.entries(params).forEach(([key, value]) => url.searchParams.append(key, value));
+  Object.entries(params).forEach(([key, value]) =>
+    url.searchParams.append(key, value)
+  );
   return url;
 };
 
-const request = async (method, endpoint, { params = {}, data = null, apiAccessToken } = {}) => {
+const request = async (
+  method,
+  endpoint,
+  { params = {}, data = null, apiAccessToken } = {}
+) => {
   const options = {
     method,
     headers: {
@@ -44,8 +54,13 @@ const request = async (method, endpoint, { params = {}, data = null, apiAccessTo
   return fetchWithTimeout(createUrl(endpoint, params), options);
 };
 
-export const get = (endpoint, params, apiAccessToken) => request('GET', endpoint, { params, apiAccessToken });
-export const post = (endpoint, data, apiAccessToken) => request('POST', endpoint, { data, apiAccessToken });
-export const put = (endpoint, data, apiAccessToken) => request('PUT', endpoint, { data, apiAccessToken });
-export const patch = (endpoint, data, apiAccessToken) => request('PATCH', endpoint, { data, apiAccessToken });
-export const remove = (endpoint, apiAccessToken) => request('DELETE', endpoint, { apiAccessToken });
+export const get = (endpoint, params, apiAccessToken) =>
+  request('GET', endpoint, { params, apiAccessToken });
+export const post = (endpoint, data, apiAccessToken) =>
+  request('POST', endpoint, { data, apiAccessToken });
+export const put = (endpoint, data, apiAccessToken) =>
+  request('PUT', endpoint, { data, apiAccessToken });
+export const patch = (endpoint, data, apiAccessToken) =>
+  request('PATCH', endpoint, { data, apiAccessToken });
+export const remove = (endpoint, apiAccessToken) =>
+  request('DELETE', endpoint, { apiAccessToken });

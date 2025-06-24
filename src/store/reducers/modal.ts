@@ -4,7 +4,7 @@ import * as modals from '../../components/modal/modals';
 interface ModalState {
   isOpen: boolean;
   modal: keyof typeof modals | null;
-  meta: any;
+  meta: unknown;
 }
 
 const initialState: ModalState = {
@@ -17,7 +17,10 @@ export const modalSlice = createSlice({
   name: 'modal',
   initialState,
   reducers: {
-    openModal: (state, action: PayloadAction<{ modal: any; meta: any }>) => {
+    openModal: (
+      state,
+      action: PayloadAction<{ modal: keyof typeof modals; meta: unknown }>
+    ) => {
       state.isOpen = true;
       state.modal = action.payload.modal;
       state.meta = action.payload.meta;

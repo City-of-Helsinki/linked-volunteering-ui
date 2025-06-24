@@ -84,7 +84,8 @@ interface PageWrapperProps {
 
 const PageWrapper = styled.div`
   padding-top: ${(props: PageWrapperProps) => (props.paddingTop ? '3em' : 0)};
-  padding-bottom: ${(props: PageWrapperProps) => (props.paddingBottom ? '3em' : 0)};
+  padding-bottom: ${(props: PageWrapperProps) =>
+    props.paddingBottom ? '3em' : 0};
 `;
 
 const Options = styled.div`
@@ -162,12 +163,16 @@ const KoroSection = styled(Koros)`
 `;
 
 interface Props {
-  children?: any;
+  children?: React.ReactNode;
   paddingBottom?: boolean;
   paddingTop?: boolean;
 }
 
-const Layout: React.FC<Props> = ({ children, paddingTop = false, paddingBottom = false }) => {
+const Layout: React.FC<Props> = ({
+  children,
+  paddingTop = false,
+  paddingBottom = false,
+}) => {
   const locale = useLocale();
   const intl = useIntl();
   const { formatMessage } = intl;
@@ -184,7 +189,10 @@ const Layout: React.FC<Props> = ({ children, paddingTop = false, paddingBottom =
       {/* Set min-height to navbar to prevent page jumping */}
       <TopNavbar style={{ minHeight: '77px' }}>
         <NavbarContainer>
-          <NavbarBrand to={`/${locale}`} aria-label={formatMessage({ id: 'site.nav.logo.text' })}>
+          <NavbarBrand
+            to={`/${locale}`}
+            aria-label={formatMessage({ id: 'site.nav.logo.text' })}
+          >
             <StyledHelsinkiLogo />
             <AppName>{formatMessage({ id: 'site.nav.appName' })}</AppName>
           </NavbarBrand>
@@ -193,8 +201,8 @@ const Layout: React.FC<Props> = ({ children, paddingTop = false, paddingBottom =
               <LanguageDropdown />
               {authenticated && (
                 <UserAction onClick={() => logout()} tabIndex={0}>
-                  <UserIcon aria-hidden name='user' color='black' />
-                  <FormattedMessage id='site.nav.user.logout' />
+                  <UserIcon aria-hidden name="user" color="black" />
+                  <FormattedMessage id="site.nav.user.logout" />
                 </UserAction>
               )}
             </Options>
@@ -206,13 +214,21 @@ const Layout: React.FC<Props> = ({ children, paddingTop = false, paddingBottom =
         <NavbarContainer>
           <NavbarRow>
             <Links>
-              <LocalizedLink to='event/new' translate='site.nav.create_event' />
+              <LocalizedLink to="event/new" translate="site.nav.create_event" />
               {authenticated && (
                 <>
                   {(isOfficial || isContractor) && (
-                    <LocalizedLink to='admin/events/manage' translate='site.nav.manage_events' />
+                    <LocalizedLink
+                      to="admin/events/manage"
+                      translate="site.nav.manage_events"
+                    />
                   )}
-                  {isOfficial && <LocalizedLink to='admin/report' translate='site.nav.report' />}
+                  {isOfficial && (
+                    <LocalizedLink
+                      to="admin/report"
+                      translate="site.nav.report"
+                    />
+                  )}
                 </>
               )}
             </Links>
@@ -227,8 +243,8 @@ const Layout: React.FC<Props> = ({ children, paddingTop = false, paddingBottom =
       </Content>
 
       <div>
-        <div aria-hidden='true'>
-          <KoroSection type='basic' />
+        <div aria-hidden="true">
+          <KoroSection type="basic" />
         </div>
         <Footer />
       </div>

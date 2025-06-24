@@ -21,12 +21,19 @@ const StyledAlert = styled(Alert)`
 interface NotificationProps {
   color: string;
   children: string;
-  values: any;
+  values?: Record<string, React.ReactNode>;
   onDismiss: () => void;
 }
 
-const Notification: React.FC<NotificationProps> = ({ children, color, values, onDismiss }) => {
-  const [timer, setTimer] = useState<any>();
+const Notification: React.FC<NotificationProps> = ({
+  children,
+  color,
+  values,
+  onDismiss,
+}) => {
+  const [timer, setTimer] = useState<
+    ReturnType<typeof setTimeout> | undefined
+  >();
 
   useEffect(() => {
     const newTimer = setTimeout(onDismiss, 3000);

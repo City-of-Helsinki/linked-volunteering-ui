@@ -17,13 +17,17 @@ test.describe('New event', () => {
     await page.getByRole('button', { name: 'Lähetä hyväksyttäväksi' }).click();
 
     await expect(page.locator('.invalid-feedback').first()).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Ilmoita uusi puistotalkoo' })).toBeVisible();
+    await expect(
+      page.getByRole('heading', { name: 'Ilmoita uusi puistotalkoo' })
+    ).toBeVisible();
   });
 
   test('Fill & submit', async () => {
     await page.locator('div.leaflet-touch-drag').click();
 
-    await page.getByPlaceholder('Tapahtuman nimi').fill('Puistotalkoot e2e testi');
+    await page
+      .getByPlaceholder('Tapahtuman nimi')
+      .fill('Puistotalkoot e2e testi');
 
     await page.getByLabel('Kuvausteksti (vapaaehtoinen').fill('Puistotalkoot');
 
@@ -69,7 +73,9 @@ test.describe('New event', () => {
 
     await page.getByRole('button', { name: 'Lähetä hyväksyttäväksi' }).click();
 
-    await expect(page.getByText('Kiitos tapahtuman ilmoittamisesta!')).toBeVisible({
+    await expect(
+      page.getByText('Kiitos tapahtuman ilmoittamisesta!')
+    ).toBeVisible({
       timeout: 10000,
     });
   });

@@ -5,7 +5,7 @@ import { IconProps, WithIcons } from './Icon';
 
 type ButtonComponentProps = {
   translate?: string;
-  values?: Record<string, any>;
+  values?: Record<string, string | number | boolean | Date | React.ReactNode>;
   append?: string | IconProps;
   prepend?: string | IconProps;
   color?: string;
@@ -14,10 +14,21 @@ type ButtonComponentProps = {
   onClick?: () => void;
 } & PropsWithChildren;
 
-const ButtonComponent: React.FC<ButtonComponentProps> = ({ translate, values, append, prepend, children, ...rest }) => {
+const ButtonComponent: React.FC<ButtonComponentProps> = ({
+  translate,
+  values,
+  append,
+  prepend,
+  children,
+  ...rest
+}) => {
   return (
     <WithIcons component={Button} append={append} prepend={prepend} {...rest}>
-      {translate ? <FormattedMessage id={translate} values={values} /> : children}
+      {translate ? (
+        <FormattedMessage id={translate} values={values} />
+      ) : (
+        children
+      )}
     </WithIcons>
   );
 };

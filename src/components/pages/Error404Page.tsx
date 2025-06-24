@@ -57,19 +57,19 @@ function Error404Page() {
 
   return (
     <Layout>
-      <PageMeta title='site.page.error404.page_title' />
+      <PageMeta title="site.page.error404.page_title" />
       <PageContainer>
         <Container>
           <Row>
-            <Col md='12' lg='12'>
-              <div className='iconWrapper'>
+            <Col md="12" lg="12">
+              <div className="iconWrapper">
                 <IconTree2 />
                 <IconTree />
                 <IconTree2 />
               </div>
               <h1>{formatMessage({ id: 'site.page.error404.title' })}</h1>
               <p>{formatMessage({ id: 'site.page.error404.text' })}</p>
-              <Button color='supplementary' onClick={openNewEventPage}>
+              <Button color="supplementary" onClick={openNewEventPage}>
                 {formatMessage({ id: 'site.page.error404.button' })}
               </Button>
             </Col>

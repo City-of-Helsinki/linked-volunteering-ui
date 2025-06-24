@@ -25,64 +25,97 @@ const initialState: EventState = {
 
 export const getEvents = createAsyncThunk(
   'GET_EVENTS',
-  async ({ params, apiAccessToken }: { params: object; apiAccessToken: string | undefined }, { rejectWithValue }) => {
+  async (
+    {
+      params,
+      apiAccessToken,
+    }: { params: object; apiAccessToken: string | undefined },
+    { rejectWithValue }
+  ) => {
     try {
       const response = await eventService.getEvents(params, apiAccessToken);
 
-      const events = response.events.reduce((acc: Record<string, Event>, event: Event) => {
-        acc[event.id] = event;
-        return acc;
-      }, {});
+      const events = response.events.reduce(
+        (acc: Record<string, Event>, event: Event) => {
+          acc[event.id] = event;
+          return acc;
+        },
+        {}
+      );
 
       return { data: response.data, events };
     } catch (error) {
       return rejectWithValue(error);
     }
-  },
+  }
 );
 
 export const createEvent = createAsyncThunk(
   'SUBMIT_EVENT',
-  async ({ event, apiAccessToken }: { event: Event; apiAccessToken: string | undefined }, { rejectWithValue }) => {
+  async (
+    {
+      event,
+      apiAccessToken,
+    }: { event: Event; apiAccessToken: string | undefined },
+    { rejectWithValue }
+  ) => {
     try {
       return await eventService.create(event, apiAccessToken);
     } catch (error) {
       return rejectWithValue(error);
     }
-  },
+  }
 );
 
 export const modifyEvent = createAsyncThunk(
   'MODIFY_EVENT',
-  async ({ event, apiAccessToken }: { event: Event; apiAccessToken: string | undefined }, { rejectWithValue }) => {
+  async (
+    {
+      event,
+      apiAccessToken,
+    }: { event: Event; apiAccessToken: string | undefined },
+    { rejectWithValue }
+  ) => {
     try {
       return await eventService.modify(event, apiAccessToken);
     } catch (error) {
       return rejectWithValue(error);
     }
-  },
+  }
 );
 
 export const publishEvent = createAsyncThunk(
   'PUBLISH_EVENT',
-  async ({ event, apiAccessToken }: { event: Event; apiAccessToken: string | undefined }, { rejectWithValue }) => {
+  async (
+    {
+      event,
+      apiAccessToken,
+    }: { event: Event; apiAccessToken: string | undefined },
+    { rejectWithValue }
+  ) => {
     try {
       return await eventService.publish(event, apiAccessToken);
     } catch (error) {
       return rejectWithValue(error);
     }
-  },
+  }
 );
 
 export const removeEvent = createAsyncThunk(
   'REMOVE_EVENT',
-  async ({ event, apiAccessToken }: { event: Event; apiAccessToken: string | undefined }, { rejectWithValue }) => {
+  async (
+    {
+      event,
+      apiAccessToken,
+    }: { event: Event; apiAccessToken: string | undefined },
+    { rejectWithValue }
+  ) => {
     try {
       return await eventService.remove(event, apiAccessToken);
     } catch (error) {
       return rejectWithValue(error);
     }
-  },
+  }
 );
 
 const filterEvents = (eventState: EventState) => {
@@ -90,7 +123,9 @@ const filterEvents = (eventState: EventState) => {
     const filtered: Record<string, Event> = {};
 
     Object.keys(eventState.events).forEach((id) => {
-      if (eventState.events[id].contract_zone === eventState.filterByContractZone) {
+      if (
+        eventState.events[id].contract_zone == eventState.filterByContractZone
+      ) {
         filtered[id] = eventState.events[id];
       }
     });
@@ -110,9 +145,12 @@ const eventSlice = createSlice({
       action: PayloadAction<{
         data: { next: { limit?: number; offset?: number }; count: number };
         events: Record<string, Event>;
-      }>,
+      }>
     ) => {
-      const next = urlParse(JSON.stringify(action.payload.data.next), true).query;
+      const next = urlParse(
+        JSON.stringify(action.payload.data.next),
+        true
+      ).query;
       state.count = action.payload.data.count;
       state.next = {
         ...(next.limit && { limit: parseInt(next.limit, 10) }),
@@ -184,7 +222,12 @@ export const {
   setOrderBy,
 } = eventSlice.actions;
 
-export const { eventsSelector, eventByIdSelector, nextParamsSelector, orderingSelector, submittedEventSelector } =
-  eventSlice.selectors;
+export const {
+  eventsSelector,
+  eventByIdSelector,
+  nextParamsSelector,
+  orderingSelector,
+  submittedEventSelector,
+} = eventSlice.selectors;
 
 export default eventSlice.reducer;

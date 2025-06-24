@@ -1,10 +1,15 @@
 import { Page, test, expect } from '@playwright/test';
-import { TEST_USER_EMAIL, TEST_USER_PASSWORD } from '../../../../playwright.config';
+import {
+  TEST_USER_EMAIL,
+  TEST_USER_PASSWORD,
+} from '../../../../playwright.config';
 import { login } from '../../utils';
 
 test.describe('Yearly reports', () => {
-  // eslint-disable-next-line sonarjs/no-skipped-tests
-  test.skip(!TEST_USER_EMAIL || !TEST_USER_PASSWORD, 'No test user credentials provided');
+  test.skip(
+    !TEST_USER_EMAIL || !TEST_USER_PASSWORD,
+    'No test user credentials provided'
+  );
 
   let page: Page;
 
@@ -22,6 +27,8 @@ test.describe('Yearly reports', () => {
   });
 
   test('Initially there are no reports', async () => {
-    expect(await page.getByTestId('report_table').locator('tbody tr').all()).toHaveLength(0);
+    expect(
+      await page.getByTestId('report_table').locator('tbody tr').all()
+    ).toHaveLength(0);
   });
 });

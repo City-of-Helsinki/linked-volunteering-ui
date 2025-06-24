@@ -18,12 +18,17 @@ const NewEventPageContainer = () => {
 
   const handleSubmit = async (values: Event) => {
     await dispatch(createEvent({ event: values, apiAccessToken }));
-    dispatch(addNotification({ color: 'success', message: 'notification.form.event.created' }));
+    dispatch(
+      addNotification({
+        color: 'success',
+        message: 'notification.form.event.created',
+      })
+    );
 
     navigate(`/${intl.locale}/event/submitted`);
   };
 
-  return <EventPage handleSubmit={handleSubmit} pageType='new' />;
+  return <EventPage handleSubmit={handleSubmit} pageType="new" />;
 };
 
 export default NewEventPageContainer;

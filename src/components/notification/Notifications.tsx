@@ -2,7 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import Notification from './Notification';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { notificationsSelector, dismissNotification } from '../../store/reducers/notifications';
+import {
+  notificationsSelector,
+  dismissNotification,
+} from '../../store/reducers/notifications';
 
 const NotificationWrapper = styled.div`
   position: fixed;
@@ -10,7 +13,7 @@ const NotificationWrapper = styled.div`
   right: 1.5rem;
 `;
 
-export default () => {
+const NofiticationComponent = () => {
   const notifications = useAppSelector(notificationsSelector);
   const dispatch = useAppDispatch();
 
@@ -20,7 +23,12 @@ export default () => {
         const { message, color, values } = notifications[key];
 
         return (
-          <Notification key={key} onDismiss={() => dispatch(dismissNotification(key))} color={color} values={values}>
+          <Notification
+            key={key}
+            onDismiss={() => dispatch(dismissNotification(key))}
+            color={color}
+            values={values as Record<string, React.ReactNode>}
+          >
             {message}
           </Notification>
         );
@@ -28,3 +36,5 @@ export default () => {
     </NotificationWrapper>
   );
 };
+
+export default NofiticationComponent;

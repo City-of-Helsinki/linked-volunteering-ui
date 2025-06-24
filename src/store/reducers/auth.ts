@@ -28,7 +28,7 @@ export const getCurrentUserData = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error);
     }
-  },
+  }
 );
 
 export const authSlice = createSlice({
@@ -40,23 +40,31 @@ export const authSlice = createSlice({
       .addCase(getCurrentUserData.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getCurrentUserData.fulfilled, (state, action: PayloadAction<UserData>) => {
-        state.currentUserData = action.payload;
-        state.isLoading = false;
-      })
+      .addCase(
+        getCurrentUserData.fulfilled,
+        (state, action: PayloadAction<UserData>) => {
+          state.currentUserData = action.payload;
+          state.isLoading = false;
+        }
+      )
       .addCase(getCurrentUserData.rejected, (state) => {
         state.isLoading = false;
       });
   },
   selectors: {
     currentUserDataSelector: (state) => state.currentUserData,
-    userLoadingSelector: (state) => isEmpty(state.currentUserData) || state.isLoading,
+    userLoadingSelector: (state) =>
+      isEmpty(state.currentUserData) || state.isLoading,
     isOfficialSelector: (state) => state.currentUserData?.is_official,
     isContractorSelector: (state) => state.currentUserData?.is_contractor,
   },
 });
 
-export const { currentUserDataSelector, userLoadingSelector, isOfficialSelector, isContractorSelector } =
-  authSlice.selectors;
+export const {
+  currentUserDataSelector,
+  userLoadingSelector,
+  isOfficialSelector,
+  isContractorSelector,
+} = authSlice.selectors;
 
 export default authSlice.reducer;

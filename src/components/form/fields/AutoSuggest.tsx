@@ -12,26 +12,26 @@ import { useIntl } from 'react-intl';
 import Label from './Label';
 import './AutoSuggest.scss';
 import { useAppDispatch } from '../../../store/hooks';
-import { clearCoordinatesByAddress, getCoordinatesByAddress } from '../../../store/reducers/geo';
+import {
+  clearCoordinatesByAddress,
+  getCoordinatesByAddress,
+} from '../../../store/reducers/geo';
+import { AddressFeature, AutoSuggestEvent } from '../../../types';
 
 const StyledFormGroup = styled(FormGroup)`
   margin-bottom: 0;
 `;
 
-export interface AutoSuggestEvent {
-  target: {
-    id: string;
-    value: any;
-  };
-}
-
 interface Props {
-  addressFeatures: any[];
+  addressFeatures: AddressFeature[];
   error?: string;
-  getSuggestionValue: (_item: any) => string;
+  getSuggestionValue: (_item: AddressFeature) => string;
   id: string;
   label?: string;
-  onBlur?: (_event: React.FocusEvent<any>, _params?: BlurEvent<any>) => void;
+  onBlur?: (
+    _event: React.FocusEvent<HTMLElement>,
+    _params?: BlurEvent<AddressFeature>
+  ) => void;
   onChange: (_e: AutoSuggestEvent) => void;
   placeholder?: string;
   required?: boolean;
@@ -58,11 +58,16 @@ const AutoSuggestField: React.FC<Props> = ({
 
   const [value, setValue] = React.useState('');
 
-  const handleChange = (_event: React.FormEvent<any>, data: ChangeEvent) => {
+  const handleChange = (
+    _event: React.FormEvent<HTMLElement>,
+    data: ChangeEvent
+  ) => {
     setValue(data.newValue);
   };
 
-  const onSuggestionsFetchRequested = (request: SuggestionsFetchRequestedParams) => {
+  const onSuggestionsFetchRequested = (
+    request: SuggestionsFetchRequestedParams
+  ) => {
     dispatch(getCoordinatesByAddress({ text: request.value, lang: locale }));
   };
 
@@ -70,7 +75,10 @@ const AutoSuggestField: React.FC<Props> = ({
     dispatch(clearCoordinatesByAddress());
   };
 
-  const onSuggestionSelected = (_event: React.FormEvent<any>, data: SuggestionSelectedEventData<any>) => {
+  const onSuggestionSelected = (
+    _event: React.FormEvent<HTMLElement>,
+    data: SuggestionSelectedEventData<AddressFeature>
+  ) => {
     onChange({
       target: {
         id,
@@ -79,7 +87,7 @@ const AutoSuggestField: React.FC<Props> = ({
     });
   };
 
-  const renderSuggestion = (suggestion: any) => {
+  const renderSuggestion = (suggestion: AddressFeature) => {
     return <span>{getSuggestionValue(suggestion)}</span>;
   };
 
@@ -98,24 +106,33 @@ const AutoSuggestField: React.FC<Props> = ({
       renderSuggestion={renderSuggestion}
       getSuggestionValue={getSuggestionValue}
       inputProps={inputProps}
-      renderInputComponent={(props: any) => (
-        <StyledFormGroup>
-          {label && (
-            <Label htmlFor={id} required={required}>
-              {formatMessage({ id: label })}
-            </Label>
-          )}
-          <Input
-            {...props}
-            id={id}
-            key={id}
-            invalid={error && touched}
-            placeholder={placeholder ? formatMessage({ id: placeholder }) : undefined}
-          />
-          <FormFeedback>{error && formatMessage({ id: error })}</FormFeedback>
-          <FormText>{text && formatMessage({ id: text })}</FormText>
-        </StyledFormGroup>
-      )}
+      renderInputComponent={(inputProps) => {
+        // Create a custom props object to pass to Reactstrap's Input component
+        const customProps = {
+          ...inputProps,
+          id: id,
+          key: id,
+          type: 'text' as const,
+          invalid: !!(error && touched),
+          placeholder: placeholder
+            ? formatMessage({ id: placeholder })
+            : undefined,
+        };
+
+        return (
+          <StyledFormGroup>
+            {label && (
+              <Label htmlFor={id} required={required}>
+                {formatMessage({ id: label })}
+              </Label>
+            )}
+            {/* @ts-ignore - Working around type incompatibilities between Autosuggest and Reactstrap */}
+            <Input {...customProps} />
+            <FormFeedback>{error && formatMessage({ id: error })}</FormFeedback>
+            <FormText>{text && formatMessage({ id: text })}</FormText>
+          </StyledFormGroup>
+        );
+      }}
     />
   );
 };

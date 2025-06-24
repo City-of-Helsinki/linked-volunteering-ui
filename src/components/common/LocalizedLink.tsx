@@ -5,7 +5,7 @@ import { IconProps, WithIcons } from './Icon';
 
 type LocalizedLinkProps = {
   translate?: string;
-  values?: Record<string, any>;
+  values?: Record<string, string | number | boolean>;
   append?: string | IconProps;
   prepend?: string | IconProps;
   to: string;
@@ -13,12 +13,22 @@ type LocalizedLinkProps = {
   className?: string;
 } & PropsWithChildren;
 
-const LocalizedLink: React.FC<LocalizedLinkProps> = ({ to, children, translate, values, ...rest }) => {
+const LocalizedLink: React.FC<LocalizedLinkProps> = ({
+  to,
+  children,
+  translate,
+  values,
+  ...rest
+}) => {
   const { locale } = useIntl();
 
   return (
     <WithIcons component={Link} to={`/${locale}/${to}`} {...rest}>
-      {translate ? <FormattedMessage id={translate} values={values} /> : children}
+      {translate ? (
+        <FormattedMessage id={translate} values={values} />
+      ) : (
+        children
+      )}
     </WithIcons>
   );
 };
