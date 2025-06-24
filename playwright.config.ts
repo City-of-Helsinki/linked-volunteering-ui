@@ -28,7 +28,8 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: process.env.E2E_TESTS_ENV_URL ?? 'https://puistotalkoot.dev.hel.ninja/',
+    baseURL:
+      process.env.E2E_TESTS_ENV_URL ?? 'https://puistotalkoot.dev.hel.ninja/',
     ignoreHTTPSErrors: true,
     screenshot: {
       fullPage: true,

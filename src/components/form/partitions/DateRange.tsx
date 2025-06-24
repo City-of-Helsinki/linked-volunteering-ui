@@ -1,8 +1,9 @@
 import { addDays, addHours, setHours, startOfDay } from 'date-fns';
 import fi from 'date-fns/locale/fi';
 import sv from 'date-fns/locale/sv';
-import { FormikValues } from 'formik';
+import { FormikErrors, FormikTouched } from 'formik';
 import React from 'react';
+import { Event } from '../../../store/types';
 import { registerLocale, setDefaultLocale } from 'react-datepicker';
 import { useIntl } from 'react-intl';
 import { Row, Col } from 'reactstrap';
@@ -21,16 +22,34 @@ const now = startOfDay(new Date());
 const minDate = addDays(now, 8);
 const timeIntervals = 30;
 
-interface Props {
-  errors: any;
-  handleBlur: Function;
-  handleChange: Function;
-  touched: any;
-  unavailableDates?: Date[];
-  values: FormikValues;
+interface EventWithDateObjects extends Omit<Event, 'start_time' | 'end_time'> {
+  start_time: Date | string;
+  end_time: Date | string;
 }
 
-const DateRange: React.FC<Props> = ({ errors, handleBlur, handleChange, touched, unavailableDates, values }) => {
+interface Props {
+  errors: FormikErrors<Event>;
+  handleBlur: (_event: React.FormEvent<HTMLElement>) => void;
+  handleChange: (
+    event:
+      | { target: { id: string; value: unknown } }
+      | React.ChangeEvent<
+          HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+        >
+  ) => void;
+  touched: FormikTouched<Event>;
+  unavailableDates?: Date[];
+  values: EventWithDateObjects;
+}
+
+const DateRange: React.FC<Props> = ({
+  errors,
+  handleBlur,
+  handleChange,
+  touched,
+  unavailableDates,
+  values,
+}) => {
   const onChange = (id: string) => (value: Date) => {
     handleChange({
       target: {
@@ -40,17 +59,33 @@ const DateRange: React.FC<Props> = ({ errors, handleBlur, handleChange, touched,
     });
   };
 
-  const handleDateChange = (id: string, oldDate: Date) => (value: Date) => {
-    onChange(id)(oldDate ? setHours(value, oldDate.getHours()) : addHours(value, 9));
+  const isDate = (value: unknown): value is Date =>
+    value instanceof Date && !isNaN(value.getTime());
+
+  const ensureDate = (value: string | Date | undefined): Date | undefined => {
+    if (!value) return undefined;
+    if (isDate(value)) return value;
+
+    const date = new Date(value.toString());
+
+    return isNaN(date.getTime()) ? undefined : date;
   };
 
-  const onBlur = (id: string) => (value: any) => {
-    handleBlur({
-      target: {
-        id,
-        value,
-      },
-    });
+  const handleDateChange =
+    (id: string, oldDate: Date | string | undefined) => (value: Date) => {
+      const oldDateObj = ensureDate(oldDate);
+      onChange(id)(
+        oldDateObj ? setHours(value, oldDateObj.getHours()) : addHours(value, 9)
+      );
+    };
+
+  const onBlur = (id: string) => (_: unknown) => {
+    const syntheticEvent = {
+      currentTarget: { id },
+      preventDefault: () => {},
+    } as React.FormEvent<HTMLElement>;
+
+    handleBlur(syntheticEvent);
   };
 
   const getDateFormat = (locale: string) => {
@@ -77,23 +112,27 @@ const DateRange: React.FC<Props> = ({ errors, handleBlur, handleChange, touched,
   };
   const intl = useIntl();
   const { formatMessage, locale } = intl;
-  const selectedStartTime = values.start_time ? new Date(values.start_time) : undefined;
-  const selectedEndTime = values.end_time ? new Date(values.end_time) : undefined;
+  const selectedStartTime = ensureDate(values.start_time);
+  const selectedEndTime = ensureDate(values.end_time);
   const dateFormat = getDateFormat(locale);
   const timeFormat = getTimeFormat(locale);
 
   return (
     <>
       <Row>
-        <Col sm='12' md={{ size: 4, offset: 1 }} id='date_range_start_date_wrapper'>
+        <Col
+          sm="12"
+          md={{ size: 4, offset: 1 }}
+          id="date_range_start_date_wrapper"
+        >
           <DatePicker
-            id='date_range_start_date'
+            id="date_range_start_date"
             // @ts-ignore
             chooseDayAriaLabelPrefix={formatMessage({
               id: 'form.event.partitions.date_range.dayAriaLabelPrefix',
             })}
-            label='form.event.partitions.date_range.start_date.label'
-            placeholder='form.event.partitions.date_range.start_date.placeholder'
+            label="form.event.partitions.date_range.start_date.label"
+            placeholder="form.event.partitions.date_range.start_date.placeholder"
             locale={locale}
             error={errors.start_time}
             touched={!!touched.start_time}
@@ -103,25 +142,27 @@ const DateRange: React.FC<Props> = ({ errors, handleBlur, handleChange, touched,
             selected={selectedStartTime}
             dateFormat={dateFormat}
             minDate={minDate}
-            maxDate={values.end_time || undefined}
-            startDate={values.start_time}
-            endDate={values.end_time}
+            maxDate={ensureDate(values.end_time)}
+            startDate={selectedStartTime}
+            endDate={selectedEndTime}
             excludeDates={unavailableDates}
             selectsStart
             showMonthDropdown
             useShortMonthInDropdown
           />
         </Col>
-        <Col sm='12' md={{ size: 4 }}>
+        <Col sm="12" md={{ size: 4 }}>
           <TimePicker
-            id='date_range_start_time'
+            id="date_range_start_time"
             defaultDate={minDate}
             error={errors.start_time}
-            label='form.event.partitions.date_range.start_time.label'
+            label="form.event.partitions.date_range.start_time.label"
             onChange={onChange('start_time')}
-            placeholder='form.event.partitions.date_range.start_time.placeholder'
-            selected={values.start_time}
-            timeCaption={formatMessage({ id: 'form.event.partitions.date_range.timeCaption' })}
+            placeholder="form.event.partitions.date_range.start_time.placeholder"
+            selected={selectedStartTime}
+            timeCaption={formatMessage({
+              id: 'form.event.partitions.date_range.timeCaption',
+            })}
             timeFormat={timeFormat}
             timeIntervals={timeIntervals}
             touched={!!touched.start_time}
@@ -129,15 +170,19 @@ const DateRange: React.FC<Props> = ({ errors, handleBlur, handleChange, touched,
         </Col>
       </Row>
       <Row>
-        <Col sm='12' md={{ size: 4, offset: 1 }} id='date_range_end_date_wrapper'>
+        <Col
+          sm="12"
+          md={{ size: 4, offset: 1 }}
+          id="date_range_end_date_wrapper"
+        >
           <DatePicker
-            id='date_range_end_date'
+            id="date_range_end_date"
             // @ts-ignore
             chooseDayAriaLabelPrefix={formatMessage({
               id: 'form.event.partitions.date_range.dayAriaLabelPrefix',
             })}
-            label='form.event.partitions.date_range.end_date.label'
-            placeholder='form.event.partitions.date_range.end_date.placeholder'
+            label="form.event.partitions.date_range.end_date.label"
+            placeholder="form.event.partitions.date_range.end_date.placeholder"
             locale={locale}
             error={errors.end_time}
             touched={!!touched.end_time}
@@ -145,25 +190,27 @@ const DateRange: React.FC<Props> = ({ errors, handleBlur, handleChange, touched,
             onBlur={onBlur('end_time')}
             selected={selectedEndTime}
             dateFormat={dateFormat}
-            minDate={values.start_time || minDate}
-            startDate={values.start_time}
-            endDate={values.end_time}
+            minDate={ensureDate(values.start_time) || minDate}
+            startDate={selectedStartTime}
+            endDate={selectedEndTime}
             excludeDates={unavailableDates}
             selectsEnd
             showMonthDropdown
             useShortMonthInDropdown
           />
         </Col>
-        <Col sm='12' md={{ size: 4 }}>
+        <Col sm="12" md={{ size: 4 }}>
           <TimePicker
-            id='date_range_end_time'
-            defaultDate={values.start_time || minDate}
+            id="date_range_end_time"
+            defaultDate={ensureDate(values.start_time) || minDate}
             error={errors.end_time}
-            label='form.event.partitions.date_range.end_time.label'
+            label="form.event.partitions.date_range.end_time.label"
             onChange={onChange('end_time')}
-            placeholder='form.event.partitions.date_range.end_time.placeholder'
-            selected={values.end_time}
-            timeCaption={formatMessage({ id: 'form.event.partitions.date_range.timeCaption' })}
+            placeholder="form.event.partitions.date_range.end_time.placeholder"
+            selected={selectedEndTime}
+            timeCaption={formatMessage({
+              id: 'form.event.partitions.date_range.timeCaption',
+            })}
             timeFormat={timeFormat}
             timeIntervals={timeIntervals}
             touched={!!touched.end_time}

@@ -12,15 +12,22 @@ export default {
         ...event,
         location: {
           type: 'Point',
-          coordinates: [event.location?.coordinates[0], event.location?.coordinates[1]],
+          coordinates: [
+            event.location?.coordinates[0],
+            event.location?.coordinates[1],
+          ],
         },
       },
-      apiAccessToken,
+      apiAccessToken
     );
     return newEvent;
   },
   modify: async (event: Event, apiAccessToken: string | undefined) => {
-    const modifiedEvent = await put(`event/${event.id}/`, event, apiAccessToken);
+    const modifiedEvent = await put(
+      `event/${event.id}/`,
+      event,
+      apiAccessToken
+    );
     return modifiedEvent;
   },
   publish: async (event: Event, apiAccessToken: string | undefined) => {
@@ -29,7 +36,7 @@ export default {
       {
         state: publishedState,
       },
-      apiAccessToken,
+      apiAccessToken
     );
     return publishedEvent;
   },
@@ -41,7 +48,9 @@ export default {
     const data = await get('event/', params, apiAccessToken);
     return {
       data,
-      events: Map<string, Event>(data.results.map((event: Event) => [event.id, event])),
+      events: Map<string, Event>(
+        data.results.map((event: Event) => [event.id, event])
+      ),
     };
   },
 };

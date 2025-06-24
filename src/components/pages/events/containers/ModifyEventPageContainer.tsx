@@ -19,12 +19,17 @@ const ModifyEventPageContainer = () => {
 
   const handleSubmit = async (values: Event) => {
     await dispatch(modifyEvent({ event: values, apiAccessToken }));
-    dispatch(addNotification({ color: 'success', message: 'notification.form.event.modified' }));
+    dispatch(
+      addNotification({
+        color: 'success',
+        message: 'notification.form.event.modified',
+      })
+    );
 
     navigate(`/${intl.locale}/admin/events/manage`);
   };
 
-  return <EventPage handleSubmit={handleSubmit} pageType='modify' />;
+  return <EventPage handleSubmit={handleSubmit} pageType="modify" />;
 };
 
 export default ModifyEventPageContainer;

@@ -23,7 +23,7 @@ const renderComponent = (initialEntries = ['/'], preloadedState = {}) => {
     <MemoryRouter initialEntries={initialEntries}>
       <AdminRoutes />
     </MemoryRouter>,
-    { preloadedState },
+    { preloadedState }
   );
 };
 
@@ -45,8 +45,13 @@ describe('<AdminRoutes />', () => {
     renderComponent(['/events/manage'], mockState);
 
     await waitFor(
-      () => expect(screen.getByRole('heading', { name: 'Oops, you are lost in the woods!' })).toBeInTheDocument(),
-      { timeout: 5000 },
+      () =>
+        expect(
+          screen.getByRole('heading', {
+            name: 'Oops, you are lost in the woods!',
+          })
+        ).toBeInTheDocument(),
+      { timeout: 5000 }
     );
   });
 
@@ -67,8 +72,11 @@ describe('<AdminRoutes />', () => {
     renderComponent(['/events/manage'], mockState);
 
     await waitFor(
-      () => expect(screen.getByRole('heading', { name: 'Park volunteer activities' })).toBeInTheDocument(),
-      { timeout: 5000 },
+      () =>
+        expect(
+          screen.getByRole('heading', { name: 'Park volunteer activities' })
+        ).toBeInTheDocument(),
+      { timeout: 5000 }
     );
   });
 
@@ -95,9 +103,15 @@ describe('<AdminRoutes />', () => {
 
     renderComponent(['/event/modify/1'], mockState);
 
-    await waitFor(() => expect(screen.getByRole('heading', { name: 'Edit activity' })).toBeInTheDocument(), {
-      timeout: 5000,
-    });
+    await waitFor(
+      () =>
+        expect(
+          screen.getByRole('heading', { name: 'Edit activity' })
+        ).toBeInTheDocument(),
+      {
+        timeout: 5000,
+      }
+    );
   });
 
   it('renders ReportPage for /report route', async () => {
@@ -117,8 +131,11 @@ describe('<AdminRoutes />', () => {
     renderComponent(['/report'], mockState);
 
     await waitFor(
-      () => expect(screen.getByRole('heading', { name: 'Spring cleaning activities' })).toBeInTheDocument(),
-      { timeout: 5000 },
+      () =>
+        expect(
+          screen.getByRole('heading', { name: 'Spring cleaning activities' })
+        ).toBeInTheDocument(),
+      { timeout: 5000 }
     );
   });
 });

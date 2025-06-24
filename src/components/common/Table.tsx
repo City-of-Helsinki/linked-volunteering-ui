@@ -24,13 +24,13 @@ interface TrProps {
   readonly firstColumn?: boolean;
   readonly highlighted?: boolean;
   readonly children: ReactNode;
-  readonly [key: string]: any;
+  readonly [key: string]: unknown;
 }
 
 interface DetailsRowProps {
   readonly children: ReactNode;
   readonly colSpan: number;
-  readonly [key: string]: any;
+  readonly [key: string]: unknown;
 }
 
 const StyledTr = styled.tr<{ white?: boolean; selected?: boolean }>`
@@ -134,7 +134,12 @@ export const StyledTd = styled.td<{ large?: boolean }>`
   padding: ${(props) => (props.large ? '1em 1em' : '0.5em 1em')};
 `;
 
-export const Tr: React.FC<TrProps> = ({ firstColumn, highlighted, children, ...rest }) => {
+export const Tr: React.FC<TrProps> = ({
+  firstColumn,
+  highlighted,
+  children,
+  ...rest
+}) => {
   return (
     <StyledTr {...rest}>
       {firstColumn && <StyledFirstTd highlighted={highlighted} />}
@@ -143,7 +148,11 @@ export const Tr: React.FC<TrProps> = ({ firstColumn, highlighted, children, ...r
   );
 };
 
-export const DetailsRow: React.FC<DetailsRowProps> = ({ children, colSpan, ...rest }) => {
+export const DetailsRow: React.FC<DetailsRowProps> = ({
+  children,
+  colSpan,
+  ...rest
+}) => {
   return (
     <Tr firstColumn white {...rest}>
       <StyledTd colSpan={colSpan} large>
@@ -171,24 +180,35 @@ const getOrderIcon = (order: string) => {
   }
 };
 
-const Table: React.FC<TableProps> = ({ id, firstColumn, headers, actionColSpan, children, setOrderBy, ordering }) => {
+const Table: React.FC<TableProps> = ({
+  id,
+  firstColumn,
+  headers,
+  actionColSpan,
+  children,
+  setOrderBy,
+  ordering,
+}) => {
   return (
     <StyledTableWrapper>
       <StyledTable firstColumn={firstColumn} id={id} data-testid={id}>
         <thead>
           <StyledTr>
-            {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+            {}
             {firstColumn && <th />}
             {headers.map(({ key, translation, hasOrderBy }) => {
               const order = getOrder(key, ordering);
 
               return (
                 <StyledTh key={key}>
-                  <IntlComponent Component={StyledHeaderText} id={`site.table.header.${translation}`} />
+                  <IntlComponent
+                    Component={StyledHeaderText}
+                    id={`site.table.header.${translation}`}
+                  />
                   {hasOrderBy && (
                     <Button
                       prepend={getOrderIcon(order ?? 'ASC')}
-                      color='link'
+                      color="link"
                       onClick={() => setOrderBy({ key, order: order ?? 'ASC' })}
                       aria-label={order ?? 'ASC'}
                     />

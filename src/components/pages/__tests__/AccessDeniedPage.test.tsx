@@ -25,7 +25,7 @@ const renderComponent = () => {
     <BrowserRouter>
       <AccessDeniedPage />
     </BrowserRouter>,
-    { store },
+    { store }
   );
 };
 

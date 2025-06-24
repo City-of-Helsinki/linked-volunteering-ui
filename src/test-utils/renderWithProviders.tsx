@@ -20,15 +20,27 @@ interface RenderWithProvidersProps extends Omit<RenderOptions, 'queries'> {
   store?: AppStore;
 }
 
-const renderWithProviders = (ui: ReactElement, renderOptions: RenderWithProvidersProps = {}) => {
-  const { preloadedState = {}, store = createStore(preloadedState), locale = 'en', ...rest } = renderOptions;
+const renderWithProviders = (
+  ui: ReactElement,
+  renderOptions: RenderWithProvidersProps = {}
+) => {
+  const {
+    preloadedState = {},
+    store = createStore(preloadedState),
+    locale = 'en',
+    ...rest
+  } = renderOptions;
 
   const Wrapper: React.FC<PropsWithChildren<{}>> = ({ children }) => {
     return (
       <LoginProvider {...providerProperties}>
         <Provider store={store}>
           <ThemeProvider theme={theme}>
-            <IntlProvider locale={locale} key={locale} messages={messages[locale]}>
+            <IntlProvider
+              locale={locale}
+              key={locale}
+              messages={messages[locale]}
+            >
               <HelmetProvider>{children}</HelmetProvider>
             </IntlProvider>
           </ThemeProvider>

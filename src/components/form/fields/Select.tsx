@@ -1,5 +1,11 @@
 import React, { ReactNode, ChangeEvent } from 'react';
-import { FormGroup, Input, FormFeedback, FormText, InputProps } from 'reactstrap';
+import {
+  FormGroup,
+  Input,
+  FormFeedback,
+  FormText,
+  InputProps,
+} from 'reactstrap';
 import { useIntl } from 'react-intl';
 import Label from './Label';
 
@@ -38,7 +44,13 @@ const SelectField: React.FC<SelectFieldProps> = ({
           {intl.formatMessage({ id: label })}
         </Label>
       )}
-      <Input type='select' id={id} onChange={onChange} {...rest} invalid={isInvalid}>
+      <Input
+        type="select"
+        id={id}
+        onChange={onChange}
+        {...rest}
+        invalid={isInvalid}
+      >
         <option>{noneSelectedText}</option>
         {children}
       </Input>

@@ -30,7 +30,10 @@ describe('<Checkbox />', () => {
     });
 
     expect(screen.getByText('form.checkbox.error')).toBeInTheDocument();
-    expect(screen.getByRole('checkbox')).toHaveAttribute('aria-invalid', 'true');
+    expect(screen.getByRole('checkbox')).toHaveAttribute(
+      'aria-invalid',
+      'true'
+    );
   });
 
   it('does not show error message when field is not touched', () => {
@@ -40,7 +43,10 @@ describe('<Checkbox />', () => {
     });
 
     expect(screen.queryByText('form.checkbox.error')).not.toBeInTheDocument();
-    expect(screen.getByRole('checkbox')).not.toHaveAttribute('aria-invalid', 'true');
+    expect(screen.getByRole('checkbox')).not.toHaveAttribute(
+      'aria-invalid',
+      'true'
+    );
   });
 
   it('displays helper text when text prop is provided', () => {

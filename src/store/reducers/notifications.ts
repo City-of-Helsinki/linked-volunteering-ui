@@ -4,7 +4,7 @@ import { v4 as uuid } from 'uuid';
 interface Notification {
   color: string;
   message: string;
-  values?: any;
+  values?: Record<string, unknown>;
 }
 
 interface NotificationsState {
@@ -34,7 +34,7 @@ export const notificationsSlice = createSlice({
           color: 'danger',
           message: 'notification.generic.error',
         };
-      },
+      }
     );
   },
   selectors: {
@@ -43,6 +43,7 @@ export const notificationsSlice = createSlice({
 });
 
 export const { notificationsSelector } = notificationsSlice.selectors;
-export const { addNotification, dismissNotification } = notificationsSlice.actions;
+export const { addNotification, dismissNotification } =
+  notificationsSlice.actions;
 
 export default notificationsSlice.reducer;

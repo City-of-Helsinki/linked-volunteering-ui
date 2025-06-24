@@ -5,6 +5,7 @@ import Icon from '../../common/Icon';
 import { removeEvent } from '../../../store/reducers/event';
 import { addNotification } from '../../../store/reducers/notifications';
 import { Event } from '../../../store/types';
+import { AppDispatch } from '../../../store/configureStore';
 
 function Body({ values }: { readonly values: Partial<Event> }) {
   return (
@@ -13,20 +14,27 @@ function Body({ values }: { readonly values: Partial<Event> }) {
         <strong>{values.name}</strong>
       </div>
       <div>
-        <Icon name='calendar' />
+        <Icon name="calendar" />
         <FormattedDate value={values.start_time} />
         <span>
           {' '}
-          <FormattedMessage tagName='span' id='modal.confirm_removal.body.time.at' />{' '}
-          <FormattedTime value={values.start_time} /> - <FormattedTime value={values.end_time} />
+          <FormattedMessage
+            tagName="span"
+            id="modal.confirm_removal.body.time.at"
+          />{' '}
+          <FormattedTime value={values.start_time} /> -{' '}
+          <FormattedTime value={values.end_time} />
         </span>
       </div>
       <div>
-        <Icon name='mapMarker' />
+        <Icon name="mapMarker" />
         {values.maintenance_location ? (
           <span>{values.maintenance_location}</span>
         ) : (
-          <FormattedMessage tagName='span' id='modal.confirm_removal.body.location.text' />
+          <FormattedMessage
+            tagName="span"
+            id="modal.confirm_removal.body.location.text"
+          />
         )}
       </div>
     </div>
@@ -40,7 +48,10 @@ export default {
     {
       intl: 'modal.confirm_removal.footer.button1.text',
       color: 'primary',
-      action: async (dispatch: any, meta: { event: Event; apiAccessToken: string | undefined }) => {
+      action: async (
+        dispatch: AppDispatch,
+        meta: { event: Event; apiAccessToken: string | undefined }
+      ) => {
         const { event, apiAccessToken } = meta;
 
         dispatch(removeEvent({ event, apiAccessToken }));
@@ -50,7 +61,7 @@ export default {
             color: 'info',
             message: 'notification.manage_events.remove',
             values: event,
-          }),
+          })
         );
       },
     },

@@ -9,19 +9,24 @@ interface ContractZonesProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const ContractZones: React.FC<ContractZonesProps> = ({ contractZones, onChange }) => {
+const ContractZones: React.FC<ContractZonesProps> = ({
+  contractZones,
+  onChange,
+}) => {
   const intl = useIntl();
 
   return (
     <Select
-      id='contactZones'
+      id="contactZones"
       noneSelectedText={intl.formatMessage({
         id: 'form.manage_events.field.activities.noneSelectedText',
       })}
       onChange={onChange}
     >
       {Object.keys(contractZones)
-        .sort((a, b) => contractZones[a].name.localeCompare(contractZones[b].name))
+        .sort((a, b) =>
+          contractZones[a].name.localeCompare(contractZones[b].name)
+        )
         .map((key) => (
           <option key={contractZones[key].id} value={contractZones[key].id}>
             {contractZones[key].name}

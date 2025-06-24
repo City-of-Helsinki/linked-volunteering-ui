@@ -18,7 +18,8 @@ interface Props extends InputProps {
 const InputField: React.FC<Props> = (props) => {
   const intl = useIntl();
   const { formatMessage } = intl;
-  const { id, label, required, error, touched, text, placeholder, ...rest } = props;
+  const { id, label, required, error, touched, text, placeholder, ...rest } =
+    props;
 
   return (
     <FormGroup>
@@ -31,7 +32,9 @@ const InputField: React.FC<Props> = (props) => {
       <Input
         id={id}
         invalid={!!error && touched}
-        placeholder={placeholder ? formatMessage({ id: placeholder }) : undefined}
+        placeholder={
+          placeholder ? formatMessage({ id: placeholder }) : undefined
+        }
         {...rest}
       />
       <FormFeedback>{error && formatMessage({ id: error })}</FormFeedback>

@@ -24,7 +24,10 @@ describe('API utility functions', () => {
   test('get() makes a GET request and returns data', async () => {
     fetch.mockResolvedValue(mockResponse(200, { success: true }));
     const data = await get('test-endpoint');
-    expect(fetch).toHaveBeenCalledWith(expect.any(URL), expect.objectContaining({ method: 'GET' }));
+    expect(fetch).toHaveBeenCalledWith(
+      expect.any(URL),
+      expect.objectContaining({ method: 'GET' })
+    );
     expect(data).toEqual({ success: true });
   });
 
@@ -33,7 +36,10 @@ describe('API utility functions', () => {
     const data = await post('test-endpoint', { name: 'Test' });
     expect(fetch).toHaveBeenCalledWith(
       expect.any(URL),
-      expect.objectContaining({ method: 'POST', body: JSON.stringify({ name: 'Test' }) }),
+      expect.objectContaining({
+        method: 'POST',
+        body: JSON.stringify({ name: 'Test' }),
+      })
     );
     expect(data).toEqual({ id: 1 });
   });
@@ -43,7 +49,10 @@ describe('API utility functions', () => {
     const data = await put('test-endpoint', { name: 'Updated' });
     expect(fetch).toHaveBeenCalledWith(
       expect.any(URL),
-      expect.objectContaining({ method: 'PUT', body: JSON.stringify({ name: 'Updated' }) }),
+      expect.objectContaining({
+        method: 'PUT',
+        body: JSON.stringify({ name: 'Updated' }),
+      })
     );
     expect(data).toEqual({ updated: true });
   });
@@ -53,7 +62,10 @@ describe('API utility functions', () => {
     const data = await patch('test-endpoint', { name: 'Patched' });
     expect(fetch).toHaveBeenCalledWith(
       expect.any(URL),
-      expect.objectContaining({ method: 'PATCH', body: JSON.stringify({ name: 'Patched' }) }),
+      expect.objectContaining({
+        method: 'PATCH',
+        body: JSON.stringify({ name: 'Patched' }),
+      })
     );
     expect(data).toEqual({ patched: true });
   });
@@ -61,13 +73,18 @@ describe('API utility functions', () => {
   test('remove() makes a DELETE request', async () => {
     fetch.mockResolvedValue(mockResponse(204, {}));
     const data = await remove('test-endpoint');
-    expect(fetch).toHaveBeenCalledWith(expect.any(URL), expect.objectContaining({ method: 'DELETE' }));
+    expect(fetch).toHaveBeenCalledWith(
+      expect.any(URL),
+      expect.objectContaining({ method: 'DELETE' })
+    );
     expect(data).toEqual({});
   });
 
   test('handles API errors and reports to Sentry', async () => {
     fetch.mockResolvedValue(mockResponse(500, { error: 'Server error' }));
-    await expect(get('test-endpoint')).rejects.toThrow('HTTP error! status: 500');
+    await expect(get('test-endpoint')).rejects.toThrow(
+      'HTTP error! status: 500'
+    );
     expect(Sentry.captureException).toHaveBeenCalled();
   });
 });

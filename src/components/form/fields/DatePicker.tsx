@@ -19,7 +19,8 @@ const DatePickerField: React.FC<Props> = (props) => {
   const intl = useIntl();
   const { formatMessage } = intl;
 
-  const { id, label, required, error, touched, text, placeholder, ...rest } = props;
+  const { id, label, required, error, touched, text, placeholder, ...rest } =
+    props;
 
   return (
     <FormGroup>
@@ -32,7 +33,9 @@ const DatePickerField: React.FC<Props> = (props) => {
       <DatePicker
         id={id}
         customInput={<Input invalid={!!error && touched} />}
-        placeholderText={placeholder ? formatMessage({ id: placeholder }) : undefined}
+        placeholderText={
+          placeholder ? formatMessage({ id: placeholder }) : undefined
+        }
         {...rest}
       />
       <FormFeedback>{error && formatMessage({ id: error })}</FormFeedback>

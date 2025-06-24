@@ -66,10 +66,10 @@ const TimeCaption = styled.div`
 
 interface Props {
   defaultDate?: Date;
-  error?: any;
+  error?: string;
   id: string;
   label?: string;
-  onChange: Function;
+  onChange: (date: Date) => void;
   placeholder?: string;
   required?: boolean;
   selected: Date | null | undefined;
@@ -104,7 +104,9 @@ const TimePicker: React.FC<Props> = ({
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const timeOptions: Date[] = React.useMemo(() => {
-    const defaultDay = defaultDate ? startOfDay(defaultDate) : startOfDay(new Date());
+    const defaultDay = defaultDate
+      ? startOfDay(defaultDate)
+      : startOfDay(new Date());
     const startDay = selected ? startOfDay(selected) : defaultDay;
     let day = startDay;
     const options: Date[] = [];
@@ -118,7 +120,9 @@ const TimePicker: React.FC<Props> = ({
   }, [defaultDate, selected, timeIntervals]);
 
   const selectedIndex = React.useMemo(() => {
-    return selected ? timeOptions.findIndex((option) => isEqual(option, selected)) : -1;
+    return selected
+      ? timeOptions.findIndex((option) => isEqual(option, selected))
+      : -1;
   }, [selected, timeOptions]);
 
   const isComponentFocused = () => {
@@ -160,7 +164,11 @@ const TimePicker: React.FC<Props> = ({
   };
 
   const focusOptionDown = () => {
-    setFocusedOption(focusedOption < timeOptions.length - 1 ? focusedOption + 1 : timeOptions.length - 1);
+    setFocusedOption(
+      focusedOption < timeOptions.length - 1
+        ? focusedOption + 1
+        : timeOptions.length - 1
+    );
   };
 
   const handleChange = (date: Date) => {
@@ -219,8 +227,10 @@ const TimePicker: React.FC<Props> = ({
   React.useEffect(() => {
     // Scroll to the middle of menu when time is not selected
     if (isMenuOpen && selectedIndex === -1) {
-      const scrollHeight = (listWrapper.current && listWrapper.current.scrollHeight) || 0;
-      const height = (listWrapper.current && listWrapper.current.offsetHeight) || 0;
+      const scrollHeight =
+        (listWrapper.current && listWrapper.current.scrollHeight) || 0;
+      const height =
+        (listWrapper.current && listWrapper.current.offsetHeight) || 0;
 
       if (listWrapper.current) {
         listWrapper.current.scrollTop = (scrollHeight - height) / 2;
@@ -241,7 +251,9 @@ const TimePicker: React.FC<Props> = ({
           id={id}
           invalid={!!error && touched}
           onChange={() => {}}
-          placeholder={placeholder ? formatMessage({ id: placeholder }) : undefined}
+          placeholder={
+            placeholder ? formatMessage({ id: placeholder }) : undefined
+          }
           value={selected ? formatTime(selected, timeFormat, locale) : ''}
         />
         {isMenuOpen && (
@@ -249,11 +261,11 @@ const TimePicker: React.FC<Props> = ({
             <Triangle />
             <TimeCaption>{timeCaption}</TimeCaption>
             <ListWrapper ref={listWrapper}>
-              <DateList role='listbox'>
+              <DateList role="listbox">
                 {timeOptions.map((option, index) => {
                   return (
                     <ListItem
-                      key={option.getMilliseconds as any}
+                      key={`${option.getTime()}`}
                       container={listWrapper}
                       date={option}
                       id={`${id}--item_${index}`}

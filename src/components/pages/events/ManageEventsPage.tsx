@@ -4,7 +4,10 @@ import { Container, Row, Col } from 'reactstrap';
 import { FormattedMessage, FormattedDate } from 'react-intl';
 
 import { isEmpty } from 'lodash';
-import { contractZonesSelector, getContractZones } from '../../../store/reducers/contractZones';
+import {
+  contractZonesSelector,
+  getContractZones,
+} from '../../../store/reducers/contractZones';
 import {
   eventsSelector,
   getEvents,
@@ -84,8 +87,16 @@ const tableHeaders = [
     translation: 'manage_events.organizer_email',
     hasOrderBy: true,
   },
-  { key: 'start_time', translation: 'manage_events.start_time', hasOrderBy: true },
-  { key: 'created_at', translation: 'manage_events.created_at', hasOrderBy: true },
+  {
+    key: 'start_time',
+    translation: 'manage_events.start_time',
+    hasOrderBy: true,
+  },
+  {
+    key: 'created_at',
+    translation: 'manage_events.created_at',
+    hasOrderBy: true,
+  },
   { key: 'state', translation: 'manage_events.state', hasOrderBy: true },
 ];
 
@@ -162,7 +173,7 @@ const ManageEventsPage = () => {
         color: 'success',
         message: 'notification.manage_events.approve',
         values: { name: event.name },
-      }),
+      })
     );
   };
 
@@ -171,7 +182,7 @@ const ManageEventsPage = () => {
       openModal({
         modal: 'confirmRemoval',
         meta: { event, apiAccessToken },
-      }),
+      })
     );
   };
 
@@ -181,17 +192,23 @@ const ManageEventsPage = () => {
 
   return (
     <Layout>
-      <PageMeta title='site.page.manage_events.page_title' />
+      <PageMeta title="site.page.manage_events.page_title" />
       <ControlContainer fluid>
         <TitleRow>
           <Col sm={{ size: 11, offset: 1 }}>
-            <FormattedMessage tagName='h1' id='site.page.manage_events.title' />
+            <FormattedMessage tagName="h1" id="site.page.manage_events.title" />
           </Col>
         </TitleRow>
         <Row>
           <Col sm={{ size: 4, offset: 1 }}>
-            <IntlComponent Component={FilterTitle} id='site.page.manage_events.filter_events' />
-            <ContractZones onChange={handleChange} contractZones={contractZones} />
+            <IntlComponent
+              Component={FilterTitle}
+              id="site.page.manage_events.filter_events"
+            />
+            <ContractZones
+              onChange={handleChange}
+              contractZones={contractZones}
+            />
           </Col>
         </Row>
       </ControlContainer>
@@ -199,11 +216,13 @@ const ManageEventsPage = () => {
         <Row>
           <Col>
             <Table
-              id='manage_event_table'
+              id="manage_event_table"
               firstColumn
               headers={tableHeaders}
               actionColSpan={2}
-              setOrderBy={(order: { key: string; order: string }) => dispatch(setOrderBy(order))}
+              setOrderBy={(order: { key: string; order: string }) =>
+                dispatch(setOrderBy(order))
+              }
               ordering={ordering}
             >
               {sortedEvents.map((event) => {
@@ -211,7 +230,11 @@ const ManageEventsPage = () => {
                 const isEventPending = isPending(event);
                 return (
                   <Fragment key={event.id}>
-                    <Tr firstColumn highlighted={isEventPending} selected={selected}>
+                    <Tr
+                      firstColumn
+                      highlighted={isEventPending}
+                      selected={selected}
+                    >
                       <StyledTd>
                         <EventName>{event.name}</EventName>
                       </StyledTd>
@@ -231,21 +254,23 @@ const ManageEventsPage = () => {
                         }}
                         append={undefined}
                       >
-                        <FormattedMessage id={`entities.event.state.${event.state}`} />
+                        <FormattedMessage
+                          id={`entities.event.state.${event.state}`}
+                        />
                       </WithIcons>
                       <StyledTd>
                         <LocalizedLink
                           id={`edit_event_${event.id}`}
                           to={`admin/event/modify/${event.id}`}
-                          prepend='pencil'
-                          translate='site.page.manage_events.table.action.edit'
+                          prepend="pencil"
+                          translate="site.page.manage_events.table.action.edit"
                         />
                       </StyledTd>
                       <StyledTd>
                         <Button
                           id={`extend_event_${event.id}`}
-                          data-testid='toggle-details'
-                          color='link'
+                          data-testid="toggle-details"
+                          color="link"
                           onClick={() => toggleDetails(event.id)}
                           prepend={{
                             name: 'angleRight',
@@ -257,13 +282,22 @@ const ManageEventsPage = () => {
                     </Tr>
                     {selected && (
                       <DetailsRow id={`event_details_${event.id}`} colSpan={7}>
-                        <WithIcons component={DetailsCluster} prepend='user' append={undefined}>
+                        <WithIcons
+                          component={DetailsCluster}
+                          prepend="user"
+                          append={undefined}
+                        >
                           <strong>
-                            {event.organizer_first_name} {event.organizer_last_name}
+                            {event.organizer_first_name}{' '}
+                            {event.organizer_last_name}
                           </strong>
                           <span>{event.organizer_email}</span>
                         </WithIcons>
-                        <WithIcons component={DetailsCluster} prepend='mapMarker' append={undefined}>
+                        <WithIcons
+                          component={DetailsCluster}
+                          prepend="mapMarker"
+                          append={undefined}
+                        >
                           <strong>{event.maintenance_location}</strong>
                         </WithIcons>
                         <p>{event.description}</p>
@@ -271,8 +305,8 @@ const ManageEventsPage = () => {
                           {!!isEventPending && (
                             <Button
                               id={`approve_event_${event.id}`}
-                              translate='site.page.manage_events.table.action.approve'
-                              color='primary'
+                              translate="site.page.manage_events.table.action.approve"
+                              color="primary"
                               onClick={() => approve(event)}
                               disabled={!isEventPending}
                             />
@@ -282,10 +316,10 @@ const ManageEventsPage = () => {
                             <Button
                               id={`reject_event_${event.id}`}
                               data-testid={`reject_event_${event.id}`}
-                              translate='site.page.manage_events.table.action.remove'
-                              color='danger'
+                              translate="site.page.manage_events.table.action.remove"
+                              color="danger"
                               onClick={() => remove(event)}
-                              append='times'
+                              append="times"
                             />
                           )}
                         </div>
@@ -301,9 +335,9 @@ const ManageEventsPage = () => {
           <ButtonControls>
             {Object.keys(nextParams).length > 0 && (
               <NextPageButton
-                data-testid='next-page'
-                translate='site.page.manage_events.next_events'
-                color='info'
+                data-testid="next-page"
+                translate="site.page.manage_events.next_events"
+                color="info"
                 onClick={() => handleNextEvents()}
               />
             )}

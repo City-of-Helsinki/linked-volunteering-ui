@@ -19,7 +19,9 @@ export type MockedUserOverrides = {
   };
 };
 
-export function mockProfileCreator(overrides?: MockedUserOverrides['profileOverrides']): Profile {
+export function mockProfileCreator(
+  overrides?: MockedUserOverrides['profileOverrides']
+): Profile {
   return {
     amr: ['helsinki_tunnus-test'],
     auth_time: 1593431180,
@@ -34,7 +36,10 @@ export function mockProfileCreator(overrides?: MockedUserOverrides['profileOverr
   } as Profile;
 }
 
-export function mockUserCreator({ userOverrides, profileOverrides }: MockedUserOverrides = {}): User {
+export function mockUserCreator({
+  userOverrides,
+  profileOverrides,
+}: MockedUserOverrides = {}): User {
   const expirationTimeInMs = 100000;
   const scopes = ['openid', 'profile', 'https://api.hel.fi/foobar'];
   return {

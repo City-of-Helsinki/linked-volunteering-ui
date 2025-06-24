@@ -21,15 +21,24 @@ const initialState: ReportState = {
 
 export const getReport = createAsyncThunk(
   'GET_REPORT',
-  async ({ year, apiAccessToken }: { year: string; apiAccessToken: string | undefined }, { rejectWithValue }) => {
+  async (
+    {
+      year,
+      apiAccessToken,
+    }: { year: string; apiAccessToken: string | undefined },
+    { rejectWithValue }
+  ) => {
     try {
       const response = await reportService.getReport(year, apiAccessToken);
 
-      const reports = response.results.reduce((acc: Record<string, Report>, report: Report) => {
-        acc[report.id] = report;
+      const reports = response.results.reduce(
+        (acc: Record<string, Report>, report: Report) => {
+          acc[report.id] = report;
 
-        return acc;
-      }, {});
+          return acc;
+        },
+        {}
+      );
 
       return {
         count: response.count,
@@ -40,7 +49,7 @@ export const getReport = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error);
     }
-  },
+  }
 );
 
 const reportSlice = createSlice({
@@ -61,13 +70,13 @@ const reportSlice = createSlice({
           next: string | null;
           previous: string | null;
           results: Record<string, Report>;
-        }>,
+        }>
       ) => {
         state.count = action.payload.count;
         state.next = action.payload.next;
         state.previous = action.payload.previous;
         state.reports = action.payload.results;
-      },
+      }
     );
   },
   selectors: {

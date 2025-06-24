@@ -40,7 +40,10 @@ describe('<Radio />', () => {
     });
 
     expect(screen.queryByText('form.radio.error')).not.toBeInTheDocument();
-    expect(screen.getByRole('radio')).not.toHaveAttribute('aria-invalid', 'true');
+    expect(screen.getByRole('radio')).not.toHaveAttribute(
+      'aria-invalid',
+      'true'
+    );
   });
 
   it('displays helper text when text prop is provided', () => {

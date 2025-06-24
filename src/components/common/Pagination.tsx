@@ -53,11 +53,16 @@ type PaginationProps = {
   pageCount: number;
 };
 
-const PaginationComponent: React.FC<PaginationProps> = ({ activePage, onPageClick, pageCount }) => {
-  const handlePageClick = (page: number) => (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
-    onPageClick(page);
-  };
+const PaginationComponent: React.FC<PaginationProps> = ({
+  activePage,
+  onPageClick,
+  pageCount,
+}) => {
+  const handlePageClick =
+    (page: number) => (event: React.MouseEvent<HTMLAnchorElement>) => {
+      event.preventDefault();
+      onPageClick(page);
+    };
 
   if (pageCount < 2) {
     return null;
@@ -67,11 +72,11 @@ const PaginationComponent: React.FC<PaginationProps> = ({ activePage, onPageClic
     <Pagination>
       <PaginationItem>
         <a
-          href='/page-previous'
+          href="/page-previous"
           onClick={handlePageClick(Math.max(activePage - 1, 1))}
           aria-label={activePage === 1 ? 'First page' : 'Previous page'}
         >
-          <Icon name='angleLeft' />
+          <Icon name="angleLeft" />
         </a>
       </PaginationItem>
       {Array.from({ length: pageCount }, (_v, k) => k + 1).map((page) => (
@@ -79,7 +84,11 @@ const PaginationComponent: React.FC<PaginationProps> = ({ activePage, onPageClic
           <a
             href={`/page-${page}`}
             onClick={handlePageClick(page)}
-            aria-label={page === activePage ? `Current page, page ${page}` : `Go to page ${page}`}
+            aria-label={
+              page === activePage
+                ? `Current page, page ${page}`
+                : `Go to page ${page}`
+            }
           >
             {page}
           </a>
@@ -87,11 +96,11 @@ const PaginationComponent: React.FC<PaginationProps> = ({ activePage, onPageClic
       ))}
       <PaginationItem>
         <a
-          href='/page-next'
+          href="/page-next"
           onClick={handlePageClick(Math.min(activePage + 1, pageCount))}
           aria-label={activePage === pageCount ? 'Last page' : 'Next page'}
         >
-          <Icon name='angleRight' />
+          <Icon name="angleRight" />
         </a>
       </PaginationItem>
     </Pagination>

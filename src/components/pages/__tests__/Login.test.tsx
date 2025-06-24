@@ -11,7 +11,7 @@ const renderComponent = () => {
   return renderWithProviders(
     <BrowserRouter>
       <Login />
-    </BrowserRouter>,
+    </BrowserRouter>
   );
 };
 

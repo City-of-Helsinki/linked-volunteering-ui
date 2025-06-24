@@ -9,7 +9,7 @@ const renderComponent = (store = createStore()) => {
     <BrowserRouter>
       <ErrorPage />
     </BrowserRouter>,
-    { store },
+    { store }
   );
 };
 

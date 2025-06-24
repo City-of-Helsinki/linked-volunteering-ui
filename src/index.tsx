@@ -7,7 +7,12 @@ import { Integrations } from '@sentry/tracing';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from 'react-router-dom';
 
 import { ThemeProvider } from 'styled-components';
 import { LoginProvider } from 'hds-react';
@@ -46,11 +51,11 @@ function Root() {
         <ThemeProvider theme={theme}>
           <Router>
             <Routes>
-              <Route path='/' element={<Navigate to='/fi/' />} />
-              <Route path='/logged_out' element={<Navigate to='/fi/' />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/callback' element={<CallbackPage />} />
-              <Route path='/:locale/*' element={<App />} />
+              <Route path="/" element={<Navigate to="/fi/" />} />
+              <Route path="/logged_out" element={<Navigate to="/fi/" />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/callback" element={<CallbackPage />} />
+              <Route path="/:locale/*" element={<App />} />
             </Routes>
           </Router>
         </ThemeProvider>
@@ -62,8 +67,7 @@ function Root() {
 const rootElement = document.getElementById('root');
 
 if (rootElement) {
-  // eslint-disable-next-line react/no-deprecated
-  const root = ReactDOM.createRoot(rootElement as HTMLElement);
+  const root = ReactDOM.createRoot(rootElement);
 
   root.render(<Root />);
 }

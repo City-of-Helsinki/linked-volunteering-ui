@@ -6,7 +6,10 @@ import { IntlProvider } from 'react-intl';
 import { isEmpty } from 'lodash';
 import { LoadingSpinner } from 'hds-react';
 import { HelmetProvider } from 'react-helmet-async';
-import { currentUserDataSelector, getCurrentUserData } from '../store/reducers/auth';
+import {
+  currentUserDataSelector,
+  getCurrentUserData,
+} from '../store/reducers/auth';
 
 import messages from '../config/translations';
 import AdminRoutes from './AdminRoutes';
@@ -54,7 +57,11 @@ const App: React.FC = () => {
 
   if (locale !== 'en' && locale !== 'fi' && locale !== 'sv') {
     return (
-      <IntlProvider locale={language} key={language} messages={messages[language]}>
+      <IntlProvider
+        locale={language}
+        key={language}
+        messages={messages[language]}
+      >
         <Error404Page />;
       </IntlProvider>
     );
@@ -62,16 +69,20 @@ const App: React.FC = () => {
 
   return (
     <React.StrictMode>
-      <IntlProvider locale={language} key={language} messages={messages[language]}>
+      <IntlProvider
+        locale={language}
+        key={language}
+        messages={messages[language]}
+      >
         <HelmetProvider>
           <CommonMeta />
           <SessionEndedDialog />
           <React.Suspense fallback={<LoadingSpinner />}>
             <Routes>
-              <Route path='/' element={<LandingPage />} />
-              <Route path='/admin/*' element={<AdminRoutes />} />
-              <Route path='/*' element={<LocaleRoutes />} />
-              <Route path='/authError' element={<ErrorPage />} />
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/admin/*" element={<AdminRoutes />} />
+              <Route path="/*" element={<LocaleRoutes />} />
+              <Route path="/authError" element={<ErrorPage />} />
             </Routes>
           </React.Suspense>
         </HelmetProvider>
