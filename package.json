@@ -98,7 +98,7 @@
     "build": "tsc && vite build",
     "serve": "vite preview",
     "test": "vitest",
-    "test:cov": "vitest run --coverage --watch=false",
+    "test:coverage": "vitest run --coverage --watch=false",
     "lint": "eslint --ext js,ts,tsx src && prettier src --check",
     "lint:fix": "eslint --ext js,ts,tsx src --fix && prettier src --write",
     "typecheck": "tsc --noEmit",
