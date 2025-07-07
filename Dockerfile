@@ -5,7 +5,8 @@ FROM registry.access.redhat.com/ubi9/nodejs-22 AS appbase
 WORKDIR /app
 
 USER root
-RUN curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo
+RUN curl --fail --silent --proto '=https' --tlsv1.2 https://dl.yarnpkg.com/rpm/yarn.repo \
+    --output /etc/yum.repos.d/yarn.repo
 RUN yum -y install yarn
 
 # Offical image has npm log verbosity as info. More info - https://github.com/nodejs/docker-node#verbosity
@@ -20,8 +21,13 @@ ENV NODE_ENV $NODE_ENV
 ENV YARN_VERSION 1.19.1
 RUN yarn policies set-version $YARN_VERSION
 
-# Most files from source tree are needed at runtime
-COPY . /app/
+# Copy only necessary files for build
+COPY package.json yarn.lock* /app/
+COPY tsconfig.json vite.config.mts eslint.config.mjs /app/
+COPY index.html /app/
+COPY public/ /app/public/
+COPY src/ /app/src/
+COPY .prod/ /app/.prod/
 RUN chown -R default:root /app
 
 # Install npm dependencies and build the bundle
