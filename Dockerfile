@@ -22,7 +22,7 @@ ENV YARN_VERSION 1.19.1
 RUN yarn policies set-version $YARN_VERSION
 
 # Copy only necessary files for build
-COPY package.json yarn.lock* /app/
+COPY package.json yarn.lock /app/
 COPY tsconfig.json vite.config.mts eslint.config.mjs /app/
 COPY index.html /app/
 COPY public/ /app/public/
@@ -33,7 +33,7 @@ RUN chown -R default:root /app
 # Install npm dependencies and build the bundle
 USER default
 
-RUN yarn
+RUN yarn --ignore-scripts
 RUN yarn cache clean --force
 
 # ==========================================
