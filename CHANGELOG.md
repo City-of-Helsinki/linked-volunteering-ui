@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.2](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.5.1...linked-volunteering-ui-v0.5.2) (2025-07-26)
+
+
+### Dependencies
+
+* Upgrade eslint to 9.29.0 PS-186 ([b798dd9](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/b798dd99b9056eb8bc66107a040e0c25fc5fcbd8))
+
 ## [0.5.1](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.5.0...linked-volunteering-ui-v0.5.1) (2025-05-30)
 
 
