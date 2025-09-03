@@ -19,7 +19,7 @@ registerLocale('sv', sv);
 setDefaultLocale('fi');
 
 const now = startOfDay(new Date());
-const minDate = addDays(now, 8);
+const minDate = addDays(now, 7);
 const timeIntervals = 30;
 
 interface EventWithDateObjects extends Omit<Event, 'start_time' | 'end_time'> {
