@@ -1,4 +1,4 @@
-import { addDays, addHours, setHours, startOfDay } from 'date-fns';
+import { addMonths, addDays, addHours, setHours, startOfDay } from 'date-fns';
 import fi from 'date-fns/locale/fi';
 import sv from 'date-fns/locale/sv';
 import { FormikErrors, FormikTouched } from 'formik';
@@ -20,6 +20,7 @@ setDefaultLocale('fi');
 
 const now = startOfDay(new Date());
 const minDate = addDays(now, 8);
+const maxDateFromToday = addMonths(now, 6);
 const timeIntervals = 30;
 
 interface EventWithDateObjects extends Omit<Event, 'start_time' | 'end_time'> {
@@ -142,7 +143,7 @@ const DateRange: React.FC<Props> = ({
             selected={selectedStartTime}
             dateFormat={dateFormat}
             minDate={minDate}
-            maxDate={ensureDate(values.end_time)}
+            maxDate={maxDateFromToday}
             startDate={selectedStartTime}
             endDate={selectedEndTime}
             excludeDates={unavailableDates}
