@@ -8,143 +8,158 @@ const ContentWrapper = styled.div`
 const AccessibilityStatementFi: FunctionComponent = () => {
   return (
     <ContentWrapper lang="fi">
-      <h1>Saavutettavuus&shy;seloste</h1>
+      <h1>Saavutettavuusseloste</h1>
       <p>
-        Tämä saavutettavuusseloste koskee Helsingin kaupungin
-        Puistotalkoot-verkkosivustoa. Sivuston osoite on{' '}
-        <a href="https://puistotalkoot.hel.fi">https://puistotalkoot.hel.fi</a>
+        Tämä saavutettavuusseloste koskee Puistotalkoot verkkosivustoa
+        (https://puistotalkoot.hel.fi/fi/). Verkkosivustosta vastaa Helsingin
+        kaupunki. Tässä selosteessa kerrotaan, kuinka saavutettava verkkosivusto
+        on ja miten voit antaa meille palautetta saavutettavuudesta.
       </p>
-      <h2>Sivustoa koskevat lain säädökset</h2>
+      <h2>Kuinka saavutettava tämä verkkosivusto on?</h2>
       <p>
-        Tämä sivusto on julkaistu 23.9.2018 jälkeen. Sivuston tulee täyttää lain
-        edellyttämät saavutettavuuden vaatimukset.
+        Digitaalisten palveluiden tarjoamista koskevan lain mukaan julkisten
+        verkkosivustojen on oltava saavutettavia, eli kaikilla tulee olla
+        tasavertaiset mahdollisuudet käyttää niitä.
       </p>
-      <h2>Kaupungin tavoite</h2>
       <p>
-        Digitaalisten palveluiden saavutettavuudessa Helsingin tavoitteena on
-        pyrkiä vähintään WCAG-ohjeiston mukaiseen tasoon AA tai sitä parempaan,
-        mikäli se on kohtuudella mahdollista.
+        Tämä verkkosivusto täyttää suurilta osin lain vaatimat
+        saavutettavuuskriteerit (WCAG-kriteeristö 2.1, A- ja AA-taso).
+        Verkkosivustossa on joitakin saavutettavuuspuutteita, jotka on kuvattu
+        tarkemmin alempana.
       </p>
-      <h2>Vaatimustenmukaisuus&shy;tilanne</h2>
+      <h2>Sisällöt, jotka eivät ole saavutettavia</h2>
       <p>
-        Tämä verkkosivusto täyttää lain asettamat saavutettavuusvaatimukset
-        kaikilta osin.
+        Tämä verkkosivusto ei ole kaikilta osin saavutettava. Alla mainitut
+        sisällöt tai toiminnot eivät täytä kaikkia lain asettamia
+        saavutettavuusvaatimuksia. Korjaamme havaittuja saavutettavuuspuutteita
+        jatkuvasti. Päivitämme tämän selosteen havaittujen puutteiden listausta,
+        kun saamme puutteita korjattua.
       </p>
-      <h2>Saavutettavuusselosteen laatiminen</h2>
-      <p>Tämä seloste on laadittu 18.5.2020.</p>
-      <h3>Saavutettavuuden arviointi</h3>
+      <h3>Ylä- / alatunniste</h3>
+      <ul>
+        <li>
+          Linkki etusivulle ei ole nimetty yhteneväisellä tavalla eri osissa
+          sivustoa (WCAG 2.1: 2.4.4 Linkin tarkoitus (kontekstissa), 2.5.3
+          Nimilappu nimessä).
+        </li>
+        <li>
+          Navigaatioelementit eivät ole nimetty yksilöllisesti avustavan
+          teknologian käyttäjille (WCAG 2.1: 1.3.1 Informaatio ja suhteet).
+        </li>
+        <li>
+          Kielivalikon vaihtoehtojen roolia ei ilmaista riittävän selkeästi
+          (WCAG 2.1: 4.1.2 Nimi, rooli, arvo).
+        </li>
+        <li>
+          Kielivalikon kohdistuksen ilmaisimen kontrastisuhde on liian matala
+          (WCAG 2.1: 1.4.11 Ei-tekstimuotoisen sisällön kontrasti).
+        </li>
+      </ul>
+      <h3>Etusivu</h3>
+      <ul>
+        <li>
+          Linkki ilmaistaan virheellisesti painikkeena (WCAG 2.1: 4.1.2 Nimi,
+          rooli, arvo).
+        </li>
+      </ul>
+      <h3>Lomake</h3>
+      <ul>
+        <li>
+          Kaikkien elementtien nimi tai rooli ei ilmene riittävän selkeästi
+          avustavan teknologian käyttäjille (WCAG 2.1: 4.1.2 Nimi, rooli, arvo).
+        </li>
+        <li>
+          Sivulla on sisältöä, jonka kontrastisuhde taustaan on liian matala
+          (WCAG 2.1: 1.4.3 Kontrasti (minimi)).
+        </li>
+        <li>
+          Kaikki tilan muutokset eivät välity automaattisesti avustavan
+          teknologian käyttäjille, kuten lomakkeen tyhjentäminen (WCAG 2.1:
+          4.1.3 Tilasta kertovat viestit).
+        </li>
+        <li>
+          Virheviestejä ei ole sidottu teknisesti syötekenttiin (WCAG 2.1: 1.3.1
+          Informaatio ja suhteet).
+        </li>
+        <li>
+          Kartta-aluetta ei ole merkitty teknisesti (WCAG 2.1: 1.3.1 Informaatio
+          ja suhteet).
+        </li>
+        <li>
+          Päivämäärän valitseminen kalenterista voi olla haasteellista avustavan
+          teknologian käyttäjille:
+          <ul>
+            <li>
+              Kalenteri avautuu / sulkeutuu automaattisesti ilman käyttäjän
+              syötettä (WCAG 2.1: 3.2.2 Syöte).
+            </li>
+            <li>
+              Tilan muutoksia ei ilmaista avustavan teknologian käyttäjille
+              (WCAG 2.1: 4.1.3 Tilasta kertovat viestit).
+            </li>
+            <li>
+              Kaikki interaktiiviset elementit eivät ole näppäimistöllä
+              käytettäviä (WCAG 2.1: 2.1.1 Näppäimistö).
+            </li>
+            <li>
+              Nuolipainikkeiden saavutettavat nimet eivät ole sivulle valitun
+              kielen mukaisia (WCAG 2.1: 3.1.2 Osien kieli).
+            </li>
+            <li>
+              Nuolipainikkeiden kontrastisuhde taustaan on liian matala (WCAG
+              2.1: 1.4.11 Ei-tekstimuotoisen sisällön kontrasti).
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h2>Saavutettavuuden arviointi</h2>
       <p>
         Saavutettavuuden arvioinnissa on noudatettu Helsingin kaupungin
-        työohjetta ja menetelmiä, jotka pyrkivät varmistamaan sivuston
+        työohjetta ja menetelmiä, jotka pyrkivät varmistamaan palvelun
         saavutettavuuden kaikissa työvaiheissa.
       </p>
       <p>
         Saavutettavuus on tarkistettu ulkopuolisen asiantuntijan suorittamana
-        auditointina sekä itsearviona.
+        arviointina. Saavutettavuus on tarkistettu käyttäen ohjelmallista
+        saavutettavuustarkistusta sekä verkkosivuston ja sisällön manuaalista
+        tarkistusta.
       </p>
+      <h2>Huomasitko puutteita saavutettavuudessa?</h2>
       <p>
-        Saavutettavuus on tarkistettu käyttämällä ohjelmallista
-        saavutettavuustarkastusta sekä sivuston ja sisällön manuaalista
-        tarkastusta. Ohjelmallisissa tarkistuksissa on käytetty Google Chrome
-        -selaimen Lighthouse-arviointityökalua sekä Chromen selainlaajennoksia
-        axe ja Siteimprove.
+        Pyrimme jatkuvasti parantamaan verkkosivuston saavutettavuutta. Ota
+        meihin yhteyttä, jos löydät saavutettavuuspuutteita, joita ei ole
+        kuvattu tällä sivulla, tai tarvitsemasi aineisto ei ole saavutettavaa.
+        <a href="https://palautteet.hel.fi/fi">
+          Anna palautetta palautelomakkeella.
+        </a>
       </p>
+      <h2>Saavutettavuuden valvonta</h2>
       <p>
-        Arviointityökalujen raportoimat epäkohdat on tarkastettu ja tarvittaessa
-        korjattu.
-      </p>
-      <p>
-        Ulkopuolisen asiantuntija-auditoinnin on suorittanut Palvelukeskus
-        Helsinki.
-      </p>
-
-      <h3>Saavutettavuusselosteen päivittäminen</h3>
-      <p>
-        Sivuston saavutettavuudesta huolehditaan jatkuvalla valvonnalla
-        tekniikan tai sisällön muuttuessa, sekä määräajoin suoritettavalla
-        tarkistuksella. Tätä selostetta päivitetään sivuston muutosten ja
-        saavutettavuuden tarkistusten yhteydessä.
-      </p>
-
-      <h2>Palaute ja yhteystiedot</h2>
-      <p>
-        Puistotalkoot-sivuston saavutettavuudesta vastaa Helsingin kaupungin
-        kulttuurin ja vapaa-ajan toimiala, puhelinvaihde 09 310 1060.
-      </p>
-
-      <h3>Ilmoittaminen ei-saavutettavasta sisällöstä</h3>
-      <p>
-        Mikäli käyttäjä kokee, etteivät saavutettavuuden vaatimukset kuitenkaan
-        täyty, voi tästä tehdä ilmoituksen sähköpostilla{' '}
-        <a href="mailto:helsinki.palaute@hel.fi">helsinki.palaute@hel.fi</a> tai
-        palautelomakkeella{' '}
-        <a href="https://www.hel.fi/palaute">www.hel.fi/palaute</a>.
-      </p>
-
-      <h3>Tietojen pyytäminen saavutettavassa muodossa</h3>
-      <p>
-        Mikäli käyttäjä ei koe saavansa sivuston sisältöä saavutettavassa
-        muodossa, voi käyttäjä pyytää näitä tietoja sähköpostilla{' '}
-        <a href="mailto:helsinki.palaute@hel.fi">helsinki.palaute@hel.fi</a> tai
-        palautelomakkeella{' '}
-        <a href="https://www.hel.fi/palaute">www.hel.fi/palaute</a>.
-        Tiedusteluun pyritään vastaamaan kohtuullisessa ajassa.
-      </p>
-
-      <h2>Saavutettavuuden oikeussuoja, Täytäntöönpanomenettely</h2>
-      <p>
-        Mikäli henkilö kokee, ettei hänen ilmoitukseensa tai tiedusteluunsa ole
-        vastattu tai vastaus ei ole tyydyttävä, voi asiasta tehdä ilmoituksen
+        Liikenne- ja viestintävirasto Traficom valvoo saavutettavuusvaatimusten
+        toteutumista. Jos et ole tyytyväinen saamaasi vastaukseen tai et saa
+        vastausta lainkaan kahden viikon aikana, voit tehdä ilmoituksen
         Liikenne- ja viestintävirasto Traficomiin. Liikenne- ja viestintävirasto
-        Traficomin sivulla kerrotaan tarkasti, miten asia käsitellään.
+        Traficomin sivulla kerrotaan tarkasti, miten ilmoituksen voi tehdä ja
+        miten asia käsitellään.
       </p>
-
-      <h2>Liikenne- ja viestintävirasto Traficom</h2>
       <p>
-        Digitaalisen esteettömyyden ja saavutettavuuden valvontayksikkö
+        Liikenne- ja viestintävirasto Traficom
         <br />
-        <a href="https://www.saavutettavuusvaatimukset.fi/">
-          www.saavutettavuusvaatimukset.fi/
-        </a>
-        <br />
-        <a href="mailto:saavutettavuus@traficom.fi">
-          saavutettavuus@traficom.fi
-        </a>
-        <br />
-        Puhelinnumero (vaihde) 029 534 5000
+        Digitaalisen esteettömyyden ja saavutettavuuden valvontayksikkö <br />
+        www.saavutettavuusvaatimukset.fi <br />
+        saavutettavuus@traficom.fi <br />
+        puhelinnumero vaihde 029 534 5000
       </p>
-      <h2>Helsingin kaupunki ja saavutettavuus </h2>
-      <p>
-        Helsingin kaupungin tavoitteena on olla kaikille esteetön ja
-        saavutettava kaupunki. Kaupungin tavoitteena on, että Helsingissä on
-        kaikkien kaupunkilaisten mahdollisimman helppo liikkua ja toimia ja että
-        kaikki sisältö ja palvelut olisivat kaikkien saavutettavissa.
-      </p>
-      <p>
-        Kaupunki edistää digitaalisten palveluiden saavutettavuutta
-        yhdenmukaistamalla julkaisutyötä ja järjestämällä saavutettavuuteen
-        keskittyvää koulutusta henkilökunnalleen.
-      </p>
-      <p>
-        Sivustojen saavutettavuuden tasoa seurataan jatkuvasti sivustoja
-        ylläpidettäessä. Havaittuihin puutteisiin reagoidaan välittömästi.
-        Tarvittavat muutokset pyritään suorittamaan mahdollisimman nopeasti.
-      </p>
-
-      <h3>Vammaiset ja avustavien teknologioiden käyttäjät</h3>
-      <p>
-        Kaupunki tarjoaa neuvontaa ja tukea vammaisille ja avustavien
-        teknologioiden käyttäjille. Tukea on saatavilla kaupungin sivuilla
-        ilmoitetuilta neuvontasivuilta sekä puhelinneuvonnasta.
-      </p>
-
-      <h2>Saavutettavuusselosteen hyväksyntä</h2>
-      <p>Tämän selosteen on hyväksynyt 18.5.2020</p>
-      <p>
-        Kulttuurin ja vapaa-ajan toimiala
-        <br />
-        Helsingin kaupunki
-      </p>
+      <a href="https://www.saavutettavuusvaatimukset.fi">
+        www.saavutettavuusvaatimukset.fi
+      </a>
+      <h2>Saavutettavuusselosteen tiedot</h2>
+      <p>Verkkosivusto on julkaistu 23.9.2018 jälkeen.</p>
+      <p>Seloste on laadittu 18.5.2020.</p>
+      <p>Seloste on päivitetty 5.3.2025.</p>
+      <a href="https://www.finlex.fi/fi/lainsaadanto/saadoskokoelma/2019/306">
+        Laki digitaalisten palvelujen tarjoamisesta (306/2019)
+      </a>
     </ContentWrapper>
   );
 };

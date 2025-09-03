@@ -8,156 +8,158 @@ const ContentWrapper = styled.div`
 const AccessibilityStatementSv: FunctionComponent = () => {
   return (
     <ContentWrapper lang="sv">
-      <h1>Tillgänglighets&shy;utlåtande</h1>
+      <h1>Tillgänglighetsutlåtande</h1>
       <p>
-        Detta tillgänglighetsutlåtande gäller Helsingfors stads webbplats
-        Puistotalkoot. Webbplatsens adress är{' '}
-        <a href="https://puistotalkoot.hel.fi/">
-          https://puistotalkoot.hel.fi/
+        Detta tillgänglighetsutlåtande gäller webbplatsen Parktalko
+        (https://puistotalkoot.hel.fi/sv/). Helsingfors stad har ansvar för
+        webbplatsen. Detta utlåtande beskriver hur tillgänglig webbplatsen är
+        och hur du kan ge oss respons om dess tillgänglighet.
+      </p>
+      <h2>Kuinka saavutettava tämä verkkosivusto on?</h2>
+      <p>
+        Digitaalisten palveluiden tarjoamista koskevan lain mukaan julkisten
+        verkkosivustojen on oltava saavutettavia, eli kaikilla tulee olla
+        tasavertaiset mahdollisuudet käyttää niitä.
+      </p>
+      <p>
+        Tämä verkkosivusto täyttää suurilta osin lain vaatimat
+        saavutettavuuskriteerit (WCAG-kriteeristö 2.1, A- ja AA-taso).
+        Verkkosivustossa on joitakin saavutettavuuspuutteita, jotka on kuvattu
+        tarkemmin alempana.
+      </p>
+      <h2>Sisällöt, jotka eivät ole saavutettavia</h2>
+      <p>
+        Tämä verkkosivusto ei ole kaikilta osin saavutettava. Alla mainitut
+        sisällöt tai toiminnot eivät täytä kaikkia lain asettamia
+        saavutettavuusvaatimuksia. Korjaamme havaittuja saavutettavuuspuutteita
+        jatkuvasti. Päivitämme tämän selosteen havaittujen puutteiden listausta,
+        kun saamme puutteita korjattua.
+      </p>
+      <h3>Ylä- / alatunniste</h3>
+      <ul>
+        <li>
+          Linkki etusivulle ei ole nimetty yhteneväisellä tavalla eri osissa
+          sivustoa (WCAG 2.1: 2.4.4 Linkin tarkoitus (kontekstissa), 2.5.3
+          Nimilappu nimessä).
+        </li>
+        <li>
+          Navigaatioelementit eivät ole nimetty yksilöllisesti avustavan
+          teknologian käyttäjille (WCAG 2.1: 1.3.1 Informaatio ja suhteet).
+        </li>
+        <li>
+          Kielivalikon vaihtoehtojen roolia ei ilmaista riittävän selkeästi
+          (WCAG 2.1: 4.1.2 Nimi, rooli, arvo).
+        </li>
+        <li>
+          Kielivalikon kohdistuksen ilmaisimen kontrastisuhde on liian matala
+          (WCAG 2.1: 1.4.11 Ei-tekstimuotoisen sisällön kontrasti).
+        </li>
+      </ul>
+      <h3>Etusivu</h3>
+      <ul>
+        <li>
+          Linkki ilmaistaan virheellisesti painikkeena (WCAG 2.1: 4.1.2 Nimi,
+          rooli, arvo).
+        </li>
+      </ul>
+      <h3>Lomake</h3>
+      <ul>
+        <li>
+          Kaikkien elementtien nimi tai rooli ei ilmene riittävän selkeästi
+          avustavan teknologian käyttäjille (WCAG 2.1: 4.1.2 Nimi, rooli, arvo).
+        </li>
+        <li>
+          Sivulla on sisältöä, jonka kontrastisuhde taustaan on liian matala
+          (WCAG 2.1: 1.4.3 Kontrasti (minimi)).
+        </li>
+        <li>
+          Kaikki tilan muutokset eivät välity automaattisesti avustavan
+          teknologian käyttäjille, kuten lomakkeen tyhjentäminen (WCAG 2.1:
+          4.1.3 Tilasta kertovat viestit).
+        </li>
+        <li>
+          Virheviestejä ei ole sidottu teknisesti syötekenttiin (WCAG 2.1: 1.3.1
+          Informaatio ja suhteet).
+        </li>
+        <li>
+          Kartta-aluetta ei ole merkitty teknisesti (WCAG 2.1: 1.3.1 Informaatio
+          ja suhteet).
+        </li>
+        <li>
+          Päivämäärän valitseminen kalenterista voi olla haasteellista avustavan
+          teknologian käyttäjille:
+          <ul>
+            <li>
+              Kalenteri avautuu / sulkeutuu automaattisesti ilman käyttäjän
+              syötettä (WCAG 2.1: 3.2.2 Syöte).
+            </li>
+            <li>
+              Tilan muutoksia ei ilmaista avustavan teknologian käyttäjille
+              (WCAG 2.1: 4.1.3 Tilasta kertovat viestit).
+            </li>
+            <li>
+              Kaikki interaktiiviset elementit eivät ole näppäimistöllä
+              käytettäviä (WCAG 2.1: 2.1.1 Näppäimistö).
+            </li>
+            <li>
+              Nuolipainikkeiden saavutettavat nimet eivät ole sivulle valitun
+              kielen mukaisia (WCAG 2.1: 3.1.2 Osien kieli).
+            </li>
+            <li>
+              Nuolipainikkeiden kontrastisuhde taustaan on liian matala (WCAG
+              2.1: 1.4.11 Ei-tekstimuotoisen sisällön kontrasti).
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h2>Saavutettavuuden arviointi</h2>
+      <p>
+        Saavutettavuuden arvioinnissa on noudatettu Helsingin kaupungin
+        työohjetta ja menetelmiä, jotka pyrkivät varmistamaan palvelun
+        saavutettavuuden kaikissa työvaiheissa.
+      </p>
+      <p>
+        Saavutettavuus on tarkistettu ulkopuolisen asiantuntijan suorittamana
+        arviointina. Saavutettavuus on tarkistettu käyttäen ohjelmallista
+        saavutettavuustarkistusta sekä verkkosivuston ja sisällön manuaalista
+        tarkistusta.
+      </p>
+      <h2>Huomasitko puutteita saavutettavuudessa?</h2>
+      <p>
+        Pyrimme jatkuvasti parantamaan verkkosivuston saavutettavuutta. Ota
+        meihin yhteyttä, jos löydät saavutettavuuspuutteita, joita ei ole
+        kuvattu tällä sivulla, tai tarvitsemasi aineisto ei ole saavutettavaa.
+        <a href="https://palautteet.hel.fi/fi">
+          Anna palautetta palautelomakkeella.
         </a>
-        .
       </p>
-
-      <h2>Lagbestämmelser som gäller webbplatsen</h2>
+      <h2>Saavutettavuuden valvonta</h2>
       <p>
-        Denna webbplats har offentliggjorts efter 23.9.2018. Webbplatsen ska
-        uppfylla lagens krav på tillgänglighet.
-      </p>
-
-      <h2>Stadens mål</h2>
-      <p>
-        När det gäller tillgänglighet till digitala tjänster har Helsingfors
-        stad som mål att uppnå minst nivå AA eller bättre enligt
-        WCAG-anvisningarna, om det är rimligt.
-      </p>
-
-      <h2>Fullgörandestatus</h2>
-      <p>
-        Denna webbplats är helt förenlig med de lagstadgade
-        tillgänglighetskraven.
-      </p>
-
-      <h2>Utarbetande av tillgänglighets&shy;utlåtande</h2>
-      <p>Detta utlåtande har utarbetats 18.5.2020.</p>
-
-      <h3>Bedömning av tillgänglighet</h3>
-      <p>
-        Vid bedömning av tillgänglighet har vi följt Helsingfors stads
-        arbetsanvisning och metoder som strävar efter att säkerställa
-        webbplatsens tillgänglighet i alla arbetsfaser.
+        Liikenne- ja viestintävirasto Traficom valvoo saavutettavuusvaatimusten
+        toteutumista. Jos et ole tyytyväinen saamaasi vastaukseen tai et saa
+        vastausta lainkaan kahden viikon aikana, voit tehdä ilmoituksen
+        Liikenne- ja viestintävirasto Traficomiin. Liikenne- ja viestintävirasto
+        Traficomin sivulla kerrotaan tarkasti, miten ilmoituksen voi tehdä ja
+        miten asia käsitellään.
       </p>
       <p>
-        Tillgängligheten är kontrollerad genom revision av en extern expert samt
-        genom egen utvärdering.
-      </p>
-      <p>
-        Tillgängligheten är kontrollerad med hjälp av automatisk
-        tillgänglighetskontroll samt manuell kontroll av webbplatsen och
-        innehållet. Programmässig granskningar har utförts i webbläsaren Google
-        Chrome med bedömningsverktyget Lighthouse samt Chromes webbläsartillägg
-        axe och Siteimprove.
-      </p>
-      <p>
-        Missförhållanden som bedömningsverktygen rapporterat har kontrollerats
-        och vid behov korrigerats.
-      </p>
-      <p>Den externa expertrevisionen har utförts av Palvelukeskus Helsinki.</p>
-
-      <h3>Uppdatering av tillgänglighetsutlåtande</h3>
-      <p>
-        Webbplatsens tillgänglighet kontrolleras genom kontinuerlig tillsyn när
-        tekniken eller innehållet förändras, samt granskning med regelbundna
-        intervall. Detta utlåtande uppdateras i samband med ändringar av
-        webbplatsen samt granskningar av tillgänglighet.
-      </p>
-
-      <h2>Återkoppling och kontaktuppgifter</h2>
-      <p>
-        För webbplatsens tillgänglighet svarar Helsinginfors stads kultur- och
-        fritidssektorn, telefonväxel 09 310 1060.
-      </p>
-
-      <h3>Anmälan om ej tillgängligt innehåll</h3>
-      <p>
-        Om användaren upplever att kraven på tillgänglighet ändå inte uppfylls
-        kan detta anmälas per e-post till{' '}
-        <a href="mailto:helsinki.palaute@hel.fi">helsinki.palaute@hel.fi</a>{' '}
-        eller med responsformulär på{' '}
-        <a href="https://www.hel.fi/helsinki/sv/stad-och-forvaltning/delta/feedback">
-          www.hel.fi/helsinki/sv/stad-och-forvaltning/delta/feedback
-        </a>
-        .
-      </p>
-
-      <h3>Begäran om uppgifter i tillgänglig form</h3>
-      <p>
-        Om användaren inte upplever sig få webbplatsens innehåll i tillgänglig
-        form, kan användaren begära denna information per e-post{' '}
-        <a href="mailto:helsinki.palaute@hel.fi">helsinki.palaute@hel.fi</a>{' '}
-        eller med responsformulär på{' '}
-        <a href="https://www.hel.fi/helsinki/sv/stad-och-forvaltning/delta/feedback">
-          www.hel.fi/helsinki/sv/stad-och-forvaltning/delta/feedback
-        </a>
-        . Vår strävan är att svara på förfrågan inom rimlig tid.
-      </p>
-
-      <h2>Rättsskydd för tillgänglighet, Verkställighetsförfarande</h2>
-      <p>
-        Om en person upplever att svar inte har erhållits på hans eller hennes
-        anmälan eller förfrågan, eller om svaret inte är tillfredsställande, kan
-        ärendet anmälas till Transport- och kommunikationsverket Traficom. På
-        webbplatsen för Transport- och kommunikationsverket Traficom finns
-        detaljerad information om hur ärendet behandlas.
-      </p>
-
-      <h2>Transport- och kommunikationsverket Traficom</h2>
-
-      <p>
-        Enheten för tillsyn över digital tillgänglighet
+        Liikenne- ja viestintävirasto Traficom
         <br />
-        <a href="https://www.tillgänglighetskrav.fi/">
-          www.tillgänglighetskrav.fi/
-        </a>
-        <br />
-        <a href="mailto:tillganglighet@traficom.fi">
-          tillganglighet@traficom.fi
-        </a>
-        <br />
-        Telefonnummer (växeln) 029 534 5000
+        Digitaalisen esteettömyyden ja saavutettavuuden valvontayksikkö <br />
+        www.saavutettavuusvaatimukset.fi <br />
+        saavutettavuus@traficom.fi <br />
+        puhelinnumero vaihde 029 534 5000
       </p>
-
-      <h2>Helsingfors stad och tillgänglighet</h2>
-      <p>
-        Helsingfors stad har som mål att vara en tillgänglig stad för alla.
-        Stadens mål är att det ska vara så lätt som möjligt för alla stadsbor
-        att röra sig och verka i Helsingfors och att alla innehåll och tjänster
-        ska vara tillgängliga för alla.{' '}
-      </p>
-      <p>
-        Staden främjar tillgängligheten för digitala tjänster genom att
-        förenhetliga publiceringsarbetet och ordna utbildning om tillgänglighet
-        för sin personal.
-      </p>
-      <p>
-        Tillgänglighetsnivån för webbplatser följs upp kontinuerligt när
-        webbplatserna underhålls. Observerade brister hanteras omedelbart. Vår
-        strävan är att genomföra nödvändiga ändringar så snabbt som möjligt.
-      </p>
-
-      <h3>Handikappade och hjälpmedelsanvändare</h3>
-      <p>
-        Staden erbjuder rådgivning och stöd för handikappade och
-        hjälpmedelsanvändare. Stöd kan fås på de rådgivningssidor som anges på
-        stadens sidor och på telefonrådgivningen.
-      </p>
-
-      <h2>Godkännande av tillgänglighets&shy;utlåtande</h2>
-      <p>Detta utlåtande har godkänts 18.5.2020</p>
-      <p>
-        Kultur och fritid
-        <br />
-        Helsingfors stad
-      </p>
+      <a href="https://www.saavutettavuusvaatimukset.fi">
+        www.saavutettavuusvaatimukset.fi
+      </a>
+      <h2>Saavutettavuusselosteen tiedot</h2>
+      <p>Verkkosivusto on julkaistu 23.9.2018 jälkeen.</p>
+      <p>Seloste on laadittu 18.5.2020.</p>
+      <p>Seloste on päivitetty 5.3.2025.</p>
+      <a href="https://www.finlex.fi/fi/lainsaadanto/saadoskokoelma/2019/306">
+        Laki digitaalisten palvelujen tarjoamisesta (306/2019)
+      </a>
     </ContentWrapper>
   );
 };
