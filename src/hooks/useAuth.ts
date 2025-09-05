@@ -34,6 +34,9 @@ const useAuth = () => {
 
   const loggingOut = getState() === 'LOGGING_OUT';
 
+  console.log('errors: ', error);
+  console.log('tokens: ', tokens);
+
   return {
     authenticated: isAuthenticated(),
     user: getUser(),
