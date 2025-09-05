@@ -34,11 +34,10 @@ const PageMeta: React.FC<Props> = ({ title }) => {
 
 
   // TODO: This causes app error pages to crash
-    {/* <Helmet>  */}
-    {/*   <title>{translatedTitle}</title> */}
-    {/* </Helmet> */}
   return (
-    <></>
+    <Helmet> 
+      <title>{translatedTitle}</title>
+    </Helmet>
   );
 };
 

@@ -62,7 +62,9 @@ const App: React.FC = () => {
         key={language}
         messages={messages[language]}
       >
-        <Error404Page />;
+        <HelmetProvider>
+          <Error404Page />;
+        </HelmetProvider>
       </IntlProvider>
     );
   }
@@ -74,6 +76,7 @@ const App: React.FC = () => {
         key={language}
         messages={messages[language]}
       >
+        <HelmetProvider>
           <CommonMeta />
           <SessionEndedDialog />
           <React.Suspense fallback={<LoadingSpinner />}>
@@ -84,6 +87,7 @@ const App: React.FC = () => {
               <Route path="/authError" element={<ErrorPage />} />
             </Routes>
           </React.Suspense>
+        </HelmetProvider>
       </IntlProvider>
     </React.StrictMode>
   );
