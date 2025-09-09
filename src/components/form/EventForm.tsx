@@ -17,6 +17,7 @@ import {
   unavailableDatesSelector,
 } from '../../store/reducers/geo';
 import { AutoSuggestEvent } from '../../types';
+import ReCaptchaField from './fields/ReCaptcha';
 
 const LocationInstructions = styled(Row)`
   margin-bottom: 1em;
@@ -318,6 +319,16 @@ const EventForm: React.FC<EventFormProps> = ({
             value={values.additional_information}
             onChange={handleChange}
             onBlur={handleBlur}
+          />
+        </Col>
+      </Row>
+      <Row>
+        <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 8, offset: 1 }}>
+          <ReCaptchaField
+            id="bot_detection"
+            error={errors.recaptchaToken}
+            touched={touched.recaptchaToken}
+            setFieldValue={setFieldValue}
           />
         </Col>
       </Row>

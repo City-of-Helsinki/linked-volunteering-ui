@@ -94,6 +94,7 @@
   "form.validation.map": "Välj en plats på kartan",
   "form.validation.generic": "Ogiltigt fält!",
   "form.validation.contract_zone": "Det går inte att anmäla ett talko för detta område.",
+  "form.validation.recaptcha.required": "",
 
   "form.event.new.info": "Staden för talkoredskapen till den överenskomna platsen före talkot. Efter talkot hämtas de från samma plats, liksom det insamlade skräpet. \n\nSystemet ger dig automatiskt en adress enligt området som talkot gäller, men redskapen kan också föras någon annanstans. Utöver adressen kan du precisera platsen. Till exempel: Castrénsgatan 4, lekparken, Andra linjen, intill byggnadens entré. Ordnas talkot på ett veckoslut, förs redskapen vardagen innan och hämtas vardagen efter talkot.",
 

@@ -20,7 +20,6 @@ import { useAppSelector } from '../../../store/hooks';
 import { selectedContractZoneSelector } from '../../../store/reducers/geo';
 import { Event } from '../../../store/types';
 
-const { REACT_APP_GOOGLE_RECAPTCHA_KEY } = import.meta.env;
 
 const FormContainer = styled(Container)`
   background-color: ${(props) => props.theme.helWhite};
@@ -51,12 +50,6 @@ const TitleContainer = styled(Container)`
 
 const ButtonCol = styled(Col)`
   text-align: right;
-`;
-
-const ReCaptchaContainer = styled.div`
-  margin-bottom: 1rem;
-  display: flex;
-  justify-content: flex-end;
 `;
 
 const ResetButton = styled(Button)`
@@ -140,6 +133,7 @@ const EventPage: React.FC<EventPageProps> = ({
     handleChange,
     handleBlur,
     handleReset,
+    setFieldError,
     setFieldValue,
     setFieldTouched,
   } = useFormik({
@@ -156,6 +150,12 @@ const EventPage: React.FC<EventPageProps> = ({
       return validationErrors;
     },
     onSubmit: async (values, { setSubmitting, setErrors }) => {
+      if (!values.recaptchaToken) {
+        setFieldError('recaptchaToken', 'form.validation.recaptcha.required');
+        setSubmitting(false);
+        return;
+      }
+
       setSubmitting(true);
 
       try {
@@ -234,16 +234,6 @@ const EventPage: React.FC<EventPageProps> = ({
           setFieldTouched={setFieldTouched}
         />
         <Row>
-        <Col sm="12" md={{ size: 8, offset: 1 }}>
-          <ReCaptchaContainer>
-            <ReCAPTCHA
-              sitekey={REACT_APP_GOOGLE_RECAPTCHA_KEY}
-              onChange={(token: string) => setFieldValue('recaptchaToken', token)}
-              onExpired={() => setFieldValue('recaptchaToken', '')}
-              onError={() => setFieldValue('recaptchaToken', '')}
-            />
-          </ReCaptchaContainer>
-        </Col>
       </Row>
         <Row>
           <ButtonCol sm="12" md={{ size: 8, offset: 1 }}>
@@ -259,7 +249,7 @@ const EventPage: React.FC<EventPageProps> = ({
               type="submit"
               color="success"
               id={`form.event.${pageType}.button.submit`}
-              aria-disabled={isSubmitting || !formValues.recaptchaToken}
+              aria-disabled={isSubmitting || undefined}
               onClick={
                 isSubmitting
                   ? undefined
