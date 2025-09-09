@@ -32,8 +32,6 @@ const PageMeta: React.FC<Props> = ({ title }) => {
     });
   }, [{ pathname: location.pathname, search: location.search }]);
 
-
-  // TODO: This causes app error pages to crash
   return (
     <Helmet> 
       <title>{translatedTitle}</title>

@@ -1,4 +1,3 @@
-import ReCAPTCHA from "react-google-recaptcha";
 import { Button } from 'hds-react';
 import forEach from 'lodash/forEach';
 import React, { useEffect } from 'react';

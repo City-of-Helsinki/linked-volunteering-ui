@@ -1,5 +1,5 @@
 import React from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
+import { ReCAPTCHA } from 'react-google-recaptcha';
 import styled from 'styled-components';
 import { useIntl } from 'react-intl';
 import { FormFeedback, FormGroup } from 'reactstrap';
