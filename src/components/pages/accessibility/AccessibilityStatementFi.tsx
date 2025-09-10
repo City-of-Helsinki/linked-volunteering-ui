@@ -128,10 +128,11 @@ const AccessibilityStatementFi: FunctionComponent = () => {
       <p>
         Pyrimme jatkuvasti parantamaan verkkosivuston saavutettavuutta. Ota
         meihin yhteyttä, jos löydät saavutettavuuspuutteita, joita ei ole
-        kuvattu tällä sivulla, tai tarvitsemasi aineisto ei ole saavutettavaa.
+        kuvattu tällä sivulla, tai tarvitsemasi aineisto ei ole saavutettavaa.{' '}
         <a href="https://palautteet.hel.fi/fi">
-          Anna palautetta palautelomakkeella.
+          Anna palautetta palautelomakkeella
         </a>
+        .
       </p>
       <h2>Saavutettavuuden valvonta</h2>
       <p>

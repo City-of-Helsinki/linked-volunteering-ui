@@ -11,154 +11,163 @@ const AccessibilityStatementSv: FunctionComponent = () => {
       <h1>Tillgänglighetsutlåtande</h1>
       <p>
         Detta tillgänglighetsutlåtande gäller webbplatsen Parktalko
-        (https://puistotalkoot.hel.fi/sv/). Helsingfors stad har ansvar för
+        (https://puistotalkoot.hel.fi/sv/). Helsingfors stad ansvarar för
         webbplatsen. Detta utlåtande beskriver hur tillgänglig webbplatsen är
         och hur du kan ge oss respons om dess tillgänglighet.
       </p>
-      <h2>Kuinka saavutettava tämä verkkosivusto on?</h2>
+      <h2>Hur tillgänglig är denna webbplats? </h2>
       <p>
-        Digitaalisten palveluiden tarjoamista koskevan lain mukaan julkisten
-        verkkosivustojen on oltava saavutettavia, eli kaikilla tulee olla
-        tasavertaiset mahdollisuudet käyttää niitä.
+        Enligt lagen om tillhandahållande av digitala tjänster ska webbplatser
+        för den offentliga förvaltningen vara tillgängliga, vilket betyder att
+        alla ska ha lika möjligheter att använda dem.
       </p>
       <p>
-        Tämä verkkosivusto täyttää suurilta osin lain vaatimat
-        saavutettavuuskriteerit (WCAG-kriteeristö 2.1, A- ja AA-taso).
-        Verkkosivustossa on joitakin saavutettavuuspuutteita, jotka on kuvattu
-        tarkemmin alempana.
+        Denna webbplats uppfyller till största delen de tillgänglighetskriterier
+        som lagen förutsätter (WCAG-kriterierna 2.1, nivå A och AA). Webbplatsen
+        har vissa brister i tillgängligheten. Bristerna beskrivs noggrannare
+        nedan.
       </p>
-      <h2>Sisällöt, jotka eivät ole saavutettavia</h2>
+      <h2>Innehåll som inte är tillgängligt </h2>
       <p>
-        Tämä verkkosivusto ei ole kaikilta osin saavutettava. Alla mainitut
-        sisällöt tai toiminnot eivät täytä kaikkia lain asettamia
-        saavutettavuusvaatimuksia. Korjaamme havaittuja saavutettavuuspuutteita
-        jatkuvasti. Päivitämme tämän selosteen havaittujen puutteiden listausta,
-        kun saamme puutteita korjattua.
+        Webbplatsen är inte till alla delar tillgänglig. Innehållet eller
+        funktionerna som nämns nedan uppfyller inte alla
+        tillgänglighetskriterier som fastställs i lagen. Vi åtgärdar fortlöpande
+        de brister i tillgängligheten som vi upptäcker. Vi uppdaterar
+        förteckningen över bristerna i tillgängligheten i det här utlåtandet
+        vartefter vi åtgärdar bristerna.
       </p>
-      <h3>Ylä- / alatunniste</h3>
+      <h3>Sidhuvud/sidfot </h3>
       <ul>
         <li>
-          Linkki etusivulle ei ole nimetty yhteneväisellä tavalla eri osissa
-          sivustoa (WCAG 2.1: 2.4.4 Linkin tarkoitus (kontekstissa), 2.5.3
-          Nimilappu nimessä).
+          Länken till förstasidan är inte namngiven på samma sätt på olika delar
+          av webbplatsen (WCAG 2.1: 2.4.4 Länkens syfte (i sammanhanget), 2.5.3
+          Etikett i titeln).
         </li>
         <li>
-          Navigaatioelementit eivät ole nimetty yksilöllisesti avustavan
-          teknologian käyttäjille (WCAG 2.1: 1.3.1 Informaatio ja suhteet).
+          Navigationselementen är inte individuellt namngivna för användare av
+          assisterande teknik (WCAG 2.1: 1.3.1 Information och relationer).
         </li>
         <li>
-          Kielivalikon vaihtoehtojen roolia ei ilmaista riittävän selkeästi
-          (WCAG 2.1: 4.1.2 Nimi, rooli, arvo).
+          Språkalternativens roll i menyn är inte tillräckligt tydlig (WCAG 2.1:
+          4.1.2 Namn, roll, värde).
         </li>
         <li>
-          Kielivalikon kohdistuksen ilmaisimen kontrastisuhde on liian matala
-          (WCAG 2.1: 1.4.11 Ei-tekstimuotoisen sisällön kontrasti).
+          Kontrastförhållandet för språkmenyns justeringsindikator är för lågt
+          (WCAG 2.1: 1.4.11 Använd tillräckliga kontraster i komponenter och
+          grafik).
         </li>
       </ul>
-      <h3>Etusivu</h3>
+      <h3>Förstasida</h3>
       <ul>
         <li>
-          Linkki ilmaistaan virheellisesti painikkeena (WCAG 2.1: 4.1.2 Nimi,
-          rooli, arvo).
+          Länken är felaktigt uttryckt som ett knappelement (WCAG 2.1: 4.1.2
+          Namn, roll, värde).
         </li>
       </ul>
-      <h3>Lomake</h3>
+      <h3>Blankett</h3>
       <ul>
         <li>
-          Kaikkien elementtien nimi tai rooli ei ilmene riittävän selkeästi
-          avustavan teknologian käyttäjille (WCAG 2.1: 4.1.2 Nimi, rooli, arvo).
+          Namnet eller rollen för alla element är inte tillräckligt tydliga för
+          användare av assisterande teknik (WCAG 2.1: 4.1.2 Namn, roll,
+          värde).{' '}
         </li>
         <li>
-          Sivulla on sisältöä, jonka kontrastisuhde taustaan on liian matala
-          (WCAG 2.1: 1.4.3 Kontrasti (minimi)).
+          Sidan har innehåll med för lågt kontrastförhållande mot bakgrunden
+          (WCAG 2.1: 1.4.3 Kontrast (minimum)).
         </li>
         <li>
-          Kaikki tilan muutokset eivät välity automaattisesti avustavan
-          teknologian käyttäjille, kuten lomakkeen tyhjentäminen (WCAG 2.1:
-          4.1.3 Tilasta kertovat viestit).
+          Alla statusändringar överförs inte automatiskt till användare av
+          assisterande teknik, såsom tömning av blanketten (WCAG 2.1: 4.1.3
+          Meddelanden om status).
         </li>
         <li>
-          Virheviestejä ei ole sidottu teknisesti syötekenttiin (WCAG 2.1: 1.3.1
-          Informaatio ja suhteet).
+          Felmeddelanden är inte tekniskt kopplade till inmatningsfälten (WCAG
+          2.1: 1.3.1 Information och relationer).
         </li>
         <li>
-          Kartta-aluetta ei ole merkitty teknisesti (WCAG 2.1: 1.3.1 Informaatio
-          ja suhteet).
+          Kartområdet är inte tekniskt markerat (WCAG 2.1: 1.3.1 Information och
+          relationer).
         </li>
         <li>
-          Päivämäärän valitseminen kalenterista voi olla haasteellista avustavan
-          teknologian käyttäjille:
+          Det kan vara svårt att välja datum i kalendern för användare av
+          assisterande teknik:
           <ul>
             <li>
-              Kalenteri avautuu / sulkeutuu automaattisesti ilman käyttäjän
-              syötettä (WCAG 2.1: 3.2.2 Syöte).
+              Kalendern öppnas/stängs automatiskt utan användarinmatning (WCAG
+              2.1: 3.2.2 Input).
             </li>
             <li>
-              Tilan muutoksia ei ilmaista avustavan teknologian käyttäjille
-              (WCAG 2.1: 4.1.3 Tilasta kertovat viestit).
+              Statusändringar anges inte för användare av assisterande teknik
+              (WCAG 2.1: 4.1.3 Meddelanden om status).
             </li>
             <li>
-              Kaikki interaktiiviset elementit eivät ole näppäimistöllä
-              käytettäviä (WCAG 2.1: 2.1.1 Näppäimistö).
+              Alla interaktiva element är inte tillgängliga via tangentbordet
+              (WCAG 2.1: 2.1.1 Tangentbord).
             </li>
             <li>
-              Nuolipainikkeiden saavutettavat nimet eivät ole sivulle valitun
-              kielen mukaisia (WCAG 2.1: 3.1.2 Osien kieli).
+              De tillgängliga namnen på pilknapparna överensstämmer inte med det
+              språk som valts på sidan (WCAG 2.1: 3.1.2 Komponenternas språk).
             </li>
             <li>
-              Nuolipainikkeiden kontrastisuhde taustaan on liian matala (WCAG
-              2.1: 1.4.11 Ei-tekstimuotoisen sisällön kontrasti).
+              Kontrastförhållandet mellan pilknapparna och bakgrunden är för
+              lågt (WCAG 2.1: 1.4.11 Använd tillräckliga kontraster i
+              komponenter och grafik).
             </li>
           </ul>
         </li>
       </ul>
-      <h2>Saavutettavuuden arviointi</h2>
+      <h2>Utvärdering av tillgängligheten</h2>
       <p>
-        Saavutettavuuden arvioinnissa on noudatettu Helsingin kaupungin
-        työohjetta ja menetelmiä, jotka pyrkivät varmistamaan palvelun
-        saavutettavuuden kaikissa työvaiheissa.
+        I utvärderingen av tillgängligheten har man följt Helsingfors stads
+        arbetsordning och metoder som syftar till att säkerställa tjänstens
+        tillgänglighet i alla arbetsmoment.
       </p>
       <p>
-        Saavutettavuus on tarkistettu ulkopuolisen asiantuntijan suorittamana
-        arviointina. Saavutettavuus on tarkistettu käyttäen ohjelmallista
-        saavutettavuustarkistusta sekä verkkosivuston ja sisällön manuaalista
-        tarkistusta.
+        Tillgängligheten har kontrollerats och utvärderats av en utomstående
+        sakkunnig. Tillgängligheten har kontrollerats med hjälp av automatisk
+        tillgänglighetskontroll samt manuell kontroll av webbplatsen och dess
+        innehåll.
       </p>
-      <h2>Huomasitko puutteita saavutettavuudessa?</h2>
+      <h2>Har du upptäckt brister i tillgängligheten?</h2>
       <p>
-        Pyrimme jatkuvasti parantamaan verkkosivuston saavutettavuutta. Ota
-        meihin yhteyttä, jos löydät saavutettavuuspuutteita, joita ei ole
-        kuvattu tällä sivulla, tai tarvitsemasi aineisto ei ole saavutettavaa.
-        <a href="https://palautteet.hel.fi/fi">
-          Anna palautetta palautelomakkeella.
+        Vi försöker hela tiden förbättra webbplatsens tillgänglighet. Ta kontakt
+        med oss om du upptäcker brister i tillgängligheten som inte har
+        beskrivits på den här sidan eller om innehållet du behöver inte är
+        tillgängligt.{' '}
+        <a href="https://palautteet.hel.fi/sv">
+          Ge respons med den här responsblanketten
         </a>
+        .
       </p>
-      <h2>Saavutettavuuden valvonta</h2>
+      <h2>Tillgänglighetstillsyn </h2>
       <p>
-        Liikenne- ja viestintävirasto Traficom valvoo saavutettavuusvaatimusten
-        toteutumista. Jos et ole tyytyväinen saamaasi vastaukseen tai et saa
-        vastausta lainkaan kahden viikon aikana, voit tehdä ilmoituksen
-        Liikenne- ja viestintävirasto Traficomiin. Liikenne- ja viestintävirasto
-        Traficomin sivulla kerrotaan tarkasti, miten ilmoituksen voi tehdä ja
-        miten asia käsitellään.
+        Transport- och kommunikationsverket Traficom övervakar att
+        tillgänglighetskraven följs. Om du är missnöjd med svaret eller om du
+        inte fått något svar inom två veckor, kan du göra en anmälan till
+        Transport- och kommunikationsverket Traficom. Transport- och
+        kommunikationsverket Traficom meddelar detaljerat på sin webbplats hur
+        man går till väga för att lämna in en anmälan och hur den handläggs.
       </p>
       <p>
-        Liikenne- ja viestintävirasto Traficom
+        Transport- och kommunikationsverket Traficom
         <br />
-        Digitaalisen esteettömyyden ja saavutettavuuden valvontayksikkö <br />
-        www.saavutettavuusvaatimukset.fi <br />
-        saavutettavuus@traficom.fi <br />
-        puhelinnumero vaihde 029 534 5000
+        Enheten för tillsyn över digital tillgänglighet
+        <br />
+        www.tillganglighetskrav.fi
+        <br />
+        tillganglighet@traficom.fi
+        <br />
+        telefonnummer växeln 029 534 5000
       </p>
-      <a href="https://www.saavutettavuusvaatimukset.fi">
-        www.saavutettavuusvaatimukset.fi
+      <a href="https://www.tillganglighetskrav.fi">
+        www.tillganglighetskrav.fi
       </a>
-      <h2>Saavutettavuusselosteen tiedot</h2>
-      <p>Verkkosivusto on julkaistu 23.9.2018 jälkeen.</p>
-      <p>Seloste on laadittu 18.5.2020.</p>
-      <p>Seloste on päivitetty 5.3.2025.</p>
-      <a href="https://www.finlex.fi/fi/lainsaadanto/saadoskokoelma/2019/306">
-        Laki digitaalisten palvelujen tarjoamisesta (306/2019)
+      <h2>Uppgifter om tillgänglighetsutlåtandet</h2>
+      <p>Webbplatsen har publicerats 23.9.2018.</p>
+      <p>Utlåtandet har upprättats 18.5.2020.</p>
+      <p>Utlåtandet har uppdaterats 5.3.2025. </p>
+      <a href="https://www.finlex.fi/sv/laki/alkup/2019/20190306">
+        Lag om tillhandahållande av digitala tjänster (306/2019)
       </a>
     </ContentWrapper>
   );
