@@ -25,6 +25,9 @@ const RequireUserComponent = ({ Page }: { Page: React.ComponentType }) => {
   const isContractor = useAppSelector(isContractorSelector);
 
   if (!(isOfficial || isContractor)) {
+    console.log('auth error require user comp')
+    console.log('isOffical', isOfficial)
+    console.log('isContractor', isContractor)
     return <Navigate to="/authError" replace />;
   }
 
@@ -33,28 +36,35 @@ const RequireUserComponent = ({ Page }: { Page: React.ComponentType }) => {
 
 const RequireOfficialComponent = ({ Page }: { Page: React.ComponentType }) => {
   const isOfficial = useAppSelector(isOfficialSelector);
+  console.log('checking if offical...')
 
   if (!isOfficial) {
+    console.log('auth error from is offical')
     return <Navigate to="/authError" replace />;
   }
 
+  console.log('ok')
   return <Page />;
 };
 
 function AdminRoutes() {
   const { authenticated, loggingOut } = useAuth();
+  console.log('AdminRoutes loaded')
 
   const userLoading = useAppSelector(userLoadingSelector);
 
   if (!authenticated) {
     if (loggingOut) {
       return <Navigate to="/" replace />;
+      console.log('not logged in')
     }
 
+    console.log('auth error')
     return <Navigate to="/authError" replace />;
   }
 
   if (userLoading) {
+    console.log('user loading')
     return <LoadingSpinner />;
   }
 
