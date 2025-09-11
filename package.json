@@ -38,7 +38,7 @@
     "classnames": "^2.2.6",
     "date-fns": "^2.10.0",
     "dotenv": "^16.4.7",
-    "eslint": "^9.29.0",
+    "eslint": "^9.35.0",
     "eslint-config-vitest-globals": "^2.0.2",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
