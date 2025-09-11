@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.6.0](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.5.2...linked-volunteering-ui-v0.6.0) (2025-09-11)
+
+
+### Features
+
+* Updated accessibility statement PS-209 ([#255](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/255)) ([1ab079c](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/1ab079c677224bb63221a1910de899ddffe0f57a))
+
+
+### Dependencies
+
+* Bump @eslint/plugin-kit from 0.3.2 to 0.3.4 ([1d06cb6](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/1d06cb6b437c1a0746168c6c371a043d6a56c7d5))
+* Bump vite from 6.3.4 to 6.3.6 ([6707b58](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/6707b58300868e62cca31c4e65243d03eef6f42c))
+* Eslint to 9.35.0 ([37ae841](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/37ae8412283de0b26e1ca2a3998fc928f08fe5e0))
+
 ## [0.5.2](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.5.1...linked-volunteering-ui-v0.5.2) (2025-08-08)
 
 
