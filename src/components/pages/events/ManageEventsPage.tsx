@@ -92,11 +92,6 @@ const tableHeaders = [
     translation: 'manage_events.start_time',
     hasOrderBy: true,
   },
-  {
-    key: 'created_at',
-    translation: 'manage_events.created_at',
-    hasOrderBy: true,
-  },
   { key: 'state', translation: 'manage_events.state', hasOrderBy: true },
 ];
 
@@ -241,9 +236,6 @@ const ManageEventsPage = () => {
                       <StyledTd>{event.organizer_email}</StyledTd>
                       <StyledTd>
                         <FormattedDate value={event.start_time} />
-                      </StyledTd>
-                      <StyledTd>
-                        <FormattedDate value={event.created_at} />
                       </StyledTd>
                       <WithIcons
                         component={StyledTd}
