@@ -20,7 +20,6 @@ export const defaultValues: Event = {
   large_trash_bag_count: undefined,
   small_trash_bag_count: undefined,
   trash_picker_count: undefined,
-  captchaToken: '',
 };
 
 const phoneRegex = /[0-9 +()]{6,19}/;
@@ -73,10 +72,6 @@ export const validationSchema = yup.object().shape({
     .min(0, VALIDATION_NUMBER_POSITIVE)
     .max(50, 'form.validation.number.max')
     .required(VALIDATION_NOT_NUMBER),
-  captchaToken: yup
-    .string()
-    // TODO: Disabled until new captcha provider chosen
-    // .required('form.validation.captcha.required'),
 });
 
 export default defaultValues;

@@ -132,7 +132,6 @@ const EventPage: React.FC<EventPageProps> = ({
     handleChange,
     handleBlur,
     handleReset,
-    setFieldError,
     setFieldValue,
     setFieldTouched,
   } = useFormik({
@@ -149,13 +148,6 @@ const EventPage: React.FC<EventPageProps> = ({
       return validationErrors;
     },
     onSubmit: async (values, { setSubmitting, setErrors }) => {
-      // TODO: Captcha validation disabled until new provider decided
-      // if (!values.captchaToken) {
-      //   setFieldError('captchaToken', 'form.validation.captcha.required');
-      //   setSubmitting(false);
-      //   return;
-      // }
-
       setSubmitting(true);
 
       try {

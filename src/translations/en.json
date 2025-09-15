@@ -94,7 +94,6 @@
   "form.validation.map": "Select a place on the map",
   "form.validation.generic": "Invalid field!",
   "form.validation.contract_zone": "Volunteer activities are not possible in this area.",
-  "form.validation.captcha.required": "",
 
   "form.event.new.info": "Equipment will be delivered to the agreed location before the start of volunteer activities and picked up again afterwards together with the litter that has been collected. \n\nThe system will automatically assign an address according to the location of the volunteer activities, but the equipment can also be delivered elsewhere. In addition to the address, you can provide a description of the location. For example: Castréninkatu 4, Toinen Linja playground, by the entrance to the building. If the volunteer activity takes place on a weekend, the equipment will be delivered on the preceding weekday and picked up on the following weekday.",
 
