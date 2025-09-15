@@ -55,7 +55,7 @@ export const validationSchema = yup.object().shape({
     .matches(phoneRegex, { message: 'form.validation.string.phone' }),
   estimated_attendee_count: yup
     .number()
-    .positive('form.validation.number.positive_or_zero')
+    .positive('form.validation.number.positive')
     .required(VALIDATION_NOT_NUMBER),
   targets: yup.string().required(),
   maintenance_location: yup.string().required(),
