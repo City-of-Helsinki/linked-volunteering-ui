@@ -149,11 +149,12 @@ const EventPage: React.FC<EventPageProps> = ({
       return validationErrors;
     },
     onSubmit: async (values, { setSubmitting, setErrors }) => {
-      if (!values.recaptchaToken) {
-        setFieldError('recaptchaToken', 'form.validation.recaptcha.required');
-        setSubmitting(false);
-        return;
-      }
+      // TODO: Captcha validation disabled until new provider decided
+      // if (!values.captchaToken) {
+      //   setFieldError('captchaToken', 'form.validation.captcha.required');
+      //   setSubmitting(false);
+      //   return;
+      // }
 
       setSubmitting(true);
 

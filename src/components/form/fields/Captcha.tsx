@@ -1,17 +1,14 @@
 import React from 'react';
-import { ReCAPTCHA } from 'react-google-recaptcha';
 import styled from 'styled-components';
 import { useIntl } from 'react-intl';
 import { FormFeedback, FormGroup } from 'reactstrap';
 
-const { REACT_APP_GOOGLE_RECAPTCHA_KEY } = import.meta.env;
-
-const ReCaptchaAlignmentWrapper = styled.div`
+const CaptchaAlignmentWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
 
-const ReCaptchaBorderContainer = styled.div`
+const CaptchaBorderContainer = styled.div`
   display: inline-block;
   border: 1px solid transparent;
   border-radius: 0.25rem;
@@ -23,7 +20,7 @@ const ReCaptchaBorderContainer = styled.div`
   }
 `;
 
-interface ReCaptchaFieldProps {
+interface CaptchaFieldProps {
   error?: string;
   touched?: boolean;
   setFieldValue: (
@@ -33,7 +30,7 @@ interface ReCaptchaFieldProps {
   ) => void;
 }
 
-const ReCaptchaField: React.FC<ReCaptchaFieldProps> = ({
+const CaptchaField: React.FC<CaptchaFieldProps> = ({
   error,
   touched,
   setFieldValue,
@@ -44,18 +41,11 @@ const ReCaptchaField: React.FC<ReCaptchaFieldProps> = ({
 
   return (
     <FormGroup>
-      <ReCaptchaAlignmentWrapper>
-        <ReCaptchaBorderContainer className={showError ? 'is-invalid' : ''}>
-          <ReCAPTCHA
-            sitekey={REACT_APP_GOOGLE_RECAPTCHA_KEY as string}
-            onChange={(token: string | null) =>
-              setFieldValue('recaptchaToken', token || '')
-            }
-            onExpired={() => setFieldValue('recaptchaToken', '')}
-            onError={() => setFieldValue('recaptchaToken', '')}
-          />
-        </ReCaptchaBorderContainer>
-      </ReCaptchaAlignmentWrapper>
+      <CaptchaAlignmentWrapper>
+        <CaptchaBorderContainer className={showError ? 'is-invalid' : ''}>
+          {/* TODO: Add Captcha Here once another solution is approved */}
+        </CaptchaBorderContainer>
+      </CaptchaAlignmentWrapper>
       {showError && (
         <FormFeedback style={{ display: 'block', textAlign: 'right' }}>
           {error && formatMessage({ id: error })}
@@ -65,5 +55,5 @@ const ReCaptchaField: React.FC<ReCaptchaFieldProps> = ({
   );
 };
 
-export default ReCaptchaField;
+export default CaptchaField;
 
