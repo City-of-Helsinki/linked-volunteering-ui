@@ -7,7 +7,6 @@ import { useAppDispatch } from '../../store/hooks';
 import { addNotification } from '../../store/reducers/notifications';
 
 const ErrorPage = () => {
-  console.log('normal error page')
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
