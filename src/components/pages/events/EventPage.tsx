@@ -19,6 +19,7 @@ import { useAppSelector } from '../../../store/hooks';
 import { selectedContractZoneSelector } from '../../../store/reducers/geo';
 import { Event } from '../../../store/types';
 
+
 const FormContainer = styled(Container)`
   background-color: ${(props) => props.theme.helWhite};
   padding-top: 2em;
@@ -225,6 +226,8 @@ const EventPage: React.FC<EventPageProps> = ({
           setFieldTouched={setFieldTouched}
         />
         <Row>
+      </Row>
+        <Row>
           <ButtonCol sm="12" md={{ size: 8, offset: 1 }}>
             <IntlComponent
               Component={ResetButton}
@@ -243,9 +246,9 @@ const EventPage: React.FC<EventPageProps> = ({
                 isSubmitting
                   ? undefined
                   : (e) =>
-                      handleSubmit(
-                        e as unknown as React.FormEvent<HTMLFormElement>
-                      )
+                    handleSubmit(
+                      e as unknown as React.FormEvent<HTMLFormElement>
+                    )
               }
             />
           </ButtonCol>
