@@ -2,6 +2,7 @@ import React, { useState, useEffect, Fragment, useMemo } from 'react';
 import styled from 'styled-components';
 import { Container, Row, Col } from 'reactstrap';
 import { FormattedMessage, FormattedDate } from 'react-intl';
+import { ToggleButton } from 'hds-react';
 
 import { isEmpty } from 'lodash';
 import {
@@ -67,6 +68,39 @@ const FilterTitle = styled.span`
   margin-right: 1em;
 `;
 
+const FilterGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media (min-width: 576px) {
+    height: 63.5px;
+  }
+
+  .mb-3 {
+    margin-bottom: 0 !important;
+  }
+`;
+
+const FilterContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  & > * + * {
+    margin-top: 1rem;
+  }
+
+  @media (min-width: 576px) {
+    flex-direction: row;
+    align-items: flex-end;
+
+    & > * + * {
+      margin-top: 0;
+      margin-left: 2em;
+    }
+  }
+`;
+
 const ButtonControls = styled(Col)`
   text-align: center;
 `;
@@ -97,6 +131,7 @@ const tableHeaders = [
 
 const ManageEventsPage = () => {
   const [visible, setVisible] = useState<number | null>(null);
+  const [showPastEvents, setShowPastEvents] = useState(false);
 
   const { getApiToken } = useAuth();
   const dispatch = useAppDispatch();
@@ -111,9 +146,20 @@ const ManageEventsPage = () => {
 
   const sortedEvents = useMemo(() => {
     const eventArray = [...Object.values(events)];
-    if (!ordering.key) return eventArray;
 
-    return eventArray.sort((a, b) => {
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    yesterday.setHours(0, 0, 0, 0);
+
+    const filteredEvents = showPastEvents
+      ? eventArray
+      : eventArray.filter((event) => {
+          return new Date(event.start_time) >= yesterday;
+        });
+
+    if (!ordering.key) return filteredEvents;
+
+    return filteredEvents.sort((a, b) => {
       const key = ordering.key as keyof Event;
       const aValue = a[key];
       const bValue = b[key];
@@ -126,7 +172,7 @@ const ManageEventsPage = () => {
       const comparison = aValue < bValue ? -1 : 1;
       return ordering.order === 'DESC' ? -comparison : comparison;
     });
-  }, [events, ordering]);
+  }, [events, ordering, showPastEvents]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -190,20 +236,43 @@ const ManageEventsPage = () => {
       <PageMeta title="site.page.manage_events.page_title" />
       <ControlContainer fluid>
         <TitleRow>
-          <Col sm={{ size: 11, offset: 1 }}>
+          <Col
+            sm={{ size: 11, offset: 1 }}
+            md={{ size: 11, offset: 2 }}
+          >
             <FormattedMessage tagName="h1" id="site.page.manage_events.title" />
           </Col>
         </TitleRow>
         <Row>
-          <Col sm={{ size: 4, offset: 1 }}>
-            <IntlComponent
-              Component={FilterTitle}
-              id="site.page.manage_events.filter_events"
-            />
-            <ContractZones
-              onChange={handleChange}
-              contractZones={contractZones}
-            />
+          <Col
+            sm={{ size: 10, offset: 1 }}
+            md={{ size: 10, offset: 2 }}
+          >
+            <FilterContainer>
+              <FilterGroup>
+                <IntlComponent
+                  Component={FilterTitle}
+                  id="site.page.manage_events.filter_events"
+                />
+                <ContractZones
+                  onChange={handleChange}
+                  contractZones={contractZones}
+                />
+              </FilterGroup>
+              <div>
+                <ToggleButton
+                  id="toggle_past_events"
+                  label={
+                    <IntlComponent
+                      Component={FilterTitle}
+                      id="site.page.manage_events.past_events"
+                    />
+                  }
+                  checked={showPastEvents}
+                  onChange={() => setShowPastEvents(!showPastEvents)}
+                />
+              </div>
+            </FilterContainer>
           </Col>
         </Row>
       </ControlContainer>
