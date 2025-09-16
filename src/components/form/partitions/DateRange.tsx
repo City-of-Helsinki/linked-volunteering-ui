@@ -21,6 +21,7 @@ setDefaultLocale('fi');
 const now = startOfDay(new Date());
 const minDate = addDays(now, 8);
 const timeIntervals = 30;
+const maxDateDelta = 7;
 
 interface EventWithDateObjects extends Omit<Event, 'start_time' | 'end_time'> {
   start_time: Date | string;
@@ -191,6 +192,7 @@ const DateRange: React.FC<Props> = ({
             selected={selectedEndTime}
             dateFormat={dateFormat}
             minDate={ensureDate(values.start_time) || minDate}
+            maxDate={selectedStartTime ? addDays(selectedStartTime, maxDateDelta) : null}
             startDate={selectedStartTime}
             endDate={selectedEndTime}
             excludeDates={unavailableDates}
