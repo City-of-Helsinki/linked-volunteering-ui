@@ -19,7 +19,6 @@ registerLocale('sv', sv);
 setDefaultLocale('fi');
 
 const now = startOfDay(new Date());
-
 const minDate = addDays(now, 7);
 const maxDateFromToday = addMonths(now, 6);
 const timeIntervals = 30;

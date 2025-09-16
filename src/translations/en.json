@@ -30,6 +30,7 @@
   "site.table.header.manage_events.organizer_email": "Organiser",
   "site.table.header.manage_events.created_at": "Notification date",
   "site.table.header.manage_events.start_time": "Date of activity",
+  "site.table.header.manage_events.contract_zone": "Zone",
   "site.table.header.manage_events.state": "Status",
   "site.table.header.report.area": "Volunteer district",
   "site.table.header.report.contact_person": "Contact person",
