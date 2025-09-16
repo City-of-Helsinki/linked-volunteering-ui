@@ -50,3 +50,10 @@ $ cp .env.example .env.production.local
 `docker-compose build` to build docker image
 `docker-compose up` to start the dockerized dev-environment. Not for production!!!  
 `docker-compose down` stops the container.
+
+## Commit message format
+
+New commit messages must adhere to the [Conventional Commits](https://www.conventionalcommits.org/)
+specification, and line length is limited to 72 characters.
+
+[`commitlint`](https://github.com/conventional-changelog/commitlint) checks new commit messages for the correct format.
