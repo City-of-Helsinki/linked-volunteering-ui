@@ -239,6 +239,8 @@ const EventPage: React.FC<EventPageProps> = ({
           />
         </div>
         <Row>
+      </Row>
+        <Row>
           <ButtonCol sm="12" md={{ size: 8, offset: 1 }}>
             {
               pageType === 'modify'
