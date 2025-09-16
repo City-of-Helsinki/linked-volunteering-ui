@@ -33,7 +33,7 @@ const PageMeta: React.FC<Props> = ({ title }) => {
   }, [{ pathname: location.pathname, search: location.search }]);
 
   return (
-    <Helmet>
+    <Helmet> 
       <title>{translatedTitle}</title>
     </Helmet>
   );
