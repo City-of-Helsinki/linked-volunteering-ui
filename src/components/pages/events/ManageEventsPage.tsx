@@ -115,16 +115,21 @@ const EventName = styled.span`
 `;
 
 const tableHeaders = [
-  { key: 'name', translation: 'manage_events.name', hasOrderBy: true },
+  { key: 'name', translation: 'manage_events.name', hasOrderBy: false },
   {
     key: 'organizer_email',
     translation: 'manage_events.organizer_email',
-    hasOrderBy: true,
+    hasOrderBy: false,
   },
   {
     key: 'start_time',
     translation: 'manage_events.start_time',
     hasOrderBy: true,
+  },
+  {
+    key: 'contract_zone',
+    translation: 'manage_events.contract_zone',
+    hasOrderBy: false,
   },
   { key: 'state', translation: 'manage_events.state', hasOrderBy: true },
 ];
@@ -290,6 +295,7 @@ const ManageEventsPage = () => {
               ordering={ordering}
             >
               {sortedEvents.map((event) => {
+                const zoneName = contractZones[event.contract_zone || 0]?.name || "";
                 const selected = visible === event.id;
                 const isEventPending = isPending(event);
                 return (
@@ -306,6 +312,7 @@ const ManageEventsPage = () => {
                       <StyledTd>
                         <FormattedDate value={event.start_time} />
                       </StyledTd>
+                      <StyledTd>{zoneName}</StyledTd>
                       <WithIcons
                         component={StyledTd}
                         prepend={{
