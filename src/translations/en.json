@@ -46,6 +46,7 @@
   "site.page.manage_events.page_title": "Manage events",
   "site.page.manage_events.title": "Park volunteer activities",
   "site.page.manage_events.filter_events": "Filter activities",
+  "site.page.manage_events.past_events": "Show past event",
   "site.page.manage_events.table.action.edit": "Edit",
   "site.page.manage_events.table.action.approve": "Confirm activity",
   "site.page.manage_events.table.action.remove": "Delete activity",
