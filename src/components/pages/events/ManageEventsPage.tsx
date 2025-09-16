@@ -226,7 +226,7 @@ const ManageEventsPage = () => {
               ordering={ordering}
             >
               {sortedEvents.map((event) => {
-                const zoneName = contractZones[event.contract_zone || 0].name || "";
+                const zoneName = contractZones[event.contract_zone || 0]?.name || "";
                 const selected = visible === event.id;
                 const isEventPending = isPending(event);
                 return (
