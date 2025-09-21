@@ -131,12 +131,13 @@ const tableHeaders = [
     translation: 'manage_events.contract_zone',
     hasOrderBy: false,
   },
-  { key: 'state', translation: 'manage_events.state', hasOrderBy: true },
+  { key: 'state', translation: 'manage_events.state', hasOrderBy: false },
 ];
 
 const ManageEventsPage = () => {
   const [visible, setVisible] = useState<number | null>(null);
   const [showPastEvents, setShowPastEvents] = useState(false);
+  const [showPendingEvents, setShowPendingEvents] = useState(false);
 
   const { getApiToken } = useAuth();
   const dispatch = useAppDispatch();
@@ -150,17 +151,25 @@ const ManageEventsPage = () => {
   const apiAccessToken = getApiToken();
 
   const sortedEvents = useMemo(() => {
+    const filterEvents = (events: Event[]): Event[] => {
+      let filteredEvents = [...events];
+
+      if (showPendingEvents) {
+        filteredEvents = filteredEvents.filter(event => isPending(event));
+      }
+
+      if (!showPastEvents) {
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        yesterday.setHours(0, 0, 0, 0);
+        filteredEvents = filteredEvents.filter(event => new Date(event.start_time) >= yesterday);
+      }
+
+      return filteredEvents;
+    };
+
     const eventArray = [...Object.values(events)];
-
-    const yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() - 1);
-    yesterday.setHours(0, 0, 0, 0);
-
-    const filteredEvents = showPastEvents
-      ? eventArray
-      : eventArray.filter((event) => {
-          return new Date(event.start_time) >= yesterday;
-        });
+    const filteredEvents = filterEvents(eventArray);
 
     if (!ordering.key) return filteredEvents;
 
@@ -177,7 +186,7 @@ const ManageEventsPage = () => {
       const comparison = aValue < bValue ? -1 : 1;
       return ordering.order === 'DESC' ? -comparison : comparison;
     });
-  }, [events, ordering, showPastEvents]);
+  }, [events, ordering, showPastEvents, showPendingEvents]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -275,6 +284,19 @@ const ManageEventsPage = () => {
                   }
                   checked={showPastEvents}
                   onChange={() => setShowPastEvents(!showPastEvents)}
+                />
+              </div>
+              <div>
+                <ToggleButton
+                  id="toggle_pending_events"
+                  label={
+                    <IntlComponent
+                      Component={FilterTitle}
+                      id="site.page.manage_events.pending_events"
+                    />
+                  }
+                  checked={showPendingEvents}
+                  onChange={() => setShowPendingEvents(!showPendingEvents)}
                 />
               </div>
             </FilterContainer>
