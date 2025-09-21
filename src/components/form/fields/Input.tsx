@@ -5,6 +5,8 @@ import { useIntl } from 'react-intl';
 import InstructionText from './InstructionText';
 import Label from './Label';
 
+import PrintValue from './PrintValue';
+
 interface Props extends InputProps {
   error?: string;
   id: string;
@@ -22,7 +24,7 @@ const InputField: React.FC<Props> = (props) => {
     props;
 
   return (
-    <FormGroup>
+    <FormGroup className="printable">
       {label && (
         <Label htmlFor={id} required={required}>
           {formatMessage({ id: label })}
@@ -37,6 +39,7 @@ const InputField: React.FC<Props> = (props) => {
         }
         {...rest}
       />
+      <PrintValue value={props.value as string} />
       <FormFeedback>{error && formatMessage({ id: error })}</FormFeedback>
     </FormGroup>
   );
