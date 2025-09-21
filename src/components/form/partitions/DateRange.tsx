@@ -20,7 +20,7 @@ setDefaultLocale('fi');
 
 const now = startOfDay(new Date());
 const minDate = addDays(now, 7);
-const maxDateFromToday = addMonths(now, 6);
+const maxDateFromToday = addMonths(now, 3);
 const timeIntervals = 30;
 const maxDateDelta = 7;
 
