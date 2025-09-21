@@ -48,6 +48,7 @@
   "site.page.manage_events.title": "Puistotalkoot",
   "site.page.manage_events.filter_events": "Suodata tapahtumia",
   "site.page.manage_events.past_events": "Näytä menneet",
+  "site.page.manage_events.pending_events": "Näytä vain odottavat",
   "site.page.manage_events.table.action.edit": "Muokkaa",
   "site.page.manage_events.table.action.approve": "Hyväksy tapahtuma",
   "site.page.manage_events.table.action.remove": "Poista tapahtuma",

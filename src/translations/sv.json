@@ -48,6 +48,7 @@
   "site.page.manage_events.title": "Parktalko",
   "site.page.manage_events.filter_events": "Filtrera evenemang",
   "site.page.manage_events.past_events": "Visa gamla",
+  "site.page.manage_events.pending_events": "Visa endast väntande",
   "site.page.manage_events.table.action.edit": "Redigera",
   "site.page.manage_events.table.action.approve": "Godkänn evenemanget",
   "site.page.manage_events.table.action.remove": "Radera evenemanget",
