@@ -19,7 +19,6 @@ import { useAppSelector } from '../../../store/hooks';
 import { selectedContractZoneSelector } from '../../../store/reducers/geo';
 import { Event } from '../../../store/types';
 
-
 import './print.scss';
 
 const FormContainer = styled(Container)`
@@ -144,7 +143,6 @@ const EventPage: React.FC<EventPageProps> = ({
     handleSubmit,
     handleChange,
     handleBlur,
-    handleReset,
     setFieldValue,
     setFieldTouched,
   } = useFormik({
@@ -254,13 +252,6 @@ const EventPage: React.FC<EventPageProps> = ({
                 :
                   <></>
             }
-            <IntlComponent
-              Component={ResetButton}
-              id={`form.event.${pageType}.button.reset`}
-              type="button"
-              onClick={handleReset}
-              color="danger"
-            />
             <IntlComponent
               Component={SubmitButton}
               type="submit"
