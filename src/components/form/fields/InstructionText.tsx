@@ -4,7 +4,9 @@ import styled from 'styled-components';
 
 import responsive from '../../../utils/responsive';
 
-export const StyledFormText = styled.p`
+export const StyledFormText = styled.p.attrs({
+  className: 'instruction-text',
+})`
   font-size: 1rem;
   color: ${(props) => props.theme.helBlack};
 
