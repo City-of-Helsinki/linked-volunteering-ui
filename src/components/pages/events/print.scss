@@ -1,0 +1,57 @@
+.print-only {
+  display: none;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .printable-area, .printable-area * {
+    visibility: visible;
+  }
+
+  .printable-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  .printable .form-control,
+  .printable .form-text,
+  .printable .react-autosuggest__container {
+    display: none;
+  }
+
+  .printable .print-only {
+    display: block;
+  }
+
+  .form-check-input, .form-check-label, #map, .instruction-text, .react-autosuggest__container {
+    display: none;
+  }
+
+  .btn, .sc-bXCLTC, .sc-hmdomO, .sc-fHjqPf, .sc-kOHTFB, .sc-jEACwC, .sc-aXZVg, .sc-cPiKLX, .sc-koXPp, .sc-cwHptR, .sc-jlZhew, .sc-fUnMCh, .sc-jsJBEP, .sc-dtBdUo, .sc-gwuKPI, .sc-exgSIm, .sc-iOnBft, .tZEyE, .fgnyxO, .lpfoDD, .bTTdeW, .bRwYEi, .fNGjBL, .injected-svg, .sc-fUnMCh, .iSFcPM, .navbar, .qPwil, .container-fluid, .iTtULR, .lkRRrJ, .gwuKPI, .exgSIm, .iOnBft, .tZEyE, .fgnyxO, .lpfoDD, .bTTdeW, .bRwYEi, .fNGjBL, .injected-svg {
+    display: none;
+  }
+
+  .row {
+    display: block;
+    margin: 0;
+  }
+
+  .col, .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+    width: 100%;
+    padding: 0;
+  }
+
+  .form-group {
+    margin-bottom: 0.5rem;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+}

@@ -19,6 +19,8 @@ import { useAppSelector } from '../../../store/hooks';
 import { selectedContractZoneSelector } from '../../../store/reducers/geo';
 import { Event } from '../../../store/types';
 
+import './print.scss';
+
 const FormContainer = styled(Container)`
   background-color: ${(props) => props.theme.helWhite};
   padding-top: 2em;
@@ -47,13 +49,37 @@ const TitleContainer = styled(Container)`
 `;
 
 const ButtonCol = styled(Col)`
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+
+  ${responsive.sm`
+    flex-direction: row;
+  `}
+`;
+
+const ResetButton = styled(Button)`
+  background-color: #ca3f00;
+  border-color: #ca3f00 !important;
+  color: white;
+  margin-left: auto;
+  margin-bottom: 0.5rem;
+
+  &:hover {
+    background-color: #bd2719;
+    border-color: #bd2719;
+    color: white;
+  }
+
+  ${responsive.sm`
+    margin-left: 0.5rem;
+    margin-bottom: 0;
+  `}
 `;
 
 const SubmitButton = styled(Button)`
   background-color: #00d7a7;
   border-color: #00d7a7 !important;
-  display: block;
   margin-left: auto;
 
   &:hover {
@@ -74,8 +100,17 @@ const SubmitButton = styled(Button)`
   }
 
   ${responsive.sm`
-    display: inline-flex;
     margin-left: 0.5rem;
+  `}
+`;
+
+const PrintButton = styled(Button)`
+  margin-left: auto;
+  margin-bottom: 0.5rem;
+
+  ${responsive.sm`
+    margin-left: 0.5rem;
+    margin-bottom: 0;
   `}
 `;
 
@@ -191,18 +226,32 @@ const EventPage: React.FC<EventPageProps> = ({
         <InstructionText text={`form.event.${pageType}.infoText`} />
       </TitleContainer>
       <FormContainer>
-        <EventForm
-          handleSubmit={handleSubmit}
-          errors={errors}
-          touched={touched}
-          values={formValues}
-          handleChange={handleChange}
-          handleBlur={handleBlur}
-          setFieldValue={setFieldValue}
-          setFieldTouched={setFieldTouched}
-        />
+        <div className="printable-area">
+          <EventForm
+            handleSubmit={handleSubmit}
+            errors={errors}
+            touched={touched}
+            values={formValues}
+            handleChange={handleChange}
+            handleBlur={handleBlur}
+            setFieldValue={setFieldValue}
+            setFieldTouched={setFieldTouched}
+          />
+        </div>
         <Row>
           <ButtonCol sm="12" md={{ size: 8, offset: 1 }}>
+            {
+              pageType === 'modify'
+                ? 
+                  <IntlComponent
+                    Component={PrintButton}
+                    id="site.page.manage_events.print_button"
+                    onClick={() => window.print()}
+                    color="primary"
+                  />
+                :
+                  <></>
+            }
             <IntlComponent
               Component={SubmitButton}
               type="submit"
