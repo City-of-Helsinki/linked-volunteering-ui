@@ -19,7 +19,6 @@ import { useAppSelector } from '../../../store/hooks';
 import { selectedContractZoneSelector } from '../../../store/reducers/geo';
 import { Event } from '../../../store/types';
 
-
 const FormContainer = styled(Container)`
   background-color: ${(props) => props.theme.helWhite};
   padding-top: 2em;
@@ -49,28 +48,6 @@ const TitleContainer = styled(Container)`
 
 const ButtonCol = styled(Col)`
   text-align: right;
-`;
-
-const ResetButton = styled(Button)`
-  background-color: #ca3f00;
-  border-color: #ca3f00 !important;
-  color: white;
-  margin-bottom: 1rem;
-  display: block;
-  margin-left: auto;
-
-  &:hover {
-    background-color: #bd2719;
-    border-color: #bd2719;
-    color: white;
-  }
-
-  ${responsive.sm`
-    display: inline-flex;
-    margin-left: 0;
-    margin-right: 0.5rem;
-    margin-bottom: 0;
-  `}
 `;
 
 const SubmitButton = styled(Button)`
@@ -131,7 +108,6 @@ const EventPage: React.FC<EventPageProps> = ({
     handleSubmit,
     handleChange,
     handleBlur,
-    handleReset,
     setFieldValue,
     setFieldTouched,
   } = useFormik({
@@ -226,16 +202,7 @@ const EventPage: React.FC<EventPageProps> = ({
           setFieldTouched={setFieldTouched}
         />
         <Row>
-      </Row>
-        <Row>
           <ButtonCol sm="12" md={{ size: 8, offset: 1 }}>
-            <IntlComponent
-              Component={ResetButton}
-              id={`form.event.${pageType}.button.reset`}
-              type="button"
-              onClick={handleReset}
-              color="danger"
-            />
             <IntlComponent
               Component={SubmitButton}
               type="submit"
