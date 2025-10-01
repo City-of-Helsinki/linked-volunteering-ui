@@ -40,14 +40,10 @@ const InputField: React.FC<Props> = (props) => {
         aria-describedby={!!error && touched ? `${id}-error` : undefined}
         {...rest}
       />
-<<<<<<< Updated upstream
       <PrintValue value={props.value as string} />
-      <FormFeedback>{error && formatMessage({ id: error })}</FormFeedback>
-=======
       <FormFeedback id={`${id}-error`}>
         {error && formatMessage({ id: error })}
       </FormFeedback>
->>>>>>> Stashed changes
     </FormGroup>
   );
 };

@@ -155,14 +155,16 @@ const ManageEventsPage = () => {
       let filteredEvents = [...events];
 
       if (showPendingEvents) {
-        filteredEvents = filteredEvents.filter(event => isPending(event));
+        filteredEvents = filteredEvents.filter((event) => isPending(event));
       }
 
       if (!showPastEvents) {
         const yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1);
         yesterday.setHours(0, 0, 0, 0);
-        filteredEvents = filteredEvents.filter(event => new Date(event.start_time) >= yesterday);
+        filteredEvents = filteredEvents.filter(
+          (event) => new Date(event.start_time) >= yesterday
+        );
       }
 
       return filteredEvents;
@@ -250,18 +252,12 @@ const ManageEventsPage = () => {
       <PageMeta title="site.page.manage_events.page_title" />
       <ControlContainer fluid>
         <TitleRow>
-          <Col
-            sm={{ size: 11, offset: 1 }}
-            md={{ size: 11, offset: 2 }}
-          >
+          <Col sm={{ size: 11, offset: 1 }} md={{ size: 11, offset: 2 }}>
             <FormattedMessage tagName="h1" id="site.page.manage_events.title" />
           </Col>
         </TitleRow>
         <Row>
-          <Col
-            sm={{ size: 10, offset: 1 }}
-            md={{ size: 10, offset: 2 }}
-          >
+          <Col sm={{ size: 10, offset: 1 }} md={{ size: 10, offset: 2 }}>
             <FilterContainer>
               <FilterGroup>
                 <IntlComponent
@@ -317,7 +313,8 @@ const ManageEventsPage = () => {
               ordering={ordering}
             >
               {sortedEvents.map((event) => {
-                const zoneName = contractZones[event.contract_zone || 0]?.name || "";
+                const zoneName =
+                  contractZones[event.contract_zone || 0]?.name || '';
                 const selected = visible === event.id;
                 const isEventPending = isPending(event);
                 return (

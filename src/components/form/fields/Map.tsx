@@ -143,12 +143,9 @@ const MapCanvas: React.FC<MapCanvasProps> = ({
 
   return (
     <MapContainer
-<<<<<<< Updated upstream
       id="map"
-=======
       role="region"
       aria-label={formatMessage({ id: 'form.event.field.map.label' })}
->>>>>>> Stashed changes
       className={renderMapErrors() ? 'is-invalid' : undefined}
     >
       <Map

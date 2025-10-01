@@ -218,11 +218,16 @@ const Layout: React.FC<Props> = ({
           </NavbarContainer>
         </TopNavbar>
 
-        <TopNavbar aria-label={formatMessage({ id: 'site.nav.main.navigation' })}>
+        <TopNavbar
+          aria-label={formatMessage({ id: 'site.nav.main.navigation' })}
+        >
           <NavbarContainer>
             <NavbarRow>
               <Links>
-                <LocalizedLink to="event/new" translate="site.nav.create_event" />
+                <LocalizedLink
+                  to="event/new"
+                  translate="site.nav.create_event"
+                />
                 {authenticated && (
                   <>
                     {(isOfficial || isContractor) && (

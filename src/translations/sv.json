@@ -170,6 +170,12 @@
   "form.event.partitions.date_range.dayAriaLabelPrefix": "Välj",
   "form.event.partitions.date_range.timeCaption": "Klockslag",
 
+  "form.event.field.dateInput.openCalendar": "Öppna kalender",
+  "form.event.field.dateInput.select": "Välj",
+  "form.event.field.dateInput.close": "Stäng",
+  "form.event.field.timeInput.hours": "Timmar",
+  "form.event.field.timeInput.minutes": "Minuter",
+
   "form.manage_events.field.activities.noneSelectedText": "Allt",
 
   "form.report.field.year.label": "Välj år",

@@ -58,33 +58,11 @@ const ButtonCol = styled(Col)`
   `}
 `;
 
-const ResetButton = styled(Button)`
-  background-color: #ca3f00;
-  border-color: #ca3f00 !important;
-  color: white;
-  margin-left: auto;
-  margin-bottom: 0.5rem;
-
-  &:hover {
-    background-color: #bd2719;
-    border-color: #bd2719;
-    color: white;
-  }
-
-  ${responsive.sm`
-    margin-left: 0.5rem;
-    margin-bottom: 0;
-  `}
-`;
-
 const SubmitButton = styled(Button)`
   background-color: #00d7a7;
   border-color: #00d7a7 !important;
-<<<<<<< Updated upstream
-=======
   color: black;
   display: block;
->>>>>>> Stashed changes
   margin-left: auto;
 
   &:hover {
@@ -245,18 +223,16 @@ const EventPage: React.FC<EventPageProps> = ({
         </div>
         <Row>
           <ButtonCol sm="12" md={{ size: 8, offset: 1 }}>
-            {
-              pageType === 'modify'
-                ? 
-                  <IntlComponent
-                    Component={PrintButton}
-                    id="site.page.manage_events.print_button"
-                    onClick={() => window.print()}
-                    color="primary"
-                  />
-                :
-                  <></>
-            }
+            {pageType === 'modify' ? (
+              <IntlComponent
+                Component={PrintButton}
+                id="site.page.manage_events.print_button"
+                onClick={() => window.print()}
+                color="primary"
+              />
+            ) : (
+              <></>
+            )}
             <IntlComponent
               Component={SubmitButton}
               type="submit"
@@ -267,9 +243,9 @@ const EventPage: React.FC<EventPageProps> = ({
                 isSubmitting
                   ? undefined
                   : (e) =>
-                    handleSubmit(
-                      e as unknown as React.FormEvent<HTMLFormElement>
-                    )
+                      handleSubmit(
+                        e as unknown as React.FormEvent<HTMLFormElement>
+                      )
               }
             />
           </ButtonCol>

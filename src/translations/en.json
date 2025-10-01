@@ -170,6 +170,12 @@
   "form.event.partitions.date_range.dayAriaLabelPrefix": "Select",
   "form.event.partitions.date_range.timeCaption": "Time",
 
+  "form.event.field.dateInput.openCalendar": "Open calendar",
+  "form.event.field.dateInput.select": "Select",
+  "form.event.field.dateInput.close": "Close",
+  "form.event.field.timeInput.hours": "Hours",
+  "form.event.field.timeInput.minutes": "Minutes",
+
   "form.manage_events.field.activities.noneSelectedText": "All",
 
   "form.report.field.year.label": "Select year",
