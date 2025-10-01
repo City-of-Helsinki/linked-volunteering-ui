@@ -1,7 +1,7 @@
 import React from 'react';
 import { TimeInput } from 'hds-react';
 import { useIntl } from 'react-intl';
-import { FormGroup } from 'reactstrap';
+import { FormGroup, FormFeedback } from 'reactstrap';
 import styled from 'styled-components';
 
 import InstructionText from './InstructionText';
@@ -50,6 +50,24 @@ const StyledTimeInputWrapper = styled.div`
       opacity: 1;
     }
   }
+
+  .is-invalid {
+    .hds-text-input {
+      border-bottom-color: #dc3545;
+
+      &:focus {
+        border-color: #dc3545;
+      }
+    }
+  }
+`;
+
+const StyledFormFeedback = styled(FormFeedback)<{ $isVisible?: boolean }>`
+  display: ${(props) => (props.$isVisible ? 'block' : 'none')};
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.875em;
+  color: #dc3545;
 `;
 
 interface Props {
@@ -116,6 +134,7 @@ const HDSTimePicker: React.FC<Props> = ({
   };
 
   const formattedValue = formatTimeValue(value);
+  const hasError = !!error && touched;
 
   return (
     <FormGroup>
@@ -123,6 +142,12 @@ const HDSTimePicker: React.FC<Props> = ({
       <StyledTimeInputWrapper>
         <TimeInput
           id={id}
+          className={hasError ? 'is-invalid' : ''}
+          style={
+            hasError
+              ? ({ '--input-background-default': 'rgba(220, 53, 69, 0.15)' } as React.CSSProperties)
+              : undefined
+          }
           label={label ? formatMessage({ id: label }) : undefined}
           value={formattedValue}
           onChange={handleChange}
@@ -130,17 +155,18 @@ const HDSTimePicker: React.FC<Props> = ({
           placeholder={
             placeholder ? formatMessage({ id: placeholder }) : undefined
           }
-          errorText={
-            error && touched ? formatMessage({ id: error }) : undefined
-          }
-          invalid={!!error && touched}
+          invalid={hasError}
           required={required}
           hoursLabel={formatMessage({ id: 'form.event.field.timeInput.hours' })}
           minutesLabel={formatMessage({
             id: 'form.event.field.timeInput.minutes',
           })}
+          aria-describedby={hasError ? `${id}-error` : undefined}
         />
       </StyledTimeInputWrapper>
+      <StyledFormFeedback id={`${id}-error`} $isVisible={hasError}>
+        {error && formatMessage({ id: error })}
+      </StyledFormFeedback>
     </FormGroup>
   );
 };

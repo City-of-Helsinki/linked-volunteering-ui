@@ -1,7 +1,7 @@
 import React from 'react';
 import { DateInput } from 'hds-react';
 import { useIntl } from 'react-intl';
-import { FormGroup } from 'reactstrap';
+import { FormGroup, FormFeedback } from 'reactstrap';
 import styled from 'styled-components';
 
 import InstructionText from './InstructionText';
@@ -67,6 +67,28 @@ const StyledDateInputWrapper = styled.div`
       background-color: rgba(0, 0, 0, 0.05);
     }
   }
+
+  .is-invalid {
+    .hds-text-input {
+      border-bottom-color: #dc3545;
+
+      &:focus {
+        border-color: #dc3545;
+      }
+    }
+
+    .hds-text-input__buttons {
+      border-bottom-color: #dc3545;
+    }
+  }
+`;
+
+const StyledFormFeedback = styled(FormFeedback)<{ $isVisible?: boolean }>`
+  display: ${(props) => (props.$isVisible ? 'block' : 'none')};
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.875em;
+  color: #dc3545;
 `;
 
 interface Props {
@@ -124,12 +146,20 @@ const HDSDatePicker: React.FC<Props> = ({
       : `${day}.${month}.${year}`;
   };
 
+  const hasError = !!error && touched;
+
   return (
     <FormGroup>
       {text && <InstructionText text={text} />}
       <StyledDateInputWrapper>
         <DateInput
           id={id}
+          className={hasError ? 'is-invalid' : ''}
+          style={
+            hasError
+              ? ({ '--input-background-default': 'rgba(220, 53, 69, 0.15)' } as React.CSSProperties)
+              : undefined
+          }
           label={label ? formatMessage({ id: label }) : undefined}
           language={locale as 'en' | 'fi' | 'sv'}
           value={formatDateValue(value)}
@@ -141,10 +171,7 @@ const HDSDatePicker: React.FC<Props> = ({
           placeholder={
             placeholder ? formatMessage({ id: placeholder }) : undefined
           }
-          errorText={
-            error && touched ? formatMessage({ id: error }) : undefined
-          }
-          invalid={!!error && touched}
+          invalid={hasError}
           required={required}
           disableConfirmation
           openButtonAriaLabel={formatMessage({
@@ -156,8 +183,12 @@ const HDSDatePicker: React.FC<Props> = ({
           closeButtonLabel={formatMessage({
             id: 'form.event.field.dateInput.close',
           })}
+          aria-describedby={hasError ? `${id}-error` : undefined}
         />
       </StyledDateInputWrapper>
+      <StyledFormFeedback id={`${id}-error`} $isVisible={hasError}>
+        {error && formatMessage({ id: error })}
+      </StyledFormFeedback>
     </FormGroup>
   );
 };
