@@ -14,6 +14,8 @@
   "site.nav.manage_events": "Hantera evenemang",
   "site.nav.user.login": "Logga in",
   "site.nav.user.logout": "Logga ut",
+  "site.nav.user.navigation": "Användarmeny",
+  "site.nav.main.navigation": "Huvudmeny",
 
   "site.footer.front_page": "Parktalko Framsidan",
   "site.footer.upcoming_events": "Kommande evenemang",
@@ -92,12 +94,14 @@
   "form.validation.mixed.not.date": "Fältet ska innehålla ett datum!",
   "form.validation.mixed.not.number": "Fältet ska innehålla ett tal!",
   "form.validation.number.positive_or_zero": "Talet ska vara positivt eller noll!",
+  "form.validation.number.positive": "Värdet måste vara större än 0",
   "form.validation.string.matches": "Fältet ska vara i given form!",
   "form.validation.string.email": "Fältet ska innehålla en e-postadress!",
   "form.validation.string.phone": "Kontrollera telefonnumret!",
   "form.validation.map": "Välj en plats på kartan",
   "form.validation.generic": "Ogiltigt fält!",
   "form.validation.contract_zone": "Det går inte att anmäla ett talko för detta område.",
+  "form.event.field.map.label": "Karta",
 
   "form.event.new.info": "Staden för talkoredskapen till den överenskomna platsen före talkot. Efter talkot hämtas de från samma plats, liksom det insamlade skräpet. \n\nSystemet ger dig automatiskt en adress enligt området som talkot gäller, men redskapen kan också föras någon annanstans. Utöver adressen kan du precisera platsen. Till exempel: Castrénsgatan 4, lekparken, Andra linjen, intill byggnadens entré. Ordnas talkot på ett veckoslut, förs redskapen vardagen innan och hämtas vardagen efter talkot.",
 
@@ -141,6 +145,7 @@
   "form.event.field.cleaning_targets.label": "Talkoområde",
   "form.event.field.cleaning_targets.placeholder": "Talkoområde",
   "form.event.field.cleaning_targets.info": "Precisera området som talkot gäller. Till exempel: Björnparken och de intilliggande parkerna.",
+  "form.event.field.trash_location.label": "Läge",
   "form.event.field.trash_location.placeholder": "Läge",
   "form.event.field.details.label": "Ytterligare information (valfritt fält)",
   "form.event.field.details.placeholder": "",

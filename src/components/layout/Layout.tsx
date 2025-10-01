@@ -24,7 +24,11 @@ const LayoutWrapper = styled.div`
   min-height: 100vh;
 `;
 
-const Content = styled.div`
+const Header = styled.header`
+  display: contents;
+`;
+
+const Content = styled.main`
   background-color: ${(props) => props.theme.colors.lightGray};
 `;
 
@@ -40,7 +44,7 @@ const NavbarBrand = styled(Link)`
   white-space: nowrap;
 `;
 
-const NavbarRow = styled(Navbar)`
+const NavbarRow = styled.div`
   background-color: ${(props) => props.theme.helWhite};
   padding-left: 0;
   padding-right: 0;
@@ -186,55 +190,60 @@ const Layout: React.FC<Props> = ({
 
   return (
     <LayoutWrapper>
-      {/* Set min-height to navbar to prevent page jumping */}
-      <TopNavbar style={{ minHeight: '77px' }}>
-        <NavbarContainer>
-          <NavbarBrand
-            to={`/${locale}`}
-            aria-label={formatMessage({ id: 'site.nav.logo.text' })}
-          >
-            <StyledHelsinkiLogo />
-            <AppName>{formatMessage({ id: 'site.nav.appName' })}</AppName>
-          </NavbarBrand>
-          <NavbarRow>
-            <Options>
-              <LanguageDropdown />
-              {authenticated && (
-                <UserAction onClick={() => logout()} tabIndex={0}>
-                  <UserIcon aria-hidden name="user" color="black" />
-                  <FormattedMessage id="site.nav.user.logout" />
-                </UserAction>
-              )}
-            </Options>
-          </NavbarRow>
-        </NavbarContainer>
-      </TopNavbar>
+      <Header>
+        {/* Set min-height to navbar to prevent page jumping */}
+        <TopNavbar
+          style={{ minHeight: '77px' }}
+          aria-label={formatMessage({ id: 'site.nav.user.navigation' })}
+        >
+          <NavbarContainer>
+            <NavbarBrand
+              to={`/${locale}`}
+              aria-label={formatMessage({ id: 'site.nav.logo.text' })}
+            >
+              <StyledHelsinkiLogo />
+              <AppName>{formatMessage({ id: 'site.nav.appName' })}</AppName>
+            </NavbarBrand>
+            <NavbarRow>
+              <Options>
+                <LanguageDropdown />
+                {authenticated && (
+                  <UserAction onClick={() => logout()} tabIndex={0}>
+                    <UserIcon aria-hidden name="user" color="black" />
+                    <FormattedMessage id="site.nav.user.logout" />
+                  </UserAction>
+                )}
+              </Options>
+            </NavbarRow>
+          </NavbarContainer>
+        </TopNavbar>
 
-      <TopNavbar>
-        <NavbarContainer>
-          <NavbarRow>
-            <Links>
-              <LocalizedLink to="event/new" translate="site.nav.create_event" />
-              {authenticated && (
-                <>
-                  {(isOfficial || isContractor) && (
-                    <LocalizedLink
-                      to="admin/events/manage"
-                      translate="site.nav.manage_events"
-                    />
-                  )}
-                  {isOfficial && (
-                    <LocalizedLink
-                      to="admin/report"
-                      translate="site.nav.report"
-                    />
-                  )}
-                </>
-              )}
-            </Links>
-          </NavbarRow>
-        </NavbarContainer>
-      </TopNavbar>
+        <TopNavbar aria-label={formatMessage({ id: 'site.nav.main.navigation' })}>
+          <NavbarContainer>
+            <NavbarRow>
+              <Links>
+                <LocalizedLink to="event/new" translate="site.nav.create_event" />
+                {authenticated && (
+                  <>
+                    {(isOfficial || isContractor) && (
+                      <LocalizedLink
+                        to="admin/events/manage"
+                        translate="site.nav.manage_events"
+                      />
+                    )}
+                    {isOfficial && (
+                      <LocalizedLink
+                        to="admin/report"
+                        translate="site.nav.report"
+                      />
+                    )}
+                  </>
+                )}
+              </Links>
+            </NavbarRow>
+          </NavbarContainer>
+        </TopNavbar>
+      </Header>
 
       <Content>
         <PageWrapper paddingTop={paddingTop} paddingBottom={paddingBottom}>

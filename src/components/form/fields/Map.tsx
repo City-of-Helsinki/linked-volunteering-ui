@@ -6,6 +6,7 @@ import L, {
 import React, { useEffect, useState } from 'react';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import styled from 'styled-components';
+import { useIntl } from 'react-intl';
 
 import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
 import iconUrl from 'leaflet/dist/images/marker-icon.png';
@@ -71,6 +72,7 @@ const MapCanvas: React.FC<MapCanvasProps> = ({
 
   const dispatch = useAppDispatch();
   const { getApiToken } = useAuth();
+  const { formatMessage } = useIntl();
 
   const apiAccessToken = getApiToken();
 
@@ -141,9 +143,13 @@ const MapCanvas: React.FC<MapCanvasProps> = ({
 
   return (
     <MapContainer
+<<<<<<< Updated upstream
       id="map"
+=======
+      role="region"
+      aria-label={formatMessage({ id: 'form.event.field.map.label' })}
+>>>>>>> Stashed changes
       className={renderMapErrors() ? 'is-invalid' : undefined}
-      aria-hidden
     >
       <Map
         center={mapCenter || position}
@@ -153,6 +159,7 @@ const MapCanvas: React.FC<MapCanvasProps> = ({
         maxBounds={maxBounds}
         style={style}
         onClick={addMarker}
+        aria-hidden
       >
         <TileLayer url="https://tiles.hel.ninja/wmts/osm-sm/webmercator/{z}/{x}/{y}.png" />
         {marker}

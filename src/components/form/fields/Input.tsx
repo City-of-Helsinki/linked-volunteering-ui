@@ -37,10 +37,17 @@ const InputField: React.FC<Props> = (props) => {
         placeholder={
           placeholder ? formatMessage({ id: placeholder }) : undefined
         }
+        aria-describedby={!!error && touched ? `${id}-error` : undefined}
         {...rest}
       />
+<<<<<<< Updated upstream
       <PrintValue value={props.value as string} />
       <FormFeedback>{error && formatMessage({ id: error })}</FormFeedback>
+=======
+      <FormFeedback id={`${id}-error`}>
+        {error && formatMessage({ id: error })}
+      </FormFeedback>
+>>>>>>> Stashed changes
     </FormGroup>
   );
 };

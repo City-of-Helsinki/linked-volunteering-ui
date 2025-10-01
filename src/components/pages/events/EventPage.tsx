@@ -80,6 +80,11 @@ const ResetButton = styled(Button)`
 const SubmitButton = styled(Button)`
   background-color: #00d7a7;
   border-color: #00d7a7 !important;
+<<<<<<< Updated upstream
+=======
+  color: black;
+  display: block;
+>>>>>>> Stashed changes
   margin-left: auto;
 
   &:hover {

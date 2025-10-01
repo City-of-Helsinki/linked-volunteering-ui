@@ -14,6 +14,8 @@
   "site.nav.manage_events": "Hallitse tapahtumia",
   "site.nav.user.login": "Kirjaudu sisään",
   "site.nav.user.logout": "Kirjaudu ulos",
+  "site.nav.user.navigation": "Käyttäjävalikko",
+  "site.nav.main.navigation": "Päävalikko",
 
   "site.footer.front_page": "Puistotalkoot Etusivu",
   "site.footer.upcoming_events": "Tulevat tapahtumat",
@@ -92,6 +94,7 @@
   "form.validation.mixed.not.date": "Kentän tulee olla päivämäärä!",
   "form.validation.mixed.not.number": "Kentän tulee olla numero!",
   "form.validation.number.positive_or_zero": "Numeron pitää olla positiivinen tai nolla!",
+  "form.validation.number.positive": "Annetun arvon tulee olla suurempi kuin 0",
   "form.validation.number.max": "Numero on liian suuri!",
   "form.validation.string.matches": "Kentän tulee olla annetussa muodossa!",
   "form.validation.string.email": "Kentän tulee olla kelvollinen sähköpostiosoite!",
@@ -99,6 +102,7 @@
   "form.validation.map": "Valitse paikka kartasta",
   "form.validation.generic": "Virheellinen kenttä!",
   "form.validation.contract_zone": "Tälle alueelle ei voi ilmoittaa talkoita.",
+  "form.event.field.map.label": "Kartta",
 
   "form.event.new.info": "Talkootarvikkeet tuodaan ennalta sovittuun paikkaan ennen talkoita. Ne noudetaan talkoiden jälkeen samasta paikasta, kuten myös kerätty jäte. \n\nJärjestelmä antaa automaattisesti osoitteen talkookohteen mukaan, mutta tavarat voidaan tuoda myös muualle. Voit kirjoittaa osoitteen lisäksi tarkennuksia paikasta. Esimerkki: Castréninkatu 4, leikkipuisto Toinen Linja, rakennuksen sisäänkäynnin läheisyyteen. Jos talkoot ovat viikonloppuna tuodaan tarvikkeet edeltävänä arkipäivänä ja noudetaan seuraavana.",
 
@@ -142,6 +146,7 @@
   "form.event.field.cleaning_targets.label": "Talkooalue",
   "form.event.field.cleaning_targets.placeholder": "Talkooalue",
   "form.event.field.cleaning_targets.info": "Tarkenna talkoiden kohteena olevaa aluetta. Esimerkki: Karhupuisto sekä lähialueen muut puistot.",
+  "form.event.field.trash_location.label": "Sijainti",
   "form.event.field.trash_location.placeholder": "Sijainti",
   "form.event.field.details.label": "Lisätiedot (vapaaehtoinen kenttä)",
   "form.event.field.details.placeholder": "",

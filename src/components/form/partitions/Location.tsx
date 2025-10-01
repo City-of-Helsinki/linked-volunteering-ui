@@ -181,9 +181,9 @@ const Location: React.FC<Props> = ({
       </Row>
       <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 8, offset: 1 }}>
-          <Label htmlFor="maintenance_location" srOnly>
+          <Label htmlFor="maintenance_location">
             {formatMessage({
-              id: 'form.event.field.trash_location.placeholder',
+              id: 'form.event.field.trash_location.label',
             })}
           </Label>
           <Input

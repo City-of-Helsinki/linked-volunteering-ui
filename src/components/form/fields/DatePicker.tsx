@@ -32,13 +32,20 @@ const DatePickerField: React.FC<Props> = (props) => {
       {text && <InstructionText text={text} />}
       <DatePicker
         id={id}
-        customInput={<Input invalid={!!error && touched} />}
+        customInput={
+          <Input
+            invalid={!!error && touched}
+            aria-describedby={!!error && touched ? `${id}-error` : undefined}
+          />
+        }
         placeholderText={
           placeholder ? formatMessage({ id: placeholder }) : undefined
         }
         {...rest}
       />
-      <FormFeedback>{error && formatMessage({ id: error })}</FormFeedback>
+      <FormFeedback id={`${id}-error`}>
+        {error && formatMessage({ id: error })}
+      </FormFeedback>
     </FormGroup>
   );
 };

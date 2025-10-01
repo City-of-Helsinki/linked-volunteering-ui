@@ -50,11 +50,14 @@ const SelectField: React.FC<SelectFieldProps> = ({
         onChange={onChange}
         {...rest}
         invalid={isInvalid}
+        aria-describedby={isInvalid ? `${id}-error` : undefined}
       >
         <option>{noneSelectedText}</option>
         {children}
       </Input>
-      <FormFeedback>{error && intl.formatMessage({ id: error })}</FormFeedback>
+      <FormFeedback id={`${id}-error`}>
+        {error && intl.formatMessage({ id: error })}
+      </FormFeedback>
       <FormText>{text && intl.formatMessage({ id: text })}</FormText>
     </FormGroup>
   );

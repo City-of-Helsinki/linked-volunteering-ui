@@ -14,6 +14,8 @@
   "site.nav.manage_events": "Manage events",
   "site.nav.user.login": "Log in",
   "site.nav.user.logout": "Log out",
+  "site.nav.user.navigation": "User menu",
+  "site.nav.main.navigation": "Main menu",
 
   "site.footer.front_page": "Park volunteer activities Home",
   "site.footer.upcoming_events": "Upcoming events",
@@ -92,12 +94,14 @@
   "form.validation.mixed.not.date": "Date required!",
   "form.validation.mixed.not.number": "Number required!",
   "form.validation.number.positive_or_zero": "Number must be positive or zero!",
+  "form.validation.number.positive": "The value must be greater than 0",
   "form.validation.string.matches": "The field must be in the given format!",
   "form.validation.string.email": "The field must be an e-mail address!",
   "form.validation.string.phone": "Check phone number!",
   "form.validation.map": "Select a place on the map",
   "form.validation.generic": "Invalid field!",
   "form.validation.contract_zone": "Volunteer activities are not possible in this area.",
+  "form.event.field.map.label": "Map",
 
   "form.event.new.info": "Equipment will be delivered to the agreed location before the start of volunteer activities and picked up again afterwards together with the litter that has been collected. \n\nThe system will automatically assign an address according to the location of the volunteer activities, but the equipment can also be delivered elsewhere. In addition to the address, you can provide a description of the location. For example: Castréninkatu 4, Toinen Linja playground, by the entrance to the building. If the volunteer activity takes place on a weekend, the equipment will be delivered on the preceding weekday and picked up on the following weekday.",
 
@@ -141,6 +145,7 @@
   "form.event.field.cleaning_targets.label": "Location of activity",
   "form.event.field.cleaning_targets.placeholder": "Location of activity",
   "form.event.field.cleaning_targets.info": "Specify the location of the activity. For example: Karhupuisto and nearby parks.",
+  "form.event.field.trash_location.label": "Location",
   "form.event.field.trash_location.placeholder": "Location",
   "form.event.field.details.label": "Further information (optional field)",
   "form.event.field.details.placeholder": "",

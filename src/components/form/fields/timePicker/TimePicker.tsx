@@ -255,6 +255,7 @@ const TimePicker: React.FC<Props> = ({
             placeholder ? formatMessage({ id: placeholder }) : undefined
           }
           value={selected ? formatTime(selected, timeFormat, locale) : ''}
+          aria-describedby={!!error && touched ? `${id}-error` : undefined}
         />
         {isMenuOpen && (
           <DropdownMenu>
@@ -282,7 +283,9 @@ const TimePicker: React.FC<Props> = ({
           </DropdownMenu>
         )}
       </div>
-      <FormFeedback>{error && formatMessage({ id: error })}</FormFeedback>
+      <FormFeedback id={`${id}-error`}>
+        {error && formatMessage({ id: error })}
+      </FormFeedback>
     </FormGroup>
   );
 };

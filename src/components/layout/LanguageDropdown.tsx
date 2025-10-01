@@ -1,12 +1,7 @@
 import { useNavigate, useLocation } from 'react-router';
 import React from 'react';
 import { useIntl } from 'react-intl';
-import {
-  Dropdown,
-  DropdownMenu,
-  DropdownItem,
-  DropdownToggle,
-} from 'reactstrap';
+import { Dropdown, DropdownMenu, DropdownToggle } from 'reactstrap';
 import styled from 'styled-components';
 import IntlComponent from '../common/IntlComponent';
 import Icon from '../common/Icon';
@@ -18,6 +13,13 @@ const LanguageSelector = styled(DropdownToggle)`
   box-shadow: none;
   border: 0em;
   text-align: right;
+
+  &:focus,
+  &:focus-visible {
+    outline: 2px solid ${(props) => props.theme.helBlack};
+    outline-offset: 2px;
+    box-shadow: none;
+  }
 `;
 
 const StyledDropdown = styled(Dropdown)`
@@ -53,6 +55,26 @@ const DropdownIcon = styled(Icon)`
   svg {
     height: 1.5rem;
     width: 1.5rem;
+  }
+`;
+
+const DropdownLink = styled.a`
+  display: block;
+  padding: 0.25rem 1.5rem;
+  clear: both;
+  font-weight: 400;
+  color: #212529;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: #16181b;
+    text-decoration: none;
+    background-color: #f8f9fa;
   }
 `;
 
@@ -98,21 +120,21 @@ const LanguageDropdown: React.FC = () => {
       </LanguageSelector>
       <DropdownMenu>
         <IntlComponent
-          Component={DropdownItem}
+          Component={DropdownLink}
           href="/fi"
           onClick={changeLanguage('fi')}
           id="site.language.fi"
           lang="fi"
         />
         <IntlComponent
-          Component={DropdownItem}
+          Component={DropdownLink}
           href="/sv"
           onClick={changeLanguage('sv')}
           id="site.language.sv"
           lang="sv"
         />
         <IntlComponent
-          Component={DropdownItem}
+          Component={DropdownLink}
           href="/en"
           onClick={changeLanguage('en')}
           id="site.language.en"

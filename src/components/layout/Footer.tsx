@@ -7,7 +7,7 @@ import responsive from '../../utils/responsive';
 
 import HelsinkiLogo from '../icons/HelsinkiLogo';
 
-const Wrapper = styled.div`
+const Wrapper = styled.footer`
   background-color: ${(props) => props.theme.helCopper};
   color: #000;
   padding-top: 2rem;
