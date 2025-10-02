@@ -58,25 +58,6 @@ const ButtonCol = styled(Col)`
   `}
 `;
 
-const ResetButton = styled(Button)`
-  background-color: #ca3f00;
-  border-color: #ca3f00 !important;
-  color: white;
-  margin-left: auto;
-  margin-bottom: 0.5rem;
-
-  &:hover {
-    background-color: #bd2719;
-    border-color: #bd2719;
-    color: white;
-  }
-
-  ${responsive.sm`
-    margin-left: 0.5rem;
-    margin-bottom: 0;
-  `}
-`;
-
 const SubmitButton = styled(Button)`
   background-color: #00d7a7;
   border-color: #00d7a7 !important;
