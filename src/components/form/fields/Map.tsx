@@ -141,6 +141,7 @@ const MapCanvas: React.FC<MapCanvasProps> = ({
 
   return (
     <MapContainer
+      id="map"
       className={renderMapErrors() ? 'is-invalid' : undefined}
       aria-hidden
     >
