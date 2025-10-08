@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.1](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.6.0...linked-volunteering-ui-v0.6.1) (2025-10-08)
+
+
+### Bug Fixes
+
+* Stricter yarn configs ([7e971be](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/7e971be5f3611e3a2b7c67c8c305fe2cb712aa89))
+
 ## [0.6.0](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.5.2...linked-volunteering-ui-v0.6.0) (2025-09-11)
 
 
