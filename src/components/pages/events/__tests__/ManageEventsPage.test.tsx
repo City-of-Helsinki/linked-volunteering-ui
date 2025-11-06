@@ -48,8 +48,12 @@ const initialState = {
         modified_at: '2024-12-04T06:17:08.196Z',
         name: 'Puistotalkoot',
         description: 'Puistotalkoot',
-        start_time: new Date(new Date().setDate(new Date().getDate() + 7)).toISOString(),
-        end_time: new Date(new Date().setDate(new Date().getDate() + 8)).toISOString(),
+        start_time: new Date(
+          new Date().setDate(new Date().getDate() + 7)
+        ).toISOString(),
+        end_time: new Date(
+          new Date().setDate(new Date().getDate() + 8)
+        ).toISOString(),
         location: {
           type: 'Point',
           coordinates: [24.93931620883691, 60.18799324237526],
@@ -75,6 +79,8 @@ const initialState = {
       order: null,
     },
     submittedEvent: null,
+    mapEvents: [],
+    mapEventsLoading: false,
   },
 };
 
@@ -83,12 +89,16 @@ const eventsForDateSorting = {
     id: 1,
     name: 'Bravo Event',
     organizer_email: 'sahko@posti.fi',
-    start_time: new Date(new Date().setDate(new Date().getDate() + 8)).toISOString(),
+    start_time: new Date(
+      new Date().setDate(new Date().getDate() + 8)
+    ).toISOString(),
     created_at: '2024-12-04T06:17:08.196Z',
     state: 'waiting_for_approval',
     contract_zone: 1,
     description: 'Event description',
-    end_time: new Date(new Date().setDate(new Date().getDate() + 9)).toISOString(),
+    end_time: new Date(
+      new Date().setDate(new Date().getDate() + 9)
+    ).toISOString(),
     organizer_first_name: 'First',
     organizer_last_name: 'Last',
     organizer_phone: '0401234567',
@@ -107,7 +117,9 @@ const eventsForDateSorting = {
     id: 2,
     name: 'Alpha Event',
     organizer_email: 'sahko@posti.fi',
-    start_time: new Date(new Date().setDate(new Date().getDate() + 7)).toISOString(),
+    start_time: new Date(
+      new Date().setDate(new Date().getDate() + 7)
+    ).toISOString(),
     created_at: '2024-12-04T06:17:08.196Z',
     state: 'waiting_for_approval',
     contract_zone: 1,
@@ -187,8 +199,12 @@ describe('<ManageEventsPage />', () => {
       modified_at: '2024-12-04T06:17:08.196Z',
       name: 'Puistotalkoot',
       description: 'Puistotalkoot',
-      start_time: new Date(new Date().setDate(new Date().getDate() + 7)).toISOString(),
-      end_time: new Date(new Date().setDate(new Date().getDate() + 8)).toISOString(),
+      start_time: new Date(
+        new Date().setDate(new Date().getDate() + 7)
+      ).toISOString(),
+      end_time: new Date(
+        new Date().setDate(new Date().getDate() + 8)
+      ).toISOString(),
       location: {
         type: 'Point',
         coordinates: [24.93931620883691, 60.18799324237526],
@@ -297,8 +313,12 @@ describe('<ManageEventsPage />', () => {
       const expectedDate2 = new Date();
       expectedDate2.setDate(expectedDate2.getDate() + 8);
 
-      expect(rows[1].children[3].textContent).toBe(expectedDate1.toLocaleDateString('en-US'));
-      expect(rows[2].children[3].textContent).toBe(expectedDate2.toLocaleDateString('en-US'));
+      expect(rows[1].children[3].textContent).toBe(
+        expectedDate1.toLocaleDateString('en-US')
+      );
+      expect(rows[2].children[3].textContent).toBe(
+        expectedDate2.toLocaleDateString('en-US')
+      );
     });
   });
 
@@ -326,8 +346,12 @@ describe('<ManageEventsPage />', () => {
       const expectedDate2 = new Date();
       expectedDate2.setDate(expectedDate2.getDate() + 7);
 
-      expect(rows[1].children[3].textContent).toBe(expectedDate1.toLocaleDateString('en-US'));
-      expect(rows[2].children[3].textContent).toBe(expectedDate2.toLocaleDateString('en-US'));
+      expect(rows[1].children[3].textContent).toBe(
+        expectedDate1.toLocaleDateString('en-US')
+      );
+      expect(rows[2].children[3].textContent).toBe(
+        expectedDate2.toLocaleDateString('en-US')
+      );
     });
   });
 });
