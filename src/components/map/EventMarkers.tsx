@@ -3,9 +3,8 @@ import React, { useMemo } from 'react';
 import { Marker, Tooltip } from 'react-leaflet';
 import { Event } from '../../store/types';
 
-// Custom icons for past and upcoming events
 const createEventIcon = (isPast: boolean) => {
-  const color = isPast ? '#999999' : '#00d7a7'; // Gray for past, green for upcoming
+  const color = isPast ? '#999999' : '#00d7a7';
 
   const svgIcon = `
     <svg width="25" height="41" viewBox="0 0 25 41" xmlns="http://www.w3.org/2000/svg">
@@ -33,7 +32,6 @@ interface GroupedEvent extends Event {
 }
 
 const EventMarkers: React.FC<EventMarkersProps> = ({ events }) => {
-  // Group events by location and apply offset
   const groupedEvents = useMemo(() => {
     const locationMap = new Map<string, GroupedEvent[]>();
 
@@ -41,7 +39,7 @@ const EventMarkers: React.FC<EventMarkersProps> = ({ events }) => {
       if (!event.location?.coordinates) return;
 
       const [lng, lat] = event.location.coordinates;
-      const key = `${lat.toFixed(5)},${lng.toFixed(5)}`; // Group by rounded coordinates
+      const key = `${lat.toFixed(5)},${lng.toFixed(5)}`;
 
       if (!locationMap.has(key)) {
         locationMap.set(key, []);
@@ -51,11 +49,10 @@ const EventMarkers: React.FC<EventMarkersProps> = ({ events }) => {
       group.push({
         ...event,
         offsetIndex: group.length,
-        totalAtLocation: 0, // Will be updated after
+        totalAtLocation: 0,
       });
     });
 
-    // Update totalAtLocation for all events in each group
     locationMap.forEach((group) => {
       group.forEach((event) => {
         event.totalAtLocation = group.length;
@@ -84,13 +81,12 @@ const EventMarkers: React.FC<EventMarkersProps> = ({ events }) => {
   ): [number, number] => {
     if (totalAtLocation === 1) return [0, 0];
 
-    // Arrange markers in a circle around the original point
-    const radius = 0.0002; // Approximately 20 meters
+    const radius = 0.0002;
     const angle = (2 * Math.PI * offsetIndex) / totalAtLocation;
 
     return [
-      radius * Math.cos(angle), // lat offset
-      radius * Math.sin(angle), // lng offset
+      radius * Math.cos(angle),
+      radius * Math.sin(angle),
     ];
   };
 
