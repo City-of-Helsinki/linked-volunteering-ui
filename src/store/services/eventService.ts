@@ -53,4 +53,17 @@ export default {
       ),
     };
   },
+  getMapEvents: async (apiAccessToken: string | undefined) => {
+    // Calculate date range: 2 weeks ago to future
+    const twoWeeksAgo = new Date();
+    twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 14);
+
+    const params = {
+      state: publishedState,
+      start_time_gte: twoWeeksAgo.toISOString(),
+    };
+
+    const data = await get('event/', params, apiAccessToken);
+    return data.results || [];
+  },
 };

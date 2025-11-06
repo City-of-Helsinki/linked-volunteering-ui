@@ -100,6 +100,10 @@
   "form.validation.generic": "Virheellinen kenttä!",
   "form.validation.contract_zone": "Tälle alueelle ei voi ilmoittaa talkoita.",
 
+  "map.legend.title": "Kartalla näkyvät tapahtumat:",
+  "map.legend.upcoming": "Tulevat tapahtumat",
+  "map.legend.past": "Menneet tapahtumat (2 viikon ajalta)",
+
   "form.event.new.info": "Talkootarvikkeet tuodaan ennalta sovittuun paikkaan ennen talkoita. Ne noudetaan talkoiden jälkeen samasta paikasta, kuten myös kerätty jäte. \n\nJärjestelmä antaa automaattisesti osoitteen talkookohteen mukaan, mutta tavarat voidaan tuoda myös muualle. Voit kirjoittaa osoitteen lisäksi tarkennuksia paikasta. Esimerkki: Castréninkatu 4, leikkipuisto Toinen Linja, rakennuksen sisäänkäynnin läheisyyteen. Jos talkoot ovat viikonloppuna tuodaan tarvikkeet edeltävänä arkipäivänä ja noudetaan seuraavana.",
 
   "form.event.modify.page_title": "Muokkaa tapahtumaa",

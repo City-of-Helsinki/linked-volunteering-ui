@@ -12,9 +12,12 @@ import iconUrl from 'leaflet/dist/images/marker-icon.png';
 import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
 
 import IntlComponent from '../../common/IntlComponent';
-import { useAppDispatch } from '../../../store/hooks';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import { getGeoData } from '../../../store/reducers/geo';
+import { getMapEvents, mapEventsSelector } from '../../../store/reducers/event';
 import useAuth from '../../../hooks/useAuth';
+import EventMarkers from '../../map/EventMarkers';
+import MapEventsLegend from '../../map/MapEventsLegend';
 
 import 'leaflet/dist/leaflet.css';
 
@@ -71,6 +74,7 @@ const MapCanvas: React.FC<MapCanvasProps> = ({
 
   const dispatch = useAppDispatch();
   const { getApiToken } = useAuth();
+  const mapEvents = useAppSelector(mapEventsSelector);
 
   const apiAccessToken = getApiToken();
 
@@ -86,6 +90,11 @@ const MapCanvas: React.FC<MapCanvasProps> = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value, apiAccessToken]);
+
+  useEffect(() => {
+    dispatch(getMapEvents({ apiAccessToken }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const addMarker = (e: LeafletMouseEvent) => {
     const { lat, lng } = e.latlng;
@@ -140,25 +149,29 @@ const MapCanvas: React.FC<MapCanvasProps> = ({
   const marker = value ? <Marker position={markerPosition} /> : null;
 
   return (
-    <MapContainer
-      id="map"
-      className={renderMapErrors() ? 'is-invalid' : undefined}
-      aria-hidden
-    >
-      <Map
-        center={mapCenter || position}
-        zoom={mapCenter ? 14 : zoom}
-        minZoom={11}
-        bounds={mapBounds}
-        maxBounds={maxBounds}
-        style={style}
-        onClick={addMarker}
+    <>
+      <MapContainer
+        id="map"
+        className={renderMapErrors() ? 'is-invalid' : undefined}
+        aria-hidden
       >
-        <TileLayer url="https://tiles.hel.ninja/wmts/osm-sm/webmercator/{z}/{x}/{y}.png" />
-        {marker}
-      </Map>
-      {renderMapErrors()}
-    </MapContainer>
+        <Map
+          center={mapCenter || position}
+          zoom={mapCenter ? 14 : zoom}
+          minZoom={11}
+          bounds={mapBounds}
+          maxBounds={maxBounds}
+          style={style}
+          onClick={addMarker}
+        >
+          <TileLayer url="https://tiles.hel.ninja/wmts/osm-sm/webmercator/{z}/{x}/{y}.png" />
+          <EventMarkers events={mapEvents} />
+          {marker}
+        </Map>
+        {renderMapErrors()}
+      </MapContainer>
+      <MapEventsLegend />
+    </>
   );
 };
 
