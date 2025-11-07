@@ -140,7 +140,7 @@
   "form.event.field.cleaning_targets.label": "Talkooalue",
   "form.event.field.cleaning_targets.placeholder": "Talkooalue",
   "form.event.field.cleaning_targets.info": "Tarkenna talkoiden kohteena olevaa aluetta. Esimerkki: Karhupuisto sekä lähialueen muut puistot.",
-  "form.event.field.trash_location.placeholder": "Sijainti",
+  "form.event.field.trash_location.placeholder": "Lisätietoja tarvikkeiden toimittamiseen",
   "form.event.field.details.label": "Lisätiedot (vapaaehtoinen kenttä)",
   "form.event.field.details.placeholder": "",
   "form.event.field.details.info": "Ohje: Voit ilmoittaa lisätiedoissa mm. siitä, jos haluat lainata myös muita työvälineitä kuin roskapihtejä. Muita työvälineitä ovat harava, lapio ja katuharja sekä siirtolava. Huom! Siirtolavoja toimitetaan vain erittäin suuriin talkoisiin ja sen toimittamisesta päättää alueellinen talkooyhdyshenkilö.",

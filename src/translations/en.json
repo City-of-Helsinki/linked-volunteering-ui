@@ -139,7 +139,7 @@
   "form.event.field.cleaning_targets.label": "Location of activity",
   "form.event.field.cleaning_targets.placeholder": "Location of activity",
   "form.event.field.cleaning_targets.info": "Specify the location of the activity. For example: Karhupuisto and nearby parks.",
-  "form.event.field.trash_location.placeholder": "Location",
+  "form.event.field.trash_location.placeholder": "Additional information about delivering the equipment",
   "form.event.field.details.label": "Further information (optional field)",
   "form.event.field.details.placeholder": "",
   "form.event.field.details.info": "Under further information, you can notify if you need additional equipment, for example rakes, shovels, brooms or skip containers. Note: Skip containers are delivered only for large events and the contact person listed in the confirmation takes the final decision regarding the delivery.",
