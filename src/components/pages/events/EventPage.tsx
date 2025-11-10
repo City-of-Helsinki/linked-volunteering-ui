@@ -219,22 +219,19 @@ const EventPage: React.FC<EventPageProps> = ({
             setFieldTouched={setFieldTouched}
           />
         </div>
-        <Row>
-      </Row>
+        <Row></Row>
         <Row>
           <ButtonCol sm="12" md={{ size: 8, offset: 1 }}>
-            {
-              pageType === 'modify'
-                ? 
-                  <IntlComponent
-                    Component={PrintButton}
-                    id="site.page.manage_events.print_button"
-                    onClick={() => window.print()}
-                    color="primary"
-                  />
-                :
-                  <></>
-            }
+            {pageType === 'modify' ? (
+              <IntlComponent
+                Component={PrintButton}
+                id="site.page.manage_events.print_button"
+                onClick={() => window.print()}
+                color="primary"
+              />
+            ) : (
+              <></>
+            )}
             <IntlComponent
               Component={SubmitButton}
               type="submit"
@@ -245,9 +242,9 @@ const EventPage: React.FC<EventPageProps> = ({
                 isSubmitting
                   ? undefined
                   : (e) =>
-                    handleSubmit(
-                      e as unknown as React.FormEvent<HTMLFormElement>
-                    )
+                      handleSubmit(
+                        e as unknown as React.FormEvent<HTMLFormElement>
+                      )
               }
             />
           </ButtonCol>
