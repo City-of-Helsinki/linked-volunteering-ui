@@ -84,10 +84,7 @@ const EventMarkers: React.FC<EventMarkersProps> = ({ events }) => {
     const radius = 0.0002;
     const angle = (2 * Math.PI * offsetIndex) / totalAtLocation;
 
-    return [
-      radius * Math.cos(angle),
-      radius * Math.sin(angle),
-    ];
+    return [radius * Math.cos(angle), radius * Math.sin(angle)];
   };
 
   return (

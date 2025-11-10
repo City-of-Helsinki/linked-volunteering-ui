@@ -193,7 +193,11 @@ const DateRange: React.FC<Props> = ({
             selected={selectedEndTime}
             dateFormat={dateFormat}
             minDate={ensureDate(values.start_time) || minDate}
-            maxDate={selectedStartTime ? addDays(selectedStartTime, maxDateDelta) : null}
+            maxDate={
+              selectedStartTime
+                ? addDays(selectedStartTime, maxDateDelta)
+                : null
+            }
             startDate={selectedStartTime}
             endDate={selectedEndTime}
             excludeDates={unavailableDates}
