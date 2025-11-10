@@ -35,6 +35,10 @@ const EventMarkers: React.FC<EventMarkersProps> = ({ events }) => {
   const groupedEvents = useMemo(() => {
     const locationMap = new Map<string, GroupedEvent[]>();
 
+    if (!events) {
+      return [];
+    }
+
     events.forEach((event) => {
       if (!event.location?.coordinates) return;
 
