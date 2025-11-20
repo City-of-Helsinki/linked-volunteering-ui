@@ -61,7 +61,7 @@ const AutoSuggestField: React.FC<Props> = ({
   const { formatMessage, locale } = intl;
 
   const [internalValue, setInternalValue] = React.useState('');
-  const value = controlledValue !== undefined ? controlledValue : internalValue;
+  const value = controlledValue ?? internalValue;
 
   const handleChange = (
     _event: React.FormEvent<HTMLElement>,
