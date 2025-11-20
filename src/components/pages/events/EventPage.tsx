@@ -226,7 +226,7 @@ const EventPage: React.FC<EventPageProps> = ({
               <IntlComponent
                 Component={PrintButton}
                 id="site.page.manage_events.print_button"
-                onClick={() => window.print()}
+                onClick={() => globalThis.print()}
                 color="primary"
               />
             ) : (
