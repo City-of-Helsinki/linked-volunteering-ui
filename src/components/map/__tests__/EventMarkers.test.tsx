@@ -129,7 +129,8 @@ describe('EventMarkers', () => {
 
             render(<EventMarkers events={events} />);
 
-            const callArgs = (L.DivIcon as any).mock.calls[0][0];
+            const callArgs = (L.DivIcon as unknown as ReturnType<typeof vi.fn>).mock
+                .calls[0][0];
             expect(callArgs.html).toContain('<svg');
             expect(callArgs.html).toContain(`width="${SVG_ATTRIBUTES.width}"`);
             expect(callArgs.html).toContain(`height="${SVG_ATTRIBUTES.height}"`);
@@ -189,7 +190,6 @@ describe('EventMarkers', () => {
             const markers = getAllByTestId('marker');
             expect(markers).toHaveLength(1); // Only the event with coordinates should render
         });
-
     });
 
     describe('Tooltip Content', () => {
@@ -207,7 +207,9 @@ describe('EventMarkers', () => {
             render(<EventMarkers events={events} />);
 
             // Check that the date appears in the tooltip (using flexible text matching)
-            expect(screen.getByText((content) => content.includes('15.1.2030'))).toBeInTheDocument();
+            expect(
+                screen.getByText((content) => content.includes('15.1.2030'))
+            ).toBeInTheDocument();
         });
 
         it('displays maintenance location when present', () => {
@@ -218,7 +220,11 @@ describe('EventMarkers', () => {
             render(<EventMarkers events={[eventWithLocation]} />);
 
             // Use flexible text matching to find the maintenance location
-            expect(screen.getByText((content) => content.includes('Specific Park Location'))).toBeInTheDocument();
+            expect(
+                screen.getByText((content) =>
+                    content.includes('Specific Park Location')
+                )
+            ).toBeInTheDocument();
         });
 
         it('does not display maintenance location when empty', () => {
