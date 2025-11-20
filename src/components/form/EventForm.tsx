@@ -42,16 +42,6 @@ export interface EventFormProps {
       | { target: { id: string; value: unknown } }
   ) => void;
   handleBlur: (_event: React.FormEvent<HTMLElement>) => void;
-  setFieldValue: (
-    field: string,
-    value: unknown,
-    shouldValidate?: boolean
-  ) => Promise<unknown>;
-  setFieldTouched: (
-    field: string,
-    touched?: boolean,
-    shouldValidate?: boolean
-  ) => Promise<unknown>;
 }
 
 const EventForm: React.FC<EventFormProps> = ({
@@ -61,8 +51,6 @@ const EventForm: React.FC<EventFormProps> = ({
   handleSubmit,
   handleChange,
   handleBlur,
-  setFieldValue,
-  setFieldTouched,
 }) => {
   const addressCoordinates = useAppSelector(addressCoordinatesSelector);
   const selectedAddress = useAppSelector(selectedAddressSelector);

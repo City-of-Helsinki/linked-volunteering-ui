@@ -68,11 +68,7 @@ const Location: React.FC<Props> = ({
 
       setClickedAddress(null);
     }
-  }, [
-    clickedAddress,
-    locale,
-    selectedAddress,
-  ]);
+  }, [clickedAddress, locale, selectedAddress]);
 
   const handleZoom = (e: AutoSuggestEvent) => {
     const value = e.target.value as AddressFeature;
