@@ -20,16 +20,6 @@ interface Props {
   handleChange: (_event: AutoSuggestEvent) => void;
   selectedAddress: Record<string, unknown> | undefined;
   selectedContractZone: Record<string, unknown> | null | undefined;
-  setFieldTouched: (
-    field: string,
-    touched?: boolean,
-    shouldValidate?: boolean
-  ) => Promise<unknown>;
-  setFieldValue: (
-    field: string,
-    value: unknown,
-    shouldValidate?: boolean
-  ) => Promise<unknown>;
   touched: Record<string, unknown>;
   values: FormikValues;
 }
@@ -41,8 +31,6 @@ const Location: React.FC<Props> = ({
   handleChange,
   selectedAddress,
   selectedContractZone,
-  setFieldTouched,
-  setFieldValue,
   touched,
   values,
 }) => {
@@ -51,18 +39,18 @@ const Location: React.FC<Props> = ({
   const { getApiToken } = useAuth();
 
   const { formatMessage, locale } = intl;
-  const [updateAddress, setUpdateAddress] = React.useState(false);
   const [clickedAddress, setClickedAddress] = React.useState<string | null>(
     null
   );
   const [bounds, setBounds] = React.useState<number[] | null>(null);
   const [center, setCenter] = React.useState<number[] | null>(null);
+  const [neighborhoodValue, setNeighborhoodValue] = React.useState<string>('');
 
   const apiAccessToken = getApiToken();
 
   React.useEffect(() => {
-    if (updateAddress) {
-      const address = values.maintenance_location;
+    if (selectedAddress) {
+      // Extract the address text to display in the neighborhood field
       const language = locale === 'sv' ? locale : 'fi';
       const paths = [
         // API doesn't return English street name so use Finnish street name in that
@@ -70,28 +58,20 @@ const Location: React.FC<Props> = ({
         ['number'],
       ];
 
-      const newAddrs = paths
+      const addressText = paths
         .map((path) => get(selectedAddress, path))
         .filter(Boolean)
         .join(' ');
 
-      if (address !== newAddrs) {
-        setFieldTouched('maintenance_location');
-        setFieldValue('maintenance_location', clickedAddress ?? newAddrs, true);
+      // Update the neighborhood display value
+      setNeighborhoodValue(clickedAddress ?? addressText);
 
-        setUpdateAddress(false);
-        setClickedAddress(null);
-      }
+      setClickedAddress(null);
     }
   }, [
     clickedAddress,
     locale,
     selectedAddress,
-    setFieldTouched,
-    setFieldValue,
-    setUpdateAddress,
-    updateAddress,
-    values,
   ]);
 
   const handleZoom = (e: AutoSuggestEvent) => {
@@ -99,7 +79,6 @@ const Location: React.FC<Props> = ({
 
     if (value.type === 'Feature' && value.geometry && value.properties) {
       // Set states to update address
-      setUpdateAddress(true);
       setClickedAddress(value.properties.name);
       // Refetch the address from own API to check validity
 
@@ -128,6 +107,12 @@ const Location: React.FC<Props> = ({
     }
   };
 
+  const handleNeighborhoodChange = () => {
+    // When user starts typing in neighborhood field, clear the controlled value
+    // so the AutoSuggest becomes uncontrolled again
+    setNeighborhoodValue('');
+  };
+
   const suggestionItem = (item: AddressFeature) => {
     const language = locale === 'sv' ? locale : 'fi';
 
@@ -153,7 +138,9 @@ const Location: React.FC<Props> = ({
             touched={Boolean(touched.area)}
             onChange={handleZoom}
             onBlur={handleBlur}
+            onInputChange={handleNeighborhoodChange}
             getSuggestionValue={suggestionItem}
+            value={neighborhoodValue}
           />
         </Col>
       </Row>
@@ -172,7 +159,6 @@ const Location: React.FC<Props> = ({
             touched={Boolean(touched.maintenance_location)}
             handleChange={(e: { target: { id: string; value: unknown } }) => {
               setClickedAddress(null);
-              setUpdateAddress(true);
               handleChange(e as AutoSuggestEvent);
             }}
             value={values.location}

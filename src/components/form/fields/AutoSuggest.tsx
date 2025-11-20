@@ -33,10 +33,12 @@ interface Props {
     _params?: BlurEvent<AddressFeature>
   ) => void;
   onChange: (_e: AutoSuggestEvent) => void;
+  onInputChange?: () => void;
   placeholder?: string;
   required?: boolean;
   text?: string;
   touched: boolean;
+  value?: string;
 }
 
 const AutoSuggestField: React.FC<Props> = ({
@@ -47,22 +49,30 @@ const AutoSuggestField: React.FC<Props> = ({
   label,
   onBlur,
   onChange,
+  onInputChange,
   placeholder,
   required,
   text,
   touched,
+  value: controlledValue,
 }) => {
   const intl = useIntl();
   const dispatch = useAppDispatch();
   const { formatMessage, locale } = intl;
 
-  const [value, setValue] = React.useState('');
+  const [internalValue, setInternalValue] = React.useState('');
+  const value = controlledValue !== undefined ? controlledValue : internalValue;
 
   const handleChange = (
     _event: React.FormEvent<HTMLElement>,
     data: ChangeEvent
   ) => {
-    setValue(data.newValue);
+    if (controlledValue === undefined) {
+      setInternalValue(data.newValue);
+    } else {
+      // When controlled, notify parent that user is typing
+      onInputChange?.();
+    }
   };
 
   const onSuggestionsFetchRequested = (
