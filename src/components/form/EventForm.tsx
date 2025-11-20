@@ -136,18 +136,6 @@ const EventForm: React.FC<EventFormProps> = ({
           <InstructionText text="form.event.new.location_instructions" />
         </Col>
       </LocationInstructions>
-      <Location
-        addressFeatures={addressCoordinates ? addressCoordinates.features : []}
-        setFieldValue={setFieldValue}
-        setFieldTouched={setFieldTouched}
-        errors={errors}
-        touched={touched}
-        values={values}
-        handleChange={handleChange}
-        handleBlur={handleBlur}
-        selectedAddress={selectedAddress}
-        selectedContractZone={selectedContractZone}
-      />
       <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
           <Input
@@ -164,6 +152,16 @@ const EventForm: React.FC<EventFormProps> = ({
           />
         </Col>
       </Row>
+      <Location
+        addressFeatures={addressCoordinates ? addressCoordinates.features : []}
+        errors={errors}
+        touched={touched}
+        values={values}
+        handleChange={handleChange}
+        handleBlur={handleBlur}
+        selectedAddress={selectedAddress}
+        selectedContractZone={selectedContractZone}
+      />
       <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }}>
           <FormattedMessage tagName="h2" id="form.event.title.time" />

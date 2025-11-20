@@ -145,7 +145,7 @@
   "form.event.field.cleaning_targets.label": "Talkoområde",
   "form.event.field.cleaning_targets.placeholder": "Talkoområde",
   "form.event.field.cleaning_targets.info": "Precisera området som talkot gäller. Till exempel: Björnparken och de intilliggande parkerna.",
-  "form.event.field.trash_location.placeholder": "Läge",
+  "form.event.field.trash_location.placeholder": "Ytterligare information om leverans av utrustning",
   "form.event.field.details.label": "Ytterligare information (valfritt fält)",
   "form.event.field.details.placeholder": "",
   "form.event.field.details.info": "Under ytterliga information kan du ange om du vill låna även andra redskap än enbart skräpplockare. Övriga arbetsredskap är kratta, spade och gatuborste samt lastväxlarflak. Observera, lastväxlarflak levereras enbart till stora talkon och beslutet för leveransen görs av områdets kontaktperson.",
