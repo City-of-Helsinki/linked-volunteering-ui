@@ -124,8 +124,6 @@ const EventPage: React.FC<EventPageProps> = ({
     handleSubmit,
     handleChange,
     handleBlur,
-    setFieldValue,
-    setFieldTouched,
   } = useFormik({
     validationSchema,
     validateOnChange: false,
@@ -215,8 +213,6 @@ const EventPage: React.FC<EventPageProps> = ({
             values={formValues}
             handleChange={handleChange}
             handleBlur={handleBlur}
-            setFieldValue={setFieldValue}
-            setFieldTouched={setFieldTouched}
           />
         </div>
         <Row></Row>
