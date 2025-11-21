@@ -60,7 +60,7 @@ const AutoSuggestField: React.FC<Props> = ({
   const dispatch = useAppDispatch();
   const { formatMessage, locale } = intl;
 
-  const value = controlledValue;
+  const value = controlledValue || '';
 
   const handleChange = (
     _event: React.FormEvent<HTMLElement>,
