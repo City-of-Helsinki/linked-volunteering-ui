@@ -33,7 +33,7 @@ interface Props {
     _params?: BlurEvent<AddressFeature>
   ) => void;
   onChange: (_e: AutoSuggestEvent) => void;
-  onInputChange?: () => void;
+  onInputChange?: (value: string) => void;
   placeholder?: string;
   required?: boolean;
   text?: string;
@@ -67,12 +67,8 @@ const AutoSuggestField: React.FC<Props> = ({
     _event: React.FormEvent<HTMLElement>,
     data: ChangeEvent
   ) => {
-    if (controlledValue === undefined) {
-      setInternalValue(data.newValue);
-    } else {
-      // When controlled, notify parent that user is typing
-      onInputChange?.();
-    }
+    // Notify parent of input changes so they can update the controlled value
+    onInputChange?.(data.newValue);
   };
 
   const onSuggestionsFetchRequested = (
