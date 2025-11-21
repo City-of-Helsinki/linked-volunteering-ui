@@ -44,7 +44,7 @@ const Location: React.FC<Props> = ({
   );
   const [bounds, setBounds] = React.useState<number[] | null>(null);
   const [center, setCenter] = React.useState<number[] | null>(null);
-  const [neighborhoodValue, setNeighborhoodValue] = React.useState<string>('');
+  const [neighborhoodValue, setNeighborhoodValue] = React.useState<string | undefined>('');
 
   const apiAccessToken = getApiToken();
 
@@ -103,10 +103,9 @@ const Location: React.FC<Props> = ({
     }
   };
 
-  const handleNeighborhoodChange = () => {
-    // When user starts typing in neighborhood field, clear the controlled value
-    // so the AutoSuggest becomes uncontrolled again
-    setNeighborhoodValue('');
+  const handleNeighborhoodChange = (value: string) => {
+    // Update the neighborhood value with what the user is typing
+    setNeighborhoodValue(value);
   };
 
   const suggestionItem = (item: AddressFeature) => {
