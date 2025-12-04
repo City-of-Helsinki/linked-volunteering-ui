@@ -3,7 +3,6 @@ import './config/theme.scss';
 
 import { createInstance, MatomoProvider } from '@datapunt/matomo-tracker-react';
 import * as Sentry from '@sentry/react';
-import { Integrations } from '@sentry/tracing';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
@@ -26,12 +25,27 @@ import App from './components/App';
 import CallbackPage from './components/pages/CallBackPage';
 import Login from './components/Login';
 
-if (import.meta.env.REACT_APP_SENTRY_ENVIRONMENT) {
+if (import.meta.env.REACT_APP_SENTRY_DSN) {
   Sentry.init({
     dsn: import.meta.env.REACT_APP_SENTRY_DSN,
     environment: import.meta.env.REACT_APP_SENTRY_ENVIRONMENT,
-    integrations: [new Integrations.BrowserTracing()],
-    release: `${import.meta.env.REACT_APP_APPLICATION_NAME}@${import.meta.env.REACT_APP_VERSION}`,
+    release: import.meta.env.REACT_APP_SENTRY_RELEASE,
+    integrations: [
+      Sentry.browserTracingIntegration(),
+      Sentry.replayIntegration(),
+    ],
+    tracesSampleRate: parseFloat(
+      import.meta.env.REACT_APP_SENTRY_TRACES_SAMPLE_RATE || '0'
+    ),
+    tracePropagationTargets: (
+      import.meta.env.REACT_APP_SENTRY_TRACE_PROPAGATION_TARGETS || ''
+    ).split(','),
+    replaysSessionSampleRate: parseFloat(
+      import.meta.env.REACT_APP_SENTRY_REPLAYS_SESSION_SAMPLE_RATE || '0'
+    ),
+    replaysOnErrorSampleRate: parseFloat(
+      import.meta.env.REACT_APP_SENTRY_REPLAYS_ON_ERROR_SAMPLE_RATE || '0'
+    ),
   });
 }
 
