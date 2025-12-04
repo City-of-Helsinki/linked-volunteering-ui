@@ -1,7 +1,7 @@
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/react';
 import { get, post, put, patch, remove } from '../api';
 
-vi.mock('@sentry/browser');
+vi.mock('@sentry/react');
 
 vi.mock('../environment', () => ({
   REACT_APP_API_URL: 'https://test-api.com',
