@@ -12,7 +12,6 @@ import {
 import {
   eventsSelector,
   getEvents,
-  nextParamsSelector,
   orderingSelector,
   publishEvent,
   setFilterByContractZone,
@@ -102,11 +101,6 @@ const FilterContainer = styled.div`
   }
 `;
 
-const ButtonControls = styled(Col)`
-  text-align: center;
-`;
-
-
 const EventName = styled.span`
   overflow-wrap: break-word;
   word-break: break-word;
@@ -141,7 +135,6 @@ const ManageEventsPage = () => {
   const dispatch = useAppDispatch();
 
   const contractZones = useAppSelector(contractZonesSelector);
-  const nextParams = useAppSelector(nextParamsSelector);
   const events = useAppSelector(eventsSelector);
   const ordering = useAppSelector(orderingSelector);
   const isOfficial = useAppSelector(isOfficialSelector);
@@ -212,27 +205,25 @@ const ManageEventsPage = () => {
     let hasMorePages = true;
 
     while (hasMorePages) {
-      try {
-        const result = await dispatch(getEvents({ params: currentParams, apiAccessToken }));
+      const result = await dispatch(
+        getEvents({ params: currentParams, apiAccessToken })
+      );
 
-        // Check if there are more pages by looking at the API response next URL
-        const nextUrl = (result.payload as { data?: { next?: string } })?.data?.next;
-        if (nextUrl) {
-          // Parse the next URL to extract pagination parameters
-          const url = new URL(nextUrl);
-          const limit = url.searchParams.get('limit');
-          const offset = url.searchParams.get('offset');
+      // Check if there are more pages by looking at the API response next URL
+      const nextUrl = (result.payload as { data?: { next?: string } })?.data
+        ?.next;
+      if (nextUrl) {
+        // Parse the next URL to extract pagination parameters
+        const url = new URL(nextUrl);
+        const limit = url.searchParams.get('limit');
+        const offset = url.searchParams.get('offset');
 
-          currentParams = {
-            limit: limit ? parseInt(limit, 10) : EVENTS_PAGE_SIZE,
-            ...(offset && { offset: parseInt(offset, 10) }),
-          };
-        } else {
-          hasMorePages = false;
-        }
-      } catch (error) {
-        console.error('Error loading events page:', error);
-        hasMorePages = false; // Stop loading on error
+        currentParams = {
+          limit: limit ? parseInt(limit, 10) : EVENTS_PAGE_SIZE,
+          ...(offset && { offset: parseInt(offset, 10) }),
+        };
+      } else {
+        hasMorePages = false;
       }
     }
   };
@@ -246,7 +237,6 @@ const ManageEventsPage = () => {
 
     dispatch(setFilterByContractZone(filterBy));
   };
-
 
   const approve = async (event: Event) => {
     await dispatch(publishEvent({ event, apiAccessToken }));
