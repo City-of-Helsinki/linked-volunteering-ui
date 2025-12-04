@@ -130,9 +130,9 @@ const MapCanvas: React.FC<MapCanvasProps> = ({
 
   const mapBounds: LatLngBoundsExpression | undefined = bounds
     ? [
-      [bounds[1], bounds[0]],
-      [bounds[3], bounds[2]],
-    ]
+        [bounds[1], bounds[0]],
+        [bounds[3], bounds[2]],
+      ]
     : undefined;
   const maxBounds: LatLngBoundsExpression = [
     [60.33, 25.33],
