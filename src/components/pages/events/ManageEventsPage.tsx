@@ -33,6 +33,7 @@ import { isPending } from '../../../utils/event';
 import useAuth from '../../../hooks/useAuth';
 import { Event } from '../../../store/types';
 import { isOfficialSelector } from '../../../store/reducers/auth';
+import { EVENTS_PAGE_SIZE } from '../../../constants';
 
 const DetailsCluster = styled.div`
   display: flex;
@@ -105,9 +106,6 @@ const ButtonControls = styled(Col)`
   text-align: center;
 `;
 
-const NextPageButton = styled(Button)`
-  margin-top: 1em;
-`;
 
 const EventName = styled.span`
   overflow-wrap: break-word;
@@ -201,11 +199,43 @@ const ManageEventsPage = () => {
       }
 
       if (isEmpty(events)) {
-        dispatch(getEvents({ params: nextParams, apiAccessToken }));
+        loadAllEvents();
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [apiAccessToken]);
+
+  const loadAllEvents = async () => {
+    if (!apiAccessToken) return;
+
+    let currentParams = { limit: EVENTS_PAGE_SIZE };
+    let hasMorePages = true;
+
+    while (hasMorePages) {
+      try {
+        const result = await dispatch(getEvents({ params: currentParams, apiAccessToken }));
+
+        // Check if there are more pages by looking at the API response next URL
+        const nextUrl = (result.payload as { data?: { next?: string } })?.data?.next;
+        if (nextUrl) {
+          // Parse the next URL to extract pagination parameters
+          const url = new URL(nextUrl);
+          const limit = url.searchParams.get('limit');
+          const offset = url.searchParams.get('offset');
+
+          currentParams = {
+            limit: limit ? parseInt(limit, 10) : EVENTS_PAGE_SIZE,
+            ...(offset && { offset: parseInt(offset, 10) }),
+          };
+        } else {
+          hasMorePages = false;
+        }
+      } catch (error) {
+        console.error('Error loading events page:', error);
+        hasMorePages = false; // Stop loading on error
+      }
+    }
+  };
 
   const toggleDetails = (id: number) => {
     setVisible(visible === id ? null : id);
@@ -217,11 +247,6 @@ const ManageEventsPage = () => {
     dispatch(setFilterByContractZone(filterBy));
   };
 
-  const handleNextEvents = () => {
-    if (apiAccessToken) {
-      dispatch(getEvents({ params: nextParams, apiAccessToken }));
-    }
-  };
 
   const approve = async (event: Event) => {
     await dispatch(publishEvent({ event, apiAccessToken }));
@@ -417,18 +442,6 @@ const ManageEventsPage = () => {
               })}
             </Table>
           </Col>
-        </Row>
-        <Row>
-          <ButtonControls>
-            {Object.keys(nextParams).length > 0 && (
-              <NextPageButton
-                data-testid="next-page"
-                translate="site.page.manage_events.next_events"
-                color="info"
-                onClick={() => handleNextEvents()}
-              />
-            )}
-          </ButtonControls>
         </Row>
       </FormContainer>
     </Layout>
