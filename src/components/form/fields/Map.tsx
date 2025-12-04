@@ -92,9 +92,11 @@ const MapCanvas: React.FC<MapCanvasProps> = ({
   }, [value, apiAccessToken]);
 
   useEffect(() => {
-    dispatch(getMapEvents({ apiAccessToken }));
+    if (apiAccessToken) {
+      dispatch(getMapEvents({ apiAccessToken }));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [apiAccessToken]);
 
   const addMarker = (e: LeafletMouseEvent) => {
     const { lat, lng } = e.latlng;
@@ -128,9 +130,9 @@ const MapCanvas: React.FC<MapCanvasProps> = ({
 
   const mapBounds: LatLngBoundsExpression | undefined = bounds
     ? [
-        [bounds[1], bounds[0]],
-        [bounds[3], bounds[2]],
-      ]
+      [bounds[1], bounds[0]],
+      [bounds[3], bounds[2]],
+    ]
     : undefined;
   const maxBounds: LatLngBoundsExpression = [
     [60.33, 25.33],
