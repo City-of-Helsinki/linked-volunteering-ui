@@ -69,18 +69,31 @@ const StyledFirstTd = styled.td<{ highlighted?: boolean }>`
 `;
 
 const StyledTableWrapper = styled.div`
-  overflow-x: scroll;
+  overflow-x: auto;
   max-width: calc(100vw - 2rem);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-gutter: stable both-edges;
 
-  ::-webkit-scrollbar {
+  /* Firefox + modern spec */
+  scrollbar-width: auto;
+  scrollbar-color: rgba(0, 0, 0, 0.7) rgba(0, 0, 0, 0.12);
+
+  /* Chromium/WebKit */
+  &::-webkit-scrollbar {
     -webkit-appearance: none;
-    width: 7px;
+    width: 10px;
+    height: 10px;
+    background: rgba(0, 0, 0, 0.06);
   }
 
-  ::-webkit-scrollbar-thumb {
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.06);
+  }
+
+  &::-webkit-scrollbar-thumb {
     border-radius: 4px;
-    background-color: rgba(0, 0, 0, 0.5);
-    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0.6);
   }
 `;
 
@@ -99,16 +112,16 @@ const StyledTable = styled.table<{ firstColumn?: boolean }>`
       z-index: 3;
     }
     ${(props) => {
-      if (props.firstColumn) {
-        return css`
+    if (props.firstColumn) {
+      return css`
           &:nth-of-type(2) {
             left: 5px;
             z-index: 3;
           }
         `;
-      }
-      return null;
-    }}
+    }
+    return null;
+  }}
   }
 
   tbody tr td {
@@ -119,17 +132,17 @@ const StyledTable = styled.table<{ firstColumn?: boolean }>`
     }
 
     ${(props) => {
-      if (props.firstColumn) {
-        return css`
+    if (props.firstColumn) {
+      return css`
           &:nth-of-type(2) {
             position: sticky;
             left: 5px;
             z-index: 1;
           }
         `;
-      }
-      return null;
-    }}
+    }
+    return null;
+  }}
   }
 `;
 
@@ -205,7 +218,7 @@ const Table: React.FC<TableProps> = ({
       <StyledTable firstColumn={firstColumn} id={id} data-testid={id}>
         <thead>
           <StyledTr>
-            {}
+            { }
             {firstColumn && <th />}
             {headers.map(({ key, translation, hasOrderBy }) => {
               const order = getOrder(key, ordering);
