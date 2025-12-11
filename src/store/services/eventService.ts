@@ -1,4 +1,5 @@
 import { Map } from 'immutable';
+import { subDays } from 'date-fns';
 import { get, post, put, patch, remove } from '../../utils/api';
 import { Event } from '../types';
 
@@ -55,8 +56,7 @@ export default {
   },
   getMapEvents: async (apiAccessToken: string | undefined) => {
     // Calculate date range: 2 weeks ago to future
-    const twoWeeksAgo = new Date();
-    twoWeeksAgo.setDate(twoWeeksAgo.getDate() - 14);
+    const twoWeeksAgo = subDays(new Date(), 14);
 
     const params = {
       state: publishedState,
