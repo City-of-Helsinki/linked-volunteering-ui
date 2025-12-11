@@ -26,7 +26,9 @@ const LegendItem = styled.div`
   font-size: 0.9rem;
 `;
 
-const ColorIndicator = styled.div<{ color: string }>`
+const ColorIndicator = styled.div.attrs(() => ({
+  'data-testid': 'legend-indicator',
+}))<{ color: string }>`
   width: 20px;
   height: 20px;
   border-radius: 50%;
