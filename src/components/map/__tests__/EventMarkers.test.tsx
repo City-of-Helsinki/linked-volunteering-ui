@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { IntlProvider } from 'react-intl';
 import L from 'leaflet';
 import EventMarkers from '../EventMarkers';
 import { Event } from '../../../store/types';
@@ -85,6 +86,13 @@ const eventWithoutLocation = createMockEvent({
 });
 
 describe('EventMarkers', () => {
+  const renderWithIntl = (ui: React.ReactNode, locale = 'fi') =>
+    render(
+      <IntlProvider locale={locale} messages={{}}>
+        {ui}
+      </IntlProvider>
+    );
+
   beforeEach(() => {
     vi.clearAllMocks();
   });
@@ -93,7 +101,7 @@ describe('EventMarkers', () => {
     it('creates gray icon for past events', () => {
       const events = [pastEvent];
 
-      render(<EventMarkers events={events} />);
+      renderWithIntl(<EventMarkers events={events} />);
 
       // Check that DivIcon was called with gray color for past events
       expect(L.DivIcon).toHaveBeenCalledWith(
@@ -110,7 +118,7 @@ describe('EventMarkers', () => {
     it('creates green icon for upcoming events', () => {
       const events = [upcomingEvent];
 
-      render(<EventMarkers events={events} />);
+      renderWithIntl(<EventMarkers events={events} />);
 
       // Check that DivIcon was called with green color for upcoming events
       expect(L.DivIcon).toHaveBeenCalledWith(
@@ -127,7 +135,7 @@ describe('EventMarkers', () => {
     it('generates valid SVG markup', () => {
       const events = [upcomingEvent];
 
-      render(<EventMarkers events={events} />);
+      renderWithIntl(<EventMarkers events={events} />);
 
       const callArgs = (L.DivIcon as unknown as ReturnType<typeof vi.fn>).mock
         .calls[0][0];
@@ -141,7 +149,7 @@ describe('EventMarkers', () => {
 
   describe('Basic Component Rendering', () => {
     it('renders without crashing with empty events array', () => {
-      const { container } = render(<EventMarkers events={[]} />);
+      const { container } = renderWithIntl(<EventMarkers events={[]} />);
 
       // Component returns null when there are no events
       expect(container.firstChild).toBeNull();
@@ -150,7 +158,7 @@ describe('EventMarkers', () => {
     it('renders without crashing with valid events', () => {
       const events = [upcomingEvent];
 
-      const { container } = render(<EventMarkers events={events} />);
+      const { container } = renderWithIntl(<EventMarkers events={events} />);
 
       expect(container.firstChild).toBeTruthy();
     });
@@ -158,7 +166,9 @@ describe('EventMarkers', () => {
     it('renders markers for events with valid coordinates', () => {
       const events = [upcomingEvent];
 
-      const { getAllByTestId } = render(<EventMarkers events={events} />);
+      const { getAllByTestId } = renderWithIntl(
+        <EventMarkers events={events} />
+      );
 
       const markers = getAllByTestId('marker');
       expect(markers).toHaveLength(1);
@@ -168,7 +178,7 @@ describe('EventMarkers', () => {
   describe('Edge Cases and Error Handling', () => {
     it('handles null events array gracefully', () => {
       // @ts-expect-error Testing invalid input
-      const { container } = render(<EventMarkers events={null} />);
+      const { container } = renderWithIntl(<EventMarkers events={null} />);
 
       // Component returns null when events is null
       expect(container.firstChild).toBeNull();
@@ -176,7 +186,7 @@ describe('EventMarkers', () => {
 
     it('handles undefined events array gracefully', () => {
       // @ts-expect-error Testing invalid input
-      const { container } = render(<EventMarkers events={undefined} />);
+      const { container } = renderWithIntl(<EventMarkers events={undefined} />);
 
       // Component returns null when events is undefined
       expect(container.firstChild).toBeNull();
@@ -185,7 +195,9 @@ describe('EventMarkers', () => {
     it('filters out events without location coordinates', () => {
       const events = [upcomingEvent, eventWithoutLocation];
 
-      const { getAllByTestId } = render(<EventMarkers events={events} />);
+      const { getAllByTestId } = renderWithIntl(
+        <EventMarkers events={events} />
+      );
 
       const markers = getAllByTestId('marker');
       expect(markers).toHaveLength(1); // Only the event with coordinates should render
@@ -196,7 +208,7 @@ describe('EventMarkers', () => {
     it('displays event name in tooltip', () => {
       const events = [upcomingEvent];
 
-      render(<EventMarkers events={events} />);
+      renderWithIntl(<EventMarkers events={events} />);
 
       expect(screen.getByText('Upcoming Event')).toBeInTheDocument();
     });
@@ -204,7 +216,7 @@ describe('EventMarkers', () => {
     it('displays formatted date in tooltip', () => {
       const events = [upcomingEvent];
 
-      render(<EventMarkers events={events} />);
+      renderWithIntl(<EventMarkers events={events} />);
 
       // Check that the date appears in the tooltip (using flexible text matching)
       expect(
@@ -217,7 +229,7 @@ describe('EventMarkers', () => {
         maintenance_location: 'Specific Park Location',
       });
 
-      render(<EventMarkers events={[eventWithLocation]} />);
+      renderWithIntl(<EventMarkers events={[eventWithLocation]} />);
 
       // Use flexible text matching to find the maintenance location
       expect(
@@ -232,7 +244,9 @@ describe('EventMarkers', () => {
         maintenance_location: '',
       });
 
-      render(<EventMarkers events={[eventWithoutMaintenanceLocation]} />);
+      renderWithIntl(
+        <EventMarkers events={[eventWithoutMaintenanceLocation]} />
+      );
 
       // Should not find the default maintenance location text
       expect(screen.queryByText('Test location')).not.toBeInTheDocument();
@@ -241,7 +255,7 @@ describe('EventMarkers', () => {
     it('renders tooltip with correct structure', () => {
       const events = [upcomingEvent];
 
-      render(<EventMarkers events={events} />);
+      renderWithIntl(<EventMarkers events={events} />);
 
       const tooltip = screen.getByTestId('tooltip');
       expect(tooltip).toBeInTheDocument();

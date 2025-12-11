@@ -1,6 +1,7 @@
 import L, { LatLngExpression } from 'leaflet';
 import React, { useMemo } from 'react';
 import { Marker, Tooltip } from 'react-leaflet';
+import { useIntl } from 'react-intl';
 import { Event } from '../../store/types';
 
 const createEventIcon = (isPast: boolean) => {
@@ -32,6 +33,8 @@ interface GroupedEvent extends Event {
 }
 
 const EventMarkers: React.FC<EventMarkersProps> = ({ events }) => {
+  const intl = useIntl();
+
   const groupedEvents = useMemo(() => {
     const locationMap = new Map<string, GroupedEvent[]>();
 
@@ -66,14 +69,12 @@ const EventMarkers: React.FC<EventMarkersProps> = ({ events }) => {
     return Array.from(locationMap.values()).flat();
   }, [events]);
 
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('fi-FI', {
+  const formatDate = (dateString: string) =>
+    intl.formatDate(new Date(dateString), {
       day: 'numeric',
       month: 'numeric',
       year: 'numeric',
     });
-  };
 
   const isPastEvent = (endTime: string) => {
     return new Date(endTime) < new Date();
