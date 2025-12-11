@@ -150,11 +150,9 @@ const ManageEventsPage = () => {
       }
 
       if (!showPastEvents) {
-        const yesterday = new Date();
-        yesterday.setDate(yesterday.getDate() - 1);
-        yesterday.setHours(0, 0, 0, 0);
+        const now = new Date();
         filteredEvents = filteredEvents.filter(
-          (event) => new Date(event.start_time) >= yesterday
+          (event) => new Date(event.end_time) >= now
         );
       }
 
