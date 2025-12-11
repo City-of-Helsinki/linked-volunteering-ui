@@ -112,16 +112,16 @@ const StyledTable = styled.table<{ firstColumn?: boolean }>`
       z-index: 3;
     }
     ${(props) => {
-    if (props.firstColumn) {
-      return css`
+      if (props.firstColumn) {
+        return css`
           &:nth-of-type(2) {
             left: 5px;
             z-index: 3;
           }
         `;
-    }
-    return null;
-  }}
+      }
+      return null;
+    }}
   }
 
   tbody tr td {
@@ -132,17 +132,17 @@ const StyledTable = styled.table<{ firstColumn?: boolean }>`
     }
 
     ${(props) => {
-    if (props.firstColumn) {
-      return css`
+      if (props.firstColumn) {
+        return css`
           &:nth-of-type(2) {
             position: sticky;
             left: 5px;
             z-index: 1;
           }
         `;
-    }
-    return null;
-  }}
+      }
+      return null;
+    }}
   }
 `;
 
@@ -218,7 +218,7 @@ const Table: React.FC<TableProps> = ({
       <StyledTable firstColumn={firstColumn} id={id} data-testid={id}>
         <thead>
           <StyledTr>
-            { }
+            {}
             {firstColumn && <th />}
             {headers.map(({ key, translation, hasOrderBy }) => {
               const order = getOrder(key, ordering);
