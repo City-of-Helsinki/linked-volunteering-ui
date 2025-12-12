@@ -1,4 +1,4 @@
-import { addDays, addHours, setHours, startOfDay } from 'date-fns';
+import { addDays, addHours, setHours, startOfDay, subDays } from 'date-fns';
 import fi from 'date-fns/locale/fi';
 import sv from 'date-fns/locale/sv';
 import { FormikErrors, FormikTouched } from 'formik';
@@ -36,8 +36,8 @@ interface Props {
     event:
       | { target: { id: string; value: unknown } }
       | React.ChangeEvent<
-          HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-        >
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >
   ) => void;
   touched: FormikTouched<Event>;
   unavailableDates?: Date[];
@@ -84,7 +84,7 @@ const DateRange: React.FC<Props> = ({
   const onBlur = (id: string) => (_: unknown) => {
     const syntheticEvent = {
       currentTarget: { id },
-      preventDefault: () => {},
+      preventDefault: () => { },
     } as React.FormEvent<HTMLElement>;
 
     handleBlur(syntheticEvent);
@@ -116,6 +116,25 @@ const DateRange: React.FC<Props> = ({
   const { formatMessage, locale } = intl;
   const selectedStartTime = ensureDate(values.start_time);
   const selectedEndTime = ensureDate(values.end_time);
+
+  // Derived bounds to enforce a symmetric 7-day window
+  // When a user picks the end date first, ensure the start date stays within
+  // both the 7-day duration window and the global minimum (today + 7)
+  const calculatedStartMin = selectedEndTime
+    ? subDays(selectedEndTime, maxDateDelta)
+    : minDate;
+  const startMinBound = new Date(
+    Math.max(calculatedStartMin.getTime(), minDate.getTime())
+  );
+  const startMaxBound = selectedEndTime ? selectedEndTime : maxDateFromToday;
+  // Likewise clamp the end date so it never exceeds either start+7 days
+  // or the global “today + 90 days” upper bound
+  const calculatedEndMax = selectedStartTime
+    ? addDays(selectedStartTime, maxDateDelta)
+    : maxDateFromToday;
+  const endMaxBound = new Date(
+    Math.min(calculatedEndMax.getTime(), maxDateFromToday.getTime())
+  );
   const dateFormat = getDateFormat(locale);
   const timeFormat = getTimeFormat(locale);
 
@@ -143,8 +162,8 @@ const DateRange: React.FC<Props> = ({
             highlightDates={[now]}
             selected={selectedStartTime}
             dateFormat={dateFormat}
-            minDate={minDate}
-            maxDate={ensureDate(values.end_time) || maxDateFromToday}
+            minDate={selectedEndTime ? startMinBound : minDate}
+            maxDate={startMaxBound}
             startDate={selectedStartTime}
             endDate={selectedEndTime}
             excludeDates={unavailableDates}
@@ -192,12 +211,8 @@ const DateRange: React.FC<Props> = ({
             onBlur={onBlur('end_time')}
             selected={selectedEndTime}
             dateFormat={dateFormat}
-            minDate={ensureDate(values.start_time) || minDate}
-            maxDate={
-              selectedStartTime
-                ? addDays(selectedStartTime, maxDateDelta)
-                : null
-            }
+            minDate={selectedStartTime || minDate}
+            maxDate={endMaxBound}
             startDate={selectedStartTime}
             endDate={selectedEndTime}
             excludeDates={unavailableDates}
