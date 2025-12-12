@@ -44,9 +44,7 @@ const Location: React.FC<Props> = ({
   );
   const [bounds, setBounds] = React.useState<number[] | null>(null);
   const [center, setCenter] = React.useState<number[] | null>(null);
-  const [neighborhoodValue, setNeighborhoodValue] = React.useState<
-    string | undefined
-  >('');
+  const [neighborhoodValue, setNeighborhoodValue] = React.useState<string>('');
 
   const apiAccessToken = getApiToken();
 

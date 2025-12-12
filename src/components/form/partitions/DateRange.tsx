@@ -36,8 +36,8 @@ interface Props {
     event:
       | { target: { id: string; value: unknown } }
       | React.ChangeEvent<
-        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-      >
+          HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+        >
   ) => void;
   touched: FormikTouched<Event>;
   unavailableDates?: Date[];
@@ -84,7 +84,7 @@ const DateRange: React.FC<Props> = ({
   const onBlur = (id: string) => (_: unknown) => {
     const syntheticEvent = {
       currentTarget: { id },
-      preventDefault: () => { },
+      preventDefault: () => {},
     } as React.FormEvent<HTMLElement>;
 
     handleBlur(syntheticEvent);
