@@ -69,8 +69,32 @@ const StyledFirstTd = styled.td<{ highlighted?: boolean }>`
 `;
 
 const StyledTableWrapper = styled.div`
-  overflow: auto;
+  overflow-x: auto;
   max-width: calc(100vw - 2rem);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-gutter: stable both-edges;
+
+  /* Firefox + modern spec */
+  scrollbar-width: auto;
+  scrollbar-color: rgba(0, 0, 0, 0.7) rgba(0, 0, 0, 0.12);
+
+  /* Chromium/WebKit */
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    background: rgba(0, 0, 0, 0.06);
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.06);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 1px rgba(255, 255, 255, 0.6);
+  }
 `;
 
 const StyledTable = styled.table<{ firstColumn?: boolean }>`

@@ -2,6 +2,7 @@ import React, { useState, useEffect, Fragment, useMemo } from 'react';
 import styled from 'styled-components';
 import { Container, Row, Col } from 'reactstrap';
 import { FormattedMessage, FormattedDate } from 'react-intl';
+import { ToggleButton } from 'hds-react';
 
 import { isEmpty } from 'lodash';
 import {
@@ -11,7 +12,6 @@ import {
 import {
   eventsSelector,
   getEvents,
-  nextParamsSelector,
   orderingSelector,
   publishEvent,
   setFilterByContractZone,
@@ -32,6 +32,7 @@ import { isPending } from '../../../utils/event';
 import useAuth from '../../../hooks/useAuth';
 import { Event } from '../../../store/types';
 import { isOfficialSelector } from '../../../store/reducers/auth';
+import { EVENTS_PAGE_SIZE } from '../../../constants';
 
 const DetailsCluster = styled.div`
   display: flex;
@@ -67,12 +68,37 @@ const FilterTitle = styled.span`
   margin-right: 1em;
 `;
 
-const ButtonControls = styled(Col)`
-  text-align: center;
+const FilterGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @media (min-width: 576px) {
+    height: 63.5px;
+  }
+
+  .mb-3 {
+    margin-bottom: 0 !important;
+  }
 `;
 
-const NextPageButton = styled(Button)`
-  margin-top: 1em;
+const FilterContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  & > * + * {
+    margin-top: 1rem;
+  }
+
+  @media (min-width: 576px) {
+    flex-direction: row;
+    align-items: flex-end;
+
+    & > * + * {
+      margin-top: 0;
+      margin-left: 2em;
+    }
+  }
 `;
 
 const EventName = styled.span`
@@ -81,11 +107,11 @@ const EventName = styled.span`
 `;
 
 const tableHeaders = [
-  { key: 'name', translation: 'manage_events.name', hasOrderBy: true },
+  { key: 'name', translation: 'manage_events.name', hasOrderBy: false },
   {
     key: 'organizer_email',
     translation: 'manage_events.organizer_email',
-    hasOrderBy: true,
+    hasOrderBy: false,
   },
   {
     key: 'start_time',
@@ -93,21 +119,22 @@ const tableHeaders = [
     hasOrderBy: true,
   },
   {
-    key: 'created_at',
-    translation: 'manage_events.created_at',
-    hasOrderBy: true,
+    key: 'contract_zone',
+    translation: 'manage_events.contract_zone',
+    hasOrderBy: false,
   },
-  { key: 'state', translation: 'manage_events.state', hasOrderBy: true },
+  { key: 'state', translation: 'manage_events.state', hasOrderBy: false },
 ];
 
 const ManageEventsPage = () => {
   const [visible, setVisible] = useState<number | null>(null);
+  const [showPastEvents, setShowPastEvents] = useState(false);
+  const [showPendingEvents, setShowPendingEvents] = useState(false);
 
   const { getApiToken } = useAuth();
   const dispatch = useAppDispatch();
 
   const contractZones = useAppSelector(contractZonesSelector);
-  const nextParams = useAppSelector(nextParamsSelector);
   const events = useAppSelector(eventsSelector);
   const ordering = useAppSelector(orderingSelector);
   const isOfficial = useAppSelector(isOfficialSelector);
@@ -115,10 +142,29 @@ const ManageEventsPage = () => {
   const apiAccessToken = getApiToken();
 
   const sortedEvents = useMemo(() => {
-    const eventArray = [...Object.values(events)];
-    if (!ordering.key) return eventArray;
+    const filterEvents = (events: Event[]): Event[] => {
+      let filteredEvents = [...events];
 
-    return eventArray.sort((a, b) => {
+      if (showPendingEvents) {
+        filteredEvents = filteredEvents.filter((event) => isPending(event));
+      }
+
+      if (!showPastEvents) {
+        const now = new Date();
+        filteredEvents = filteredEvents.filter(
+          (event) => new Date(event.end_time) >= now
+        );
+      }
+
+      return filteredEvents;
+    };
+
+    const eventArray = [...Object.values(events)];
+    const filteredEvents = filterEvents(eventArray);
+
+    if (!ordering.key) return filteredEvents;
+
+    return filteredEvents.sort((a, b) => {
       const key = ordering.key as keyof Event;
       const aValue = a[key];
       const bValue = b[key];
@@ -131,7 +177,7 @@ const ManageEventsPage = () => {
       const comparison = aValue < bValue ? -1 : 1;
       return ordering.order === 'DESC' ? -comparison : comparison;
     });
-  }, [events, ordering]);
+  }, [events, ordering, showPastEvents, showPendingEvents]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -144,11 +190,41 @@ const ManageEventsPage = () => {
       }
 
       if (isEmpty(events)) {
-        dispatch(getEvents({ params: nextParams, apiAccessToken }));
+        loadAllEvents();
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [apiAccessToken]);
+
+  const loadAllEvents = async () => {
+    if (!apiAccessToken) return;
+
+    let currentParams = { limit: EVENTS_PAGE_SIZE };
+    let hasMorePages = true;
+
+    while (hasMorePages) {
+      const result = await dispatch(
+        getEvents({ params: currentParams, apiAccessToken })
+      );
+
+      // Check if there are more pages by looking at the API response next URL
+      const nextUrl = (result.payload as { data?: { next?: string } })?.data
+        ?.next;
+      if (nextUrl) {
+        // Parse the next URL to extract pagination parameters
+        const url = new URL(nextUrl);
+        const limit = url.searchParams.get('limit');
+        const offset = url.searchParams.get('offset');
+
+        currentParams = {
+          limit: limit ? parseInt(limit, 10) : EVENTS_PAGE_SIZE,
+          ...(offset && { offset: parseInt(offset, 10) }),
+        };
+      } else {
+        hasMorePages = false;
+      }
+    }
+  };
 
   const toggleDetails = (id: number) => {
     setVisible(visible === id ? null : id);
@@ -158,12 +234,6 @@ const ManageEventsPage = () => {
     const filterBy = parseInt(e.target.value, 10);
 
     dispatch(setFilterByContractZone(filterBy));
-  };
-
-  const handleNextEvents = () => {
-    if (apiAccessToken) {
-      dispatch(getEvents({ params: nextParams, apiAccessToken }));
-    }
   };
 
   const approve = async (event: Event) => {
@@ -195,20 +265,50 @@ const ManageEventsPage = () => {
       <PageMeta title="site.page.manage_events.page_title" />
       <ControlContainer fluid>
         <TitleRow>
-          <Col sm={{ size: 11, offset: 1 }}>
+          <Col sm={{ size: 11, offset: 1 }} md={{ size: 11, offset: 2 }}>
             <FormattedMessage tagName="h1" id="site.page.manage_events.title" />
           </Col>
         </TitleRow>
         <Row>
-          <Col sm={{ size: 4, offset: 1 }}>
-            <IntlComponent
-              Component={FilterTitle}
-              id="site.page.manage_events.filter_events"
-            />
-            <ContractZones
-              onChange={handleChange}
-              contractZones={contractZones}
-            />
+          <Col sm={{ size: 10, offset: 1 }} md={{ size: 10, offset: 2 }}>
+            <FilterContainer>
+              <FilterGroup>
+                <IntlComponent
+                  Component={FilterTitle}
+                  id="site.page.manage_events.filter_events"
+                />
+                <ContractZones
+                  onChange={handleChange}
+                  contractZones={contractZones}
+                />
+              </FilterGroup>
+              <div>
+                <ToggleButton
+                  id="toggle_past_events"
+                  label={
+                    <IntlComponent
+                      Component={FilterTitle}
+                      id="site.page.manage_events.past_events"
+                    />
+                  }
+                  checked={showPastEvents}
+                  onChange={() => setShowPastEvents(!showPastEvents)}
+                />
+              </div>
+              <div>
+                <ToggleButton
+                  id="toggle_pending_events"
+                  label={
+                    <IntlComponent
+                      Component={FilterTitle}
+                      id="site.page.manage_events.pending_events"
+                    />
+                  }
+                  checked={showPendingEvents}
+                  onChange={() => setShowPendingEvents(!showPendingEvents)}
+                />
+              </div>
+            </FilterContainer>
           </Col>
         </Row>
       </ControlContainer>
@@ -226,6 +326,8 @@ const ManageEventsPage = () => {
               ordering={ordering}
             >
               {sortedEvents.map((event) => {
+                const zoneName =
+                  contractZones[event.contract_zone || 0]?.name || '';
                 const selected = visible === event.id;
                 const isEventPending = isPending(event);
                 return (
@@ -242,9 +344,7 @@ const ManageEventsPage = () => {
                       <StyledTd>
                         <FormattedDate value={event.start_time} />
                       </StyledTd>
-                      <StyledTd>
-                        <FormattedDate value={event.created_at} />
-                      </StyledTd>
+                      <StyledTd>{zoneName}</StyledTd>
                       <WithIcons
                         component={StyledTd}
                         prepend={{
@@ -330,18 +430,6 @@ const ManageEventsPage = () => {
               })}
             </Table>
           </Col>
-        </Row>
-        <Row>
-          <ButtonControls>
-            {Object.keys(nextParams).length > 0 && (
-              <NextPageButton
-                data-testid="next-page"
-                translate="site.page.manage_events.next_events"
-                color="info"
-                onClick={() => handleNextEvents()}
-              />
-            )}
-          </ButtonControls>
         </Row>
       </FormContainer>
     </Layout>

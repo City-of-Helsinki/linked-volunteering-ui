@@ -1,4 +1,5 @@
 import { Map } from 'immutable';
+import { subDays } from 'date-fns';
 import { get, post, put, patch, remove } from '../../utils/api';
 import { Event } from '../types';
 
@@ -52,5 +53,17 @@ export default {
         data.results.map((event: Event) => [event.id, event])
       ),
     };
+  },
+  getMapEvents: async (apiAccessToken: string | undefined) => {
+    // Calculate date range: 2 weeks ago to future
+    const twoWeeksAgo = subDays(new Date(), 14);
+
+    const params = {
+      state: publishedState,
+      start_time_gte: twoWeeksAgo.toISOString(),
+    };
+
+    const data = await get('event/', params, apiAccessToken);
+    return data.results || [];
   },
 };

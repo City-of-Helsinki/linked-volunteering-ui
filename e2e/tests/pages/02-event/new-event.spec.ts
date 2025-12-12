@@ -33,13 +33,26 @@ test.describe('New event', () => {
 
     await page.getByPlaceholder('Osallistujamäärä').fill('1');
 
+    await page.getByPlaceholder('Talkooalue').fill('Karhupuisto');
+
+    // Wait for the address to be populated from the map click before searching
+    // The map click triggers an API call that auto-fills the address field
+    await expect(page.getByPlaceholder('Etsi osoitteella')).not.toBeEmpty();
+
+    // Now clear and fill with the desired address
+    await page.getByPlaceholder('Etsi osoitteella').clear();
     await page.getByPlaceholder('Etsi osoitteella').fill('Työpajankatu 8');
 
-    await page.getByText('Työpajankatu 8').click();
+    // Wait for and click on the suggestion from the dropdown
+    await page
+      .locator('.react-autosuggest__suggestion')
+      .filter({ hasText: 'Työpajankatu 8' })
+      .first()
+      .click();
 
-    await page.getByPlaceholder('Sijainti').fill('Työpajankatu 8');
-
-    await page.getByPlaceholder('Talkooalue').fill('1');
+    await page
+      .getByPlaceholder('Lisätietoja tarvikkeiden toimittamiseen')
+      .fill('Työpajankatu 8');
 
     const testDate = new Date();
     const testYear = testDate.getFullYear() + 1;

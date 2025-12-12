@@ -12,6 +12,8 @@ interface EventState {
   filterByContractZone: number | null;
   ordering: Ordering;
   submittedEvent: Event | null;
+  mapEvents: Event[];
+  mapEventsLoading: boolean;
 }
 
 const initialState: EventState = {
@@ -21,6 +23,8 @@ const initialState: EventState = {
   filterByContractZone: null,
   ordering,
   submittedEvent: null,
+  mapEvents: [],
+  mapEventsLoading: false,
 };
 
 export const getEvents = createAsyncThunk(
@@ -118,6 +122,20 @@ export const removeEvent = createAsyncThunk(
   }
 );
 
+export const getMapEvents = createAsyncThunk(
+  'GET_MAP_EVENTS',
+  async (
+    { apiAccessToken }: { apiAccessToken: string | undefined },
+    { rejectWithValue }
+  ) => {
+    try {
+      return await eventService.getMapEvents(apiAccessToken);
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
 const filterEvents = (eventState: EventState) => {
   if (eventState.filterByContractZone) {
     const filtered: Record<string, Event> = {};
@@ -201,6 +219,16 @@ const eventSlice = createSlice({
       })
       .addCase(removeEvent.fulfilled, (state, action) => {
         eventSlice.caseReducers.removeEventFulfilled(state, action);
+      })
+      .addCase(getMapEvents.pending, (state) => {
+        state.mapEventsLoading = true;
+      })
+      .addCase(getMapEvents.fulfilled, (state, action) => {
+        state.mapEvents = action.payload;
+        state.mapEventsLoading = false;
+      })
+      .addCase(getMapEvents.rejected, (state) => {
+        state.mapEventsLoading = false;
       });
   },
   selectors: {
@@ -209,6 +237,8 @@ const eventSlice = createSlice({
     nextParamsSelector: (state) => state.next,
     orderingSelector: (state) => state.ordering,
     submittedEventSelector: (state) => state.submittedEvent,
+    mapEventsSelector: (state) => state.mapEvents,
+    mapEventsLoadingSelector: (state) => state.mapEventsLoading,
   },
 });
 
@@ -228,6 +258,8 @@ export const {
   nextParamsSelector,
   orderingSelector,
   submittedEventSelector,
+  mapEventsSelector,
+  mapEventsLoadingSelector,
 } = eventSlice.selectors;
 
 export default eventSlice.reducer;
