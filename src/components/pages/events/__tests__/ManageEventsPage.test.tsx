@@ -122,7 +122,9 @@ const eventsForDateSorting = {
     state: 'waiting_for_approval',
     contract_zone: 1,
     description: 'Event description',
-    end_time: '2025-01-15T10:00:00.000Z',
+    end_time: new Date(
+      new Date().setDate(new Date().getDate() + 9)
+    ).toISOString(),
     organizer_first_name: 'First',
     organizer_last_name: 'Last',
     organizer_phone: '0401234567',
