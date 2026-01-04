@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.6.2](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.6.1...linked-volunteering-ui-v0.6.2) (2026-01-04)
+
+
+### Dependencies
+
+* Bump glob from 10.4.5 to 10.5.0 ([c9593b7](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/c9593b7384b959c4633c2a81baee3dc8912dc7c9))
+* Bump js-yaml from 4.1.0 to 4.1.1 ([f7f6701](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/f7f6701cd0a610f5c4752e4feb96bd455f71d7c1))
+* Bump vite from 6.3.6 to 6.4.1 ([97061bb](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/97061bb9326c4f9424d74fce76a90e98e4a0eeab))
+* Upgrade eslint to 9.39.1 ([75f9471](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/75f94712ef4b0582ded7c8f7974d12fa77ada556))
+* Upgrade vite-plugin-svgr to 4.5.0 ([be1713c](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/be1713cebf2e5e2fc2ad90ee0d398c08cee6b89b))
+* Upgrade vitest to 4.0.15 ([a684476](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/a684476f147142f57782b5fad7725326fb9f0180))
+* Uprade commitlint to 20.2.0 ([007f3b4](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/007f3b4d651846846eae581aee178d530918d7ac))
+
 ## [0.6.1](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.6.0...linked-volunteering-ui-v0.6.1) (2025-10-08)
 
 
