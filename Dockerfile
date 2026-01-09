@@ -33,7 +33,7 @@ RUN chown -R default:root /app
 # Install npm dependencies and build the bundle
 USER default
 
-RUN yarn --ignore-scripts
+RUN yarn install --frozen-lockfile --ignore-scripts
 RUN yarn cache clean --force
 
 # ==========================================
