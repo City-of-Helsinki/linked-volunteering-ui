@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Routes } from 'react-router';
-import { useParams } from 'react-router-dom';
+import { Route, Routes, useParams } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 
 import { isEmpty } from 'lodash';

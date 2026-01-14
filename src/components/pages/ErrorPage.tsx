@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 import PageMeta from './PageMeta';
 import { useAppDispatch } from '../../store/hooks';

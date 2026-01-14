@@ -2,9 +2,19 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import * as routerMock from 'react-router';
 import { LoginProvider, LoginProviderProps } from 'hds-react';
 import CallBackPage from '../CallBackPage';
+
+// Mock navigate function
+const mockNavigate = vi.fn();
+
+vi.mock('react-router-dom', async () => {
+  const actualReactRouterDom = await vi.importActual('react-router-dom');
+  return {
+    ...actualReactRouterDom,
+    useNavigate: () => mockNavigate,
+  };
+});
 
 vi.mock('hds-react', async () => {
   // Get the original module to keep other functionalities intact
@@ -54,14 +64,16 @@ const renderComponent = () => {
 };
 
 describe('<CallbackPage />', () => {
+  beforeEach(() => {
+    mockNavigate.mockClear();
+  });
+
   afterEach(() => {
     vi.restoreAllMocks();
   });
 
   it('handles successful login', async () => {
     renderComponent();
-
-    const navigateSpy = vi.spyOn(routerMock, 'useNavigate');
 
     // Simulate the success callback
     const successButton = screen.getByText('Trigger Success');
@@ -71,14 +83,12 @@ describe('<CallbackPage />', () => {
     await user.click(successButton);
 
     await waitFor(() => {
-      expect(navigateSpy).toHaveBeenCalledTimes(1);
+      expect(mockNavigate).toHaveBeenCalledTimes(1);
     });
   });
 
   it('handles error during login', async () => {
     renderComponent();
-
-    const navigateSpy = vi.spyOn(routerMock, 'useNavigate');
 
     // Simulate the error callback
     const errorButton = screen.getByText('Trigger Error');
@@ -88,7 +98,7 @@ describe('<CallbackPage />', () => {
     await user.click(errorButton);
 
     await waitFor(() => {
-      expect(navigateSpy).toHaveBeenCalledTimes(1);
+      expect(mockNavigate).toHaveBeenCalledTimes(1);
     });
   });
 });

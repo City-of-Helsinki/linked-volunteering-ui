@@ -1,7 +1,7 @@
 import { Button } from 'hds-react';
 import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 import styled from 'styled-components';
 
