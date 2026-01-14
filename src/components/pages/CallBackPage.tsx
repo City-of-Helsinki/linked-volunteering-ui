@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { LoginCallbackHandler, OidcClientError } from 'hds-react';
 
 function CallBackPage() {

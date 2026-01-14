@@ -1,6 +1,6 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 import EventPage from '../EventPage';
 import { useAppDispatch } from '../../../../store/hooks';

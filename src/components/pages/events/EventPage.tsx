@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Container, Row, Col } from 'reactstrap';
 import { useFormik } from 'formik';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import responsive from '../../../utils/responsive';
 
 import PageMeta from '../PageMeta';
