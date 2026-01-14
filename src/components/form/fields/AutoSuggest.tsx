@@ -33,10 +33,13 @@ interface Props {
     _params?: BlurEvent<AddressFeature>
   ) => void;
   onChange: (_e: AutoSuggestEvent) => void;
+  // Required for controlled usage; keeps the input value in sync with the parent
+  onInputChange: (value: string) => void;
   placeholder?: string;
   required?: boolean;
   text?: string;
   touched: boolean;
+  value: string;
 }
 
 const AutoSuggestField: React.FC<Props> = ({
@@ -47,22 +50,25 @@ const AutoSuggestField: React.FC<Props> = ({
   label,
   onBlur,
   onChange,
+  onInputChange,
   placeholder,
   required,
   text,
   touched,
+  value: controlledValue,
 }) => {
   const intl = useIntl();
   const dispatch = useAppDispatch();
   const { formatMessage, locale } = intl;
 
-  const [value, setValue] = React.useState('');
+  const value = controlledValue ?? '';
 
   const handleChange = (
     _event: React.FormEvent<HTMLElement>,
     data: ChangeEvent
   ) => {
-    setValue(data.newValue);
+    // Notify parent of input changes so they can update the controlled value
+    onInputChange(data.newValue);
   };
 
   const onSuggestionsFetchRequested = (

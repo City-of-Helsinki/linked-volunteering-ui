@@ -61,7 +61,9 @@ const App: React.FC = () => {
         key={language}
         messages={messages[language]}
       >
-        <Error404Page />;
+        <HelmetProvider>
+          <Error404Page />;
+        </HelmetProvider>
       </IntlProvider>
     );
   }

@@ -42,16 +42,6 @@ export interface EventFormProps {
       | { target: { id: string; value: unknown } }
   ) => void;
   handleBlur: (_event: React.FormEvent<HTMLElement>) => void;
-  setFieldValue: (
-    field: string,
-    value: unknown,
-    shouldValidate?: boolean
-  ) => Promise<unknown>;
-  setFieldTouched: (
-    field: string,
-    touched?: boolean,
-    shouldValidate?: boolean
-  ) => Promise<unknown>;
 }
 
 const EventForm: React.FC<EventFormProps> = ({
@@ -61,8 +51,6 @@ const EventForm: React.FC<EventFormProps> = ({
   handleSubmit,
   handleChange,
   handleBlur,
-  setFieldValue,
-  setFieldTouched,
 }) => {
   const addressCoordinates = useAppSelector(addressCoordinatesSelector);
   const selectedAddress = useAppSelector(selectedAddressSelector);
@@ -136,18 +124,6 @@ const EventForm: React.FC<EventFormProps> = ({
           <InstructionText text="form.event.new.location_instructions" />
         </Col>
       </LocationInstructions>
-      <Location
-        addressFeatures={addressCoordinates ? addressCoordinates.features : []}
-        setFieldValue={setFieldValue}
-        setFieldTouched={setFieldTouched}
-        errors={errors}
-        touched={touched}
-        values={values}
-        handleChange={handleChange}
-        handleBlur={handleBlur}
-        selectedAddress={selectedAddress}
-        selectedContractZone={selectedContractZone}
-      />
       <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
           <Input
@@ -164,6 +140,16 @@ const EventForm: React.FC<EventFormProps> = ({
           />
         </Col>
       </Row>
+      <Location
+        addressFeatures={addressCoordinates ? addressCoordinates.features : []}
+        errors={errors}
+        touched={touched}
+        values={values}
+        handleChange={handleChange}
+        handleBlur={handleBlur}
+        selectedAddress={selectedAddress}
+        selectedContractZone={selectedContractZone}
+      />
       <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }}>
           <FormattedMessage tagName="h2" id="form.event.title.time" />

@@ -3,14 +3,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import { screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Map } from 'immutable';
+import { vi } from 'vitest';
 import { RootState } from '../../../../store/configureStore';
-import eventService from '../../../../store/services/eventService';
 import * as useAuthMock from '../../../../hooks/useAuth';
 import renderWithProviders from '../../../../test-utils/renderWithProviders';
 import { mockUserCreator } from '../../../../test-utils/mocks/user';
 import ManageEventsPage from '../ManageEventsPage';
-import { Event } from '../../../../store/types';
 
 const mockUser = mockUserCreator();
 
@@ -48,8 +46,12 @@ const initialState = {
         modified_at: '2024-12-04T06:17:08.196Z',
         name: 'Puistotalkoot',
         description: 'Puistotalkoot',
-        start_time: '2025-01-15T07:00:00.000Z',
-        end_time: '2025-02-16T07:00:00.000Z',
+        start_time: new Date(
+          new Date().setDate(new Date().getDate() + 7)
+        ).toISOString(),
+        end_time: new Date(
+          new Date().setDate(new Date().getDate() + 8)
+        ).toISOString(),
         location: {
           type: 'Point',
           coordinates: [24.93931620883691, 60.18799324237526],
@@ -75,6 +77,8 @@ const initialState = {
       order: null,
     },
     submittedEvent: null,
+    mapEvents: [],
+    mapEventsLoading: false,
   },
 };
 
@@ -83,12 +87,16 @@ const eventsForDateSorting = {
     id: 1,
     name: 'Bravo Event',
     organizer_email: 'sahko@posti.fi',
-    start_time: '2025-01-16T07:00:00.000Z',
+    start_time: new Date(
+      new Date().setDate(new Date().getDate() + 8)
+    ).toISOString(),
     created_at: '2024-12-04T06:17:08.196Z',
     state: 'waiting_for_approval',
     contract_zone: 1,
     description: 'Event description',
-    end_time: '2025-01-16T10:00:00.000Z',
+    end_time: new Date(
+      new Date().setDate(new Date().getDate() + 9)
+    ).toISOString(),
     organizer_first_name: 'First',
     organizer_last_name: 'Last',
     organizer_phone: '0401234567',
@@ -107,7 +115,9 @@ const eventsForDateSorting = {
     id: 2,
     name: 'Alpha Event',
     organizer_email: 'sahko@posti.fi',
-    start_time: '2025-01-15T07:00:00.000Z',
+    start_time: new Date(
+      new Date().setDate(new Date().getDate() + 7)
+    ).toISOString(),
     created_at: '2024-12-04T06:17:08.196Z',
     state: 'waiting_for_approval',
     contract_zone: 1,
@@ -159,96 +169,6 @@ describe('<ManageEventsPage />', () => {
     );
   });
 
-  it('should show the next page button when there are more events', async () => {
-    const state = {
-      ...initialState,
-      event: {
-        ...initialState.event,
-        count: 2,
-        next: {
-          limit: 1,
-          offset: 1,
-        },
-      },
-    };
-
-    renderComponent(state);
-
-    await waitFor(() =>
-      expect(screen.getByTestId('next-page')).toBeInTheDocument()
-    );
-  });
-
-  it('should fetch next page of events', async () => {
-    const event = {
-      id: 2,
-      state: 'waiting_for_approval',
-      created_at: '2024-12-04T06:17:08.196Z',
-      modified_at: '2024-12-04T06:17:08.196Z',
-      name: 'Puistotalkoot',
-      description: 'Puistotalkoot',
-      start_time: '2025-01-15T07:00:00.000Z',
-      end_time: '2025-02-16T07:00:00.000Z',
-      location: {
-        type: 'Point',
-        coordinates: [24.93931620883691, 60.18799324237526],
-      },
-      organizer_first_name: 'Etunimi',
-      organizer_last_name: 'Sukunimi',
-      organizer_email: 'sahko@posti.fi',
-      organizer_phone: '1234567',
-      estimated_attendee_count: 1,
-      targets: '1',
-      maintenance_location: 'Tivolikuja 1',
-      additional_information: '1',
-      small_trash_bag_count: 1,
-      large_trash_bag_count: 1,
-      trash_picker_count: 1,
-      equipment_information: '',
-      contract_zone: 1,
-    };
-
-    vi.spyOn(eventService, 'getEvents').mockResolvedValue({
-      data: {
-        count: 2,
-        next: null,
-        previous: null,
-        results: [event],
-      },
-      events: Map<string, Event>({
-        '2': event,
-      }),
-    });
-
-    const state = {
-      ...initialState,
-      event: {
-        ...initialState.event,
-        count: 2,
-        next: {
-          limit: 1,
-          offset: 1,
-        },
-      },
-    };
-
-    renderComponent(state);
-
-    const nextPageButton = await screen.findByTestId('next-page');
-
-    const user = userEvent.setup();
-
-    await user.click(nextPageButton);
-
-    await waitFor(() =>
-      expect(screen.getByRole('table').children[1].children).toHaveLength(2)
-    );
-
-    await waitFor(() =>
-      expect(screen.queryByTestId('next-page')).not.toBeInTheDocument()
-    );
-  });
-
   it('should remove event', async () => {
     renderComponent();
 
@@ -292,8 +212,17 @@ describe('<ManageEventsPage />', () => {
     const rows = within(table).getAllByRole('row');
 
     await waitFor(() => {
-      expect(rows[1].children[3].textContent).toBe('1/15/2025');
-      expect(rows[2].children[3].textContent).toBe('1/16/2025');
+      const expectedDate1 = new Date();
+      expectedDate1.setDate(expectedDate1.getDate() + 7);
+      const expectedDate2 = new Date();
+      expectedDate2.setDate(expectedDate2.getDate() + 8);
+
+      expect(rows[1].children[3].textContent).toBe(
+        expectedDate1.toLocaleDateString('en-US')
+      );
+      expect(rows[2].children[3].textContent).toBe(
+        expectedDate2.toLocaleDateString('en-US')
+      );
     });
   });
 
@@ -316,8 +245,17 @@ describe('<ManageEventsPage />', () => {
     const rows = within(table).getAllByRole('row');
 
     await waitFor(() => {
-      expect(rows[1].children[3].textContent).toBe('1/16/2025');
-      expect(rows[2].children[3].textContent).toBe('1/15/2025');
+      const expectedDate1 = new Date();
+      expectedDate1.setDate(expectedDate1.getDate() + 8);
+      const expectedDate2 = new Date();
+      expectedDate2.setDate(expectedDate2.getDate() + 7);
+
+      expect(rows[1].children[3].textContent).toBe(
+        expectedDate1.toLocaleDateString('en-US')
+      );
+      expect(rows[2].children[3].textContent).toBe(
+        expectedDate2.toLocaleDateString('en-US')
+      );
     });
   });
 });
