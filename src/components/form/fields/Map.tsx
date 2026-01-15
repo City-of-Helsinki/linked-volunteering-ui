@@ -17,6 +17,7 @@ import { getGeoData } from '../../../store/reducers/geo';
 import useAuth from '../../../hooks/useAuth';
 
 import 'leaflet/dist/leaflet.css';
+import useLocale from '../../../hooks/useLocale';
 
 L.Marker.prototype.options.icon = new L.Icon({
   iconRetinaUrl,
@@ -71,7 +72,7 @@ const MapCanvas: React.FC<MapCanvasProps> = ({
 
   const dispatch = useAppDispatch();
   const { getApiToken } = useAuth();
-
+  const locale = useLocale();
   const apiAccessToken = getApiToken();
 
   useEffect(() => {
@@ -139,6 +140,8 @@ const MapCanvas: React.FC<MapCanvasProps> = ({
     : position;
   const marker = value ? <Marker position={markerPosition} /> : null;
 
+  const mapLanguage = locale == 'sv' ? 'sv' : 'fi';
+
   return (
     <MapContainer
       className={renderMapErrors() ? 'is-invalid' : undefined}
@@ -153,7 +156,9 @@ const MapCanvas: React.FC<MapCanvasProps> = ({
         style={style}
         onClick={addMarker}
       >
-        <TileLayer url="https://tiles.hel.ninja/wmts/osm-sm/webmercator/{z}/{x}/{y}.png" />
+        <TileLayer
+          url={`https://maptiles.api.hel.fi/styles/hel-osm-bright-${mapLanguage}/{z}/{x}/{y}.png`}
+        />
         {marker}
       </Map>
       {renderMapErrors()}
