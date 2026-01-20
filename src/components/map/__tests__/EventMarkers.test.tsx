@@ -21,7 +21,10 @@ const SVG_ATTRIBUTES = {
 
 // Mock Leaflet to avoid DOM manipulation issues in tests.
 // Use a constructable function (not an arrow) so `new L.DivIcon(...)` works.
-function DivIcon(this: { options?: unknown; toString?: () => string }, options: unknown) {
+function DivIcon(
+  this: { options?: unknown; toString?: () => string },
+  options: unknown
+) {
   this.options = options;
   this.toString = () => 'MockDivIcon';
 }
