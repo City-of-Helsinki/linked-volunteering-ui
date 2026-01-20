@@ -19,18 +19,16 @@ const SVG_ATTRIBUTES = {
   xmlns: 'http://www.w3.org/2000/svg',
 } as const;
 
-// Mock Leaflet to avoid DOM manipulation issues in tests
+// Mock Leaflet to avoid DOM manipulation issues in tests.
+// Use a constructable function (not an arrow) so `new L.DivIcon(...)` works.
+function DivIcon(this: { options?: unknown; toString?: () => string }, options: unknown) {
+  this.options = options;
+  this.toString = () => 'MockDivIcon';
+}
+
 vi.mock('leaflet', () => ({
-  default: {
-    DivIcon: vi.fn().mockImplementation((options) => ({
-      options,
-      toString: () => 'MockDivIcon',
-    })),
-  },
-  DivIcon: vi.fn().mockImplementation((options) => ({
-    options,
-    toString: () => 'MockDivIcon',
-  })),
+  default: { DivIcon },
+  DivIcon,
 }));
 
 // Mock react-leaflet components
