@@ -20,19 +20,28 @@ const SVG_ATTRIBUTES = {
 } as const;
 
 // Mock Leaflet to avoid DOM manipulation issues in tests.
-// Use a constructable function (not an arrow) so `new L.DivIcon(...)` works.
-function DivIcon(
-  this: { options?: unknown; toString?: () => string },
-  options: unknown
-) {
-  this.options = options;
-  this.toString = () => 'MockDivIcon';
-}
+// Define everything inside the factory so hoisting doesn't break references.
+vi.mock('leaflet', () => {
+  function DivIconImpl(
+    this: { options?: unknown; toString?: () => string },
+    options: unknown
+  ) {
+    this.options = options;
+    this.toString = () => 'MockDivIcon';
+  }
 
-vi.mock('leaflet', () => ({
-  default: { DivIcon },
-  DivIcon,
-}));
+  const DivIcon = vi.fn(function (
+    this: { options?: unknown; toString?: () => string },
+    options: unknown
+  ) {
+    return DivIconImpl.call(this, options);
+  });
+
+  return {
+    default: { DivIcon },
+    DivIcon,
+  };
+});
 
 // Mock react-leaflet components
 vi.mock('react-leaflet', () => ({
