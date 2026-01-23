@@ -1,5 +1,45 @@
 # Changelog
 
+## [0.7.0](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.6.1...linked-volunteering-ui-v0.7.0) (2026-01-23)
+
+
+### Features
+
+* Add print button for modify event page ([#264](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/264)) ([7324827](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/73248277fb7ad48dae4a4ef857f5744c69db61da))
+* Add restraint on max length of event ([e757721](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/e757721f899308c66976a0010e90e4b5fdd5e0e8))
+* Add toggle for past events ([b679f17](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/b679f176d1bf7f6853c7fc34c0990f6b6ad5ba89))
+* Add toggle to show and hide past events ([01b8bf9](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/01b8bf9f5780d5d68317908e5c84e96c3c0ddea0))
+* Force a scrollbar to be present ([#265](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/265)) ([978e09a](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/978e09aaf56106a516f075fbea1fb68fc1218d70))
+* Migrate to maptiles and support sv map localization ([dd1a026](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/dd1a0264b50007c521672599dec86b42bf953392))
+* Pins for existing events ([#272](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/272)) ([6682b24](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/6682b24fe72337e47009529856d27f08ff0edbe7))
+* Ps 217 earliest booking date ([#260](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/260)) ([59f42b3](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/59f42b3cfca2341f167fd3d506b5c6a17d8ab5e3))
+* Ps 218 starting date max ([#268](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/268)) ([d3e7cf9](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/d3e7cf99d1026ab29d4cfcee90192aeea912eb80))
+* Ps 225 area to admin list ([#262](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/262)) ([d3db68b](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/d3db68b5c7ca15aa3174386a0ace0a1b0049e782))
+* Ps-217 earliest booking date ([#260](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/260)) ([53127e7](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/53127e7889b849a74bb7cda945acbb6e619f4539))
+* Ps-218 starting max date cap to max 6 months ([1cbbaa7](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/1cbbaa7d734d3daab6052464d73f40273dc76f05))
+* Remove reset button from EventPage ([#267](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/267)) ([cbc8197](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/cbc81971ce89033b5a044391101bd8b4436a343d))
+* **ui:** Implement auto-loading for event admin panel ([165b407](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/165b40733d182631796627db0e58fe8812ed8461))
+* **ui:** Streamline address selection ([33e99fa](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/33e99faa34dd18788060bc5db2d9144000566c3a))
+* Yarn install hardening RATY-280 ([e9cbc96](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/e9cbc96f2491230a158afd72847222ae9ad0256f))
+
+
+### Bug Fixes
+
+* Fix autosuggest component typescript compilation error ([1c95ab8](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/1c95ab8888fd8cc1a9263cb40e58ba5cf6b85cdd))
+* Modify max delta for start_date to 3 months ([5dcda9b](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/5dcda9bd50dd5e5af2c610e288003f0d731874c4))
+
+
+### Dependencies
+
+* Bump glob from 10.4.5 to 10.5.0 ([c9593b7](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/c9593b7384b959c4633c2a81baee3dc8912dc7c9))
+* Bump js-yaml from 4.1.0 to 4.1.1 ([f7f6701](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/f7f6701cd0a610f5c4752e4feb96bd455f71d7c1))
+* Bump react-router from 6.23.0 to 6.30.2 ([da7a37c](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/da7a37ccd41be7e7354f1be40b68d4b4a1e9f7d8))
+* Bump vite from 6.3.6 to 6.4.1 ([97061bb](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/97061bb9326c4f9424d74fce76a90e98e4a0eeab))
+* Upgrade eslint to 9.39.1 ([75f9471](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/75f94712ef4b0582ded7c8f7974d12fa77ada556))
+* Upgrade vite-plugin-svgr to 4.5.0 ([be1713c](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/be1713cebf2e5e2fc2ad90ee0d398c08cee6b89b))
+* Upgrade vitest to 4.0.15 ([a684476](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/a684476f147142f57782b5fad7725326fb9f0180))
+* Uprade commitlint to 20.2.0 ([007f3b4](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/007f3b4d651846846eae581aee178d530918d7ac))
+
 ## [0.6.1](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.6.0...linked-volunteering-ui-v0.6.1) (2025-10-08)
 
 
