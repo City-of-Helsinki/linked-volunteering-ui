@@ -55,7 +55,7 @@
     "ics": "^2.19.0",
     "immutable": "^4.0.0-rc.12",
     "leaflet": "^1.6.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.23",
     "oidc-client": "^1.10.1",
     "oidc-client-ts": "2.4.1",
     "open-city-design": "^1.0.0-alpha.3",
