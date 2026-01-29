@@ -12,6 +12,7 @@ export default defineConfig(({ mode }) => ({
   build: {
     outDir: './build',
     emptyOutDir: true,
+    sourcemap: true,
   },
   server: {
     host: true,
@@ -22,7 +23,10 @@ export default defineConfig(({ mode }) => ({
   },
   resolve: {
     alias: {
-      '@open-city-design': path.resolve(__dirname, 'node_modules/open-city-design'),
+      '@open-city-design': path.resolve(
+        __dirname,
+        'node_modules/open-city-design'
+      ),
     },
   },
   css: {
