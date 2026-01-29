@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.7.1](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.7.0...linked-volunteering-ui-v0.7.1) (2026-01-29)
+
+
+### Dependencies
+
+* Bump @babel/runtime from 7.24.5 to 7.28.6 ([#281](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/281)) ([23de027](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/23de0276494fc981f4813afd8a041202f6dec522))
+* Bump diff from 4.0.2 to 4.0.4 ([#283](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/283)) ([166f692](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/166f69200d8af5e964bbd9536570baea9b475e37))
+* Bump lodash from 4.17.21 to 4.17.23 ([#285](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/285)) ([015032d](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/015032d263c638ecb264fcda08a39e7e32535863))
+* Bump lodash-es from 4.17.21 to 4.17.23 ([#284](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/284)) ([31a4ff7](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/31a4ff716ae5cf8fac29d396d3b1c331c0fb8bb2))
+
 ## [0.7.0](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.6.1...linked-volunteering-ui-v0.7.0) (2026-01-23)
 
 
