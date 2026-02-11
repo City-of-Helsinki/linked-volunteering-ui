@@ -9,7 +9,6 @@
     "@datapunt/matomo-tracker-react": "^0.2.1",
     "@eslint/js": "^9.29.0",
     "@nabla/vite-plugin-eslint": "^2.0.5",
-    "@playwright/test": "^1.49.0",
     "@reduxjs/toolkit": "^2.8.2",
     "@sentry/browser": "^7.120.2",
     "@sentry/react": "^6.2.3",
@@ -89,6 +88,7 @@
   "devDependencies": {
     "@commitlint/cli": "^20.2.0",
     "@commitlint/config-conventional": "^20.2.0",
+    "@playwright/test": "^1.58.2",
     "@vitest/coverage-istanbul": "^4.0.15",
     "husky": "^4.2.3",
     "jsdom": "^26.1.0",
