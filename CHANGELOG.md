@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.7.2](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.7.1...linked-volunteering-ui-v0.7.2) (2026-02-22)
+
+
+### Dependencies
+
+* Upgrade @playwright/test to 1.58.2 Refs: RATY-299 ([dd67d43](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/dd67d437e3f0eeb442645c672ce1dd3f80943215))
+* Upgrade react-router to 6.30.3 Refs: RATY-299 ([d9428e0](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/d9428e01bff4ac720276d6f9e039d1a176c236d8))
+
 ## [0.7.1](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.7.0...linked-volunteering-ui-v0.7.1) (2026-01-29)
 
 
