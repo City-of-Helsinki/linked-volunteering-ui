@@ -145,7 +145,7 @@
   "form.event.field.amount_of_volunteers.placeholder": "Osallistujamäärä",
   "form.event.field.cleaning_targets.label": "Talkooalue",
   "form.event.field.cleaning_targets.placeholder": "Talkooalue",
-  "form.event.field.cleaning_targets.info": "Tarkenna talkoiden kohteena olevaa aluetta. Esimerkki: Karhupuisto sekä lähialueen muut puistot.",
+  "form.event.field.cleaning_targets.info": "Talkoiden kohteena oleva alue, kuten puisto tai kaupunginosa.",
   "form.event.field.trash_location.placeholder": "Lisätietoja tarvikkeiden toimittamiseen",
   "form.event.field.details.label": "Lisätiedot (vapaaehtoinen kenttä)",
   "form.event.field.details.placeholder": "",
