@@ -49,7 +49,7 @@
   "site.page.manage_events.filter_events": "Filter activities",
   "site.page.manage_events.past_events": "Show past events",
   "site.page.manage_events.pending_events": "Show pending only",
-  "site.page.manage_events.table.action.edit": "Edit",
+  "site.page.manage_events.table.action.edit": "View listing",
   "site.page.manage_events.table.action.approve": "Confirm activity",
   "site.page.manage_events.table.action.remove": "Delete activity",
   "site.page.manage_events.next_events": "Find more activities",
