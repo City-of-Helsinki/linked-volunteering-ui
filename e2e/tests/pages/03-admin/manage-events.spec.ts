@@ -69,7 +69,7 @@ test.describe('Manage events', () => {
       .filter({ hasText: 'Puistotalkoot e2e testi' })
       .filter({ hasText: 'Odottaa' });
 
-    await row.getByRole('link', { name: 'Muokkaa' }).first().click();
+    await row.getByRole('link', { name: 'Katso ilmoitus' }).first().click();
 
     await expect(page.getByText('Muokkaa tapahtumaa')).toBeVisible();
   });
