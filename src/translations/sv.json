@@ -144,7 +144,7 @@
   "form.event.field.amount_of_volunteers.placeholder": "Antalet deltagare",
   "form.event.field.cleaning_targets.label": "Talkoområde",
   "form.event.field.cleaning_targets.placeholder": "Talkoområde",
-  "form.event.field.cleaning_targets.info": "Precisera området som talkot gäller. Till exempel: Björnparken och de intilliggande parkerna.",
+  "form.event.field.cleaning_targets.info": "Området som talkot gäller, t.ex. en park eller en stadsdel.",
   "form.event.field.trash_location.placeholder": "Ytterligare information om leverans av utrustning",
   "form.event.field.details.label": "Ytterligare information (valfritt fält)",
   "form.event.field.details.placeholder": "",

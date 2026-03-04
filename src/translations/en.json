@@ -144,7 +144,7 @@
   "form.event.field.amount_of_volunteers.placeholder": "Number of volunteers",
   "form.event.field.cleaning_targets.label": "Location of activity",
   "form.event.field.cleaning_targets.placeholder": "Location of activity",
-  "form.event.field.cleaning_targets.info": "Specify the location of the activity. For example: Karhupuisto and nearby parks.",
+  "form.event.field.cleaning_targets.info": "The area covered by the activity, e.g. a park or a neighbourhood.",
   "form.event.field.trash_location.placeholder": "Additional information about delivering the equipment",
   "form.event.field.details.label": "Further information (optional field)",
   "form.event.field.details.placeholder": "",
