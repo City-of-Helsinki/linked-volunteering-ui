@@ -1,5 +1,26 @@
 # Changelog
 
+## [0.8.0](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.7.1...linked-volunteering-ui-v0.8.0) (2026-03-18)
+
+
+### Features
+
+* Readiness endpoint KEH-228 ([fd20e05](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/fd20e0537e184b53b5b7a0a972abfb5e2e798e7e))
+
+
+### Bug Fixes
+
+* Pipelines refactor ([#295](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/295)) ([c4ca737](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/c4ca737b80d536a377f2a20f0686df0181c8f3ea))
+
+
+### Dependencies
+
+* Bump flatted from 3.3.1 to 3.4.1 ([1647d52](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/1647d525de52c4842e6e66c28539d87465c0676a))
+* Bump immutable from 4.3.7 to 4.3.8 ([88d15be](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/88d15bedb905c4ddbaed65226bdb7a2db85fec11))
+* Bump rollup from 4.40.1 to 4.59.0 ([5a59bd7](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/5a59bd70335ce68aaa017c868debcb0ae64ed13a))
+* Upgrade @playwright/test to 1.58.2 Refs: RATY-299 ([dd67d43](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/dd67d437e3f0eeb442645c672ce1dd3f80943215))
+* Upgrade react-router to 6.30.3 Refs: RATY-299 ([d9428e0](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/d9428e01bff4ac720276d6f9e039d1a176c236d8))
+
 ## [0.7.1](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.7.0...linked-volunteering-ui-v0.7.1) (2026-01-29)
 
 
