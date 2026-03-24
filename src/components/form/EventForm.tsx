@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { FormikErrors, FormikTouched } from 'formik';
 import InstructionText from './fields/InstructionText';
 import Input from './fields/Input';
+import NumericInput from './fields/NumericInput';
 import DateRange from './partitions/DateRange';
 import Location from './partitions/Location';
 import { useAppSelector } from '../../store/hooks';
@@ -100,8 +101,7 @@ const EventForm: React.FC<EventFormProps> = ({
       </Row>
       <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
-          <Input
-            type="number"
+          <NumericInput
             id="estimated_attendee_count"
             label="form.event.field.amount_of_volunteers.label"
             placeholder="form.event.field.amount_of_volunteers.placeholder"
@@ -245,8 +245,7 @@ const EventForm: React.FC<EventFormProps> = ({
       </Row>
       <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
-          <Input
-            type="number"
+          <NumericInput
             id="large_trash_bag_count"
             label="form.event.field.trash_bags.label"
             placeholder="form.event.field.trash_bags.placeholder"
@@ -261,8 +260,7 @@ const EventForm: React.FC<EventFormProps> = ({
       </Row>
       <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
-          <Input
-            type="number"
+          <NumericInput
             id="small_trash_bag_count"
             label="form.event.field.small_trash_bags.label"
             placeholder="form.event.field.small_trash_bags.placeholder"
@@ -277,8 +275,7 @@ const EventForm: React.FC<EventFormProps> = ({
       </Row>
       <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
-          <Input
-            type="number"
+          <NumericInput
             id="trash_picker_count"
             label="form.event.field.trash_pickers.label"
             placeholder="form.event.field.trash_pickers.placeholder"
