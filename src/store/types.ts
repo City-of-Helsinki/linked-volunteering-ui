@@ -22,7 +22,7 @@ export interface Event {
   organizer_phone: string;
   estimated_attendee_count?: number;
   targets: string;
-  maintenance_location: string;
+  maintenance_location?: string;
   additional_information: string;
   large_trash_bag_count?: number;
   small_trash_bag_count?: number;
