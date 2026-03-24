@@ -57,7 +57,7 @@ export const validationSchema = yup.object().shape({
     .positive('form.validation.number.positive')
     .required(VALIDATION_NOT_NUMBER),
   targets: yup.string().required(),
-  maintenance_location: yup.string().required(),
+  maintenance_location: yup.string(),
   additional_information: yup.string(),
   small_trash_bag_count: yup
     .number()
