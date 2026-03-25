@@ -11,6 +11,7 @@ import { useIntl } from 'react-intl';
 
 import InstructionText from './InstructionText';
 import Label from './Label';
+import PrintValue from './PrintValue';
 import './AutoSuggest.scss';
 import { useAppDispatch } from '../../../store/hooks';
 import {
@@ -107,45 +108,47 @@ const AutoSuggestField: React.FC<Props> = ({
   };
 
   return (
-    <Autosuggest
-      suggestions={[...addressFeatures]}
-      onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-      onSuggestionsClearRequested={onSuggestionsClearRequested}
-      onSuggestionSelected={onSuggestionSelected}
-      renderSuggestion={renderSuggestion}
-      getSuggestionValue={getSuggestionValue}
-      inputProps={inputProps}
-      renderInputComponent={(inputProps) => {
-        // Create a custom props object to pass to Reactstrap's Input component
-        const customProps = {
-          ...inputProps,
-          id: id,
-          key: id,
-          type: 'text' as const,
-          invalid: !!(error && touched),
-          placeholder: placeholder
-            ? formatMessage({ id: placeholder })
-            : undefined,
-        };
+    <FormGroup className="printable">
+      {label && (
+        <Label htmlFor={id} required={required}>
+          {formatMessage({ id: label })}
+        </Label>
+      )}
+      {instructionBeforeInput && (
+        <InstructionText text={instructionBeforeInput} />
+      )}
+      <Autosuggest
+        suggestions={[...addressFeatures]}
+        onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+        onSuggestionsClearRequested={onSuggestionsClearRequested}
+        onSuggestionSelected={onSuggestionSelected}
+        renderSuggestion={renderSuggestion}
+        getSuggestionValue={getSuggestionValue}
+        inputProps={inputProps}
+        renderInputComponent={(inputProps) => {
+          const customProps = {
+            ...inputProps,
+            id: id,
+            key: id,
+            type: 'text' as const,
+            invalid: !!(error && touched),
+            placeholder: placeholder
+              ? formatMessage({ id: placeholder })
+              : undefined,
+          };
 
-        return (
-          <StyledFormGroup>
-            {label && (
-              <Label htmlFor={id} required={required}>
-                {formatMessage({ id: label })}
-              </Label>
-            )}
-            {instructionBeforeInput && (
-              <InstructionText text={instructionBeforeInput} />
-            )}
-            {/* @ts-ignore - Working around type incompatibilities between Autosuggest and Reactstrap */}
-            <Input {...customProps} />
-            <FormFeedback>{error && formatMessage({ id: error })}</FormFeedback>
-            <FormText>{text && formatMessage({ id: text })}</FormText>
-          </StyledFormGroup>
-        );
-      }}
-    />
+          return (
+            <StyledFormGroup>
+              {/* @ts-ignore - Working around type incompatibilities between Autosuggest and Reactstrap */}
+              <Input {...customProps} />
+              <FormFeedback>{error && formatMessage({ id: error })}</FormFeedback>
+              <FormText>{text && formatMessage({ id: text })}</FormText>
+            </StyledFormGroup>
+          );
+        }}
+      />
+      <PrintValue value={value} />
+    </FormGroup>
   );
 };
 
