@@ -90,7 +90,7 @@
   "map.legend.title": "Events on the map:",
   "map.legend.upcoming": "Upcoming events",
   "map.legend.past": "Past events (last 2 weeks)",
-  "form.event.new.info": "Equipment will be delivered to the agreed location before the start of volunteer activities and picked up again afterwards together with the litter that has been collected. \n\nThe system will automatically assign an address according to the location of the volunteer activities, but the equipment can also be delivered elsewhere. In addition to the address, you can provide a description of the location. For example: Castréninkatu 4, Toinen Linja playground, by the entrance to the building. If the volunteer activity takes place on a weekend, the equipment will be delivered on the preceding weekday and picked up on the following weekday.",
+  "form.event.new.info": "Equipment will be delivered to the agreed location before the start of volunteer activities and picked up again afterwards together with the litter that has been collected. \n\nYou can provide clarifications about the location. For example: Castréninkatu 4, Toinen Linja playground, by the entrance to the building. If the volunteer activity takes place on a weekend, the equipment will be delivered on the preceding weekday and picked up on the following weekday.",
   "form.event.modify.page_title": "Edit activity",
   "form.event.modify.heading": "Edit activity",
   "form.event.modify.infoText": "Nice to hear that you want to arrange a volunteer event in the park!\n Please fill in the form below. All fields are mandatory if not otherwise stated.",
