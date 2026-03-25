@@ -99,7 +99,7 @@
   "form.event.new.heading": "Notify about a new park volunteer activity",
   "form.event.new.infoText": "Nice to hear that you want to arrange a volunteer event in the park!\n Please fill in the form below. All fields are mandatory if not otherwise stated.",
   "form.event.new.button.submit": "Submit for approval",
-  "form.event.new.location_instructions": "Enter the address of the activity or mark it directly on the map.",
+  "form.event.new.location_instructions": "Write the address or mark the place on the map below.",
   "form.event.title.name_and_description": "Basic information regarding the activity",
   "form.event.title.place": "Place",
   "form.event.title.time": "Time",
