@@ -100,7 +100,7 @@
   "form.event.new.heading": "Ilmoita uusi puistotalkoo",
   "form.event.new.infoText": "Hienoa, että haluat järjestää talkoot!\n Täytä alla oleva lomake kokonaisuudessaan. Kaikki kentät ovat pakollisia, ellei toisin mainita.",
   "form.event.new.button.submit": "Lähetä hyväksyttäväksi",
-  "form.event.new.location_instructions": "Ilmoita talkoon osoite tai merkitse paikka alla olevaan karttaan.",
+  "form.event.new.location_instructions": "Kirjoita osoite tai merkitse paikka alla olevaan karttaan.",
   "form.event.title.name_and_description": "Tapahtuman perustiedot",
   "form.event.title.place": "Paikka",
   "form.event.title.time": "Aika",

@@ -99,7 +99,7 @@
   "form.event.new.heading": "Anmäl ett nytt parktalko",
   "form.event.new.infoText": "Roligt att du vill ordna ett talko!\n Fyll i blanketten nedan. Alla fält är obligatoriska ifall inget annat nämns.",
   "form.event.new.button.submit": "Skicka för godkännande",
-  "form.event.new.location_instructions": "Ange talkots adress eller markera platsen på kartan.",
+  "form.event.new.location_instructions": "Skriv adressen eller markera platsen på kartan nedan.",
   "form.event.title.name_and_description": "Information om evenemanget",
   "form.event.title.place": "Plats",
   "form.event.title.time": "Tid",
