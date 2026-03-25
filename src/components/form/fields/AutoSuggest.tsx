@@ -9,6 +9,7 @@ import { FormGroup, Input, FormFeedback, FormText } from 'reactstrap';
 import styled from 'styled-components';
 import { useIntl } from 'react-intl';
 
+import InstructionText from './InstructionText';
 import Label from './Label';
 import './AutoSuggest.scss';
 import { useAppDispatch } from '../../../store/hooks';
@@ -27,6 +28,7 @@ interface Props {
   error?: string;
   getSuggestionValue: (_item: AddressFeature) => string;
   id: string;
+  instructionBeforeInput?: string;
   label?: string;
   onBlur?: (
     _event: React.FocusEvent<HTMLElement>,
@@ -47,6 +49,7 @@ const AutoSuggestField: React.FC<Props> = ({
   error,
   getSuggestionValue,
   id,
+  instructionBeforeInput,
   label,
   onBlur,
   onChange,
@@ -131,6 +134,9 @@ const AutoSuggestField: React.FC<Props> = ({
               <Label htmlFor={id} required={required}>
                 {formatMessage({ id: label })}
               </Label>
+            )}
+            {instructionBeforeInput && (
+              <InstructionText text={instructionBeforeInput} />
             )}
             {/* @ts-ignore - Working around type incompatibilities between Autosuggest and Reactstrap */}
             <Input {...customProps} />
