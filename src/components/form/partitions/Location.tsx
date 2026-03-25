@@ -67,6 +67,12 @@ const Location: React.FC<Props> = ({
       setNeighborhoodValue(clickedAddress ?? addressText);
 
       setClickedAddress(null);
+    } else {
+      // Keep autosuggest + map in sync when Redux clears selection
+      // (e.g. new event reset).
+      setNeighborhoodValue('');
+      setCenter(null);
+      setBounds(null);
     }
   }, [clickedAddress, locale, selectedAddress]);
 
