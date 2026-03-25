@@ -4,7 +4,6 @@ import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 
 import { FormikErrors, FormikTouched } from 'formik';
-import InstructionText from './fields/InstructionText';
 import Input from './fields/Input';
 import NumericInput from './fields/NumericInput';
 import DateRange from './partitions/DateRange';
@@ -18,10 +17,6 @@ import {
   unavailableDatesSelector,
 } from '../../store/reducers/geo';
 import { AutoSuggestEvent } from '../../types';
-
-const LocationInstructions = styled(Row)`
-  margin-bottom: 1em;
-`;
 
 const StyledForm = styled.form`
   h2 {
@@ -38,8 +33,8 @@ export interface EventFormProps {
     event:
       | AutoSuggestEvent
       | React.ChangeEvent<
-          HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-        >
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >
       | { target: { id: string; value: unknown } }
   ) => void;
   handleBlur: (_event: React.FormEvent<HTMLElement>) => void;
@@ -114,16 +109,6 @@ const EventForm: React.FC<EventFormProps> = ({
           />
         </Col>
       </Row>
-      <Row>
-        <Col sm="12" md={{ size: 8, offset: 1 }}>
-          <FormattedMessage tagName="h2" id="form.event.title.place" />
-        </Col>
-      </Row>
-      <LocationInstructions>
-        <Col sm="12" md={{ size: 8, offset: 1 }}>
-          <InstructionText text="form.event.new.location_instructions" />
-        </Col>
-      </LocationInstructions>
       <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 5, offset: 1 }}>
           <Input

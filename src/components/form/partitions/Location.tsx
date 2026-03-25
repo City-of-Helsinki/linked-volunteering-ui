@@ -133,6 +133,7 @@ const Location: React.FC<Props> = ({
           <AutoSuggest
             id="neighborhood"
             label="form.event.field.neighborhood.label"
+            instructionBeforeInput="form.event.new.location_instructions"
             placeholder="form.event.field.neighborhood.placeholder"
             addressFeatures={addressFeatures}
             error={errors.area as string | undefined}
