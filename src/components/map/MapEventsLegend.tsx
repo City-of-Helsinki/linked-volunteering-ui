@@ -2,7 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
 
-const LegendContainer = styled.div`
+// hide this legend on printouts
+// print.scss hides #map but this legend sits outside it
+// without hiding it, printouts would show "events on the map"
+// even though there is no map.
+const LegendContainer = styled.div.attrs({
+  className: 'map-events-legend',
+})`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
