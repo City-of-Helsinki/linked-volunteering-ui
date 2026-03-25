@@ -14,7 +14,6 @@
   "site.nav.manage_events": "Hallitse tapahtumia",
   "site.nav.user.login": "Kirjaudu sisään",
   "site.nav.user.logout": "Kirjaudu ulos",
-
   "site.footer.front_page": "Etusivu",
   "site.footer.upcoming_events": "Tulevat tapahtumat",
   "site.footer.create_event": "Ilmoita uusi talkoo",
@@ -25,7 +24,6 @@
   "site.footer.accessibility.text": "Saavutettavuusseloste",
   "site.footer.privacyPolicy.text": "Rekisteriseloste",
   "site.footer.privacyPolicy.url": "https://www.hel.fi/static/liitteet-2019/Kaupunginkanslia/Rekisteriselosteet/Kymp/Kev%C3%A4tsiivoustalkoorekisteri.pdf",
-
   "site.table.header.manage_events.name": "Nimi",
   "site.table.header.manage_events.organizer_email": "Järjestäjä",
   "site.table.header.manage_events.created_at": "Ilmoitus jätetty",
@@ -38,12 +36,10 @@
   "site.table.header.report.phone": "Puhelin",
   "site.table.header.report.events": "Talkoita",
   "site.table.header.report.participants": "Osallistujia",
-
   "site.page.error404.page_title": "Tapahtui virhe",
   "site.page.error404.title": "Voi harava sentään!",
   "site.page.error404.text": "Valitettavasti emme löydä etsimääsi sivua. Mutta jospa vaikka järjestäisit talkoot?",
   "site.page.error404.button": "Ilmoita puistotalkoo",
-
   "site.page.manage_events.page_title": "Hallitse tapahtumia",
   "site.page.manage_events.title": "Puistotalkoot",
   "site.page.manage_events.filter_events": "Suodata tapahtumia",
@@ -54,39 +50,32 @@
   "site.page.manage_events.table.action.remove": "Poista tapahtuma",
   "site.page.manage_events.next_events": "Lataa lisää tapahtumia",
   "site.page.manage_events.print_button": "Tulosta",
-
   "site.page.landing.hero.headline": "Tule mukaan talkoisiin",
   "site.page.landing.hero.introduction": "Helsingin kaupunki on tukenut asukkaiden järjestämiä talkoita vuodesta 1984. Kaupunki tukee talkoita lainaamalla välineitä ja viemällä kerätyn jätteen pois. Talkoissa on vuosittain yli 20 000 osallistujaa. Ilmoita omat puistotalkoosi heti tänään!",
   "site.page.landing.hero.call_to_action": "Tule mukaan ja osallistu!",
   "site.page.landing.hero.button": "Ilmoita puistotalkoo",
   "site.page.landing.hero.link": "Tietoa palvelusta",
   "site.page.landing.hero.url": "https://vapaaehtoistoiminta.hel.fi/tehtavat/talkoot/",
-
   "site.page.thank_you.page_title": "Kiitos tapahtuman ilmoittamisesta",
   "site.page.thank_you.header": "Kiitos tapahtuman ilmoittamisesta!",
   "site.page.thank_you.paragraph": "Ilmoituksesi on kirjattu palveluun. Saat meiltä vahvistusviestin ja lisätietoja järjestelyistä, kun olemme tarkistaneet ilmoituksen tiedot. Yhdessä luomme viihtyisämpää kaupunkiympäristöä.",
   "site.page.thank_you.action.home_page": "Palaa etusivulle",
   "site.page.thank_you.action.add_to_calendar": "Lisää tapahtuma kalenteriin",
-
   "site.page.accessibility.page_title": "Saavutettavuusseloste",
-
   "site.page.error.page_title": "Tapahtui virhe",
   "site.page.error.heading": "Hups! Tapahtui virhe!",
   "site.page.error.default_message": "Järjestelmässä tapahtui virhe, ole hyvä ja yritä uudelleen tai palaa etusivulle",
   "site.page.error.to_home_page": "Palaa etusivulle",
-
   "site.page.access_denied.page_title": "Pääsy kielletty",
   "site.page.access_denied.heading": "Hups! Pääsy kielletty!",
   "site.page.access_denied.message": "Sinulla ei ole oikeuksia avata tätä sivua.",
   "site.page.access_denied.contact_admin": "Mikäli uskot tämän olevan virheen, ole hyvä ja ota yhteyttä sivuston ylläpitoon.",
-
   "site.report.page_title": "Vuosiraportit",
   "site.report.title": "Kevätsiivoustalkoot",
   "site.report.yearly_report": "Vuosiraportti",
   "site.report.total_events": "Talkoita yhteensä {event_amount}",
   "site.report.total_participants": "Osallistujia yhteensä {participant_amount}",
   "site.report.download": "Lataa CSV-tiedostona",
-
   "form.validation.date.endtime": "Alkamispäivän tulee olla ennen loppumispäivää",
   "form.validation.mixed.required": "Pakollinen kenttä!",
   "form.validation.mixed.not.date": "Kentän tulee olla päivämäärä!",
@@ -99,13 +88,10 @@
   "form.validation.map": "Valitse paikka kartasta",
   "form.validation.generic": "Virheellinen kenttä!",
   "form.validation.contract_zone": "Tälle alueelle ei voi ilmoittaa talkoita.",
-
   "map.legend.title": "Kartalla näkyvät tapahtumat:",
   "map.legend.upcoming": "Tulevat tapahtumat",
   "map.legend.past": "Menneet tapahtumat (2 viikon ajalta)",
-
   "form.event.new.info": "Talkootarvikkeet tuodaan ennalta sovittuun paikkaan ennen talkoita. Ne noudetaan talkoiden jälkeen samasta paikasta, kuten myös kerätty jäte. \n\nJärjestelmä antaa automaattisesti osoitteen talkookohteen mukaan, mutta tavarat voidaan tuoda myös muualle. Voit kirjoittaa osoitteen lisäksi tarkennuksia paikasta. Esimerkki: Castréninkatu 4, leikkipuisto Toinen Linja, rakennuksen sisäänkäynnin läheisyyteen. Jos talkoot ovat viikonloppuna tuodaan tarvikkeet edeltävänä arkipäivänä ja noudetaan seuraavana.",
-
   "form.event.modify.page_title": "Muokkaa tapahtumaa",
   "form.event.modify.heading": "Muokkaa tapahtumaa",
   "form.event.modify.infoText": "Hienoa, että haluat järjestää talkoot!\n Täytä alla oleva lomake kokonaisuudessaan. Kaikki kentät ovat pakollisia, ellei toisin mainita.",
@@ -145,7 +131,7 @@
   "form.event.field.amount_of_volunteers.placeholder": "Osallistujamäärä",
   "form.event.field.cleaning_targets.label": "Talkooalue",
   "form.event.field.cleaning_targets.placeholder": "Talkooalue",
-  "form.event.field.cleaning_targets.info": "Talkoiden kohteena oleva alue, kuten puisto tai kaupunginosa.",
+  "form.event.field.cleaning_targets.info": "Talkoiden kohteena oleva alue, kuten puisto (esimerkiksi Karhupuisto) tai kaupunginosa (esimerkiksi Kallio).",
   "form.event.field.trash_location.placeholder": "Lisätietoja tarvikkeiden toimittamiseen (valinnainen)",
   "form.event.field.details.label": "Lisätiedot (vapaaehtoinen kenttä)",
   "form.event.field.details.placeholder": "",
@@ -158,7 +144,6 @@
   "form.event.field.trash_pickers.label": "Roskapihtejä",
   "form.event.field.trash_pickers.placeholder": "Roskapihtien määrä",
   "form.event.field.trash_pickers.info": "Ohje: Roskapihtejä voi varata max 50 kpl / talkoot. Jos tarvitset enemmän, ole suoraan yhteydessä ilmoittautumisvahvistuksessa ilmoitettavaan talkooyhdyshenkilöön, ja sovi hänen kanssaan pihtien määrästä.",
-
   "form.event.partitions.date_range.start_date.label": "Tapahtuma alkaa",
   "form.event.partitions.date_range.start_date.placeholder": "pp.kk.vvvv",
   "form.event.partitions.date_range.start_time.label": "Alkamisaika",
@@ -169,25 +154,20 @@
   "form.event.partitions.date_range.end_time.placeholder": "tt:mm",
   "form.event.partitions.date_range.dayAriaLabelPrefix": "Valitse",
   "form.event.partitions.date_range.timeCaption": "Aika",
-
   "form.manage_events.field.activities.noneSelectedText": "Kaikki",
-
   "form.report.field.year.label": "Valitse vuosi",
   "form.report.button.submit": "Hae",
-
   "notification.form.event.created": "Kiitos ilmoituksesta!",
   "notification.form.event.modified": "Tapahtumaa muokattu onnistuneesti!",
   "notification.manage_events.approve": "{name} hyväksytty!",
   "notification.manage_events.remove": "{name} peruttu!",
   "notification.error.restricted_area": "Tapahtuma vaatii kirjautumisen!",
   "notification.generic.error": "Hups! Jotain meni pieleen...",
-
   "modal.confirm_removal.body.location.text": "Osoite puuttuu",
   "modal.confirm_removal.body.time.at": "klo",
   "modal.confirm_removal.header": "Poistetaanko tapahtuma?",
   "modal.confirm_removal.footer.button1.text": "Kyllä, poista tapahtuma",
   "modal.confirm_removal.footer.button2.text": "Ei, palaa takaisin",
-
   "entities.event.state.waiting_for_approval": "Odottaa",
   "entities.event.state.approved": "Hyväksytty"
 }
