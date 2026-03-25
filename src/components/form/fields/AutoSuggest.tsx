@@ -141,7 +141,9 @@ const AutoSuggestField: React.FC<Props> = ({
             <StyledFormGroup>
               {/* @ts-ignore - Working around type incompatibilities between Autosuggest and Reactstrap */}
               <Input {...customProps} />
-              <FormFeedback>{error && formatMessage({ id: error })}</FormFeedback>
+              <FormFeedback>
+                {error && formatMessage({ id: error })}
+              </FormFeedback>
               <FormText>{text && formatMessage({ id: text })}</FormText>
             </StyledFormGroup>
           );
