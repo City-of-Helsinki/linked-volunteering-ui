@@ -88,6 +88,11 @@ export const geoSlice = createSlice({
     clearCoordinatesByAddress: (state) => {
       state.addressCoordinates = null;
     },
+    // Full slice reset (incl. geoData / selected address)
+    // unlike clearCoordinatesByAddress which only clears
+    // the address coordinates so that the map and autosuggest
+    // are in sync when the user navigates to a new page.
+    resetGeoState: () => initialState,
   },
   extraReducers: (builder) => {
     builder.addCase(
@@ -112,7 +117,7 @@ export const geoSlice = createSlice({
   },
 });
 
-export const { clearCoordinatesByAddress } = geoSlice.actions;
+export const { clearCoordinatesByAddress, resetGeoState } = geoSlice.actions;
 export const {
   addressCoordinatesSelector,
   selectedAddressSelector,
