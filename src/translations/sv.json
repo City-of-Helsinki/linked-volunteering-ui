@@ -14,7 +14,6 @@
   "site.nav.manage_events": "Hantera evenemang",
   "site.nav.user.login": "Logga in",
   "site.nav.user.logout": "Logga ut",
-
   "site.footer.front_page": "Framsidan",
   "site.footer.upcoming_events": "Kommande evenemang",
   "site.footer.create_event": "Anmäl ett nytt talko",
@@ -25,7 +24,6 @@
   "site.footer.accessibility.text": "Tillgänglighetsutlåtande",
   "site.footer.privacyPolicy.text": "Registerbeskrivning",
   "site.footer.privacyPolicy.url": "https://www.hel.fi/static/liitteet-2019/Kaupunginkanslia/Rekisteriselosteet/Kymp/Kev%C3%A4tsiivoustalkoorekisteri.pdf",
-
   "site.table.header.manage_events.name": "Namn",
   "site.table.header.manage_events.organizer_email": "Arrangör",
   "site.table.header.manage_events.created_at": "Anmälan har lämnats",
@@ -38,12 +36,10 @@
   "site.table.header.report.phone": "Telefon",
   "site.table.header.report.events": "Talkon",
   "site.table.header.report.participants": "Deltagare",
-
   "site.page.error404.page_title": "Nu gick något fel",
   "site.page.error404.title": "Fy krattan ändå!",
   "site.page.error404.text": "Tyvärr kan vi inte hitta sidan du söker efter. Men vad sägs om att ordna ett parktalko?",
   "site.page.error404.button": "Anmäl ett parktalko",
-
   "site.page.manage_events.page_title": "Hantera evenemang",
   "site.page.manage_events.title": "Parktalko",
   "site.page.manage_events.filter_events": "Filtrera evenemang",
@@ -54,39 +50,32 @@
   "site.page.manage_events.table.action.remove": "Radera evenemanget",
   "site.page.manage_events.next_events": "Ladda upp flera evenemang",
   "site.page.manage_events.print_button": "Skriv ut",
-
   "site.page.landing.hero.headline": "Kom med i talkot",
   "site.page.landing.hero.introduction": "Helsingfors stad har sedan 1984 understött talkon som stadsborna har ordnat. Staden bidrar genom att låna ut redskap och föra bort insamlat skräp. Dessa talkon lockar varje år över 20 000 deltagare. Anmäl ditt parktalko redan idag!",
   "site.page.landing.hero.call_to_action": "Kom med och delta!",
   "site.page.landing.hero.button": "Anmäl ett parktalko",
   "site.page.landing.hero.link": "Information om tjänsten",
   "site.page.landing.hero.url": "https://vapaaehtoistoiminta.hel.fi/sv/tasks/talko/",
-
   "site.page.thank_you.page_title": "Tack för din anmälan om evenemanget",
   "site.page.thank_you.header": "Tack för din anmälan om evenemanget!",
   "site.page.thank_you.paragraph": "Din anmälan har registrerats i tjänsten. Vi skickar ett bekräftelsemeddelande och närmare information om arrangemangen när vi har kontrollerat uppgifterna i anmälan. Tillsammans skapar vi en trivsammare stadsmiljö.",
   "site.page.thank_you.action.home_page": "Gå tillbaka till framsidan",
   "site.page.thank_you.action.add_to_calendar": "För in evenemanget i kalendern",
-
   "site.page.accessibility.page_title": "Tillgänglighetsutlåtande",
-
   "site.page.error.page_title": "Nu gick något fel",
   "site.page.error.heading": "Hoppsan! Nu gick något fel!",
   "site.page.error.default_message": "Ett fel inträffade i systemet, vänligen försök på nytt eller gå tillbaka till framsidan",
   "site.page.error.to_home_page": "Gå tillbaka till framsidan",
-
   "site.page.access_denied.page_title": "Tillträde förbjudet",
   "site.page.access_denied.heading": "Hoppsan! Tillträde förbjudet!",
   "site.page.access_denied.message": "Du har inte behörighet att öppna denna sida.",
   "site.page.access_denied.contact_admin": "Om du tror att detta är ett fel, ber vi dig vänligen kontakta webbplatsens administratör.",
-
   "site.report.page_title": "Årsrapporter",
   "site.report.title": "Vårstädtalko",
   "site.report.yearly_report": "Årsrapport",
   "site.report.total_events": "Talkon totalt {event_amount}",
   "site.report.total_participants": "Deltagare totalt {participant_amount}",
   "site.report.download": "Ladda upp som CSV-fil",
-
   "form.validation.date.endtime": "Starttid måste vara före sluttid",
   "form.validation.mixed.required": "Obligatoriskt fält!",
   "form.validation.mixed.not.date": "Fältet ska innehålla ett datum!",
@@ -98,13 +87,10 @@
   "form.validation.map": "Välj en plats på kartan",
   "form.validation.generic": "Ogiltigt fält!",
   "form.validation.contract_zone": "Det går inte att anmäla ett talko för detta område.",
-
   "map.legend.title": "Evenemang på kartan:",
   "map.legend.upcoming": "Kommande evenemang",
   "map.legend.past": "Tidigare evenemang (2 veckor)",
-
   "form.event.new.info": "Staden för talkoredskapen till den överenskomna platsen före talkot. Efter talkot hämtas de från samma plats, liksom det insamlade skräpet. \n\nSystemet ger dig automatiskt en adress enligt området som talkot gäller, men redskapen kan också föras någon annanstans. Utöver adressen kan du precisera platsen. Till exempel: Castrénsgatan 4, lekparken, Andra linjen, intill byggnadens entré. Ordnas talkot på ett veckoslut, förs redskapen vardagen innan och hämtas vardagen efter talkot.",
-
   "form.event.modify.page_title": "Redigera evenemanget",
   "form.event.modify.heading": "Redigera evenemanget",
   "form.event.modify.infoText": "Roligt att du vill ordna ett talko!\n Fyll i blanketten nedan. Alla fält är obligatoriska ifall inget annat nämns.",
@@ -144,7 +130,7 @@
   "form.event.field.amount_of_volunteers.placeholder": "Antalet deltagare",
   "form.event.field.cleaning_targets.label": "Talkoområde",
   "form.event.field.cleaning_targets.placeholder": "Talkoområde",
-  "form.event.field.cleaning_targets.info": "Området som talkot gäller, t.ex. en park eller en stadsdel.",
+  "form.event.field.cleaning_targets.info": "Området som talkot gäller, såsom en park (t.ex. Karhupuisto) eller en stadsdel (t.ex. Kallio).",
   "form.event.field.trash_location.placeholder": "Ytterligare information om leverans av utrustning (valfritt)",
   "form.event.field.details.label": "Ytterligare information (valfritt fält)",
   "form.event.field.details.placeholder": "",
@@ -157,7 +143,6 @@
   "form.event.field.trash_pickers.label": "Skräpplockare",
   "form.event.field.trash_pickers.placeholder": "Antal skräpplockare",
   "form.event.field.trash_pickers.info": "Anvisning: Man kan reservera högst 50 skräpplockare/talko. Om du behöver fler kontaktar du den kontaktperson som anges i anmälningsbekräftelsen och kommer överens om antalet.",
-
   "form.event.partitions.date_range.start_date.label": "Evenemanget börjar",
   "form.event.partitions.date_range.start_date.placeholder": "dd.mm.åååå",
   "form.event.partitions.date_range.start_time.label": "Starttid",
@@ -168,25 +153,20 @@
   "form.event.partitions.date_range.end_time.placeholder": "tt:mm",
   "form.event.partitions.date_range.dayAriaLabelPrefix": "Välj",
   "form.event.partitions.date_range.timeCaption": "Klockslag",
-
   "form.manage_events.field.activities.noneSelectedText": "Allt",
-
   "form.report.field.year.label": "Välj år",
   "form.report.button.submit": "Sök",
-
   "notification.form.event.created": "Tack för anmälan!",
   "notification.form.event.modified": "Evenemanget har redigerats!",
   "notification.manage_events.approve": "{name} godkänt!",
   "notification.manage_events.remove": "{name} återkallat!",
   "notification.error.restricted_area": "Evenemanget kräver inloggning!",
   "notification.generic.error": "Hoppsan! Något gick fel...",
-
   "modal.confirm_removal.body.location.text": "Adress saknas",
   "modal.confirm_removal.body.time.at": " ",
   "modal.confirm_removal.header": "Ska evenemanget raderas?",
   "modal.confirm_removal.footer.button1.text": "Ja, radera evenemanget",
   "modal.confirm_removal.footer.button2.text": "Nej, återvänd",
-
   "entities.event.state.waiting_for_approval": "Väntar",
   "entities.event.state.approved": "Godkänt"
 }
