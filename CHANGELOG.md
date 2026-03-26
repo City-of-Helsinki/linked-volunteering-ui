@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.8.1](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.8.0...linked-volunteering-ui-v0.8.1) (2026-03-26)
+
+
+### Dependencies
+
+* Bump eslint and plugins Refs: RATY-299 ([e2c795b](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/e2c795b7e67c5146c3d21f42e97d91f5b87eacb8))
+* Bump flatted from 3.4.1 to 3.4.2 ([2f1d270](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/2f1d27033ddda3fb222abe52234524b7405e5711))
+
 ## [0.8.0](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.7.1...linked-volunteering-ui-v0.8.0) (2026-03-18)
 
 
