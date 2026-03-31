@@ -33,8 +33,8 @@ export interface EventFormProps {
     event:
       | AutoSuggestEvent
       | React.ChangeEvent<
-        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-      >
+          HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+        >
       | { target: { id: string; value: unknown } }
   ) => void;
   handleBlur: (_event: React.FormEvent<HTMLElement>) => void;
