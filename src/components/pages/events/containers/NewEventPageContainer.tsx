@@ -14,7 +14,7 @@ const NewEventPageContainer = () => {
 
   // Fresh location state for each new event because
   // geo persists across routes otherwise
-  // User createing a new form would see the previous event's location.
+  // User creating a new form would see the previous event's location.
   useEffect(() => {
     dispatch(resetGeoState());
   }, [dispatch]);
