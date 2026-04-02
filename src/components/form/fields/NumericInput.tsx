@@ -27,8 +27,11 @@ type Props = Omit<InputFieldProps, 'type'>;
  * wheel behavior is suppressed for this field.
  */
 const NumericInput: React.FC<Props> = (props) => {
-  const { onWheel: onWheelFromParent, innerRef: innerRefFromParent, ...rest } =
-    props;
+  const {
+    onWheel: onWheelFromParent,
+    innerRef: innerRefFromParent,
+    ...rest
+  } = props;
   const inputRef = React.useRef<HTMLInputElement | null>(null);
 
   const setInputRef = (input: HTMLInputElement | null) => {
@@ -42,8 +45,9 @@ const NumericInput: React.FC<Props> = (props) => {
     }
 
     if (innerRefFromParent && 'current' in innerRefFromParent) {
-      (innerRefFromParent as React.MutableRefObject<HTMLInputElement | null>).current =
-        input;
+      (
+        innerRefFromParent as React.MutableRefObject<HTMLInputElement | null>
+      ).current = input;
     }
   };
 
