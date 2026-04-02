@@ -20,7 +20,6 @@ export default defineConfig([
     files: ['**/*.{ts,tsx,js,jsx}'],
     ignores: [
       '**/node_modules/**',
-      '**/src/serviceWorker.js',
       '**/build/**',
       '**/coverage/**',
       '**/dist/**',

@@ -43,7 +43,7 @@ export default defineConfig(({ mode }) => ({
     coverage: {
       reporter: ['clover', 'json', 'lcov', 'text'],
       include: ['src/**/*.{ts,tsx,js,jsx}'],
-      exclude: [...coverageConfigDefaults.exclude, '.src/serviceWorker.js'],
+      exclude: [...coverageConfigDefaults.exclude],
       provider: 'istanbul',
     },
     testTimeout: 1000000,
