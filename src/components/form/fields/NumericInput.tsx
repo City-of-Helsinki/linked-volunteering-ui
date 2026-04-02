@@ -20,24 +20,67 @@ type Props = Omit<InputFieldProps, 'type'>;
  * The solution is to block the default wheel behavior on the input
  * so that the values don't change accidentally when scrolling the page.
  *
- * ## Why `preventDefault` on `wheel`
- * We stop the default wheel behavior on the input so the page scroll (or no-op)
- * wins. Arrow keys and the spinner UI still work as usual.
+ * ## How wheel blocking works
+ * We prevent number inputs from changing while scrolling by attaching a native
+ * `wheel` listener directly on the input with `{ passive: false }`. This keeps
+ * the parent `onWheel` callback semantics unchanged while ensuring browser-level
+ * wheel behavior is suppressed for this field.
  */
 const NumericInput: React.FC<Props> = (props) => {
-  const { onWheel: onWheelFromParent, ...rest } = props;
+  const { onWheel: onWheelFromParent, innerRef: innerRefFromParent, ...rest } =
+    props;
+  const inputRef = React.useRef<HTMLInputElement | null>(null);
 
-  const handleWheel = (e: React.WheelEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    onWheelFromParent?.(e);
+  const setInputRef = (input: HTMLInputElement | null) => {
+    // Keep a local handle for the native wheel listener and still forward the
+    // ref to any external consumer, preserving the component's existing API
+    inputRef.current = input;
+
+    if (typeof innerRefFromParent === 'function') {
+      innerRefFromParent(input);
+      return;
+    }
+
+    if (innerRefFromParent && 'current' in innerRefFromParent) {
+      (innerRefFromParent as React.MutableRefObject<HTMLInputElement | null>).current =
+        input;
+    }
   };
+
+  React.useEffect(() => {
+    const input = inputRef.current;
+    // Defensively bail out if the underlying input has not been resolved yet
+    if (!input) {
+      return;
+    }
+
+    const onNativeWheel = (event: WheelEvent) => {
+      // Some wheel events are not cancelable (for example, synthetic or non-gesture
+      // sources), so call preventDefault only when it can actually be canceled
+      if (event.cancelable) {
+        event.preventDefault();
+      }
+    };
+
+    // Core fix: attach the wheel handler directly with `passive: false` so
+    // scrolling over a focused number input cannot change its value.
+    input.addEventListener('wheel', onNativeWheel, { passive: false });
+
+    return () => {
+      input.removeEventListener('wheel', onNativeWheel);
+    };
+  }, []);
 
   // reactstrap `InputProps` has `[key: string]: any`, so `Omit<…>` and object rest
   // after destructuring do not preserve known keys for TypeScript. Runtime shape is correct.
   const fieldProps = {
     ...rest,
     type: 'number' as const,
-    onWheel: handleWheel,
+    innerRef: setInputRef,
+    // Keep parent onWheel behavior as-is
+    // Native wheel suppression happens in the listener
+    // above to avoid React synthetic-passive edge cases
+    onWheel: onWheelFromParent,
   } as InputFieldProps;
 
   return <InputField {...fieldProps} />;
