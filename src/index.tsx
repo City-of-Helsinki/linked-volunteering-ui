@@ -70,5 +70,3 @@ if (rootElement) {
 
   root.render(<Root />);
 }
-
-
