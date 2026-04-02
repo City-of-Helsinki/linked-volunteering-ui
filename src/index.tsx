@@ -18,7 +18,6 @@ import { ThemeProvider } from 'styled-components';
 import { LoginProvider } from 'hds-react';
 import theme from './config/theme';
 
-import * as serviceWorker from './serviceWorker';
 import { createStore } from './store/configureStore';
 import providerProperties from './utils/userManager';
 
@@ -72,7 +71,4 @@ if (rootElement) {
   root.render(<Root />);
 }
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+
