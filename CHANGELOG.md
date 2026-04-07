@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.8.2](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.8.1...linked-volunteering-ui-v0.8.2) (2026-04-07)
+
+
+### Bug Fixes
+
+* **events-form:** Reset geo state when opening new event form ([6e2f06e](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/6e2f06ec20afe3a45295a45d0a65e3ae22020667))
+* **events:** Make maintenance location optional ([496d1fb](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/496d1fb701573df58676fe824fb98b994fcef025))
+* **form:** Block native wheel value changes on numericinput ([ee4c945](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/ee4c945f55ab1e0139de3ed4756a077dc01c06be))
+* **forms:** Block wheel from changing NumericInput values ([f8316ea](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/f8316ea834c96fc76a2629a21b901a4e157c5243))
+* **i18n:** Update talkooalue info text based on user feedback ([e976ad4](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/e976ad4a181db4ec046fcae1e8464d35e353d5f5))
+* **print:** Show delivery address on printed event form ([2a82322](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/2a82322ed90e232438fa333888c5c0ca42ab631b))
+* Rename edit action to katso ilmoitus on manage events page ([f82871e](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/f82871eb482ec2ec0df75b887da38e72d559152b))
+* **ui:** Keep map centered after autosuggest selection ([e354fb7](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/e354fb75aa96fca670db56036c41726a9fd28c25))
+* **ui:** Move location hint under Sijainti address label ([f6a45f9](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/f6a45f974b8ae1ae171dfaf718d8d16037d75b62))
+
 ## [0.8.1](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.8.0...linked-volunteering-ui-v0.8.1) (2026-03-26)
 
 
