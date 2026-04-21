@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.9.0](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.8.2...linked-volunteering-ui-v0.9.0) (2026-04-21)
+
+
+### Features
+
+* Cloud sentry settings ([cdd7895](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/cdd78952bcdafd17c0002171977891efafadbac7))
+
+
+### Bug Fixes
+
+* Dependency updates ([e4276ee](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/e4276ee77795079abfa4c536fffe3fc7525e21a4))
+* Linter issue ([f12c159](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/f12c159f9fca1af0b034cbae9ca14c668b67ed94))
+* Remove serviceworker ([ee06e0e](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/ee06e0eb979f3bfd244ea5c74cd9227d1915fd6b))
+* Same-major updates and resolutions ([4eb3086](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/4eb3086943ed414355a05a24c668108f190c8fc8))
+* Update to vite 8 ([ca1ca5f](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/ca1ca5fccd16257a6381182acb0ef0cf6493c40c))
+* Update vite to 8.0.5 ([2491e27](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/2491e2726b1ee9b3154250503def84f12478119d))
+
+
+### Dependencies
+
+* Bump lodash from 4.17.23 to 4.18.1 ([05897d9](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/05897d94c0c565bb2872ee336b22cf89fe7cf51e))
+* Bump lodash-es from 4.17.23 to 4.18.1 ([b4cde9b](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/b4cde9b4fb96b5e59e3a2e44a5a5fad7e2b86442))
+
 ## [0.8.2](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.8.1...linked-volunteering-ui-v0.8.2) (2026-04-07)
 
 
