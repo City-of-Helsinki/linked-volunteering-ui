@@ -130,7 +130,7 @@
   "form.event.field.amount_of_volunteers.placeholder": "Antalet deltagare",
   "form.event.field.cleaning_targets.label": "Talkoområde",
   "form.event.field.cleaning_targets.placeholder": "Talkoområde",
-  "form.event.field.cleaning_targets.info": "Området som talkot gäller, såsom en park (t.ex. Karhupuisto) eller en stadsdel (t.ex. Kallio).",
+  "form.event.field.cleaning_targets.info": "Området som talkot gäller, såsom en park (t.ex. Björnparken) eller en stadsdel (t.ex. Berghäll).",
   "form.event.field.trash_location.placeholder": "Ytterligare information om leverans av utrustning (valfritt)",
   "form.event.field.details.label": "Ytterligare information (valfritt fält)",
   "form.event.field.details.placeholder": "",
