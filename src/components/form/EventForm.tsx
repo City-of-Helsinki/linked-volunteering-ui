@@ -54,7 +54,7 @@ const EventForm: React.FC<EventFormProps> = ({
   const unavailableDates = useAppSelector(unavailableDatesSelector);
 
   return (
-    <StyledForm onSubmit={handleSubmit}>
+    <StyledForm className="event-form" onSubmit={handleSubmit}>
       <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }}>
           <FormattedMessage
@@ -138,7 +138,9 @@ const EventForm: React.FC<EventFormProps> = ({
       <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }}>
           <FormattedMessage tagName="h2" id="form.event.title.time" />
-          <FormattedMessage tagName="p" id="form.event.subtitle.time" />
+          <div className="event-form-print-skip">
+            <FormattedMessage tagName="p" id="form.event.subtitle.time" />
+          </div>
         </Col>
       </Row>
       <DateRange
@@ -154,10 +156,12 @@ const EventForm: React.FC<EventFormProps> = ({
       <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }}>
           <FormattedMessage tagName="h2" id="form.event.title.contact_person" />
-          <FormattedMessage
-            tagName="p"
-            id="form.event.subtitle.contact_person"
-          />
+          <div className="event-form-print-skip">
+            <FormattedMessage
+              tagName="p"
+              id="form.event.subtitle.contact_person"
+            />
+          </div>
         </Col>
       </Row>
       <Row>
@@ -222,10 +226,12 @@ const EventForm: React.FC<EventFormProps> = ({
             tagName="h2"
             id="form.event.title.tools_and_suplies"
           />
-          <FormattedMessage
-            tagName="p"
-            id="form.event.subtitle.tools_and_suplies"
-          />
+          <div className="event-form-print-skip">
+            <FormattedMessage
+              tagName="p"
+              id="form.event.subtitle.tools_and_suplies"
+            />
+          </div>
         </Col>
       </Row>
       <Row>
