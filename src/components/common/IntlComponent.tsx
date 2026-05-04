@@ -1,7 +1,7 @@
 import React from 'react';
-import { WrappedComponentProps, injectIntl } from 'react-intl';
+import { useIntl } from 'react-intl';
 
-interface IntlComponentProps extends WrappedComponentProps {
+interface IntlComponentProps {
   Component: React.ElementType;
   id: string;
   values?: Record<string, React.ReactNode>;
@@ -17,10 +17,11 @@ const IntlComponent: React.FC<IntlComponentProps> = ({
   Component,
   id,
   values,
-  intl,
   ...rest
 }) => {
+  const intl = useIntl();
+
   return <Component {...rest}>{intl.formatMessage({ id }, values)}</Component>;
 };
 
-export default injectIntl(IntlComponent);
+export default IntlComponent;
