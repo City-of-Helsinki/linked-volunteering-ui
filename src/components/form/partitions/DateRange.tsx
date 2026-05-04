@@ -31,7 +31,7 @@ interface EventWithDateObjects extends Omit<Event, 'start_time' | 'end_time'> {
 
 interface Props {
   errors: FormikErrors<Event>;
-  handleBlur: (_event: React.FormEvent<HTMLElement>) => void;
+  handleBlur: (_event: React.SubmitEvent<HTMLElement>) => void;
   handleChange: (
     event:
       | { target: { id: string; value: unknown } }
@@ -85,7 +85,7 @@ const DateRange: React.FC<Props> = ({
     const syntheticEvent = {
       currentTarget: { id },
       preventDefault: () => {},
-    } as React.FormEvent<HTMLElement>;
+    } as React.SubmitEvent<HTMLElement>;
 
     handleBlur(syntheticEvent);
   };

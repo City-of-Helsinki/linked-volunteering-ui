@@ -68,7 +68,7 @@ const AutoSuggestField: React.FC<Props> = ({
   const value = controlledValue ?? '';
 
   const handleChange = (
-    _event: React.FormEvent<HTMLElement>,
+    _event: React.SubmitEvent<HTMLElement>,
     data: ChangeEvent
   ) => {
     // Notify parent of input changes so they can update the controlled value
@@ -86,7 +86,7 @@ const AutoSuggestField: React.FC<Props> = ({
   };
 
   const onSuggestionSelected = (
-    _event: React.FormEvent<HTMLElement>,
+    _event: React.SubmitEvent<HTMLElement>,
     data: SuggestionSelectedEventData<AddressFeature>
   ) => {
     onChange({
