@@ -238,7 +238,7 @@ const EventPage: React.FC<EventPageProps> = ({
                   ? undefined
                   : (e) =>
                       handleSubmit(
-                        e as unknown as React.FormEvent<HTMLFormElement>
+                        e as unknown as React.SubmitEvent<HTMLFormElement>
                       )
               }
             />
