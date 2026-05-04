@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { injectIntl, FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import LocalizedLink from '../common/LocalizedLink';
 import responsive from '../../utils/responsive';
 
@@ -149,4 +149,4 @@ const Footer: React.FC = () => {
   );
 };
 
-export default injectIntl(Footer);
+export default Footer;
