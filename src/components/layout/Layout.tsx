@@ -78,14 +78,13 @@ const NavbarContainer = styled(Container)`
 `;
 
 interface PageWrapperProps {
-  paddingBottom: boolean;
-  paddingTop: boolean;
+  $paddingBottom: boolean;
+  $paddingTop: boolean;
 }
 
-const PageWrapper = styled.div`
-  padding-top: ${(props: PageWrapperProps) => (props.paddingTop ? '3em' : 0)};
-  padding-bottom: ${(props: PageWrapperProps) =>
-    props.paddingBottom ? '3em' : 0};
+const PageWrapper = styled.div<PageWrapperProps>`
+  padding-top: ${(props) => (props.$paddingTop ? '3em' : 0)};
+  padding-bottom: ${(props) => (props.$paddingBottom ? '3em' : 0)};
 `;
 
 const Options = styled.div`
@@ -237,7 +236,7 @@ const Layout: React.FC<Props> = ({
       </TopNavbar>
 
       <Content>
-        <PageWrapper paddingTop={paddingTop} paddingBottom={paddingBottom}>
+        <PageWrapper $paddingTop={paddingTop} $paddingBottom={paddingBottom}>
           {children}
         </PageWrapper>
       </Content>
