@@ -6,9 +6,9 @@ import { FormattedMessage } from 'react-intl';
 // print.scss hides #map but this legend sits outside it
 // without hiding it, printouts would show "events on the map"
 // even though there is no map.
-const LegendContainer = styled.div.attrs({
+const LegendContainer = styled.div.attrs(() => ({
   className: 'map-events-legend',
-})`
+}))`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -32,9 +32,9 @@ const LegendItem = styled.div`
   font-size: 0.9rem;
 `;
 
-const ColorIndicator = styled.div.attrs(() => ({
-  'data-testid': 'legend-indicator',
-}))<{ color: string }>`
+const ColorIndicator = styled.div.attrs(
+  () => ({ 'data-testid': 'legend-indicator' }) as React.HTMLAttributes<HTMLDivElement>
+)<{ color: string }>`
   width: 20px;
   height: 20px;
   border-radius: 50%;

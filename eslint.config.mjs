@@ -122,6 +122,7 @@ export default defineConfig([
       'import-x/named': 0,
       'import-x/namespace': 0,
       'import-x/no-unresolved': [ 'error', { ignore: [ 'uuid' ] } ],
+      'import-x/no-named-as-default': 0,
       'default-param-last': 0,
       'no-console': 'warn',
       'no-param-reassign': [

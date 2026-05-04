@@ -91,14 +91,14 @@ type StyledSvgProps = {
   size?: string;
 };
 
-export const StyledSvg = styled(ReactSVG)`
+export const StyledSvg = styled(ReactSVG)<StyledSvgProps>`
   line-height: 1;
 
   svg {
-    fill: ${(props: StyledSvgProps) => props.fill || 'currentColor'};
-    transform: rotate(${(props: StyledSvgProps) => props.rotate || 0}deg);
+    fill: ${(props) => props.fill || 'currentColor'};
+    transform: rotate(${(props) => props.rotate || 0}deg);
 
-    ${(props: StyledSvgProps) => {
+    ${(props) => {
       if (typeof props.size === 'string' && props.size.endsWith('x')) {
         return css`
           width: ${parseFloat(props.size)}em;
