@@ -1,19 +1,19 @@
 import React from 'react';
-import DatePicker, { ReactDatePickerProps } from 'react-datepicker';
+import DatePicker, { DatePickerProps } from 'react-datepicker';
 import { useIntl } from 'react-intl';
 import { FormFeedback, FormGroup, Input } from 'reactstrap';
 
 import InstructionText from './InstructionText';
 import Label from './Label';
 
-interface Props extends ReactDatePickerProps {
+type Props = {
   error?: string;
   id: string;
   label?: string;
   placeholder?: string;
   text?: string;
   touched: boolean;
-}
+} & DatePickerProps;
 
 const DatePickerField: React.FC<Props> = (props) => {
   const intl = useIntl();
