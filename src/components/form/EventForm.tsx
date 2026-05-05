@@ -37,7 +37,7 @@ export interface EventFormProps {
         >
       | { target: { id: string; value: unknown } }
   ) => void;
-  handleBlur: (_event: React.SubmitEvent<HTMLElement>) => void;
+  handleBlur: (_event: React.FocusEvent<HTMLElement>) => void;
 }
 
 const EventForm: React.FC<EventFormProps> = ({
