@@ -6,7 +6,6 @@
     "node": ">=22.13.1"
   },
   "dependencies": {
-    "@datapunt/matomo-tracker-react": "^0.2.1",
     "@eslint/js": "^9.39.4",
     "@nabla/vite-plugin-eslint": "^3.0.1",
     "@reduxjs/toolkit": "^2.8.2",
