@@ -1,9 +1,9 @@
-import { useMatomo } from '@datapunt/matomo-tracker-react';
 import React from 'react';
 import { useIntl } from 'react-intl';
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 import useDeepCompareEffect from 'use-deep-compare-effect';
+import useMatomo from '../matomo/hooks/useMatomo';
 
 interface Props {
   title: string;
