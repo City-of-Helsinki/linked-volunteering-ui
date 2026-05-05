@@ -45,9 +45,8 @@ const NumericInput: React.FC<Props> = (props) => {
     }
 
     if (innerRefFromParent && 'current' in innerRefFromParent) {
-      (
-        innerRefFromParent as React.MutableRefObject<HTMLInputElement | null>
-      ).current = input;
+      (innerRefFromParent as React.RefObject<HTMLInputElement | null>).current =
+        input;
     }
   };
 

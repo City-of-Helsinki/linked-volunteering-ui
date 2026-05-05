@@ -3,7 +3,8 @@ import Autosuggest, {
   BlurEvent,
   ChangeEvent,
   SuggestionsFetchRequestedParams,
-  SuggestionSelectedEventData,
+  OnSuggestionSelected,
+  InputProps,
 } from 'react-autosuggest';
 import { FormGroup, Input, FormFeedback, FormText } from 'reactstrap';
 import styled from 'styled-components';
@@ -85,9 +86,9 @@ const AutoSuggestField: React.FC<Props> = ({
     dispatch(clearCoordinatesByAddress());
   };
 
-  const onSuggestionSelected = (
-    _event: React.SubmitEvent<HTMLElement>,
-    data: SuggestionSelectedEventData<AddressFeature>
+  const onSuggestionSelected: OnSuggestionSelected<AddressFeature> = (
+    _event,
+    data
   ) => {
     onChange({
       target: {
@@ -124,7 +125,7 @@ const AutoSuggestField: React.FC<Props> = ({
         onSuggestionSelected={onSuggestionSelected}
         renderSuggestion={renderSuggestion}
         getSuggestionValue={getSuggestionValue}
-        inputProps={inputProps}
+        inputProps={inputProps as InputProps<AddressFeature>}
         renderInputComponent={(inputProps) => {
           const customProps = {
             ...inputProps,

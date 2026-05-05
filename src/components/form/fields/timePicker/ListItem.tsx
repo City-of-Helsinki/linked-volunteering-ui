@@ -32,7 +32,7 @@ const StyledListItem = styled.li`
 `;
 
 interface Props {
-  container: React.MutableRefObject<HTMLDivElement | null>;
+  container: React.RefObject<HTMLDivElement | null>;
   date: Date;
   id: string;
   isFocused: boolean;

@@ -33,7 +33,10 @@ const LegendItem = styled.div`
 `;
 
 const ColorIndicator = styled.div.attrs(
-  () => ({ 'data-testid': 'legend-indicator' }) as React.HTMLAttributes<HTMLDivElement>
+  () =>
+    ({
+      'data-testid': 'legend-indicator',
+    }) as React.HTMLAttributes<HTMLDivElement>
 )<{ color: string }>`
   width: 20px;
   height: 20px;

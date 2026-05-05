@@ -20,7 +20,7 @@
     "@types/lodash": "^4.17.24",
     "@types/node": "^22.15.3",
     "@types/react": "^19.2.14",
-    "@types/react-autosuggest": "^9.3.13",
+    "@types/react-autosuggest": "^10.1.11",
     "@types/react-csv": "^1.1.10",
     "@types/react-datepicker": "^2.11.0",
     "@types/react-dom": "^19.2.3",
