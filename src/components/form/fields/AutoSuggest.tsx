@@ -127,9 +127,8 @@ const AutoSuggestField: React.FC<Props> = ({
         getSuggestionValue={getSuggestionValue}
         inputProps={inputProps as InputProps<AddressFeature>}
         renderInputComponent={(inputProps) => {
-          const { key, ...restInputProps } = inputProps as typeof inputProps & {
-            key?: React.Key;
-          };
+          const { key, ...restInputProps } =
+            inputProps as InputProps<AddressFeature> & { key?: React.Key };
           const customProps = {
             ...restInputProps,
             id: id,
