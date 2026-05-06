@@ -23,6 +23,8 @@ interface TableProps {
 interface TrProps {
   readonly firstColumn?: boolean;
   readonly highlighted?: boolean;
+  readonly white?: boolean;
+  readonly selected?: boolean;
   readonly children: ReactNode;
   readonly [key: string]: unknown;
 }
@@ -33,14 +35,14 @@ interface DetailsRowProps {
   readonly [key: string]: unknown;
 }
 
-const StyledTr = styled.tr<{ white?: boolean; selected?: boolean }>`
+const StyledTr = styled.tr<{ $white?: boolean; $selected?: boolean }>`
   ${(props) => {
-    if (props.white) {
+    if (props.$white) {
       return css`
         background-color: white;
       `;
     }
-    if (props.selected) {
+    if (props.$selected) {
       return css`
         background-color: #ebebeb;
       `;
@@ -62,8 +64,8 @@ const StyledTr = styled.tr<{ white?: boolean; selected?: boolean }>`
   }}
 `;
 
-const StyledFirstTd = styled.td<{ highlighted?: boolean }>`
-  background: ${(props) => (props.highlighted ? 'orange !important' : 'none')};
+const StyledFirstTd = styled.td<{ $highlighted?: boolean }>`
+  background: ${(props) => (props.$highlighted ? 'orange !important' : 'none')};
   width: 5px;
   min-width: 5px;
 `;
@@ -97,7 +99,7 @@ const StyledTableWrapper = styled.div`
   }
 `;
 
-const StyledTable = styled.table<{ firstColumn?: boolean }>`
+const StyledTable = styled.table<{ $firstColumn?: boolean }>`
   width: 100%;
 
   thead tr th {
@@ -112,7 +114,7 @@ const StyledTable = styled.table<{ firstColumn?: boolean }>`
       z-index: 3;
     }
     ${(props) => {
-      if (props.firstColumn) {
+      if (props.$firstColumn) {
         return css`
           &:nth-of-type(2) {
             left: 5px;
@@ -132,7 +134,7 @@ const StyledTable = styled.table<{ firstColumn?: boolean }>`
     }
 
     ${(props) => {
-      if (props.firstColumn) {
+      if (props.$firstColumn) {
         return css`
           &:nth-of-type(2) {
             position: sticky;
@@ -150,23 +152,25 @@ const StyledHeaderText = styled.span`
   margin-right: 0.5em;
 `;
 
-export const StyledTh = styled.th<{ large?: boolean }>`
-  padding: ${(props) => (props.large ? '1em 1em' : '0.5em 1em')};
+export const StyledTh = styled.th<{ $large?: boolean }>`
+  padding: ${(props) => (props.$large ? '1em 1em' : '0.5em 1em')};
 `;
 
-export const StyledTd = styled.td<{ large?: boolean }>`
-  padding: ${(props) => (props.large ? '1em 1em' : '0.5em 1em')};
+export const StyledTd = styled.td<{ $large?: boolean }>`
+  padding: ${(props) => (props.$large ? '1em 1em' : '0.5em 1em')};
 `;
 
 export const Tr: React.FC<TrProps> = ({
   firstColumn,
   highlighted,
+  white,
+  selected,
   children,
   ...rest
 }) => {
   return (
-    <StyledTr {...rest}>
-      {firstColumn && <StyledFirstTd highlighted={highlighted} />}
+    <StyledTr $white={white} $selected={selected} {...rest}>
+      {firstColumn && <StyledFirstTd $highlighted={highlighted} />}
       {children}
     </StyledTr>
   );
@@ -179,7 +183,7 @@ export const DetailsRow: React.FC<DetailsRowProps> = ({
 }) => {
   return (
     <Tr firstColumn white {...rest}>
-      <StyledTd colSpan={colSpan} large>
+      <StyledTd colSpan={colSpan} $large>
         {children}
       </StyledTd>
     </Tr>
@@ -215,7 +219,7 @@ const Table: React.FC<TableProps> = ({
 }) => {
   return (
     <StyledTableWrapper>
-      <StyledTable firstColumn={firstColumn} id={id} data-testid={id}>
+      <StyledTable $firstColumn={firstColumn} id={id} data-testid={id}>
         <thead>
           <StyledTr>
             {}
