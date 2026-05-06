@@ -111,8 +111,8 @@ export const StyledSvg = styled(StyledReactSVG)<StyledSvgProps>`
     ${(props) => {
       if (typeof props.$size === 'string' && props.$size.endsWith('x')) {
         return css`
-          width: ${parseFloat(props.$size)}em;
-          height: ${parseFloat(props.$size)}em;
+          width: ${Number.parseFloat(props.$size)}em;
+          height: ${Number.parseFloat(props.$size)}em;
         `;
       }
       return css`
