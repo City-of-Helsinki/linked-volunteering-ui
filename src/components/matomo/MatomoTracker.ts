@@ -12,14 +12,6 @@ interface MatomoUserOptionsProps {
 
 class MatomoTracker {
   constructor(userOptions: MatomoUserOptionsProps) {
-    if (!userOptions.urlBase) {
-      throw new Error('Matomo urlBase is required');
-    }
-
-    if (!userOptions.siteId) {
-      throw new Error('Matomo siteId is required.');
-    }
-
     this.#initialize(userOptions);
   }
 
@@ -44,6 +36,14 @@ class MatomoTracker {
 
     if (!enabled) {
       return;
+    }
+
+    if (!urlBase) {
+      throw new Error('Matomo urlBase is required');
+    }
+
+    if (!siteId) {
+      throw new Error('Matomo siteId is required.');
     }
 
     this.pushInstruction('setTrackerUrl', `${urlBase}${trackerUrl}`);
