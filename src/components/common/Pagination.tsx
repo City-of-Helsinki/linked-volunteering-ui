@@ -9,7 +9,7 @@ const Pagination = styled.ul`
   margin-top: 10px;
 `;
 
-const PaginationItem = styled.li<{ selected?: boolean }>`
+const PaginationItem = styled.li<{ $selected?: boolean }>`
   display: inline-flex;
 
   a {
@@ -36,7 +36,7 @@ const PaginationItem = styled.li<{ selected?: boolean }>`
   }
 
   ${(props) => {
-    if (props.selected) {
+    if (props.$selected) {
       return css`
         a {
           border-color: #1a1a1a !important;
@@ -80,7 +80,7 @@ const PaginationComponent: React.FC<PaginationProps> = ({
         </a>
       </PaginationItem>
       {Array.from({ length: pageCount }, (_v, k) => k + 1).map((page) => (
-        <PaginationItem key={page} selected={page === activePage}>
+        <PaginationItem key={page} $selected={page === activePage}>
           <a
             href={`/page-${page}`}
             onClick={handlePageClick(page)}

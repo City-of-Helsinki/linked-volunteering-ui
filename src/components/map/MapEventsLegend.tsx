@@ -37,11 +37,11 @@ const ColorIndicator = styled.div.attrs(
     ({
       'data-testid': 'legend-indicator',
     }) as React.HTMLAttributes<HTMLDivElement>
-)<{ color: string }>`
+)<{ $color: string }>`
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: ${(props) => props.color};
+  background-color: ${(props) => props.$color};
   border: 2px solid #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   flex-shrink: 0;
@@ -54,11 +54,11 @@ const MapEventsLegend: React.FC = () => {
         <FormattedMessage id="map.legend.title" />
       </LegendTitle>
       <LegendItem>
-        <ColorIndicator color="#00d7a7" />
+        <ColorIndicator $color="#00d7a7" />
         <FormattedMessage id="map.legend.upcoming" />
       </LegendItem>
       <LegendItem>
-        <ColorIndicator color="#999999" />
+        <ColorIndicator $color="#999999" />
         <FormattedMessage id="map.legend.past" />
       </LegendItem>
     </LegendContainer>
