@@ -17,7 +17,7 @@
     "@types/file-saver": "^2.0.1",
     "@types/leaflet": "1.9.12",
     "@types/lodash": "^4.17.24",
-    "@types/node": "^22.15.3",
+    "@types/node": "^22.19.17",
     "@types/react": "^19.2.14",
     "@types/react-autosuggest": "^10.1.11",
     "@types/react-csv": "^1.1.10",
