@@ -32,7 +32,7 @@ class MatomoTracker {
     linkTracking = true,
     configurations = {},
   }: MatomoUserOptionsProps) {
-    if (typeof globalThis.window === 'undefined') {
+    if (globalThis.window == undefined) {
       return;
     }
 
@@ -50,7 +50,7 @@ class MatomoTracker {
     this.pushInstruction('setSiteId', siteId);
 
     Object.entries(configurations).forEach(([name, instructions]) => {
-      if (instructions instanceof Array) {
+      if (Array.isArray(instructions)) {
         this.pushInstruction(name, ...instructions);
       } else if (instructions === undefined) {
         this.pushInstruction(name);
@@ -80,7 +80,7 @@ class MatomoTracker {
   }
 
   pushInstruction(name: string, ...args: unknown[]) {
-    if (typeof globalThis.window !== 'undefined') {
+    if (globalThis.window != undefined) {
       globalThis.window._paq.push([name, ...args]);
     }
 
