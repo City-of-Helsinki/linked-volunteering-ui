@@ -83,7 +83,7 @@
     "@vitest/coverage-istanbul": "^4.1.2",
     "husky": "^4.2.3",
     "jsdom": "^26.1.0",
-    "prettier": "^3.8.1",
+    "prettier": "^3.8.3",
     "sass": "^1.98.0"
   },
   "scripts": {
