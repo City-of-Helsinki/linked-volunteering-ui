@@ -32,13 +32,13 @@ class MatomoTracker {
     linkTracking = true,
     configurations = {},
   }: MatomoUserOptionsProps) {
-    if (typeof window === 'undefined') {
+    if (typeof globalThis.window === 'undefined') {
       return;
     }
 
-    window._paq = window._paq || [];
+    globalThis.window._paq = globalThis.window._paq || [];
 
-    if (window._paq.length !== 0) {
+    if (globalThis.window._paq.length !== 0) {
       return;
     }
 
@@ -80,8 +80,8 @@ class MatomoTracker {
   }
 
   pushInstruction(name: string, ...args: unknown[]) {
-    if (typeof window !== 'undefined') {
-      window._paq.push([name, ...args]);
+    if (typeof globalThis.window !== 'undefined') {
+      globalThis.window._paq.push([name, ...args]);
     }
 
     return this;
@@ -97,7 +97,7 @@ class MatomoTracker {
 
   track({
     data = [],
-    documentTitle = window.document.title,
+    documentTitle = globalThis.window.document.title,
     href,
   }: {
     data?: unknown[];
@@ -105,7 +105,10 @@ class MatomoTracker {
     href?: string;
   }) {
     if (data.length) {
-      this.pushInstruction('setCustomUrl', href ?? window.location.href);
+      this.pushInstruction(
+        'setCustomUrl',
+        href ?? globalThis.window.location.href
+      );
       this.pushInstruction('setDocumentTitle', documentTitle);
 
       this.pushInstruction(...(data as [string, ...unknown[]]));
