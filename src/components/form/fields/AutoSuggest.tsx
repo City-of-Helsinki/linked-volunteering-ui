@@ -127,10 +127,12 @@ const AutoSuggestField: React.FC<Props> = ({
         getSuggestionValue={getSuggestionValue}
         inputProps={inputProps as InputProps<AddressFeature>}
         renderInputComponent={(inputProps) => {
+          const { key, ...restInputProps } = inputProps as typeof inputProps & {
+            key?: React.Key;
+          };
           const customProps = {
-            ...inputProps,
+            ...restInputProps,
             id: id,
-            key: id,
             type: 'text' as const,
             invalid: !!(error && touched),
             placeholder: placeholder
@@ -141,7 +143,7 @@ const AutoSuggestField: React.FC<Props> = ({
           return (
             <StyledFormGroup>
               {/* @ts-ignore - Working around type incompatibilities between Autosuggest and Reactstrap */}
-              <Input {...customProps} />
+              <Input key={key ?? id} {...customProps} />
               <FormFeedback>
                 {error && formatMessage({ id: error })}
               </FormFeedback>
