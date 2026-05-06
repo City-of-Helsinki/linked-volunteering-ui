@@ -84,7 +84,7 @@
     "husky": "^4.2.3",
     "jsdom": "^26.1.0",
     "prettier": "^3.8.3",
-    "sass": "^1.98.0"
+    "sass": "^1.99.0"
   },
   "scripts": {
     "app:version": "echo \"$npm_package_version\"",
