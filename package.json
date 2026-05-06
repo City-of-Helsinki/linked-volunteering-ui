@@ -77,8 +77,8 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.5.0",
-    "@commitlint/config-conventional": "^20.5.0",
+    "@commitlint/cli": "^20.5.3",
+    "@commitlint/config-conventional": "^20.5.3",
     "@playwright/test": "^1.58.2",
     "@vitest/coverage-istanbul": "^4.1.2",
     "husky": "^4.2.3",
