@@ -28,7 +28,7 @@ export interface EventFormProps {
   errors: FormikErrors<Event>;
   touched: FormikTouched<Event>;
   values: Event;
-  handleSubmit: (e?: React.FormEvent<HTMLFormElement>) => void;
+  handleSubmit: (e?: React.SubmitEvent<HTMLFormElement>) => void;
   handleChange: (
     event:
       | AutoSuggestEvent
@@ -37,7 +37,7 @@ export interface EventFormProps {
         >
       | { target: { id: string; value: unknown } }
   ) => void;
-  handleBlur: (_event: React.FormEvent<HTMLElement>) => void;
+  handleBlur: (_event: React.FocusEvent<HTMLElement>) => void;
 }
 
 const EventForm: React.FC<EventFormProps> = ({

@@ -3,7 +3,8 @@ import Autosuggest, {
   BlurEvent,
   ChangeEvent,
   SuggestionsFetchRequestedParams,
-  SuggestionSelectedEventData,
+  OnSuggestionSelected,
+  InputProps,
 } from 'react-autosuggest';
 import { FormGroup, Input, FormFeedback, FormText } from 'reactstrap';
 import styled from 'styled-components';
@@ -68,7 +69,7 @@ const AutoSuggestField: React.FC<Props> = ({
   const value = controlledValue ?? '';
 
   const handleChange = (
-    _event: React.FormEvent<HTMLElement>,
+    _event: React.SubmitEvent<HTMLElement>,
     data: ChangeEvent
   ) => {
     // Notify parent of input changes so they can update the controlled value
@@ -85,9 +86,9 @@ const AutoSuggestField: React.FC<Props> = ({
     dispatch(clearCoordinatesByAddress());
   };
 
-  const onSuggestionSelected = (
-    _event: React.FormEvent<HTMLElement>,
-    data: SuggestionSelectedEventData<AddressFeature>
+  const onSuggestionSelected: OnSuggestionSelected<AddressFeature> = (
+    _event,
+    data
   ) => {
     onChange({
       target: {
@@ -124,12 +125,13 @@ const AutoSuggestField: React.FC<Props> = ({
         onSuggestionSelected={onSuggestionSelected}
         renderSuggestion={renderSuggestion}
         getSuggestionValue={getSuggestionValue}
-        inputProps={inputProps}
+        inputProps={inputProps as InputProps<AddressFeature>}
         renderInputComponent={(inputProps) => {
+          const { key, ...restInputProps } =
+            inputProps as InputProps<AddressFeature> & { key?: React.Key };
           const customProps = {
-            ...inputProps,
+            ...restInputProps,
             id: id,
-            key: id,
             type: 'text' as const,
             invalid: !!(error && touched),
             placeholder: placeholder
@@ -140,7 +142,7 @@ const AutoSuggestField: React.FC<Props> = ({
           return (
             <StyledFormGroup>
               {/* @ts-ignore - Working around type incompatibilities between Autosuggest and Reactstrap */}
-              <Input {...customProps} />
+              <Input key={key ?? id} {...customProps} />
               <FormFeedback>
                 {error && formatMessage({ id: error })}
               </FormFeedback>

@@ -16,7 +16,7 @@ import { AddressFeature, AutoSuggestEvent } from '../../../types';
 interface Props {
   addressFeatures: AddressFeature[];
   errors: Record<string, unknown>;
-  handleBlur: (_event: React.FormEvent<HTMLElement>) => void;
+  handleBlur: (_event: React.FocusEvent<HTMLElement>) => void;
   handleChange: (_event: AutoSuggestEvent) => void;
   selectedAddress: Record<string, unknown> | undefined;
   selectedContractZone: Record<string, unknown> | null | undefined;

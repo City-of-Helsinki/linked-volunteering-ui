@@ -1,9 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import './config/theme.scss';
 
-import { createInstance, MatomoProvider } from '@datapunt/matomo-tracker-react';
 import * as Sentry from '@sentry/react';
-import React from 'react';
+import React, { useMemo } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import {
@@ -23,6 +22,8 @@ import providerProperties from './utils/userManager';
 import App from './components/App';
 import CallbackPage from './components/pages/CallBackPage';
 import Login from './components/Login';
+import MatomoTracker from './components/matomo/MatomoTracker';
+import { MatomoContext } from './components/matomo/matomo-context';
 
 if (import.meta.env.REACT_APP_SENTRY_DSN) {
   Sentry.init({
@@ -48,30 +49,40 @@ if (import.meta.env.REACT_APP_SENTRY_DSN) {
   });
 }
 
-const instance = createInstance({
-  disabled: import.meta.env.REACT_APP_MATOMO_ENABLED !== 'true',
-  urlBase: import.meta.env.REACT_APP_MATOMO_URL_BASE || '',
-  siteId: Number(import.meta.env.REACT_APP_MATOMO_SITE_ID),
-});
-
 const store = createStore();
 
 function Root() {
+  const matomoTracker = useMemo(
+    () =>
+      new MatomoTracker({
+        urlBase: import.meta.env.REACT_APP_MATOMO_URL_BASE || '',
+        siteId: Number(import.meta.env.REACT_APP_MATOMO_SITE_ID),
+        srcUrl: 'matomo.js',
+        enabled: import.meta.env.REACT_APP_MATOMO_ENABLED === 'true',
+        configurations: {
+          setDoNotTrack: undefined,
+        },
+      }),
+    []
+  );
+
   return (
     <LoginProvider {...providerProperties}>
       <Provider store={store}>
-        <MatomoProvider value={instance} />
-        <ThemeProvider theme={theme}>
-          <Router>
-            <Routes>
-              <Route path="/" element={<Navigate to="/fi/" />} />
-              <Route path="/logged_out" element={<Navigate to="/fi/" />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/callback" element={<CallbackPage />} />
-              <Route path="/:locale/*" element={<App />} />
-            </Routes>
-          </Router>
-        </ThemeProvider>
+        {/* @ts-ignore */}
+        <MatomoContext.Provider value={matomoTracker}>
+          <ThemeProvider theme={theme}>
+            <Router>
+              <Routes>
+                <Route path="/" element={<Navigate to="/fi/" />} />
+                <Route path="/logged_out" element={<Navigate to="/fi/" />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/callback" element={<CallbackPage />} />
+                <Route path="/:locale/*" element={<App />} />
+              </Routes>
+            </Router>
+          </ThemeProvider>
+        </MatomoContext.Provider>
       </Provider>
     </LoginProvider>
   );

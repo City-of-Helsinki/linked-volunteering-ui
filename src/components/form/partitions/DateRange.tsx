@@ -1,6 +1,5 @@
 import { addDays, addHours, setHours, startOfDay, subDays } from 'date-fns';
-import fi from 'date-fns/locale/fi';
-import sv from 'date-fns/locale/sv';
+import { fi, sv } from 'date-fns/locale';
 import { FormikErrors, FormikTouched } from 'formik';
 import React from 'react';
 import { Event } from '../../../store/types';
@@ -31,7 +30,7 @@ interface EventWithDateObjects extends Omit<Event, 'start_time' | 'end_time'> {
 
 interface Props {
   errors: FormikErrors<Event>;
-  handleBlur: (_event: React.FormEvent<HTMLElement>) => void;
+  handleBlur: (_event: React.FocusEvent<HTMLElement>) => void;
   handleChange: (
     event:
       | { target: { id: string; value: unknown } }
@@ -52,7 +51,8 @@ const DateRange: React.FC<Props> = ({
   unavailableDates,
   values,
 }) => {
-  const onChange = (id: string) => (value: Date) => {
+  const onChange = (id: string) => (value: Date | null) => {
+    if (!value) return;
     handleChange({
       target: {
         id,
@@ -74,7 +74,9 @@ const DateRange: React.FC<Props> = ({
   };
 
   const handleDateChange =
-    (id: string, oldDate: Date | string | undefined) => (value: Date) => {
+    (id: string, oldDate: Date | string | undefined) =>
+    (value: Date | null) => {
+      if (!value) return;
       const oldDateObj = ensureDate(oldDate);
       onChange(id)(
         oldDateObj ? setHours(value, oldDateObj.getHours()) : addHours(value, 9)
@@ -85,7 +87,7 @@ const DateRange: React.FC<Props> = ({
     const syntheticEvent = {
       currentTarget: { id },
       preventDefault: () => {},
-    } as React.FormEvent<HTMLElement>;
+    } as React.FocusEvent<HTMLElement>;
 
     handleBlur(syntheticEvent);
   };
@@ -148,10 +150,6 @@ const DateRange: React.FC<Props> = ({
         >
           <DatePicker
             id="date_range_start_date"
-            // @ts-ignore
-            chooseDayAriaLabelPrefix={formatMessage({
-              id: 'form.event.partitions.date_range.dayAriaLabelPrefix',
-            })}
             label="form.event.partitions.date_range.start_date.label"
             placeholder="form.event.partitions.date_range.start_date.placeholder"
             locale={locale}
@@ -198,10 +196,6 @@ const DateRange: React.FC<Props> = ({
         >
           <DatePicker
             id="date_range_end_date"
-            // @ts-ignore
-            chooseDayAriaLabelPrefix={formatMessage({
-              id: 'form.event.partitions.date_range.dayAriaLabelPrefix',
-            })}
             label="form.event.partitions.date_range.end_date.label"
             placeholder="form.event.partitions.date_range.end_date.placeholder"
             locale={locale}

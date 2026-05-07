@@ -4,7 +4,7 @@ import L, {
   LeafletMouseEvent,
 } from 'leaflet';
 import React, { useEffect, useState } from 'react';
-import { Map, Marker, TileLayer } from 'react-leaflet';
+import { MapContainer, Marker, TileLayer, useMapEvents } from 'react-leaflet';
 import styled from 'styled-components';
 
 import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
@@ -41,10 +41,19 @@ const ErrorMessage = styled.div`
   font-size: 80%;
 `;
 
-const MapContainer = styled.div`
+const MapWrapper = styled.div`
   height: 20em;
   margin-bottom: 2em;
 `;
+
+interface MapClickHandlerProps {
+  onMapClick: (e: LeafletMouseEvent) => void;
+}
+
+const MapClickHandler: React.FC<MapClickHandlerProps> = ({ onMapClick }) => {
+  useMapEvents({ click: onMapClick });
+  return null;
+};
 
 interface MapCanvasProps {
   bounds: number[] | null;
@@ -155,28 +164,28 @@ const MapCanvas: React.FC<MapCanvasProps> = ({
 
   return (
     <>
-      <MapContainer
+      <MapWrapper
         id="map"
         className={renderMapErrors() ? 'is-invalid' : undefined}
         aria-hidden
       >
-        <Map
+        <MapContainer
           center={mapCenter || position}
           zoom={mapCenter ? 14 : zoom}
           minZoom={11}
           bounds={mapBounds}
           maxBounds={maxBounds}
           style={style}
-          onClick={addMarker}
         >
+          <MapClickHandler onMapClick={addMarker} />
           <TileLayer
             url={`https://maptiles.api.hel.fi/styles/hel-osm-bright-${mapLanguage}/{z}/{x}/{y}.png`}
           />
           <EventMarkers events={mapEvents} />
           {marker}
-        </Map>
+        </MapContainer>
         {renderMapErrors()}
-      </MapContainer>
+      </MapWrapper>
       <MapEventsLegend />
     </>
   );

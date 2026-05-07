@@ -86,23 +86,33 @@ const icons = {
 export type IconName = keyof typeof icons;
 
 type StyledSvgProps = {
-  fill?: string;
-  rotate?: string | number;
-  size?: string;
+  $fill?: string;
+  $rotate?: string | number;
+  $size?: string;
 };
 
-export const StyledSvg = styled(ReactSVG)`
+// Cast to a simpler type so styled-components can resolve the props correctly.
+// ReactSVG's Props is a complex intersection of HTMLAttributes & SVGAttributes
+// which confuses styled-components' type inference.
+const StyledReactSVG = ReactSVG as React.ComponentType<
+  React.HTMLAttributes<HTMLElement> & {
+    src?: string;
+    wrapper?: 'div' | 'span' | 'svg';
+  }
+>;
+
+export const StyledSvg = styled(StyledReactSVG)<StyledSvgProps>`
   line-height: 1;
 
   svg {
-    fill: ${(props: StyledSvgProps) => props.fill || 'currentColor'};
-    transform: rotate(${(props: StyledSvgProps) => props.rotate || 0}deg);
+    fill: ${(props) => props.$fill || 'currentColor'};
+    transform: rotate(${(props) => props.$rotate || 0}deg);
 
-    ${(props: StyledSvgProps) => {
-      if (typeof props.size === 'string' && props.size.endsWith('x')) {
+    ${(props) => {
+      if (typeof props.$size === 'string' && props.$size.endsWith('x')) {
         return css`
-          width: ${parseFloat(props.size)}em;
-          height: ${parseFloat(props.size)}em;
+          width: ${Number.parseFloat(props.$size)}em;
+          height: ${Number.parseFloat(props.$size)}em;
         `;
       }
       return css`
@@ -139,9 +149,9 @@ const Icon: React.FC<IconProps> = ({
     <StyledSvg
       className={className}
       wrapper="span"
-      fill={fill}
-      size={size}
-      rotate={rotate}
+      $fill={fill}
+      $size={size}
+      $rotate={rotate}
       src={src}
       {...rest}
     />

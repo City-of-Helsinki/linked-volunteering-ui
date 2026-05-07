@@ -3,11 +3,11 @@ import React, { PropsWithChildren } from 'react';
 import { Label } from 'reactstrap';
 import styled, { css } from 'styled-components';
 
-const StyledLabel = styled(Label)<{ required: boolean; className: string }>`
+const StyledLabel = styled(Label)<{ $required?: boolean; className?: string }>`
   font-weight: 600;
 
   ${(props) =>
-    props.required &&
+    props.$required &&
     css`
       &::after {
         content: '*';
@@ -42,7 +42,7 @@ const LabelComponent: React.FC<LabelProps> = ({
     <StyledLabel
       className={classNames(srOnly && 'srOnly')}
       htmlFor={htmlFor}
-      required={required}
+      $required={required}
     >
       {children}
     </StyledLabel>

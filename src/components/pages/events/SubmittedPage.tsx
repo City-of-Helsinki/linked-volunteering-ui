@@ -63,10 +63,10 @@ const Content = styled.div`
   }
 `;
 
-const BackgroundImage = styled.img.attrs({
+const BackgroundImage = styled.img.attrs(() => ({
   alt: '',
   src: backgroundImage,
-})`
+}))`
   flex: 0 0 45%;
   max-height: 80vh;
   display: none;
