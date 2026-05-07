@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.9.1](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.9.0...linked-volunteering-ui-v0.9.1) (2026-05-07)
+
+
+### Dependencies
+
+* Bump postcss from 8.5.3 to 8.5.13 ([#310](https://github.com/City-of-Helsinki/linked-volunteering-ui/issues/310)) ([bd1e8b4](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/bd1e8b464027ae924dfe0fc5b1a7939e90431968))
+* Bump uuid from 13.0.0 to 14.0.0 ([a60db9c](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/a60db9cb3dea3681e4ed43c9e4e15e6c2c5754ce))
+
 ## [0.9.0](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.8.2...linked-volunteering-ui-v0.9.0) (2026-04-21)
 
 
