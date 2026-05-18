@@ -124,7 +124,8 @@
   "pnpm": {
     "overrides": {
       "vite": "^8.0.5",
-      "picomatch": "4.0.4"
+      "picomatch": "4.0.4",
+      "@typescript-eslint/typescript-estree>minimatch": "9.0.7"
     }
   }
 }
