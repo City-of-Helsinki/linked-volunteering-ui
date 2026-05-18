@@ -4,7 +4,7 @@
 
 ## Prerequisites
 
-- Pnpm
+- pnpm v10.28.2
 - Strong recommendation for an IDE: VSCode
 
 ### Recommended VSCode plugins:
