@@ -5,7 +5,7 @@ const {
   REACT_APP_OIDC_CLIENT_ID,
   REACT_APP_OIDC_AUTHORITY,
   REACT_APP_OIDC_API_SCOPE,
-} = import.meta.env;
+} = globalThis.window._env_;
 
 const getRedirectUri = (ext: string) => {
   const { protocol, hostname, port } = window.location;

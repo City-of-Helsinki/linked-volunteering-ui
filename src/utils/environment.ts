@@ -1,1 +1,1 @@
-export const { REACT_APP_API_URL } = import.meta.env;
+export const { REACT_APP_API_URL } = globalThis.window._env_;

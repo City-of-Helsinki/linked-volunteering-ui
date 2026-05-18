@@ -9,3 +9,5 @@ README.md
 LICENSE
 .vscode
 build
+.env.local
+.env.*.local

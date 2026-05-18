@@ -51,7 +51,7 @@
     "hds-design-tokens": "^4.9.0",
     "hds-react": "^4.9.0",
     "hel-icons": "^1.0.0-beta.3",
-    "ics": "^2.19.0",
+    "ics": "^3.12.0",
     "immutable": "^4.3.8",
     "leaflet": "^1.6.0",
     "lodash": "^4.18.1",
@@ -72,6 +72,7 @@
     "redux": "^5.0.0",
     "redux-promise-middleware": "^6.1.2",
     "styled-components": "^5.3.11",
+    "tsx": "^4.21.0",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.59.2",
     "url-parse": "^1.4.7",
@@ -94,18 +95,19 @@
   },
   "scripts": {
     "app:version": "echo \"$npm_package_version\"",
-    "start": "vite",
+    "start": "pnpm update-runtime-env && vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "test": "vitest",
-    "test:coverage": "vitest run --coverage --watch=false",
+    "test": "NODE_ENV=test pnpm update-runtime-env && vitest",
+    "test:coverage": "NODE_ENV=test pnpm update-runtime-env && vitest run --coverage --watch=false",
     "lint": "eslint --ext js,ts,tsx src && prettier src --check",
     "lint:fix": "eslint --ext js,ts,tsx src --fix && prettier src --write",
     "typecheck": "tsc --noEmit",
     "test:e2e:install": "pnpm run playwright install",
     "test:e2e:ci": "npx playwright test",
     "test:e2e:start": "npx playwright test",
-    "test:e2e:record": "npx playwright codegen https://puistotalkoot.dev.hel.ninja/"
+    "test:e2e:record": "npx playwright codegen https://puistotalkoot.dev.hel.ninja/",
+    "update-runtime-env": "tsx --tsconfig ./scripts/tsconfig.json scripts/update-runtime-env.ts"
   },
   "browserslist": {
     "production": [
