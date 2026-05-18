@@ -9,7 +9,7 @@ import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
 import vitestGlobals from "eslint-config-vitest-globals/flat";
-import importPlugin from 'eslint-plugin-import';
+import importPlugin from 'eslint-plugin-import-x';
 import { defineConfig } from 'eslint/config';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -17,7 +17,7 @@ const __dirname = path.dirname(__filename);
 
 export default defineConfig([
   {
-    files: ['**/*.{ts,tsx,js,jsx}'],
+    files: [ '**/*.{ts,tsx,js,jsx}' ],
     ignores: [
       '**/node_modules/**',
       '**/build/**',
@@ -28,17 +28,17 @@ export default defineConfig([
       js.configs.recommended,
       tsEslint.configs.recommended,
       react.configs.flat.recommended,
-      react.configs.flat['jsx-runtime'],
+      react.configs.flat[ 'jsx-runtime' ],
       importPlugin.flatConfigs.recommended,
       jsxA11yPlugin.flatConfigs.recommended,
-      reactHooksPlugin.configs['recommended-latest'],
+      reactHooksPlugin.configs[ 'recommended-latest' ],
       sonarjsPlugin.configs.recommended,
       vitestGlobals()
     ],
     languageOptions: {
       parser: tsParser,
       parserOptions: {
-        project: ['./tsconfig.json'],
+        project: [ './tsconfig.json' ],
         tsconfigRootDir: __dirname,
         ecmaVersion: 'latest',
         sourceType: 'module',
@@ -52,17 +52,20 @@ export default defineConfig([
         ...globals.es2021,
       },
     },
+    plugins: {
+      'import': importPlugin
+    },
     settings: {
       react: {
         version: 'detect',
       },
-      'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
-      'import/parsers': {
-        '@typescript-eslint/parser': ['.ts', '.tsx'],
+      'import-x/extensions': [ '.js', '.jsx', '.ts', '.tsx' ],
+      'import-x/parsers': {
+        '@typescript-eslint/parser': [ '.ts', '.tsx' ],
       },
-      'import/resolver': {
+      'import-x/resolver': {
         node: {
-          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+          extensions: [ '.js', '.jsx', '.ts', '.tsx' ],
         },
       },
     },
@@ -86,7 +89,7 @@ export default defineConfig([
       'react/jsx-filename-extension': [
         'error',
         {
-          extensions: ['.js', '.jsx', '.ts', '.tsx'],
+          extensions: [ '.js', '.jsx', '.ts', '.tsx' ],
         },
       ],
       'react/react-in-jsx-scope': 0,
@@ -94,7 +97,7 @@ export default defineConfig([
       'react/prop-types': 0,
       'react/require-default-props': 0,
       'sonarjs/assertions-in-tests': 0,
-      'import/extensions': [
+      'import-x/extensions': [
         'error',
         'ignorePackages',
         {
@@ -104,7 +107,7 @@ export default defineConfig([
           tsx: 'never',
         },
       ],
-      'import/no-extraneous-dependencies': [
+      'import-x/no-extraneous-dependencies': [
         'error',
         {
           devDependencies: [
@@ -116,9 +119,9 @@ export default defineConfig([
           ],
         },
       ],
-      'import/named': 0,
-      'import/namespace': 0,
-      'import/no-unresolved': ['error', { ignore: ['uuid'] }],
+      'import-x/named': 0,
+      'import-x/namespace': 0,
+      'import-x/no-unresolved': [ 'error', { ignore: [ 'uuid' ] } ],
       'default-param-last': 0,
       'no-console': 'warn',
       'no-param-reassign': [
