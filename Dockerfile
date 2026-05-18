@@ -5,13 +5,16 @@ FROM helsinki.azurecr.io/ubi9/nodejs-22-pnpm-builder-base AS appbase
 
 # 1. Copy only necessary files for build
 COPY --chown=default:root package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-COPY --chown=default:root tsconfig.json vite.config.mts eslint.config.mjs ./
-COPY --chown=default:root index.html ./
+COPY --chown=default:root ./scripts ./scripts
 COPY --chown=default:root public/ ./public
-COPY --chown=default:root src/ ./src/
+COPY --chown=default:root index.html vite.config.mts eslint.config.mjs tsconfig.json .env ./
+COPY --chown=default:root ./src ./src
 
-# 2. Install dependencies and build the bundle
+# 2. Run the install and update-runtime-env script
+# corepack in the base image will automatically use the version of pnpm
+# defined in your package.json 'packageManager' field if present.
 RUN pnpm install --frozen-lockfile --ignore-scripts && pnpm store prune
+RUN pnpm update-runtime-env
 
 # ============================================================
 # STAGE 2: Development
@@ -36,21 +39,6 @@ FROM appbase AS staticbuilder
 # ==========================================
 
 # Set environmental variables
-ARG REACT_APP_API_URL
-ARG REACT_APP_OIDC_AUTHORITY
-ARG REACT_APP_OIDC_API_TOKENS_URL
-ARG REACT_APP_OIDC_CLIENT_ID
-ARG REACT_APP_OIDC_API_SCOPE
-ARG REACT_APP_GEOCODER_API_URL
-ARG REACT_APP_MATOMO_URL_BASE
-ARG REACT_APP_MATOMO_SITE_ID
-ARG REACT_APP_MATOMO_ENABLED
-ARG REACT_APP_SENTRY_ENVIRONMENT
-ARG REACT_APP_SENTRY_DSN
-ARG REACT_APP_SENTRY_TRACE_PROPAGATION_TARGETS
-ARG REACT_APP_SENTRY_TRACES_SAMPLE_RATE
-ARG REACT_APP_SENTRY_REPLAYS_SESSION_SAMPLE_RATE
-ARG REACT_APP_SENTRY_REPLAYS_ON_ERROR_SAMPLE_RATE
 ARG REACT_APP_SENTRY_RELEASE
 
 RUN pnpm build
@@ -68,6 +56,7 @@ COPY --from=staticbuilder /app/build /usr/share/nginx/html
 # 2. Setup Runtime Env Injection
 # env.sh is provided by the base image
 WORKDIR /usr/share/nginx/html
+COPY .env .
 
 # 3. Inject Versioning for the /readiness endpoint from package.json using base image
 COPY package.json .

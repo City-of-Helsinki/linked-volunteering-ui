@@ -26,7 +26,7 @@ const useAuth = () => {
     }
 
     return tokens
-      ? tokens[`${import.meta.env.REACT_APP_OIDC_API_SCOPE}`]
+      ? tokens[`${globalThis.window._env_.REACT_APP_OIDC_API_SCOPE}`]
       : undefined;
   }, [error, isRenewing, tokens]);
 
