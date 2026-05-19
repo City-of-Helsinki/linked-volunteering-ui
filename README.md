@@ -4,7 +4,7 @@
 
 ## Prerequisites
 
-- Yarn
+- pnpm v10.28.2
 - Strong recommendation for an IDE: VSCode
 
 ### Recommended VSCode plugins:
@@ -25,7 +25,7 @@ $ cp .env.example .env.development.local
 To start development environment, run:
 
 ```
-$ yarn start
+$ pnpm start
 ```
 
 This will start [the application](http://localhost:3000) to run in port `3000`
@@ -35,8 +35,8 @@ This will start [the application](http://localhost:3000) to run in port `3000`
 End-to-end testing is created with Playwright. To run tests:
 
 ```
-$ yarn test:e2e:install
-$ yarn test:e2e:start
+$ pnpm run test:e2e:install
+$ pnpm run test:e2e:start
 ```
 
 ## Docker

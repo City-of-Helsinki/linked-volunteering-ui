@@ -24,34 +24,36 @@ import App from './components/App';
 import CallbackPage from './components/pages/CallBackPage';
 import Login from './components/Login';
 
-if (import.meta.env.REACT_APP_SENTRY_DSN) {
+if (globalThis.window._env_.REACT_APP_SENTRY_DSN) {
   Sentry.init({
-    dsn: import.meta.env.REACT_APP_SENTRY_DSN,
-    environment: import.meta.env.REACT_APP_SENTRY_ENVIRONMENT,
-    release: import.meta.env.REACT_APP_SENTRY_RELEASE,
+    dsn: globalThis.window._env_.REACT_APP_SENTRY_DSN,
+    environment: globalThis.window._env_.REACT_APP_SENTRY_ENVIRONMENT,
+    release: globalThis.window._env_.REACT_APP_SENTRY_RELEASE,
     integrations: [
       Sentry.browserTracingIntegration(),
       Sentry.replayIntegration(),
     ],
     tracesSampleRate: parseFloat(
-      import.meta.env.REACT_APP_SENTRY_TRACES_SAMPLE_RATE || '0'
+      globalThis.window._env_.REACT_APP_SENTRY_TRACES_SAMPLE_RATE || '0'
     ),
     tracePropagationTargets: (
-      import.meta.env.REACT_APP_SENTRY_TRACE_PROPAGATION_TARGETS || ''
+      globalThis.window._env_.REACT_APP_SENTRY_TRACE_PROPAGATION_TARGETS || ''
     ).split(','),
     replaysSessionSampleRate: parseFloat(
-      import.meta.env.REACT_APP_SENTRY_REPLAYS_SESSION_SAMPLE_RATE || '0'
+      globalThis.window._env_.REACT_APP_SENTRY_REPLAYS_SESSION_SAMPLE_RATE ||
+        '0'
     ),
     replaysOnErrorSampleRate: parseFloat(
-      import.meta.env.REACT_APP_SENTRY_REPLAYS_ON_ERROR_SAMPLE_RATE || '0'
+      globalThis.window._env_.REACT_APP_SENTRY_REPLAYS_ON_ERROR_SAMPLE_RATE ||
+        '0'
     ),
   });
 }
 
 const instance = createInstance({
-  disabled: import.meta.env.REACT_APP_MATOMO_ENABLED !== 'true',
-  urlBase: import.meta.env.REACT_APP_MATOMO_URL_BASE || '',
-  siteId: Number(import.meta.env.REACT_APP_MATOMO_SITE_ID),
+  disabled: globalThis.window._env_.REACT_APP_MATOMO_ENABLED !== 'true',
+  urlBase: globalThis.window._env_.REACT_APP_MATOMO_URL_BASE || '',
+  siteId: Number(globalThis.window._env_.REACT_APP_MATOMO_SITE_ID),
 });
 
 const store = createStore();

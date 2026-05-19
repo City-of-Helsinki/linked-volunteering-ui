@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react-swc';
+import react from '@vitejs/plugin-react';
 import eslint from '@nabla/vite-plugin-eslint';
 import { configDefaults, coverageConfigDefaults } from 'vitest/config';
 import path from 'path';

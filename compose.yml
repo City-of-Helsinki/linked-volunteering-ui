@@ -1,7 +1,8 @@
-version: '3.8'
+version: "3.8"
 
 services:
   app:
+    platform: linux/amd64
     ports:
       - 3000:8080
     build:
@@ -9,7 +10,8 @@ services:
       target: ${DOCKER_TARGET:-development}
     env_file:
       - .env
+      - .env.local
     volumes:
-      - '.:/app'
-      - '/app/node_modules'
+      - ".:/app"
+      - "/app/node_modules"
     container_name: linked-volunteering-ui
