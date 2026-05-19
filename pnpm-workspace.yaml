@@ -6,3 +6,8 @@ ignoredBuiltDependencies: []
 
 # Hoist all dependencies to the root of node_modules, for better compatibility with packages that expect flat node_modules
 shamefullyHoist: true
+
+overrides:
+  'vite': '^8.0.5'
+  'picomatch': '4.0.4'
+  '@typescript-eslint/typescript-estree>minimatch': '9.0.7'
