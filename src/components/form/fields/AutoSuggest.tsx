@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import Autosuggest, {
   BlurEvent,
   ChangeEvent,
@@ -65,6 +65,13 @@ const AutoSuggestField: React.FC<Props> = ({
   const intl = useIntl();
   const dispatch = useAppDispatch();
   const { formatMessage, locale } = intl;
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+    };
+  }, []);
 
   const value = controlledValue ?? '';
 
@@ -79,10 +86,19 @@ const AutoSuggestField: React.FC<Props> = ({
   const onSuggestionsFetchRequested = (
     request: SuggestionsFetchRequestedParams
   ) => {
-    dispatch(getCoordinatesByAddress({ text: request.value, lang: locale }));
+    if (debounceRef.current) {
+      clearTimeout(debounceRef.current);
+    }
+    debounceRef.current = setTimeout(() => {
+      dispatch(getCoordinatesByAddress({ text: request.value, lang: locale }));
+    }, 600);
   };
 
   const onSuggestionsClearRequested = () => {
+    if (debounceRef.current) {
+      clearTimeout(debounceRef.current);
+      debounceRef.current = null;
+    }
     dispatch(clearCoordinatesByAddress());
   };
 
