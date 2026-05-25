@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.10.0](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.9.1...linked-volunteering-ui-v0.10.0) (2026-05-25)
+
+
+### Features
+
+* Migrate Dockerfile to helsinki base image Refs: PS-276 ([bc52002](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/bc520021fd060c8a64c3d5c27dfb1ed2d995c1c1))
+* Migrate yarn classic to pnpm Refs: PS-276 ([102073b](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/102073ba8236f2088ac0a0ae33b5e536d245375a))
+
+
+### Dependencies
+
+* Minimatch override Refs: PS-276 ([32d91a8](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/32d91a840c7b8de28ab3f37eab6f3035224651e9))
+* Upgrade eslint plugins Refs: PS-276 ([5117c1a](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/5117c1a168f5dce165622f310c744f7c4a15c4ed))
+
 ## [0.9.1](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.9.0...linked-volunteering-ui-v0.9.1) (2026-05-11)
 
 
