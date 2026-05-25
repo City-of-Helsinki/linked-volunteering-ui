@@ -6,20 +6,24 @@ import path from 'path';
  * See https://playwright.dev/docs/test-configuration.
  */
 
-dotenv.config({ path: path.resolve(__dirname, '.env') });
+dotenv.config({ path: path.resolve(__dirname, '.env.local') });
 
 export const TEST_USER_EMAIL = process.env.E2E_TEST_USER_EMAIL ?? '';
 export const TEST_USER_PASSWORD = process.env.E2E_TEST_USER_PASSWORD ?? '';
 
 export default defineConfig({
   testDir: './e2e/tests/pages',
+
+  // Timeout for each test in milliseconds
+  timeout: 90 * 1000,
+
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
 
   /* The maximum number of retry attempts given to failed tests */
-  retries: process.env.CI ? 1 : undefined,
+  retries: process.env.CI ? 2 : 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ['junit', { outputFile: 'report/e2e-junit-results.xml' }],
@@ -28,8 +32,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL:
-      process.env.E2E_TESTS_ENV_URL ?? 'https://puistotalkoot.dev.hel.ninja/',
+    baseURL: process.env.E2E_TESTS_ENV_URL ?? 'http://localhost:3000',
     ignoreHTTPSErrors: true,
     screenshot: {
       fullPage: true,
@@ -53,4 +56,9 @@ export default defineConfig({
       use: { ...devices['Desktop Firefox'] },
     },
   ],
+  webServer: {
+    command: 'pnpm start',
+    url: process.env.E2E_TESTS_ENV_URL ?? 'http://localhost:3000',
+    reuseExistingServer: true,
+  },
 });

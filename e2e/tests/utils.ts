@@ -6,8 +6,8 @@ export const login = async (page: Page, email: string, password: string) => {
   await expect(page.locator('.login-pf-page')).toBeVisible();
   await expect(page.locator('#kc-error-message')).toBeHidden();
 
-  await page.getByLabel('Email').fill(email);
-  await page.getByLabel('Password', { exact: true }).fill(password);
+  await page.getByRole('textbox', { name: 'Email' }).fill(email);
+  await page.getByRole('textbox', { name: 'Password' }).fill(password);
 
-  await page.getByRole('button', { name: 'Log in' }).click();
+  await page.getByRole('button', { name: 'Log In' }).click();
 };
