@@ -1,5 +1,6 @@
-import { addDays, addHours, setHours, startOfDay, subDays } from 'date-fns';
-import { fi, sv } from 'date-fns/locale';
+import { addDays, addHours, format, setHours, startOfDay, subDays } from 'date-fns';
+import fi from 'date-fns/locale/fi';
+import sv from 'date-fns/locale/sv';
 import { FormikErrors, FormikTouched } from 'formik';
 import React from 'react';
 import { Event } from '../../../store/types';
@@ -8,7 +9,9 @@ import { useIntl } from 'react-intl';
 import { Row, Col } from 'reactstrap';
 
 import DatePicker from '../fields/DatePicker';
+import PrintValue from '../fields/PrintValue';
 import TimePicker from '../fields/timePicker/TimePicker';
+import formatTime from '../../../utils/formatTime';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import './dateRange.scss';
@@ -30,7 +33,7 @@ interface EventWithDateObjects extends Omit<Event, 'start_time' | 'end_time'> {
 
 interface Props {
   errors: FormikErrors<Event>;
-  handleBlur: (_event: React.FocusEvent<HTMLElement>) => void;
+  handleBlur: (_event: React.FormEvent<HTMLElement>) => void;
   handleChange: (
     event:
       | { target: { id: string; value: unknown } }
@@ -51,8 +54,7 @@ const DateRange: React.FC<Props> = ({
   unavailableDates,
   values,
 }) => {
-  const onChange = (id: string) => (value: Date | null) => {
-    if (!value) return;
+  const onChange = (id: string) => (value: Date) => {
     handleChange({
       target: {
         id,
@@ -75,8 +77,7 @@ const DateRange: React.FC<Props> = ({
 
   const handleDateChange =
     (id: string, oldDate: Date | string | undefined) =>
-    (value: Date | null) => {
-      if (!value) return;
+    (value: Date) => {
       const oldDateObj = ensureDate(oldDate);
       onChange(id)(
         oldDateObj ? setHours(value, oldDateObj.getHours()) : addHours(value, 9)
@@ -87,7 +88,7 @@ const DateRange: React.FC<Props> = ({
     const syntheticEvent = {
       currentTarget: { id },
       preventDefault: () => {},
-    } as React.FocusEvent<HTMLElement>;
+    } as React.FormEvent<HTMLElement>;
 
     handleBlur(syntheticEvent);
   };
@@ -139,9 +140,13 @@ const DateRange: React.FC<Props> = ({
   );
   const dateFormat = getDateFormat(locale);
   const timeFormat = getTimeFormat(locale);
+  const formatDateValue = (value: Date | undefined) =>
+    value ? format(value, dateFormat) : '';
+  const formatTimeValue = (value: Date | undefined) =>
+    value ? formatTime(value, timeFormat, locale) : '';
 
   return (
-    <>
+    <div className="printable">
       <Row>
         <Col
           sm="12"
@@ -150,6 +155,10 @@ const DateRange: React.FC<Props> = ({
         >
           <DatePicker
             id="date_range_start_date"
+            // @ts-ignore
+            chooseDayAriaLabelPrefix={formatMessage({
+              id: 'form.event.partitions.date_range.dayAriaLabelPrefix',
+            })}
             label="form.event.partitions.date_range.start_date.label"
             placeholder="form.event.partitions.date_range.start_date.placeholder"
             locale={locale}
@@ -169,6 +178,7 @@ const DateRange: React.FC<Props> = ({
             showMonthDropdown
             useShortMonthInDropdown
           />
+          <PrintValue value={formatDateValue(selectedStartTime)} />
         </Col>
         <Col sm="12" md={{ size: 4 }}>
           <TimePicker
@@ -186,6 +196,7 @@ const DateRange: React.FC<Props> = ({
             timeIntervals={timeIntervals}
             touched={!!touched.start_time}
           />
+          <PrintValue value={formatTimeValue(selectedStartTime)} />
         </Col>
       </Row>
       <Row>
@@ -196,6 +207,10 @@ const DateRange: React.FC<Props> = ({
         >
           <DatePicker
             id="date_range_end_date"
+            // @ts-ignore
+            chooseDayAriaLabelPrefix={formatMessage({
+              id: 'form.event.partitions.date_range.dayAriaLabelPrefix',
+            })}
             label="form.event.partitions.date_range.end_date.label"
             placeholder="form.event.partitions.date_range.end_date.placeholder"
             locale={locale}
@@ -214,6 +229,7 @@ const DateRange: React.FC<Props> = ({
             showMonthDropdown
             useShortMonthInDropdown
           />
+          <PrintValue value={formatDateValue(selectedEndTime)} />
         </Col>
         <Col sm="12" md={{ size: 4 }}>
           <TimePicker
@@ -231,9 +247,10 @@ const DateRange: React.FC<Props> = ({
             timeIntervals={timeIntervals}
             touched={!!touched.end_time}
           />
+          <PrintValue value={formatTimeValue(selectedEndTime)} />
         </Col>
       </Row>
-    </>
+    </div>
   );
 };
 

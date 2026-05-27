@@ -5,11 +5,12 @@
  * div called `printable-area`. When someone prints or saves a PDF, the
  * rules below hide most of the screen so only that div shows up on paper.
  * Answers are shown as plain text in `.print-only` spots while the real
- * input boxes are hidden. See Input.tsx for how that works.
+ * input boxes are hidden. See Input.tsx and DateRange.tsx for how that works.
  */
 
 .print-only {
   display: none;
+  margin: 0;
 }
 
 @media print {
@@ -48,10 +49,9 @@
   }
 
   /*
-   * Event form print: EventForm.tsx puts three short help paragraphs in
-   * `.event-form-print-skip` (text from form.event.subtitle.* in the
-   * language files). The user still sees them on the website when editing.
-   * They do not show on paper or in a PDF.
+   * Event form print: EventForm.tsx uses `.event-form-print-skip` for
+   * helper copy and optional blocks that are useful on screen but should
+   * stay out of the contractor-facing PDF.
    */
   .printable-area .event-form .event-form-print-skip {
     display: none;
@@ -65,6 +65,7 @@
 
   .printable .print-only {
     display: block;
+    margin: 0;
   }
 
   .form-check-input,
@@ -125,21 +126,19 @@
     margin: 0;
   }
 
-  .col,
-  .col-1,
-  .col-2,
-  .col-3,
-  .col-4,
-  .col-5,
-  .col-6,
-  .col-7,
-  .col-8,
-  .col-9,
-  .col-10,
-  .col-11,
-  .col-12 {
+  /*
+   * Event form print: the form uses responsive Bootstrap column classes
+   * (`col-md-*`, `col-lg-*`, etc.) in addition to the base `col-*` helpers.
+   * Reset all of them here so every row starts from the same left edge.
+   */
+  .printable-area .row > .col,
+  .printable-area .row > [class^='col-'],
+  .printable-area .row > [class*=' col-'] {
     width: 100%;
-    padding: 0;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    flex: 0 0 100%;
   }
 
   /*

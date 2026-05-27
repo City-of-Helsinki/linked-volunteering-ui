@@ -280,7 +280,7 @@ const EventForm: React.FC<EventFormProps> = ({
           />
         </Col>
       </Row>
-      <Row>
+      <Row className="event-form-print-skip">
         <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 8, offset: 1 }}>
           <Input
             type="textarea"
