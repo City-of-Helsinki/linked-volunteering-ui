@@ -1,4 +1,11 @@
-import { addDays, addHours, format, setHours, startOfDay, subDays } from 'date-fns';
+import {
+  addDays,
+  addHours,
+  format,
+  setHours,
+  startOfDay,
+  subDays,
+} from 'date-fns';
 import fi from 'date-fns/locale/fi';
 import sv from 'date-fns/locale/sv';
 import { FormikErrors, FormikTouched } from 'formik';
