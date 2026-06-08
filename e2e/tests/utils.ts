@@ -10,4 +10,11 @@ export const login = async (page: Page, email: string, password: string) => {
   await page.getByRole('textbox', { name: 'Password' }).fill(password);
 
   await page.getByRole('button', { name: 'Log In' }).click();
+
+  // Wait for redirect back to the app after successful login.
+  // Check against the Keycloak hostname rather than a path substring, since
+  // Keycloak's own redirect URL also contains "/login" (e.g. /login-actions/…).
+  await page.waitForURL((url) => !url.hostname.includes('tunnistus'), {
+    timeout: 60000,
+  });
 };

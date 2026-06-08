@@ -27,6 +27,22 @@ test.describe('Manage events', () => {
     await page.close();
   });
 
+  // Run Modify first while the event is still in "Odottaa" state,
+  // then Accept and Remove can act on the same single event.
+  test('Modify will take to event modification page', async () => {
+    const row = page
+      .locator('table tbody tr')
+      .filter({ hasText: 'Puistotalkoot e2e testi' })
+      .filter({ hasText: 'Odottaa' });
+
+    await row.getByRole('link', { name: 'Katso ilmoitus' }).first().click();
+
+    await expect(page.getByText('Muokkaa tapahtumaa')).toBeVisible();
+
+    // Navigate back to the manage events list so subsequent tests can work
+    await page.goto('/fi/admin/events/manage');
+  });
+
   test('Accept will activate success info text', async () => {
     const row = page
       .locator('table tbody tr')
@@ -61,16 +77,5 @@ test.describe('Manage events', () => {
     await expect(
       page.getByText('Puistotalkoot e2e testi peruttu!')
     ).toBeVisible();
-  });
-
-  test('Modify will take to event modification page', async () => {
-    const row = page
-      .locator('table tbody tr')
-      .filter({ hasText: 'Puistotalkoot e2e testi' })
-      .filter({ hasText: 'Odottaa' });
-
-    await row.getByRole('link', { name: 'Katso ilmoitus' }).first().click();
-
-    await expect(page.getByText('Muokkaa tapahtumaa')).toBeVisible();
   });
 });

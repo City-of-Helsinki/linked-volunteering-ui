@@ -39,16 +39,21 @@ test.describe('New event', () => {
     // The map click triggers an API call that auto-fills the address field
     await expect(page.getByPlaceholder('Etsi osoitteella')).not.toBeEmpty();
 
-    // Now clear and fill with the desired address
+    // Now clear and fill with the desired address. Use pressSequentially to
+    // reliably trigger react-autosuggest's onChange across all browsers.
     await page.getByPlaceholder('Etsi osoitteella').clear();
-    await page.getByPlaceholder('Etsi osoitteella').fill('Työpajankatu 8');
+    await page
+      .getByPlaceholder('Etsi osoitteella')
+      .pressSequentially('Työpajankatu 8', { delay: 50 });
 
     // Wait for and click on the suggestion from the dropdown
-    await page
+    const suggestion = page
       .locator('.react-autosuggest__suggestion')
       .filter({ hasText: 'Työpajankatu 8' })
-      .first()
-      .click();
+      .first();
+
+    await expect(suggestion).toBeVisible({ timeout: 30000 });
+    await suggestion.click();
 
     await page
       .getByPlaceholder('Lisätietoja tarvikkeiden toimittamiseen')
