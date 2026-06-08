@@ -18,7 +18,7 @@ export default defineConfig({
   timeout: 90 * 1000,
 
   /* Run tests in files in parallel */
-  fullyParallel: true,
+  fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
 
@@ -54,6 +54,10 @@ export default defineConfig({
     {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
+      // Auth-protected tests (manage-events, reports) share backend state and
+      // running them in both browsers concurrently causes data collisions.
+      // They are covered by the chromium project.
+      testIgnore: ['**/03-admin/**', '**/04-reports/**'],
     },
   ],
   webServer: {
