@@ -1,5 +1,42 @@
 # Changelog
 
+## [0.11.0](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.10.0...linked-volunteering-ui-v0.11.0) (2026-06-08)
+
+
+### Features
+
+* Replace matomo-tracker-react with custom tracker Refs: PS-253 ([5016e95](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/5016e952b5bfac6fcea3a8961f595a4342908f9e))
+
+
+### Bug Fixes
+
+* AutoSuggest key property Refs: PS-253 ([4a83546](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/4a835469a0e1aba437c5099e0a22847bfc725f55))
+* Matomo use runtime envs Refs: PS-253 ([35686e1](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/35686e17467290a2b6bcc1e1aa7500cd77a79d0a))
+
+
+### Dependencies
+
+* Bump hds to v6 Refs: PS-253 ([4181734](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/41817344a0f97542f8e230fcd549f03e48c7416f))
+* Upgrade commitlint to latest Refs: PS-253 ([0884ba5](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/0884ba5cf7efd5528ef4d21525426c01d398748e))
+* Upgrade eslint sonar plugin, globals Refs: PS-253 ([9dbbc57](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/9dbbc573a527042c6f7bd665f355fe7758c8a2be))
+* Upgrade hds to v5 Refs: PS-253 ([b1942d0](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/b1942d098ea6dcf8100e38ed012ee1043be981c8))
+* Upgrade jsdom Refs: PS-253 ([3232677](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/3232677d31fbe701ca84d1d3d107c9bcdca95f31))
+* Upgrade prettier Refs: PS-253 ([345df6c](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/345df6c9e8e95d38784275ed462bdb6e098b05b6))
+* Upgrade react react-dom to v19 Refs: PS-253 ([8afbc51](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/8afbc51e73cd4afeee7c9c9a9402c265a04940e0))
+* Upgrade react-datepicker to v9.1.0 Refs: PS-253 ([1fc03fd](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/1fc03fd8acd62af5fc060bd72f1535e416eb9106))
+* Upgrade react-helmet-async to v3 Refs: PS-253 ([2d94d97](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/2d94d970d9389a1e3e84e213a68e91ca70c264f5))
+* Upgrade react-intl Refs: PS-253 ([43418e3](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/43418e3cbcb871c2d208d6bd047526632469ca8f))
+* Upgrade react-intl to v10 Refs: PS-253 ([21c0dd1](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/21c0dd1a3c38881cb3b72789e8dab83d6e6caf7a))
+* Upgrade react-leaflet to v5 Refs: PS-253 ([9d5f4d2](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/9d5f4d2627977c1260fbed9eedc5953647c3852d))
+* Upgrade react-redux to 9.2.0 Refs: PS-253 ([5a36b73](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/5a36b739cb456d4dabd02ef08dfd53473ba1416b))
+* Upgrade react-svg to v17.2.4 Refs: PS-253 ([bb938f6](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/bb938f601bc285aa9fd84e72942becae71037da0))
+* Upgrade reduxjs/toolkit Refs: PS-253 ([7838a3e](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/7838a3e5ad2a249ab0d06c41f4b8b97f82b254d4))
+* Upgrade sass Refs: PS-253 ([89dd4dd](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/89dd4dd81feeebb92416f8b9aa1816140cf95264))
+* Upgrade styled-components to v6 Refs: PS-253 ([15df621](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/15df62113e9f6e1de240efaac9078026f76a8a7a))
+* Upgrade types/leaflet Refs: PS-253 ([f223cd7](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/f223cd78faef370ef464879090bb5fc5b8abd3f6))
+* Upgrade types/node Refs: PS-253 ([f48b558](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/f48b558f8d67f06420ab7783ba80636afceb5064))
+* Upgrade vite vitest Refs: PS-253 ([40daeff](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/40daeffea8c751ef86fab56d018384639c0ce3c2))
+
 ## [0.10.0](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.9.1...linked-volunteering-ui-v0.10.0) (2026-05-25)
 
 
