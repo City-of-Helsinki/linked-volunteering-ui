@@ -60,7 +60,9 @@ function Root() {
         urlBase: globalThis.window._env_.REACT_APP_MATOMO_URL_BASE || '',
         siteId: Number(globalThis.window._env_.REACT_APP_MATOMO_SITE_ID),
         srcUrl: 'matomo.js',
-        enabled: globalThis.window._env_.REACT_APP_MATOMO_ENABLED === 'true',
+        enabled:
+          globalThis.window._env_.REACT_APP_MATOMO_ENABLED === 'true' &&
+          Boolean(globalThis.window._env_.REACT_APP_MATOMO_SITE_ID),
         configurations: {
           setDoNotTrack: undefined,
         },

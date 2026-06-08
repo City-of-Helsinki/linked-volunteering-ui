@@ -1,12 +1,16 @@
 import { useCallback, useContext } from 'react';
 
-import { MatomoContext, MatomoInstance } from '../matomo-context';
+import {
+  MatomoContext,
+  MatomoInstance,
+  MatomoPageViewParams,
+} from '../matomo-context';
 
 function useMatomo() {
   const instance: MatomoInstance | null = useContext(MatomoContext);
 
   const trackPageView = useCallback(
-    (params: unknown) => instance?.trackPageView(params),
+    (params: MatomoPageViewParams) => instance?.trackPageView(params),
     [instance]
   );
 

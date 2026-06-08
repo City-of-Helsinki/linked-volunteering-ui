@@ -1,7 +1,13 @@
 import React, { createContext } from 'react';
 
+export interface MatomoPageViewParams {
+  data?: unknown[];
+  documentTitle?: string;
+  href?: string;
+}
+
 export interface MatomoInstance {
-  trackPageView: (params: unknown) => void;
+  trackPageView: (params: MatomoPageViewParams) => void;
 }
 
 interface MatomoProviderProps {

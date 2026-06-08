@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 interface Window {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   _env_: any;
-  _paq: any;
+  _paq: Array<[string, ...unknown[]]>;
 }
