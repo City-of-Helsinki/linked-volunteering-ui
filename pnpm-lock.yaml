@@ -61,15 +61,9 @@ importers:
       '@types/react-dom':
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.15)
-      '@types/reactstrap':
-        specifier: ^8.7.2
-        version: 8.7.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@types/url-parse':
         specifier: ^1.4.11
         version: 1.4.11
-      '@types/use-deep-compare-effect':
-        specifier: ^1.2.0
-        version: 1.5.1(react@19.2.6)
       '@typescript-eslint/parser':
         specifier: ^8.59.2
         version: 8.59.2(eslint@9.39.4(jiti@2.5.1))(typescript@5.8.3)
@@ -1308,16 +1302,8 @@ packages:
   '@types/react@19.2.15':
     resolution: {integrity: sha512-eRwcGNHve+E8qtEQSSRl6urh+rFop4v8gm6O8rGv25CodbvFdLjA1vVQ1KkiFE0w0UPOnb8tDiFKL5lp0rtY5Q==}
 
-  '@types/reactstrap@8.7.2':
-    resolution: {integrity: sha512-8sYGS/LhG+ic8vhLwxhuVn+TSqS1lKzplm9BHv4JaQoetStAi9uOqP2VREfefIRT3JnOq5Y+G7Afdryvn+UgZQ==}
-    deprecated: This is a stub types definition. reactstrap provides its own type definitions, so you do not need this installed.
-
   '@types/url-parse@1.4.11':
     resolution: {integrity: sha512-FKvKIqRaykZtd4n47LbK/W/5fhQQ1X7cxxzG9A48h0BGN+S04NH7ervcCjM8tyR0lyGru83FAHSmw2ObgKoESg==}
-
-  '@types/use-deep-compare-effect@1.5.1':
-    resolution: {integrity: sha512-IpPu2lOV4HWjuzncETLsPpeYKJEOfYHbx6Bn7leBwp5X+a8TBmd4jIBcMQJ5F+WXz/lYkeKphmB4uUij3W4Gdg==}
-    deprecated: This is a stub types definition. use-deep-compare-effect provides its own type definitions, so you do not need this installed.
 
   '@types/use-sync-external-store@0.0.6':
     resolution: {integrity: sha512-zFDAD+tlpf2r4asuHEj0XH6pY6i0g5NeAHPn+15wk3BV6JA69eERFXC1gyGThDkVa1zCyKr5jox1+2LbV/AMLg==}
@@ -4655,20 +4641,7 @@ snapshots:
     dependencies:
       csstype: 3.2.3
 
-  '@types/reactstrap@8.7.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
-    dependencies:
-      reactstrap: 9.2.3(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-    transitivePeerDependencies:
-      - react
-      - react-dom
-
   '@types/url-parse@1.4.11': {}
-
-  '@types/use-deep-compare-effect@1.5.1(react@19.2.6)':
-    dependencies:
-      use-deep-compare-effect: 1.8.1(react@19.2.6)
-    transitivePeerDependencies:
-      - react
 
   '@types/use-sync-external-store@0.0.6': {}
 
