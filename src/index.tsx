@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './config/theme.scss';
 
 import * as Sentry from '@sentry/react';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import {
