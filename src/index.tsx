@@ -57,10 +57,10 @@ function Root() {
   const matomoTracker = useMemo(
     () =>
       new MatomoTracker({
-        urlBase: import.meta.env.REACT_APP_MATOMO_URL_BASE || '',
-        siteId: Number(import.meta.env.REACT_APP_MATOMO_SITE_ID),
+        urlBase: globalThis.window._env_.REACT_APP_MATOMO_URL_BASE || '',
+        siteId: Number(globalThis.window._env_.REACT_APP_MATOMO_SITE_ID),
         srcUrl: 'matomo.js',
-        enabled: import.meta.env.REACT_APP_MATOMO_ENABLED === 'true',
+        enabled: globalThis.window._env_.REACT_APP_MATOMO_ENABLED === 'true',
         configurations: {
           setDoNotTrack: undefined,
         },
