@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.1](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.11.0...linked-volunteering-ui-v0.11.1) (2026-06-11)
+
+
+### Bug Fixes
+
+* Add debounce for AutoSuggest ([5b93f7f](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/5b93f7f60ed45b93d5dd1ddb933aca598819cbe2))
+
 ## [0.11.0](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.10.0...linked-volunteering-ui-v0.11.0) (2026-06-08)
 
 
