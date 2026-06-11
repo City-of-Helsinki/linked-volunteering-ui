@@ -44,8 +44,8 @@
    * lines fit on one page.
    */
   .printable-area .form-group {
-    font-size: 11pt;
-    line-height: 1.35;
+    font-size: 10.5pt;
+    line-height: 1.3;
   }
 
   /*
@@ -154,7 +154,7 @@
   }
 
   .form-group {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.35rem;
   }
 
   h1,
@@ -163,7 +163,52 @@
   h4,
   h5,
   h6 {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 0.35rem;
+    margin-bottom: 0.35rem;
   }
+
+  .printable-area .event-form .event-form-section-heading {
+    margin-bottom: 0.15rem;
+  }
+
+  .printable-area .event-form .event-form-print-note {
+    margin-bottom: 0.15rem;
+  }
+
+  .printable-area .event-form .event-form-print-note--empty {
+    display: none;
+  }
+
+  /*
+   * Event form print: replace the stacked DateRange controls with compact
+   * inline summary lines so the time section reads on one line per field.
+   */
+  .printable-area .date-range-printable .form-group {
+    display: none !important;
+  }
+
+  .printable-area .date-range-printable .date-range-field {
+    display: none !important;
+  }
+
+  .printable-area .date-range-printable .date-range-print-summary {
+    display: block !important;
+    margin: 0;
+    line-height: 1.1;
+  }
+
+  .printable-area .date-range-printable .date-range-print-summary:not(:last-child) {
+    margin-bottom: 0.2rem;
+  }
+
+  .printable-area .date-range-printable .date-range-print-summary-label {
+    display: inline;
+    margin: 0;
+  }
+
+  .printable-area .date-range-printable .date-range-print-summary-value {
+    display: inline;
+    margin-left: 0.35rem;
+  }
+
 }

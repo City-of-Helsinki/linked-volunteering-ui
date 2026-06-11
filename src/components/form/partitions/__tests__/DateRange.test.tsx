@@ -113,6 +113,9 @@ describe('<DateRange />', () => {
     );
 
     expect(screen.getAllByTestId('print-value')).toHaveLength(4);
+    expect(
+      container.querySelectorAll('.date-range-print-summary')
+    ).toHaveLength(4);
     expect(container.querySelectorAll('.printable')).toHaveLength(1);
     expect(printValueMock.mock.calls[0][0]).toMatchObject({
       value: expectedStartDate,
