@@ -6,8 +6,7 @@ import {
   startOfDay,
   subDays,
 } from 'date-fns';
-import fi from 'date-fns/locale/fi';
-import sv from 'date-fns/locale/sv';
+import { fi, sv } from 'date-fns/locale';
 import { FormikErrors, FormikTouched } from 'formik';
 import React from 'react';
 import { Event } from '../../../store/types';
@@ -83,7 +82,10 @@ const DateRange: React.FC<Props> = ({
   };
 
   const handleDateChange =
-    (id: string, oldDate: Date | string | undefined) => (value: Date) => {
+    (id: string, oldDate: Date | string | undefined) =>
+    (value: Date | null) => {
+      if (!value) return;
+
       const oldDateObj = ensureDate(oldDate);
       onChange(id)(
         oldDateObj ? setHours(value, oldDateObj.getHours()) : addHours(value, 9)
