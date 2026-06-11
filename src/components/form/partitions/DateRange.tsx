@@ -151,11 +151,20 @@ const DateRange: React.FC<Props> = ({
     value ? format(value, dateFormat) : '';
   const formatTimeValue = (value: Date | undefined) =>
     value ? formatTime(value, timeFormat, locale) : '';
+  const formatPrintSummary = (labelId: string, value: string) => (
+    <p className="print-only date-range-print-summary">
+      <strong className="date-range-print-summary-label">
+        {formatMessage({ id: labelId })}
+      </strong>
+      <span className="date-range-print-summary-value">{value}</span>
+    </p>
+  );
 
   return (
-    <div className="printable">
+    <div className="printable date-range-printable">
       <Row>
         <Col
+          className="date-range-field"
           sm="12"
           md={{ size: 4, offset: 1 }}
           id="date_range_start_date_wrapper"
@@ -187,7 +196,7 @@ const DateRange: React.FC<Props> = ({
           />
           <PrintValue value={formatDateValue(selectedStartTime)} />
         </Col>
-        <Col sm="12" md={{ size: 4 }}>
+        <Col className="date-range-field" sm="12" md={{ size: 4 }}>
           <TimePicker
             id="date_range_start_time"
             defaultDate={minDate}
@@ -206,8 +215,19 @@ const DateRange: React.FC<Props> = ({
           <PrintValue value={formatTimeValue(selectedStartTime)} />
         </Col>
       </Row>
+      <div className="print-only date-range-print-summary-row">
+        {formatPrintSummary(
+          'form.event.partitions.date_range.start_date.label',
+          formatDateValue(selectedStartTime)
+        )}
+        {formatPrintSummary(
+          'form.event.partitions.date_range.start_time.label',
+          formatTimeValue(selectedStartTime)
+        )}
+      </div>
       <Row>
         <Col
+          className="date-range-field"
           sm="12"
           md={{ size: 4, offset: 1 }}
           id="date_range_end_date_wrapper"
@@ -238,7 +258,7 @@ const DateRange: React.FC<Props> = ({
           />
           <PrintValue value={formatDateValue(selectedEndTime)} />
         </Col>
-        <Col sm="12" md={{ size: 4 }}>
+        <Col className="date-range-field" sm="12" md={{ size: 4 }}>
           <TimePicker
             id="date_range_end_time"
             defaultDate={ensureDate(values.start_time) || minDate}
@@ -257,6 +277,16 @@ const DateRange: React.FC<Props> = ({
           <PrintValue value={formatTimeValue(selectedEndTime)} />
         </Col>
       </Row>
+      <div className="print-only date-range-print-summary-row">
+        {formatPrintSummary(
+          'form.event.partitions.date_range.end_date.label',
+          formatDateValue(selectedEndTime)
+        )}
+        {formatPrintSummary(
+          'form.event.partitions.date_range.end_time.label',
+          formatTimeValue(selectedEndTime)
+        )}
+      </div>
     </div>
   );
 };

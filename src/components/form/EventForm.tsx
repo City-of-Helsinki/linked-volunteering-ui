@@ -135,7 +135,7 @@ const EventForm: React.FC<EventFormProps> = ({
         selectedAddress={selectedAddress}
         selectedContractZone={selectedContractZone}
       />
-      <Row>
+      <Row className="event-form-section-heading">
         <Col sm="12" md={{ size: 8, offset: 1 }}>
           <FormattedMessage tagName="h2" id="form.event.title.time" />
           <div className="event-form-print-skip">
@@ -280,7 +280,13 @@ const EventForm: React.FC<EventFormProps> = ({
           />
         </Col>
       </Row>
-      <Row className="event-form-print-skip">
+      <Row
+        className={`event-form-print-note ${
+          values.additional_information.trim()
+            ? ''
+            : 'event-form-print-note--empty'
+        }`}
+      >
         <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 8, offset: 1 }}>
           <Input
             type="textarea"
