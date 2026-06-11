@@ -197,7 +197,9 @@
     line-height: 1.1;
   }
 
-  .printable-area .date-range-printable .date-range-print-summary:not(:last-child) {
+  .printable-area
+    .date-range-printable
+    .date-range-print-summary:not(:last-child) {
     margin-bottom: 0.2rem;
   }
 
@@ -210,5 +212,4 @@
     display: inline;
     margin-left: 0.35rem;
   }
-
 }
