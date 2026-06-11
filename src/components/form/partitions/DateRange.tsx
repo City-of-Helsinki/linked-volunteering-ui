@@ -83,8 +83,7 @@ const DateRange: React.FC<Props> = ({
   };
 
   const handleDateChange =
-    (id: string, oldDate: Date | string | undefined) =>
-    (value: Date) => {
+    (id: string, oldDate: Date | string | undefined) => (value: Date) => {
       const oldDateObj = ensureDate(oldDate);
       onChange(id)(
         oldDateObj ? setHours(value, oldDateObj.getHours()) : addHours(value, 9)

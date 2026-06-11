@@ -63,8 +63,8 @@ describe('<Location />', () => {
   it('renders a printable label for delivery notes', () => {
     const { container } = renderComponent();
 
-    expect(
-      container.querySelector('.print-only')
-    ).toHaveTextContent('Lisätietoja tarvikkeiden toimittamiseen (valinnainen)');
+    expect(container.querySelector('.print-only')).toHaveTextContent(
+      'Lisätietoja tarvikkeiden toimittamiseen (valinnainen)'
+    );
   });
 });
