@@ -280,13 +280,7 @@ const EventForm: React.FC<EventFormProps> = ({
           />
         </Col>
       </Row>
-      <Row
-        className={`event-form-print-note ${
-          values.additional_information.trim()
-            ? ''
-            : 'event-form-print-note--empty'
-        }`}
-      >
+      <Row>
         <Col sm="12" md={{ size: 8, offset: 1 }} lg={{ size: 8, offset: 1 }}>
           <Input
             type="textarea"
