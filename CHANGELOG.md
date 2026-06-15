@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.12.0](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.11.1...linked-volunteering-ui-v0.12.0) (2026-06-15)
+
+
+### Features
+
+* **print:** Hide organizer section hints in printed event form ([352ad62](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/352ad6227e04f5a73ed40492a8d4f21c01c67683))
+
+
+### Bug Fixes
+
+* **print:** Accept null datepicker values in date range ([661715d](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/661715dd136b253f76cbb3a9798c985f7a10985a))
+* **print:** Align event date fields in printed PDF ([a1ea9ff](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/a1ea9ff1b010e7579659178c7abd9895e294abee))
+* **print:** Align event form rows in browser print ([b9f34b6](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/b9f34b6db28a737f9b281a32298d63868742e098))
+* **print:** Use focus events for date range blur ([697addc](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/697addc6e425530788730589a1c2a7cb8556b407))
+
 ## [0.11.1](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.11.0...linked-volunteering-ui-v0.11.1) (2026-06-11)
 
 
