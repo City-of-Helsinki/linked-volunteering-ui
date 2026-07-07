@@ -183,19 +183,6 @@ const ManageEventsPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  useEffect(() => {
-    if (apiAccessToken) {
-      if (isEmpty(contractZones)) {
-        dispatch(getContractZones(apiAccessToken));
-      }
-
-      if (isEmpty(events)) {
-        loadAllEvents();
-      }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [apiAccessToken]);
-
   const loadAllEvents = async () => {
     if (!apiAccessToken) return;
 
@@ -225,6 +212,19 @@ const ManageEventsPage = () => {
       }
     }
   };
+
+  useEffect(() => {
+    if (apiAccessToken) {
+      if (isEmpty(contractZones)) {
+        dispatch(getContractZones(apiAccessToken));
+      }
+
+      if (isEmpty(events)) {
+        loadAllEvents();
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [apiAccessToken]);
 
   const toggleDetails = (id: number) => {
     setVisible(visible === id ? null : id);
