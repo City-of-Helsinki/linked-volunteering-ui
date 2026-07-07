@@ -31,7 +31,7 @@ export default defineConfig([
       react.configs.flat[ 'jsx-runtime' ],
       importPlugin.flatConfigs.recommended,
       jsxA11yPlugin.flatConfigs.recommended,
-      reactHooksPlugin.configs[ 'recommended-latest' ],
+      reactHooksPlugin.configs.flat[ 'recommended-latest' ],
       sonarjsPlugin.configs.recommended,
       vitestGlobals()
     ],
@@ -131,6 +131,10 @@ export default defineConfig([
           props: false,
         },
       ],
+      // Disabled: flags valid patterns (forwarded ref assignment, DOM scroll in effect)
+      'react-hooks/immutability': 0,
+      // Disabled: flags intentional state-sync effects (Location, ReportPage)
+      'react-hooks/set-state-in-effect': 0,
     }
   },
 ]);

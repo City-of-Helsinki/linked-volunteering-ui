@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Alert } from 'reactstrap';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
@@ -31,19 +31,15 @@ const Notification: React.FC<NotificationProps> = ({
   values,
   onDismiss,
 }) => {
-  const [timer, setTimer] = useState<
-    ReturnType<typeof setTimeout> | undefined
-  >();
+  const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   useEffect(() => {
-    const newTimer = setTimeout(onDismiss, 3000);
-
-    setTimer(newTimer);
+    timerRef.current = setTimeout(onDismiss, 3000);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onDismissFn = () => {
-    clearTimeout(timer);
+    clearTimeout(timerRef.current);
     onDismiss();
   };
 
