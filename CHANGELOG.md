@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.12.1](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.12.0...linked-volunteering-ui-v0.12.1) (2026-08-07)
+
+
+### Dependencies
+
+* Bump @babel/core Refs: RATY-357 ([f1f7d4e](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/f1f7d4e2653bd5c4678189dd1cadb1716e0d5559))
+* Bump esbuild Refs: RATY-357 ([edd5ae2](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/edd5ae2bfa4c96490427aae5a1c88dabc0677ba0))
+* Bump eslint to v10 Refs: RATY-357 ([b95b69e](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/b95b69e57ec31a59d39d845aae2fe4cfbd1824c9))
+* Bump js-yaml Refs: RATY-357 ([98de22b](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/98de22b73b2eda82d5d0bd030dbc93783bb8e31e))
+* Bump undici Refs: RATY-357 ([7b66017](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/7b660176ed5e21a9f1cbf0acd16182b2b9802285))
+* Bump vite from 8.0.8 to 8.0.16 ([8d189a6](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/8d189a68865d64ca7e5e13465cc547b429c6039f))
+
 ## [0.12.0](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.11.1...linked-volunteering-ui-v0.12.0) (2026-06-15)
 
 
