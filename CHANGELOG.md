@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.12.2](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.12.1...linked-volunteering-ui-v0.12.2) (2026-08-12)
+
+
+### Dependencies
+
+* Bump immutable from 4.3.8 to 4.3.9 ([45db9a9](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/45db9a9a9246fd9a9ffb5f130fee2e9e10d2194b))
+* Immutable minimumReleaseAgeExclude Refs: RATY-357 ([e0c6b38](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/e0c6b3888642d4e740aaefa70d347a9462a9e64b))
+
 ## [0.12.1](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.12.0...linked-volunteering-ui-v0.12.1) (2026-08-07)
 
 
