@@ -171,8 +171,8 @@ const eventSlice = createSlice({
       ).query;
       state.count = action.payload.data.count;
       state.next = {
-        ...(next.limit && { limit: parseInt(next.limit, 10) }),
-        ...(next.offset && { offset: parseInt(next.offset, 10) }),
+        ...(next.limit && { limit: Number.parseInt(next.limit, 10) }),
+        ...(next.offset && { offset: Number.parseInt(next.offset, 10) }),
       };
 
       // commented out to avoid reordering the events because it's done in the frontend-side currently

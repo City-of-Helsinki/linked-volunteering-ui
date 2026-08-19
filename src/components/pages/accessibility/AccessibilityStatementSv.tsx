@@ -137,7 +137,7 @@ const AccessibilityStatementSv: FunctionComponent = () => {
         <a href="https://palautteet.hel.fi/sv">
           Ge respons med den här responsblanketten
         </a>
-        .
+        {'.'}
       </p>
       <h2>Tillgänglighetstillsyn </h2>
       <p>

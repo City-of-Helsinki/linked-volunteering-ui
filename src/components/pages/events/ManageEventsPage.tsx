@@ -204,8 +204,8 @@ const ManageEventsPage = () => {
         const offset = url.searchParams.get('offset');
 
         currentParams = {
-          limit: limit ? parseInt(limit, 10) : EVENTS_PAGE_SIZE,
-          ...(offset && { offset: parseInt(offset, 10) }),
+          limit: limit ? Number.parseInt(limit, 10) : EVENTS_PAGE_SIZE,
+          ...(offset && { offset: Number.parseInt(offset, 10) }),
         };
       } else {
         hasMorePages = false;
@@ -231,7 +231,7 @@ const ManageEventsPage = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const filterBy = parseInt(e.target.value, 10);
+    const filterBy = Number.parseInt(e.target.value, 10);
 
     dispatch(setFilterByContractZone(filterBy));
   };

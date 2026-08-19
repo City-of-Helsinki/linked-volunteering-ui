@@ -70,7 +70,7 @@ const DateRange: React.FC<Props> = ({
   };
 
   const isDate = (value: unknown): value is Date =>
-    value instanceof Date && !isNaN(value.getTime());
+    value instanceof Date && !Number.isNaN(value.getTime());
 
   const ensureDate = (value: string | Date | undefined): Date | undefined => {
     if (!value) return undefined;
@@ -78,7 +78,7 @@ const DateRange: React.FC<Props> = ({
 
     const date = new Date(value.toString());
 
-    return isNaN(date.getTime()) ? undefined : date;
+    return Number.isNaN(date.getTime()) ? undefined : date;
   };
 
   const handleDateChange =

@@ -132,7 +132,7 @@ const AccessibilityStatementEn: FunctionComponent = () => {
         <a href="https://palautteet.hel.fi/en">
           Give feedback with the feedback form
         </a>
-        .
+        {'.'}
       </p>
       <h2>Accessibility monitoring</h2>
       <p>
