@@ -60,7 +60,7 @@
     "react-intl": "^10.1.5",
     "react-leaflet": "^5.0.0",
     "react-redux": "^9.2.0",
-    "react-router-dom": "^6.30.3",
+    "react-router-dom": "^6.30.6",
     "react-svg": "^17.2.4",
     "reactstrap": "^9.2.3",
     "redux": "^5.0.0",
