@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.12.3](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.12.2...linked-volunteering-ui-v0.12.3) (2026-09-09)
+
+
+### Bug Fixes
+
+* Dependabot alerts ([680c1cd](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/680c1cdce1d7918c043d7d25c8d7ba867fbcfe4a))
+* Sonar issues ([83937c9](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/83937c90941f4f327eabf34450dd160a24e68ed2))
+
 ## [0.12.2](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.12.1...linked-volunteering-ui-v0.12.2) (2026-08-12)
 
 
