@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.12.4](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.12.3...linked-volunteering-ui-v0.12.4) (2026-09-16)
+
+
+### Bug Fixes
+
+* Vitest upgrade fixes Refs: RATY-357 ([eb720fc](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/eb720fc956426fb60430837cabfa48f885e7c77e))
+
+
+### Dependencies
+
+* Bump vitest from 4.1.9 to 4.1.11 ([d4096d4](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/d4096d46bf84daef6b08b967e029b78f019cbaff))
+
 ## [0.12.3](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.12.2...linked-volunteering-ui-v0.12.3) (2026-09-14)
 
 
