@@ -11,6 +11,17 @@ dotenv.config({ path: path.resolve(__dirname, '.env.local') });
 export const TEST_USER_EMAIL = process.env.E2E_TEST_USER_EMAIL ?? '';
 export const TEST_USER_PASSWORD = process.env.E2E_TEST_USER_PASSWORD ?? '';
 
+const secondaryBrowserProject =
+  process.platform === 'darwin'
+    ? {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'] },
+    }
+    : {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    };
+
 export default defineConfig({
   testDir: './e2e/tests/pages',
 
@@ -52,8 +63,7 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
     {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      ...secondaryBrowserProject,
       // Auth-protected tests (manage-events, reports) share backend state and
       // running them in both browsers concurrently causes data collisions.
       // They are covered by the chromium project.
