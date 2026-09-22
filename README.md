@@ -51,6 +51,24 @@ $ cp .env.example .env.production.local
 `docker-compose up` to start the dockerized dev-environment. Not for production!!!  
 `docker-compose down` stops the container.
 
+## Dev Containers
+
+This repository can also be opened in a [Dev Container](https://containers.dev/), reusing the same
+`development` Docker build target and `compose.yaml` used for the dockerized dev-environment above.
+
+1. Install the [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) VS Code extension.
+2. Open the repository in VS Code and run **Dev Containers: Reopen in Container**.
+   - On first run, if `.env.local` doesn't exist yet, it's automatically created from `.env.local.example`.
+     Review/update its values as needed.
+
+3. Once attached, run `pnpm start` in the integrated terminal to start the dev server, reachable at
+   [http://localhost:3000](http://localhost:3000) same as the local/dockerized workflows.
+
+Notes:
+
+- End-to-end (Playwright) tests are not supported inside the Dev Container yet and should still be run
+  on the host as described in [Testing](#testing).
+
 ## Commit message format
 
 New commit messages must adhere to the [Conventional Commits](https://www.conventionalcommits.org/)

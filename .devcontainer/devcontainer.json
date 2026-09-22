@@ -1,0 +1,27 @@
+{
+  "name": "linked-volunteering-ui",
+  "dockerComposeFile": ["../compose.yaml", "compose.yaml"],
+  "service": "app",
+  "workspaceFolder": "/app",
+  "remoteUser": "default",
+  "containerUser": "default",
+  // compose requires .env.local to exist; bootstrap it on the host before the container starts.
+  "initializeCommand": "sh -c '[ -f \"${localWorkspaceFolder}/.env.local\" ] || cp \"${localWorkspaceFolder}/.env.local.example\" \"${localWorkspaceFolder}/.env.local\"'",
+  "postCreateCommand": "pnpm install --frozen-lockfile",
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Vite dev server",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-playwright.playwright"
+      ]
+    }
+  }
+}
