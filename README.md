@@ -64,6 +64,33 @@ This repository can also be opened in a [Dev Container](https://containers.dev/)
 3. Once attached, run `pnpm start` in the integrated terminal to start the dev server, reachable at
    [http://localhost:3000](http://localhost:3000) same as the local/dockerized workflows.
 
+### Dev Containers CLI
+
+The same configuration can be used without VS Code via the
+[Dev Containers CLI](https://github.com/devcontainers/cli):
+
+```
+$ npm install -g @devcontainers/cli
+$ devcontainer up --workspace-folder .
+$ devcontainer exec --workspace-folder . pnpm start
+```
+
+The app is reachable at [http://localhost:3000](http://localhost:3000). To open a shell inside the
+container, run `pnpm container:exec -- exec bash`.
+
+To remove the Dev Container stack, including its container and network, run:
+
+```
+$ docker compose -f compose.yaml -f .devcontainer/compose.yaml down --remove-orphans
+```
+
+This frees port `3000` and preserves the `linked-volunteering-ui_node_modules` volume. To remove the
+volume as well and force dependencies to be installed again on the next startup, add `--volumes`:
+
+```
+$ docker compose -f compose.yaml -f .devcontainer/compose.yaml down --remove-orphans --volumes
+```
+
 Notes:
 
 - End-to-end (Playwright) tests are not supported inside the Dev Container yet and should still be run
