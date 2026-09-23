@@ -71,24 +71,17 @@ The same configuration can be used without VS Code via the
 
 ```
 $ npm install -g @devcontainers/cli
-$ devcontainer up --workspace-folder .
-$ devcontainer exec --workspace-folder . pnpm start
+$ pnpm container:up
+$ pnpm container:exec -- start
 ```
 
 The app is reachable at [http://localhost:3000](http://localhost:3000). To open a shell inside the
 container, run `pnpm container:exec -- exec bash`.
 
-To remove the Dev Container stack, including its container and network, run:
+To remove the Dev Container stack, including its container, network and volumes, run:
 
 ```
-$ docker compose -f compose.yaml -f .devcontainer/compose.yaml down --remove-orphans
-```
-
-This frees port `3000` and preserves the `linked-volunteering-ui_node_modules` volume. To remove the
-volume as well and force dependencies to be installed again on the next startup, add `--volumes`:
-
-```
-$ docker compose -f compose.yaml -f .devcontainer/compose.yaml down --remove-orphans --volumes
+$ pnpm container:down
 ```
 
 Notes:

@@ -89,6 +89,9 @@
   },
   "scripts": {
     "app:version": "echo \"$npm_package_version\"",
+    "container:up": "devcontainer up --workspace-folder .",
+    "container:exec": "devcontainer exec --workspace-folder . pnpm",
+    "container:down": "docker compose -f compose.yaml -f .devcontainer/compose.yaml down --remove-orphans --volumes",
     "start": "pnpm update-runtime-env && vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
