@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.12.5](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.12.4...linked-volunteering-ui-v0.12.5) (2026-09-24)
+
+
+### Documentation
+
+* Add Dev Container CLI instructions ([37081dd](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/37081dd012d94583706f1f7b010cc289b6203928))
+
 ## [0.12.4](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.12.3...linked-volunteering-ui-v0.12.4) (2026-09-16)
 
 
