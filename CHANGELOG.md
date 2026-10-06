@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.12.6](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.12.5...linked-volunteering-ui-v0.12.6) (2026-10-06)
+
+
+### Bug Fixes
+
+* Privacy policy links ([c34c743](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/c34c74393d87472e5d944b6a39127cc83e8da831))
+
 ## [0.12.5](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.12.4...linked-volunteering-ui-v0.12.5) (2026-09-24)
 
 
