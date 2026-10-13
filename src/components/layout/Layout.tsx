@@ -18,6 +18,7 @@ import Footer from './Footer';
 import responsive from '../../utils/responsive';
 import useLocale from '../../hooks/useLocale';
 import useFocusOnPageChange from '../../hooks/useFocusOnPageChange';
+import { PAGE_HEADER_ID } from '../cookieConsent/cookieConsentSettings';
 
 const LayoutWrapper = styled.div`
   display: grid;
@@ -193,6 +194,7 @@ const Layout: React.FC<Props> = ({
       <TopNavbar style={{ minHeight: '77px' }}>
         <NavbarContainer>
           <NavbarBrand
+            id={PAGE_HEADER_ID}
             to={`/${locale}`}
             aria-label={formatMessage({ id: 'site.nav.logo.text' })}
           >

@@ -87,6 +87,19 @@ class MatomoTracker {
     return this;
   }
 
+  // The consent methods require `requireConsent` to be pushed at
+  // initialization, so that nothing is sent and no cookies are set until
+  // consent is given.
+  giveConsent() {
+    this.pushInstruction('setConsentGiven');
+  }
+
+  forgetConsent() {
+    // Delete Matomo cookies and block tracking requests again
+    this.pushInstruction('forgetCookieConsentGiven');
+    this.pushInstruction('requireConsent');
+  }
+
   trackPageView(params: {
     data?: unknown[];
     documentTitle?: string;

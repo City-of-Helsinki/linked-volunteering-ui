@@ -72,6 +72,47 @@ describe('MatomoTracker', () => {
     ]);
   });
 
+  it('should give consent', () => {
+    const tracker = new MatomoTracker({
+      urlBase: MOCK_URL_BASE,
+      siteId: 123,
+      srcUrl: 'test.js',
+      enabled: true,
+      configurations: { requireConsent: undefined },
+    });
+
+    tracker.giveConsent();
+
+    expect(window._paq).toEqual([
+      ['setTrackerUrl', MOCK_TRACKER_URL],
+      ['setSiteId', 123],
+      ['requireConsent'],
+      ['enableLinkTracking', true],
+      ['setConsentGiven'],
+    ]);
+  });
+
+  it('should forget consent', () => {
+    const tracker = new MatomoTracker({
+      urlBase: MOCK_URL_BASE,
+      siteId: 123,
+      srcUrl: 'test.js',
+      enabled: true,
+      configurations: { requireConsent: undefined },
+    });
+
+    tracker.forgetConsent();
+
+    expect(window._paq).toEqual([
+      ['setTrackerUrl', MOCK_TRACKER_URL],
+      ['setSiteId', 123],
+      ['requireConsent'],
+      ['enableLinkTracking', true],
+      ['forgetCookieConsentGiven'],
+      ['requireConsent'],
+    ]);
+  });
+
   it('should track custom event', () => {
     const tracker = new MatomoTracker({
       urlBase: MOCK_URL_BASE,

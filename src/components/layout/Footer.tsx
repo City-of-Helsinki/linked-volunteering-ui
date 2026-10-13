@@ -135,6 +135,9 @@ const Footer: React.FC = () => {
               id="site.footer.accessibility.text"
             />
           </Link>
+          <Link to={`/${locale}/cookies`}>
+            <FormattedMessage tagName="span" id="site.footer.cookies.text" />
+          </Link>
         </BottomLinksLeft>
         <BottomLinksRight>
           <a
