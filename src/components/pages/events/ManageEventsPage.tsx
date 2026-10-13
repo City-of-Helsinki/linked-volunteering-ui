@@ -265,7 +265,7 @@ const ManageEventsPage = () => {
       <PageMeta title="site.page.manage_events.page_title" />
       <ControlContainer fluid>
         <TitleRow>
-          <Col sm={{ size: 11, offset: 1 }} md={{ size: 11, offset: 2 }}>
+          <Col sm={{ size: 11, offset: 1 }} md={{ size: 10, offset: 2 }}>
             <FormattedMessage tagName="h1" id="site.page.manage_events.title" />
           </Col>
         </TitleRow>

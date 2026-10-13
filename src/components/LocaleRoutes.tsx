@@ -7,6 +7,9 @@ import Error404Page from './pages/Error404Page';
 const AccessibilityPage = React.lazy(
   () => import('./pages/accessibility/AccessibilityPage')
 );
+const CookieSettingsPage = React.lazy(
+  () => import('./pages/CookieSettingsPage')
+);
 const NewEventPage = React.lazy(
   () => import('./pages/events/containers/NewEventPageContainer')
 );
@@ -19,6 +22,7 @@ function LocaleRoutes() {
     <React.Suspense fallback={<LoadingSpinner />}>
       <Routes>
         <Route path="/accessibility" element={<AccessibilityPage />} />
+        <Route path="/cookies" element={<CookieSettingsPage />} />
         <Route path="/event/new" element={<NewEventPage />} />
         <Route path="/event/submitted" element={<SubmittedPage />} />
         <Route path="*" element={<Error404Page />} />

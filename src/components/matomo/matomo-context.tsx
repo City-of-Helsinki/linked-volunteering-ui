@@ -8,6 +8,8 @@ export interface MatomoPageViewParams {
 
 export interface MatomoInstance {
   trackPageView: (params: MatomoPageViewParams) => void;
+  giveConsent: () => void;
+  forgetConsent: () => void;
 }
 
 interface MatomoProviderProps {

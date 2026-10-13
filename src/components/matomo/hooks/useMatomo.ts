@@ -14,7 +14,14 @@ function useMatomo() {
     [instance]
   );
 
-  return { trackPageView };
+  const giveConsent = useCallback(() => instance?.giveConsent(), [instance]);
+
+  const forgetConsent = useCallback(
+    () => instance?.forgetConsent(),
+    [instance]
+  );
+
+  return { trackPageView, giveConsent, forgetConsent };
 }
 
 export default useMatomo;

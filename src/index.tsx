@@ -64,7 +64,8 @@ function Root() {
           globalThis.window._env_.REACT_APP_MATOMO_ENABLED === 'true' &&
           Boolean(globalThis.window._env_.REACT_APP_MATOMO_SITE_ID),
         configurations: {
-          setDoNotTrack: undefined,
+          // Nothing is tracked until the user consents to statistics cookies
+          requireConsent: undefined,
         },
       }),
     []

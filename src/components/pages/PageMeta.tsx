@@ -3,7 +3,9 @@ import { useIntl } from 'react-intl';
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 import useDeepCompareEffect from 'use-deep-compare-effect';
+import { useGroupConsent } from 'hds-react';
 import useMatomo from '../matomo/hooks/useMatomo';
+import { COOKIE_CONSENT_GROUP } from '../cookieConsent/cookieConsentSettings';
 
 interface Props {
   title: string;
@@ -16,6 +18,7 @@ const PageMeta: React.FC<Props> = ({ title }) => {
   const intl = useIntl();
   const { formatMessage } = intl;
   const { trackPageView } = useMatomo();
+  const statisticsConsent = useGroupConsent(COOKIE_CONSENT_GROUP.Statistics);
 
   const translatedTitle =
     title !== META_TITLE
@@ -26,11 +29,16 @@ const PageMeta: React.FC<Props> = ({ title }) => {
 
   // Track page view
   useDeepCompareEffect(() => {
-    trackPageView({
-      documentTitle: translatedTitle,
-      href: window.location.href,
-    });
-  }, [{ pathname: location.pathname, search: location.search }]);
+    if (statisticsConsent) {
+      trackPageView({
+        documentTitle: translatedTitle,
+        href: window.location.href,
+      });
+    }
+  }, [
+    { pathname: location.pathname, search: location.search },
+    statisticsConsent,
+  ]);
 
   return (
     <Helmet>
