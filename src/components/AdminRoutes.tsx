@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { LoadingSpinner } from 'hds-react';
+import LoadingSpinner from './common/LoadingSpinner';
 import Error404Page from './pages/Error404Page';
 import useAuth from '../hooks/useAuth';
 import { useAppSelector } from '../store/hooks';

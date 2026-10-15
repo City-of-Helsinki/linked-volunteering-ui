@@ -3,7 +3,6 @@ import { Route, Routes, useParams } from 'react-router-dom';
 import { IntlProvider } from 'react-intl';
 
 import { isEmpty } from 'lodash';
-import { LoadingSpinner } from 'hds-react';
 import { HelmetProvider } from 'react-helmet-async';
 import {
   currentUserDataSelector,
@@ -19,6 +18,7 @@ import Error404Page from './pages/Error404Page';
 import useAuth from '../hooks/useAuth';
 import SessionEndedDialog from './SessionEndedDialog';
 import ErrorPage from './pages/ErrorPage';
+import LoadingSpinner from './common/LoadingSpinner';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 
 const LandingPage = React.lazy(() => import('./pages/LandingPage'));

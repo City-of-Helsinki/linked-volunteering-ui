@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="fi">
   <head>
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="/h-favicon.ico" />
@@ -28,6 +28,13 @@
   <body>
     <noscript> You need to enable JavaScript to run this app. </noscript>
     <div id="root"></div>
+    <!-- Live region for loading announcements, see src/components/common/loadingStatus.ts -->
+    <div
+      id="loading-status"
+      class="sr-only"
+      role="status"
+      aria-live="polite"
+    ></div>
     <script type="module" src="/src/index.tsx"></script>
     <!--
       This HTML file is a template.
