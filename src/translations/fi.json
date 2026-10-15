@@ -4,6 +4,8 @@
   "site.language.fi": "Suomeksi",
   "site.language.sv": "På svenska",
   "site.language.en": "In English",
+  "site.loading.text": "Sivua ladataan",
+  "site.loading.finished_text": "Sivu on ladattu",
   "site.login-prompt.title": "Istunto on päättynyt",
   "site.login-prompt.body": "Kirjaudu uudelleen sisään jatkaaksesi palvelun käyttöä.",
   "site.login-prompt.button-label": "Kirjaudu uudelleen",

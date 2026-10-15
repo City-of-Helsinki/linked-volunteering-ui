@@ -4,6 +4,8 @@
   "site.language.fi": "Suomeksi",
   "site.language.sv": "På svenska",
   "site.language.en": "In English",
+  "site.loading.text": "Page is loading",
+  "site.loading.finished_text": "Page has finished loading",
   "site.login-prompt.title": "The session has ended",
   "site.login-prompt.body": "Log in to continue.",
   "site.login-prompt.button-label": "Log in again",

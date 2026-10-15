@@ -17,6 +17,7 @@ import Modal from '../modal/Modal';
 import Footer from './Footer';
 import responsive from '../../utils/responsive';
 import useLocale from '../../hooks/useLocale';
+import useFocusOnPageChange from '../../hooks/useFocusOnPageChange';
 
 const LayoutWrapper = styled.div`
   display: grid;
@@ -24,7 +25,7 @@ const LayoutWrapper = styled.div`
   min-height: 100vh;
 `;
 
-const Content = styled.div`
+const Content = styled.main`
   background-color: ${(props) => props.theme.colors.lightGray};
 `;
 
@@ -183,6 +184,9 @@ const Layout: React.FC<Props> = ({
   const isOfficial = auth ? auth.is_official : false;
   const isContractor = auth ? auth.is_contractor : false;
 
+  // Screen readers start reading the new page from its heading
+  const contentRef = useFocusOnPageChange<HTMLElement>();
+
   return (
     <LayoutWrapper>
       {/* Set min-height to navbar to prevent page jumping */}
@@ -235,7 +239,7 @@ const Layout: React.FC<Props> = ({
         </NavbarContainer>
       </TopNavbar>
 
-      <Content>
+      <Content ref={contentRef}>
         <PageWrapper $paddingTop={paddingTop} $paddingBottom={paddingBottom}>
           {children}
         </PageWrapper>
