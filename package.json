@@ -2,10 +2,10 @@
   "name": "linked-volunteering-ui",
   "version": "0.12.6",
   "private": true,
-  "packageManager": "pnpm@11.9.0",
+  "packageManager": "pnpm@11.28.7",
   "engines": {
     "node": "^24",
-    "pnpm": ">=11.9.0"
+    "pnpm": ">=11.28.7"
   },
   "dependencies": {
     "@eslint/js": "^9.39.4",
