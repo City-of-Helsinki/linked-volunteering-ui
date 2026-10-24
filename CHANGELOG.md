@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.13.0](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.12.6...linked-volunteering-ui-v0.13.0) (2026-10-24)
+
+
+### Features
+
+* Add hds cookie consent and track matomo only with consent ([69aa18d](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/69aa18d5960fb95ccb244b2d7d969c35890b50ea))
+* Generate third-party license notices at build time ([e5e7386](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/e5e73860cfed52fc10045a62d3a113724b7e2581))
+
+
+### Bug Fixes
+
+* Loading spinner texts, position and screen reader support ([331b458](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/331b458ba64d65e6a1dd7a6666febd722596f4c8))
+* Use latest Node.js 24 LTS ([f7ceada](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/f7ceada654bfa2f4750beaa4cf903cfed3fcf118))
+
 ## [0.12.6](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.12.5...linked-volunteering-ui-v0.12.6) (2026-10-06)
 
 
