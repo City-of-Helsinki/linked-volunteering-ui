@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.1](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.13.0...linked-volunteering-ui-v0.13.1) (2026-11-18)
+
+
+### Bug Fixes
+
+* Update env-config.js script version to v2 ([384c426](https://github.com/City-of-Helsinki/linked-volunteering-ui/commit/384c426548daf21966973d3abff4909ca6e9e2bf))
+
 ## [0.13.0](https://github.com/City-of-Helsinki/linked-volunteering-ui/compare/linked-volunteering-ui-v0.12.6...linked-volunteering-ui-v0.13.0) (2026-10-29)
 
 
